@@ -56,6 +56,10 @@
 	</Vendors>
 
 	<Blackspots>
+		<!--Saltheril's Haven & Banner Combo-->
+		<Blackspot X="8654.877" Y="-6370.644" Z="53.42694" Radius="0.9776898" />
+		<!--Saltheril's Haven Banner-->
+		<Blackspot X="8668.801" Y="-6337.026" Z="55.22498" Radius="1.409733" />
 	</Blackspots>
 
 	<!-- Quest Overrides -->
@@ -246,6 +250,20 @@
 			<Objective QuestName="Unfortunate Measures" QuestId="8326" Type="CollectItem" Name="Lynx Collar" ItemId="20797" CollectCount="8"/>
 			<Objective QuestName="Solanian's Belongings" QuestId="8330" Type="CollectItem" ItemId="20470" CollectCount="1" />
 			<Objective QuestName="Solanian's Belongings" QuestId="8330" Type="CollectItem" ItemId="20472" CollectCount="1" />
+
+			<!--Poor Thing Didn't Hit Level 3-->
+			<If Condition="Me.Level &lt;= 3">
+				<CustomBehavior File="Message" Text="Didn't Quite hit Level 3: Grinding" LogColor="Yellow" />
+				<SetGrindArea>
+					<GrindArea>
+						<Factions>7</Factions>
+						<Hotspots>
+							<Hotspot X="10235.05" Y="-6347.052" Z="30.84054" />
+						</Hotspots>
+					</GrindArea>  
+				</SetGrindArea>
+				<GrindTo Condition="Me.Level &gt;= 3" />
+			</If>
 
 		<!--Class Quest Objectives-->
 		<If Condition="Me.Class == WoWClass.Warrior">
@@ -447,6 +465,24 @@
 		<If Condition="(Me.Class == WoWClass.Mage) || (Me.Class == WoWClass.Rogue) || (Me.Class == WoWClass.Monk)">
 			<CustomBehavior File="Message" Text="Compiling Quests: Fairbreeze Village" LogColor="Cyan" />
 
+			<!--Poor Thing Didn't Hit Level 8-->
+			<If Condition="Me.Level &lt;= 8">
+				<CustomBehavior File="Message" Text="Didn't Quite hit Level 8: Grinding" LogColor="Yellow" />
+				<SetGrindArea>
+					<GrindArea>
+						<Factions>7 38 91</Factions>
+						<Hotspots>
+							<Hotspot X="8789.275" Y="-6813.131" Z="54.13781" />
+							<Hotspot X="8829.233" Y="-6877.594" Z="43.98893" />
+							<Hotspot X="8876.463" Y="-6848.944" Z="39.20932" />
+							<Hotspot X="8871.086" Y="-6791.698" Z="35.04476" />
+							<Hotspot X="8905.595" Y="-6752.345" Z="31.33841" />
+						</Hotspots>
+					</GrindArea>  
+				</SetGrindArea>
+				<GrindTo Condition="Me.Level &gt;= 8" />
+			</If>
+
 			<PickUp QuestName="Saltheril's Haven" QuestId="9395" GiverName="Magistrix Landra Dawnstrider" GiverId="16210" />
 			<PickUp QuestName="The Wayward Apprentice" QuestId="9254" GiverName="Magistrix Landra Dawnstrider" GiverId="16210" />
 			<PickUp QuestName="Ranger Sareyn" QuestId="9358" GiverName="Marniel Amberlight" GiverId="15397" />
@@ -501,11 +537,13 @@
 			<TurnIn QuestName="Corrupted Soil" QuestId="8487" TurnInName="Apprentice Mirveda" TurnInId="15402" />
 			<PickUp QuestName="Unexpected Results" QuestId="8488" GiverName="Apprentice Mirveda" GiverId="15402" />
 
-			<If Condition="((HasQuest(8488)) &amp;&amp; (!IsQuestCompleted(8488)))">
+			<While Condition="((HasQuest(8488)) &amp;&amp; (!IsQuestCompleted(8488)))">
 				<!--This QuestBehavior is Broken Trash-->
 				<!--CustomBehavior File="Escort" QuestId="8488" MobId="15402" X="8714.452" Y="-7155.89" Z="40.45158" /-->
+				<CustomBehavior File="AbandonQuest" QuestId="8488" Type="Failed" />
+				<PickUp QuestName="Unexpected Results" QuestId="8488" GiverName="Apprentice Mirveda" GiverId="15402" />
 				<CustomBehavior File="EscortGroup" QuestId="8488" EscortNpcId="15402" EscortCompleteWhen="QuestComplete" />
-			</If>
+			</While>
 
 			<TurnIn QuestName="Unexpected Results" QuestId="8488" TurnInName="Apprentice Mirveda" TurnInId="15402" />
 			<PickUp QuestName="Research Notes" QuestId="9255" GiverName="Apprentice Mirveda" GiverId="15402" />
