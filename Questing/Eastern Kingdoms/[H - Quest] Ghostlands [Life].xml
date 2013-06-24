@@ -1,0 +1,214 @@
+<HBProfile>
+	<Name>[H - Quest] Ghostlands [Life]</Name>
+
+	<MinLevel>10</MinLevel>
+	<MaxLevel>91</MaxLevel>
+
+	<MinDurability>0.2</MinDurability>
+	<MinFreeBagSlots>2</MinFreeBagSlots>
+
+	<MailGrey>False</MailGrey>
+	<MailWhite>False</MailWhite>
+	<MailGreen>True</MailGreen>
+	<MailBlue>True</MailBlue>
+	<MailPurple>True</MailPurple>
+   
+	<SellGrey>True</SellGrey>
+	<SellWhite>True</SellWhite>
+	<SellGreen>True</SellGreen>
+	<SellBlue>False</SellBlue>
+	<SellPurple>False</SellPurple>
+
+	<!--Version 1.0-->
+
+	<AvoidMobs>
+	</AvoidMobs>
+
+	<Mailboxes>
+		<!--Tranquillien Mailbox-->
+		<Mailbox X="7579.636" Y="-6858.685" Z="93.34167" />
+	</Mailboxes>
+
+	<Vendors>
+		<!--Tranquillien Vendors-->
+		<Vendor Name="Innkeeper Kalarin" Entry="16542" Type="Food" X="7553.37" Y="-6897.353" Z="96.02652" />
+		<Vendor Name="Blacksmith Frances" Entry="17655" Type="Repair" X="7600.523" Y="-6904.995" Z="93.78748" />
+	</Vendors>
+
+	<Blackspots>
+		<!--Suncrown House With Faulty Meshing?-->
+		<Blackspot X="7999.296" Y="-7217.082" Z="139.6016" Radius="15.96113" />
+	</Blackspots>
+
+	<ProtectedItems>
+		<Item Name="Crunchy Spider Leg" Entry="22644" />
+	</ProtectedItems>
+
+	<Quest Id="9315" Name="Anok'suten">
+		<Objective Type="KillMob" MobId="16357" KillCount="1">
+			<Hotspots>
+				<Hotspot X="8021.225" Y="-7249.354" Z="140.5541" />
+				<Hotspot X="8056.506" Y="-7291.257" Z="140.9056" />
+				<Hotspot X="8044.439" Y="-7333.778" Z="140.9594" />
+				<Hotspot X="7997.812" Y="-7354.419" Z="140.2657" />
+				<Hotspot X="7951.073" Y="-7313.648" Z="139.855" />
+				<Hotspot X="7973.782" Y="-7248.733" Z="137.1131" />
+			</Hotspots>
+		</Objective>
+	</Quest>
+	<Quest Id="9152" Name="Tomber's Supplies">
+		<Objective Type="CollectItem" ItemId="22583" CollectCount="1">
+			<CollectFrom>
+				<GameObject Name="Rathis Tomber's Supplies" Id="181133" />
+			</CollectFrom>
+			<Hotspots>
+				<Hotspot X="7678.662" Y="-6387.798" Z="20.71008" />
+			</Hotspots>
+		</Objective>
+	</Quest>
+	<Quest Id="9171" Name="Culinary Crunch">
+		<Objective Type="CollectItem" ItemId="22644" CollectCount="5">
+			<CollectFrom>
+				<Mob Name="Greater Spindleweb" Id="16352" />
+				<Mob Name="Spindleweb Spider" Id="16350" />
+				<Mob Name="Spindleweb Lurker" Id="16351" />
+			</CollectFrom>
+			<Hotspots>
+				<Hotspot X="7229.052" Y="-6029.327" Z="17.82303" />
+				<Hotspot X="7316.542" Y="-6058.382" Z="19.92226" />
+				<Hotspot X="7381.655" Y="-6065.406" Z="17.96337" />
+				<Hotspot X="7446.464" Y="-6116.417" Z="17.95057" />
+				<Hotspot X="7471.982" Y="-6178.399" Z="12.10415" />
+				<Hotspot X="7450.185" Y="-6273.204" Z="26.96279" />
+				<Hotspot X="7378.707" Y="-6468.132" Z="22.29602" />
+				<Hotspot X="7348.873" Y="-6371.075" Z="41.07017" />
+				<Hotspot X="7337.287" Y="-6310.995" Z="49.57602" />
+				<Hotspot X="7328.628" Y="-6197.734" Z="33.90234" />
+			</Hotspots>
+		</Objective>
+	</Quest>
+	<Quest Id="9163" Name="Into Occupied Territory">
+		<Objective Type="CollectItem" ItemId="22590" CollectCount="1">
+			<CollectFrom>
+				<GameObject Name="Night Elf Plans: An'daroth" Id="181138" />
+			</CollectFrom>
+			<Hotspots>
+				<Hotspot X="7680.787" Y="-5768.692" Z="3.989294" />
+			</Hotspots>
+		</Objective>
+		<Objective Type="CollectItem" ItemId="22591" CollectCount="1">
+			<CollectFrom>
+				<GameObject Name="Night Elf Plans: An'owyn" Id="181139" />
+			</CollectFrom>
+			<Hotspots>
+				<Hotspot X="7712.4" Y="-5704.068" Z="3.295065" />
+			</Hotspots>
+		</Objective>
+		<Objective Type="CollectItem" ItemId="22592" CollectCount="1">
+			<CollectFrom>
+				<GameObject Name="Night Elf Plans: Scrying on the Sin'dorei" Id="181140" />
+			</CollectFrom>
+			<Hotspots>
+				<Hotspot X="7771.341" Y="-5630.008" Z="17.59879" />
+			</Hotspots>
+		</Objective>
+	</Quest>
+
+	<Hotspot X="7229.052" Y="-6029.327" Z="17.82303" />
+<Hotspot X="7316.542" Y="-6058.382" Z="19.92226" />
+<Hotspot X="7381.655" Y="-6065.406" Z="17.96337" />
+<Hotspot X="7446.464" Y="-6116.417" Z="17.95057" />
+<Hotspot X="7471.982" Y="-6178.399" Z="12.10415" />
+<Hotspot X="7450.185" Y="-6273.204" Z="26.96279" />
+<Hotspot X="7378.707" Y="-6468.132" Z="22.29602" />
+<Hotspot X="7348.873" Y="-6371.075" Z="41.07017" />
+<Hotspot X="7337.287" Y="-6310.995" Z="49.57602" />
+<Hotspot X="7328.628" Y="-6197.734" Z="33.90234" />
+
+	<QuestOrder>
+		<CustomBehavior File="Message" Text="Initializing Settings" LogColor="Cyan" />
+		<CustomBehavior File="UserSettings" LootMobs="True" UseFlightPaths="True" />
+
+		<CustomBehavior File="Message" Text="Compiling Quests: Initial Transition" LogColor="Cyan" />
+
+		<If Condition="((!HasQuest(8345)) &amp;&amp; (!IsQuestCompleted(8345)))">
+			<PickUp QuestName="Missing in the Ghostlands" QuestId="9144" GiverName="Magistrix Landra Dawnstrider" GiverId="16210" />
+		</If>
+		<TurnIn QuestName="Missing in the Ghostlands" QuestId="9144" TurnInName="Courier Dawnstrider" TurnInId="16183" />
+		<PickUp QuestName="The Fallen Courier" QuestId="9147" GiverName="Apothecary Thedra" GiverId="16196" />
+		
+			<Objective QuestName="The Fallen Courier" QuestId="9147" Type="CollectItem" ItemId="22570" CollectCount="4" />
+		
+		<TurnIn QuestName="The Fallen Courier" QuestId="9147" TurnInName="Apothecary Thedra" TurnInId="16196" />
+		<PickUp QuestName="Delivery to Tranquillien" QuestId="9148" GiverName="Courier Dawnstrider" GiverId="16183" />
+		<TurnIn QuestName="Delivery to Tranquillien" QuestId="9148" TurnInName="Arcanist Vandril" TurnInId="16197" />
+		<PickUp QuestName="The Forsaken" QuestId="9327" GiverName="Arcanist Vandril" GiverId="16197" />
+		<TurnIn QuestName="The Forsaken" QuestId="9327" TurnInName="High Executor Mavren" TurnInId="16252" />
+		<PickUp QuestName="Return to Arcanist Vandril" QuestId="9758" GiverName="High Executor Mavren" GiverId="16252" />
+
+		<If Condition="((HasQuest(9758)) &amp;&amp; (IsQuestCompleted(9758)))" >
+			<CustomBehavior File="SetHearthstone" MobId="16542" X="7556.067" Y="-6893.185" Z="96.02784" />
+			<CustomBehavior File="ForceSetVendor" DoSell="True" DoRepair="True" DoMail="True" />
+			<CustomBehavior File="WaitTimer" WaitTime="1000" />
+			<TurnIn QuestName="Tainted Arcane Sliver" QuestId="8338" TurnInName="Arcanist Helion" TurnInId="15297" />
+		</If>
+
+		<TurnIn QuestName="Return to Arcanist Vandril" QuestId="9758" TurnInName="Arcanist Vandril" TurnInId="16197" />
+		<PickUp QuestName="Suncrown Village" QuestId="9138" GiverName="Arcanist Vandril" GiverId="16197" />
+		<PickUp QuestName="Anok'suten" QuestId="9315" GiverName="Dying Blood Elf" GiverId="16601" />
+
+			<Objective QuestName="Suncrown Village" QuestId="9138" Type="KillMob" MobId="16313" KillCount="10" />
+			<Objective QuestName="Anok'suten" QuestId="9315" Type="KillMob" MobId="16357" KillCount="1" />
+	
+
+		<If Condition="((HasQuest(9315)) &amp;&amp; (IsQuestCompleted(9315)))" >
+			<CustomBehavior File="Misc\RunLua" Lua="UseItemByName(6948)" WaitTime="12000" />
+		</If>
+		
+		<TurnIn QuestName="Anok'suten" QuestId="9315" TurnInName="Arcanist Vandril" TurnInId="16197" />
+		<TurnIn QuestName="Suncrown Village" QuestId="9138" TurnInName="Arcanist Vandril" TurnInId="16197" />
+
+		<CustomBehavior File="Message" Text="Compiling Quests: Sanctum &amp; Goldenmist" LogColor="Cyan" />
+
+		<PickUp QuestName="Goldenmist Village" QuestId="9139" GiverName="Arcanist Vandril" GiverId="16197" />
+		<PickUp QuestName="Tomber's Supplies" QuestId="9152" GiverName="Rathis Tomber" GiverId="16224" />
+		<PickUp QuestName="Culinary Crunch" QuestId="9171" GiverName="Master Chef Mouldier" GiverId="16253" />
+		<PickUp QuestName="The Plagued Coast" QuestId="9149" GiverName="Apothecary Renzithen" GiverId="16198" />
+		<PickUp QuestName="Down the Dead Scar" QuestId="9155" GiverName="Deathstalker Rathiel" GiverId="16200" />
+		<PickUp QuestName="Salvaging the Past" QuestId="9150" GiverName="Magister Darenis" GiverId="16199" />
+		<PickUp QuestName="Investigate An'daroth" QuestId="9160" GiverName="Dame Auriferous" GiverId="16231" />
+
+			<Objective QuestName="Down the Dead Scar" QuestId="9155" Type="KillMob" MobId="16301" KillCount="10" />
+			<Objective QuestName="Down the Dead Scar" QuestId="9155" Type="KillMob" MobId="16309" KillCount="10" />
+			<Objective QuestName="Salvaging the Past" QuestId="9150" Type="CollectItem" ItemId="22580" CollectCount="8" />
+			<Objective QuestName="Tomber's Supplies" QuestId="9152" Type="CollectItem" ItemId="22583" CollectCount="1" />
+			<Objective QuestName="Investigate An'daroth" QuestId="9160" Type="KillMob" MobId="16330" KillCount="12" />
+			<Objective QuestName="Goldenmist Village" QuestId="9139" Type="KillMob" MobId="16325" KillCount="6" />
+			<Objective QuestName="Goldenmist Village" QuestId="9139" Type="KillMob" MobId="16326" KillCount="4" />
+			<Objective QuestName="The Plagued Coast" QuestId="9149" Type="CollectItem" ItemId="22579" CollectCount="6" />
+			<Objective QuestName="Culinary Crunch" QuestId="9171" Type="CollectItem" ItemId="22644" CollectCount="5" />
+
+		<If Condition="((HasQuest(9149)) &amp;&amp; (IsQuestCompleted(9149)))" >
+			<CustomBehavior File="Misc\RunLua" Lua="UseItemByName(6948)" WaitTime="12000" />
+			<CustomBehavior File="ForceSetVendor" DoSell="True" DoRepair="True" DoMail="True" />
+			<CustomBehavior File="WaitTimer" WaitTime="1000" />
+		</If>
+
+		<TurnIn QuestName="Culinary Crunch" QuestId="9171" TurnInName="Master Chef Mouldier" TurnInId="16253" />
+		<TurnIn QuestName="The Plagued Coast" QuestId="9149" TurnInName="Apothecary Renzithen" TurnInId="16198" />
+		<TurnIn QuestName="Down the Dead Scar" QuestId="9155" TurnInName="Deathstalker Rathiel" TurnInId="16200" />
+		<TurnIn QuestName="Salvaging the Past" QuestId="9150" TurnInName="Magister Darenis" TurnInId="16199" />
+		<TurnIn QuestName="Investigate An'daroth" QuestId="9160" TurnInName="Dame Auriferous" TurnInId="16231" />
+		<PickUp QuestName="Into Occupied Territory" QuestId="9163" GiverName="Dame Auriferous" GiverId="16231" />
+		<TurnIn QuestName="Tomber's Supplies" QuestId="9152" TurnInName="Rathis Tomber" TurnInId="16224" />
+		<TurnIn QuestName="Goldenmist Village" QuestId="9139" TurnInName="Arcanist Vandril" TurnInId="16197" />
+
+			<Objective QuestName="Into Occupied Territory" QuestId="9163" Type="CollectItem" ItemId="22590" CollectCount="1" />
+			<Objective QuestName="Into Occupied Territory" QuestId="9163" Type="CollectItem" ItemId="22591" CollectCount="1" />
+			<Objective QuestName="Into Occupied Territory" QuestId="9163" Type="CollectItem" ItemId="22592" CollectCount="1" />
+		
+		<TurnIn QuestName="Into Occupied Territory" QuestId="9163" TurnInName="Dame Auriferous" TurnInId="16231" />		
+
+	</QuestOrder>
+
+</HBProfile>
