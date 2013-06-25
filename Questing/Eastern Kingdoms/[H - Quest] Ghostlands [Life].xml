@@ -46,6 +46,7 @@
 	</Blackspots>
 
 	<ProtectedItems>
+		<!--Bot Sells Quest Item-->
 		<Item Name="Crunchy Spider Leg" Entry="22644" />
 	</ProtectedItems>
 
@@ -148,7 +149,7 @@
 
 			<PickUp QuestName="Return to Arcanist Vandril" QuestId="9758" GiverName="High Executor Mavren" GiverId="16252" />
 
-		<If Condition="((HasQuest(9758)) &amp;&amp; (IsQuestCompleted(9758)))" >
+		<If Condition="HasQuest(9758) &amp;&amp; IsQuestCompleted(9758)" >
 			<CustomBehavior File="SetHearthstone" MobId="16542" X="7556.067" Y="-6893.185" Z="96.02784" />
 			<CustomBehavior File="ForceSetVendor" DoSell="True" DoRepair="True" DoMail="True" />
 			<CustomBehavior File="WaitTimer" WaitTime="1000" />
@@ -163,7 +164,7 @@
 			<Objective QuestName="Anok'suten" QuestId="9315" Type="KillMob" MobId="16357" KillCount="1" />
 	
 
-		<If Condition="((HasQuest(9315)) &amp;&amp; (IsQuestCompleted(9315)))" >
+		<If Condition="HasQuest(9315) &amp;&amp; IsQuestCompleted(9315)" >
 			<CustomBehavior File="Misc\RunLua" Lua="UseItemByName(6948)" WaitTime="12000" />
 		</If>
 		
@@ -190,7 +191,7 @@
 			<Objective QuestName="The Plagued Coast" QuestId="9149" Type="CollectItem" ItemId="22579" CollectCount="6" />
 			<Objective QuestName="Culinary Crunch" QuestId="9171" Type="CollectItem" ItemId="22644" CollectCount="5" />
 
-		<If Condition="((HasQuest(9149)) &amp;&amp; (IsQuestCompleted(9149)))" >
+		<If Condition="HasQuest(9149) &amp;&amp; IsQuestCompleted(9149)" >
 			<CustomBehavior File="Misc\RunLua" Lua="UseItemByName(6948)" WaitTime="12000" />
 			<CustomBehavior File="ForceSetVendor" DoSell="True" DoRepair="True" DoMail="True" />
 		</If>
@@ -244,6 +245,23 @@
 		<PickUp QuestName="Attack on Zeb'Tela" QuestId="9276" GiverName="Farstrider Solanna" GiverId="16463" />
 		<PickUp QuestName="Bearers of the Plague" QuestId="9158" GiverName="Farstrider Sedina" GiverId="16202" />
 
+			<Objective QuestName="Spirits of the Drowned" QuestId="9274" Type="KillMob" MobId="16327" KillCount="8" />
+			<Objective QuestName="Spirits of the Drowned" QuestId="9274" Type="KillMob" MobId="16328" KillCount="8" />
+
+		<PickUp QuestName="Forgotten Rituals" QuestId="9157" GiverName="Geranis Whitemorn" GiverId="16201" />
+
+			<Objective QuestName="Forgotten Rituals" QuestId="9157" Type="CollectItem" ItemId="22674" CollectCount="8" />
+
+		<TurnIn QuestName="Forgotten Rituals" QuestId="9157" TurnInName="Geranis Whitemorn" TurnInId="16201" />
+		<PickUp QuestName="Vanquishing Aquantion" QuestId="9174" GiverName="Geranis Whitemorn" GiverId="16201" />
+		
+		<If Condition="HasQuest(9174) &amp;&amp; !IsQuestCompleted(9174)" >
+			<CustomBehavior File="InteractWith" QuestId="9174" MobId="181157" NumOfTimes="1000" X="7933.462" Y="-7637.264" Z="112.7646" />
+			<CustomBehavior File="AscendInWater" />
+		</If>
+
+		<TurnIn QuestName="Vanquishing Aquantion" QuestId="9174" TurnInName="Geranis Whitemorn" TurnInId="16201" />
+
 		<CustomBehavior File="InteractWith" QuestId="9193" MobId="181148" QuestObjectiveIndex="1" ProactiveCombatStrategy="ClearMobsThatWillAggro" NumOfTimes="500" WaitTime="7500" >
 			<HuntingGrounds>
 				<Hotspot X="7637.303" Y="-7420.014" Z="162.5113" />
@@ -260,13 +278,12 @@
 
 			<Objective QuestName="Troll Juju" QuestId="9199" Type="CollectItem" ItemId="22633" CollectCount="8" />
 		
-		<If Condition="!HasQuest(9212) &amp;&amp; !IsQuestCompleted(9212)" >
-			<PickUp QuestName="Escape from the Catacombs" QuestId="9212" GiverName="Ranger Lilatha" GiverId="16295" />
-		</If>
+		<PickUp QuestName="Escape from the Catacombs" QuestId="9212" GiverName="Ranger Lilatha" GiverId="16295" />
 		
-		<CustomBehavior File="EscortGroup" QuestId="9212" EscortNpcId="16295" CombatMaxEngagementRangeDistance="18" EscortMaxFightDistance="20" />
+			<CustomBehavior File="EscortGroup" QuestId="9212" EscortNpcId="16295" CombatMaxEngagementRangeDistance="18" EscortMaxFightDistance="20" />
 	
 		<TurnIn QuestName="Escape from the Catacombs" QuestId="9212" TurnInName="Captain Helios" TurnInId="16220" />
+		<TurnIn QuestName="Spirits of the Drowned" QuestId="9274" TurnInName="Ranger Krenn'an" TurnInId="16462" />
 
 		<If Condition="HasQuest(9199) &amp;&amp; IsQuestCompleted(9199)">
 			<CustomBehavior File="Misc\RunLua" Lua="UseItemByName(6948)" WaitTime="12000" />
@@ -292,29 +309,27 @@
 		</If>
 
 		<TurnIn QuestName="Bearers of the Plague" QuestId="9158" TurnInName="Farstrider Sedina" TurnInId="16202" />
-		<TurnIn QuestName="Shadowpine Weaponry" QuestId="9214" TurnInName="Captain Helios" TurnInId="16220" />
+		<PickUp QuestName="Curbing the Plague" QuestId="9159" GiverName="Farstrider Sedina" GiverId="16202" />
 		<TurnIn QuestName="Attack on Zeb'Tela" QuestId="9276" TurnInName="Farstrider Solanna" TurnInId="16463" />
+		<PickUp QuestName="Assault on Zeb'Nowa" QuestId="9277" GiverName="Farstrider Solanna" GiverId="16463" />
+		<TurnIn QuestName="Shadowpine Weaponry" QuestId="9214" TurnInName="Captain Helios" TurnInId="16220" />
 		<TurnIn QuestName="A Little Dash of Seasoning" QuestId="9275" TurnInName="Apothecary Venustus" TurnInId="16464" />
+		<TurnIn QuestName="The Traitor's Shadow" QuestId="9161" TurnInType="Object" TurnInName="Dusty Journal" TurnInId="181150" X="7878.609" Y="-7911.573" Z="182.8044" />
+		<PickUp QuestName="Hints of the Past" QuestId="9162" GiverType="Object" GiverName="Dusty Journal" GiverId="181150" X="7878.609" Y="-7911.573" Z="182.8044" />
 
-			<Objective QuestName="Spirits of the Drowned" QuestId="9274" Type="KillMob" MobId="16327" KillCount="8" />
-			<Objective QuestName="Spirits of the Drowned" QuestId="9274" Type="KillMob" MobId="16328" KillCount="8" />
-
-		<TurnIn QuestName="The Traitor's Shadow" QuestId="9161" TurnInType="Object" TurnInName="Dusty Journal" TurnInId="181150"  X="7880.24" Y="-7911.188" Z="182.8032" />
-		<PickUp QuestName="Hints of the Past" QuestId="9162" GiverType="Object" GiverName="Dusty Journal" GiverId="181150"  X="7880.24" Y="-7911.188" Z="182.8032" />
+			<Objective QuestName="Curbing the Plague" QuestId="9159" Type="KillMob" MobId="16354" KillCount="10" />
+			<Objective QuestName="Curbing the Plague" QuestId="9159" Type="KillMob" MobId="16351" KillCount="8" />
+		
 		<TurnIn QuestName="Hints of the Past" QuestId="9162" TurnInName="Ranger Vynna" TurnInId="9162" />
-		<TurnIn QuestName="Spirits of the Drowned" QuestId="9274" TurnInName="Ranger Krenn'an" TurnInId="16462" />
+		<TurnIn QuestName="Curbing the Plague" QuestId="9159" TurnInName="Farstrider Sedina" TurnInId="16202" />
 		
 		<!--End Organized QuestOrder-->
-		
+		<!--Objective QuestName="Assault on Zeb'Nowa" QuestId="9277" Type="KillMob" MobId="16345" KillCount="10" />
+		<Objective QuestName="Assault on Zeb'Nowa" QuestId="9277" Type="KillMob" MobId="16346" KillCount="10" />
+		<TurnIn QuestName="Assault on Zeb'Nowa" QuestId="9277" TurnInName="Farstrider Solanna" TurnInId="16463" />
 
-		
-		<!--Objective QuestName="Bring Me Kel'gash's Head!" QuestId="9215" Type="CollectItem" ItemId="22640" CollectCount="1" />
+		<Objective QuestName="Bring Me Kel'gash's Head!" QuestId="9215" Type="CollectItem" ItemId="22640" CollectCount="1" />
 		<TurnIn QuestName="Bring Me Kel'gash's Head!" QuestId="9215" TurnInName="Captain Helios" TurnInId="16220" /-->
-		
-		
-
-
-
 		
 	</QuestOrder>
 
