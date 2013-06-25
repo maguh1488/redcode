@@ -447,7 +447,6 @@
 			<CustomBehavior File="Message" Text="Death Knight: Taking Battle To The Enemy" LogColor="Cyan" />
 			<CustomBehavior File="FlyTo" X="8513.477" Y="1376.757" Z="641.6046" />
 			<CustomBehavior File="ForcedDismount" />
-			<CustomBehavior File="UserSettings" PullDistance="25" />
 			<Objective QuestName="Taking Battle To The Enemy" QuestId="13813" Type="KillMob" MobId="35297" KillCount="15" />
 		</If>
 		<!--Taking Battle to the Enemy-->
@@ -455,7 +454,6 @@
 			<CustomBehavior File="Message" Text="Doing Daily: Taking Battle To The Enemy" LogColor="Cyan" />
 			<CustomBehavior File="FlyTo" X="8513.477" Y="1376.757" Z="641.6046" />
 			<CustomBehavior File="ForcedDismount" />
-			<CustomBehavior File="UserSettings" PullDistance="25" />
 			<Objective QuestName="Taking Battle To The Enemy" QuestId="13810" Type="KillMob" MobId="35297" KillCount="15" />
 		</If>
 		<!--You've Really Done It This Time, Kul-->
@@ -589,26 +587,20 @@
 				<CustomBehavior File="ForcedDismount" />
 			</If>
 			<!--Turn In: Threat From Above-->
-			<If Condition="False" >
-				<If Condition="((HasQuest(13812)) &amp;&amp; (IsQuestCompleted(13812)))" >
-					<CustomBehavior File="ArgentTournament\SpecialTurnIn" LootId="1" QuestName="Threat From Above" QuestId="13812" TurnInName="Crok Scourgebane" TurnInId="33762" />
-					<!--TurnIn QuestName="Threat From Above" QuestId="13812" TurnInName="Crok Scourgebane" TurnInId="33762" /-->
-				</If>
-				<!--Turn In: Battle Before The Citadel-->
-				<If Condition="((HasQuest(13863)) &amp;&amp; (IsQuestCompleted(13863)))" >
-					<CustomBehavior File="ArgentTournament\SpecialTurnIn" LootId="1" QuestName="Battle Before The Citadel" QuestId="13863" TurnInName="Crok Scourgebane" TurnInId="33762" />
-					<!--TurnIn QuestName="Battle Before The Citadel" QuestId="13863" TurnInName="Crok Scourgebane" TurnInId="33762" /-->
-				</If>
+			<If Condition="((HasQuest(13812)) &amp;&amp; (IsQuestCompleted(13812)))" >
+				<CustomBehavior File="ArgentTournament\SpecialTurnIn" LootId="1" QuestName="Threat From Above" QuestId="13812" TurnInName="Crok Scourgebane" TurnInId="33762" />
+			</If>
+			<!--Turn In: Battle Before The Citadel-->
+			<If Condition="((HasQuest(13863)) &amp;&amp; (IsQuestCompleted(13863)))" >
+				<CustomBehavior File="ArgentTournament\SpecialTurnIn" LootId="1" QuestName="Battle Before The Citadel" QuestId="13863" TurnInName="Crok Scourgebane" TurnInId="33762" />
 			</If>
 			<!--Turn In: Among the Champions-->
 			<If Condition="((HasQuest(13814)) &amp;&amp; (IsQuestCompleted(13814)))" >
 				<CustomBehavior File="ArgentTournament\SpecialTurnIn" LootId="1" QuestName="Among the Champions" QuestId="13814" TurnInName="Illyrie Nightfall" TurnInId="33770" />
-				<!--TurnIn QuestName="Among the Champions" QuestId="13814" TurnInName="Illyrie Nightfall" TurnInId="33770" /-->
 			</If>
 			<!--Turn In: Taking Battle To The Enemy-->
 			<If Condition="((HasQuest(13813)) &amp;&amp; (IsQuestCompleted(13813)))" >
 				<CustomBehavior File="ArgentTournament\SpecialTurnIn" LootId="1" QuestName="Taking Battle To The Enemy" QuestId="13813" TurnInName="Zor'be the Bloodletter" TurnInId="33769" />
-				<!--TurnIn QuestName="Taking Battle To The Enemy" QuestId="13813" TurnInName="Zor'be the Bloodletter" TurnInId="33769" /-->
 			</If>
 			<!--Open Champion's Purses-->
 			<While Condition="HasItem(45724)" >
