@@ -170,7 +170,7 @@
 			<TurnIn QuestName="Reclaiming Sunstrider Isle" QuestId="8325" TurnInName="Magistrix Erona" TurnInId="15278" />
 
 			<!--Magistrix Erona: Unfortunate Measures Pickup (Worked Around because of Auto-Accept Bug) -->
-			<While Condition="((HasQuestAvailable(15278)) &amp;&amp; (!IsQuestCompleted(8326)))">
+			<While Condition="HasQuestAvailable(15278) &amp;&amp; !IsQuestCompleted(8326)">
 				<CustomBehavior File="InteractWith" MobId="15278" />
 				<CustomBehavior File="RunMacro" Macro="/click GossipTitleButton1" />
 				<CustomBehavior File="Misc\RunLua" Lua="AcceptQuest()" WaitTime="1000" />
@@ -236,14 +236,14 @@
 			<PickUp QuestName="Thirst Unending" QuestId="8346" GiverName="Arcanist Helion" GiverId="15297" />
 
 			<!--Thirst Unending: Use Arcane Torrent-->
-			<While Condition="((HasQuest(8346)) &amp;&amp; (!IsQuestCompleted(8346)))">
+			<While Condition="HasQuest(8346) &amp;&amp; !IsQuestCompleted(8346)">
 				<CustomBehavior File="CastSpellOn" MobHpPercentLeft="100" MobId="15274" Range="7" SpellId1="28730" SpellId2="80483" SpellId3="129597" SpellId4="25046" SpellId5="69179"/>
 			</While>
 
 				<!--Objectives: A Fistful of Silvers, The Shrine of Dath'Remar, Unfortunate Measures, & Solanian's Belongings-->
 				<Objective QuestName="A Fistful of Slivers" QuestId="8336" Type="CollectItem" ItemId="20482" CollectCount="6" />
 
-				<If Condition="((HasQuest(8345)) &amp;&amp; (!IsQuestCompleted(8345)))">
+				<If Condition="HasQuest(8345) &amp;&amp; !IsQuestCompleted(8345)">
 					<Objective QuestName="The Shrine of Dath'Remar" QuestId="8345" Type="UseObject" ObjectId="180516" UseCount="1" />	
 				</If>
 
@@ -268,7 +268,7 @@
 
 			<!--Class Quest Objectives-->
 			<If Condition="Me.Class == WoWClass.Warrior">
-				<If Condition="((HasQuest(27091)) &amp;&amp; (!IsQuestCompleted(27091)))">
+				<If Condition="HasQuest(27091) &amp;&amp; !IsQuestCompleted(27091)">
 					<RunTo X="10377.63" Y="-6362.693" Z="35.69999" />
 					<CustomBehavior File="CastSpellOn" SpellId="100" MobId="44937" NumOfTimes="5" MobHpPercentLeft="100" MinRange="8" Range="25" X="10377.63" Y="-6362.693" Z="35.69999" />
 				</If>
@@ -279,7 +279,7 @@
 				<If Condition="(!Me.HasAura(&quot;Seal of Command&quot;))">
 					<CustomBehavior File="Misc\RunLua" Lua="CastSpellByID(105361)" WaitTime="1000" />
 				</If>
-				<While Condition="((HasQuest(10069)) &amp;&amp; (!IsQuestCompleted(10069)))">
+				<While Condition="HasQuest(10069) &amp;&amp; !IsQuestCompleted(10069)">
 					<RunTo X="10377.63" Y="-6362.693" Z="35.69999" />
 					<CustomBehavior File="InteractWith" MobId="44937" NumOfTimes="1" X="10377.63" Y="-6362.693" Z="35.69999" />
 					<TurnIn QuestName="Ways of the Light" QuestId="10069" TurnInName="Well Watcher Solanian" TurnInId="15295" />
@@ -287,7 +287,7 @@
 			</If>
 
 			<If Condition="Me.Class == WoWClass.Hunter">
-				<While Condition="((HasQuest(10070)) &amp;&amp; (!IsQuestCompleted(10070)))">
+				<While Condition="HasQuest(10070) &amp;&amp; !IsQuestCompleted(10070)">
 					<RunTo X="10377.63" Y="-6362.693" Z="35.69999" />
 					<CustomBehavior File="CastSpellOn" SpellId="56641" MobId="44937" NumOfTimes="5" MobHpPercentLeft="100" Range="40" X="10377.63" Y="-6362.693" Z="35.69999" />
 				</While>
@@ -295,7 +295,7 @@
 			</If>
 
 			<If Condition="Me.Class == WoWClass.Rogue">
-				<While Condition="((HasQuest(10071)) &amp;&amp; (!IsQuestCompleted(10071)))">
+				<While Condition="HasQuest(10071) &amp;&amp; !IsQuestCompleted(10071)">
 					<CustomBehavior File="CastSpellOn" SpellId="1752" MobId="44937" NumOfTimes="3" MobHpPercentLeft="100" MinRange="4" X="10377.63" Y="-6362.693" Z="35.69999" />
 					<CustomBehavior File="WaitTimer" WaitTime="3000" />
 					<CustomBehavior File="CastSpellOn" SpellId="2098" MobId="44937" NumOfTimes="1" MobHpPercentLeft="100" MinRange="4" X="10377.63" Y="-6362.693" Z="35.69999" />
@@ -304,14 +304,14 @@
 			</If>
 
 			<If Condition="Me.Class == WoWClass.Priest">
-				<While Condition="((HasQuest(10072)) &amp;&amp; (!IsQuestCompleted(10072)))">
+				<While Condition="HasQuest(10072) &amp;&amp; !IsQuestCompleted(10072)">
 					<CustomBehavior File="CastSpellOn" SpellId="589" MobId="44937" NumOfTimes="5" MobHpPercentLeft="100" Range="40" X="10377.63" Y="-6362.693" Z="35.69999" />
 				</While>
 				<TurnIn QuestName="Learning the Word" QuestId="10072" TurnInName="Well Watcher Solanian" TurnInId="15295" />
 			</If>
 
 			<If Condition="Me.Class == WoWClass.Mage">
-				<While Condition="((HasQuest(10068)) &amp;&amp; (!IsQuestCompleted(10068)))">
+				<While Condition="HasQuest(10068) &amp;&amp; !IsQuestCompleted(10068)">
 					<RunTo X="10377.63" Y="-6362.693" Z="35.69999" />
 					<CustomBehavior File="CastSpellOn" SpellId="122" MobId="44937" NumOfTimes="5" MobHpPercentLeft="100" Range="12" X="10377.63" Y="-6362.693" Z="35.69999" />
 				</While>
@@ -319,14 +319,14 @@
 			</If>
 
 			<If Condition="Me.Class == WoWClass.Warlock">
-				<While Condition="((HasQuest(10073)) &amp;&amp; (!IsQuestCompleted(10073)))">
+				<While Condition="HasQuest(10073) &amp;&amp; !IsQuestCompleted(10073)">
 					<CustomBehavior File="CastSpellOn" SpellId="172" MobId="44937" NumOfTimes="5" MobHpPercentLeft="100" Range="40" X="10377.63" Y="-6362.693" Z="35.69999" />
 				</While>
 				<TurnIn QuestName="Corruption" QuestId="10073" TurnInName="Summoner Teli'Larien" TurnInId="15283" />			
 			</If>
 
 			<If Condition="Me.Class == WoWClass.Monk">
-				<While Condition="((HasQuest(31171)) &amp;&amp; (!IsQuestCompleted(31171)))">
+				<While Condition="HasQuest(31171) &amp;&amp; !IsQuestCompleted(31171)">
 					<CustomBehavior File="CastSpellOn" SpellId="100780" MobId="44937" NumOfTimes="1" MobHpPercentLeft="100" MinRange="5" X="10377.63" Y="-6362.693" Z="35.69999" />
 					<CustomBehavior File="CastSpellOn" SpellId="100787" MobId="44937" NumOfTimes="1" MobHpPercentLeft="100" MinRange="5" X="10377.63" Y="-6362.693" Z="35.69999" />
 				</While>
@@ -360,7 +360,7 @@
 				<PickUp QuestName="Tainted Arcane Sliver" QuestId="8338" GiverName="Tainted Arcane Sliver" GiverId="20483" GiverType="Item" />
 			</If>
 
-			<If Condition="((HasQuest(8338)) &amp;&amp; (IsQuestCompleted(8338)))" >
+			<If Condition="HasQuest(8338) &amp;&amp; (IsQuestCompleted(8338)))" >
 				<CustomBehavior File="Misc\RunLua" Lua="UseItemByName(6948)" WaitTime="12000" />
 				<CustomBehavior File="ForceSetVendor" DoSell="True" DoRepair="True" />
 				<TurnIn QuestName="Tainted Arcane Sliver" QuestId="8338" TurnInName="Arcanist Helion" TurnInId="15297" />
@@ -377,7 +377,7 @@
 			<PickUp QuestName="Completing the Delivery" QuestId="8350" GiverName="Outrunner Alarion" GiverId="15301" />
 			
 			<!--Setting Hearthstone: Falconwing Square-->
-			<If Condition="((HasQuest(8350)) &amp;&amp; (IsQuestCompleted(8350)))" >
+			<If Condition="HasQuest(8350) &amp;&amp; (IsQuestCompleted(8350)))" >
 				<CustomBehavior File="SetHearthstone" MobId="15433" X="9474.605" Y="-6852.657" Z="17.43916" />
 			</If>
 
@@ -425,7 +425,7 @@
 		<TurnIn QuestName="Taking the Fall" QuestId="9064" TurnInName="Instructor Antheol" TurnInId="15970" />
 		<PickUp QuestName="Swift Discipline" QuestId="9066" GiverName="Instructor Antheol" GiverId="15970" />
 
-		<While Condition="((HasQuest(9066)) &amp;&amp; (!IsQuestCompleted(9066)))">
+		<While Condition="HasQuest(9066) &amp;&amp; !IsQuestCompleted(9066)">
 			<CustomBehavior File="UseItemOn" QuestId="9066" MobId="15941" ItemId="22473" NumOfTimes="1" WaitTime="10000" Range="5" X="9189.512" Y="-6716.867" Z="25.94879" />
 			<CustomBehavior File="UseItemOn" QuestId="9066" MobId="15945" ItemId="22473" NumOfTimes="1" WaitTime="1000" Range="5" X="9041.04" Y="-6697.334" Z="13.21564" />
 		</While>
@@ -444,14 +444,16 @@
 		<!--Use Hearthstone & SellJunk-->
 		<If Condition="HasItem(20765)">
 			<PickUp QuestName="Incriminating Documents" QuestId="8482" GiverType="Item" GiverName="Incriminating Documents" GiverId="20765" />
+			<If Condition="HasSpell(83944)">
 				<CustomBehavior File="Misc\RunLua" Lua="UseItemByName(6948)" WaitTime="12000" />
 				<CustomBehavior File="ForceSetVendor" DoSell="True" DoRepair="True" />
+			</If>
 			<TurnIn QuestName="Incriminating Documents" QuestId="8482" TurnInName="Aeldon Sunbrand" TurnInId="15403" />
 		</If>
 
 		<PickUp QuestName="The Dwarven Spy" QuestId="8483" GiverName="Aeldon Sunbrand" GiverId="15403" />
 
-		<If Condition="((HasQuest(8483)) &amp;&amp; (!IsQuestCompleted(8483)))">
+		<If Condition="HasQuest(8483) &amp;&amp; !IsQuestCompleted(8483)">
 			<CustomBehavior File="InteractWith" MobId="15420" MobState="Alive" NotMoving="True" NonCompeteDistance="0" InteractByGossipOptions="1,1" KeepTargetSelected="True"  X="9293.907" Y="-6685.302" Z="22.44335" />
 			<RunTo X="9288.377" Y="-6657.154" Z="31.82885" />
 			<Objective QuestName="The Dwarven Spy" QuestId="8483" Type="CollectItem" ItemId="20764" CollectCount="1" />
@@ -461,7 +463,7 @@
 		<PickUp QuestName="Fairbreeze Village" QuestId="9256" GiverName="Aeldon Sunbrand" GiverId="15403" />
 
 		<!--Setting Hearthstone: Fairbreeze Village-->
-		<If Condition="((HasQuest(9256)) &amp;&amp; (IsQuestCompleted(9256)))" >
+		<If Condition="HasQuest(9256) &amp;&amp; (IsQuestCompleted(9256)))" >
 			<CustomBehavior File="SetHearthstone" MobId="15397" X="8703.191" Y="-6638.863" Z="72.74525" />
 		</If>
 
@@ -502,7 +504,7 @@
 			<PickUp QuestName="The Party Never Ends" QuestId="9067" GiverName="Lord Saltheril" GiverId="16144" />
 			<TurnIn QuestName="Pelt Collection" QuestId="8491" TurnInName="Velan Brightoak" TurnInId="15417" />
 
-			<If Condition="((HasQuest(9067)) &amp;&amp; (!IsQuestCompleted(9067)))">
+			<If Condition="HasQuest(9067) &amp;&amp; !IsQuestCompleted(9067)">
 				<If Condition="!HasItem(22777)">
 					<CustomBehavior File="InteractWith" MobId="16444" InteractByBuyingItemId="22777" X="8733.817" Y="-6658.726" Z="70.3522" />
 					<CustomBehavior File="ForceSetVendor" DoSell="True" DoRepair="True" />
@@ -514,7 +516,7 @@
 			<TurnIn QuestName="Fly to Silvermoon City" QuestId="9133" TurnInName="Sathren Azuredawn" TurnInId="16191" />
 			<PickUp QuestName="Skymistress Gloaming" QuestId="9134" GiverName="Sathren Azuredawn" GiverId="16191" />
 
-			<If Condition="((HasQuest(9067)) &amp;&amp; (!IsQuestCompleted(9067)))">
+			<If Condition="HasQuest(9067) &amp;&amp; !IsQuestCompleted(9067)">
 				<If Condition="!HasItem(22775)">
 					<CustomBehavior File="InteractWith" MobId="16442" InteractByBuyingItemId="22775" X="9681.937" Y="-7366.883" Z="11.93217" />
 				</If>
@@ -543,7 +545,7 @@
 			<TurnIn QuestName="Corrupted Soil" QuestId="8487" TurnInName="Apprentice Mirveda" TurnInId="15402" />
 			<PickUp QuestName="Unexpected Results" QuestId="8488" GiverName="Apprentice Mirveda" GiverId="15402" />
 
-			<While Condition="((HasQuest(8488)) &amp;&amp; (!IsQuestCompleted(8488)))">
+			<While Condition="HasQuest(8488) &amp;&amp; !IsQuestCompleted(8488)">
 				<!--This QuestBehavior is Broken Trash-->
 				<!--CustomBehavior File="Escort" QuestId="8488" MobId="15402" X="8714.452" Y="-7155.89" Z="40.45158" /-->
 				<CustomBehavior File="AbandonQuest" QuestId="8488" Type="Failed" />
@@ -554,7 +556,7 @@
 			<TurnIn QuestName="Unexpected Results" QuestId="8488" TurnInName="Apprentice Mirveda" TurnInId="15402" />
 			<PickUp QuestName="Research Notes" QuestId="9255" GiverName="Apprentice Mirveda" GiverId="15402" />
 
-			<If Condition="((HasQuest(9067)) &amp;&amp; (!IsQuestCompleted(9067)))">
+			<If Condition="HasQuest(9067) &amp;&amp; !IsQuestCompleted(9067)">
 				<If Condition="!HasItem(22776)">
 					<CustomBehavior File="InteractWith" MobId="16443" InteractByBuyingItemId="22776" X="8994.611" Y="-7460.734" Z="86.66188" />
 					<CustomBehavior File="Misc\RunLua" Lua="UseItemByName(6948)" WaitTime="12000" />
@@ -608,7 +610,7 @@
 
 			<TurnIn QuestName="Wretched Ringleader" QuestId="9076" TurnInName="Velendris Whitemorn" TurnInId="15404" />
 
-			<If Condition="((HasQuest(8892)) &amp;&amp; (IsQuestCompleted(8892)))">
+			<If Condition="HasQuest(8892) &amp;&amp; (IsQuestCompleted(8892)">
 				<CustomBehavior File="ForceSetVendor" DoSell="True" DoRepair="True" DoMail="True" />
 			</If>
 
@@ -674,7 +676,7 @@
 			<PickUp QuestName="The Party Never Ends" QuestId="9067" GiverName="Lord Saltheril" GiverId="16144" />
 			<TurnIn QuestName="Pelt Collection" QuestId="8491" TurnInName="Velan Brightoak" TurnInId="15417" />
 
-			<If Condition="((HasQuest(9067)) &amp;&amp; (!IsQuestCompleted(9067)))">
+			<If Condition="HasQuest(9067) &amp;&amp; !IsQuestCompleted(9067)">
 				<If Condition="!HasItem(22777)">
 					<CustomBehavior File="InteractWith" MobId="16444" InteractByBuyingItemId="22777" X="8733.817" Y="-6658.726" Z="70.3522" />
 					<CustomBehavior File="ForceSetVendor" DoSell="True" DoRepair="True" />
@@ -686,7 +688,7 @@
 			<TurnIn QuestName="Fly to Silvermoon City" QuestId="9133" TurnInName="Sathren Azuredawn" TurnInId="16191" />
 			<PickUp QuestName="Skymistress Gloaming" QuestId="9134" GiverName="Sathren Azuredawn" GiverId="16191" />
 
-			<If Condition="((HasQuest(9067)) &amp;&amp; (!IsQuestCompleted(9067)))">
+			<If Condition="HasQuest(9067) &amp;&amp; !IsQuestCompleted(9067)">
 				<If Condition="!HasItem(22775)">
 					<CustomBehavior File="InteractWith" MobId="16442" InteractByBuyingItemId="22775" X="9681.937" Y="-7366.883" Z="11.93217" />
 				</If>
@@ -713,7 +715,7 @@
 			<TurnIn QuestName="Corrupted Soil" QuestId="8487" TurnInName="Apprentice Mirveda" TurnInId="15402" />
 			<PickUp QuestName="Unexpected Results" QuestId="8488" GiverName="Apprentice Mirveda" GiverId="15402" />
 
-			<If Condition="((HasQuest(8488)) &amp;&amp; (!IsQuestCompleted(8488)))">
+			<If Condition="HasQuest(8488) &amp;&amp; !IsQuestCompleted(8488)">
 				<!--This QuestBehavior is Broken Trash-->
 				<!--CustomBehavior File="Escort" QuestId="8488" MobId="15402" X="8714.452" Y="-7155.89" Z="40.45158" /-->
 				<CustomBehavior File="EscortGroup" QuestId="8488" EscortNpcId="15402" EscortCompleteWhen="QuestComplete" />
@@ -722,14 +724,14 @@
 			<TurnIn QuestName="Unexpected Results" QuestId="8488" TurnInName="Apprentice Mirveda" TurnInId="15402" />
 			<PickUp QuestName="Research Notes" QuestId="9255" GiverName="Apprentice Mirveda" GiverId="15402" />
 
-			<If Condition="((HasQuest(9067)) &amp;&amp; (!IsQuestCompleted(9067)))">
+			<If Condition="HasQuest(9067) &amp;&amp; !IsQuestCompleted(9067)">
 				<If Condition="!HasItem(22776)">
 					<CustomBehavior File="InteractWith" MobId="16443" InteractByBuyingItemId="22776" X="8994.611" Y="-7460.734" Z="86.66188" />
 					<CustomBehavior File="Misc\RunLua" Lua="UseItemByName(6948)" WaitTime="12000" />
 				</If>
 			</If>
 
-			<If Condition="((HasQuest(9255)) &amp;&amp; (IsQuestCompleted(9255)))">
+			<If Condition="HasQuest(9255) &amp;&amp; (IsQuestCompleted(9255)">
 				<CustomBehavior File="ForceSetVendor" DoSell="True" DoRepair="True" DoMail="True" />
 			</If>
 
@@ -753,7 +755,7 @@
 			<Objective QuestName="A Somber Task" QuestId="8473" Type="KillMob" MobId="15637" KillCount="10" />
 
 		<!--Farm For Old Whitebark's Pendant-->
-		<If Condition="((!HasQuest(8474)) &amp;&amp; (!IsQuestCompleted(8474)))">
+		<If Condition="((!HasQuest(8474) &amp;&amp; !IsQuestCompleted(8474)">
 				<If Condition="!HasItem(23228)">
 					<CustomBehavior File="Message" Text="Patrolling for Old Whitebark [5 Minute Respawn]" LogColor="Yellow" />
 					<SetGrindArea>
@@ -791,7 +793,7 @@
 		<PickUp QuestName="Powering our Defenses" QuestId="8490" GiverName="Runewarden Deryan" GiverId="16362" />
 
 		<!--Infusing the Crystal-->
-		<While Condition="((HasQuest(8490)) &amp;&amp; (!IsQuestCompleted(8490)))">
+		<While Condition="HasQuest(8490) &amp;&amp; !IsQuestCompleted(8490)">
 			<CustomBehavior File="NoCombatMoveTo" X="8274.241" Y="-7207.474" Z="138.1795" />
 			<CustomBehavior File="Misc\RunLua" Lua="UseItemByName(22693)" WaitTime="1000" />
 			<CustomBehavior File="EscortGroup" QuestId="8490" EscortNpcId="16364" EscortCompleteWhen="QuestCompleteOrFails" />
@@ -816,7 +818,7 @@
 		<PickUp QuestName="Where's Wyllithen?" QuestId="9394" GiverName="Apprentice Loralthalis" GiverId="15924" />
 
 		<!--Quest: Deactivating the Spire [Unsure About Teleporters & Navigator]-->
-		<If Condition="((HasQuest(8889)) &amp;&amp; (!IsQuestCompleted(8889)))">
+		<If Condition="HasQuest(8889) &amp;&amp; !IsQuestCompleted(8889)">
 			<If Condition="Me.Z &lt;= 130">
 				<CustomBehavior File="Message" Text="Not on Spire: Using Teleporter" LogColor="Yellow" />
 				<CustomBehavior File="InteractWith" MobId="180911" WaitTime="1000" X="9333.438" Y="-7879.357" Z="74.90969" />
@@ -850,7 +852,7 @@
 				<RunTo X="9256.195" Y="-7475.406" Z="35.64348" />
 			</If>	
 
-		<If Condition="((HasQuest(8890)) &amp;&amp; (IsQuestCompleted(8890)))">
+		<If Condition="HasQuest(8890) &amp;&amp; (IsQuestCompleted(8890)">
 			<CustomBehavior File="ForceSetVendor" DoSell="True" DoRepair="True" DoMail="False" />
 		</If>
 
@@ -883,7 +885,7 @@
 
 		<PickUp QuestName="Warning Fairbreeze Village" QuestId="9363" GiverName="Lieutenant Dawnrunner" GiverId="15399" />
 
-		<If Condition="((HasQuest(9363)) &amp;&amp; (IsQuestCompleted(9363)))">
+		<If Condition="HasQuest(9363) &amp;&amp; (IsQuestCompleted(9363)">
 			<CustomBehavior File="Misc\RunLua" Lua="UseItemByName(6948)" WaitTime="12000" />
 		</If>
 
@@ -891,10 +893,9 @@
 			
 		<If Condition="IsAchievementCompleted(859)">
 			<CustomBehavior File="Message" Text="Congrats on the Achievement!" LogColor="Pink" />
-
-			<Else>
-				<CustomBehavior File="Message" Text="Error: You didn't get your achievement? Did you tamper? If not post in thread what you need to explore!" LogColor="Red" />
-			</Else>
+		<Else>
+			<CustomBehavior File="Message" Text="Error: You didn't get your achievement? Did you tamper? If not post in thread what you need to explore!" LogColor="Red" />
+		</Else>
 		</If>
 
 		<CustomBehavior File="Message" Text="Profile Complete: Loading Ghostlands Profile" LogColor="Cyan" />
