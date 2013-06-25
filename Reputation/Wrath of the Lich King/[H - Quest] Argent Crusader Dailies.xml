@@ -1,7 +1,7 @@
 <HBProfile>
 	<Name>Horde Argent Tourny Crusader Dailies</Name>
 	<MinLevel>1</MinLevel>
-	<MaxLevel>86</MaxLevel>
+	<MaxLevel>91</MaxLevel>
 	
 	<MinDurability>0.1</MinDurability>
 	<MinFreeBagSlots>1</MinFreeBagSlots>
@@ -139,9 +139,9 @@
 		<If Condition="Me.MapId == 1">
 			<CustomBehavior File="FlyTo" X="1768.656" Y="-4343.217" Z="102.0792" />
 			<CustomBehavior File="ForcedDismount" />
-			<CustomBehavior File="Message" Text="Going to Org Zepp to Borean" LogColor="Cornflowerblue" />
+			<CustomBehavior File="Message" Text="Going to Org Zepp to Borean" LogColor="Cyan" />
 			<RunTo X="1763.389" Y="-4283.858" Z="133.1073" />
-			<CustomBehavior File="Message" Text="Waiting for Org Zepp to Borean - Don't Interact!" LogColor="Cornflowerblue" />
+			<CustomBehavior File="Message" Text="Waiting for Org Zepp to Borean - Don't Interact!" LogColor="Cyan" />
 			<CustomBehavior File="UseTransport"
 			TransportId="186238"
 			WaitAtX="1763.203" WaitAtY="-4284.529" WaitAtZ="133.1072"
@@ -156,9 +156,9 @@
 		<If Condition="Me.MapId == 0">
 			<CustomBehavior File="FlyTo" X="2036.99" Y="299.9215" Z="54.13479" />
 			<CustomBehavior File="ForcedDismount" />
-			<CustomBehavior File="Message" Text="Going to Howling Fjord Zepp from Undercity" LogColor="Cornflowerblue" />
+			<CustomBehavior File="Message" Text="Going to Howling Fjord Zepp from Undercity" LogColor="Cyan" />
 			<RunTo X="2060.931" Y="361.9963" Z="82.50146" />
-			<CustomBehavior File="Message" Text="Waiting for Zepp to Howling Fjord - Don't Interact!" LogColor="Cornflowerblue" />
+			<CustomBehavior File="Message" Text="Waiting for Zepp to Howling Fjord - Don't Interact!" LogColor="Cyan" />
 			<CustomBehavior File="UseTransport"
 			TransportId="181689"
 			WaitAtX="2060.931" WaitAtY="361.9963" WaitAtZ="82.50146"
@@ -170,13 +170,13 @@
 		</If>
 		
 		<CustomBehavior File="DisablePlugin" Names="AutoEquip2" />
-		<CustomBehavior File="UserSettings" LootMobs="True" PullDistance="35" TrainNewSkills="False" LearnFlightPaths="True" />
+		<CustomBehavior File="UserSettings" LootMobs="True" PullDistance="35" UseFlightPaths="False" />
 		
 		<!--Sunreaver Pavilion-->
 		<If Condition="((!HasQuest(14142)) &amp;&amp; (!IsQuestCompleted(14142)))" >
 			<CustomBehavior File="FlyTo" DestName="Sunreaver Pavilion" X="8442.861" Y="685.0294" Z="550.2344" />
 			<CustomBehavior File="ForcedDismount" />
-			<CustomBehavior File="Message" Text="Getting Pavilion Dailies" LogColor="Cornflowerblue" />
+			<CustomBehavior File="Message" Text="Getting Pavilion Dailies" LogColor="Cyan" />
 		</If>
 		<!--Girana the Blooded Dailies Pickup-->
 		<While Condition="HasQuestAvailable(34771)" >
@@ -194,7 +194,7 @@
 		<!--Death Knight Ebon Hold Dailies Pickup-->
 		<If Condition="Me.Class == WoWClass.DeathKnight">
 			<If Condition="((!HasQuest(13812)) &amp;&amp; (!IsQuestCompleted(13812)))" >
-				<CustomBehavior File="Message" Text="Death Knight: Getting Champion Dailies" LogColor="Cornflowerblue" />
+				<CustomBehavior File="Message" Text="Death Knight: Getting Champion Dailies" LogColor="Cyan" />
 				<CustomBehavior File="FlyTo" DestName="Knights of the Ebon Hold" X="8591.939" Y="820.2451" Z="547.4021" />
 				<CustomBehavior File="ForcedDismount" />
 			</If>
@@ -231,7 +231,7 @@
 		<!--Rectangle Tent of Justice! Dailies Pickup-->
 		<If Condition="Me.Class != WoWClass.DeathKnight">
 			<If Condition="((!HasQuest(13809)) &amp;&amp; (!IsQuestCompleted(13809)))" >
-				<CustomBehavior File="Message" Text="Getting Champion Dailies" LogColor="Cornflowerblue" />
+				<CustomBehavior File="Message" Text="Getting Champion Dailies" LogColor="Cyan" />
 				<CustomBehavior File="FlyTo" X="8477.879" Y="1065.674" Z="554.4813" />
 				<CustomBehavior File="ForcedDismount" />
 			</If>
@@ -265,54 +265,54 @@
 
 		<!--Breakfast of Champions-->
 		<If Condition="((HasQuest(14092)) &amp;&amp; (!IsQuestCompleted(14092)))" >
-			<CustomBehavior File="Message" Text="Doing Daily: Breakfast of Champions" LogColor="Cornflowerblue" />
+			<CustomBehavior File="Message" Text="Doing Daily: Breakfast of Champions" LogColor="Cyan" />
 			<CustomBehavior File="FlyTo" X="7591.344" Y="-895.256" Z="908.6891" />
 			<CustomBehavior File="ForcedDismount" />
 				
 			 <While Condition="((HasQuest(14092)) &amp;&amp; (!IsQuestCompleted(14092)))" >
 				<UseItem QuestId="14092" ItemId="46893" X="7591.344" Y="-895.256" Z="908.6891" />
-				<CustomBehavior QuestId="14092" File="WaitTimer" WaitTime="2000" />
+				<CustomBehavior File="WaitTimer" QuestId="14092" WaitTime="2000" />
 				
 				<UseItem QuestId="14092" ItemId="46893" X="7637.105" Y="-899.8253" Z="915.5356" />
-				<CustomBehavior QuestId="14092" File="WaitTimer" WaitTime="2000" />
+				<CustomBehavior File="WaitTimer" QuestId="14092" WaitTime="2000" />
 				
 				<UseItem QuestId="14092" ItemId="46893" X="7646.283" Y="-957.6556" Z="909.7093" />
-				<CustomBehavior QuestId="14092" File="WaitTimer" WaitTime="2000" />
+				<CustomBehavior File="WaitTimer" QuestId="14092" WaitTime="2000" />
 				
 				<UseItem QuestId="14092" ItemId="46893" X="7707.079" Y="-1007.34" Z="918.8793" />
-				<CustomBehavior QuestId="14092" File="WaitTimer" WaitTime="2000" />
+				<CustomBehavior File="WaitTimer" QuestId="14092" WaitTime="2000" />
 				
 				<UseItem QuestId="14092" ItemId="46893" X="7671.777" Y="-1049.182" Z="910.2271" />
-				<CustomBehavior QuestId="14092" File="WaitTimer" WaitTime="2000" />
+				<CustomBehavior File="WaitTimer" QuestId="14092" WaitTime="2000" />
 				
 				<UseItem QuestId="14092" ItemId="46893" X="7702.466" Y="-1087.559" Z="918.7994" />
-				<CustomBehavior QuestId="14092" File="WaitTimer" WaitTime="2000" />
+				<CustomBehavior File="WaitTimer" QuestId="14092" WaitTime="2000" />
 				
 				<UseItem QuestId="14092" ItemId="46893" X="7659.147" Y="-1110.703" Z="911.7228" />
-				<CustomBehavior QuestId="14092" File="WaitTimer" WaitTime="2000" />
+				<CustomBehavior File="WaitTimer" QuestId="14092" WaitTime="2000" />
 				
 				<UseItem QuestId="14092" ItemId="46893" X="7499.418" Y="-1211.739" Z="911.5907" />
-				<CustomBehavior QuestId="14092" File="WaitTimer" WaitTime="2000" />
+				<CustomBehavior File="WaitTimer" QuestId="14092" WaitTime="2000" />
 				
 				<UseItem QuestId="14092" ItemId="46893" X="7455.404" Y="-1244.608" Z="906.4583" />
-				<CustomBehavior QuestId="14092" File="WaitTimer" WaitTime="2000" />
+				<CustomBehavior File="WaitTimer" QuestId="14092" WaitTime="2000" />
 				
 				<UseItem QuestId="14092" ItemId="46893" X="7388.378" Y="-1243.795" Z="902.9747" />
-				<CustomBehavior QuestId="14092" File="WaitTimer" WaitTime="2000" />
+				<CustomBehavior File="WaitTimer" QuestId="14092" WaitTime="2000" />
 				
 				<UseItem QuestId="14092" ItemId="46893" X="7425.115" Y="-1195.027" Z="903.3405" />
-				<CustomBehavior QuestId="14092" File="WaitTimer" WaitTime="2000" />
+				<CustomBehavior File="WaitTimer" QuestId="14092" WaitTime="2000" />
 				
 				<UseItem QuestId="14092" ItemId="46893" X="7349.229" Y="-1164.48" Z="913.0988" />
-				<CustomBehavior QuestId="14092" File="WaitTimer" WaitTime="2000" />
+				<CustomBehavior File="WaitTimer" QuestId="14092" WaitTime="2000" />
 				
 				<UseItem QuestId="14092" ItemId="46893" X="7351.828" Y="-1112.719" Z="908.5278" />				
-				<CustomBehavior QuestId="14092" File="WaitTimer" WaitTime="2000" />				
+				<CustomBehavior File="WaitTimer" QuestId="14092" WaitTime="2000" />				
 			 </While>
 		</If>
 		<!--Gormok Wants His Snobolds--><!--Untested. May need to have it fly away.-->
 		<If Condition="((HasQuest(14141)) &amp;&amp; (!IsQuestCompleted(14141)))" >
-			<CustomBehavior File="Message" Text="Doing Daily: Gormok Wants His Snobolds" LogColor="Cornflowerblue" />
+			<CustomBehavior File="Message" Text="Doing Daily: Gormok Wants His Snobolds" LogColor="Cyan" />
 			<CustomBehavior File="FlyTo" DestName="Sparksocket Minefield"  X="6356.051" Y="-1266.875" Z="429.7511" />
 			<CustomBehavior File="ForcedDismount" />
 			<CustomBehavior File="UserSettings" PullDistance="1" />
@@ -342,7 +342,7 @@
 		</While>
 		<!--Rescue at Sea-->
 		<If Condition="((HasQuest(14136)) &amp;&amp; (!IsQuestCompleted(14136)))" >
-			<CustomBehavior File="Message" Text="Doing Daily: Rescue at Sea" LogColor="Cornflowerblue" />
+			<CustomBehavior File="Message" Text="Doing Daily: Rescue at Sea" LogColor="Cyan" />
 			<CustomBehavior File="FlyTo" X="9451.63" Y="1185.5" Z="4.031237" />
 			<CustomBehavior File="ForcedDismount" />
 			<Objective QuestName="Rescue at Sea" QuestId="14136" Type="KillMob" MobId="34947" KillCount="8" />
@@ -353,7 +353,7 @@
 
 		<!--Ornolf The Scarred-->
 		<If Condition="((HasQuest(14104)) &amp;&amp; (!IsQuestCompleted(14104)))" >
-			<CustomBehavior File="Message" Text="Doing Daily: Ornolf The Scarred" LogColor="Cornflowerblue" />
+			<CustomBehavior File="Message" Text="Doing Daily: Ornolf The Scarred" LogColor="Cyan" />
 			<CustomBehavior File="FlyTo" X="10007.5" Y="644.3309" Z="10.20468" />
 			<CustomBehavior File="ForcedDismount" />
 			<CustomBehavior File="WaitTimer" WaitTime="2000" />
@@ -363,7 +363,7 @@
 		</If>		
 		<!--The Light's Mercy-->
 		<If Condition="((HasQuest(14144)) &amp;&amp; (!IsQuestCompleted(14144)))" >
-			<CustomBehavior File="Message" Text="Doing Daily: The Light's Mercy" LogColor="Cornflowerblue" />
+			<CustomBehavior File="Message" Text="Doing Daily: The Light's Mercy" LogColor="Cyan" />
 			<CustomBehavior File="FlyTo" X="9959.951" Y="1115.933" Z="31.96863" />
 			<CustomBehavior File="ForcedDismount" />
 			<While Condition="((HasQuest(14144)) &amp;&amp; (!IsQuestCompleted(14144)))" >
@@ -372,21 +372,21 @@
 		</If>
 		<!--A Leg Up-->
 		<If Condition="((HasQuest(14143)) &amp;&amp; (!IsQuestCompleted(14143)))" >
-			<CustomBehavior File="Message" Text="Doing Daily: A Leg Up" LogColor="Cornflowerblue" />
+			<CustomBehavior File="Message" Text="Doing Daily: A Leg Up" LogColor="Cyan" />
 			<CustomBehavior File="FlyTo" X="9949.973" Y="1108.078" Z="30.92166" />
 			<CustomBehavior File="ForcedDismount" />
 			<Objective QuestName="A Leg Up" QuestId="14143" Type="CollectItem" ItemId="46859" CollectCount="10" />
 		</If>
 		<!--Stop The Aggressors-->
 		<If Condition="((HasQuest(14140)) &amp;&amp; (!IsQuestCompleted(14140)))" >
-			<CustomBehavior File="Message" Text="Doing Daily: Stop the Aggressors" LogColor="Cornflowerblue" />
+			<CustomBehavior File="Message" Text="Doing Daily: Stop the Aggressors" LogColor="Cyan" />
 			<CustomBehavior File="FlyTo" X="9949.973" Y="1108.078" Z="30.92166" />
 			<CustomBehavior File="ForcedDismount" />
 			<Objective QuestName="Stop The Aggressors" QuestId="14140" Type="KillMob" MobId="34838" KillCount="10" />
 		</If>
 		<!--Mistcaller Yngvar-->
 		<If Condition="((HasQuest(14102)) &amp;&amp; (!IsQuestCompleted(14102)))" >
-			<CustomBehavior File="Message" Text="Doing Daily: Mistcaller Yngvar" LogColor="Cornflowerblue" />
+			<CustomBehavior File="Message" Text="Doing Daily: Mistcaller Yngvar" LogColor="Cyan" />
 			<CustomBehavior File="FlyTo" X="10133.61" Y="1209.683" Z="80.08868" />
 			<CustomBehavior File="ForcedDismount" />
 			<RunTo X="10183.71" Y="1183.288" Z="75.92505" />
@@ -395,7 +395,7 @@
 		</If>
 		<!--Drottinn Hrothgar-->
 		<If Condition="((HasQuest(14101)) &amp;&amp; (!IsQuestCompleted(14101)))" >
-			<CustomBehavior File="Message" Text="Doing Daily: Drottinn Hrothgar" LogColor="Cornflowerblue" />
+			<CustomBehavior File="Message" Text="Doing Daily: Drottinn Hrothgar" LogColor="Cyan" />
 			<CustomBehavior File="FlyTo" X="10404.94" Y="949.1505" Z="123.3649" />
 			<CustomBehavior File="ForcedDismount" />
 			<CustomBehavior File="Misc\RunLua" Lua="UseItemByName(47006)" WaitTime="1000" />
@@ -403,7 +403,7 @@
 		</If>
 		<!--Battle Plans Of The Kvaldir-->
 		<If Condition="((!HasQuest(24442)) &amp;&amp; (!IsQuestCompleted(24442)))" >
-			<CustomBehavior File="Message" Text="Killing for Battle Plans of The Kvaldir" LogColor="Cornflowerblue" />
+			<CustomBehavior File="Message" Text="Killing for Battle Plans of The Kvaldir" LogColor="Cyan" />
 			<CustomBehavior File="FlyTo" X="9949.973" Y="1108.078" Z="30.92166" />
 			<CustomBehavior File="ForcedDismount" />
 			<If Condition="(!HasItem(49676))" >
@@ -436,22 +436,14 @@
 
 		<!--Get Kraken!-->
 		<If Condition="((HasQuest(14108)) &amp;&amp; (!IsQuestCompleted(14108)))" >
-			<CustomBehavior File="Message" Text="Moving To: Get Kraken!" LogColor="Cornflowerblue" />
+			<CustomBehavior File="Message" Text="Moving To: Get Kraken!" LogColor="Cyan" />
 			<CustomBehavior File="FlyTo" X="8492" Y="1058" Z="551" />
 			<CustomBehavior File="ForcedDismount" />
-			<!--While Condition="((HasQuest(14108)) &amp;&amp; (!IsQuestCompleted(14108)))" >
-			<CustomBehavior File="InteractWith" QuestId="14108" ObjectType="Npc" MobId="35117" NumOfTimes="1" CollectionDistance="50" X="8492" Y="1058" Z="551" />
-			<CustomBehavior File="RunMacro" QuestId="14108" Macro="/script SelectGossipOption(1)" NumOfTimes="1" WaitTime="1000" />
-			<CustomBehavior File="RunMacro" QuestId="14108" Macro="/targetexact [nodead,mod:alt] Kvaldir Deepcaller; [nodead] North Sea Kraken" NumOfTimes="1" WaitTime="1000" /> 
-			<CustomBehavior File="RunMacro" QuestId="14108" Macro="/cast Flaming Spears" NumOfTimes="1" WaitTime="1000" />
-			<CustomBehavior File="RunMacro" QuestId="14108" Macro="/cleartarget" NumOfTimes="1" WaitTime="1000" />
-			</While-->
-			<!--/script SelectGossipOption(2)\n/script CloseGossip()-->
-			<CustomBehavior File="UserDialog" QuestId="14108" SoundCue="Exclamation" AllowBotStop="True" SoundCueInterval="1" Text="Jump on the Hippogryph and fly out to kill 6 Deepcallers, then fly around and shoot Kraken 8 times with spears" />
+			<CustomBehavior File="ArgentTournament\GetKraken" />
 		</If>
 		<!--Death Knight: Taking Battle To The Enemy-->
 		<If Condition="((HasQuest(13813)) &amp;&amp; (!IsQuestCompleted(13813)))" >
-			<CustomBehavior File="Message" Text="Death Knight: Taking Battle To The Enemy" LogColor="Cornflowerblue" />
+			<CustomBehavior File="Message" Text="Death Knight: Taking Battle To The Enemy" LogColor="Cyan" />
 			<CustomBehavior File="FlyTo" X="8513.477" Y="1376.757" Z="641.6046" />
 			<CustomBehavior File="ForcedDismount" />
 			<CustomBehavior File="UserSettings" PullDistance="25" />
@@ -459,7 +451,7 @@
 		</If>
 		<!--Taking Battle to the Enemy-->
 		<If Condition="((HasQuest(13810)) &amp;&amp; (!IsQuestCompleted(13810)))" >
-			<CustomBehavior File="Message" Text="Doing Daily: Taking Battle To The Enemy" LogColor="Cornflowerblue" />
+			<CustomBehavior File="Message" Text="Doing Daily: Taking Battle To The Enemy" LogColor="Cyan" />
 			<CustomBehavior File="FlyTo" X="8513.477" Y="1376.757" Z="641.6046" />
 			<CustomBehavior File="ForcedDismount" />
 			<CustomBehavior File="UserSettings" PullDistance="25" />
@@ -490,7 +482,7 @@
 		</While>
 		<!--Death Knight: Threat From Above-->
 		<If Condition="((HasQuest(13812)) &amp;&amp; (!IsQuestCompleted(13812)))" >
-			<CustomBehavior File="Message" Text="Death Knight: Threat From Above" LogColor="Cornflowerblue" />
+			<CustomBehavior File="Message" Text="Death Knight: Threat From Above" LogColor="Cyan" />
 			<CustomBehavior File="FlyTo" Distance="1" X="8088.455" Y="2651.012" Z="540.6049"  />
 			<While Condition="(!IsQuestCompleted(13812))">
 				<CustomBehavior File="UserDialog" QuestId="13812" Text="Pull the dragon and the bot should use AutoDefend to kill it.\n\nIf you have a big mount, you will auto-aggro the dragon when it flies on top of you." Title="Threat From Above" SoundCue="Asterisk" SoundCueInterval="1" />
@@ -498,15 +490,15 @@
 		</If>
 		<!--Threat From Above-->
 		<If Condition="((HasQuest(13809)) &amp;&amp; (!IsQuestCompleted(13809)))" >
-			<CustomBehavior File="Message" Text="Doing Daily: Threat From Above" LogColor="Cornflowerblue" />
+			<CustomBehavior File="Message" Text="Doing Daily: Threat From Above" LogColor="Cyan" />
 			<CustomBehavior File="FlyTo" Distance="1" X="8088.455" Y="2651.012" Z="540.6049"  />
 			<While Condition="(!IsQuestCompleted(13809))">
-				<CustomBehavior File="UserDialog" QuestId="13809" Text="Pull the dragon and the bot should use AutoDefend to kill it.\n\nIf you have a big mount, you will auto-aggro the dragon when it flies on top of you." Title="Threat From Above" SoundCue="Asterisk" SoundCueInterval="1" />
+				<CustomBehavior File="UserDialog" QuestId="13809" Text="Dragon Should Auto-Aggro. This message will self destruct when you kill it." Title="Threat From Above" SoundCue="Asterisk" SoundCueInterval="1" />
 			</While>
 		</If>
 		<!--The Fate Of The Fallen-->
 		<If Condition="((HasQuest(14107)) &amp;&amp; (!IsQuestCompleted(14107)))" >
-			<CustomBehavior File="Message" Text="Doing Daily: The Fate Of The Fallen" LogColor="Cornflowerblue" />
+			<CustomBehavior File="Message" Text="Doing Daily: The Fate Of The Fallen" LogColor="Cyan" />
 			<CustomBehavior File="FlyTo" X="7819.814" Y="2375.8" Z="385.4465" />
 			<CustomBehavior File="ForcedDismount" />
 			<Objective QuestName="The Fate Of The Fallen" QuestId="14107" Type="CollectItem" ItemId="47035" CollectCount="6" />
@@ -516,34 +508,34 @@
 		</If>
 		<!--Death Knight: Battle Before the Citadel--><!--QJAO Profile Behavior-->
 		<If Condition="((HasQuest(13863)) &amp;&amp; (!IsQuestCompleted(13863)))" >
-			<CustomBehavior File="Message" Text="Death Knight: Battle Before the Citadel" LogColor="Cornflowerblue" />
+			<CustomBehavior File="Message" Text="Death Knight: Battle Before the Citadel" LogColor="Cyan" />
 			<CustomBehavior File="FlyTo" X="6433.95" Y="2386.862" Z="467.6448" />
 			<CustomBehavior File="ForcedDismount" />
-			<CustomBehavior File="BattleBeforeTheCitadel" QuestId="13863" X="6433.95" Y="2386.862" Z="467.6448" />
+			<CustomBehavior File="ArgentTournament\BattleofTheCitadel" QuestId="13863" X="6433.95" Y="2386.862" Z="467.6448" />
 			<CustomBehavior File="EjectVeh" />
 		</If>
 		<!--Battle Before the Citadel--><!--QJAO Profile Behavior-->
 		<If Condition="((HasQuest(13862)) &amp;&amp; (!IsQuestCompleted(13862)))" >
-			<CustomBehavior File="Message" Text="Doing Daily: Battle Before the Citadel" LogColor="Cornflowerblue" />
+			<CustomBehavior File="Message" Text="Doing Daily: Battle Before the Citadel" LogColor="Cyan" />
 			<CustomBehavior File="FlyTo" X="6433.95" Y="2386.862" Z="467.6448" />
 			<CustomBehavior File="ForcedDismount" />
-			<CustomBehavior File="BattleBeforeTheCitadel" QuestId="13862" X="6433.95" Y="2386.862" Z="467.6448" />
+			<CustomBehavior File="ArgentTournament\BattleofTheCitadel" QuestId="13862" X="6433.95" Y="2386.862" Z="467.6448" />
 			<CustomBehavior File="EjectVeh" />
 		</If>
 		<!--Death Knight: Among the Champions--><!--QJAO Profile Behavior-->
 		<If Condition="((HasQuest(13814)) &amp;&amp; (!IsQuestCompleted(13814)))" >
-			<CustomBehavior File="Message" Text="Death Knight: Among the Champions" LogColor="Cornflowerblue" />
+			<CustomBehavior File="Message" Text="Death Knight: Among the Champions" LogColor="Cyan" />
 			<CustomBehavior File="FlyTo" Distance="5" X="8478.908" Y="952.3561" Z="547.2932" />
 			<CustomBehavior File="ForcedDismount" />
-			<CustomBehavior File="TheGrandMelee" QuestId="13814" Enemys="33744,33745,33746,33749,33740,33743,33747,33738" EnemysDebuff="64811,64812,64813,64816,64809,64810,64814,64805" X="8485.926" Y="920.0826" Z="547.2928" />
+			<CustomBehavior File="ArgentTournament\TheGrandMelee" QuestId="13814" Enemys="33744,33745,33746,33749,33740,33743,33747,33738" EnemysDebuff="64811,64812,64813,64816,64809,64810,64814,64805" X="8485.926" Y="920.0826" Z="547.2928" />
 			<CustomBehavior File="EjectVeh" />
 		</If>
 		<!--Among the Champions--><!--QJAO Profile Behavior-->
 		<If Condition="((HasQuest(13811)) &amp;&amp; (!IsQuestCompleted(13811)))" >
-			<CustomBehavior File="Message" Text="Doing Daily: Among the Champions" LogColor="Cornflowerblue" />
+			<CustomBehavior File="Message" Text="Doing Daily: Among the Champions" LogColor="Cyan" />
 			<CustomBehavior File="FlyTo" Distance="5" X="8478.908" Y="952.3561" Z="547.2932" />
 			<CustomBehavior File="ForcedDismount" />
-			<CustomBehavior File="TheGrandMelee" QuestId="13811" Enemys="33744,33745,33746,33749,33740,33743,33747,33738" EnemysDebuff="64811,64812,64813,64816,64809,64810,64814,64805" X="8485.926" Y="920.0826" Z="547.2928" />
+			<CustomBehavior File="ArgentTournament\TheGrandMelee" QuestId="13811" Enemys="33744,33745,33746,33749,33740,33743,33747,33738" EnemysDebuff="64811,64812,64813,64816,64809,64810,64814,64805" X="8485.926" Y="920.0826" Z="547.2928" />
 			<CustomBehavior File="EjectVeh" />
 		</If>
 
@@ -598,23 +590,23 @@
 			<!--Turn In: Threat From Above-->
 			<If Condition="False" >
 				<If Condition="((HasQuest(13812)) &amp;&amp; (IsQuestCompleted(13812)))" >
-					<CustomBehavior File="SpecialTurnIn" LootId="1" QuestName="Threat From Above" QuestId="13812" TurnInName="Crok Scourgebane" TurnInId="33762" />
+					<CustomBehavior File="ArgentTournament\SpecialTurnIn" LootId="1" QuestName="Threat From Above" QuestId="13812" TurnInName="Crok Scourgebane" TurnInId="33762" />
 					<!--TurnIn QuestName="Threat From Above" QuestId="13812" TurnInName="Crok Scourgebane" TurnInId="33762" /-->
 				</If>
 				<!--Turn In: Battle Before The Citadel-->
 				<If Condition="((HasQuest(13863)) &amp;&amp; (IsQuestCompleted(13863)))" >
-					<CustomBehavior File="SpecialTurnIn" LootId="1" QuestName="Battle Before The Citadel" QuestId="13863" TurnInName="Crok Scourgebane" TurnInId="33762" />
+					<CustomBehavior File="ArgentTournament\SpecialTurnIn" LootId="1" QuestName="Battle Before The Citadel" QuestId="13863" TurnInName="Crok Scourgebane" TurnInId="33762" />
 					<!--TurnIn QuestName="Battle Before The Citadel" QuestId="13863" TurnInName="Crok Scourgebane" TurnInId="33762" /-->
 				</If>
 			</If>
 			<!--Turn In: Among the Champions-->
 			<If Condition="((HasQuest(13814)) &amp;&amp; (IsQuestCompleted(13814)))" >
-				<CustomBehavior File="SpecialTurnIn" LootId="1" QuestName="Among the Champions" QuestId="13814" TurnInName="Illyrie Nightfall" TurnInId="33770" />
+				<CustomBehavior File="ArgentTournament\SpecialTurnIn" LootId="1" QuestName="Among the Champions" QuestId="13814" TurnInName="Illyrie Nightfall" TurnInId="33770" />
 				<!--TurnIn QuestName="Among the Champions" QuestId="13814" TurnInName="Illyrie Nightfall" TurnInId="33770" /-->
 			</If>
 			<!--Turn In: Taking Battle To The Enemy-->
 			<If Condition="((HasQuest(13813)) &amp;&amp; (IsQuestCompleted(13813)))" >
-				<CustomBehavior File="SpecialTurnIn" LootId="1" QuestName="Taking Battle To The Enemy" QuestId="13813" TurnInName="Zor'be the Bloodletter" TurnInId="33769" />
+				<CustomBehavior File="ArgentTournament\SpecialTurnIn" LootId="1" QuestName="Taking Battle To The Enemy" QuestId="13813" TurnInName="Zor'be the Bloodletter" TurnInId="33769" />
 				<!--TurnIn QuestName="Taking Battle To The Enemy" QuestId="13813" TurnInName="Zor'be the Bloodletter" TurnInId="33769" /-->
 			</If>
 			<!--Open Champion's Purses-->
@@ -631,22 +623,22 @@
 			</If>
 			<!--Turn In: Threat From Above-->
 			<If Condition="((HasQuest(13809)) &amp;&amp; (IsQuestCompleted(13809)))" >
-				<CustomBehavior File="SpecialTurnIn" LootId="1" QuestName="Threat From Above" QuestId="13809" TurnInName="Eadric the Pure" TurnInId="33759" />
+				<CustomBehavior File="ArgentTournament\SpecialTurnIn" LootId="1" QuestName="Threat From Above" QuestId="13809" TurnInName="Eadric the Pure" TurnInId="33759" />
 				<!--TurnIn QuestName="Threat From Above" QuestId="13809" TurnInName="Eadric the Pure" TurnInId="33759" /-->
 			</If>
 			<!--Turn In: Battle Before The Citadel-->
 			<If Condition="((HasQuest(13862)) &amp;&amp; (IsQuestCompleted(13862)))" >
-				<CustomBehavior File="SpecialTurnIn" LootId="1" QuestName="Battle Before The Citadel" QuestId="13862" TurnInName="Eadric the Pure" TurnInId="33759" />
+				<CustomBehavior File="ArgentTournament\SpecialTurnIn" LootId="1" QuestName="Battle Before The Citadel" QuestId="13862" TurnInName="Eadric the Pure" TurnInId="33759" />
 				<!--TurnIn QuestName="Battle Before The Citadel" QuestId="13862" TurnInName="Eadric the Pure" TurnInId="33759" /-->
 			</If>
 			<!--Turn In: Among the Champions-->
 			<If Condition="((HasQuest(13811)) &amp;&amp; (IsQuestCompleted(13811)))" >
-				<CustomBehavior File="SpecialTurnIn" LootId="1" QuestName="Among the Champions" QuestId="13811" TurnInName="Luuri" TurnInId="33771" />
+				<CustomBehavior File="ArgentTournament\SpecialTurnIn" LootId="1" QuestName="Among the Champions" QuestId="13811" TurnInName="Luuri" TurnInId="33771" />
 				<!--TurnIn QuestName="Among the Champions" QuestId="13811" TurnInName="Luuri" TurnInId="33771" /-->
 			</If>
 			<!--Turn In: Taking Battle To The Enemy-->
 			<If Condition="((HasQuest(13810)) &amp;&amp; (IsQuestCompleted(13810)))" >
-				<CustomBehavior File="SpecialTurnIn" LootId="1" QuestName="Taking Battle To The Enemy" QuestId="13810" TurnInName="Cellian Daybreak" TurnInId="33763" />
+				<CustomBehavior File="ArgentTournament\SpecialTurnIn" LootId="1" QuestName="Taking Battle To The Enemy" QuestId="13810" TurnInName="Cellian Daybreak" TurnInId="33763" />
 				<!--TurnIn QuestName="Taking Battle To The Enemy" QuestId="13810" TurnInName="Cellian Daybreak" TurnInId="33763" /-->
 			</If>
 			<While Condition="HasItem(45724)" >
