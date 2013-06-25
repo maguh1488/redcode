@@ -462,7 +462,7 @@
 		<TurnIn QuestName="Fairbreeze Village" QuestId="9256" TurnInName="Ranger Degolien" TurnInId="15939" />
 
 		<!--Squishy Classes Take a Detour-->
-		<If Condition="(Me.Class == WoWClass.Mage) || (Me.Class == WoWClass.Rogue) || (Me.Class == WoWClass.Monk)">
+		<If Condition="(Me.Class == WoWClass.Mage) || (Me.Class == WoWClass.Rogue) || (Me.Class == WoWClass.Monk) || (Me.Class == WoWClass.Warrior)">
 			<CustomBehavior File="Message" Text="Compiling Quests: Fairbreeze Village" LogColor="Cyan" />
 
 			<!--Poor Thing Didn't Hit Level 8-->
@@ -612,7 +612,7 @@
 		</If>
 
 		<!--Non-Squishy Classes On Normal Route-->
-		<If Condition="(Me.Class == WoWClass.Priest) || (Me.Class == WoWClass.Hunter) || (Me.Class == WoWClass.Paladin) || (Me.Class == WoWClass.Warlock) || (Me.Class == WoWClass.Warrior)">
+		<If Condition="(Me.Class == WoWClass.Priest) || (Me.Class == WoWClass.Hunter) || (Me.Class == WoWClass.Paladin) || (Me.Class == WoWClass.Warlock)">
 			<CustomBehavior File="Message" Text="Compiling Quests: Sunsail Anchorage [NONSQUISH]" LogColor="Cyan" />
 
 			<PickUp QuestName="Situation at Sunsail Anchorage" QuestId="8892" GiverName="Ranger Degolien" GiverId="15939" />
