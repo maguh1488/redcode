@@ -885,7 +885,7 @@
 
 		<PickUp QuestName="Warning Fairbreeze Village" QuestId="9363" GiverName="Lieutenant Dawnrunner" GiverId="15399" />
 
-		<If Condition="HasQuest(9363) &amp;&amp; (IsQuestCompleted(9363)">
+		<If Condition="HasQuest(9363) &amp;&amp; IsQuestCompleted(9363)">
 			<CustomBehavior File="Misc\RunLua" Lua="UseItemByName(6948)" WaitTime="12000" />
 		</If>
 
