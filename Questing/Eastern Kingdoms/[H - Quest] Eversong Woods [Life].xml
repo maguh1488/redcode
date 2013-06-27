@@ -328,7 +328,7 @@
 			</If>
 
 			<If Condition="Me.Class == WoWClass.Paladin">
-				<If Condition="(!Me.HasAura(&quot;Seal of Command&quot;))">
+				<If Condition="!Me.HasAura(&quot;Seal of Command&quot;)">
 					<CustomBehavior File="Misc\RunLua" Lua="CastSpellByID(105361)" WaitTime="1000" />
 				</If>
 				<While Condition="HasQuest(10069) &amp;&amp; !IsQuestCompleted(10069)">
@@ -582,8 +582,8 @@
 			<TurnIn QuestName="Ranger Sareyn" QuestId="9358" TurnInName="Ranger Sareyn" TurnInId="15942" />
 			<PickUp QuestName="Defending Fairbreeze Village" QuestId="9252" GiverName="Ranger Sareyn" GiverId="15942" />
 
-			<Objective QuestName="Defending Fairbreeze Village" QuestId="9252" Type="KillMob" MobId="15658" KillCount="4" />
-			<Objective QuestName="Defending Fairbreeze Village" QuestId="9252" Type="KillMob" MobId="15657" KillCount="4" />
+				<Objective QuestName="Defending Fairbreeze Village" QuestId="9252" Type="KillMob" MobId="15658" KillCount="4" />
+				<Objective QuestName="Defending Fairbreeze Village" QuestId="9252" Type="KillMob" MobId="15657" KillCount="4" />
 
 			<TurnIn QuestName="The Wayward Apprentice" QuestId="9254" TurnInName="Apprentice Mirveda" TurnInId="15402" />
 			<PickUp QuestName="Corrupted Soil" QuestId="8487" GiverName="Apprentice Mirveda" GiverId="15402" />
@@ -801,7 +801,7 @@
 			<Objective QuestName="A Somber Task" QuestId="8473" Type="KillMob" MobId="15637" KillCount="10" />
 
 		<!--Farm For Old Whitebark's Pendant-->
-		<If Condition="((!HasQuest(8474) &amp;&amp; !IsQuestCompleted(8474)">
+		<If Condition="!HasQuest(8474) &amp;&amp; !IsQuestCompleted(8474)">
 				<If Condition="!HasItem(23228)">
 					<CustomBehavior File="Message" Text="Patrolling for Old Whitebark [5 Minute Respawn]" LogColor="Yellow" />
 					<SetGrindArea>
@@ -932,9 +932,7 @@
 		<PickUp QuestName="Warning Fairbreeze Village" QuestId="9363" GiverName="Lieutenant Dawnrunner" GiverId="15399" />
 
 		<If Condition="HasQuest(9363) &amp;&amp; IsQuestCompleted(9363)">
-			<If Condition="(ObjectManager.GetObjectsOfType&lt;WoWItem&gt;(false).FirstOrDefault(i =&gt; i.Entry == 6948).Cooldown!=0) &amp;&amp; (HasItem(6948))">
-				<CustomBehavior File="Misc\RunLua" Lua="UseItemByName(6948)" WaitTime="12000" />
-			</If>
+			<CustomBehavior File="Misc\RunLua" Lua="UseItemByName(6948)" WaitTime="12000" />
 		</If>
 
 		<TurnIn QuestName="Warning Fairbreeze Village" QuestId="9363" TurnInName="Ranger Degolien" TurnInId="15939" />
