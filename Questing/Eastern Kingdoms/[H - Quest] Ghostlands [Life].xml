@@ -45,11 +45,15 @@
 		<Blackspot X="7999.296" Y="-7217.082" Z="139.6016" Radius="15.96113" />
 		<!--Farstrider Enclave Firepit-->
 		<Blackspot X="7561.153" Y="-7668.978" Z="151.0871" Radius="2.943543" />
+		<!--Underwater Boat-->
+		<Blackspot X="7788.635" Y="-7599.877" Z="126.1188" Radius="2.386652" />
 	</Blackspots>
 
 	<ProtectedItems>
-		<!--Bot Sells Quest Item-->
+		<!--Bot Sells Quest Items-->
 		<Item Name="Crunchy Spider Leg" Entry="22644" />
+		<Item Name="Rotting Heart" Entry="22641" />
+		<Item Name="Spinal Dust" Entry="22642" />
 	</ProtectedItems>
 
 	<Quest Id="9315" Name="Anok'suten">
@@ -118,6 +122,98 @@
 			</CollectFrom>
 			<Hotspots>
 				<Hotspot X="7771.341" Y="-5630.008" Z="17.59879" />
+			</Hotspots>
+		</Objective>
+	</Quest>
+	<Quest Id="9157" Name="Forgotten Rituals">
+		<Objective Type="CollectItem" ItemId="22674" CollectCount="8">
+			<CollectFrom>
+				<GameObject Name="Glistening Mud" Id="181151" />
+			</CollectFrom>
+			<Hotspots>
+				<Hotspot X="7781.608" Y="-7634.174" Z="142.1521" />
+				<Hotspot X="7745.386" Y="-7692.064" Z="142.2124" />
+				<Hotspot X="7772.039" Y="-7705.562" Z="139.3025" />
+				<Hotspot X="7937.935" Y="-7634.144" Z="130.0077" />
+				<Hotspot X="7850.656" Y="-7588.638" Z="133.3957" />
+			</Hotspots>
+		</Objective>
+	</Quest>
+	<Quest Id="9159" Name="Curbing the Plague">
+		<Objective Type="KillMob" MobId="16351" KillCount="8">
+			<Hotspots>
+				<Hotspot X="7229.052" Y="-6029.327" Z="17.82303" />
+				<Hotspot X="7316.542" Y="-6058.382" Z="19.92226" />
+				<Hotspot X="7381.655" Y="-6065.406" Z="17.96337" />
+				<Hotspot X="7446.464" Y="-6116.417" Z="17.95057" />
+				<Hotspot X="7471.982" Y="-6178.399" Z="12.10415" />
+				<Hotspot X="7450.185" Y="-6273.204" Z="26.96279" />
+				<Hotspot X="7378.707" Y="-6468.132" Z="22.29602" />
+				<Hotspot X="7348.873" Y="-6371.075" Z="41.07017" />
+				<Hotspot X="7337.287" Y="-6310.995" Z="49.57602" />
+				<Hotspot X="7328.628" Y="-6197.734" Z="33.90234" />
+			</Hotspots>
+		</Objective>
+	</Quest>
+	<Quest Id="9173" Name="Retaking Windrunner Spire">
+		<Objective Type="KillMob" MobId="16315" KillCount="8">
+			<Hotspots>
+				<Hotspot X="6980.281" Y="-5863.572" Z="38.00746" />
+				<Hotspot X="7007.236" Y="-5821.524" Z="63.13797" />
+				<Hotspot X="7021.885" Y="-5779.851" Z="85.03301" />
+				<Hotspot X="7017.564" Y="-5714.346" Z="106.6071" />
+				<Hotspot X="7054.664" Y="-5684.493" Z="94.22612" />
+				<Hotspot X="7050.259" Y="-5686.054" Z="83.70892" />
+				<Hotspot X="7006.507" Y="-5660.799" Z="80.77874" />
+				<Hotspot X="7013.799" Y="-5686.672" Z="82.66287" />
+			</Hotspots>
+		</Objective>
+		<Objective Type="KillMob" MobId="16314" KillCount="10">
+			<Hotspots>
+				<Hotspot X="6980.281" Y="-5863.572" Z="38.00746" />
+				<Hotspot X="7007.236" Y="-5821.524" Z="63.13797" />
+				<Hotspot X="7021.885" Y="-5779.851" Z="85.03301" />
+				<Hotspot X="7017.564" Y="-5714.346" Z="106.6071" />
+				<Hotspot X="7054.664" Y="-5684.493" Z="94.22612" />
+				<Hotspot X="7050.259" Y="-5686.054" Z="83.70892" />
+				<Hotspot X="7006.507" Y="-5660.799" Z="80.77874" />
+				<Hotspot X="7013.799" Y="-5686.672" Z="82.66287" />
+			</Hotspots>
+		</Objective>
+	</Quest>
+	<Quest Id="9216" Name="Rotting Hearts">
+		<Objective Type="CollectItem" ItemId="22641" CollectCount="10">
+			<CollectFrom>
+				<Mob Name="Risen Hungerer" Id="16301" />
+				<Mob Name="Risen Stalker" Id="16302" />
+			</CollectFrom>
+			<Hotspots>
+				<Hotspot X="7120.514" Y="-6526.406" Z="9.9864" />
+				<Hotspot X="7068.908" Y="-6537.562" Z="9.220178" />
+				<Hotspot X="7041.251" Y="-6541.138" Z="9.206165" />
+				<Hotspot X="6983.374" Y="-6537.368" Z="9.505298" />
+				<Hotspot X="6938.332" Y="-6541.181" Z="9.606068" />
+				<Hotspot X="6899.83" Y="-6527.847" Z="15.93354" />
+				<Hotspot X="6836.654" Y="-6511.363" Z="19.17798" />
+				<Hotspot X="6795.302" Y="-6502.294" Z="18.45534" />
+			</Hotspots>
+		</Objective>
+	</Quest>
+	<Quest Id="9218" Name="Spinal Dust">
+		<Objective Type="CollectItem" ItemId="22642" CollectCount="10">
+			<CollectFrom>
+				<Mob Name="Dreadbone Sentinel" Id="16305" />
+				<Mob Name="Deathcage Sorcerer" Id="16308" />
+			</CollectFrom>
+			<Hotspots>
+				<Hotspot X="7120.514" Y="-6526.406" Z="9.9864" />
+				<Hotspot X="7068.908" Y="-6537.562" Z="9.220178" />
+				<Hotspot X="7041.251" Y="-6541.138" Z="9.206165" />
+				<Hotspot X="6983.374" Y="-6537.368" Z="9.505298" />
+				<Hotspot X="6938.332" Y="-6541.181" Z="9.606068" />
+				<Hotspot X="6899.83" Y="-6527.847" Z="15.93354" />
+				<Hotspot X="6836.654" Y="-6511.363" Z="19.17798" />
+				<Hotspot X="6795.302" Y="-6502.294" Z="18.45534" />
 			</Hotspots>
 		</Objective>
 	</Quest>
@@ -255,12 +351,6 @@
 			<CustomBehavior File="ForceSetVendor" DoSell="True" DoRepair="True" />
 		</If>
 
-
-
-		<CustomBehavior File="Halt" />
-
-
-
 		<TurnIn QuestName="Help Ranger Valanna!" QuestId="9145" TurnInName="Ranger Valanna" TurnInId="16219" />
 		<PickUp QuestName="Dealing with Zeb'Sora" QuestId="9143" GiverName="Ranger Valanna" GiverId="16219" />
 		<PickUp QuestName="Forgotten Rituals" QuestId="9157" GiverName="Geranis Whitemorn" GiverId="16201" />
@@ -277,7 +367,7 @@
 
 		<TurnIn QuestName="Vanquishing Aquantion" QuestId="9174" TurnInName="Geranis Whitemorn" TurnInId="16201" />
 
-		<Objective QuestName="Dealing with Zeb'Sora" QuestId="9143" Type="CollectItem" ItemId="22639" CollectCount="6" />
+			<Objective QuestName="Dealing with Zeb'Sora" QuestId="9143" Type="CollectItem" ItemId="22639" CollectCount="6" />
 
 		<TurnIn QuestName="Dealing with Zeb'Sora" QuestId="9143" TurnInName="Ranger Valanna" TurnInId="16219" />
 		<PickUp QuestName="Report to Captain Helios" QuestId="9146" GiverName="Ranger Valanna" GiverId="16219" />
@@ -289,12 +379,11 @@
 		<PickUp QuestName="Shadowpine Weaponry" QuestId="9214" GiverName="Captain Helios" GiverId="16220" />
 		<TurnIn QuestName="Spirits of the Drowned" QuestId="9274" TurnInName="Ranger Krenn'an" TurnInId="16462" />
 		<PickUp QuestName="A Little Dash of Seasoning" QuestId="9275" GiverName="Apothecary Venustus" GiverId="16464" />
-		<PickUp QuestName="The Traitor's Shadow" QuestId="9161" GiverName="Ranger Vynna" GiverId="9162" />
+		<PickUp QuestName="The Traitor's Shadow" QuestId="9161" GiverName="Ranger Vynna" GiverId="16203" />
 		<PickUp QuestName="Bring Me Kel'gash's Head!" QuestId="9215" GiverType="Object" GiverName="Wanted Poster: Kel'gash the Wicked" GiverId="181153" X="7580.336" Y="-7666.363" Z="151.6625" />
 		<PickUp QuestName="Attack on Zeb'Tela" QuestId="9276" GiverName="Farstrider Solanna" GiverId="16463" />
 
-
-		<CustomBehavior File="InteractWith" QuestId="9193" MobId="181148" QuestObjectiveIndex="1" ProactiveCombatStrategy="ClearMobsThatWillAggro" NumOfTimes="500" WaitTime="7500">
+		<CustomBehavior File="InteractWith" QuestId="9193" MobId="181148" QuestObjectiveIndex="1" NumOfTimes="500" WaitTime="7500">
 			<HuntingGrounds>
 				<Hotspot X="7637.303" Y="-7420.014" Z="162.5113" />
 				<Hotspot X="7618.779" Y="-7291.51" Z="157.2158" />
@@ -303,9 +392,9 @@
 				<Hotspot X="7647.822" Y="-7220.3" Z="155.864" />
 			</HuntingGrounds>
 		</CustomBehavior>
-		
+
 		<If Condition="HasQuest(9193) &amp;&amp; !IsObjectiveComplete(2,9193)">
-			<RunTo X="7570.882" Y="-7350.453" Z="161.70" />
+			<RunTo X="7579.34" Y="-7360.472" Z="161.7375" />
 		</If>
 
 			<Objective QuestName="Troll Juju" QuestId="9199" Type="CollectItem" ItemId="22633" CollectCount="8" />
@@ -316,15 +405,80 @@
 	
 		<TurnIn QuestName="Escape from the Catacombs" QuestId="9212" TurnInName="Captain Helios" TurnInId="16220" />
 		
+			<Objective QuestName="Bearers of the Plague" QuestId="9158" Type="KillMob" MobId="16348" KillCount="10" />
+
+		<If Condition="HasQuest(9158) &amp;&amp; IsQuestCompleted(9158)">
+			<CustomBehavior File="ForceSetVendor" DoSell="True" DoRepair="True" />
+		</If>
+
+		<TurnIn QuestName="Bearers of the Plague" QuestId="9158" TurnInName="Farstrider Sedina" TurnInId="16202" />
+		<PickUp QuestName="Curbing the Plague" QuestId="9159" GiverName="Farstrider Sedina" GiverId="16202" />
 
 		<If Condition="HasQuest(9199) &amp;&amp; IsQuestCompleted(9199)">
 			<CustomBehavior File="Misc\RunLua" Lua="UseItemByName(6948)" WaitTime="12000" />
-			<CustomBehavior File="ForceSetVendor" DoSell="True" DoRepair="True" DoMail="True" />
+			<CustomBehavior File="ForceSetVendor" DoMail="True" />
 		</If>
 
+		<CustomBehavior File="Message" Text="Compiling Quests: Southwest Ghostlands" LogColor="Cyan" />
+
+		<PickUp QuestName="Wanted: Knucklerot and Luzran" QuestId="9156" GiverName="Wanted Poster" GiverId="16200" />
+		<PickUp QuestName="The Sanctum of the Sun" QuestId="9151" GiverName="Magister Darenis" GiverId="16199" />
 		<TurnIn QuestName="Investigate the Amani Catacombs" QuestId="9193" TurnInName="Advisor Valwyn" TurnInId="16289" />
 		<TurnIn QuestName="Troll Juju" QuestId="9199" TurnInName="Deathstalker Maltendis" TurnInId="16251" />
-			
+		<PickUp QuestName="Retaking Windrunner Spire" QuestId="9173" GiverName="High Executor Mavren" GiverId="16252" />
+		<PickUp QuestName="Windrunner Village" QuestId="9140" GiverName="Arcanist Vandril" GiverId="16197" />
+
+			<Objective QuestName="Retaking Windrunner Spire" QuestId="9173" Type="KillMob" MobId="16315" KillCount="8" />
+			<Objective QuestName="Retaking Windrunner Spire" QuestId="9173" Type="KillMob" MobId="16314" KillCount="10" />
+
+			<If Condition="!HasQuest(9175) &amp;&amp; !IsQuestCompleted(9175)">
+					<If Condition="!HasItem(22597)">
+						<CustomBehavior File="Message" Text="Farming for The Lady's Necklace" LogColor="Yellow" />
+						<SetGrindArea>
+							<GrindArea>
+								<Factions>21</Factions>
+								<Hotspots>
+									<Hotspot X="6980.281" Y="-5863.572" Z="38.00746" />
+									<Hotspot X="7007.236" Y="-5821.524" Z="63.13797" />
+									<Hotspot X="7021.885" Y="-5779.851" Z="85.03301" />
+									<Hotspot X="7017.564" Y="-5714.346" Z="106.6071" />
+									<Hotspot X="7054.664" Y="-5684.493" Z="94.22612" />
+									<Hotspot X="7050.259" Y="-5686.054" Z="83.70892" />
+									<Hotspot X="7006.507" Y="-5660.799" Z="80.77874" />
+									<Hotspot X="7013.799" Y="-5686.672" Z="82.66287" />
+								</Hotspots>
+							</GrindArea>  
+						</SetGrindArea>
+					<GrindTo Condition="HasItem(22597)" />
+					</If>
+
+				<If Condition="HasItem(22597)">
+					<PickUp QuestName="The Lady's Necklace" QuestId="9175" GiverType="Item" GiverName="The Lady's Necklace" GiverId="22597" />
+				</If>
+			</If>
+
+			<Objective QuestName="Windrunner Village" QuestId="9140" Type="CollectItem" ItemId="22566" CollectCount="6" />
+			<Objective QuestName="Windrunner Village" QuestId="9140" Type="CollectItem" ItemId="22567" CollectCount="4" />
+			<Objective QuestName="Curbing the Plague" QuestId="9159" Type="KillMob" MobId="16351" KillCount="8" />
+			<Objective QuestName="Rotting Hearts" QuestId="9216" Type="CollectItem" ItemId="22641" CollectCount="10" />
+			<Objective QuestName="Spinal Dust" QuestId="9218" Type="CollectItem" ItemId="22642" CollectCount="10" />
+
+
+		<TurnIn QuestName="Retaking Windrunner Spire" QuestId="9173" TurnInName="High Executor Mavren" TurnInId="16252" />
+
+		<If Condition="HasItem(22597)">
+			<TurnIn QuestName="The Lady's Necklace" QuestId="9175" TurnInName="High Executor Mavren" TurnInId="16252" />
+		</If>
+
+		<TurnIn QuestName="Rotting Hearts" QuestId="9216" TurnInName="Magistrix Aminel" TurnInId="16205" />
+		<TurnIn QuestName="Spinal Dust" QuestId="9218" TurnInName="Magistrix Aminel" TurnInId="16205" />
+		<TurnIn QuestName="Windrunner Village" QuestId="9140" TurnInName="Arcanist Vandril" TurnInId="16197" />
+
+			<CustomBehavior File="Halt" />
+			<!--End Profile Workings-->
+
+		<PickUp QuestName="Clearing the Way" QuestId="9281" GiverName="Apprentice Vor'el" GiverId="16480" />
+
 			<Objective QuestName="A Little Dash of Seasoning" QuestId="9275" Type="UseObject" ObjectId="181250" UseCount="1" />
 			<Objective QuestName="A Little Dash of Seasoning" QuestId="9275" Type="UseObject" ObjectId="181251" UseCount="1" />
 			<Objective QuestName="A Little Dash of Seasoning" QuestId="9275" Type="UseObject" ObjectId="181252" UseCount="1" />
@@ -334,14 +488,11 @@
 			<Objective QuestName="Shadowpine Weaponry" QuestId="9214" Type="CollectItem" ItemId="23166" CollectCount="3" />
 			<Objective QuestName="Attack on Zeb'Tela" QuestId="9276" Type="KillMob" MobId="16469" KillCount="8" />
 			<Objective QuestName="Attack on Zeb'Tela" QuestId="9276" Type="KillMob" MobId="16344" KillCount="8" />
-			<Objective QuestName="Bearers of the Plague" QuestId="9158" Type="KillMob" MobId="16348" KillCount="10" />
 
-		<If Condition="HasQuest(9158) &amp;&amp; IsQuestCompleted(9158)">
-			<CustomBehavior File="ForceSetVendor" DoSell="True" DoRepair="True" DoMail="True" />
+		<If Condition="HasQuest(9276) &amp;&amp; IsQuestCompleted(9276)">
+			<CustomBehavior File="ForceSetVendor" DoSell="True" DoRepair="True" />
 		</If>
 
-		<TurnIn QuestName="Bearers of the Plague" QuestId="9158" TurnInName="Farstrider Sedina" TurnInId="16202" />
-		<PickUp QuestName="Curbing the Plague" QuestId="9159" GiverName="Farstrider Sedina" GiverId="16202" />
 		<TurnIn QuestName="Attack on Zeb'Tela" QuestId="9276" TurnInName="Farstrider Solanna" TurnInId="16463" />
 		<PickUp QuestName="Assault on Zeb'Nowa" QuestId="9277" GiverName="Farstrider Solanna" GiverId="16463" />
 		<TurnIn QuestName="Shadowpine Weaponry" QuestId="9214" TurnInName="Captain Helios" TurnInId="16220" />
@@ -350,7 +501,6 @@
 		<PickUp QuestName="Hints of the Past" QuestId="9162" GiverType="Object" GiverName="Dusty Journal" GiverId="181150" X="7878.609" Y="-7911.573" Z="182.8044" />
 
 			<Objective QuestName="Curbing the Plague" QuestId="9159" Type="KillMob" MobId="16354" KillCount="10" />
-			<Objective QuestName="Curbing the Plague" QuestId="9159" Type="KillMob" MobId="16351" KillCount="8" />
 		
 		<TurnIn QuestName="Hints of the Past" QuestId="9162" TurnInName="Ranger Vynna" TurnInId="9162" />
 		<TurnIn QuestName="Curbing the Plague" QuestId="9159" TurnInName="Farstrider Sedina" TurnInId="16202" />
@@ -363,12 +513,19 @@
 		<Objective QuestName="Bring Me Kel'gash's Head!" QuestId="9215" Type="CollectItem" ItemId="22640" CollectCount="1" />
 		<TurnIn QuestName="Bring Me Kel'gash's Head!" QuestId="9215" TurnInName="Captain Helios" TurnInId="16220" />
 		
-		<Objective QuestName="Spinal Dust" QuestId="9218" Type="CollectItem" ItemId="22642" CollectCount="10" />
-		<TurnIn QuestName="Spinal Dust" QuestId="9218" TurnInName="Magistrix Aminel" TurnInId="16205" />
-
-		<Objective QuestName="Rotting Hearts" QuestId="9216" Type="CollectItem" ItemId="22641" CollectCount="10" />
-		<TurnIn QuestName="Rotting Hearts" QuestId="9216" TurnInName="Magistrix Aminel" TurnInId="16205" /-->
 		
+		
+
+
+
+
+		<TurnIn QuestName="The Sanctum of the Sun" QuestId="9151" TurnInName="Magister Idonis" TurnInId="16204" />
+		<Objective QuestName="Wanted: Knucklerot and Luzran" QuestId="9156" Type="CollectItem" ItemId="22894" CollectCount="1" />
+<Objective QuestName="Wanted: Knucklerot and Luzran" QuestId="9156" Type="CollectItem" ItemId="22893" CollectCount="1" />
+<TurnIn QuestName="Wanted: Knucklerot and Luzran" QuestId="9156" TurnInName="Deathstalker Rathiel" TurnInId="16200" /-->
+
+
+
 		
 	</QuestOrder>
 
