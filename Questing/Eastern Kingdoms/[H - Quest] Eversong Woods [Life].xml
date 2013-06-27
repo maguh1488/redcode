@@ -146,6 +146,58 @@
 			</Hotspots>
 		</Objective>
 	</Quest>
+	<Quest Id="8892" Name="Situation at Sunsail Anchorage">
+		<Objective Type="KillMob" MobId="15645" KillCount="5">
+			<Hotspots>
+				<Hotspot X="8795.35" Y="-5898.878" Z="11.03374" />
+				<Hotspot X="8772.045" Y="-5908.835" Z="8.220079" />
+				<Hotspot X="8758.337" Y="-5942.199" Z="6.431047" />
+				<Hotspot X="8763.685" Y="-5971.135" Z="5.332978" />
+				<Hotspot X="8752.027" Y="-6004.256" Z="6.171607" />
+				<Hotspot X="8725.898" Y="-6019.315" Z="7.57438" />
+				<Hotspot X="8712.715" Y="-6072.615" Z="13.43171" />
+				<Hotspot X="8711.917" Y="-6102.227" Z="19.89302" />
+				<Hotspot X="8775.324" Y="-6140.413" Z="4.457484" />
+				<Hotspot X="8768.193" Y="-6179.638" Z="6.727397" />
+				<Hotspot X="8798.585" Y="-6194.816" Z="7.322009" />
+			</Hotspots>
+		</Objective>
+		<Objective Type="KillMob" MobId="16162" KillCount="5">
+			<Hotspots>
+				<Hotspot X="8795.35" Y="-5898.878" Z="11.03374" />
+				<Hotspot X="8772.045" Y="-5908.835" Z="8.220079" />
+				<Hotspot X="8758.337" Y="-5942.199" Z="6.431047" />
+				<Hotspot X="8763.685" Y="-5971.135" Z="5.332978" />
+				<Hotspot X="8752.027" Y="-6004.256" Z="6.171607" />
+				<Hotspot X="8725.898" Y="-6019.315" Z="7.57438" />
+				<Hotspot X="8712.715" Y="-6072.615" Z="13.43171" />
+				<Hotspot X="8711.917" Y="-6102.227" Z="19.89302" />
+				<Hotspot X="8775.324" Y="-6140.413" Z="4.457484" />
+				<Hotspot X="8768.193" Y="-6179.638" Z="6.727397" />
+				<Hotspot X="8798.585" Y="-6194.816" Z="7.322009" />
+			</Hotspots>
+		</Objective>
+	</Quest>
+	<Quest Id="8480" Name="Lost Armaments">
+		<Objective Type="CollectItem" ItemId="22413" CollectCount="8">
+			<CollectFrom>
+				<GameObject Name="Weapon Container" Id="181107" />
+			</CollectFrom>
+			<Hotspots>
+				<Hotspot X="8795.35" Y="-5898.878" Z="11.03374" />
+				<Hotspot X="8772.045" Y="-5908.835" Z="8.220079" />
+				<Hotspot X="8758.337" Y="-5942.199" Z="6.431047" />
+				<Hotspot X="8763.685" Y="-5971.135" Z="5.332978" />
+				<Hotspot X="8752.027" Y="-6004.256" Z="6.171607" />
+				<Hotspot X="8725.898" Y="-6019.315" Z="7.57438" />
+				<Hotspot X="8712.715" Y="-6072.615" Z="13.43171" />
+				<Hotspot X="8711.917" Y="-6102.227" Z="19.89302" />
+				<Hotspot X="8775.324" Y="-6140.413" Z="4.457484" />
+				<Hotspot X="8768.193" Y="-6179.638" Z="6.727397" />
+				<Hotspot X="8798.585" Y="-6194.816" Z="7.322009" />
+			</Hotspots>
+		</Objective>
+	</Quest>
 	<Quest Id="8479" Name="Zul'Marosh">
 		<Objective Type="CollectItem" ItemId="20760" CollectCount="1">
 			<CollectFrom>
@@ -360,8 +412,7 @@
 				<PickUp QuestName="Tainted Arcane Sliver" QuestId="8338" GiverName="Tainted Arcane Sliver" GiverId="20483" GiverType="Item" />
 			</If>
 
-			<If Condition="HasQuest(8338) &amp;&amp; (IsQuestCompleted(8338)))" >
-				<CustomBehavior File="Misc\RunLua" Lua="UseItemByName(6948)" WaitTime="12000" />
+			<If Condition="HasQuest(8338) &amp;&amp; IsQuestCompleted(8338)">
 				<CustomBehavior File="ForceSetVendor" DoSell="True" DoRepair="True" />
 				<TurnIn QuestName="Tainted Arcane Sliver" QuestId="8338" TurnInName="Arcanist Helion" TurnInId="15297" />
 			</If>
@@ -377,7 +428,7 @@
 			<PickUp QuestName="Completing the Delivery" QuestId="8350" GiverName="Outrunner Alarion" GiverId="15301" />
 			
 			<!--Setting Hearthstone: Falconwing Square-->
-			<If Condition="HasQuest(8350) &amp;&amp; (IsQuestCompleted(8350)))" >
+			<If Condition="HasQuest(8350) &amp;&amp; IsQuestCompleted(8350)">
 				<CustomBehavior File="SetHearthstone" MobId="15433" X="9474.605" Y="-6852.657" Z="17.43916" />
 			</If>
 
@@ -441,20 +492,17 @@
 		<TurnIn QuestName="Arcane Instability" QuestId="8486" TurnInName="Ley-Keeper Velania" TurnInId="15401" />
 		<TurnIn QuestName="Darnassian Intrusions" QuestId="9352" TurnInName="Ley-Keeper Velania" TurnInId="15401" />
 
-		<!--Use Hearthstone & SellJunk-->
 		<If Condition="HasItem(20765)">
 			<PickUp QuestName="Incriminating Documents" QuestId="8482" GiverType="Item" GiverName="Incriminating Documents" GiverId="20765" />
-			<If Condition="HasSpell(83944)">
-				<CustomBehavior File="Misc\RunLua" Lua="UseItemByName(6948)" WaitTime="12000" />
+				<RunTo X="9488.962" Y="-6799.257" Z="16.49196" />
 				<CustomBehavior File="ForceSetVendor" DoSell="True" DoRepair="True" />
-			</If>
 			<TurnIn QuestName="Incriminating Documents" QuestId="8482" TurnInName="Aeldon Sunbrand" TurnInId="15403" />
 		</If>
 
 		<PickUp QuestName="The Dwarven Spy" QuestId="8483" GiverName="Aeldon Sunbrand" GiverId="15403" />
 
 		<If Condition="HasQuest(8483) &amp;&amp; !IsQuestCompleted(8483)">
-			<CustomBehavior File="InteractWith" MobId="15420" MobState="Alive" NotMoving="True" NonCompeteDistance="0" InteractByGossipOptions="1,1" KeepTargetSelected="True"  X="9293.907" Y="-6685.302" Z="22.44335" />
+			<CustomBehavior File="InteractWith" MobId="15420" MobState="Alive" NotMoving="True" NonCompeteDistance="0" InteractByGossipOptions="1,1" KeepTargetSelected="True" X="9293.907" Y="-6685.302" Z="22.44335" />
 			<RunTo X="9288.377" Y="-6657.154" Z="31.82885" />
 			<Objective QuestName="The Dwarven Spy" QuestId="8483" Type="CollectItem" ItemId="20764" CollectCount="1" />
 		</If>
@@ -463,7 +511,7 @@
 		<PickUp QuestName="Fairbreeze Village" QuestId="9256" GiverName="Aeldon Sunbrand" GiverId="15403" />
 
 		<!--Setting Hearthstone: Fairbreeze Village-->
-		<If Condition="HasQuest(9256) &amp;&amp; (IsQuestCompleted(9256)))" >
+		<If Condition="HasQuest(9256) &amp;&amp; IsQuestCompleted(9256)" >
 			<CustomBehavior File="SetHearthstone" MobId="15397" X="8703.191" Y="-6638.863" Z="72.74525" />
 		</If>
 
@@ -546,11 +594,9 @@
 			<PickUp QuestName="Unexpected Results" QuestId="8488" GiverName="Apprentice Mirveda" GiverId="15402" />
 
 			<While Condition="HasQuest(8488) &amp;&amp; !IsQuestCompleted(8488)">
-				<!--This QuestBehavior is Broken Trash-->
-				<!--CustomBehavior File="Escort" QuestId="8488" MobId="15402" X="8714.452" Y="-7155.89" Z="40.45158" /-->
 				<CustomBehavior File="AbandonQuest" QuestId="8488" Type="Failed" />
 				<PickUp QuestName="Unexpected Results" QuestId="8488" GiverName="Apprentice Mirveda" GiverId="15402" />
-				<CustomBehavior File="EscortGroup" QuestId="8488" EscortNpcId="15402" EscortCompleteWhen="QuestComplete" />
+				<CustomBehavior File="EscortGroup" QuestId="8488" EscortNpcId="15402" EscortCompleteWhen="QuestCompleteOrFails" />
 			</While>
 
 			<TurnIn QuestName="Unexpected Results" QuestId="8488" TurnInName="Apprentice Mirveda" TurnInId="15402" />
@@ -610,7 +656,7 @@
 
 			<TurnIn QuestName="Wretched Ringleader" QuestId="9076" TurnInName="Velendris Whitemorn" TurnInId="15404" />
 
-			<If Condition="HasQuest(8892) &amp;&amp; (IsQuestCompleted(8892)">
+			<If Condition="HasQuest(8892) &amp;&amp; IsQuestCompleted(8892)">
 				<CustomBehavior File="ForceSetVendor" DoSell="True" DoRepair="True" DoMail="True" />
 			</If>
 
@@ -621,7 +667,7 @@
 
 		<!--Non-Squishy Classes On Normal Route-->
 		<If Condition="(Me.Class == WoWClass.Priest) || (Me.Class == WoWClass.Hunter) || (Me.Class == WoWClass.Paladin) || (Me.Class == WoWClass.Warlock)">
-			<CustomBehavior File="Message" Text="Compiling Quests: Sunsail Anchorage [NONSQUISH]" LogColor="Cyan" />
+			<CustomBehavior File="Message" Text="Compiling Quests: Sunsail Anchorage" LogColor="Cyan" />
 
 			<PickUp QuestName="Situation at Sunsail Anchorage" QuestId="8892" GiverName="Ranger Degolien" GiverId="15939" />
 			<PickUp QuestName="Lost Armaments" QuestId="8480" GiverName="Velendris Whitemorn" GiverId="15404" />
@@ -716,9 +762,9 @@
 			<PickUp QuestName="Unexpected Results" QuestId="8488" GiverName="Apprentice Mirveda" GiverId="15402" />
 
 			<If Condition="HasQuest(8488) &amp;&amp; !IsQuestCompleted(8488)">
-				<!--This QuestBehavior is Broken Trash-->
-				<!--CustomBehavior File="Escort" QuestId="8488" MobId="15402" X="8714.452" Y="-7155.89" Z="40.45158" /-->
-				<CustomBehavior File="EscortGroup" QuestId="8488" EscortNpcId="15402" EscortCompleteWhen="QuestComplete" />
+					<CustomBehavior File="AbandonQuest" QuestId="8488" Type="Failed" />
+				<PickUp QuestName="Unexpected Results" QuestId="8488" GiverName="Apprentice Mirveda" GiverId="15402" />
+
 			</If>
 
 			<TurnIn QuestName="Unexpected Results" QuestId="8488" TurnInName="Apprentice Mirveda" TurnInId="15402" />
@@ -731,7 +777,7 @@
 				</If>
 			</If>
 
-			<If Condition="HasQuest(9255) &amp;&amp; (IsQuestCompleted(9255)">
+			<If Condition="HasQuest(9255) &amp;&amp; IsQuestCompleted(9255)">
 				<CustomBehavior File="ForceSetVendor" DoSell="True" DoRepair="True" DoMail="True" />
 			</If>
 
@@ -852,7 +898,7 @@
 				<RunTo X="9256.195" Y="-7475.406" Z="35.64348" />
 			</If>	
 
-		<If Condition="HasQuest(8890) &amp;&amp; (IsQuestCompleted(8890)">
+		<If Condition="HasQuest(8890) &amp;&amp; IsQuestCompleted(8890)">
 			<CustomBehavior File="ForceSetVendor" DoSell="True" DoRepair="True" DoMail="False" />
 		</If>
 
@@ -886,7 +932,9 @@
 		<PickUp QuestName="Warning Fairbreeze Village" QuestId="9363" GiverName="Lieutenant Dawnrunner" GiverId="15399" />
 
 		<If Condition="HasQuest(9363) &amp;&amp; IsQuestCompleted(9363)">
-			<CustomBehavior File="Misc\RunLua" Lua="UseItemByName(6948)" WaitTime="12000" />
+			<If Condition="(ObjectManager.GetObjectsOfType&lt;WoWItem&gt;(false).FirstOrDefault(i =&gt; i.Entry == 6948).Cooldown!=0) &amp;&amp; (HasItem(6948))">
+				<CustomBehavior File="Misc\RunLua" Lua="UseItemByName(6948)" WaitTime="12000" />
+			</If>
 		</If>
 
 		<TurnIn QuestName="Warning Fairbreeze Village" QuestId="9363" TurnInName="Ranger Degolien" TurnInId="15939" />
@@ -899,7 +947,7 @@
 		</If>
 
 		<CustomBehavior File="Message" Text="Profile Complete: Loading Ghostlands Profile" LogColor="Cyan" />
-		<CustomBehavior File="LoadProfile" ProfileName="[H - Quest] Ghostlands [Life]" />
+		<!--CustomBehavior File="LoadProfile" ProfileName="[H - Quest] Ghostlands [Life]" /-->
 
 	</QuestOrder>
 
