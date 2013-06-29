@@ -264,7 +264,6 @@
 		<If Condition="HasQuest(9758) &amp;&amp; IsQuestCompleted(9758)">
 			<CustomBehavior File="SetHearthstone" MobId="16542" X="7556.067" Y="-6893.185" Z="96.02784" />
 			<CustomBehavior File="ForceSetVendor" DoSell="True" DoRepair="True" DoMail="True" />
-			<CustomBehavior File="WaitTimer" WaitTime="1000" />
 			<TurnIn QuestName="Tainted Arcane Sliver" QuestId="8338" TurnInName="Arcanist Helion" TurnInId="15297" />
 		</If>
 
