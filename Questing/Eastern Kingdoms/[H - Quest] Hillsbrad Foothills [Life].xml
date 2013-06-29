@@ -1,0 +1,527 @@
+<HBProfile>
+	<Name>[H - Quest] Hillsbrad Foothills [Life]</Name>
+
+	<MinLevel>20</MinLevel><!--Check-->
+	<MaxLevel>91</MaxLevel>
+
+	<MinDurability>0.2</MinDurability>
+	<MinFreeBagSlots>2</MinFreeBagSlots>
+
+	<MailGrey>False</MailGrey>
+	<MailWhite>False</MailWhite>
+	<MailGreen>True</MailGreen>
+	<MailBlue>True</MailBlue>
+	<MailPurple>True</MailPurple>
+   
+	<SellGrey>True</SellGrey>
+	<SellWhite>True</SellWhite>
+	<SellGreen>True</SellGreen>
+	<SellBlue>False</SellBlue>
+	<SellPurple>False</SellPurple>
+
+	<!--Version 1.0-->
+
+	<AvoidMobs>
+		<!--They're Harmless Darling-->
+		<Mob Name="Hillsbrad Sentry" Entry="2270" />
+		<Mob Name="Hillsbrad Foreman" Entry="2503" />
+	</AvoidMobs>
+
+	<Mailboxes>
+	</Mailboxes>
+
+	<Vendors>
+		<!--The Sludge Fields Vendors-->
+		<Vendor Name="Kenneth Lamb" Entry="49397" Type="Food" X="-485.6615" Y="94.10069" Z="56.84064" />
+		<Vendor Name="Marcus Hagnod" Entry="49404" Type="Repair" X="-497.3976" Y="119.4028" Z="57.2649" />
+	</Vendors>
+
+	<Blackspots>
+	</Blackspots>
+
+	<Quest Id="28144" Name="Thieving Little Monsters!">
+		<Objective Type="CollectItem" ItemId="63082" CollectCount="6">
+			<CollectFrom>
+				<GameObject Name="Forsaken Camp &quot;Supplies&quot;" Id="206783" />
+			</CollectFrom>
+			<Hotspots>
+				<Hotspot X="-961.6851" Y="290.1572" Z="9.477529" />
+				<Hotspot X="-1006.247" Y="270.2924" Z="4.594878" />
+				<Hotspot X="-1097.226" Y="260.3742" Z="4.063188" />
+				<Hotspot X="-1131.625" Y="223.7727" Z="0.2822375" />
+			</Hotspots>
+		</Objective>
+	</Quest>
+	<Quest Id="28146" Name="Coastal Delicacies!">
+		<Objective Type="KillMob" MobId="47752" KillCount="12">
+			<Hotspots>
+				<Hotspot X="-961.6851" Y="290.1572" Z="9.477529" />
+				<Hotspot X="-1006.247" Y="270.2924" Z="4.594878" />
+				<Hotspot X="-1097.226" Y="260.3742" Z="4.063188" />
+				<Hotspot X="-1131.625" Y="223.7727" Z="0.2822375" />
+			</Hotspots>
+		</Objective>
+	</Quest>
+	<Quest Id="28197" Name="Discretion is Key">
+		<Objective Type="KillMob" MobId="47789" KillCount="1">
+			<Hotspots>
+				<Hotspot X="-568.8186" Y="40.43743" Z="48.05334" />
+				<Hotspot X="-554.9862" Y="-14.85389" Z="46.16143" />
+				<Hotspot X="-535.8526" Y="-41.1665" Z="45.71277" />
+				<Hotspot X="-535.1152" Y="-57.85938" Z="45.74696" />
+				<Hotspot X="-538.1439" Y="-85.36616" Z="45.62591" />
+			</Hotspots>
+		</Objective>
+	</Quest>
+	<Quest Id="28199" Name="For Science!">
+		<Objective Type="CollectItem" ItemId="63254" CollectCount="6">
+			<CollectFrom>
+				<Mob Name="Risen Hillsbrad Peasant" Id="47861" />
+			</CollectFrom>
+			<Hotspots>
+				<Hotspot X="-568.8186" Y="40.43743" Z="48.05334" />
+				<Hotspot X="-554.9862" Y="-14.85389" Z="46.16143" />
+				<Hotspot X="-535.8526" Y="-41.1665" Z="45.71277" />
+				<Hotspot X="-535.1152" Y="-57.85938" Z="45.74696" />
+				<Hotspot X="-538.1439" Y="-85.36616" Z="45.62591" />
+			</Hotspots>
+		</Objective>
+	</Quest>
+	<Quest Id="28209" Name="Freedom for Lydon">
+		<Objective Type="CollectItem" ItemId="63281" CollectCount="1">
+			<CollectFrom>
+				<Mob Name="Infected Sludge Guard" Id="48017" />
+			</CollectFrom>
+			<Hotspots>
+				<Hotspot X="-455.8533" Y="-83.89571" Z="54.54537" />
+				<Hotspot X="-486.867" Y="-93.64453" Z="55.02728" />
+				<Hotspot X="-493.1609" Y="-47.78612" Z="54.39245" />
+				<Hotspot X="-473.3961" Y="-8.016283" Z="54.34344" />
+				<Hotspot X="-427.2399" Y="-40.43113" Z="54.04781" />
+			</Hotspots>
+		</Objective>
+	</Quest>
+	<Quest Id="28230" Name="Protocol">
+		<Objective Type="KillMob" MobId="47793" KillCount="1">
+			<Hotspots>
+				<Hotspot X="-382.0154" Y="-28.10345" Z="48.94347" />
+			</Hotspots>
+		</Objective>
+	</Quest>
+	<Quest Id="28231" Name="Do it for Twinkles">
+		<Objective Type="KillMob" MobId="47792" KillCount="1">
+			<Hotspots>
+				<Hotspot X="-368.9624" Y="1.508415" Z="51.80171" />
+			</Hotspots>
+		</Objective>
+	</Quest>
+	<Quest Id="28332" Name="Helcular's Command">
+		<Objective Type="KillMob" MobId="48272" KillCount="15">
+			<Hotspots>
+				<Hotspot X="-602.262" Y="-506.7837" Z="36.26163" />
+				<Hotspot X="-528.7531" Y="-499.9558" Z="39.18921" />
+				<Hotspot X="-573.6884" Y="-613.6039" Z="40.21135" />
+				<Hotspot X="-636.3784" Y="-630.9726" Z="32.91307" />
+				<Hotspot X="-592.474" Y="-441.7088" Z="37.94653" />
+				<Hotspot X="-623.928" Y="-400.6263" Z="37.43328" />
+			</Hotspots>
+		</Objective>
+	</Quest>
+	<Quest Id="28325" Name="Green Living">
+		<Objective Type="CollectItem" ItemId="63432" CollectCount="8">
+			<CollectFrom>
+				<GameObject Name="Used Blight Canister" Id="207090" />
+				<GameObject Name="Used Blight Canister" Id="207090" />
+			</CollectFrom>
+			<Hotspots>
+				<Hotspot X="-724.8273" Y="-511.6643" Z="24.00989" />
+				<Hotspot X="-742.4999" Y="-583.5307" Z="21.22529" />
+				<Hotspot X="-819.7806" Y="-577.3548" Z="13.5204" />
+				<Hotspot X="-829.7434" Y="-534.7444" Z="13.91778" />
+				<Hotspot X="-875.9246" Y="-529.5903" Z="10.78368" />
+			</Hotspots>
+		</Objective>
+	</Quest>
+	<Quest Id="28329" Name="Angry Scrubbing Bubbles">
+		<Objective Type="KillMob" MobId="48319" KillCount="5">
+			<Hotspots>
+				<Hotspot X="-859.6517" Y="-523.7595" Z="10.87395" />
+				<Hotspot X="-897.8193" Y="-513.1876" Z="6.879752" />
+				<Hotspot X="-825.3334" Y="-460.1433" Z="13.95296" />
+				<Hotspot X="-833.2326" Y="-405.8549" Z="15.48428" />
+			</Hotspots>
+		</Objective>
+	</Quest>
+	<Quest Id="28330" Name="Trail of Filth">
+		<Objective Type="KillMob" MobId="48322" KillCount="1">
+			<Hotspots>
+				<Hotspot X="-860.17" Y="-477.10" Z="13.53" />
+			</Hotspots>
+		</Objective>
+	</Quest>
+	<Quest Id="28354" Name="Kasha Will Fly Again">
+		<Objective Type="CollectItem" ItemId="3502" CollectCount="8">
+			<CollectFrom>
+				<GameObject Name="Mudsnout Blossom" Id="1723" />
+			</CollectFrom>
+			<Hotspots>
+				<Hotspot X="-934.3144" Y="-919.4415" Z="28.5505" />
+				<Hotspot X="-953.1495" Y="-959.6968" Z="30.34896" />
+				<Hotspot X="-947.8914" Y="-1014.714" Z="30.34799" />
+				<Hotspot X="-911.5013" Y="-1015.961" Z="30.34799" />
+				<Hotspot X="-876.6406" Y="-994.0449" Z="30.34799" />
+			</Hotspots>
+		</Objective>
+	</Quest>
+
+	<QuestOrder>
+		<CustomBehavior File="Message" Text="Initializing Settings" LogColor="Cyan" />
+		<CustomBehavior File="UserSettings" LootMobs="True" UseFlightPaths="True" PullDistance="25" />
+
+		<CustomBehavior File="Message" Text="Compiling Quests: Southpoint Gate" LogColor="Cyan" />
+
+		<PickUp QuestName="Welcome to the Machine" QuestId="28096" GiverName="High Executor Darthalia" GiverId="2215" />
+
+		<CustomBehavior File="UserSettings" QuestId="28096" LogoutForInactivity="False" />
+
+			<!--Quest: Welcome to the Machine-->
+			<If Condition="HasQuest(28096) &amp;&amp; !IsQuestCompleted(28096)">
+				<CustomBehavior File="InteractWith" MobId="47445" X="-576.0676" Y="423.6037" Z="80.05659" />
+
+				<While Condition="HasQuest(28096) &amp;&amp; !IsObjectiveComplete(1, 28096)">
+					<CustomBehavior File="WaitTimer" WaitTime="25000"  GoalText="Waiting for Dumass {TimeRemaining}"/>
+					<CustomBehavior File="InteractWith" MobId="47444" InteractByGossipOptions="1,1" Range="6" WaitForNpcs="True" WaitTime="10000" X="-576.0676" Y="423.6037" Z="80.05659" />
+				</While>
+
+				<While Condition="HasQuest(28096) &amp;&amp; !IsObjectiveComplete(2, 28096)">
+					<CustomBehavior File="WaitTimer" WaitTime="18000"  GoalText="Waiting for Kingslayer Orkus {TimeRemaining}"/>
+					<CustomBehavior File="InteractWith" MobId="47443" InteractByGossipOptions="1,1,1" Range="6" WaitForNpcs="True" WaitTime="11000" X="-576.0676" Y="423.6037" Z="80.05659" />
+				</While>
+				
+				<While Condition="HasQuest(28096) &amp;&amp; !IsObjectiveComplete(3, 28096)">
+					<CustomBehavior File="WaitTimer" WaitTime="7000"  GoalText="Waiting for Johnny Awesome {TimeRemaining}"/>
+					<CustomBehavior File="InteractWith" MobId="47442" InteractByGossipOptions="1,1,1" Range="6" WaitForNpcs="True" WaitTime="25000" X="-576.0676" Y="423.6037" Z="80.05659" />
+				</While>
+			</If>
+
+		<TurnIn QuestName="Welcome to the Machine" QuestId="28096" TurnInName="High Executor Darthalia" TurnInId="2215" />
+		<PickUp QuestName="Trouble at Azurelode" QuestId="28111" GiverName="High Executor Darthalia" GiverId="2215" />
+		<PickUp QuestName="Glorious Harvest" QuestId="28114" GiverName="Apothecary Underhill" GiverId="47432" />
+		<PickUp QuestName="Past Their Prime" QuestId="28115" GiverName="Apothecary Underhill" GiverId="47432" />
+
+	    	<CustomBehavior File="InteractWith" QuestId="28114" MobId="47203" InteractByLooting="True" NumOfTimes="200" CollectionDistance="1000" >
+				<HuntingGrounds>
+					<Hotspot X="-684.1111" Y="348.5129" Z="63.06081" />
+					<Hotspot X="-699.2821" Y="308.1685" Z="50.80106" />
+					<Hotspot X="-765.904" Y="299.0332" Z="47.69357" />
+					<Hotspot X="-785.5502" Y="267.0562" Z="43.33853" />
+					<Hotspot X="-738.6009" Y="245.2719" Z="47.82291" />
+					<Hotspot X="-726.4153" Y="185.9457" Z="48.91549" />
+         		</HuntingGrounds>
+      		</CustomBehavior>
+
+      		<Objective QuestName="Past Their Prime" QuestId="28115" Type="KillMob" MobId="47204" KillCount="8" />
+
+		<TurnIn QuestName="Trouble at Azurelode" QuestId="28111" TurnInName="Captain Keyton" TurnInId="47554" />
+
+		<CustomBehavior File="Message" Text="Compiling Quests: Azurelode Mine" LogColor="Cyan" />
+
+		<PickUp QuestName="Human Infestation" QuestId="28138" GiverName="Captain Keyton" GiverId="47554" />
+		<PickUp QuestName="Thieving Little Monsters!" QuestId="28144" GiverName="Captain Keyton" GiverId="47554" />
+		<TurnIn QuestName="Glorious Harvest" QuestId="28114" TurnInName="Spider-Handler Sarus" TurnInId="47551" />
+		<TurnIn QuestName="Past Their Prime" QuestId="28115" TurnInName="Spider-Handler Sarus" TurnInId="47551" />
+		<PickUp QuestName="Coastal Delicacies!" QuestId="28146" GiverName="Spider-Handler Sarus" GiverId="47551" />
+
+			<CustomBehavior File="CombatUseItemOnV2" QuestId="28138" ItemId="63079" ItemAppliesAuraId="88795" MobId1="2503" MobId2="2269" MobId3="2270"
+				UseWhenMobHasHealthPercent="40" 
+				MaxRangeToUseItem="20" 
+				UseItemStrategy="UseItemContinuouslyOnTargetDontDefend" 
+				RecallPetAtMobPercentHealth="100" >
+          		<HuntingGrounds>
+					<Hotspot X="-874.1949" Y="231.1803" Z="9.425097" />
+					<Hotspot X="-886.1464" Y="196.5407" Z="11.98429" />
+					<Hotspot X="-851.4796" Y="193.1192" Z="17.48127" />
+					<Hotspot X="-800.399" Y="172.5297" Z="20.40379" />
+					<Hotspot X="-763.1881" Y="165.925" Z="21.75853" />
+					<Hotspot X="-722.4226" Y="155.6737" Z="19.60073" />
+					<Hotspot X="-740.728" Y="116.5386" Z="15.81474" />
+          		</HuntingGrounds>
+      		</CustomBehavior>
+
+		<TurnIn QuestName="Human Infestation" QuestId="28138" TurnInName="Captain Keyton" TurnInId="47554" />
+
+			<If Condition="!Me.HasAura(&quot;Hungry Mine Creeper&quot;) &amp;&amp; HasQuest(28146) &amp;&amp; !IsQuestCompleted(28146)">
+				<CustomBehavior File="InteractWith" InteractByGossipOptions="1" MobId="47551" X="-904.3843" Y="233.6335" Z="9.457996" />
+			</If>
+
+			<Objective QuestName="Thieving Little Monsters!" QuestId="28144" Type="CollectItem" ItemId="63082" CollectCount="6" />
+			<Objective QuestName="Coastal Delicacies!" QuestId="28146" Type="KillMob" MobId="47752" KillCount="12" />
+
+			<If Condition="!HasQuest(28154) &amp;&amp; !IsQuestCompleted(28154) &amp;&amp; !HasItem(63090)">
+						<CustomBehavior File="Message" Text="Farming for Muckgill's Flipper" LogColor="Yellow" />
+						<SetGrindArea>
+							<GrindArea>
+								<Factions>18</Factions>
+								<Hotspots>
+									<Hotspot X="-961.6851" Y="290.1572" Z="9.477529" />
+									<Hotspot X="-1006.247" Y="270.2924" Z="4.594878" />
+									<Hotspot X="-1097.226" Y="260.3742" Z="4.063188" />
+								</Hotspots>
+							</GrindArea>  
+						</SetGrindArea>
+					<GrindTo Condition="HasItem(63090)" />
+			</If>			
+
+			<If Condition="HasItem(63090)">
+				<PickUp QuestName="Muckgill's Flipper or Something..." QuestId="28154" GiverType="Item" GiverName="Muckgill's Flipper" GiverId="63090" />
+			</If>
+
+		<TurnIn QuestName="Coastal Delicacies!" QuestId="28146" TurnInName="Spider-Handler Sarus" TurnInId="47551" />
+		<TurnIn QuestName="Thieving Little Monsters!" QuestId="28144" TurnInName="Captain Keyton" TurnInId="47554" />
+		<TurnIn QuestName="Muckgill's Flipper or Something..." QuestId="28154" TurnInName="Captain Keyton" TurnInId="47554" />
+		<PickUp QuestName="Trouble at the Sludge Fields" QuestId="28168" GiverName="High Executor Darthalia" GiverId="2215" />
+
+		<If Condition="HasQuest(28168) &amp;&amp; IsQuestCompleted(28168)">
+			<CustomBehavior File="SetHearthstone" MobId="16542" X="-501.2806" Y="104.2711" Z="57.0958" />
+			<CustomBehavior File="ForceSetVendor" DoSell="True" DoRepair="True" DoMail="True" />
+		</If>
+
+		<TurnIn QuestName="Trouble at the Sludge Fields" QuestId="28168" TurnInName="Warden Stillwater" TurnInId="47781" />
+
+		<CustomBehavior File="Message" Text="Compiling Quests: The Sludge Fields" LogColor="Cyan" />
+
+		<PickUp QuestName="No One Here Gets Out Alive" QuestId="28192" GiverName="Warden Stillwater" GiverId="47781" />
+
+		<While Condition="HasQuest(28192) &amp;&amp; !IsQuestCompleted(28192)">
+			<CustomBehavior File="WaitTimer" QuestId="28192" WaitTime="65000" />
+		</While>
+
+		<TurnIn QuestName="No One Here Gets Out Alive" QuestId="28192" TurnInName="Warden Stillwater" TurnInId="47781" />
+		<PickUp QuestName="Discretion is Key" QuestId="28197" GiverName="Warden Stillwater" GiverId="47781" />
+		<PickUp QuestName="For Science!" QuestId="28199" GiverName="Flesh-Shaper Arnauld" GiverId="47899" />
+
+			<Objective QuestName="Discretion is Key" QuestId="28197" Type="KillMob" MobId="47789" KillCount="1" />
+
+		<PickUp QuestName="Do the Right Thing" QuestId="28189" GiverType="GameObject" GiverName="Shovel" GiverId="206944" X="-573.2924" Y="-54.3629" Z="46.09629" />
+
+		<If Condition="HasQuest(28189) &amp;&amp; !IsQuestCompleted(28189)">
+			<CustomBehavior File="InteractWith" QuestId="28189" MobId="47872" NumOfTimes="30" X="-573.2924" Y="-54.3629" Z="46.09629" />
+		</If>
+
+		<If Condition="HasQuest(28189) &amp;&amp; IsQuestCompleted(28189)">
+			<CustomBehavior File="CompleteLogQuest" QuestId="28189" />
+		</If>
+
+		<While Condition="HasQuest(28197) &amp;&amp; !IsObjectiveComplete(2,28197)">
+			<RunTo X="-621.2864" Y="-35.79159" Z="45.71925" />
+			<CustomBehavior File="WaitTimer" QuestId="28197" WaitTime="10000" />
+			<RunTo X="-622.3611" Y="-54.09921" Z="46.32125" />
+			<CustomBehavior File="WaitTimer" QuestId="28197" WaitTime="10000" />
+			<RunTo X="-612.2442" Y="-50.52026" Z="46.08833" />
+			<CustomBehavior File="WaitTimer" QuestId="28197" WaitTime="10000" />
+			<RunTo X="-603.5789" Y="-40.82204" Z="46.13255" />
+			<CustomBehavior File="WaitTimer" QuestId="28197" WaitTime="10000" />
+		</While>
+
+			<Objective QuestName="For Science!" QuestId="28199" Type="CollectItem" ItemId="63254" CollectCount="6" />
+
+			<If Condition="!HasQuest(28196) &amp;&amp; !IsQuestCompleted(28196) &amp;&amp; !HasItem(63250)">
+						<CustomBehavior File="Message" Text="Farming for The Battle for Hillsbrad" LogColor="Yellow" />
+						<SetGrindArea>
+							<GrindArea>
+								<Factions>16</Factions>
+								<Hotspots>
+									<Hotspot X="-568.8186" Y="40.43743" Z="48.05334" />
+									<Hotspot X="-554.9862" Y="-14.85389" Z="46.16143" />
+									<Hotspot X="-535.8526" Y="-41.1665" Z="45.71277" />
+									<Hotspot X="-535.1152" Y="-57.85938" Z="45.74696" />
+									<Hotspot X="-538.1439" Y="-85.36616" Z="45.62591" />
+								</Hotspots>
+							</GrindArea>  
+						</SetGrindArea>
+					<GrindTo Condition="HasItem(63250)" />
+			</If>			
+			<If Condition="HasItem(63250)">
+				<PickUp QuestName="The Battle for Hillsbrad" QuestId="28196" GiverType="Item" GiverName="The Battle for Hillsbrad" GiverId="63250" />
+			</If>
+
+		<TurnIn QuestName="The Battle for Hillsbrad" QuestId="28196" TurnInName="Warden Stillwater" TurnInId="47781" />
+		<TurnIn QuestName="Discretion is Key" QuestId="28197" TurnInName="Warden Stillwater" TurnInId="47781" />
+
+		<If Condition="HasQuest(28199) &amp;&amp; IsQuestCompleted(28199)">
+			<CustomBehavior File="ForceSetVendor" DoSell="True" DoRepair="True" DoMail="True" />
+		</If>
+
+		<TurnIn QuestName="For Science!" QuestId="28199" TurnInName="Flesh-Shaper Arnauld" TurnInId="47899" />
+		<PickUp QuestName="Little Girl Lost" QuestId="28206" GiverName="Warden Stillwater" GiverId="47781" />
+		<TurnIn QuestName="Little Girl Lost" QuestId="28206" TurnInName="Johnny Awesome" TurnInId="47869" />
+		<PickUp QuestName="Freedom for Lydon" QuestId="28209" GiverName="Master Apothecary Lydon" GiverId="47900" />
+			
+			<Objective QuestName="Freedom for Lydon" QuestId="28209" Type="CollectItem" ItemId="63281" CollectCount="1" />
+		
+		<TurnIn QuestName="Freedom for Lydon" QuestId="28209" TurnInName="Master Apothecary Lydon" TurnInId="47900" />
+		<PickUp QuestName="Protocol" QuestId="28230" GiverName="Master Apothecary Lydon" GiverId="47900" />
+		<PickUp QuestName="Do it for Twinkles" QuestId="28231" GiverName="Johnny Awesome" GiverId="47869" />
+		
+			<Objective QuestName="Protocol" QuestId="28230" Type="KillMob" MobId="47793" KillCount="1" />
+			<Objective QuestName="Do it for Twinkles" QuestId="28231" Type="KillMob" MobId="47792" KillCount="1" />
+
+		<!--TurnIn QuestName="Do it for Twinkles" QuestId="28231" TurnInName="Johnny Awesome" TurnInId="47869" />
+		<TurnIn QuestName="Protocol" QuestId="28230" TurnInName="Master Apothecary Lydon" TurnInId="47900" /-->
+
+		<While Condition="HasQuest(28230) &amp;&amp; IsQuestCompleted(28230)">
+			<CustomBehavior File="ForcedDismount" />
+		 	<CustomBehavior File="InteractWith" MobId="48020" CollectionDistance="8" />
+		 	<CustomBehavior File="RunMacro" Macro="/click QuestFrameCompleteQuestButton" WaitTime="1000" />
+		</While>
+		<While Condition="HasQuest(28231) &amp;&amp; IsQuestCompleted(28231)">
+			<CustomBehavior File="ForcedDismount" />
+		 	<CustomBehavior File="InteractWith" MobId="48021" CollectionDistance="8" />
+		 	<CustomBehavior File="RunMacro" Macro="/click QuestFrameCompleteQuestButton" WaitTime="1000" />
+		</While>
+		<While Condition="!HasQuest(28235) &amp;&amp; !IsQuestCompleted(28235)">
+			<CustomBehavior File="ForcedDismount" />
+		 	<CustomBehavior File="InteractWith" MobId="48020" CollectionDistance="8" />
+		 	<CustomBehavior File="RunMacro" Macro="/click QuestFrameAcceptButton" WaitTime="1000" />
+		</While>
+
+			<While Condition="HasQuest(28235) &amp;&amp; !IsQuestCompleted(28235)">
+				<RunTo X="-400.21" Y="73.48" Z="61.69" />
+				<CustomBehavior File="WaitTimer" QuestId="28235" WaitTime="10000" />
+			</While>
+
+		<While Condition="HasQuest(28235) &amp;&amp; IsQuestCompleted(28235)">
+			<CustomBehavior File="ForcedDismount" />
+		 	<CustomBehavior File="InteractWith" MobId="48020" CollectionDistance="8" />
+		 	<CustomBehavior File="RunMacro" Macro="/click QuestFrameCompleteQuestButton" WaitTime="1000" />
+		</While>
+		<While Condition="!HasQuest(28237) &amp;&amp; !IsQuestCompleted(28237)">
+			<CustomBehavior File="ForcedDismount" />
+		 	<CustomBehavior File="InteractWith" MobId="48020" CollectionDistance="8" />
+		 	<CustomBehavior File="RunMacro" Macro="/click QuestFrameAcceptButton" WaitTime="1000" />
+		</While>
+
+			<While Condition="HasQuest(28237) &amp;&amp; !IsQuestCompleted(28237)">
+				<RunTo X="-500.73" Y="74.54" Z="54.99" />
+				<CustomBehavior File="WaitTimer" QuestId="28237" WaitTime="10000" />
+			</While>
+
+		<!--Phased-->
+		<TurnIn QuestName="A Blight Upon the Land" QuestId="28237" TurnInName="Master Apothecary Lydon" TurnInId="47900" X="-503.0333" Y="65.4761" Z="53.9869" />
+		<PickUp QuestName="Trouble at Southshore" QuestId="28251" GiverName="Master Apothecary Lydon" GiverId="47900" X="-503.0333" Y="65.4761" Z="53.9869" />
+		<TurnIn QuestName="Trouble at Southshore" QuestId="28251" TurnInName="Serge Hinott" TurnInId="2391" />
+
+		<CustomBehavior File="Message" Text="Compiling Quests: Ruins of Southshore" LogColor="Cyan" />
+
+		<PickUp QuestName="Studies in Lethality" QuestId="28324" GiverName="Serge Hinott" GiverId="2391" />
+		<PickUp QuestName="Green Living" QuestId="28325" GiverName="Serge Hinott" GiverId="2391" />
+		<PickUp QuestName="Helcular's Command" QuestId="28332" GiverName="Helcular" GiverId="48129" />
+		<PickUp QuestName="Helcular's Rod Giveth..." QuestId="28331" GiverName="Helcular" GiverId="48129" />
+
+			<!--Quest: Helcular's Rod Giveth...-->
+			<CustomBehavior File="InteractWith" QuestId="28331" MobId="48269" InteractByUsingItemId="63508" AuraIdMissingFromMob="89824" MobState="Alive" NumOfTimes="150" CollectionDistance="1000" >
+				<HuntingGrounds>
+					<Hotspot X="-602.262" Y="-506.7837" Z="36.26163" />
+					<Hotspot X="-528.7531" Y="-499.9558" Z="39.18921" />
+					<Hotspot X="-573.6884" Y="-613.6039" Z="40.21135" />
+					<Hotspot X="-636.3784" Y="-630.9726" Z="32.91307" />
+					<Hotspot X="-592.474" Y="-441.7088" Z="37.94653" />
+					<Hotspot X="-623.928" Y="-400.6263" Z="37.43328" />
+         		</HuntingGrounds>
+      		</CustomBehavior>
+
+      		<Objective QuestName="Helcular's Command" QuestId="28332" Type="KillMob" MobId="48272" KillCount="15" />
+
+		<TurnIn QuestName="Helcular's Command" QuestId="28332" TurnInName="Helcular" TurnInId="48129" />
+		<TurnIn QuestName="Helcular's Rod Giveth..." QuestId="28331" TurnInName="Helcular" TurnInId="48129" />
+
+			<Objective QuestName="Green Living" QuestId="28325" Type="CollectItem" ItemId="63432" CollectCount="8" />
+
+			<!--Once Slimes go Hostile you die, Rezzing fixes hostility-->
+			<If Condition="HasQuest(28237) &amp;&amp; !IsQuestCompleted(28237)">
+				<CustomBehavior File="Message" Text="Eventually the slimes will go hostile and kill you, after you rez they go back to normal!" LogColor="Orange" />
+			</If>
+
+	    	<CustomBehavior File="InteractWith" QuestId="28324" MobId="48136" IgnoreCombat="True" InteractByUsingItemId="63426" AuraIdMissingFromMob="89756" MobState="Alive" NumOfTimes="150" CollectionDistance="100" >
+				<HuntingGrounds>
+					<Hotspot X="-723.1719" Y="-512.8267" Z="24.08546" />
+					<Hotspot X="-738.2448" Y="-593.5045" Z="21.33413" />
+					<Hotspot X="-785.1259" Y="-570.0749" Z="19.78944" />
+					<Hotspot X="-800.5428" Y="-514.7549" Z="16.16274" />
+         		</HuntingGrounds>
+      		</CustomBehavior>
+
+		<If Condition="HasQuest(28329)">
+			<CustomBehavior File="RunMacro" Macro="/click QuestFrameAcceptButton" WaitTime="1000" />
+		</If>	
+
+			<Objective QuestName="Angry Scrubbing Bubbles" QuestId="28329" Type="KillMob" MobId="48319" KillCount="5" />
+
+		<If Condition="HasQuest(28329) &amp;&amp; IsQuestCompleted(28329)">
+			<CustomBehavior File="CompleteLogQuest" QuestId="28329" />
+		</If>
+			
+			<Objective QuestName="Trail of Filth" QuestId="28330" Type="KillMob" MobId="48322" KillCount="1" />
+
+		<TurnIn QuestName="Trail of Filth" QuestId="28330" TurnInName="Serge Hinott" TurnInId="2391" />
+		<TurnIn QuestName="Studies in Lethality" QuestId="28324" TurnInName="Serge Hinott" TurnInId="2391" />
+		<TurnIn QuestName="Green Living" QuestId="28325" TurnInName="Serge Hinott" TurnInId="2391" />
+		<PickUp QuestName="*Gurgle* HELP! *Gurgle*" QuestId="28345" GiverName="Kingslayer Orkus" GiverId="48218" />
+
+			<While Condition="HasQuest(28345) &amp;&amp; !IsQuestCompleted(28345)">
+				<!--This is sadly failable-->
+				<CustomBehavior File="AbandonQuest" QuestId="28345" Type="Failed" />
+				<CustomBehavior File="InteractWith" MobId="48218" InteractByGossipOptions="1" X="-927.3645" Y="-559.2021" Z="-1.524462" />
+				<CustomBehavior File="WaitTimer" QuestId="28345" WaitTime="41000" />
+			</While>
+
+		<TurnIn QuestName="*Gurgle* HELP! *Gurgle*" QuestId="28345" TurnInName="Kingslayer Orkus" TurnInId="48218" />
+		<PickUp QuestName="Stormpike Rendezvous" QuestId="28348" GiverName="Kingslayer Orkus" GiverId="48218" />
+
+			<CustomBehavior File="UserSettings" QuestId="28348" LogoutForInactivity="False" />
+
+		<TurnIn QuestName="Stormpike Rendezvous" QuestId="28348" TurnInName="Kingslayer Orkus" TurnInId="48218" />
+		<PickUp QuestName="Kasha Will Fly Again" QuestId="28354" GiverName="Kingslayer Orkus" GiverId="48218" />
+
+			<Objective QuestName="Kasha Will Fly Again" QuestId="28354" Type="CollectItem" ItemId="3502" CollectCount="8" />
+
+			<If Condition="HasQuest(28355) &amp;&amp; !IsQuestCompleted(28355)">
+				<Objective QuestName="Terrible Little Creatures" QuestId="28355" Type="KillMob" MobId="2372" KillCount="10" />
+			</If>	
+		
+		<If Condition="HasQuest(28355) &amp;&amp; IsQuestCompleted(28355)">
+			<CustomBehavior File="CompleteLogQuest" QuestId="28355" />
+		</If>
+		<TurnIn QuestName="Kasha Will Fly Again" QuestId="28354" TurnInName="Kingslayer Orkus" TurnInId="48218" />
+		<PickUp QuestName="The Road to Purgation" QuestId="28375" GiverName="Kingslayer Orkus" GiverId="48218" />
+
+		<!--I can't tell if this is completed mid-cinematic or not-->
+		<While Condition="HasQuest(28375) &amp;&amp; !IsQuestCompleted(28375)">
+			<CustomBehavior File="WaitTimer" QuestId="28375" WaitTime="10000" />
+		</While>
+
+		<!--Check If Near Purgation Isle "Entrance"-->
+
+		<!--TurnIn: The Road to Purgation-->
+		<While Condition="HasQuest(28375) &amp;&amp; IsQuestCompleted(28375)">
+			<CustomBehavior File="ForcedDismount" />
+		 	<CustomBehavior File="InteractWith" MobId="48470" CollectionDistance="8" />
+		 	<CustomBehavior File="RunMacro" Macro="/click QuestFrameCompleteQuestButton" WaitTime="1000" />
+		</While>
+		<!--PickUp: They Will Never Expect This...-->
+		<While Condition="!HasQuest(28397) &amp;&amp; !IsQuestCompleted(28397)">
+			<CustomBehavior File="ForcedDismount" />
+		 	<CustomBehavior File="InteractWith" MobId="48470" CollectionDistance="8" />
+		 	<CustomBehavior File="RunMacro" Macro="/click QuestFrameAcceptButton" WaitTime="1000" />
+		</While>
+
+
+
+		<CustomBehavior File="Halt" />
+
+
+
+
+	</QuestOrder>
+
+</HBProfile>
