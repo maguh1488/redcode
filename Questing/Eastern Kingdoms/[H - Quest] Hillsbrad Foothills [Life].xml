@@ -20,6 +20,7 @@
 	<SellPurple>False</SellPurple>
 
 	<!--Version 1.0-->
+	<!--Add CombatUseItemOnV2 Warning for High Level Users-->
 
 	<AvoidMobs>
 		<!--They're Harmless Darling-->
@@ -32,7 +33,12 @@
 		<Mob Name="Stormpike Battle Master" Entry="48515" />
 		<!--Bulky Group Quest Mob-->
 		<Mob Name="Yetimus the Yeti Lord" Entry="47484" />
-	</AvoidMobs>
+		<!--Alliance Headland-->
+		<Mob Name="Alliance Guard" Entry="2386" />
+		<Mob Name="Prospector Stonehewer" Entry="13816" />
+		<Mob Name="Thanthaldis Snowgleam" Entry="13217" />
+		<Mob Name="Lieutenant Haggerdin" Entry="13841" />
+ 	</AvoidMobs>
 
 	<Mailboxes>
 		<!--Tarren Mill-->
@@ -46,9 +52,13 @@
 		<!--Tarren Mill Vendors-->
 		<Vendor Name="Kayren Soothallow" Entry="2401" Type="Food" X="-53.9236" Y="-907.637" Z="56.20948" />
 		<Vendor Name="Ott" Entry="3539" Type="Repair" X="-59.941" Y="-954.156" Z="54.28908" />
+		<!--Alterac Battleground Flare-->
+		<Vendor Name="Jorek Ironside" Entry="13219" Type="Repair" X="393.567" Y="-976.087" Z="110.1351" />
 	</Vendors>
 
 	<Blackspots>
+		<!--Corrahn's Dagger Forge-->
+		<Blackspot X="-34.64258" Y="-591.1284" Z="153.8889" Radius="3.39284" />
 	</Blackspots>
 
 	<Quest Id="28144" Name="Thieving Little Monsters!">
@@ -266,6 +276,30 @@
 				<Mob Name="Ferocious Yeti" Id="48628" />
 			</CollectFrom>
 			<Hotspots>
+				<Hotspot X="-168.7969" Y="-321.3779" Z="52.97631" />
+				<Hotspot X="-168.7969" Y="-321.3779" Z="52.97631" />
+				<Hotspot X="-245.9987" Y="-292.2809" Z="53.22094" />
+			</Hotspots>
+		</Objective>
+	</Quest>
+	<Quest Id="28566" Name="Decimation">
+		<Objective Type="KillMob" MobId="48880" KillCount="1">
+			<Hotspots>
+				<Hotspot X="-35.22478" Y="-553.444" Z="151.1918" />
+			</Hotspots>
+		</Objective>
+		<Objective Type="KillMob" MobId="48878" KillCount="12">
+			<Hotspots>
+				<Hotspot X="12.5069" Y="-575.0917" Z="147.8484" />
+				<Hotspot X="3.0955" Y="-535.8371" Z="147.1022" />
+				<Hotspot X="-65.08414" Y="-522.3176" Z="156.306" />
+			</Hotspots>
+		</Objective>
+	</Quest>
+	<Quest Id="28603" Name="Infiltration">
+		<Objective Type="KillMob" MobId="48924" KillCount="1">
+			<Hotspots>
+				<Hotspot X="-172.0086" Y="-296.2939" Z="155.0683" />
 			</Hotspots>
 		</Objective>
 	</Quest>
@@ -723,6 +757,8 @@
 		<TurnIn QuestName="Stagwiches" QuestId="28489" TurnInName="Derak Nightfall" TurnInId="2397" />
 		<TurnIn QuestName="A Fighting Chance" QuestId="28495" TurnInName="Advisor Duskingdawn" TurnInId="17092" />	
 
+		<CustomBehavior File="Message" Text="Compiling Quests: Naze, Dagger, &amp; Headland" LogColor="Cyan" />
+
 		<TurnIn QuestName="Aid of the Frostwolf" QuestId="28587" TurnInName="Voggah Deathgrip" TurnInId="13817" />
 		<PickUp QuestName="Matters of Loyalty" QuestId="28600" GiverName="Voggah Deathgrip" GiverId="13817" />
 
@@ -738,9 +774,82 @@
 		</While>
 
 		<TurnIn QuestName="March of the Stormpike" QuestId="28506" TurnInName="High Warlord Cromush" TurnInId="48545" />
+		<PickUp QuestName="Breaking the Hand" QuestId="28556" GiverName="High Warlord Cromush" GiverId="48545" />
+		<PickUp QuestName="Cry of the Banshee" QuestId="28538" GiverName="Melisara" GiverId="2278" />
 
+			<CustomBehavior File="CombatUseItemOnV2" QuestId="28538" ItemId="64445" MobId1="48742" MobId2="48741"
+				UseWhenMobHasHealthPercent="35" 
+				MaxRangeToUseItem="45" 
+				UseItemStrategy="UseItemContinuouslyOnTargetDontDefend" 
+				RecallPetAtMobPercentHealth="100" >
+          		<HuntingGrounds>
+					<Hotspot X="332.1251" Y="-835.2551" Z="133.4863" />
+					<Hotspot X="259.4657" Y="-829.563" Z="144.1082" />
+					<Hotspot X="201.4244" Y="-865.65" Z="156.6309" />
+          		</HuntingGrounds>
+      		</CustomBehavior>
+
+      		<While Condition="HasQuest(28556) &amp;&amp; !IsObjectiveComplete(1, 28556)">
+				<RunTo X="238.5361" Y="-846.3417" Z="147.0255" />
+				<CustomBehavior File="Misc\RunLua" Lua="UseItemByName(64471)" WaitTime="4000" />
+			</While>
+
+		<If Condition="HasQuest(28538) &amp;&amp; IsQuestCompleted(28538)">
+			<CustomBehavior File="CompleteLogQuest" QuestId="28538" />
+		</If>
+
+			<While Condition="HasQuest(28556) &amp;&amp; !IsObjectiveComplete(2, 28556)">
+				<RunTo X="-35.22478" Y="-553.444" Z="151.1918" />
+				<CustomBehavior File="Misc\RunLua" Lua="UseItemByName(64471)" WaitTime="4000" />
+			</While>
+
+			<Objective QuestName="Decimation" QuestId="28566" Type="KillMob" MobId="48880" KillCount="1" />
+			<Objective QuestName="Decimation" QuestId="28566" Type="KillMob" MobId="48878" KillCount="12" />
+
+		<If Condition="HasQuest(28566) &amp;&amp; IsQuestCompleted(28566)">
+			<CustomBehavior File="CompleteLogQuest" QuestId="28566" />
+		</If>
+		<While Condition="!HasQuest(28604) &amp;&amp; !IsQuestCompleted(28604)">
+			<CustomBehavior File="ForcedDismount" />
+		 	<CustomBehavior File="InteractWith" MobId="49035" CollectionDistance="8" />
+		 	<CustomBehavior File="RunMacro" Macro="/click QuestFrameAcceptButton" WaitTime="1000" />
+		</While>
+
+			<While Condition="HasQuest(28603) &amp;&amp; !IsObjectiveComplete(1, 28603)">
+				<CustomBehavior File="InteractWith" MobId="48922" WaitTime="5" InteractByGossipOptions="1" X="-108.2129" Y="-310.6942" Z="141.8421" />
+			</While>
+
+			<While Condition="HasQuest(28603) &amp;&amp; !IsObjectiveComplete(2, 28603)">
+				<CustomBehavior File="InteractWith" MobId="48923" WaitTime="5" InteractByGossipOptions="1" X="-137.8171" Y="-264.7516" Z="143.5298" />
+			</While>
+
+			<If Condition="HasQuest(28604) &amp;&amp; !IsQuestCompleted(28604)">
+				<RunTo X="-104.9449" Y="-322.0128" Z="141.7526" />
+				<CustomBehavior File="Misc\RunLua" Lua="UseItemByName(64471)" WaitTime="3000" />
+				<RunTo X="-107.2994" Y="-287.1999" Z="143.7803" />
+				<CustomBehavior File="Misc\RunLua" Lua="UseItemByName(64471)" WaitTime="3000" />
+				<RunTo X="-129.9378" Y="-257.8365" Z="143.7188" />
+				<CustomBehavior File="Misc\RunLua" Lua="UseItemByName(64471)" WaitTime="3000" />
+				<RunTo X="-180.4888" Y="-296.2409" Z="154.6315" />
+				<CustomBehavior File="Misc\RunLua" Lua="UseItemByName(64471)" WaitTime="3000" />
+			</If>
+
+			<Objective QuestName="Infiltration" QuestId="28603" Type="KillMob" MobId="48924" KillCount="1" />
+
+		<If Condition="HasQuest(28603) &amp;&amp; IsQuestCompleted(28603)">
+			<CustomBehavior File="CompleteLogQuest" QuestId="28603" />
+		</If>
 
 		<CustomBehavior File="Halt" />
+
+
+
+
+
+<CustomBehavior File="Halt" />
+		<TurnIn QuestName="Breaking the Hand" QuestId="28556" TurnInName="High Warlord Cromush" TurnInId="48545" />
+
+
 
 		<TurnIn QuestName="Eastpoint Tower" QuestId="28620" TurnInName="Nils Beerot" TurnInId="49201" />
 
