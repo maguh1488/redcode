@@ -359,7 +359,7 @@
 				<While Condition="HasQuest(10072) &amp;&amp; !IsQuestCompleted(10072)">
 					<CustomBehavior File="CastSpellOn" SpellId="589" MobId="44937" NumOfTimes="5" MobHpPercentLeft="100" Range="40" X="10377.63" Y="-6362.693" Z="35.69999" />
 				</While>
-				<TurnIn QuestName="Learning the Word" QuestId="10072" TurnInName="Well Watcher Solanian" TurnInId="15295" />
+				<TurnIn QuestName="Learning the Word" QuestId="10072" TurnInName="Matron Arena" TurnInId="15284" />
 			</If>
 
 			<If Condition="Me.Class == WoWClass.Mage">
