@@ -1,0 +1,31 @@
+=============================================
+======ZONE PROFILE: HILLSBRAD FOOTHILLS======
+=============================================
+== Quest: Welcome to the Machine ID: 28096 ==
+======================================================================
+== Synopsis: You pretend to be a quest giver, bot thinks it's stuck.==
+======================================================================
+== Objectives(1,2,3): Player jumps on a horse vehicle with no controls, 
+movement, or way off [without abandoning quest]. Once you mount the horse
+the first automatically runs in, the other 2 are summoned by completing the
+gossip of the one before it.  You complete the dialog and it moves along.
+First NPC has 2 gossip buttons, the second and third have 3. 
+Auto-Dismounts horse and you can resume normal turn-in.
+== Workaround?: Was able to stitch together logoutforinactivity set to false
+to stop it from logging out, and then waittimer/interact with. 
+
+===========================================
+== Quest: Heroes of the Horde! ID: 28400 ==
+=================================================================
+== Synopsis: Area quest phase start, loot mob, wait till done. ==
+=================================================================
+== Objectives(1,2): You need to run to the top of a hill, our out
+and back up to initiate a phased quest. Wait for Orkus's speech,
+then 1 Gossip menu to start it. He charges in and kills a mob you
+have to loot. The moment you loot plans from it the first objective
+is complete and a vehicle auto-snatches you up. Objective 2 is simply
+waiting out the ride and speeches in Tarren mill.
+== Workaround?: He acts as a pet so I force the quest pickup at a 
+specific location on the island so it can run into the area. Waittime
+then Interactwiths seem to work somewhat, but the bot really hates 
+vehicles so I kept the inactivity timer disabled.
