@@ -434,7 +434,7 @@
 
 		<CustomBehavior File="Message" Text="Compiling Quests: Southwest Ghostlands" LogColor="Cyan" />
 
-		<PickUp QuestName="Wanted: Knucklerot and Luzran" QuestId="9156" GiverName="Wanted Poster" GiverId="16200" />
+		<PickUp QuestName="Wanted: Knucklerot and Luzran" QuestId="9156" GiverName="Wanted Poster" GiverId="181147" X="7571.501" Y="-6876.861" Z="96.04155" />
 		<PickUp QuestName="The Sanctum of the Sun" QuestId="9151" GiverName="Magister Darenis" GiverId="16199" />
 		<TurnIn QuestName="Investigate the Amani Catacombs" QuestId="9193" TurnInName="Advisor Valwyn" TurnInId="16289" />
 		<TurnIn QuestName="Troll Juju" QuestId="9199" TurnInName="Deathstalker Maltendis" TurnInId="16251" />

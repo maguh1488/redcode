@@ -815,6 +815,11 @@
 		 	<CustomBehavior File="RunMacro" Macro="/click QuestFrameAcceptButton" WaitTime="1000" />
 		</While>
 
+			<While Condition="HasQuest(28556) &amp;&amp; !IsObjectiveComplete(3, 28556)">
+				<RunTo X="7593.906" Y="-6790.232" Z="85.74323" />
+				<CustomBehavior File="Misc\RunLua" Lua="UseItemByName(64471)" WaitTime="4000" />
+			</While>
+
 			<While Condition="HasQuest(28603) &amp;&amp; !IsObjectiveComplete(1, 28603)">
 				<CustomBehavior File="InteractWith" MobId="48922" WaitTime="5" InteractByGossipOptions="1" X="-108.2129" Y="-310.6942" Z="141.8421" />
 			</While>
