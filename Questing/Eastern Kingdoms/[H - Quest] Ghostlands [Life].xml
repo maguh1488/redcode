@@ -627,7 +627,9 @@
 
 		<TurnIn QuestName="Wanted: Knucklerot and Luzran" QuestId="9156" TurnInName="Deathstalker Rathiel" TurnInId="16200" />
 
-			<Objective QuestName="The Traitor's Destruction" QuestId="9167" Type="CollectItem" ItemId="22653" CollectCount="1" />
+            <If Condition="Me.Level &gt;= 24">
+                <Objective QuestName="The Traitor's Destruction" QuestId="9167" Type="CollectItem" ItemId="22653" CollectCount="1" />
+            </If>
 
 		<TurnIn QuestName="The Traitor's Destruction" QuestId="9167" TurnInName="Magister Kaendris" TurnInId="16239" />
 		

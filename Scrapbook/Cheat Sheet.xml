@@ -1,0 +1,29 @@
+<HBProfile>
+	<QuestOrder>
+		<!--Use This for Button Name-->
+		<!--/run print(GetMouseFocus():GetName())-->
+
+		<!--Botless WoWhead Frameworks-->
+		<PickUp QuestName="" QuestId="" GiverName="" GiverId="" />
+		<TurnIn QuestName="" QuestId="" TurnInName="" TurnInId="" />
+
+		<!--Common Behaviors-->
+		<CustomBehavior File="Message" Text="Initializing Settings" LogColor="Cyan" />
+		<CustomBehavior File="Message" Text="Compiling Quests: " LogColor="Cyan" />
+		<CustomBehavior File="Message" Text="Warning!: " LogColor="Orange" />
+
+		<CustomBehavior File="UserSettings" LootMobs="True" UseFlightPaths="True" PullDistance="25" />
+
+		<CustomBehavior File="SetHearthstone" MobId="" X="" Y="" Z="" />
+		<CustomBehavior File="ForceSetVendor" DoSell="True" DoRepair="True" DoMail="True" />
+
+		<!--Common Conditions-->
+		<If Condition="HasQuest() &amp;&amp; !IsQuestCompleted()"></If>
+		<If Condition="HasQuest() &amp;&amp; !IsObjectiveComplete(1,)"></If>
+		<If Condition="HasQuest()"></If>
+		<If Condition="HasItem()"></If>
+		<If Condition="!IsAchievementCompleted(,)"></If>
+		<While Condition="GetItemCount() &gt;= 10"></While>
+
+	</QuestOrder>
+</HBProfile>
