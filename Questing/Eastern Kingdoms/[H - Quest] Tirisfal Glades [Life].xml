@@ -1,0 +1,258 @@
+<HBProfile>
+	<Name>[H - Quest] Tirisfal Glades [Life]</Name>
+
+	<MinLevel>1</MinLevel>
+	<MaxLevel>91</MaxLevel>
+
+	<MinDurability>0.2</MinDurability>
+	<MinFreeBagSlots>2</MinFreeBagSlots>
+
+	<MailGrey>False</MailGrey>
+	<MailWhite>False</MailWhite>
+	<MailGreen>True</MailGreen>
+	<MailBlue>True</MailBlue>
+	<MailPurple>True</MailPurple>
+   
+	<SellGrey>True</SellGrey>
+	<SellWhite>True</SellWhite>
+	<SellGreen>True</SellGreen>
+	<SellBlue>False</SellBlue>
+	<SellPurple>False</SellPurple>
+
+	<!--Version 1.0-->
+
+	<AvoidMobs>
+ 	</AvoidMobs>
+
+	<Mailboxes>
+		<!--Deathknell Mailbox-->
+		<Mailbox X="1843.634" Y="1584.736" Z="93.72722" />
+	</Mailboxes>
+
+	<Vendors>
+		<!--Deathknell Vendors-->
+		<Vendor Name="Joshua Kien" Entry="2115" Type="Food" X="1866.022" Y="1574.447" Z="94.31401" />
+		<Vendor Name="Archibald Kava" Entry="2113" Type="Repair" X="1865.681" Y="1568.675" Z="94.31359" />
+		<!--Carlston Estate Vendors-->
+		<Vendor Name="Franklin Brinklestein" Entry="44034" Type="Food" X="2234.77" Y="1021.9" Z="36.44947" />
+		<Vendor Name="Gordo" Entry="10666" Type="Food" X="2232.393" Y="997.4209" Z="36.7075" />
+
+	</Vendors>
+
+	<Blackspots>
+	</Blackspots>
+
+	<Quest Id="24971" Name="Assault on the Rotbrain Encampment">
+		<Objective Type="KillMob" MobId="49424" KillCount="1">
+			<Hotspots>
+				<Hotspot X="1844.051" Y="1341.314" Z="78.00833" />
+				<Hotspot X="1817.298" Y="1304.038" Z="94.45231" />
+				<Hotspot X="1792.326" Y="1353.829" Z="88.382" />
+				<Hotspot X="1757.151" Y="1360.743" Z="93.58543" />
+			</Hotspots>
+		</Objective>
+		<Objective Type="KillMob" MobId="49422" KillCount="8">
+			<Hotspots>
+				<Hotspot X="1844.051" Y="1341.314" Z="78.00833" />
+				<Hotspot X="1817.298" Y="1304.038" Z="94.45231" />
+				<Hotspot X="1792.326" Y="1353.829" Z="88.382" />
+				<Hotspot X="1757.151" Y="1360.743" Z="93.58543" />
+			</Hotspots>
+		</Objective>
+	</Quest>
+
+
+	<QuestOrder>
+		<CustomBehavior File="Message" Text="Initializing Settings" LogColor="Cyan" />
+		<CustomBehavior File="UserSettings" LootMobs="True" UseFlightPaths="True" PullDistance="25" />
+
+		<CustomBehavior File="Message" Text="Compiling Quests: Deathknell" LogColor="Cyan" />
+
+		<PickUp QuestName="Fresh Out of the Grave" QuestId="24959" GiverName="Agatha" GiverId="49044" />
+		<TurnIn QuestName="Fresh Out of the Grave" QuestId="24959" TurnInName="Undertaker Mordo" TurnInId="1568" />
+		<PickUp QuestName="The Shadow Grave" QuestId="28608" GiverName="Undertaker Mordo" GiverId="1568" />
+		
+			<Objective QuestName="The Shadow Grave" QuestId="28608" Type="CollectItem" ItemId="64582" CollectCount="1" />
+			<Objective QuestName="The Shadow Grave" QuestId="28608" Type="CollectItem" ItemId="64581" CollectCount="1" />
+		
+		<TurnIn QuestName="The Shadow Grave" QuestId="28608" TurnInName="Undertaker Mordo" TurnInId="1568" />
+		<PickUp QuestName="Those That Couldn't Be Saved" QuestId="26799" GiverName="Undertaker Mordo" GiverId="1568" />
+		<PickUp QuestName="The Wakening" QuestId="24960" GiverName="Caretaker Caice" GiverId="2307" />
+
+			<CustomBehavior File="InteractWith" QuestId="24960" QuestObjectiveIndex="2" MobId="49230" NumOfTimes="10" GossipOptions="1, 1" X="1750.27" Y="1640.774" Z="117.7434" />
+			<CustomBehavior File="InteractWith" QuestId="24960" QuestObjectiveIndex="1" MobId="38895" NumOfTimes="10" GossipOptions="1, 1" X="1754.847" Y="1666.377" Z="121.3625" />
+			<CustomBehavior File="InteractWith" QuestId="24960" QuestObjectiveIndex="3" MobId="49231" NumOfTimes="10" GossipOptions="1, 1, 1" X="1740.547" Y="1702.709" Z="128.2191" />
+			<Objective QuestName="Those That Couldn't Be Saved" QuestId="26799" Type="KillMob" MobId="1501" KillCount="6" />
+
+		<TurnIn QuestName="Those That Couldn't Be Saved" QuestId="26799" TurnInName="Undertaker Mordo" TurnInId="1568" />
+		<TurnIn QuestName="The Wakening" QuestId="24960" TurnInName="Caretaker Caice" TurnInId="2307" />
+		<PickUp QuestName="Beyond the Graves" QuestId="25089" GiverName="Caretaker Caice" GiverId="2307" />
+		<TurnIn QuestName="Beyond the Graves" QuestId="25089" TurnInName="Deathguard Saltain" TurnInId="1740" />
+		<PickUp QuestName="Recruitment" QuestId="26800" GiverName="Deathguard Saltain" GiverId="1740" />
+		<PickUp QuestName="Scourge on our Perimeter" QuestId="26801" GiverName="Shadow Priest Sarvis" GiverId="1569" />
+			
+			<CustomBehavior File="InteractWith" QuestId="26800" MobId="49340" NumOfTimes="25" WaitTime="1000" CollectionDistance="950" X="1917.501" Y="1531.432" Z="86.90942" />
+			<Objective QuestName="Scourge on our Perimeter" QuestId="26801" Type="KillMob" MobId="1890" KillCount="8" />
+
+		<TurnIn QuestName="Recruitment" QuestId="26800" TurnInName="Deathguard Saltain" TurnInId="1740" />
+		<TurnIn QuestName="Scourge on our Perimeter" QuestId="26801" TurnInName="Shadow Priest Sarvis" TurnInId="1569" />
+
+		<If Condition="Me.Class == WoWClass.Warrior">
+			<PickUp QuestName="Simple Scroll" QuestId="3095" GiverId="1569" GiverName="Shadow Priest Sarvis" />
+			<PickUp QuestName="The Truth of the Grave" QuestId="24961" GiverName="Novice Elreth" GiverId="1661" />
+			<TurnIn QuestName="Simple Scroll" QuestId="3095" TurnInId="2119" TurnInName="Dannal Stern" />
+			<PickUp QuestName="Charging into Battle" QuestId="24969" GiverId="2119" GiverName="Dannal Stern" />
+			<If Condition="HasQuest(24969) &amp;&amp; !IsQuestCompleted(24969)">
+				<RunTo X="1833.566" Y="1607.483" Z="95.68764" />
+				<CustomBehavior File="CastSpellOn" SpellId="100" QuestId="24969" MobId="44794" NumOfTimes="50" MobHpPercentLeft="100" MinRange="8" Range="25" X="1833.566" Y="1607.483" Z="95.68764" />
+			</If>
+			<TurnIn QuestName="Charging into Battle" QuestId="24969" TurnInId="2119" TurnInName="Dannal Stern" />
+		</If>
+
+		<If Condition="Me.Class == WoWClass.Monk">
+			<PickUp QuestName="Scribbled Scroll" QuestId="31146" GiverId="1569" GiverName="Shadow Priest Sarvis" />
+			<PickUp QuestName="The Truth of the Grave" QuestId="24961" GiverName="Novice Elreth" GiverId="1661" />
+			<TurnIn QuestName="Scribbled Scroll" QuestId="31146" TurnInName="Ting, Strong of Stomach" TurnInId="63272" X="1859.834" Y="1568.839" Z="94.31393" />
+			<PickUp QuestName="Tiger Palm" QuestId="31147" GiverName="Ting, Strong of Stomach" GiverId="63272" X="1857.422" Y="1568.047" Z="94.31378" />
+			<While Condition="((HasQuest(31147)) &amp;&amp; (!IsQuestCompleted(31147)))">
+				<CustomBehavior File="CastSpellOn" SpellId="100780" QuestId="31147" MobId="44794" NumOfTimes="1" MobHpPercentLeft="100" MinRange="5" X="1833.566" Y="1607.483" Z="95.68764" />
+				<CustomBehavior File="CastSpellOn" SpellId="100787" QuestId="31147" MobId="44794" NumOfTimes="1" MobHpPercentLeft="100" MinRange="5" X="1833.566" Y="1607.483" Z="95.68764" />
+			</While>
+			<TurnIn QuestName="Tiger Palm" QuestId="31147" TurnInName="Ting, Strong of Stomach" TurnInId="63272" X="1857.422" Y="1568.047" Z="94.31378" />
+		</If>
+			
+		<If Condition="Me.Class == WoWClass.Hunter">
+			<PickUp QuestName="Trail-Worn Scroll" QuestId="24962" GiverId="1569" GiverName="Shadow Priest Sarvis" />
+			<PickUp QuestName="The Truth of the Grave" QuestId="24961" GiverName="Novice Elreth" GiverId="1661" />
+			<TurnIn QuestName="Trail-Worn Scroll" QuestId="24962" TurnInId="38911" TurnInName="Xavier the Huntsman" />
+			<PickUp QuestName="The Thrill of the Hunt" QuestId="24964" GiverId="38911" GiverName="Xavier the Huntsman" />
+			<If Condition="HasQuest(24964) &amp;&amp; !IsQuestCompleted(24964)">
+				<RunTo X="1833.566" Y="1607.483" Z="95.68764" />
+				<CustomBehavior File="CastSpellOn" SpellId="56641" QuestId="24964" MobId="44794" NumOfTimes="50" MobHpPercentLeft="100" Range="40" X="1833.566" Y="1607.483" Z="95.68764" />
+			</If>
+			<TurnIn QuestName="The Thrill of the Hunt" QuestId="24964" TurnInId="38911" TurnInName="Xavier the Huntsman" />
+		</If>
+
+		<If Condition="Me.Class == WoWClass.Rogue">
+			<PickUp QuestName="Encrypted Scroll" QuestId="3096" GiverId="1569" GiverName="Shadow Priest Sarvis" />
+			<PickUp QuestName="The Truth of the Grave" QuestId="24961" GiverName="Novice Elreth" GiverId="1661" />
+			<TurnIn QuestName="Encrypted Scroll" QuestId="3096" TurnInId="2122" TurnInName="David Trias" />
+			<PickUp QuestName="Stab!" QuestId="24967" GiverId="2122" GiverName="David Trias" />
+			<While Condition="HasQuest(24967) &amp;&amp; !IsQuestCompleted(24967)">
+					<CustomBehavior File="CastSpellOn" SpellId="1752" QuestId="24967" MobId="44794" NumOfTimes="2" MobHpPercentLeft="100" Range="5" X="1833.566" Y="1607.483" Z="95.68764" />
+					<CustomBehavior File="CastSpellOn" SpellId="2098" QuestId="24967" MobId="44794" NumOfTimes="1" MobHpPercentLeft="100" Range="5" X="1833.566" Y="1607.483" Z="95.68764" />
+			</While>
+			<TurnIn QuestName="Stab!" QuestId="24967" TurnInId="2122" TurnInName="David Trias" />
+		</If>
+
+		<If Condition="Me.Class == WoWClass.Priest">
+			<PickUp QuestName="Hallowed Scroll" QuestId="3097" GiverId="1569" GiverName="Shadow Priest Sarvis" />
+			<PickUp QuestName="The Truth of the Grave" QuestId="24961" GiverName="Novice Elreth" GiverId="1661" />
+			<TurnIn QuestName="Hallowed Scroll" QuestId="3097" TurnInId="2123" TurnInName="Dark Cleric Duesten" />
+			<PickUp QuestName="Of Light and Shadows" QuestId="24966" GiverId="2123" GiverName="Dark Cleric Duesten" />
+			<If Condition="HasQuest(24966) &amp;&amp; !IsQuestCompleted(24966)">
+				<CustomBehavior File="CastSpellOn" SpellId="589" QuestId="24966" MobId="44794" NumOfTimes="50" Range="40" X="1833.566" Y="1607.483" Z="95.68764" />
+			</If>	
+			<TurnIn QuestName="Of Light and Shadows" QuestId="24966" TurnInId="2123" TurnInName="Dark Cleric Duesten" />
+		</If>
+
+		<If Condition="Me.Class == WoWClass.Mage">
+			<PickUp QuestName="Glyphic Scroll" QuestId="3098" GiverId="1569" GiverName="Shadow Priest Sarvis" />
+			<PickUp QuestName="The Truth of the Grave" QuestId="24961" GiverName="Novice Elreth" GiverId="1661" />
+			<TurnIn QuestName="Glyphic Scroll" QuestId="3098" TurnInId="2124" TurnInName="Isabella" />
+			<PickUp QuestName="Magic Training" QuestId="24965" GiverId="2124" GiverName="Isabella" />
+			<While Condition="HasQuest(24965) &amp;&amp; !IsQuestCompleted(24965)">
+				<RunTo X="1833.566" Y="1607.483" Z="95.68764" />
+				<CustomBehavior File="CastSpellOn" SpellId="122" QuestId="24965" MobId="44794" NumOfTimes="5" Range="12" X="1833.566" Y="1607.483" Z="95.68764" />
+			</While>
+			<TurnIn QuestName="Magic Training" QuestId="24965" TurnInId="2124" TurnInName="Isabella" />
+		</If>
+
+		<If Condition="Me.Class == WoWClass.Warlock">
+			<PickUp QuestName="Tainted Scroll" QuestId="3099" GiverId="1569" GiverName="Shadow Priest Sarvis" />
+			<PickUp QuestName="The Truth of the Grave" QuestId="24961" GiverName="Novice Elreth" GiverId="1661" />
+			<TurnIn QuestName="Tainted Scroll" QuestId="3099" TurnInId="2126" TurnInName="Maximillion" />
+			<PickUp QuestName="Dark Deeds" QuestId="24968" GiverId="2126" GiverName="Maximillion" />
+			<If Condition="HasQuest(24968) &amp;&amp; !IsQuestCompleted(24968)">
+				<CustomBehavior File="InteractWith" QuestId="24968" InteractByCastingSpellId="172" MobId="44794" NumOfTimes="50" Range="40" X="1833.566" Y="1607.483" Z="95.68764" />
+			</If>	
+			<TurnIn QuestName="Dark Deeds" QuestId="24968" TurnInId="2126" TurnInName="Maximillion" />
+		</If>
+
+			<CustomBehavior File="InteractWith" QuestId="24961" MobId="38910" WaitTime="8000" NumOfTimes="10" GossipOptions="1" X="1858.514" Y="1556.456" Z="94.78985" />
+
+		<TurnIn QuestName="The Truth of the Grave" QuestId="24961" TurnInName="Novice Elreth" TurnInId="1661" />
+		<PickUp QuestName="The Executor In the Field" QuestId="28672" GiverName="Novice Elreth" GiverId="1661" />
+		<TurnIn QuestName="The Executor In the Field" QuestId="28672" TurnInName="Executor Arren" TurnInId="1570" />
+		<PickUp QuestName="The Damned" QuestId="26802" GiverName="Executor Arren" GiverId="1570" />
+		
+			<Objective QuestName="The Damned" QuestId="26802" Type="CollectItem" ItemId="3265" CollectCount="4" />
+			<Objective QuestName="The Damned" QuestId="26802" Type="CollectItem" ItemId="3264" CollectCount="4" />
+		
+		<TurnIn QuestName="The Damned" QuestId="26802" TurnInName="Executor Arren" TurnInId="1570" />
+		<PickUp QuestName="Night Web's Hollow" QuestId="24973" GiverName="Executor Arren" GiverId="1570" />
+		
+			<Objective QuestName="Night Web's Hollow" QuestId="24973" Type="KillMob" MobId="1504" KillCount="8" />
+			<Objective QuestName="Night Web's Hollow" QuestId="24973" Type="KillMob" MobId="1505" KillCount="5" />
+		
+		<TurnIn QuestName="Night Web's Hollow" QuestId="24973" TurnInName="Executor Arren" TurnInId="1570" />
+		<PickUp QuestName="No Better Than the Zombies" QuestId="24970" GiverName="Executor Arren" GiverId="1570" />
+		<TurnIn QuestName="No Better Than the Zombies" QuestId="24970" TurnInName="Darnell" TurnInId="49425" />
+		<PickUp QuestName="Assault on the Rotbrain Encampment" QuestId="24971" GiverName="Darnell" GiverId="49425" />
+
+		<Objective QuestName="Assault on the Rotbrain Encampment" QuestId="24971" Type="KillMob" MobId="49422" KillCount="8" />
+		<Objective QuestName="Assault on the Rotbrain Encampment" QuestId="24971" Type="KillMob" MobId="49424" KillCount="1" />
+
+		<TurnIn QuestName="Assault on the Rotbrain Encampment" QuestId="24971" TurnInName="Shadow Priest Sarvis" TurnInId="1569" />
+		<PickUp QuestName="Vital Intelligence" QuestId="24972" GiverName="Shadow Priest Sarvis" GiverId="1569" />
+
+		<CustomBehavior File="Message" Text="Compiling Quests: Calston Estate" LogColor="Cyan" />
+
+		<TurnIn QuestName="Vital Intelligence" QuestId="24972" TurnInName="Deathguard Simmer" TurnInId="1519" />
+		<PickUp QuestName="Reaping the Reapers" QuestId="24978" GiverName="Deathguard Simmer" GiverId="1519" />
+		<PickUp QuestName="Fields of Grief" QuestId="24975" GiverName="Apothecary Johaan" GiverId="1518" />
+		<PickUp QuestName="Ever So Lonely" QuestId="24974" GiverName="Sedrick Calston" GiverId="38925" />
+
+			<Objective QuestName="Fields of Grief" QuestId="24975" Type="CollectItem" ItemId="2846" CollectCount="10" />
+			<Objective QuestName="Reaping the Reapers" QuestId="24978" Type="KillMob" MobId="1934" KillCount="10" />
+	
+			<!--Quest: Ever So Lonely-->
+			<While Condition="!IsQuestCompleted(24974)">
+				<If Condition="HasQuest(24974) &amp;&amp; !IsObjectiveComplete(1,24974)">
+					<CustomBehavior File="CombatUseItemOnV2" MobId="1544" MobId2="1543" ItemId="52059" 
+						UseItemStrategy="UseItemContinuouslyOnTargetDontDefend"
+						ItemAppliesAuraId="AssumeItemUseAlwaysSucceeds"
+						UseWhenMobHasHealthPercent="35" 
+						X="2523.696" Y="1441.149" Z="0.1288469" />
+				</If>
+				<DisableBehavior Name="Combat, Loot" />
+				<If Condition="HasQuest(24974) &amp;&amp; !IsObjectiveComplete(2,24974)">
+						<RunTo X="2224.982" Y="1011.006" Z="44.42598" />
+						<CustomBehavior File="WaitTimer" WaitTime="15000" />
+				</If>
+				<If Condition="!IsQuestCompleted(24974)">
+					<CustomBehavior File="Message" Text="Lost our Murloc Friend. Abandoning Quest." LogColor="Cyan" />
+					<CustomBehavior File="AbandonQuest" QuestId="24974" />
+					<PickUp QuestName="Ever So Lonely" QuestId="24974" GiverName="Sedrick Calston" GiverId="38925" />
+				</If>
+			</While>
+
+			<EnableBehavior Name="Combat, Loot" />
+
+		<TurnIn QuestName="Ever So Lonely" QuestId="24974" TurnInName="Sedrick Calston" TurnInId="38925" />
+		<TurnIn QuestName="Reaping the Reapers" QuestId="24978" TurnInName="Deathguard Simmer" TurnInId="1519" />
+		<PickUp QuestName="The Scarlet Palisade" QuestId="24980" GiverName="Deathguard Simmer" GiverId="1519" />
+		<TurnIn QuestName="Fields of Grief" QuestId="24975" TurnInName="Apothecary Johaan" TurnInId="1518" />
+		<PickUp QuestName="Variety is the Spice of Death" QuestId="24976" GiverName="Apothecary Johaan" GiverId="1518" />
+
+			<Objective QuestName="The Scarlet Palisade" QuestId="24980" Type="KillMob" MobId="1535" KillCount="10" />
+			<Objective QuestName="Variety is the Spice of Death" QuestId="24976" Type="CollectItem" ItemId="52067" CollectCount="4" />
+			<Objective QuestName="Variety is the Spice of Death" QuestId="24976" Type="CollectItem" ItemId="52066" CollectCount="4" />
+			<CustomBehavior File="InteractWith" QuestId="24976" QuestObjectiveIndex="3" MobId="38933" NumOfTimes="50" X="2562.249" Y="1506.252" Z="-1.546449" />
+
+		<TurnIn QuestName="Variety is the Spice of Death" QuestId="24976" TurnInName="Apothecary Johaan" TurnInId="1518" />
+		<TurnIn QuestName="The Scarlet Palisade" QuestId="24980" TurnInName="Deathguard Simmer" TurnInId="1519" />
+
+
+	</QuestOrder>
+</HBProfile>

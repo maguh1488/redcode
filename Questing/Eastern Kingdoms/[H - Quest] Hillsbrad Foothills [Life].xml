@@ -816,7 +816,7 @@
 		</While>
 
 			<While Condition="HasQuest(28556) &amp;&amp; !IsObjectiveComplete(3, 28556)">
-				<RunTo X="7593.906" Y="-6790.232" Z="85.74323" />
+				<RunTo X="-97.22154" Y="-285.6837" Z="143.7547" />
 				<CustomBehavior File="Misc\RunLua" Lua="UseItemByName(64471)" WaitTime="4000" />
 			</While>
 
@@ -853,9 +853,6 @@
 
 <CustomBehavior File="Halt" />
 		<TurnIn QuestName="Breaking the Hand" QuestId="28556" TurnInName="High Warlord Cromush" TurnInId="48545" />
-
-
-
 		<TurnIn QuestName="Eastpoint Tower" QuestId="28620" TurnInName="Nils Beerot" TurnInId="49201" />
 
 		
