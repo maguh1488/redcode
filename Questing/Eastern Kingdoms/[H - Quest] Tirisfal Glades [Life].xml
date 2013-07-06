@@ -27,6 +27,8 @@
 	<Mailboxes>
 		<!--Deathknell Mailbox-->
 		<Mailbox X="1843.634" Y="1584.736" Z="93.72722" />
+		<!--Brill Mailbox-->
+		<Mailbox X="2266.729" Y="290.8944" Z="33.69157" />
 	</Mailboxes>
 
 	<Vendors>
@@ -36,7 +38,9 @@
 		<!--Carlston Estate Vendors-->
 		<Vendor Name="Franklin Brinklestein" Entry="44034" Type="Food" X="2234.77" Y="1021.9" Z="36.44947" />
 		<Vendor Name="Gordo" Entry="10666" Type="Food" X="2232.393" Y="997.4209" Z="36.7075" />
-
+		<!--Brill Vendors-->
+		<Vendor Name="Innkeeper Renee" Entry="5688" Type="Food" X="2285.95" Y="282.613" Z="33.24677" />
+		<Vendor Name="Eliza Callen" Entry="2137" Type="Repair" X="2302.86" Y="288.523" Z="33.35718" />
 	</Vendors>
 
 	<Blackspots>
@@ -246,12 +250,117 @@
 		<PickUp QuestName="Variety is the Spice of Death" QuestId="24976" GiverName="Apothecary Johaan" GiverId="1518" />
 
 			<Objective QuestName="The Scarlet Palisade" QuestId="24980" Type="KillMob" MobId="1535" KillCount="10" />
-			<Objective QuestName="Variety is the Spice of Death" QuestId="24976" Type="CollectItem" ItemId="52067" CollectCount="4" />
-			<Objective QuestName="Variety is the Spice of Death" QuestId="24976" Type="CollectItem" ItemId="52066" CollectCount="4" />
-			<CustomBehavior File="InteractWith" QuestId="24976" QuestObjectiveIndex="3" MobId="38933" NumOfTimes="50" X="2562.249" Y="1506.252" Z="-1.546449" />
 
-		<TurnIn QuestName="Variety is the Spice of Death" QuestId="24976" TurnInName="Apothecary Johaan" TurnInId="1518" />
+			<If Condition="HasItem(52079) &amp;&amp; !IsQuestCompleted(24979)">
+				<PickUp QuestName="A Scarlet Letter" QuestId="24979" GiverType="Item" GiverName="A Scarlet Letter" GiverId="52079" />
+			</If>
+
+			<If Condition="HasQuest(24979) &amp;&amp; !IsQuestCompleted(24979)">
+				<RunTo X="2441.361" Y="1597.978" Z="72.15668" />
+				<CustomBehavior File="InteractWith" QuestId="24979" MobId="38999" InteractByGossipOptions="1,1,1" NonCompeteDistance="0" NumOfTimes="100" WaitTime="45000" X="2441.362" Y="1597.979" Z="72.15668" />
+			</If>
+
+			<Objective QuestName="Variety is the Spice of Death" QuestId="24976" Type="CollectItem" ItemId="52066" CollectCount="4" />
+			<CustomBehavior File="InteractWith" QuestId="24976" QuestObjectiveIndex="3" MobId="38933" NumOfTimes="50" X="2603.642" Y="1480.595" Z="-12.25606" />
+			<Objective QuestName="Variety is the Spice of Death" QuestId="24976" Type="CollectItem" ItemId="52067" CollectCount="4" />
+
+		<TurnIn QuestName="A Scarlet Letter" QuestId="24979" TurnInName="Deathguard Simmer" TurnInId="1519" />
 		<TurnIn QuestName="The Scarlet Palisade" QuestId="24980" TurnInName="Deathguard Simmer" TurnInId="1519" />
+		<TurnIn QuestName="Variety is the Spice of Death" QuestId="24976" TurnInName="Apothecary Johaan" TurnInId="1518" />
+		<PickUp QuestName="Johaan's Experiment" QuestId="24977" GiverName="Apothecary Johaan" GiverId="1518" />
+		<TurnIn QuestName="Johaan's Experiment" QuestId="24977" TurnInName="Captured Scarlet Zealot" TurnInId="1931" />
+		<PickUp QuestName="Gordo's Task" QuestId="25038" GiverName="Gordo" GiverId="10666" />
+		
+			<Objective QuestName="Gordo's Task" QuestId="25038" Type="CollectItem" ItemId="12737" CollectCount="3" />
+		
+		<TurnIn QuestName="Gordo's Task" QuestId="25038" TurnInName="Junior Apothecary Holland" TurnInId="10665" />
+
+		<CustomBehavior File="Message" Text="Compiling Quests: Brill" LogColor="Cyan" />
+
+		<PickUp QuestName="Darkhound Pounding" QuestId="24990" GiverName="Junior Apothecary Holland" GiverId="10665" />
+
+		<If Condition="Me.Race == WoWRace.Undead">
+			<PickUp QuestName="Supplying Brill" QuestId="6321" GiverName="Deathguard Morris" GiverId="1745" />
+		</If>
+
+		<PickUp QuestName="A Thorn in our Side" QuestId="24981" GiverName="Executor Zygand" GiverId="1515" />
+		<PickUp QuestName="Forsaken Duties" QuestId="24983" GiverName="Magistrate Sevren" GiverId="1499" />
+
+		<If Condition="Me.Race == WoWRace.Undead">
+			<TurnIn QuestName="Supplying Brill" QuestId="6321" TurnInName="Anette Williams" TurnInId="43124" />
+			<PickUp QuestName="Ride to the Undercity" QuestId="6323" GiverName="Anette Williams" GiverId="43124" />
+			<TurnIn QuestName="Ride to the Undercity" QuestId="6323" TurnInName="Gordon Wendham" TurnInId="4556" />
+			<PickUp QuestName="Michael Garrett" QuestId="6322" GiverName="Gordon Wendham" GiverId="4556" />
+			<TurnIn QuestName="Michael Garrett" QuestId="6322" TurnInName="Michael Garrett" TurnInId="4551" />
+			<PickUp QuestName="Return to Morris" QuestId="6324" GiverName="Michael Garrett" GiverId="4551" />
+			<TurnIn QuestName="Return to Morris" QuestId="6324" TurnInName="Deathguard Morris" TurnInId="1745" />
+		</If>
+		
+			<Objective QuestName="A Thorn in our Side" QuestId="24981" Type="KillMob" MobId="1537" KillCount="3" />
+			<Objective QuestName="A Thorn in our Side" QuestId="24981" Type="KillMob" MobId="1536" KillCount="3" />
+			<Objective QuestName="A Thorn in our Side" QuestId="24981" Type="CollectItem" ItemId="52077" CollectCount="1" />
+			<Objective QuestName="Darkhound Pounding" QuestId="24990" Type="CollectItem" ItemId="2858" CollectCount="5" />
+
+		<TurnIn QuestName="Forsaken Duties" QuestId="24983" TurnInName="Deathguard Linnea" TurnInId="1495" />
+		<PickUp QuestName="The Chill of Death" QuestId="24988" GiverName="Gretchen Dedmar" GiverId="1521" />
+			
+			<Objective QuestName="The Chill of Death" QuestId="24988" Type="CollectItem" ItemId="2876" CollectCount="5" />
+		
+		<TurnIn QuestName="The Chill of Death" QuestId="24988" TurnInName="Gretchen Dedmar" TurnInId="1521" />
+		<PickUp QuestName="Return to the Magistrate" QuestId="24989" GiverName="Deathguard Linnea" GiverId="1495" />
+		<TurnIn QuestName="Return to the Magistrate" QuestId="24989" TurnInName="Magistrate Sevren" TurnInId="1499" />
+
+		<If Condition="HasQuest(24992)">
+			<TurnIn QuestName="Escaped From Gilneas" QuestId="24992" TurnInName="Executor Zygand" TurnInId="1515" />
+		</If>
+
+		<TurnIn QuestName="A Thorn in our Side" QuestId="24981" TurnInName="Executor Zygand" TurnInId="1515" />
+
+		<If Condition="IsQuestCompleted(24992)">
+			<PickUp QuestName="Annihilate the Worgen" QuestId="24993" GiverName="Executor Zygand" GiverId="1515" />
+		</If>
+		<TurnIn QuestName="Darkhound Pounding" QuestId="24990" TurnInName="Junior Apothecary Holland" TurnInId="10665" />
+		<PickUp QuestName="Holland's Experiment" QuestId="24996" GiverName="Junior Apothecary Holland" GiverId="10665" />
+		<TurnIn QuestName="Holland's Experiment" QuestId="24996" TurnInName="Captured Mountaineer" TurnInId="2211" />
+
+			<If Condition="IsQuestCompleted(24992)">
+				<Objective QuestName="Annihilate the Worgen" QuestId="24993" Type="KillMob" MobId="38967" KillCount="5" />
+			</If>
+
+		<If Condition="IsQuestCompleted(24992)">
+			<TurnIn QuestName="Annihilate the Worgen" QuestId="24993" TurnInName="Executor Zygand" TurnInId="1515" />
+		</If>
+
+		<CustomBehavior File="Message" Text="Compiling Quests: Garren's Haunt" LogColor="Cyan" />
+
+		<PickUp QuestName="Garren's Haunt" QuestId="24991" GiverName="Junior Apothecary Holland" GiverId="10665" />
+		<TurnIn QuestName="Garren's Haunt" QuestId="24991" TurnInName="Apothecary Jerrod" TurnInId="38977" />
+		<PickUp QuestName="Doom Weed" QuestId="24994" GiverName="Apothecary Jerrod" GiverId="38977" />
+		<PickUp QuestName="Graverobbers" QuestId="24997" GiverName="Apprentice Crispin" GiverId="38978" />
+			
+			<Objective QuestName="Doom Weed" QuestId="24994" Type="CollectItem" ItemId="13702" CollectCount="10" />
+			<Objective QuestName="Graverobbers" QuestId="24997" Type="KillMob" MobId="1941" KillCount="8" />
+			<Objective QuestName="Graverobbers" QuestId="24997" Type="KillMob" MobId="1675" KillCount="5" />
+			<Objective QuestName="Graverobbers" QuestId="24997" Type="CollectItem" ItemId="2834" CollectCount="6" />
+		
+		<TurnIn QuestName="Doom Weed" QuestId="24994" TurnInName="Apothecary Jerrod" TurnInId="38977" />
+		<PickUp QuestName="Off the Scales" QuestId="24995" GiverName="Apothecary Jerrod" GiverId="38977" />
+		<TurnIn QuestName="Graverobbers" QuestId="24997" TurnInName="Apprentice Crispin" TurnInId="38978" />
+		<PickUp QuestName="Maggot Eye" QuestId="24998" GiverName="Apprentice Crispin" GiverId="38978" />
+
+			<Objective QuestName="Off the Scales" QuestId="24995" Type="CollectItem" ItemId="2859" CollectCount="5" />
+			<Objective QuestName="Maggot Eye" QuestId="24998" Type="CollectItem" ItemId="3635" CollectCount="1" />
+
+		<TurnIn QuestName="Off the Scales" QuestId="24995" TurnInName="Apothecary Jerrod" TurnInId="38977" />
+		<TurnIn QuestName="Maggot Eye" QuestId="24998" TurnInName="Apprentice Crispin" TurnInId="38978" />
+		<PickUp QuestName="Planting the Seed of Fear" QuestId="24999" GiverName="Apprentice Crispin" GiverId="38978" />
+			
+			<If Condition="HasQuest(24999) &amp;&amp; !IsQuestCompleted(24999)">
+				<RunTo X="2955.555" Y="20.30797" Z="7.128024" />
+				<CustomBehavior File="SpecificQuests\24999-TirisfalGlades-PlantingtheSeedofFear" />
+			</If>
+		
+		<TurnIn QuestName="Planting the Seed of Fear" QuestId="24999" TurnInName="Apprentice Crispin" TurnInId="38978" />
 
 
 	</QuestOrder>
