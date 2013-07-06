@@ -7,8 +7,8 @@
 ======================================================================
 == Objectives(1,2,3): Player jumps on a horse vehicle with no controls, 
 movement, or way off [without abandoning quest]. Once you mount the horse
-the first automatically runs in, the other 2 are summoned by completing the
-gossip of the one before it.  You complete the dialog and it moves along.
+the first npc automatically runs in, the other 2 are summoned by completing
+the gossip of the one before it.  You complete the dialog and it moves along.
 First NPC has 2 gossip buttons, the second and third have 3. 
 Auto-Dismounts horse and you can resume normal turn-in.
 == Workaround?: Was able to stitch together logoutforinactivity set to false
