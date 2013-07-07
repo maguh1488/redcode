@@ -25,6 +25,8 @@
 	</Mailboxes>
 
 	<Vendors>
+		<!--Forsaken High Command Vendors-->
+		<Vendor Name="Apothecary Harrington" Entry="45491" Type="Food" X="1445.27" Y="1072.9" Z="60.46035" />
 	</Vendors>
 
 	<AvoidMobs>
@@ -33,8 +35,71 @@
 	<Blackspots>
 	</Blackspots>
 
+	<!--Guts and Gore; Maybe Not Attacking Bears-->
+
 	<QuestOrder>
-		<CustomBehavior File="Message" Text="Profile not made yet. Shutting Down." LogColor="Cyan" />
+		<CustomBehavior File="Message" Text="Profile not Complete! Shutting Down." LogColor="Cyan" />
 		<CustomBehavior File="Halt" />
+
+		<CustomBehavior File="Message" Text="Initializing Settings" LogColor="Cyan" />
+		<CustomBehavior File="UserSettings" LootMobs="True" UseFlightPaths="True" PullDistance="25" />
+
+		<CustomBehavior File="Message" Text="Compiling Quests: Forsaken High Command" LogColor="Cyan" />
+
+		<If Condition="HasQuest(26964)">
+			<TurnIn QuestName="Warchief's Command: Silverpine Forest!" QuestId="26964" TurnInName="Grand Executor Mortuus" TurnInId="44615" />
+		</If>
+		<PickUp QuestName="The Warchief Cometh" QuestId="26965" GiverName="Grand Executor Mortuus" GiverId="44615" />
+			
+			<While Condition="HasQuest(26965) &amp;&amp; !IsQuestCompleted(26965)">
+				<CustomBehavior File="WaitTimer" WaitTime="5000" GoalText="Waiting for Garrosh to Leave" />
+			</While>
+
+		<TurnIn QuestName="The Warchief Cometh" QuestId="26965" TurnInName="Grand Executor Mortuus" TurnInId="44615" />
+		<PickUp QuestName="The Gilneas Liberation Front" QuestId="26989" GiverName="Grand Executor Mortuus" GiverId="44615" />
+		<PickUp QuestName="Agony Abounds" QuestId="26992" GiverName="Apothecary Witherbloom" GiverId="44778" />
+		<PickUp QuestName="Guts and Gore" QuestId="26995" GiverName="High Apothecary Shana T'veen" GiverId="44784" />
+
+			<Objective QuestName="Agony Abounds" QuestId="26992" Type="CollectItem" ItemId="60741" CollectCount="8" />
+			<Objective QuestName="The Gilneas Liberation Front" QuestId="26989" Type="KillMob" MobId="44793" KillCount="10" />
+			<Objective QuestName="Guts and Gore" QuestId="26995" Type="CollectItem" ItemId="60742" CollectCount="6" />	
+		
+		<TurnIn QuestName="The Gilneas Liberation Front" QuestId="26989" TurnInName="Grand Executor Mortuus" TurnInId="44615" />
+		<TurnIn QuestName="Agony Abounds" QuestId="26992" TurnInName="Apothecary Witherbloom" TurnInId="44778" />
+		<TurnIn QuestName="Guts and Gore" QuestId="26995" TurnInName="High Apothecary Shana T'veen" TurnInId="44784" />
+		<PickUp QuestName="Iterating Upon Success" QuestId="26998" GiverName="High Apothecary Shana T'veen" GiverId="44784" />
+			
+			<While Condition="HasQuest(26998) &amp;&amp; !IsQuestCompleted(26998)">
+				<CustomBehavior File="InteractWith" QuestId="26998" MobId="44825" MobState="Alive" NonCompeteDistance="0" InteractByGossipOptions="1" X="1423.505" Y="1020.806" Z="52.55525" />
+				<!--Someone Really Enjoyed Complicating This Behavior-->
+				<CustomBehavior File="Vehicles\NoControlVehicle" QuestId="26998" MobId="1768" MobId2="1908" NumOfTimes="500" AttackButton="1" GoHomeButton="12" MaxRange="80" WaitTime="500" />
+				<CustomBehavior File="WaitTimer" WaitTime="25000" />
+			</While>
+		
+		<TurnIn QuestName="Iterating Upon Success" QuestId="26998" TurnInName="High Apothecary Shana T'veen" TurnInId="44784" />
+		<PickUp QuestName="Dangerous Intentions" QuestId="27039" GiverName="Deathstalker Commander Belmont" GiverId="44789" />
+		<TurnIn QuestName="Dangerous Intentions" QuestId="27039" TurnInType="Object" TurnInName="Abandoned Outhouse" TurnInId="205143" X="1304.182" Y="1184.322" Z="52.29048" />
+		<PickUp QuestName="Waiting to Exsanguinate" QuestId="27045" GiverType="Object" GiverName="Abandoned Outhouse" GiverId="205143" X="1304.182" Y="1184.322" Z="52.29048" />
+
+		  <While Condition="HasQuest(27045) &amp;&amp; !IsQuestCompleted(27045)">
+		  	<RunTo X="1312.918" Y="1210.172" Z="58.51078" />
+		  	<CustomBehavior File="WaitTimer" WaitTime="22000" />
+		    <CustomBehavior File="InteractWith" QuestId="27045" MobId="44894" NonCompeteDistance="0" X="1312.918" Y="1210.172" Z="58.51078" />
+		    <CustomBehavior File="WaitTimer" QuestId="27045" WaitTime="135000" />
+		  </While>
+
+		  <DisableBehavior Name="Combat" />
+
+		<TurnIn QuestName="Waiting to Exsanguinate" QuestId="27045" TurnInName="Deathstalker Commander Belmont" TurnInId="44789" />
+		<PickUp QuestName="Belmont's Report" QuestId="27056" GiverName="Deathstalker Commander Belmont" GiverId="44789" />
+		<TurnIn QuestName="Belmont's Report" QuestId="27056" TurnInName="Lady Sylvanas Windrunner" TurnInId="44365" />
+
+		<CustomBehavior File="Message" Text="Compiling Quests: Forsaken Rear Guard" LogColor="Cyan" />
+
+		<PickUp QuestName="The Warchief's Fleet" QuestId="27065" GiverName="Lady Sylvanas Windrunner" GiverId="44365" />
+		<TurnIn QuestName="The Warchief's Fleet" QuestId="27065" TurnInName="Admiral Hatchet" TurnInId="44916" />
+
+		<EnableBehavior Name="Combat" />
+
 	</QuestOrder>
 </HBProfile>
