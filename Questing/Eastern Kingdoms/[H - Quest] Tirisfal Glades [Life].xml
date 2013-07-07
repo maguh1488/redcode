@@ -32,6 +32,9 @@
 	</Mailboxes>
 
 	<Vendors>
+		<!--Deathknell-->
+		<Vendor Name="Joshua Kien" Entry="2115" Type="Food" X="1866.022" Y="1574.447" Z="94.31425" />
+		<Vendor Name="Archibald Kava" Entry="2113" Type="Repair" X="1865.681" Y="1568.675" Z="94.31359" />
 		<!--Carlston Estate Vendors-->
 		<Vendor Name="Franklin Brinklestein" Entry="44034" Type="Food" X="2234.77" Y="1021.9" Z="36.44947" />
 		<Vendor Name="Gordo" Entry="10666" Type="Food" X="2232.393" Y="997.4209" Z="36.7075" />
@@ -186,7 +189,7 @@
 			<TurnIn QuestName="Dark Deeds" QuestId="24968" TurnInId="2126" TurnInName="Maximillion" />
 		</If>
 
-			<CustomBehavior File="InteractWith" QuestId="24961" MobId="38910" WaitTime="8000" NumOfTimes="10" NonCompeteDistance="0" InteractByGossipOptions="1" WaitTime="2000" X="1858.514" Y="1556.456" Z="94.78985" />
+			<CustomBehavior File="InteractWith" QuestId="24961" MobId="38910" WaitTime="8000" NumOfTimes="10" NonCompeteDistance="0" InteractByGossipOptions="1" X="1858.514" Y="1556.456" Z="94.78985" />
 
 		<TurnIn QuestName="The Truth of the Grave" QuestId="24961" TurnInName="Novice Elreth" TurnInId="1661" />
 		<PickUp QuestName="The Executor In the Field" QuestId="28672" GiverName="Novice Elreth" GiverId="1661" />
@@ -282,12 +285,13 @@
 			<Objective QuestName="A Putrid Task" QuestId="25090" Type="CollectItem" ItemId="2855" CollectCount="7" />
 		
 		<TurnIn QuestName="A Putrid Task" QuestId="25090" TurnInName="Deathguard Dillinger" TurnInId="1496" />
-		<TurnIn QuestName="The New Forsaken" QuestId="24982" TurnInName="Magistrate Sevren" TurnInId="1499" />
-
-		<TurnIn QuestName="Gordo's Task" QuestId="25038" TurnInName="Junior Apothecary Holland" TurnInId="10665" />
 
 		<CustomBehavior File="Message" Text="Compiling Quests: Brill" LogColor="Cyan" />
 
+		<TurnIn QuestName="The New Forsaken" QuestId="24982" TurnInName="Magistrate Sevren" TurnInId="1499" />
+		<PickUp QuestName="Forsaken Duties" QuestId="24983" GiverName="Magistrate Sevren" GiverId="1499" />
+
+		<TurnIn QuestName="Gordo's Task" QuestId="25038" TurnInName="Junior Apothecary Holland" TurnInId="10665" />
 		<PickUp QuestName="Darkhound Pounding" QuestId="24990" GiverName="Junior Apothecary Holland" GiverId="10665" />
 
 		<If Condition="Me.Race == WoWRace.Undead">
@@ -295,15 +299,26 @@
 		</If>
 
 		<PickUp QuestName="A Thorn in our Side" QuestId="24981" GiverName="Executor Zygand" GiverId="1515" />
-		<PickUp QuestName="Forsaken Duties" QuestId="24983" GiverName="Magistrate Sevren" GiverId="1499" />
 
 		<If Condition="Me.Race == WoWRace.Undead">
 			<TurnIn QuestName="Supplying Brill" QuestId="6321" TurnInName="Anette Williams" TurnInId="43124" />
 			<PickUp QuestName="Ride to the Undercity" QuestId="6323" GiverName="Anette Williams" GiverId="43124" />
+
+				<If Condition="HasQuest(6323)">
+				  <RunTo X="2273.845" Y="373.5684" Z="35.66541" />
+				  <CustomBehavior File="TaxiRide" MobId="43124" DestName="Undercity" WaitTime="1000" />
+				</If>
+
 			<TurnIn QuestName="Ride to the Undercity" QuestId="6323" TurnInName="Gordon Wendham" TurnInId="4556" />
 			<PickUp QuestName="Michael Garrett" QuestId="6322" GiverName="Gordon Wendham" GiverId="4556" />
 			<TurnIn QuestName="Michael Garrett" QuestId="6322" TurnInName="Michael Garrett" TurnInId="4551" />
 			<PickUp QuestName="Return to Morris" QuestId="6324" GiverName="Michael Garrett" GiverId="4551" />
+
+				<If Condition="HasQuest(6324)">
+				  <RunTo X="1571.081" Y="268.1888" Z="-43.10265" />
+				  <CustomBehavior File="TaxiRide" MobId="4551" DestName="Brill" WaitTime="1000" />
+				</If>
+
 			<TurnIn QuestName="Return to Morris" QuestId="6324" TurnInName="Deathguard Morris" TurnInId="1745" />
 		</If>
 		
@@ -399,7 +414,7 @@
 			<TurnIn QuestName="The Haunted Mills" QuestId="25030" TurnInName="Coleman Farthing" TurnInId="1500" />
 		</If>
 		
-		<TurnIn QuestName="The Mills Overrun" QuestId="25004" TurnInName="Coleman Farthing" TurnInId="1500" />
+		<TurnIn QuestName="Deaths in the Family" QuestId="25029" TurnInName="Coleman Farthing" TurnInId="1500" />
 		<TurnIn QuestName="The Mills Overrun" QuestId="25004" TurnInName="Coleman Farthing" TurnInId="1500" />
 
 		<CustomBehavior File="Message" Text="Compiling Quests: The Bulwark" LogColor="Cyan" />
@@ -411,7 +426,7 @@
 			<While Condition="HasQuest(25006) &amp;&amp; !IsQuestCompleted(25006)">
 				<CustomBehavior File="InteractWith" MobId="39117" MobState="AliveNotInCombat" NonCompeteDistance="0" InteractByGossipOptions="1" X="2243.255" Y="232.4251" Z="34.5084" />
 				<RunTo X="2244.775" Y="233.0581" Z="41.81224" />
-				<CustomBehavior File="WaitTimer" QuestId="25006" WaitTime="40000" GoalText="Waiting for the Spirit" />
+				<CustomBehavior File="WaitTimer" QuestId="25006" WaitTime="90000" GoalText="Waiting for the Spirit" />
 			</While>
 
 		<TurnIn QuestName="The Grasp Weakens" QuestId="25006" TurnInName="Magistrate Sevren" TurnInId="1499" />
@@ -425,8 +440,8 @@
 			<Objective QuestName="Grisly Grizzlies" QuestId="25056" Type="CollectItem" ItemId="52270" CollectCount="5" />
 		
 		<TurnIn QuestName="At War With The Scarlet Crusade" QuestId="25009" TurnInName="High Executor Derrington" TurnInId="10837" />
+		<PickUp QuestName="A Deadly New Ally" QuestId="25010" GiverName="High Executor Derrington" GiverId="10837" />
 		<TurnIn QuestName="Grisly Grizzlies" QuestId="25056" TurnInName="Apothecary Dithers" TurnInId="11057" />
-		<PickUp QuestName="A Deadly New Ally" QuestId="25010" GiverName="High Executor Derrington" GiverId="10837" />\
 		<PickUp QuestName="A Little Oomph" QuestId="25013" GiverName="Apothecary Dithers" GiverId="11057" />
 		<TurnIn QuestName="A Deadly New Ally" QuestId="25010" TurnInName="Lieutenant Sanders" TurnInId="13158" />
 		<PickUp QuestName="A Daughter's Embrace" QuestId="25046" GiverName="Lieutenant Sanders" GiverId="13158" />
