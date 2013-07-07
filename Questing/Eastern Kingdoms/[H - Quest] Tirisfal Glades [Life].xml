@@ -110,7 +110,7 @@
 			<PickUp QuestName="Charging into Battle" QuestId="24969" GiverId="2119" GiverName="Dannal Stern" />
 			<If Condition="HasQuest(24969) &amp;&amp; !IsQuestCompleted(24969)">
 				<RunTo X="1833.566" Y="1607.483" Z="95.68764" />
-				<CustomBehavior File="CastSpellOn" SpellId="100" QuestId="24969" MobId="44794" NumOfTimes="50" MobHpPercentLeft="100" MinRange="8" Range="25" X="1833.566" Y="1607.483" Z="95.68764" />
+				<CustomBehavior File="InteractWith" QuestId="24969" InteractByCastingSpellId="100" MobId="44794" Range="25" MinRange="8" WaitTime="3000" X="1833.566" Y="1607.483" Z="95.68764" />
 			</If>
 			<TurnIn QuestName="Charging into Battle" QuestId="24969" TurnInId="2119" TurnInName="Dannal Stern" />
 		</If>
@@ -120,9 +120,9 @@
 			<PickUp QuestName="The Truth of the Grave" QuestId="24961" GiverName="Novice Elreth" GiverId="1661" />
 			<TurnIn QuestName="Scribbled Scroll" QuestId="31146" TurnInName="Ting, Strong of Stomach" TurnInId="63272" X="1859.834" Y="1568.839" Z="94.31393" />
 			<PickUp QuestName="Tiger Palm" QuestId="31147" GiverName="Ting, Strong of Stomach" GiverId="63272" X="1857.422" Y="1568.047" Z="94.31378" />
-			<While Condition="((HasQuest(31147)) &amp;&amp; (!IsQuestCompleted(31147)))">
-				<CustomBehavior File="CastSpellOn" SpellId="100780" QuestId="31147" MobId="44794" NumOfTimes="1" MobHpPercentLeft="100" MinRange="5" X="1833.566" Y="1607.483" Z="95.68764" />
-				<CustomBehavior File="CastSpellOn" SpellId="100787" QuestId="31147" MobId="44794" NumOfTimes="1" MobHpPercentLeft="100" MinRange="5" X="1833.566" Y="1607.483" Z="95.68764" />
+			<While Condition="HasQuest(31147) &amp;&amp; !IsQuestCompleted(31147)">
+				<CustomBehavior File="InteractWith" QuestId="31147" InteractByCastingSpellId="100780" MobId="44794" Range="5" WaitTime="1000" X="1833.566" Y="1607.483" Z="95.68764" />
+				<CustomBehavior File="InteractWith" QuestId="31147" InteractByCastingSpellId="100787" MobId="44794" Range="5" X="1833.566" Y="1607.483" Z="95.68764" />
 			</While>
 			<TurnIn QuestName="Tiger Palm" QuestId="31147" TurnInName="Ting, Strong of Stomach" TurnInId="63272" X="1857.422" Y="1568.047" Z="94.31378" />
 		</If>
@@ -134,7 +134,7 @@
 			<PickUp QuestName="The Thrill of the Hunt" QuestId="24964" GiverId="38911" GiverName="Xavier the Huntsman" />
 			<If Condition="HasQuest(24964) &amp;&amp; !IsQuestCompleted(24964)">
 				<RunTo X="1833.566" Y="1607.483" Z="95.68764" />
-				<CustomBehavior File="CastSpellOn" SpellId="56641" QuestId="24964" MobId="44794" NumOfTimes="50" MobHpPercentLeft="100" Range="40" X="1833.566" Y="1607.483" Z="95.68764" />
+				<CustomBehavior File="InteractWith" QuestId="24964" InteractByCastingSpellId="56641" MobId="44794" Range="40" WaitTime="2000" X="1833.566" Y="1607.483" Z="95.68764" />
 			</If>
 			<TurnIn QuestName="The Thrill of the Hunt" QuestId="24964" TurnInId="38911" TurnInName="Xavier the Huntsman" />
 		</If>
@@ -145,8 +145,9 @@
 			<TurnIn QuestName="Encrypted Scroll" QuestId="3096" TurnInId="2122" TurnInName="David Trias" />
 			<PickUp QuestName="Stab!" QuestId="24967" GiverId="2122" GiverName="David Trias" />
 			<While Condition="HasQuest(24967) &amp;&amp; !IsQuestCompleted(24967)">
-					<CustomBehavior File="CastSpellOn" SpellId="1752" QuestId="24967" MobId="44794" NumOfTimes="2" MobHpPercentLeft="100" Range="5" X="1833.566" Y="1607.483" Z="95.68764" />
-					<CustomBehavior File="CastSpellOn" SpellId="2098" QuestId="24967" MobId="44794" NumOfTimes="1" MobHpPercentLeft="100" Range="5" X="1833.566" Y="1607.483" Z="95.68764" />
+				<!--Needs Tweaking-->
+				<CustomBehavior File="CastSpellOn" SpellId="1752" QuestId="24967" MobId="44794" NumOfTimes="2" MobHpPercentLeft="100" Range="5" X="1833.566" Y="1607.483" Z="95.68764" />
+				<CustomBehavior File="CastSpellOn" SpellId="2098" QuestId="24967" MobId="44794" NumOfTimes="1" MobHpPercentLeft="100" Range="5" X="1833.566" Y="1607.483" Z="95.68764" />
 			</While>
 			<TurnIn QuestName="Stab!" QuestId="24967" TurnInId="2122" TurnInName="David Trias" />
 		</If>
@@ -185,7 +186,7 @@
 			<TurnIn QuestName="Dark Deeds" QuestId="24968" TurnInId="2126" TurnInName="Maximillion" />
 		</If>
 
-			<CustomBehavior File="InteractWith" QuestId="24961" MobId="38910" WaitTime="8000" NumOfTimes="10" GossipOptions="1" X="1858.514" Y="1556.456" Z="94.78985" />
+			<CustomBehavior File="InteractWith" QuestId="24961" MobId="38910" WaitTime="8000" NumOfTimes="10" NonCompeteDistance="0" InteractByGossipOptions="1" WaitTime="2000" X="1858.514" Y="1556.456" Z="94.78985" />
 
 		<TurnIn QuestName="The Truth of the Grave" QuestId="24961" TurnInName="Novice Elreth" TurnInId="1661" />
 		<PickUp QuestName="The Executor In the Field" QuestId="28672" GiverName="Novice Elreth" GiverId="1661" />
