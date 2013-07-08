@@ -24,6 +24,8 @@
 	<Mailboxes>
 		<!--Forsaken Rear Guard Mailbox-->
 		<Mailbox X="1078.974" Y="1586.654" Z="27.70355" />
+		<!--The Sepulcher Mailbox-->
+		<Mailbox X="484.1003" Y="1512.505" Z="135.0216" />
 	</Mailboxes>
 
 	<Vendors>
@@ -32,25 +34,25 @@
 		<!--Forsaken Rear Guard Vendors-->
 		<Vendor Name="Commander Hickley" Entry="45496" Type="Food" X="1097.57" Y="1587.29" Z="28.53036" />
 		<Vendor Name="&quot;Salty&quot; Gorgar" Entry="45497" Type="Repair" X="1036.46" Y="1581" Z="27.57658" />
+		<!--The Sepulcher Vendors-->
+		<Vendor Name="Innkeeper Bates" Entry="6739" Type="Food" X="471.135" Y="1500.55" Z="135.5222" />
+		<Vendor Name="Alexandre Lefevre" Entry="3552" Type="Repair" X="567.634" Y="1576.57" Z="132.2935" />
 	</Vendors>
 
 	<AvoidMobs>
-		<!--Elite Forest Ettin?-->
  	</AvoidMobs>
 
 	<Blackspots>
 	</Blackspots>
 
-	<!--Guts and Gore; Maybe Not Attacking Bears-->
-
 	<QuestOrder>
-		<CustomBehavior File="Message" Text="Profile not Complete! Shutting Down." LogColor="Cyan" />
-		<CustomBehavior File="Halt" />
+		<!--CustomBehavior File="Message" Text="Profile not Complete! Shutting Down." LogColor="Cyan" />
+		<CustomBehavior File="Halt" /-->
 
 		<CustomBehavior File="Message" Text="Initializing Settings" LogColor="Cyan" />
 		<CustomBehavior File="UserSettings" LootMobs="True" UseFlightPaths="True" PullDistance="25" />
 
-		<CustomBehavior File="Message" Text="Compiling Quests: Forsaken High Command" LogColor="Cyan" />
+	<CustomBehavior File="Message" Text="Compiling Quests: Forsaken High Command" LogColor="Cyan" />
 
 		<If Condition="HasQuest(26964)">
 			<TurnIn QuestName="Warchief's Command: Silverpine Forest!" QuestId="26964" TurnInName="Grand Executor Mortuus" TurnInId="44615" />
@@ -100,7 +102,7 @@
 		<PickUp QuestName="Belmont's Report" QuestId="27056" GiverName="Deathstalker Commander Belmont" GiverId="44789" />
 		<TurnIn QuestName="Belmont's Report" QuestId="27056" TurnInName="Lady Sylvanas Windrunner" TurnInId="44365" />
 
-		<CustomBehavior File="Message" Text="Compiling Quests: Forsaken Rear Guard" LogColor="Cyan" />
+	<CustomBehavior File="Message" Text="Compiling Quests: Forsaken Rear Guard" LogColor="Cyan" />
 
 		<PickUp QuestName="The Warchief's Fleet" QuestId="27065" GiverName="Lady Sylvanas Windrunner" GiverId="44365" />
 
@@ -112,7 +114,7 @@
 
 		<TurnIn QuestName="The Warchief's Fleet" QuestId="27065" TurnInName="Admiral Hatchet" TurnInId="44916" />
 
-		<EnableBehavior Name="Combat" />
+			<EnableBehavior Name="Combat" />
 
 		<PickUp QuestName="Steel Thunder" QuestId="27069" GiverName="Admiral Hatchet" GiverId="44916" />
 		<PickUp QuestName="Give 'em Hell!" QuestId="27073" GiverName="Warlord Torok" GiverId="44917" />
@@ -186,7 +188,7 @@
 		<TurnIn QuestName="Lost in the Darkness" QuestId="27093" TurnInName="Admiral Hatchet" TurnInId="44916" />
 		<TurnIn QuestName="Deeper into Darkness" QuestId="27094" TurnInName="Warlord Torok" TurnInId="44917" />
 
-		<CustomBehavior File="Message" Text="Compiling Quests: Fenris Isle" LogColor="Cyan" />
+	<CustomBehavior File="Message" Text="Compiling Quests: Fenris Isle" LogColor="Cyan" />
 
 		<PickUp QuestName="Orcs are in Order" QuestId="27096" GiverName="Admiral Hatchet" GiverId="44916" />
 		<TurnIn QuestName="Orcs are in Order" QuestId="27096" TurnInName="Lady Sylvanas Windrunner" TurnInId="44365" />
@@ -213,6 +215,48 @@
 			</While>
 
 		<TurnIn QuestName="No Escape" QuestId="27099" TurnInName="Lady Sylvanas Windrunner" TurnInId="44365" />
+
+		<CustomBehavior File="Message" Text="Compiling Quests: The Sepulcher" LogColor="Cyan" />
+
+		<PickUp QuestName="Lordaeron" QuestId="27098" GiverName="Lady Sylvanas Windrunner" GiverId="44365" />
+			
+			<While Condition="HasQuest(27098) &amp;&amp; !IsQuestCompleted(27098)">
+			  <CustomBehavior File="WaitTimer" WaitTime="15000" GoalText="Waiting for Sylvanas's Journey to End" />
+			</While>
+
+		<TurnIn QuestName="Lordaeron" QuestId="27098" TurnInName="Lady Sylvanas Windrunner" TurnInId="44365" />
+		<PickUp QuestName="Honor the Dead" QuestId="27180" GiverName="Lady Sylvanas Windrunner" GiverId="44365" />
+
+		<If Condition="!HasQuest(27226) &amp;&amp; !IsQuestCompleted(27226)">
+		  <CustomBehavior File="SetHearthstone" MobId="6739" X="472.2481" Y="1502.417" Z="135.5185" />
+		  <CustomBehavior File="ForceSetVendor" DoSell="True" DoRepair="True" DoMail="True" />
+		</If>
+
+		<PickUp QuestName="Hair of the Dog" QuestId="27226" GiverName="Warlord Torok" GiverId="44917" />
+		<PickUp QuestName="Reinforcements from Fenris" QuestId="27231" GiverName="Admiral Hatchet" GiverId="44916" />
+
+			<If Condition="HasQuest(27226) &amp;&amp; !IsQuestCompleted(27226)">
+				<CustomBehavior File="InteractWith" QuestId="27226" MobId="45196" NumOfTimes="1000" NotMoving="True" Range="10" InteractByUsingItemId="60870" CollectionDistance="1000" >
+					<HuntingGrounds>
+						<Hotspot X="649.7533" Y="1269.73" Z="81.34175" />
+						<Hotspot X="650.0343" Y="1204.801" Z="75.49073" />
+						<Hotspot X="694.6361" Y="1223.085" Z="64.00833" />
+						<Hotspot X="737.1866" Y="1262.001" Z="62.41932" />
+					</HuntingGrounds>
+				</CustomBehavior>
+			</If>
+			<Objective QuestName="Reinforcements from Fenris" QuestId="27231" Type="KillMob" MobId="45254" KillCount="10" />
+
+		<TurnIn QuestName="Reinforcements from Fenris" QuestId="27231" TurnInName="Horde Communication Panel" TurnInId="205350" TurnInType="GameObject" X="709.1022" Y="962.1385" Z="34.75574" />
+		<PickUp QuestName="The Waters Run Red..." QuestId="27232" GiverName="Horde Communication Panel" GiverId="205350" GiverType="GameObject" X="709.1022" Y="962.1385" Z="34.75574" />
+
+			<!--Yeesh. Why is there normal Target X and fire?-->
+			<CustomBehavior File="Vehicles\CannonControl" VehicleId="45263" QuestId="27232" MaxAngle=".029204236" MinAngle=".058004070073366" Buttons="1" ExitButton="12" />
+
+		<TurnIn QuestName="The Waters Run Red..." QuestId="27232" TurnInName="Admiral Hatchet" TurnInId="44916" />
+		<TurnIn QuestName="Hair of the Dog" QuestId="27226" TurnInName="Warlord Torok" TurnInId="44917" />
+
+
 
 		<CustomBehavior File="Halt" />
 

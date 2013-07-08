@@ -70,7 +70,6 @@
 		</Objective>
 	</Quest>
 
-
 	<QuestOrder>
 		<CustomBehavior File="Message" Text="Initializing Settings" LogColor="Cyan" />
 		<CustomBehavior File="UserSettings" LootMobs="True" UseFlightPaths="True" PullDistance="25" />
