@@ -22,14 +22,20 @@
 	<!--Version 1.0-->
 
 	<Mailboxes>
+		<!--Forsaken Rear Guard Mailbox-->
+		<Mailbox X="1078.974" Y="1586.654" Z="27.70355" />
 	</Mailboxes>
 
 	<Vendors>
 		<!--Forsaken High Command Vendors-->
 		<Vendor Name="Apothecary Harrington" Entry="45491" Type="Food" X="1445.27" Y="1072.9" Z="60.46035" />
+		<!--Forsaken Rear Guard Vendors-->
+		<Vendor Name="Commander Hickley" Entry="45496" Type="Food" X="1097.57" Y="1587.29" Z="28.53036" />
+		<Vendor Name="&quot;Salty&quot; Gorgar" Entry="45497" Type="Repair" X="1036.46" Y="1581" Z="27.57658" />
 	</Vendors>
 
 	<AvoidMobs>
+		<!--Elite Forest Ettin?-->
  	</AvoidMobs>
 
 	<Blackspots>
@@ -97,9 +103,118 @@
 		<CustomBehavior File="Message" Text="Compiling Quests: Forsaken Rear Guard" LogColor="Cyan" />
 
 		<PickUp QuestName="The Warchief's Fleet" QuestId="27065" GiverName="Lady Sylvanas Windrunner" GiverId="44365" />
+
+		<If Condition="HasQuest(27065) &amp;&amp; IsQuestCompleted(27065)">
+			<RunTo X="1095.007" Y="1586.849" Z="28.52898" />
+			<CustomBehavior File="SetHearthstone" MobId="45496" X="1095.007" Y="1586.849" Z="28.52898" />
+			<CustomBehavior File="ForceSetVendor" DoSell="True" DoRepair="True" DoMail="True" />
+		</If>
+
 		<TurnIn QuestName="The Warchief's Fleet" QuestId="27065" TurnInName="Admiral Hatchet" TurnInId="44916" />
 
 		<EnableBehavior Name="Combat" />
+
+		<PickUp QuestName="Steel Thunder" QuestId="27069" GiverName="Admiral Hatchet" GiverId="44916" />
+		<PickUp QuestName="Give 'em Hell!" QuestId="27073" GiverName="Warlord Torok" GiverId="44917" />
+		<PickUp QuestName="Playing Dirty" QuestId="27082" GiverName="Apothecary Wormcrud" GiverId="44912" />
+
+			<Objective QuestName="Playing Dirty" QuestId="27082" Type="CollectItem" ItemId="60793" CollectCount="8" />
+
+		<TurnIn QuestName="Playing Dirty" QuestId="27082" TurnInName="Apothecary Wormcrud" TurnInId="44912" />
+		<PickUp QuestName="It's Only Poisonous if You Ingest It" QuestId="27088" GiverName="Apothecary Wormcrud" GiverId="44912" />
+
+			<While Condition="HasQuest(27088) &amp;&amp; !IsQuestCompleted(27088)">
+				<CustomBehavior File="InteractWith" InteractByUsingItemId="60808" QuestId="27088" MobId="44367" AuraIdMissingFromMob="83903" MobState="Alive" MinRange="5" Range="20" WaitTime="4000" X="802.5576" Y="1766.243" Z="20.39343" />
+	    	</While>
+
+			<While Condition="HasQuest(27088) &amp;&amp; !IsQuestCompleted(27069)">
+				<If Condition="!Me.HasAura(83839)" >
+					<CustomBehavior File="InteractWith" InteractByGossipOptions="1" MobId="44916" NonCompeteDistance="0" MobState="Alive" WaitTime="1000" X="1066.774" Y="1605.303" Z="27.98832" />
+				</If>
+				<CustomBehavior File="InteractWith" NonCompeteDistance="0" MobId="205165" WaitTime="1000" CollectionDistance="800">
+					<HuntingGrounds>
+						<Hotspot X="954.8054" Y="1758.597" Z="13.22792" />
+						<Hotspot X="918.4332" Y="1793.369" Z="11.09466" />
+						<Hotspot X="904.9861" Y="1820.664" Z="7.338646" />
+						<Hotspot X="879.4606" Y="1867.694" Z="3.232079" />
+					</HuntingGrounds>
+				</CustomBehavior>
+			</While>
+
+			<Objective QuestName="Give 'em Hell!" QuestId="27073" Type="KillMob" MobId="44547" KillCount="10" />
+
+		<TurnIn QuestName="Steel Thunder" QuestId="27069" TurnInName="Admiral Hatchet" TurnInId="44916" />
+		<TurnIn QuestName="Give 'em Hell!" QuestId="27073" TurnInName="Warlord Torok" TurnInId="44917" />
+		<TurnIn QuestName="It's Only Poisonous if You Ingest It" QuestId="27088" TurnInName="Apothecary Wormcrud" TurnInId="44912" />
+		<PickUp QuestName="Lost in the Darkness" QuestId="27093" GiverName="Admiral Hatchet" GiverId="44916" />
+		<PickUp QuestName="Skitterweb Menace" QuestId="27095" GiverName="Warlord Torok" GiverId="44917" />
+			
+			<!--Why on Earth does this move so slowly?-->
+			<If Condition="HasQuest(27093) &amp;&amp; !IsQuestCompleted(27093)">
+				<SetGrindArea>
+					<GrindArea>
+						<Factions>7</Factions>
+						<Hotspots>
+							<Hotspot X="1266.453" Y="1944.468" Z="14.59848" />
+							<Hotspot X="1324.002" Y="1965.077" Z="14.22161" />
+							<Hotspot X="1352.942" Y="1982.128" Z="15.05922" />
+							<Hotspot X="1385.043" Y="2001.859" Z="17.06521" />
+							<Hotspot X="1414.251" Y="2007.019" Z="13.21666" />
+							<Hotspot X="1446.694" Y="1989.99" Z="11.05505" />
+						</Hotspots>
+					</GrindArea>
+				</SetGrindArea>
+				<GrindTo Condition="IsQuestCompleted(27093)" />
+			</If>
+
+			<Objective QuestName="Skitterweb Menace" QuestId="27095" Type="KillMob" MobId="1781" KillCount="12" />
+
+		<If Condition="HasQuest(27095) &amp;&amp; IsQuestCompleted(27095)">
+			<CustomBehavior File="CompleteLogQuest" QuestId="27095" />
+		</If>
+		<If Condition="!HasQuest(27094) &amp;&amp; !IsQuestCompleted(27094)">
+  			<PickUp QuestName="Deeper into Darkness" QuestId="27094" GiverName="Warlord Torok" GiverId="44917" />
+		</If>
+
+			<Objective QuestName="Deeper into Darkness" QuestId="27094" Type="KillMob" MobId="44906" KillCount="1" />
+
+		<If Condition="HasQuest(27093) &amp;&amp; IsQuestCompleted(27093)">
+			<CustomBehavior File="Misc\RunLua" Lua="UseItemByName(6948)" WaitTime="12000" />
+			<CustomBehavior File="ForceSetVendor" DoSell="True" DoRepair="True" DoMail="True" />
+		</If>
+
+		<TurnIn QuestName="Lost in the Darkness" QuestId="27093" TurnInName="Admiral Hatchet" TurnInId="44916" />
+		<TurnIn QuestName="Deeper into Darkness" QuestId="27094" TurnInName="Warlord Torok" TurnInId="44917" />
+
+		<CustomBehavior File="Message" Text="Compiling Quests: Fenris Isle" LogColor="Cyan" />
+
+		<PickUp QuestName="Orcs are in Order" QuestId="27096" GiverName="Admiral Hatchet" GiverId="44916" />
+		<TurnIn QuestName="Orcs are in Order" QuestId="27096" TurnInName="Lady Sylvanas Windrunner" TurnInId="44365" />
+		<PickUp QuestName="Rise, Forsaken" QuestId="27097" GiverName="Lady Sylvanas Windrunner" GiverId="44365" />
+
+			<Objective QuestName="Rise, Forsaken" QuestId="27097" Type="KillMob" MobId="44953" KillCount="15" />
+
+		<If Condition="HasQuest(27097)" >
+			<CustomBehavior File="CompleteLogQuest" QuestId="27097" />
+		</If>
+
+		<If Condition="!HasQuest(27099) &amp;&amp; !IsQuestCompleted(27099)">
+		  <PickUp QuestName="No Escape" QuestId="27099" GiverName="Lady Sylvanas Windrunner" GiverId="44365" />
+		</If>
+
+			<If Condition="HasQuest(27099) &amp;&amp; !IsQuestCompleted(27099)">
+			  <RunTo X="981.9487" Y="671.1012" Z="74.89746" />
+			  <While Condition="!IsQuestCompleted(27099)">
+			  	<CustomBehavior File="WaitTimer" WaitTime="5000" GoalText="Waiting for Cinematic End" />
+			  </While>
+			</If>
+			<While Condition="HasQuest(27099) &amp;&amp; IsQuestCompleted(27099) &amp;&amp; Me.IsOnTransport">
+				<CustomBehavior File="WaitTimer" WaitTime="5000" GoalText="Waiting to be put down." />
+			</While>
+
+		<TurnIn QuestName="No Escape" QuestId="27099" TurnInName="Lady Sylvanas Windrunner" TurnInId="44365" />
+
+		<CustomBehavior File="Halt" />
 
 	</QuestOrder>
 </HBProfile>
