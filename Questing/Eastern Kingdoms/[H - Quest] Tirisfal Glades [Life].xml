@@ -49,6 +49,8 @@
 	</Vendors>
 
 	<Blackspots>
+		<!--Evil Fence in Brill-->
+		<Blackspot X="2273.18" Y="287.2135" Z="33.9337" Radius="0.4031733" />
 	</Blackspots>
 
 	<Quest Id="24971" Name="Assault on the Rotbrain Encampment">
@@ -136,7 +138,7 @@
 			<PickUp QuestName="The Thrill of the Hunt" QuestId="24964" GiverId="38911" GiverName="Xavier the Huntsman" />
 			<If Condition="HasQuest(24964) &amp;&amp; !IsQuestCompleted(24964)">
 				<RunTo X="1833.566" Y="1607.483" Z="95.68764" />
-				<CustomBehavior File="InteractWith" QuestId="24964" InteractByCastingSpellId="56641" MobId="44794" Range="40" WaitTime="2000" X="1833.566" Y="1607.483" Z="95.68764" />
+				<CustomBehavior File="InteractWith" QuestId="24964" InteractByCastingSpellId="56641" NumOfTimes="100" MobId="44794" Range="40" WaitTime="2000" X="1833.566" Y="1607.483" Z="95.68764" />
 			</If>
 			<TurnIn QuestName="The Thrill of the Hunt" QuestId="24964" TurnInId="38911" TurnInName="Xavier the Huntsman" />
 		</If>
@@ -188,7 +190,7 @@
 			<TurnIn QuestName="Dark Deeds" QuestId="24968" TurnInId="2126" TurnInName="Maximillion" />
 		</If>
 
-			<CustomBehavior File="InteractWith" QuestId="24961" MobId="38910" WaitTime="8000" NumOfTimes="10" NonCompeteDistance="0" InteractByGossipOptions="1" X="1858.514" Y="1556.456" Z="94.78985" />
+			<CustomBehavior File="InteractWith" QuestId="24961" MobId="38910" WaitTime="8000" NumOfTimes="10" NonCompeteDistance="0" InteractByGossipOptions="1" CollectionDistance="200" X="1858.514" Y="1556.456" Z="94.78985" />
 
 		<TurnIn QuestName="The Truth of the Grave" QuestId="24961" TurnInName="Novice Elreth" TurnInId="1661" />
 		<PickUp QuestName="The Executor In the Field" QuestId="28672" GiverName="Novice Elreth" GiverId="1661" />
