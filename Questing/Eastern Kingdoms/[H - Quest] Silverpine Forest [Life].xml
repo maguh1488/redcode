@@ -460,11 +460,188 @@
 		<TurnIn QuestName="Unyielding Servitors" QuestId="27475" TurnInName="Daschla" TurnInId="45626" />
 		<TurnIn QuestName="Breaking the Barrier" QuestId="27474" TurnInName="Lady Sylvanas Windrunner" TurnInId="45617" />
 		<PickUp QuestName="Dalar Dawnweaver" QuestId="27476" GiverName="Lady Sylvanas Windrunner" GiverId="45617" />
-		<!--Use Taxi-->
+		<!--Use Taxi When I don't have a Migraine-->
 		<TurnIn QuestName="Dalar Dawnweaver" QuestId="27476" TurnInName="Dalar Dawnweaver" TurnInId="1938" />
+		<PickUp QuestName="Relios the Relic Keeper" QuestId="27478" GiverName="Dalar Dawnweaver" GiverId="1938" />
+		<PickUp QuestName="Practical Vengeance" QuestId="27483" GiverName="Dalar Dawnweaver" GiverId="1938" />
 
+			<If Condition="(HasQuest(27478) &amp;&amp; !IsQuestCompleted(27478)) || (!IsQuestCompleted(27480)) || (HasQuest(27483) &amp;&amp; !IsQuestCompleted(27483))">
+				<If Condition="Me.ZoneId != 267">
+					<RunTo X="453.7728" Y="1467.669" Z="125.034" />
+					<CustomBehavior File="InteractWith" MobId="45731" WaitForNpcs="False" NonCompeteDistance="0" WaitTime="8000" CollectionDistance="1000" />
+				</If>
+			</If>
 
-		<CustomBehavior File="Halt" />
+			<If Condition="!HasItem(61310) &amp;&amp; !IsQuestCompleted(27480)">
+				<CustomBehavior File="CollectThings" MobId="45728" MobState="Alive" CollectItemCount="1" CollectItemId="61310" CollectUntil="RequiredCountReached">
+					<Hotspot X="290.918" Y="376.7807" Z="-65.02187" />
+					<Hotspot X="338.4034" Y="358.639" Z="-63.60585" />
+					<Hotspot X="243.4399" Y="397.5527" Z="-56.97059" />
+				</CustomBehavior>
+			</If>
+
+		<If Condition="!HasQuest(27480) &amp;&amp; HasItem(61310)">
+			<PickUp QuestName="Ley Energies" QuestId="27480" GiverType="Item" GiverId="61310" />
+		</If>
+
+			<Objective QuestName="Relios the Relic Keeper" QuestId="27478" Type="CollectItem" ItemId="61312" CollectCount="1" />
+			<Objective QuestName="Practical Vengeance" QuestId="27483" Type="KillMob" MobId="2358" KillCount="12" />
+			<Objective QuestName="Ley Energies" QuestId="27480" Type="CollectItem" ItemId="61311" CollectCount="8" />
+			
+			<If Condition="HasQuest(27478) || HasQuest(27480) || HasQuest(27483)">
+				<CustomBehavior File="UserSettings" PullDistance="1" />
+				<If Condition="Me.ZoneId == 267">
+					<RunTo X="292.8386" Y="378.0807" Z="-64.81953" />
+					<CustomBehavior File="InteractWith" MobId="45732" WaitForNpcs="False" WaitTime="8000" NonCompeteDistance="0" NumOfTimes="1" CollectionDistance="1000" />
+				</If>
+			</If>
+
+		<TurnIn QuestName="Relios the Relic Keeper" QuestId="27478" TurnInName="Dalar Dawnweaver" TurnInId="1938" />
+		<TurnIn QuestName="Practical Vengeance" QuestId="27483" TurnInName="Dalar Dawnweaver" TurnInId="1938" />
+		<TurnIn QuestName="Ley Energies" QuestId="27480" TurnInName="Dalar Dawnweaver" TurnInId="1938" />
+		<PickUp QuestName="Only One May Enter" QuestId="27484" GiverName="Dalar Dawnweaver" GiverId="1938" />
+
+		<If Condition="HasQuest(27484) &amp;&amp; IsQuestCompleted(27484)">
+			<RunTo X="481.1471" Y="1540.625" Z="130.4169" />
+			<CustomBehavior File="TaxiRide" MobId="2226" DestName="The Forsaken Front"/>
+		</If>
+
+		<TurnIn QuestName="Only One May Enter" QuestId="27484" TurnInName="Lady Sylvanas Windrunner" TurnInId="45617" />
+		<PickUp QuestName="Transdimensional Warfare: Chapter I" QuestId="27512" GiverName="Lady Sylvanas Windrunner" GiverId="45617" />
+		<PickUp QuestName="A Wolf in Bear's Clothing" QuestId="27510" GiverName="High Warlord Cromush" GiverId="45631" />
+
+			<Objective QuestName="A Wolf in Bear's Clothing" QuestId="27510" Type="KillMob" MobId="45750" KillCount="10" />
+
+		<TurnIn QuestName="Transdimensional Warfare: Chapter I" QuestId="27512" TurnInName="Ambermill Dimensional Portal" TurnInId="45752" />
+		<PickUp QuestName="Transdimensional Warfare: Chapter II" QuestId="27513" GiverName="Ambermill Dimensional Portal" GiverId="45752" />
+
+		<If Condition="HasQuest(27513) &amp;&amp; !IsQuestCompleted(27513)">
+			<If Condition="!Me.HasAura(85361)" >
+				<CustomBehavior File="InteractWith" QuestId="27513" InteractByGossipOptions="1" MobId="45752" NonCompeteDistance="0" />
+			</If>
+		</If>
+
+			<Objective QuestName="Transdimensional Warfare: Chapter II" QuestId="27513" Type="KillMob" MobId="45756" KillCount="20" />
+
+		<If Condition="HasQuest(27513)" >
+			<CustomBehavior File="CompleteLogQuest" QuestId="27513" />
+		</If>
+
+		<If Condition="!HasQuest(27518) &amp;&amp; !IsQuestCompleted(27518)">
+			<PickUp QuestName="Transdimensional Warfare: Chapter III" QuestId="27518" GiverName="Lady Sylvanas Windrunner" GiverId="45617" />
+		</If>
+
+			<!--More Testing!-->
+			<While Condition="HasQuest(27518) &amp;&amp; !IsQuestCompleted(27518)">
+				<CustomBehavior File="InteractWith" QuestId="27518" NonCompeteDistance="0" MobId="2120" MobState="Alive" WaitTime="5000" X="-135.444" Y="1071.23" Z="66.07559" />
+			</While>
+
+		<TurnIn QuestName="A Wolf in Bear's Clothing" QuestId="27510" TurnInName="High Warlord Cromush" TurnInId="45631" />
+		<TurnIn QuestName="Transdimensional Warfare: Chapter III" QuestId="27518" TurnInName="Lady Sylvanas Windrunner" TurnInId="45617" />		
+		
+			<If Condition="!HasQuest(27542) &amp;&amp; !IsQuestCompleted(27542)">
+				<While Condition="HasQuestAvailable(45617)" >
+					<CustomBehavior File="InteractWith" KeepTargetSelected="True" NonCompeteDistance="0" MobState="Alive" MobId="45617" X="-152.5979" Y="1271.395" Z="51.39357" />
+					<CustomBehavior File="RunMacro" Macro="/click QuestFrameCompleteQuestButton" />
+					<CustomBehavior File="WaitTimer" WaitTime="1000" />
+				</While>
+			</If>
+
+		<PickUp QuestName="Pyrewood's Fall" QuestId="27550" GiverName="Lord Godfrey" GiverId="45878" X="-152.5979" Y="1271.395" Z="51.39357" />
+		<PickUp QuestName="Lessons in Fear" QuestId="27548" GiverName="Lord Walden" GiverId="45879" X="-152.5979" Y="1271.395" Z="51.39357" />
+		<PickUp QuestName="Of No Consequence" QuestId="27547" GiverName="Baron Ashbury" GiverId="45880" X="-152.5979" Y="1271.395" Z="51.39357" />
+		
+		<If Condition="HasQuest(27550) &amp;&amp; !IsQuestCompleted(27550)">
+			<While Condition="!IsObjectiveComplete(2, 27550)">
+				<RunTo X="-389.9888" Y="1509.37" Z="19.31355" />
+				<CustomBehavior File="Misc\RunLua" Lua="UseItemByName(61374)" WaitTime="1000" />
+			</While>
+			<While Condition="!IsObjectiveComplete(1, 27550)">
+				<RunTo X="-359.6927" Y="1541.638" Z="24.19101" />
+				<CustomBehavior File="Misc\RunLua" Lua="UseItemByName(61374)" WaitTime="1000" />
+			</While>
+			<While Condition="!IsObjectiveComplete(3, 27550)">
+				<RunTo X="-381.7389" Y="1606.223" Z="18.65797" />
+				<CustomBehavior File="Misc\RunLua" Lua="UseItemByName(61374)" WaitTime="1000" />
+			</While>
+		</If>
+		
+		<TurnIn QuestName="Pyrewood's Fall" QuestId="27550" TurnInName="Lord Godfrey" TurnInId="45878" X="-381.7389" Y="1606.223" Z="18.65797" />
+
+			<If Condition="HasQuest(27547) &amp;&amp; !IsQuestCompleted(27547)">
+				<CustomBehavior File="InteractWith"  QuestId="27547" NonCompeteDistance="0" NumOfTimes="1000" MobId="45910" WaitTime="1000" CollectionDistance="1000">
+					<HuntingGrounds>
+						<Hotspot X="-389.9888" Y="1509.37" Z="19.31355" />
+						<Hotspot X="-359.6927" Y="1541.638" Z="24.19101" />
+						<Hotspot X="-381.7389" Y="1606.223" Z="18.65797" />
+						<Hotspot X="-373.3548" Y="1598.715" Z="18.65797" />
+						<Hotspot X="-383.8179" Y="1534.486" Z="18.65804" />
+						<Hotspot X="-361.7169" Y="1471.757" Z="20.26252" />
+					</HuntingGrounds>
+				</CustomBehavior>
+			</If>
+
+			<Objective QuestName="Lessons in Fear" QuestId="27548" Type="KillMob" MobId="45883" KillCount="12" />
+
+		<TurnIn QuestName="Of No Consequence" QuestId="27547" TurnInName="Baron Ashbury" TurnInId="45880" />
+		<TurnIn QuestName="Lessons in Fear" QuestId="27548" TurnInName="Lord Walden" TurnInId="45879" />
+		<PickUp QuestName="7th Legion Battle Plans" QuestId="27577" GiverName="Lord Walden" GiverId="45879" />
+		<PickUp QuestName="Sowing Discord" QuestId="27580" GiverName="Lord Godfrey" GiverId="45878" />
+
+			<If Condition="!HasItem(61505) &amp;&amp; !IsQuestCompleted(27574)">
+				<CustomBehavior File="CollectThings" MobId="45896" MobState="Alive" CollectItemCount="1" CollectItemId="61505" CollectUntil="RequiredCountReached">
+					<Hotspot X="-521.0754" Y="1602.029" Z="11.09704" />
+				</CustomBehavior>
+			</If>
+		<If Condition="HasItem(61505)">
+			<PickUp QuestName="I Never Forget a Face" QuestId="27574" GiverType="Item" GiverName="Partially Digested Head" GiverId="61505" />
+			<CustomBehavior File="CompleteLogQuest" QuestId="27574" />
+		</If>
+
+			<Objective QuestName="From the Belly of the Beast" QuestId="27575" Type="CollectItem" ItemId="61506" CollectCount="1" />
+			<Objective QuestName="From the Belly of the Beast" QuestId="27575" Type="CollectItem" ItemId="61507" CollectCount="1" />
+			<Objective QuestName="From the Belly of the Beast" QuestId="27575" Type="CollectItem" ItemId="61508" CollectCount="1" />
+
+		<If Condition="HasQuest(27575) &amp;&amp; IsQuestCompleted(27575)">
+			<CustomBehavior File="CompleteLogQuest" QuestId="27575" />
+		</If>
+
+			<If Condition="!IsQuestCompleted(27580) &amp;&amp; (Me.Level &lt;= 23)">
+				<CustomBehavior File="Message" Text="You will probably die many times. Kill the OP dwarf manually." LogColor="Orange" />
+			</If>
+			<Objective QuestName="Sowing Discord" QuestId="27580" Type="KillMob" MobId="45995" KillCount="1" />
+
+		<TurnIn QuestName="Sowing Discord" QuestId="27580" TurnInName="Lord Godfre" TurnInId="45878" />
+			
+			<Objective QuestName="7th Legion Battle Plans" QuestId="27577" Type="CollectItem" ItemId="61510" CollectCount="1" />
+
+		<TurnIn QuestName="7th Legion Battle Plans" QuestId="27577" TurnInName="Lord Walden" TurnInId="45879" />
+		<PickUp QuestName="On Her Majesty's Secret Service" QuestId="27594" GiverName="Lord Godfrey" GiverId="45878" />
+			
+			<If Condition="HasQuest(27594) &amp;&amp; !IsQuestCompleted(27594)">
+				<RunTo X="-806.2985" Y="1340.702" Z="33.72683" />
+				<CustomBehavior File="WaitTimer" QuestId="27594" WaitTime="50000" GoalText="Waiting to snatch her up!" />
+			</If>
+		
+		<TurnIn QuestName="On Her Majesty's Secret Service" QuestId="27594" TurnInName="Lady Sylvanas Windrunner" TurnInId="45617" />
+		<PickUp QuestName="Cities in Dust" QuestId="27601" GiverName="Lady Sylvanas Windrunner" GiverId="45617" />
+		
+			<If Condition="HasQuest(27601) &amp;&amp; !IsQuestCompleted(27601)">
+				<!--I was lazily trying to finish this, really needs more testing-->
+				<CustomBehavior File="EscortGroup" QuestId="27601" EscortCompleteWhen="QuestCompleteOrFails" EscortNpcId="46026" />
+				<RunTo X="-702.689" Y="1544.831" Z="27.99648" />
+				<CustomBehavior File="WaitTimer" QuestId="27601" WaitTime="30000" />
+			</If>
+
+		<TurnIn QuestName="Cities in Dust" QuestId="27601" TurnInName="Lady Sylvanas Windrunner" TurnInId="46124" />
+		<PickUp QuestName="Empire of Dirt" QuestId="27746" GiverName="Lady Sylvanas Windrunner" GiverId="46124" />
+		<PickUp QuestName="Warchief's Command: Hillsbrad Foothills!" QuestId="28089" GiverName="High Warlord Cromush" GiverId="44640" />
+
+		<!--TurnIn QuestName="Warchief's Command: Hillsbrad Foothills!" QuestId="28089" TurnInName="High Executor Darthalia" TurnInId="2215" /-->
+		<!--TurnIn QuestName="Empire of Dirt" QuestId="27746" TurnInName="High Executor Darthalia" TurnInId="2215" /-->
+
+	<CustomBehavior File="Message" Text="Profile Complete: Loading Hillsbrad Foothills Profile" LogColor="Cyan" />
+	<CustomBehavior File="LoadProfile" ProfileName="[H - Quest] Hillsbrad Foothills [Life]" />
 
 	</QuestOrder>
 </HBProfile>

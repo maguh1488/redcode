@@ -310,11 +310,20 @@
 
 		<CustomBehavior File="Message" Text="Compiling Quests: Southpoint Gate" LogColor="Cyan" />
 
+		<If Condition="HasQuest(27746)">
+			<TurnIn QuestName="Empire of Dirt" QuestId="27746" TurnInName="High Executor Darthalia" TurnInId="2215" />
+		</If>
+		<If Condition="HasQuest(28089)">
+			<TurnIn QuestName="Warchief's Command: Hillsbrad Foothills!" QuestId="28089" TurnInName="High Executor Darthalia" TurnInId="2215" />
+		</If>
+
 		<PickUp QuestName="Welcome to the Machine" QuestId="28096" GiverName="High Executor Darthalia" GiverId="2215" />
 
 			<!--Quest: Welcome to the Machine-->
 			<If Condition="HasQuest(28096) &amp;&amp; !IsQuestCompleted(28096)">
-				<CustomBehavior File="InteractWith" MobId="47445" X="-576.0676" Y="423.6037" Z="80.05659" />
+				<While Condition="!Me.IsOnTransport">
+					<CustomBehavior File="InteractWith" MobId="47445" X="-576.0676" Y="423.6037" Z="80.05659" />
+				</While>
 
 				<While Condition="HasQuest(28096) &amp;&amp; !IsObjectiveComplete(1, 28096)">
 					<CustomBehavior File="WaitTimer" WaitTime="25000"  GoalText="Waiting for Dumass {TimeRemaining}"/>
@@ -360,10 +369,10 @@
 		<TurnIn QuestName="Past Their Prime" QuestId="28115" TurnInName="Spider-Handler Sarus" TurnInId="47551" />
 		<PickUp QuestName="Coastal Delicacies!" QuestId="28146" GiverName="Spider-Handler Sarus" GiverId="47551" />
 
-			<CustomBehavior File="CombatUseItemOnV2" QuestId="28138" ItemId="63079" ItemAppliesAuraId="88795" MobId1="2503" MobId2="2269" MobId3="2270"
-				UseWhenMobHasHealthPercent="40" 
+			<CustomBehavior File="CombatUseItemOnV2" QuestId="28138" ItemId="63079" ItemAppliesAuraId="AssumeItemUseAlwaysSucceeds" MobId1="2503" MobId2="2269" MobId3="2270"
+				UseWhenMobHasHealthPercent="35" 
 				MaxRangeToUseItem="20" 
-				UseItemStrategy="UseItemContinuouslyOnTargetDontDefend" 
+				UseItemStrategy="UseItemOncePerTarget" 
 				RecallPetAtMobPercentHealth="100" >
           		<HuntingGrounds>
 					<Hotspot X="-874.1949" Y="231.1803" Z="9.425097" />
