@@ -499,8 +499,8 @@
 			<Objective QuestName="Freedom for Lydon" QuestId="28209" Type="CollectItem" ItemId="63281" CollectCount="1" />
 		
 		<TurnIn QuestName="Freedom for Lydon" QuestId="28209" TurnInName="Master Apothecary Lydon" TurnInId="47900" />
-		<PickUp QuestName="Protocol" QuestId="28230" GiverName="Master Apothecary Lydon" GiverId="47900" />
-		<PickUp QuestName="Do it for Twinkles" QuestId="28231" GiverName="Johnny Awesome" GiverId="47869" />
+		<PickUp QuestName="Protocol" QuestId="28230" GiverName="Master Apothecary Lydon" GiverId="48020" />
+		<PickUp QuestName="Do it for Twinkles" QuestId="28231" GiverName="Johnny Awesome" GiverId="48021" />
 		
 			<Objective QuestName="Protocol" QuestId="28230" Type="KillMob" MobId="47793" KillCount="1" />
 			<Objective QuestName="Do it for Twinkles" QuestId="28231" Type="KillMob" MobId="47792" KillCount="1" />
@@ -513,20 +513,23 @@
 		 	<CustomBehavior File="InteractWith" MobId="48020" CollectionDistance="8" />
 		 	<CustomBehavior File="RunMacro" Macro="/click QuestFrameCompleteQuestButton" WaitTime="1000" />
 		</While>
-		<While Condition="HasQuest(28231) &amp;&amp; IsQuestCompleted(28231)">
+		<TurnIn QuestName="Do it for Twinkles" QuestId="28231" TurnInName="Johnny Awesome" TurnInId="48021" X="-376.2319" Y="12.98154" Z="53.71529" />
+		<!--While Condition="HasQuest(28231) &amp;&amp; IsQuestCompleted(28231)">
 			<CustomBehavior File="ForcedDismount" />
 		 	<CustomBehavior File="InteractWith" MobId="48021" CollectionDistance="8" />
 		 	<CustomBehavior File="RunMacro" Macro="/click QuestFrameCompleteQuestButton" WaitTime="1000" />
-		</While>
+		</While-->
 		<While Condition="!HasQuest(28235) &amp;&amp; !IsQuestCompleted(28235)">
 			<CustomBehavior File="ForcedDismount" />
 		 	<CustomBehavior File="InteractWith" MobId="48020" CollectionDistance="8" />
 		 	<CustomBehavior File="RunMacro" Macro="/click QuestFrameAcceptButton" WaitTime="1000" />
 		</While>
 
+			<!--Why does this sometimes just not work?-->
 			<While Condition="HasQuest(28235) &amp;&amp; !IsQuestCompleted(28235)">
 				<RunTo X="-400.21" Y="73.48" Z="61.69" />
-				<CustomBehavior File="WaitTimer" QuestId="28235" WaitTime="10000" />
+				<CustomBehavior File="WaitTimer" QuestId="28235" WaitTime="10000" GoalText="Trying to Pull Magistrate Burnside." />
+				<RunTo X="-398.3904" Y="33.21212" Z="54.71946" />
 			</While>
 
 		<While Condition="HasQuest(28235) &amp;&amp; IsQuestCompleted(28235)">
@@ -542,7 +545,7 @@
 
 			<While Condition="HasQuest(28237) &amp;&amp; !IsQuestCompleted(28237)">
 				<RunTo X="-500.73" Y="74.54" Z="54.99" />
-				<CustomBehavior File="WaitTimer" QuestId="28237" WaitTime="10000" />
+				<CustomBehavior File="WaitTimer" QuestId="28237" WaitTime="10000" GoalText="Waiting to Attacked by the Warden." />
 			</While>
 
 		<!--Phased-->
@@ -566,10 +569,10 @@
 					<Hotspot X="-636.3784" Y="-630.9726" Z="32.91307" />
 					<Hotspot X="-592.474" Y="-441.7088" Z="37.94653" />
 					<Hotspot X="-623.928" Y="-400.6263" Z="37.43328" />
-         		</HuntingGrounds>
-      		</CustomBehavior>
+				</HuntingGrounds>
+			</CustomBehavior>
 
-      		<Objective QuestName="Helcular's Command" QuestId="28332" Type="KillMob" MobId="48272" KillCount="15" />
+			<Objective QuestName="Helcular's Command" QuestId="28332" Type="KillMob" MobId="48272" KillCount="15" />
 
 		<TurnIn QuestName="Helcular's Command" QuestId="28332" TurnInName="Helcular" TurnInId="48129" />
 		<TurnIn QuestName="Helcular's Rod Giveth..." QuestId="28331" TurnInName="Helcular" TurnInId="48129" />
@@ -581,14 +584,31 @@
 				<CustomBehavior File="Message" Text="Eventually the slimes will go hostile and kill you, after you rez they go back to normal!" LogColor="Orange" />
 			</If>
 
-	    	<CustomBehavior File="InteractWith" QuestId="28324" MobId="48136" IgnoreCombat="True" InteractByUsingItemId="63426" AuraIdMissingFromMob="89756" MobState="Alive" NumOfTimes="150" CollectionDistance="100" >
+			<CustomBehavior File="InteractWith" QuestId="28324" MobId="48136" IgnoreCombat="True" InteractByUsingItemId="63426" AuraIdMissingFromMob="89756" MobState="Alive" NumOfTimes="150" CollectionDistance="100" >
 				<HuntingGrounds>
 					<Hotspot X="-723.1719" Y="-512.8267" Z="24.08546" />
 					<Hotspot X="-738.2448" Y="-593.5045" Z="21.33413" />
 					<Hotspot X="-785.1259" Y="-570.0749" Z="19.78944" />
 					<Hotspot X="-800.5428" Y="-514.7549" Z="16.16274" />
-         		</HuntingGrounds>
-      		</CustomBehavior>
+				</HuntingGrounds>
+			</CustomBehavior>
+
+			<If Condition="!HasQuest(28329) &amp;&amp; !IsQuestCompleted(28329)">
+				<CustomBehavior File="Message" Text="Getting Angry Blight Slime Quest" LogColor="Yellow" />
+				<SetGrindArea>
+					<GrindArea>
+						<Factions>14</Factions>
+						<Hotspots>
+							<Hotspot X="-835.5067" Y="-536.7155" Z="13.44342" />
+							<Hotspot X="-859.6517" Y="-523.7595" Z="10.87395" />
+							<Hotspot X="-897.8193" Y="-513.1876" Z="6.879752" />
+							<Hotspot X="-825.3334" Y="-460.1433" Z="13.95296" />
+							<Hotspot X="-833.2326" Y="-405.8549" Z="15.48428" />
+						</Hotspots>
+					</GrindArea>  
+				</SetGrindArea>
+				<GrindTo Condition="HasQuest(28329)" />
+			</If>
 
 		<If Condition="HasQuest(28329)">
 			<CustomBehavior File="RunMacro" Macro="/click QuestFrameAcceptButton" WaitTime="1000" />
@@ -628,20 +648,24 @@
 				<Objective QuestName="Terrible Little Creatures" QuestId="28355" Type="KillMob" MobId="2372" KillCount="10" />
 			</If>
 
+		<If Condition="HasQuest(28355) &amp;&amp; IsQuestCompleted(28355)">
+			<CustomBehavior File="CompleteLogQuest" QuestId="28355" />
+		</If>
+
 			<If Condition="!HasQuest(28356) &amp;&amp; !IsQuestCompleted(28356) &amp;&amp; !HasItem(63686)">
-						<CustomBehavior File="Message" Text="Farming for Daggerspine Attack Plans" LogColor="Yellow" />
-						<SetGrindArea>
-							<GrindArea>
-								<Factions>74</Factions>
-								<Hotspots>
-									<Hotspot X="-953.7374" Y="-672.7482" Z="-1.727684" />
-									<Hotspot X="-1009.981" Y="-734.9048" Z="-0.2753482" />
-									<Hotspot X="-1052.623" Y="-815.0945" Z="15.03554" />
-									<Hotspot X="-1123.715" Y="-800.7488" Z="1.57336" />
-								</Hotspots>
-							</GrindArea>  
-						</SetGrindArea>
-					<GrindTo Condition="HasItem(63686)" />
+				<CustomBehavior File="Message" Text="Farming for Daggerspine Attack Plans" LogColor="Yellow" />
+				<SetGrindArea>
+					<GrindArea>
+						<Factions>74</Factions>
+						<Hotspots>
+							<Hotspot X="-953.7374" Y="-672.7482" Z="-1.727684" />
+							<Hotspot X="-1009.981" Y="-734.9048" Z="-0.2753482" />
+							<Hotspot X="-1052.623" Y="-815.0945" Z="15.03554" />
+							<Hotspot X="-1123.715" Y="-800.7488" Z="1.57336" />
+						</Hotspots>
+					</GrindArea>  
+				</SetGrindArea>
+				<GrindTo Condition="HasItem(63686)" />
 			</If>			
 
 			<If Condition="HasItem(63686)">
@@ -651,10 +675,6 @@
 			<Objective QuestName="Preemptive Strike" QuestId="28356" Type="KillMob" MobId="2371" KillCount="15" />
 			
 		<TurnIn QuestName="Preemptive Strike" QuestId="28356" TurnInName="Helcular" TurnInId="48129" />
-		
-		<If Condition="HasQuest(28355) &amp;&amp; IsQuestCompleted(28355)">
-			<CustomBehavior File="CompleteLogQuest" QuestId="28355" />
-		</If>
 		<TurnIn QuestName="Kasha Will Fly Again" QuestId="28354" TurnInName="Kingslayer Orkus" TurnInId="48218" />
 		<PickUp QuestName="The Road to Purgation" QuestId="28375" GiverName="Kingslayer Orkus" GiverId="48218" />
 
