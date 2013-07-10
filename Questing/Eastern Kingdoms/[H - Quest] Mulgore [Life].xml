@@ -1,0 +1,131 @@
+<HBProfile>
+	<Name>[H - Quest] Mulgore [Life]</Name>
+
+	<MinLevel>1</MinLevel>
+	<MaxLevel>91</MaxLevel>
+
+	<MinDurability>0.2</MinDurability>
+	<MinFreeBagSlots>2</MinFreeBagSlots>
+
+	<MailGrey>False</MailGrey>
+	<MailWhite>False</MailWhite>
+	<MailGreen>True</MailGreen>
+	<MailBlue>True</MailBlue>
+	<MailPurple>True</MailPurple>
+   
+	<SellGrey>True</SellGrey>
+	<SellWhite>True</SellWhite>
+	<SellGreen>True</SellGreen>
+	<SellBlue>False</SellBlue>
+	<SellPurple>False</SellPurple>
+
+	<Mailboxes>
+	</Mailboxes>
+
+	<Vendors>
+		<!--Camp Narache Vendors-->
+		<Vendor Name="Moodan Sungrain" Entry="3883" Type="Food" X="-2942.083" Y="-243.3767" Z="59.66917" />
+		<Vendor Name="Varia Hardhide" Entry="3074" Type="Repair" X="-2918.75" Y="-219.656" Z="60.99122" />
+	</Vendors>
+
+	<AvoidMobs>
+ 	</AvoidMobs>
+
+	<Blackspots>
+		<!--Giant Thorn-->
+		<Blackspot X="-3078.717" Y="-645.4879" Z="40.53653" Radius="1.930342" />
+	</Blackspots>
+
+	<QuestOrder>
+		<CustomBehavior File="Message" Text="Initializing Settings" LogColor="Cyan" />
+		<CustomBehavior File="UserSettings" LootMobs="True" UseFlightPaths="True" PullDistance="25" />
+
+		<CustomBehavior File="Message" Text="Compiling Quests: Camp Narache" LogColor="Cyan" />
+
+		<PickUp QuestName="The First Step" QuestId="14449" GiverName="Chief Hawkwind" GiverId="2981" />
+		<TurnIn QuestName="The First Step" QuestId="14449" TurnInName="Grull Hawkwind" TurnInId="2980" />
+		<PickUp QuestName="Rite of Strength" QuestId="14452" GiverName="Grull Hawkwind" GiverId="2980" />
+		
+			<Objective QuestName="Rite of Strength" QuestId="14452" Type="KillMob" MobId="2952" KillCount="6" />
+			
+		<TurnIn QuestName="Rite of Strength" QuestId="14452" TurnInName="Grull Hawkwind" TurnInId="2980" />
+		<PickUp QuestName="Our Tribe, Imprisoned" QuestId="24852" GiverName="Grull Hawkwind" GiverId="2980" />
+		
+			<Objective QuestName="Our Tribe, Imprisoned" QuestId="24852" Type="UseObject" ObjectId="202112" UseCount="4" />
+		
+		<TurnIn QuestName="Our Tribe, Imprisoned" QuestId="24852" TurnInName="Grull Hawkwind" TurnInId="2980" />
+		<PickUp QuestName="Go to Adana" QuestId="14458" GiverName="Grull Hawkwind" GiverId="2980" />
+		<TurnIn QuestName="Go to Adana" QuestId="14458" TurnInName="Adana Thunderhorn" TurnInId="36694" />
+		<PickUp QuestName="Rite of Courage" QuestId="14456" GiverName="Adana Thunderhorn" GiverId="36694" />
+		<PickUp QuestName="Stop the Thorncallers" QuestId="14455" GiverName="Adana Thunderhorn" GiverId="36694" />
+
+		<If Condition="Me.Class == WoWClass.Druid">
+			<PickUp QuestName="Verdant Note" QuestId="3094" GiverName="Rohaku Stonehoof" GiverId="44927" />
+		</If>
+		<If Condition="Me.Class == WoWClass.Hunter">
+			<PickUp QuestName="Etched Note" QuestId="3092" GiverName="Rohaku Stonehoof" GiverId="44927" />
+		</If>
+		<If Condition="Me.Class == WoWClass.Monk">
+			<PickUp QuestName="Calligraphed Note" QuestId="31165" GiverName="Rohaku Stonehoof" GiverId="44927" />
+		</If>
+		<If Condition="Me.Class == WoWClass.Paladin">
+			<PickUp QuestName="Consecrated Note" QuestId="27015" GiverName="Rohaku Stonehoof" GiverId="44927" />
+		</If>
+		<If Condition="Me.Class == WoWClass.Priest">
+			<PickUp QuestName="Hallowed Note" QuestId="27014" GiverName="Rohaku Stonehoof" GiverId="44927" />
+		</If>
+		<If Condition="Me.Class == WoWClass.Shaman">
+			<PickUp QuestName="Rune-Inscribed Note" QuestId="3093" GiverName="Rohaku Stonehoof" GiverId="44927" />
+		</If>
+		<If Condition="Me.Class == WoWClass.Warrior">
+			<PickUp QuestName="Simple Note" QuestId="3091" GiverName="Rohaku Stonehoof" GiverId="44927" />
+		</If>
+
+			<Objective QuestName="Rite of Courage" QuestId="14456" Type="CollectItem" ItemId="49535" CollectCount="7" />
+			<Objective QuestName="Stop the Thorncallers" QuestId="14455" Type="KillMob" MobId="36697" KillCount="7" />
+
+		<TurnIn QuestName="Rite of Courage" QuestId="14456" TurnInName="Adana Thunderhorn" TurnInId="36694" />
+		<TurnIn QuestName="Stop the Thorncallers" QuestId="14455" TurnInName="Adana Thunderhorn" TurnInId="36694" />
+		<PickUp QuestName="The Battleboars" QuestId="14459" GiverName="Adana Thunderhorn" GiverId="36694" />
+		<PickUp QuestName="Feed of Evil" QuestId="14461" GiverName="Adana Thunderhorn" GiverId="36694" />
+
+			<CustomBehavior File="InteractWith" QuestId="14461" QuestObjectiveIndex="1" InteractByUsingItemId="49539" MobId="36727" NumOfTimes="100" X="-3402.709" Y="-263.1781" Z="61.45258" />
+			<CustomBehavior File="InteractWith" QuestId="14461" QuestObjectiveIndex="2" InteractByUsingItemId="49539" MobId="37155" NumOfTimes="100" X="-3391.046" Y="-212.9838" Z="61.69099" />
+			<CustomBehavior File="InteractWith" QuestId="14461" QuestObjectiveIndex="3" InteractByUsingItemId="49539" MobId="37156" NumOfTimes="100" X="-3361.886" Y="-231.7121" Z="61.8663" />
+			<Objective QuestName="The Battleboars" QuestId="14459" Type="KillMob" MobId="36696" KillCount="10" />
+
+		<TurnIn QuestName="Feed of Evil" QuestId="14461" TurnInName="Adana Thunderhorn" TurnInId="36694" />
+		<TurnIn QuestName="The Battleboars" QuestId="14459" TurnInName="Adana Thunderhorn" TurnInId="36694" />
+		<PickUp QuestName="Rite of Honor" QuestId="14460" GiverName="Adana Thunderhorn" GiverId="36694" />
+		
+			<Objective QuestName="Rite of Honor" QuestId="14460" Type="CollectItem" ItemId="50473" CollectCount="1" />
+		
+		<TurnIn QuestName="Rite of Honor" QuestId="14460" TurnInName="Chief Hawkwind" TurnInId="2981" />
+		<PickUp QuestName="Last Rites, First Rites" QuestId="24861" GiverName="Chief Hawkwind" GiverId="2981" />
+
+			<While Condition="HasQuest(24861) &amp;&amp; !IsQuestCompleted(24861)" >
+				<RunTo X="-2908.458" Y="-254.5024" Z="59.72401" />
+				<CustomBehavior File="Misc\RunLua" Lua="UseItemByName(50465)" WaitTime="2000" />
+			</While>			
+		
+		<TurnIn QuestName="Last Rites, First Rites" QuestId="24861" TurnInName="Chief Hawkwind" TurnInId="2981" />
+		<PickUp QuestName="Rites of the Earthmother" QuestId="23733" GiverName="Chief Hawkwind" GiverId="2981" />
+
+		<If Condition="Me.Class == WoWClass.Hunter" >
+			<TurnIn QuestName="Etched Note" QuestId="3092" TurnInName="Lanka Farshot" TurnInId="3061" />
+			<PickUp QuestName="The Hunter's Path" QuestId="27021" GiverName="Lanka Farshot" GiverId="3061" />
+				<CustomBehavior File="InteractWith" QuestId="27021" InteractByCastingSpellId="56641" NumOfTimes="100" MobId="44848" Range="40" WaitTime="2000" X="-2920.208" Y="-268.5547" Z="59.95792" />
+			<TurnIn QuestName="The Hunter's Path" QuestId="27021" TurnInName="Lanka Farshot" TurnInId="3061" />
+		</If>
+
+		<TurnIn QuestName="Rites of the Earthmother" QuestId="23733" TurnInName="Dyami Windsoar" TurnInId="36803" />
+
+
+
+		
+
+
+
+
+	</QuestOrder>
+</HBProfile>
