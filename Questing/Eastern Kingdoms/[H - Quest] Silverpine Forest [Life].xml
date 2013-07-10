@@ -1,5 +1,5 @@
 <HBProfile>
-	<Name>[H - Quest] Tirisfal Glades [Life]</Name>
+	<Name>[H - Quest] Silverpine Forest [Life]</Name>
 
 	<MinLevel>10</MinLevel>
 	<MaxLevel>91</MaxLevel>
@@ -18,8 +18,6 @@
 	<SellGreen>True</SellGreen>
 	<SellBlue>False</SellBlue>
 	<SellPurple>False</SellPurple>
-
-	<!--Version 1.0-->
 
 	<Mailboxes>
 		<!--Forsaken Rear Guard Mailbox-->
@@ -62,11 +60,10 @@
 	</Quest>
 
 	<QuestOrder>
-		<!--CustomBehavior File="Message" Text="Profile not Complete! Shutting Down." LogColor="Cyan" />
-		<CustomBehavior File="Halt" /-->
 
 		<CustomBehavior File="Message" Text="Initializing Settings" LogColor="Cyan" />
 		<CustomBehavior File="UserSettings" LootMobs="True" UseFlightPaths="True" PullDistance="25" />
+
   		<If Condition="(Me.Class == WoWClass.Hunter) || (Me.Class == WoWClass.Priest) || (Me.Class == WoWClass.Mage) || (Me.Class == WoWClass.Warlock) || ((Me.Class == WoWClass.Druid) &amp;&amp; (StyxWoW.Me.Specialization == WoWSpec.DruidBalance)) || ((Me.Class == WoWClass.Shaman) &amp;&amp; (StyxWoW.Me.Specialization == WoWSpec.ShamanElemental))">
     		<CustomBehavior File="UserSettings" PullDistance="40" />
     	</If>
@@ -640,8 +637,7 @@
 		<!--TurnIn QuestName="Warchief's Command: Hillsbrad Foothills!" QuestId="28089" TurnInName="High Executor Darthalia" TurnInId="2215" /-->
 		<!--TurnIn QuestName="Empire of Dirt" QuestId="27746" TurnInName="High Executor Darthalia" TurnInId="2215" /-->
 
-	<CustomBehavior File="Message" Text="Profile Complete: Loading Hillsbrad Foothills Profile" LogColor="Cyan" />
-	<CustomBehavior File="LoadProfile" ProfileName="[H - Quest] Hillsbrad Foothills [Life]" />
-
+		<CustomBehavior File="Message" Text="Profile Complete: Loading Next Profile" LogColor="Cyan" />
+		<CustomBehavior File="LoadProfile" ProfileName="..\..\[H - Quest] Profile Loader [Life]" />		
 	</QuestOrder>
 </HBProfile>
