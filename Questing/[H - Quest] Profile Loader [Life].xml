@@ -1,0 +1,64 @@
+<HBProfile>
+	<Name>Project Rose: Profile Loader</Name>
+
+	<MinLevel>1</MinLevel>
+	<MaxLevel>91</MaxLevel>
+
+	<QuestOrder>
+		<CustomBehavior File="Message" Text="Setting Project-Wide Settings" LogColor="Cyan" />
+			<CustomBehavior File="RunMacro" Macro="/script SetCVar('AutoLootDefault', 1)" WaitTime="1000" />
+			<CustomBehavior File="EnablePlugin" Names="Anti Drown,AutoEquip2,Drink Potions,Refreshment,Talented2" />
+			
+			<If Condition="(Me.LevelFraction &gt;= 20) &amp;&amp; Me.GetSkill(Styx.SkillLine.Riding).CurrentValue == 0 &amp;&amp; Me.Gold &gt;= 4">
+				<CustomBehavior File="Message" Text="Riding is needed, however I have no way of training you yet!" LogColor="Cyan" />
+			</If>
+
+		<CustomBehavior File="Message" Text="Listening to Sorting Hat" LogColor="Cyan" />
+
+		<If Condition="Me.IsAlliance">
+			<CustomBehavior File="Message" Text="This project currently does not support the Alliance" LogColor="Red" />
+		</If>
+
+		<!--Blood Elf Sorting Hat-->
+		<If Condition="Me.Race == WoWRace.BloodElf">
+			<If Condition="Me.LevelFraction &gt;= 20 &amp;&amp; IsQuestCompleted(9156)">
+				<CustomBehavior File="Message" Text="Hillsbrad Foothills is Currently Broken. Halting!" LogColor="Cyan" />
+				<CustomBehavior File="Halt" />
+			</If>
+			<If Condition="Me.LevelFraction &gt;= 10 &amp;&amp; IsQuestCompleted(9363)">
+				<CustomBehavior File="LoadProfile" ProfileName="Eastern Kingdoms\[H - Quest] Ghostlands [Life]" />
+			</If>
+			<If Condition="Me.LevelFraction &gt;= 5 &amp;&amp; IsQuestCompleted(24972)">
+				<CustomBehavior File="LoadProfile" ProfileName="Eastern Kingdoms\[H - Quest] Eversong Woods [Life]" />
+			</If>
+			<CustomBehavior File="LoadProfile" ProfileName="Eastern Kingdoms\Starter Zones\[H - Quest] Blood Elf [Life]" />
+		</If>
+
+		<!--Undead Sorting Hat-->
+		<If Condition="Me.Race == WoWRace.Undead">
+			<If Condition="Me.LevelFraction &gt;= 20 &amp;&amp; IsQuestCompleted(27601)">
+				<CustomBehavior File="Message" Text="Hillsbrad Foothills is Currently Broken. Halting!" LogColor="Cyan" />
+				<CustomBehavior File="Halt" />
+			</If>
+			<If Condition="Me.LevelFraction &gt;= 10 &amp;&amp; IsQuestCompleted(25012)">
+				<CustomBehavior File="LoadProfile" ProfileName="Eastern Kingdoms\[H - Quest] Silverpine Forest [Life]" />
+			</If>
+			<If Condition="Me.LevelFraction &gt;= 5 &amp;&amp; IsQuestCompleted(24972)">
+				<CustomBehavior File="LoadProfile" ProfileName="Eastern Kingdoms\[H - Quest] Tirisfal Glades [Life]" />
+			</If>
+			<CustomBehavior File="LoadProfile" ProfileName="Eastern Kingdoms\Starter Zones\[H - Quest] Undead [Life]" />
+		</If>
+
+		<!--Tauren Sorting Hat-->
+		<If Condition="Me.Race == WoWRace.Tauren">
+			<If Condition="Me.LevelFraction &gt;= 5 &amp;&amp; IsQuestCompleted(24215)">
+				<CustomBehavior File="LoadProfile" ProfileName="Eastern Kingdoms\[H - Quest] Mulgore [Life]" />
+			</If>
+			<CustomBehavior File="LoadProfile" ProfileName="Eastern Kingdoms\Starter Zones\[H - Quest] Tauren [Life]" />
+		</If>
+
+
+
+	</QuestOrder>
+</HBProfile>
+	

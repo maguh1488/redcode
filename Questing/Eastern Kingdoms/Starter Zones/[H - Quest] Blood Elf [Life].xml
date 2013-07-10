@@ -1,0 +1,317 @@
+<HBProfile>
+	<Name>[H - Quest] Blood Elf [Life]</Name>
+
+	<MinLevel>1</MinLevel>
+	<MaxLevel>91</MaxLevel>
+
+	<MinDurability>0.2</MinDurability>
+	<MinFreeBagSlots>2</MinFreeBagSlots>
+
+	<MailGrey>False</MailGrey>
+	<MailWhite>False</MailWhite>
+	<MailGreen>True</MailGreen>
+	<MailBlue>True</MailBlue>
+	<MailPurple>True</MailPurple>
+   
+	<SellGrey>True</SellGrey>
+	<SellWhite>True</SellWhite>
+	<SellGreen>True</SellGreen>
+	<SellBlue>False</SellBlue>
+	<SellPurple>False</SellPurple>
+
+	<Mailboxes>
+		<!--Sunstrider Isle Mailbox-->
+		<Mailbox X="10353.51" Y="-6368.346" Z="35.71226"/>
+	</Mailboxes>
+
+	<Vendors>
+		<!--Sunstrider Isle Vendors-->
+		<Vendor Name="Shara Sunwing" Entry="15287" Type="Food" X="10374.12" Y="-6391.749" Z="38.53276" />
+		<Vendor Name="Jainthess Thelryn" Entry="15291" Type="Repair" X="10417.58" Y="-6318.608" Z="35.57361" />
+	</Vendors>
+
+	<!--Quest Overrides-->
+	<Quest Id="8325" Name="Reclaiming Sunstrider Isle">
+		<Objective Type="KillMob" MobId="15274" KillCount="6">
+			<Hotspots>
+				<Hotspot X="10381.33" Y="-6292.103" Z="28.95503" />
+				<Hotspot X="10370.55" Y="-6246.947" Z="27.68048" />
+				<Hotspot X="10391.5" Y="-6194.03" Z="32.18996" />
+			</Hotspots>
+		</Objective>
+	</Quest>
+	<Quest Id="8336" Name="A Fistful of Slivers">
+		<Objective Type="CollectItem" ItemId="20482" CollectCount="6">
+			<CollectFrom>
+				<Mob Name="Mana Wyrm" Id="15274"/>
+				<Mob Name="Feral Tender" Id="15294"/>
+			</CollectFrom>
+			<Hotspots>
+				<Hotspot X="10381.33" Y="-6292.103" Z="28.95503" />
+				<Hotspot X="10370.55" Y="-6246.947" Z="27.68048" />
+				<Hotspot X="10391.5" Y="-6194.03" Z="32.18996" />
+			</Hotspots>
+		</Objective>
+	</Quest>
+	<Quest Id="8345" Name="The Shrine of Dath'Remar">
+		<Objective Type="UseObject" ObjectId="180516" UseCount="1">
+			<Hotspots>
+				<Hotspot X="10403.43" Y="-5948.841" Z="41.21329" />
+			</Hotspots>
+		</Objective>
+	</Quest>
+	<Quest Id="8335" Name="Felendren the Banished">
+		<Objective Type="KillMob" MobId="15273" KillCount="8">
+			<Hotspots>
+				<Hotspot X="10174.03" Y="-6048.078" Z="25.5402" />
+				<Hotspot X="10223.15" Y="-5984.865" Z="38.94405" />
+				<Hotspot X="10167.88" Y="-5963.533" Z="63.56975" />
+				<Hotspot X="10171.31" Y="-6010.042" Z="63.57262" />
+				<Hotspot X="10151.13" Y="-6005.13" Z="110.1541" />
+			</Hotspots>
+		</Objective>
+		<Objective Type="KillMob" MobId="15298" KillCount="2">
+			<Hotspots>
+				<Hotspot X="10151.13" Y="-6005.13" Z="110.1541" />
+			</Hotspots>
+		</Objective>
+		<Objective Type="CollectItem" ItemId="20799" CollectCount="1">
+			<CollectFrom>
+				<Mob Name="Felendren the Banished" Entry="15367"/>
+			</CollectFrom>
+			<Hotspots>
+				<Hotspot X="10151.13" Y="-6005.13" Z="110.1541" />
+			</Hotspots>
+		</Objective>
+	</Quest>
+
+	<QuestOrder>
+		<CustomBehavior File="Message" Text="Initializing Settings" LogColor="Cyan" />
+		<CustomBehavior File="UserSettings" LootMobs="True" UseFlightPaths="True" PullDistance="25" />
+		
+		<CustomBehavior File="Message" Text="Compiling Quests: Sunstrider Isle" LogColor="Cyan" />
+
+		<!--Quest: Reclaiming Sunstrider Isle-->
+		<PickUp QuestName="Reclaiming Sunstrider Isle" QuestId="8325" GiverName="Magistrix Erona" GiverId="15278" />
+			
+			<Objective QuestName="Reclaiming Sunstrider Isle" QuestId="8325" Type="KillMob" MobId="15274" KillCount="6" />
+		
+		<TurnIn QuestName="Reclaiming Sunstrider Isle" QuestId="8325" TurnInName="Magistrix Erona" TurnInId="15278" />
+
+		<!--Magistrix Erona: Unfortunate Measures Pickup (Worked Around because of Auto-Accept Bug) -->
+		<While Condition="HasQuestAvailable(15278) &amp;&amp; !IsQuestCompleted(8326)">
+			<CustomBehavior File="InteractWith" MobId="15278" />
+			<CustomBehavior File="RunMacro" Macro="/click GossipTitleButton1" />
+			<CustomBehavior File="Misc\RunLua" Lua="AcceptQuest()" WaitTime="1000" />
+		</While>
+
+			<!--Turning In & Picking Up Class Spell Quests-->
+		<If Condition="Me.Class == WoWClass.Warrior">
+			<PickUp QuestName="Warrior Training" QuestId="8329" GiverName="Magistrix Erona" GiverId="15278" />
+			<TurnIn QuestName="Warrior Training" QuestId="8329" TurnInName="Delios Silverblade" TurnInId="43010" />
+			<PickUp QuestName="Charge!" QuestId="27091" GiverName="Delios Silverblade" GiverId="43010" />
+		</If>
+
+		<If Condition="Me.Class == WoWClass.Paladin">
+			<PickUp QuestName="Paladin Training" QuestId="9676" GiverName="Magistrix Erona" GiverId="15278" />
+			<TurnIn QuestName="Paladin Training" QuestId="9676" TurnInName="Jesthenis Sunstriker" TurnInId="15280" />
+			<PickUp QuestName="Ways of the Light" QuestId="10069" GiverName="Jesthenis Sunstriker" GiverId="15280" />
+		</If>
+
+		<If Condition="Me.Class == WoWClass.Hunter">
+			<PickUp QuestName="Hunter Training" QuestId="9393" GiverName="Magistrix Erona" GiverId="15278" />
+			<TurnIn QuestName="Hunter Training" QuestId="9393" TurnInName="Ranger Sallina" TurnInId="15513" />
+			<PickUp QuestName="Steady Shot" QuestId="10070" GiverName="Ranger Sallina" GiverId="15513" />
+		</If>
+
+		<If Condition="Me.Class == WoWClass.Rogue">
+			<PickUp QuestName="Rogue Training" QuestId="9392" GiverName="Magistrix Erona" GiverId="15278" />
+			<TurnIn QuestName="Rogue Training" QuestId="9392" TurnInName="Pathstalker Kariel" TurnInId="15285" />
+			<PickUp QuestName="Evisceration" QuestId="10071" GiverName="Pathstalker Kariel" GiverId="15285" />
+		</If>
+
+		<If Condition="Me.Class == WoWClass.Priest">
+			<PickUp QuestName="Priest Training" QuestId="8564" GiverName="Magistrix Erona" GiverId="15278" />
+			<TurnIn QuestName="Priest Training" QuestId="8564" TurnInName="Matron Arena" TurnInId="15284" />
+			<PickUp QuestName="Learning the Word" QuestId="10072" GiverName="Matron Arena" GiverId="15284" />
+		</If>
+
+		<If Condition="Me.Class == WoWClass.Mage">
+			<PickUp QuestName="Mage Training" QuestId="8328" GiverName="Magistrix Erona" GiverId="15278" />
+			<TurnIn QuestName="Mage Training" QuestId="8328" TurnInName="Julia Sunstriker" TurnInId="15279" />
+			<PickUp QuestName="Frost Nova" QuestId="10068" GiverName="Julia Sunstriker" GiverId="15279" />
+		</If>
+
+		<If Condition="Me.Class == WoWClass.Warlock">
+			<PickUp QuestName="Warlock Training" QuestId="8563" GiverName="Magistrix Erona" GiverId="15278" />
+			<TurnIn QuestName="Warlock Training" QuestId="8563" TurnInName="Summoner Teli'Larien" TurnInId="15283" />
+			<PickUp QuestName="Corruption" QuestId="10073" GiverName="Summoner Teli'Larien" GiverId="15283" />
+		</If>
+
+		<If Condition="Me.Class == WoWClass.Monk">
+			<PickUp QuestName="Monk Training" QuestId="31170" GiverName="Magistrix Erona" GiverId="15278" />
+			<TurnIn QuestName="Monk Training" QuestId="31170" TurnInName="Pao" TurnInId="63332" />
+			<PickUp QuestName="Tiger Palm" QuestId="31171" GiverName="Pao" GiverId="63332" />
+		</If>
+
+		<!--Well Watcher Solanian Pickups-->
+		<PickUp QuestName="Solanian's Belongings" QuestId="8330" GiverName="Well Watcher Solanian" GiverId="15295" />
+		<PickUp QuestName="The Shrine of Dath'Remar" QuestId="8345" GiverName="Well Watcher Solanian" GiverId="15295" />
+
+		<!--Arcanist Ithanas Pickups-->
+		<PickUp QuestName="A Fistful of Slivers" QuestId="8336" GiverName="Arcanist Ithanas" GiverId="15296" />
+
+		<!--Arcanist Helion Pickups-->
+		<PickUp QuestName="Thirst Unending" QuestId="8346" GiverName="Arcanist Helion" GiverId="15297" />
+
+			<!--Thirst Unending: Use Arcane Torrent-->
+			<While Condition="HasQuest(8346) &amp;&amp; !IsQuestCompleted(8346)">
+				<CustomBehavior File="CastSpellOn" MobHpPercentLeft="100" MobId="15274" Range="7" SpellId1="28730" SpellId2="80483" SpellId3="129597" SpellId4="25046" SpellId5="69179"/>
+			</While>
+
+			<!--Objectives: A Fistful of Silvers, The Shrine of Dath'Remar, Unfortunate Measures, & Solanian's Belongings-->
+			<Objective QuestName="A Fistful of Slivers" QuestId="8336" Type="CollectItem" ItemId="20482" CollectCount="6" />
+
+			<If Condition="HasQuest(8345) &amp;&amp; !IsQuestCompleted(8345)">
+				<Objective QuestName="The Shrine of Dath'Remar" QuestId="8345" Type="UseObject" ObjectId="180516" UseCount="1" />	
+			</If>
+
+			<Objective QuestName="Solanian's Belongings" QuestId="8330" Type="CollectItem" ItemId="20471" CollectCount="1" />
+			<Objective QuestName="Unfortunate Measures" QuestId="8326" Type="CollectItem" Name="Lynx Collar" ItemId="20797" CollectCount="8"/>
+			<Objective QuestName="Solanian's Belongings" QuestId="8330" Type="CollectItem" ItemId="20470" CollectCount="1" />
+			<Objective QuestName="Solanian's Belongings" QuestId="8330" Type="CollectItem" ItemId="20472" CollectCount="1" />
+
+			<!--Poor Thing Didn't Hit Level 3-->
+			<If Condition="Me.Level &lt;= 3">
+				<CustomBehavior File="Message" Text="Didn't Quite hit Level 3: Grinding" LogColor="Yellow" />
+				<SetGrindArea>
+					<GrindArea>
+						<Factions>7</Factions>
+						<Hotspots>
+							<Hotspot X="10235.05" Y="-6347.052" Z="30.84054" />
+						</Hotspots>
+					</GrindArea>  
+				</SetGrindArea>
+				<GrindTo Condition="Me.Level &gt;= 3" />
+			</If>
+
+		<!--Class Quest Objectives-->
+		<If Condition="Me.Class == WoWClass.Warrior">
+			<If Condition="HasQuest(27091) &amp;&amp; !IsQuestCompleted(27091)">
+				<RunTo X="10377.63" Y="-6362.693" Z="35.69999" />
+				<CustomBehavior File="CastSpellOn" SpellId="100" MobId="44937" NumOfTimes="5" MobHpPercentLeft="100" MinRange="8" Range="25" X="10377.63" Y="-6362.693" Z="35.69999" />
+			</If>
+			<TurnIn QuestName="Charge!" QuestId="27091" TurnInName="Delios Silverblade" TurnInId="43010" />
+		</If>
+
+		<If Condition="Me.Class == WoWClass.Paladin">
+			<If Condition="!Me.HasAura(&quot;Seal of Command&quot;)">
+				<CustomBehavior File="Misc\RunLua" Lua="CastSpellByID(105361)" WaitTime="1000" />
+			</If>
+			<While Condition="HasQuest(10069) &amp;&amp; !IsQuestCompleted(10069)">
+				<RunTo X="10377.63" Y="-6362.693" Z="35.69999" />
+				<CustomBehavior File="InteractWith" MobId="44937" NumOfTimes="1" X="10377.63" Y="-6362.693" Z="35.69999" />
+				<TurnIn QuestName="Ways of the Light" QuestId="10069" TurnInName="Well Watcher Solanian" TurnInId="15295" />
+			</While>
+		</If>
+
+		<If Condition="Me.Class == WoWClass.Hunter">
+			<While Condition="HasQuest(10070) &amp;&amp; !IsQuestCompleted(10070)">
+				<RunTo X="10377.63" Y="-6362.693" Z="35.69999" />
+				<CustomBehavior File="CastSpellOn" SpellId="56641" MobId="44937" NumOfTimes="5" MobHpPercentLeft="100" Range="40" X="10377.63" Y="-6362.693" Z="35.69999" />
+			</While>
+			<TurnIn QuestName="Steady Shot" QuestId="10070" TurnInName="Ranger Sallina" TurnInId="15513" />
+		</If>
+
+		<If Condition="Me.Class == WoWClass.Rogue">
+			<While Condition="HasQuest(10071) &amp;&amp; !IsQuestCompleted(10071)">
+				<CustomBehavior File="CastSpellOn" SpellId="1752" MobId="44937" NumOfTimes="3" MobHpPercentLeft="100" MinRange="4" X="10377.63" Y="-6362.693" Z="35.69999" />
+				<CustomBehavior File="WaitTimer" WaitTime="3000" />
+				<CustomBehavior File="CastSpellOn" SpellId="2098" MobId="44937" NumOfTimes="1" MobHpPercentLeft="100" MinRange="4" X="10377.63" Y="-6362.693" Z="35.69999" />
+			</While>
+			<TurnIn QuestName="Evisceration" QuestId="10071" TurnInName="Pathstalker Kariel" TurnInId="15285" />
+		</If>
+
+		<If Condition="Me.Class == WoWClass.Priest">
+			<While Condition="HasQuest(10072) &amp;&amp; !IsQuestCompleted(10072)">
+				<CustomBehavior File="CastSpellOn" SpellId="589" MobId="44937" NumOfTimes="5" MobHpPercentLeft="100" Range="40" X="10377.63" Y="-6362.693" Z="35.69999" />
+			</While>
+			<TurnIn QuestName="Learning the Word" QuestId="10072" TurnInName="Matron Arena" TurnInId="15284" />
+		</If>
+
+		<If Condition="Me.Class == WoWClass.Mage">
+			<While Condition="HasQuest(10068) &amp;&amp; !IsQuestCompleted(10068)">
+				<RunTo X="10377.63" Y="-6362.693" Z="35.69999" />
+				<CustomBehavior File="CastSpellOn" SpellId="122" MobId="44937" NumOfTimes="5" MobHpPercentLeft="100" Range="12" X="10377.63" Y="-6362.693" Z="35.69999" />
+			</While>
+			<TurnIn QuestName="Frost Nova" QuestId="10068" TurnInName="Julia Sunstriker" TurnInId="15279" />
+		</If>
+
+		<If Condition="Me.Class == WoWClass.Warlock">
+			<While Condition="HasQuest(10073) &amp;&amp; !IsQuestCompleted(10073)">
+				<CustomBehavior File="CastSpellOn" SpellId="172" MobId="44937" NumOfTimes="5" MobHpPercentLeft="100" Range="40" X="10377.63" Y="-6362.693" Z="35.69999" />
+			</While>
+			<TurnIn QuestName="Corruption" QuestId="10073" TurnInName="Summoner Teli'Larien" TurnInId="15283" />			
+		</If>
+
+		<If Condition="Me.Class == WoWClass.Monk">
+			<While Condition="HasQuest(31171) &amp;&amp; !IsQuestCompleted(31171)">
+				<CustomBehavior File="CastSpellOn" SpellId="100780" MobId="44937" NumOfTimes="1" MobHpPercentLeft="100" MinRange="5" X="10377.63" Y="-6362.693" Z="35.69999" />
+				<CustomBehavior File="CastSpellOn" SpellId="100787" MobId="44937" NumOfTimes="1" MobHpPercentLeft="100" MinRange="5" X="10377.63" Y="-6362.693" Z="35.69999" />
+			</While>
+			<TurnIn QuestName="Tiger Palm" QuestId="31171" TurnInName="Pao" TurnInId="63332" />
+		</If>
+
+		<TurnIn QuestName="Unfortunate Measures" QuestId="8326" TurnInId="15278" TurnInName="Magistrix Erona"/>
+		<PickUp QuestName="Report to Lanthan Perilon" QuestId="8327" GiverName="Magistrix Erona" GiverId="15278" />
+		<TurnIn QuestName="The Shrine of Dath'Remar" QuestId="8345" TurnInName="Well Watcher Solanian" TurnInId="15295" />
+		<TurnIn QuestName="Solanian's Belongings" QuestId="8330" TurnInName="Well Watcher Solanian" TurnInId="15295" />
+		<TurnIn QuestName="A Fistful of Slivers" QuestId="8336" TurnInName="Arcanist Ithanas" TurnInId="15296" />
+		<TurnIn QuestName="Thirst Unending" QuestId="8346" TurnInName="Arcanist Helion" TurnInId="15297" />
+
+		<If Condition="HasQuest(8327)" >
+			<CustomBehavior File="ForceSetVendor" DoSell="True" DoRepair="True" DoMail="True" />
+		</If>
+
+		<TurnIn QuestName="Report to Lanthan Perilon" QuestId="8327" TurnInName="Lanthan Perilon" TurnInId="15281" />
+
+		<PickUp QuestName="Aggression" QuestId="8334" GiverName="Lanthan Perilon" GiverId="15281" />
+			<Objective QuestName="Aggression" QuestId="8334" Type="KillMob" Name="Tender" MobId="15271" KillCount="7"/>
+			<Objective QuestName="Aggression" QuestId="8334" Type="KillMob" Name="Feral Tender" MobId="15294" KillCount="7"/>
+		<TurnIn QuestName="Aggression" QuestId="8334" TurnInName="Lanthan Perilon" TurnInId="15281" />
+
+		<PickUp QuestName="Felendren the Banished" QuestId="8335" GiverName="Lanthan Perilon" GiverId="15281" />
+			
+			<Objective QuestName="Felendren the Banished" QuestId="8335" Type="KillMob" MobId="15273" KillCount="8" />
+			<Objective QuestName="Felendren the Banished" QuestId="8335" Type="KillMob" MobId="15298" KillCount="2" />
+			<Objective QuestName="Felendren the Banished" QuestId="8335" Type="CollectItem" ItemId="20799" CollectCount="1" />
+
+		<If Condition="(HasItem(20483))" >
+			<PickUp QuestName="Tainted Arcane Sliver" QuestId="8338" GiverName="Tainted Arcane Sliver" GiverId="20483" GiverType="Item" />
+		</If>
+
+		<If Condition="HasQuest(8338) &amp;&amp; IsQuestCompleted(8338)">
+			<CustomBehavior File="ForceSetVendor" DoSell="True" DoRepair="True" />
+			<TurnIn QuestName="Tainted Arcane Sliver" QuestId="8338" TurnInName="Arcanist Helion" TurnInId="15297" />
+		</If>
+
+		<TurnIn QuestName="Felendren the Banished" QuestId="8335" TurnInName="Lanthan Perilon" TurnInId="15281" />
+		<PickUp QuestName="Aiding the Outrunners" QuestId="8347" GiverName="Lanthan Perilon" GiverId="15281" />
+		<TurnIn QuestName="Aiding the Outrunners" QuestId="8347" TurnInName="Outrunner Alarion" TurnInId="15301" />
+		<PickUp QuestName="Slain by the Wretched" QuestId="9704" GiverName="Outrunner Alarion" GiverId="15301" />
+		<TurnIn QuestName="Slain by the Wretched" QuestId="9704" TurnInName="Slain Outrunner" TurnInId="17849" />
+		<PickUp QuestName="Package Recovery" QuestId="9705" GiverName="Slain Outrunner" GiverId="17849" />
+		<TurnIn QuestName="Package Recovery" QuestId="9705" TurnInName="Outrunner Alarion" TurnInId="15301" />
+		<PickUp QuestName="Completing the Delivery" QuestId="8350" GiverName="Outrunner Alarion" GiverId="15301" />
+			
+		<!--Setting Hearthstone: Falconwing Square-->
+		<If Condition="HasQuest(8350) &amp;&amp; IsQuestCompleted(8350)">
+			<CustomBehavior File="SetHearthstone" MobId="15433" X="9474.605" Y="-6852.657" Z="17.43916" />
+		</If>
+
+		<TurnIn QuestName="Completing the Delivery" QuestId="8350" TurnInName="Innkeeper Delaniel" TurnInId="15433" />
+
+		<CustomBehavior File="Message" Text="Profile Complete: Loading Next Profile" LogColor="Cyan" />
+		<CustomBehavior File="LoadProfile" ProfileName="..\..\[H - Quest] Profile Loader [Life]" />	
+	</QuestOrder>
+</HBProfile>

@@ -627,13 +627,15 @@
 
 		<TurnIn QuestName="Wanted: Knucklerot and Luzran" QuestId="9156" TurnInName="Deathstalker Rathiel" TurnInId="16200" />
 
-            <If Condition="Me.Level &gt;= 24">
-                <Objective QuestName="The Traitor's Destruction" QuestId="9167" Type="CollectItem" ItemId="22653" CollectCount="1" />
-            </If>
+			<If Condition="Me.Level &gt;= 24">
+				<Objective QuestName="The Traitor's Destruction" QuestId="9167" Type="CollectItem" ItemId="22653" CollectCount="1" />
+			</If>
 
-		<TurnIn QuestName="The Traitor's Destruction" QuestId="9167" TurnInName="Magister Kaendris" TurnInId="16239" />
+		<If Condition="IsQuestCompleted(9167)">
+			<TurnIn QuestName="The Traitor's Destruction" QuestId="9167" TurnInName="Magister Kaendris" TurnInId="16239" />
+		</If>
 		
-		<If Condition="Me.Race == WoWRace.BloodElf">
+		<If Condition="Me.Race == WoWRace.BloodElf &amp;&amp; IsQuestCompleted(9167)">
 			<PickUp QuestName="Hero of the Sin'dorei" QuestId="9328" GiverName="Magister Kaendris" GiverId="16239" />
 			<TurnIn QuestName="Hero of the Sin'dorei" QuestId="9328" TurnInName="Lor'themar Theron" TurnInId="16802" />
 			<PickUp QuestName="Envoy to the Horde" QuestId="9621" GiverName="Lor'themar Theron" GiverId="16802" />
@@ -650,9 +652,9 @@
 				<PickUp QuestName="Friend of the Sin'dorei" QuestId="9811" GiverName="Magister Kaendris" GiverId="16239" />
 				<TurnIn QuestName="Friend of the Sin'dorei" QuestId="9811" TurnInName="Lor'themar Theron" TurnInId="16802" />
 			</Else>
-
 		</If>
 
+		<CustomBehavior File="Message" Text="Profile Complete: Loading Next Profile" LogColor="Cyan" />
+		<CustomBehavior File="LoadProfile" ProfileName="..\..\[H - Quest] Profile Loader [Life]" />
 	</QuestOrder>
-
 </HBProfile>

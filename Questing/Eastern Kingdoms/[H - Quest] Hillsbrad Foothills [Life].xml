@@ -61,6 +61,7 @@
 		<Blackspot X="-34.64258" Y="-591.1284" Z="153.8889" Radius="3.39284" />
 	</Blackspots>
 
+	<!--Quest Overrides-->
 	<Quest Id="28144" Name="Thieving Little Monsters!">
 		<Objective Type="CollectItem" ItemId="63082" CollectCount="6">
 			<CollectFrom>
@@ -305,6 +306,9 @@
 	</Quest>
 
 	<QuestOrder>
+		<CustomBehavior File="Message" Text="There is a problem with a quest that breaks the bots ability to attach. Profile shelved until it is further reviewed" LogColor="Red" />
+		<CustomBehavior File="Halt" />
+
 		<CustomBehavior File="Message" Text="Initializing Settings" LogColor="Cyan" />
 		<CustomBehavior File="UserSettings" LootMobs="True" UseFlightPaths="True" PullDistance="25" LogoutForInactivity="False" />
 
@@ -346,7 +350,7 @@
 		<PickUp QuestName="Glorious Harvest" QuestId="28114" GiverName="Apothecary Underhill" GiverId="47432" />
 		<PickUp QuestName="Past Their Prime" QuestId="28115" GiverName="Apothecary Underhill" GiverId="47432" />
 
-	    	<CustomBehavior File="InteractWith" QuestId="28114" MobId="47203" InteractByLooting="True" NumOfTimes="200" CollectionDistance="1000" >
+	    	<CustomBehavior File="InteractWith" QuestId="28114" MobId="47203" InteractByLooting="True" NumOfTimes="200" CollectionDistance="1000">
 				<HuntingGrounds>
 					<Hotspot X="-684.1111" Y="348.5129" Z="63.06081" />
 					<Hotspot X="-699.2821" Y="308.1685" Z="50.80106" />
@@ -373,7 +377,7 @@
 				UseWhenMobHasHealthPercent="35" 
 				MaxRangeToUseItem="20" 
 				UseItemStrategy="UseItemOncePerTarget" 
-				RecallPetAtMobPercentHealth="100" >
+				RecallPetAtMobPercentHealth="100">
           		<HuntingGrounds>
 					<Hotspot X="-874.1949" Y="231.1803" Z="9.425097" />
 					<Hotspot X="-886.1464" Y="196.5407" Z="11.98429" />
@@ -395,18 +399,18 @@
 			<Objective QuestName="Coastal Delicacies!" QuestId="28146" Type="KillMob" MobId="47752" KillCount="12" />
 
 			<If Condition="!HasQuest(28154) &amp;&amp; !IsQuestCompleted(28154) &amp;&amp; !HasItem(63090)">
-						<CustomBehavior File="Message" Text="Farming for Muckgill's Flipper" LogColor="Yellow" />
-						<SetGrindArea>
-							<GrindArea>
-								<Factions>18</Factions>
-								<Hotspots>
-									<Hotspot X="-961.6851" Y="290.1572" Z="9.477529" />
-									<Hotspot X="-1006.247" Y="270.2924" Z="4.594878" />
-									<Hotspot X="-1097.226" Y="260.3742" Z="4.063188" />
-								</Hotspots>
-							</GrindArea>  
-						</SetGrindArea>
-					<GrindTo Condition="HasItem(63090)" />
+					<CustomBehavior File="Message" Text="Farming for Muckgill's Flipper" LogColor="Yellow" />
+					<SetGrindArea>
+						<GrindArea>
+							<Factions>18</Factions>
+							<Hotspots>
+								<Hotspot X="-961.6851" Y="290.1572" Z="9.477529" />
+								<Hotspot X="-1006.247" Y="270.2924" Z="4.594878" />
+								<Hotspot X="-1097.226" Y="260.3742" Z="4.063188" />
+							</Hotspots>
+						</GrindArea>  
+					</SetGrindArea>
+				<GrindTo Condition="HasItem(63090)" />
 			</If>			
 
 			<If Condition="HasItem(63090)">
@@ -561,7 +565,7 @@
 		<PickUp QuestName="Helcular's Rod Giveth..." QuestId="28331" GiverName="Helcular" GiverId="48129" />
 
 			<!--Quest: Helcular's Rod Giveth...-->
-			<CustomBehavior File="InteractWith" QuestId="28331" MobId="48269" InteractByUsingItemId="63508" AuraIdMissingFromMob="89824" MobState="Alive" NumOfTimes="150" CollectionDistance="1000" >
+			<CustomBehavior File="InteractWith" QuestId="28331" MobId="48269" InteractByUsingItemId="63508" AuraIdMissingFromMob="89824" MobState="Alive" NumOfTimes="150" CollectionDistance="1000">
 				<HuntingGrounds>
 					<Hotspot X="-602.262" Y="-506.7837" Z="36.26163" />
 					<Hotspot X="-528.7531" Y="-499.9558" Z="39.18921" />
@@ -584,7 +588,7 @@
 				<CustomBehavior File="Message" Text="Eventually the slimes will go hostile and kill you, after you rez they go back to normal!" LogColor="Orange" />
 			</If>
 
-			<CustomBehavior File="InteractWith" QuestId="28324" MobId="48136" IgnoreCombat="True" InteractByUsingItemId="63426" AuraIdMissingFromMob="89756" MobState="Alive" NumOfTimes="150" CollectionDistance="100" >
+			<CustomBehavior File="InteractWith" QuestId="28324" MobId="48136" IgnoreCombat="True" InteractByUsingItemId="63426" AuraIdMissingFromMob="89756" MobState="Alive" NumOfTimes="150" CollectionDistance="100">
 				<HuntingGrounds>
 					<Hotspot X="-723.1719" Y="-512.8267" Z="24.08546" />
 					<Hotspot X="-738.2448" Y="-593.5045" Z="21.33413" />
@@ -749,7 +753,7 @@
 
 			<!--Quest: A Fighting Chance-->
 			<!--This needs to be refined. Yeti is a pain in the ass-->
-			<CustomBehavior File="InteractWith" QuestId="28495" MobId="48187" Range="40" InteractByUsingItemId="64416" MobState="Alive" NumOfTimes="150" CollectionDistance="1000" >
+			<CustomBehavior File="InteractWith" QuestId="28495" MobId="48187" Range="40" InteractByUsingItemId="64416" MobState="Alive" NumOfTimes="150" CollectionDistance="1000">
 				<HuntingGrounds>
 					<Hotspot X="-377.9865" Y="-275.158" Z="58.2589" />
 					<Hotspot X="-449.9752" Y="-306.109" Z="53.40149" />
@@ -810,7 +814,7 @@
 				UseWhenMobHasHealthPercent="35" 
 				MaxRangeToUseItem="45" 
 				UseItemStrategy="UseItemContinuouslyOnTargetDontDefend" 
-				RecallPetAtMobPercentHealth="100" >
+				RecallPetAtMobPercentHealth="100">
           		<HuntingGrounds>
 					<Hotspot X="332.1251" Y="-835.2551" Z="133.4863" />
 					<Hotspot X="259.4657" Y="-829.563" Z="144.1082" />
@@ -874,28 +878,13 @@
 			<CustomBehavior File="CompleteLogQuest" QuestId="28603" />
 		</If>
 
+
 		<CustomBehavior File="Halt" />
-
-
-
-
-
-<CustomBehavior File="Halt" />
 		<TurnIn QuestName="Breaking the Hand" QuestId="28556" TurnInName="High Warlord Cromush" TurnInId="48545" />
 		<TurnIn QuestName="Eastpoint Tower" QuestId="28620" TurnInName="Nils Beerot" TurnInId="49201" />
 
-		
-		
 
-
-
-	
-
-
-
-
-
-
+		<CustomBehavior File="Message" Text="Profile Complete: Loading Next Profile" LogColor="Cyan" />
+		<CustomBehavior File="LoadProfile" ProfileName="..\..\[H - Quest] Profile Loader [Life]" />
 	</QuestOrder>
-
 </HBProfile>
