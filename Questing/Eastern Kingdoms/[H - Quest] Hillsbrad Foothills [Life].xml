@@ -850,11 +850,11 @@
 			</While>
 
 			<While Condition="HasQuest(28603) &amp;&amp; !IsObjectiveComplete(1, 28603)">
-				<CustomBehavior File="InteractWith" MobId="48922" WaitTime="5" InteractByGossipOptions="1" X="-108.2129" Y="-310.6942" Z="141.8421" />
+				<CustomBehavior File="InteractWith" MobId="48922" WaitTime="5000" InteractByGossipOptions="1" X="-108.2129" Y="-310.6942" Z="141.8421" />
 			</While>
 
 			<While Condition="HasQuest(28603) &amp;&amp; !IsObjectiveComplete(2, 28603)">
-				<CustomBehavior File="InteractWith" MobId="48923" WaitTime="5" InteractByGossipOptions="1" X="-137.8171" Y="-264.7516" Z="143.5298" />
+				<CustomBehavior File="InteractWith" MobId="48923" WaitTime="5000" InteractByGossipOptions="1" X="-137.8171" Y="-264.7516" Z="143.5298" />
 			</While>
 
 			<If Condition="HasQuest(28604) &amp;&amp; !IsQuestCompleted(28604)">
