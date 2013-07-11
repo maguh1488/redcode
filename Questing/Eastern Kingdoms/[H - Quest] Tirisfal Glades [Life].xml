@@ -30,7 +30,7 @@
 	<Vendors>
 		<!--Carlston Estate Vendors-->
 		<Vendor Name="Franklin Brinklestein" Entry="44034" Type="Food" X="2234.77" Y="1021.9" Z="36.44947" />
-		<Vendor Name="Gordo" Entry="10666" Type="Food" X="2232.393" Y="997.4209" Z="36.7075" />
+		<Vendor Name="Gordo" Entry="10666" Type="Repair" X="2232.393" Y="997.4209" Z="36.7075" />
 		<!--Cold Hearth Manor Vendor-->
 		<Vendor Name="Constance Brisboise" Entry="3522" Type="Repair" X="2157.345" Y="656.6657" Z="34.54612" />
 		<!--Brill Vendors-->
@@ -62,9 +62,10 @@
 			<!--Quest: Ever So Lonely-->
 			<While Condition="!IsQuestCompleted(24974)">
 				<If Condition="HasQuest(24974) &amp;&amp; !IsObjectiveComplete(1,24974)">
-					<CustomBehavior File="CombatUseItemOnV2" MobId="1544" MobId2="1543" ItemId="52059" 
-						UseItemStrategy="UseItemContinuouslyOnTargetDontDefend"
+					<CustomBehavior File="CombatUseItemOnV2" QuestId="24974" QuestObjectiveIndex="1" MobId="1544" MobId2="1543" ItemId="52059" 
+						UseItemStrategy="UseItemOncePerTarget"
 						ItemAppliesAuraId="AssumeItemUseAlwaysSucceeds"
+						RecallPetAtMobPercentHealth="0"
 						UseWhenMobHasHealthPercent="35" 
 						X="2523.696" Y="1441.149" Z="0.1288469" />
 				</If>
@@ -77,6 +78,7 @@
 					<CustomBehavior File="Message" Text="Lost our Murloc Friend. Abandoning Quest." LogColor="Cyan" />
 					<CustomBehavior File="AbandonQuest" QuestId="24974" />
 					<PickUp QuestName="Ever So Lonely" QuestId="24974" GiverName="Sedrick Calston" GiverId="38925" />
+					<EnableBehavior Name="Combat, Loot" />
 				</If>
 			</While>
 
@@ -277,7 +279,7 @@
 		<TurnIn QuestName="Grisly Grizzlies" QuestId="25056" TurnInName="Apothecary Dithers" TurnInId="11057" />
 		<PickUp QuestName="A Little Oomph" QuestId="25013" GiverName="Apothecary Dithers" GiverId="11057" />
 		<TurnIn QuestName="A Deadly New Ally" QuestId="25010" TurnInName="Lieutenant Sanders" TurnInId="13158" />
-		<PickUp QuestName="A Daughter's Embrace" QuestId="25046" GiverName="Lieutenant Sanders" GiverId="13158" />
+		<PickUp QuestName="A Daughter's Embrace" QuestId="25046" GiverName="Lieutenant Sanders" GiverId="13158" X="2530.684" Y="-920.0986" Z="56.33507" />
 			
 			<Objective QuestName="A Daughter's Embrace" QuestId="25046" Type="KillMob" MobId="39098" KillCount="1" />
 			<Objective QuestName="A Little Oomph" QuestId="25013" Type="CollectItem" ItemId="2872" CollectCount="4" />
@@ -296,6 +298,6 @@
 		<PickUp QuestName="Warchief's Command: Silverpine Forest!" QuestId="26964" GiverName="Executor Zygand" GiverId="1515" />
 
 		<CustomBehavior File="Message" Text="Profile Complete: Loading Next Profile" LogColor="Cyan" />
-		<CustomBehavior File="LoadProfile" ProfileName="..\..\[H - Quest] Profile Loader [Life]" />	
+		<CustomBehavior File="LoadProfile" ProfileName="..\[H - Quest] Profile Loader [Life]" />	
 	</QuestOrder>
 </HBProfile>

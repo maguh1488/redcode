@@ -638,6 +638,6 @@
 		<!--TurnIn QuestName="Empire of Dirt" QuestId="27746" TurnInName="High Executor Darthalia" TurnInId="2215" /-->
 
 		<CustomBehavior File="Message" Text="Profile Complete: Loading Next Profile" LogColor="Cyan" />
-		<CustomBehavior File="LoadProfile" ProfileName="..\..\[H - Quest] Profile Loader [Life]" />		
+		<CustomBehavior File="LoadProfile" ProfileName="..\[H - Quest] Profile Loader [Life]" />	
 	</QuestOrder>
 </HBProfile>
