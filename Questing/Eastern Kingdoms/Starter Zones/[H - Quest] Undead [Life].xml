@@ -66,9 +66,9 @@
 		<PickUp QuestName="Those That Couldn't Be Saved" QuestId="26799" GiverName="Undertaker Mordo" GiverId="1568" />
 		<PickUp QuestName="The Wakening" QuestId="24960" GiverName="Caretaker Caice" GiverId="2307" />
 
-			<CustomBehavior File="InteractWith" QuestId="24960" QuestObjectiveIndex="2" MobId="49230" NumOfTimes="10" GossipOptions="1,1" X="1750.27" Y="1640.774" Z="117.7434" />
-			<CustomBehavior File="InteractWith" QuestId="24960" QuestObjectiveIndex="1" MobId="38895" NumOfTimes="10" GossipOptions="1,1" X="1754.847" Y="1666.377" Z="121.3625" />
-			<CustomBehavior File="InteractWith" QuestId="24960" QuestObjectiveIndex="3" MobId="49231" NumOfTimes="10" GossipOptions="1,1, 1" X="1740.547" Y="1702.709" Z="128.2191" />
+			<CustomBehavior File="InteractWith" QuestId="24960" QuestObjectiveIndex="2" NonCompeteDistance="0" MobId="49230" NumOfTimes="10" GossipOptions="1,1" X="1750.27" Y="1640.774" Z="117.7434" />
+			<CustomBehavior File="InteractWith" QuestId="24960" QuestObjectiveIndex="1" NonCompeteDistance="0" MobId="38895" NumOfTimes="10" GossipOptions="1,1" X="1754.847" Y="1666.377" Z="121.3625" />
+			<CustomBehavior File="InteractWith" QuestId="24960" QuestObjectiveIndex="3" NonCompeteDistance="0" MobId="49231" NumOfTimes="10" GossipOptions="1,1, 1" X="1740.547" Y="1702.709" Z="128.2191" />
 			<Objective QuestName="Those That Couldn't Be Saved" QuestId="26799" Type="KillMob" MobId="1501" KillCount="6" />
 
 		<TurnIn QuestName="Those That Couldn't Be Saved" QuestId="26799" TurnInName="Undertaker Mordo" TurnInId="1568" />
@@ -161,9 +161,9 @@
 			<PickUp QuestName="The Truth of the Grave" QuestId="24961" GiverName="Novice Elreth" GiverId="1661" />
 			<TurnIn QuestName="Tainted Scroll" QuestId="3099" TurnInId="2126" TurnInName="Maximillion" />
 			<PickUp QuestName="Dark Deeds" QuestId="24968" GiverId="2126" GiverName="Maximillion" />
-			<If Condition="HasQuest(24968) &amp;&amp; !IsQuestCompleted(24968)">
-				<CustomBehavior File="InteractWith" QuestId="24968" InteractByCastingSpellId="172" MobId="44794" NumOfTimes="50" Range="40" X="1833.566" Y="1607.483" Z="95.68764" />
-			</If>	
+			<While Condition="HasQuest(24968) &amp;&amp; !IsQuestCompleted(24968)">
+				<CustomBehavior File="InteractWith" InteractByCastingSpellId="172" CollectionDistance="15" MobId="44794" Range="40" X="1833.566" Y="1607.483" Z="95.68764" />
+			</While>	
 			<TurnIn QuestName="Dark Deeds" QuestId="24968" TurnInId="2126" TurnInName="Maximillion" />
 		</If>
 
