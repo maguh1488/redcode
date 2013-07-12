@@ -58,6 +58,22 @@
 			</Hotspots>
 		</Objective>
 	</Quest>
+	<!--Borrowed to Solve Problem?-->
+	<Quest Id="27360" Name="Vengeance for Our Soldiers">
+		<Objective Type="KillMob" MobId="45403" KillCount="10">
+			<Hotspots>
+				<Hotspot X="-1512.185" Y="1636.408" Z="20.48574" />
+				<Hotspot X="-1515.858" Y="1595.848" Z="21.70982" />
+				<Hotspot X="-1497.087" Y="1560.36" Z="20.48702" />
+				<Hotspot X="-1468.09" Y="1532.43" Z="20.57621" />
+				<Hotspot X="-1432.349" Y="1513.341" Z="20.75619" />
+				<Hotspot X="-1405.361" Y="1544.049" Z="21.07637" />
+				<Hotspot X="-1413.316" Y="1583.697" Z="20.48017" />
+				<Hotspot X="-1432.816" Y="1619.939" Z="20.48544" />
+				<Hotspot X="-1473.522" Y="1628.649" Z="20.48544" />
+			</Hotspots>
+		</Objective>
+	</Quest>
 
 	<QuestOrder>
 
@@ -75,8 +91,9 @@
 		</If>
 		<PickUp QuestName="The Warchief Cometh" QuestId="26965" GiverName="Grand Executor Mortuus" GiverId="44615" />
 			
+			<!--Monitor This, Interaction Problem-->
 			<While Condition="HasQuest(26965) &amp;&amp; !IsQuestCompleted(26965)">
-				<CustomBehavior File="WaitTimer" WaitTime="5000" GoalText="Waiting for Garrosh to Leave" />
+				<CustomBehavior File="WaitTimer" WaitTime="30000" GoalText="Waiting for Garrosh to Leave" />
 			</While>
 
 		<TurnIn QuestName="The Warchief Cometh" QuestId="26965" TurnInName="Grand Executor Mortuus" TurnInId="44615" />
@@ -282,6 +299,9 @@
 				</CustomBehavior>
 			</If>
 
+		<!--Not sure what happened here, confirm-->
+		<TurnIn QuestName="Honor the Dead" QuestId="27180" TurnInName="Lady Sylvanas Windrunner" TurnInId="44365" />
+
 			<If Condition="HasQuest(27181) &amp;&amp; !IsQuestCompleted(27181)">
 				<Objective QuestName="Excising the Taint" QuestId="27181" Type="KillMob" MobId="45195" KillCount="10" />
 			</If>
@@ -314,7 +334,6 @@
 					</If>
 			</While>
 
-		<TurnIn QuestName="Honor the Dead" QuestId="27180" TurnInName="Lady Sylvanas Windrunner" TurnInId="44365" />
 		<TurnIn QuestName="Nowhere to Run" QuestId="27195" TurnInName="Lady Sylvanas Windrunner" TurnInId="44365" />
 
 	<CustomBehavior File="Message" Text="Compiling Quests: Ruins of Gilneas" LogColor="Cyan" />
@@ -373,6 +392,7 @@
 		</If>
 
 			<Objective QuestName="On Whose Orders?" QuestId="27364" Type="CollectItem" ItemId="60977" CollectCount="1" />
+			<Objective QuestName="Vengeance for Our Soldiers" QuestId="27360" Type="KillMob" MobId="45403" KillCount="10" />
 
 		<If Condition="HasQuest(27364)">
 		    <CustomBehavior File="CompleteLogQuest" QuestId="27364" />
@@ -395,13 +415,19 @@
 		  <PickUp QuestName="Fall Back!" QuestId="27405" GiverName="Forward Commander Onslaught" GiverId="45315" />
 		</If>
 
-			<Objective QuestName="Vengeance for Our Soldiers" QuestId="27360" Type="KillMob" MobId="45403" KillCount="10" />
-
 		<TurnIn QuestName="Vengeance for Our Soldiers" QuestId="27360" TurnInName="Captain Rutsak" TurnInId="45389" />
 		<TurnIn QuestName="Fall Back!" QuestId="27405" TurnInName="Deathstalker Commander Belmont" TurnInId="45312" />
 		<PickUp QuestName="A Man Named Godfrey" QuestId="27406" GiverName="Deathstalker Commander Belmont" GiverId="45312" />
 
-		<CustomBehavior File="RunMacro" Macro="/click QuestFrameAcceptButton" />
+		<If Condition="!HasQuest(27423) &amp;&amp; !IsQuestCompleted(27423)">
+			<RunTo X="-1227.158" Y="1119.398" Z="35.32343" />
+			<CustomBehavior File="WaitTimer" WaitTime="2000" />
+		</If>
+
+		<!--Don't think it works, whatever-->
+		<If Condition="HasQuest(27423)">
+			<CustomBehavior File="RunMacro" Macro="/click QuestFrameCompleteQuestButton" />
+		</If>
 
 			<CustomBehavior File="CollectThings" QuestId="27423" MobId1="45481" MobId2="45499" MobId="45483" MobState="Alive" CollectUntil="QuestComplete">
 				<Hotspot X="-1258.057" Y="1106.983" Z="37.57381" />
@@ -449,7 +475,7 @@
 
 		<TurnIn QuestName="Rise, Godfrey" QuestId="27472" TurnInName="Lady Sylvanas Windrunner" TurnInId="45617" />
 		<PickUp QuestName="Breaking the Barrier" QuestId="27474" GiverName="Lady Sylvanas Windrunner" GiverId="45617" />
-		<PickUp QuestName="Unyielding Servitors" QuestId="27475" GiverName="Daschla" GiverId="45610" />
+		<PickUp QuestName="Unyielding Servitors" QuestId="27475" GiverName="Daschla" GiverId="45626" />
 
 			<Objective QuestName="Breaking the Barrier" QuestId="27474" Type="CollectItem" ItemId="61306" CollectCount="1" />
 			<Objective QuestName="Unyielding Servitors" QuestId="27475" Type="CollectItem" ItemId="61307" CollectCount="6" />
@@ -470,7 +496,7 @@
 			</If>
 
 			<If Condition="!HasItem(61310) &amp;&amp; !IsQuestCompleted(27480)">
-				<CustomBehavior File="CollectThings" MobId="45728" MobState="Alive" CollectItemCount="1" CollectItemId="61310" CollectUntil="RequiredCountReached">
+				<CustomBehavior File="CollectThings" QuestId="27480" MobId="45728" MobState="Alive" CollectItemCount="1" CollectItemId="61310" CollectUntil="RequiredCountReached">
 					<Hotspot X="290.918" Y="376.7807" Z="-65.02187" />
 					<Hotspot X="338.4034" Y="358.639" Z="-63.60585" />
 					<Hotspot X="243.4399" Y="397.5527" Z="-56.97059" />
@@ -530,7 +556,7 @@
 
 			<!--More Testing!-->
 			<While Condition="HasQuest(27518) &amp;&amp; !IsQuestCompleted(27518)">
-				<CustomBehavior File="InteractWith" QuestId="27518" NonCompeteDistance="0" MobId="2120" MobState="Alive" WaitTime="5000" X="-135.444" Y="1071.23" Z="66.07559" />
+				<CustomBehavior File="InteractWith" QuestId="27518" NonCompeteDistance="0" MobId="2120" MobState="Alive" WaitTime="400000" X="-135.444" Y="1071.23" Z="66.07559" />
 			</While>
 
 		<TurnIn QuestName="A Wolf in Bear's Clothing" QuestId="27510" TurnInName="High Warlord Cromush" TurnInId="45631" />
@@ -586,7 +612,7 @@
 		<PickUp QuestName="Sowing Discord" QuestId="27580" GiverName="Lord Godfrey" GiverId="45878" />
 
 			<If Condition="!HasItem(61505) &amp;&amp; !IsQuestCompleted(27574)">
-				<CustomBehavior File="CollectThings" MobId="45896" MobState="Alive" CollectItemCount="1" CollectItemId="61505" CollectUntil="RequiredCountReached">
+				<CustomBehavior File="CollectThings" MobId="45896" MobState="Alive" CollectItemCount="1" HuntingGroundRadius="200" CollectItemId="61505" CollectUntil="RequiredCountReached">
 					<Hotspot X="-521.0754" Y="1602.029" Z="11.09704" />
 				</CustomBehavior>
 			</If>
@@ -604,7 +630,7 @@
 		</If>
 
 			<If Condition="!IsQuestCompleted(27580) &amp;&amp; (Me.Level &lt;= 23)">
-				<CustomBehavior File="Message" Text="You will probably die many times. Kill the OP dwarf manually." LogColor="Orange" />
+				<CustomBehavior File="Message" Text="You will probably die many times. Kill the OP dwarf manually by slowly attacking with the minions tanking." LogColor="Orange" />
 			</If>
 			<Objective QuestName="Sowing Discord" QuestId="27580" Type="KillMob" MobId="45995" KillCount="1" />
 
@@ -632,10 +658,10 @@
 
 		<TurnIn QuestName="Cities in Dust" QuestId="27601" TurnInName="Lady Sylvanas Windrunner" TurnInId="46124" />
 		<PickUp QuestName="Empire of Dirt" QuestId="27746" GiverName="Lady Sylvanas Windrunner" GiverId="46124" />
-		<PickUp QuestName="Warchief's Command: Hillsbrad Foothills!" QuestId="28089" GiverName="High Warlord Cromush" GiverId="44640" />
+		<PickUp QuestName="Warchief's Command: Hillsbrad Foothills!" QuestId="28089" GiverName="High Warlord Cromush" GiverId="46125" />
 
-		<!--TurnIn QuestName="Warchief's Command: Hillsbrad Foothills!" QuestId="28089" TurnInName="High Executor Darthalia" TurnInId="2215" /-->
-		<!--TurnIn QuestName="Empire of Dirt" QuestId="27746" TurnInName="High Executor Darthalia" TurnInId="2215" /-->
+		<TurnIn QuestName="Warchief's Command: Hillsbrad Foothills!" QuestId="28089" TurnInName="High Executor Darthalia" TurnInId="2215" />
+		<TurnIn QuestName="Empire of Dirt" QuestId="27746" TurnInName="High Executor Darthalia" TurnInId="2215" />
 
 		<CustomBehavior File="Message" Text="Profile Complete: Loading Next Profile" LogColor="Cyan" />
 		<CustomBehavior File="LoadProfile" ProfileName="..\[H - Quest] Profile Loader [Life]" />	

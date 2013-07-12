@@ -125,11 +125,14 @@
 			<PickUp QuestName="The Truth of the Grave" QuestId="24961" GiverName="Novice Elreth" GiverId="1661" />
 			<TurnIn QuestName="Encrypted Scroll" QuestId="3096" TurnInId="2122" TurnInName="David Trias" />
 			<PickUp QuestName="Stab!" QuestId="24967" GiverId="2122" GiverName="David Trias" />
+
 			<While Condition="HasQuest(24967) &amp;&amp; !IsQuestCompleted(24967)">
-				<!--Needs Tweaking-->
-				<CustomBehavior File="CastSpellOn" SpellId="1752" QuestId="24967" MobId="44794" NumOfTimes="2" MobHpPercentLeft="100" Range="5" X="1833.566" Y="1607.483" Z="95.68764" />
-				<CustomBehavior File="CastSpellOn" SpellId="2098" QuestId="24967" MobId="44794" NumOfTimes="1" MobHpPercentLeft="100" Range="5" X="1833.566" Y="1607.483" Z="95.68764" />
-			</While>
+				<DisableBehavior Name="Combat" />
+				<CustomBehavior File="InteractWith" InteractByCastingSpellId="1752" NumOfTimes="2" MobId="44794" Range="5" WaitTime="4000" X="1833.566" Y="1607.483" Z="95.68764" />
+				<CustomBehavior File="InteractWith" InteractByCastingSpellId="2098" NumOfTimes="1" MobId="44794" Range="5" WaitTime="2000" X="1833.566" Y="1607.483" Z="95.68764" />
+				<EnableBehavior Name="Combat" />
+			</While>	
+	
 			<TurnIn QuestName="Stab!" QuestId="24967" TurnInId="2122" TurnInName="David Trias" />
 		</If>
 
