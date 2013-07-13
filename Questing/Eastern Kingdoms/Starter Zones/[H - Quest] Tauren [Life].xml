@@ -118,18 +118,21 @@
 				<CustomBehavior File="InteractWith" QuestId="27021" InteractByCastingSpellId="56641" KeepTargetSelected="True" NumOfTimes="100" MobId="44848" Range="40" WaitTime="2000" X="-2920.208" Y="-268.5547" Z="59.95792" />
 			<TurnIn QuestName="The Hunter's Path" QuestId="27021" TurnInName="Lanka Farshot" TurnInId="3061" />
 		</If>
+		<If Condition="Me.Class == WoWClass.Shaman" >
+			<TurnIn QuestName="Rune-Inscribed Note" QuestId="3093" TurnInName="Meela Dawnstrider" TurnInId="3062" />
+			<PickUp QuestName="Primal Strike" QuestId="27027" GiverName="Meela Dawnstrider" GiverId="3062" />
+				<CustomBehavior File="InteractWith" QuestId="27027" InteractByCastingSpellId="73899" KeepTargetSelected="True" NumOfTimes="100" MobId="44848" Range="5" WaitTime="2000" X="-2920.208" Y="-268.5547" Z="59.95792" />
+			<TurnIn QuestName="Primal Strike" QuestId="27027" TurnInName="Meela Dawnstrider" TurnInId="3062" />
+		</If>		
 
 		<TurnIn QuestName="Rites of the Earthmother" QuestId="23733" TurnInName="Dyami Windsoar" TurnInId="36803" />
 		<PickUp QuestName="Rite of the Winds" QuestId="24215" GiverName="Dyami Windsoar" GiverId="36803" />
 
-		<If Condition="(ObjectManager.GetObjectsOfType&lt;WoWUnit&gt;().Any(u =&gt; u.Entry == 36803 &amp;&amp; u.Distance &gt;= 16))">
-			<RunTo X="-2930.979" Y="-35.61217" Z="189.737" />
-		</If>
-
-		<If Condition="HasQuest(24215)">
-			<CustomBehavior File="Misc\RunLua" Lua="UseItemByName(49652)" WaitTime="1000" />
-			<CustomBehavior File="WaitTimer" WaitTime="45000" />
-		</If>
+			<If Condition="HasQuest(24215)">
+				<RunTo X="-2930.979" Y="-35.61217" Z="189.737" />
+				<CustomBehavior File="Misc\RunLua" Lua="UseItemByName(49652)" WaitTime="1000" />
+				<CustomBehavior File="WaitTimer" WaitTime="45000" />
+			</If>
 
 		<TurnIn QuestName="Rite of the Winds" QuestId="24215" TurnInName="Ahmo Thunderhorn" TurnInId="36644" />
 
