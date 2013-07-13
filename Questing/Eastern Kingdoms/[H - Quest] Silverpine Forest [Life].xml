@@ -58,22 +58,6 @@
 			</Hotspots>
 		</Objective>
 	</Quest>
-	<!--Borrowed to Solve Problem?-->
-	<Quest Id="27360" Name="Vengeance for Our Soldiers">
-		<Objective Type="KillMob" MobId="45403" KillCount="10">
-			<Hotspots>
-				<Hotspot X="-1512.185" Y="1636.408" Z="20.48574" />
-				<Hotspot X="-1515.858" Y="1595.848" Z="21.70982" />
-				<Hotspot X="-1497.087" Y="1560.36" Z="20.48702" />
-				<Hotspot X="-1468.09" Y="1532.43" Z="20.57621" />
-				<Hotspot X="-1432.349" Y="1513.341" Z="20.75619" />
-				<Hotspot X="-1405.361" Y="1544.049" Z="21.07637" />
-				<Hotspot X="-1413.316" Y="1583.697" Z="20.48017" />
-				<Hotspot X="-1432.816" Y="1619.939" Z="20.48544" />
-				<Hotspot X="-1473.522" Y="1628.649" Z="20.48544" />
-			</Hotspots>
-		</Objective>
-	</Quest>
 
 	<QuestOrder>
 
@@ -424,9 +408,8 @@
 			<CustomBehavior File="WaitTimer" WaitTime="2000" />
 		</If>
 
-		<!--Don't think it works, whatever-->
 		<If Condition="HasQuest(27423)">
-			<CustomBehavior File="RunMacro" Macro="/click QuestFrameCompleteQuestButton" />
+			<CustomBehavior File="RunMacro" Macro="/click QuestFrameAcceptButton" />
 		</If>
 
 			<CustomBehavior File="CollectThings" QuestId="27423" MobId1="45481" MobId2="45499" MobId="45483" MobState="Alive" CollectUntil="QuestComplete">
