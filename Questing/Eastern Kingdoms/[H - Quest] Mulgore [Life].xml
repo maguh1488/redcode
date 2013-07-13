@@ -214,6 +214,6 @@
 		<TurnIn QuestName="Walk With The Earth Mother" QuestId="26397" TurnInName="Garrosh Hellscream" TurnInId="39605" />
 
 		<CustomBehavior File="Message" Text="Profile Complete: Loading Northern Barrens" LogColor="Cyan" />
-		<CustomBehavior File="LoadProfile" ProfileName="..\[H - Quest] Northern Barrens [Life]" />		
+		<CustomBehavior File="LoadProfile" ProfileName="[H - Quest] Northern Barrens [Life]" />		
 	</QuestOrder>
 </HBProfile>
