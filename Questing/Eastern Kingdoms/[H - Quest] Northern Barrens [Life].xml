@@ -1,0 +1,166 @@
+<HBProfile>
+	<Name>[H - Quest] Northern Barrens [Life]</Name>
+
+	<MinLevel>10</MinLevel>
+	<MaxLevel>91</MaxLevel>
+
+	<MinDurability>0.2</MinDurability>
+	<MinFreeBagSlots>2</MinFreeBagSlots>
+
+	<MailGrey>False</MailGrey>
+	<MailWhite>False</MailWhite>
+	<MailGreen>True</MailGreen>
+	<MailBlue>True</MailBlue>
+	<MailPurple>True</MailPurple>
+   
+	<SellGrey>True</SellGrey>
+	<SellWhite>True</SellWhite>
+	<SellGreen>True</SellGreen>
+	<SellBlue>False</SellBlue>
+	<SellPurple>False</SellPurple>
+
+	<AvoidMobs>
+ 	</AvoidMobs>
+
+	<Blackspots>
+		<!--Central Razormane Spike Fire-->
+		<Blackspot X="-100.1413" Y="-3654.23" Z="27.18554" Radius="4" Height="4" />
+	</Blackspots>
+
+	<Mailboxes>
+	</Mailboxes>
+
+	<Vendors>
+		<!--Far Watch Post Vendors-->
+		<Vendor Name="Lokarbo" Entry="43956" Type="Food" X="177.2109" Y="-3602.148" Z="27.86395" />
+		<Vendor Name="Martang" Entry="43949" Type="Repair" X="296.017" Y="-3650.72" Z="27.32856" />
+	</Vendors>	
+
+	<Quest Id="844" Name="Plainstrider Menace">
+		<Objective Type="CollectItem" ItemId="5087" CollectCount="7">
+			<CollectFrom>
+				<Mob Name="Greater Plainstrider" Id="3244" />
+			</CollectFrom>
+			<Hotspots>
+				<Hotspot X="412.5134" Y="-3701.319" Z="27.66548" />
+				<Hotspot X="410.554" Y="-3641.055" Z="27.33049" />
+				<Hotspot X="470.9085" Y="-3640.708" Z="29.17414" />
+				<Hotspot X="553.379" Y="-3686.902" Z="27.20016" />
+				<Hotspot X="657.4396" Y="-3694.642" Z="28.11453" />
+			</Hotspots>
+		</Objective>
+	</Quest>
+	<Quest Id="871" Name="In Defense of Far Watch" > 
+		<Objective Type="KillMob" MobId="3267" KillCount="8" >
+			<Hotspots>
+				<Hotspot X="15.24146" Y="-3684.319" Z="29.50341" />
+				<Hotspot X="-54.84177" Y="-3697.286" Z="27.91582" />
+				<Hotspot X="-86.4223" Y="-3691.574" Z="27.27546" />
+				<Hotspot X="-158.9831" Y="-3723.684" Z="27.50911" />
+				<Hotspot X="-205.2014" Y="-3684.951" Z="28.71157" />
+			</Hotspots>
+		</Objective>
+		<Objective Type="KillMob" MobId="3265" KillCount="3" >
+			<Hotspots>
+				<Hotspot X="15.24146" Y="-3684.319" Z="29.50341" />
+				<Hotspot X="-54.84177" Y="-3697.286" Z="27.91582" />
+				<Hotspot X="-86.4223" Y="-3691.574" Z="27.27546" />
+				<Hotspot X="-158.9831" Y="-3723.684" Z="27.50911" />
+				<Hotspot X="-205.2014" Y="-3684.951" Z="28.71157" />
+			</Hotspots>
+		</Objective>
+	</Quest>
+	<Quest Id="5041" Name="Supplies For The Crossroads" > 
+		<Objective Type="CollectItem" ItemId="12708" CollectCount="5" >
+			<CollectFrom>
+				<GameObject Name="Crossroads Supply Crate" Id="175708" />
+			</CollectFrom>
+			<Hotspots>
+				<Hotspot X="-196.431" Y="-3594.068" Z="38.76877" />
+				<Hotspot X="-219.2202" Y="-3529.049" Z="24.1434" />
+				<Hotspot X="-264.0129" Y="-3545.66" Z="22.54995" />
+				<Hotspot X="-261.8705" Y="-3471.576" Z="35.46312" />
+				<Hotspot X="-266.6688" Y="-3548.409" Z="55.98234" />
+				<Hotspot X="-290.2372" Y="-3496.471" Z="57.66421" />
+			</Hotspots>
+		</Objective>
+	</Quest>
+	<Quest Id="872" Name="The Far Watch Offensive" > 
+		<Objective Type="KillMob" MobId="3268" KillCount="5" >
+			<Hotspots>
+				<Hotspot X="-196.431" Y="-3594.068" Z="38.76877" />
+				<Hotspot X="-219.2202" Y="-3529.049" Z="24.1434" />
+				<Hotspot X="-264.0129" Y="-3545.66" Z="22.54995" />
+				<Hotspot X="-261.8705" Y="-3471.576" Z="35.46312" />
+				<Hotspot X="-266.6688" Y="-3548.409" Z="55.98234" />
+			</Hotspots>
+		</Objective>
+		<Objective Type="KillMob" MobId="3266" KillCount="5" >
+			<Hotspots>
+				<Hotspot X="-196.431" Y="-3594.068" Z="38.76877" />
+				<Hotspot X="-219.2202" Y="-3529.049" Z="24.1434" />
+				<Hotspot X="-264.0129" Y="-3545.66" Z="22.54995" />
+				<Hotspot X="-261.8705" Y="-3471.576" Z="35.46312" />
+				<Hotspot X="-266.6688" Y="-3548.409" Z="55.98234" />
+			</Hotspots>
+		</Objective>
+		<Objective Type="CollectItem" ItemId="5063" CollectCount="1" >
+			<CollectFrom>
+				<Mob Name="Kreenig Snarlsnout" Id="3438" />
+			</CollectFrom>
+			<Hotspots>
+				<Hotspot X="-290.2372" Y="-3496.471" Z="57.66421" />
+			</Hotspots>
+		</Objective>
+	</Quest>
+
+
+	<QuestOrder>
+		<CustomBehavior File="Message" Text="Initializing Settings" LogColor="Cyan" />
+		<CustomBehavior File="UserSettings" LootMobs="True" UseFlightPaths="True" PullDistance="25" />
+
+		<CustomBehavior File="Message" Text="Compiling Quests: Far Watch Post" LogColor="Cyan" />
+
+		<PickUp QuestName="In Defense of Far Watch" QuestId="871" GiverName="Kargal Battlescar" GiverId="3337" />
+		<PickUp QuestName="Plainstrider Menace" QuestId="844" GiverName="Halga Bloodeye" GiverId="34258" />
+			
+			<Objective QuestName="Plainstrider Menace" QuestId="844" Type="CollectItem" ItemId="5087" CollectCount="7" />
+	
+		<TurnIn QuestName="Plainstrider Menace" QuestId="844" TurnInName="Halga Bloodeye" TurnInId="34258" />
+		<PickUp QuestName="Through Fire and Flames" QuestId="13878" GiverName="Dorak" GiverId="34284" />
+
+			<CustomBehavior File="InteractWith" QuestId="13878" MobId="195001" MobId2="195003" MobId3="195004" NumOfTimes="100" CollectionDistance="1000" X="-9.880242" Y="-3633.958" Z="27.47055" />
+			<Objective QuestName="In Defense of Far Watch" QuestId="871" Type="KillMob" MobId="3267" KillCount="8" />
+			<Objective QuestName="In Defense of Far Watch" QuestId="871" Type="KillMob" MobId="3265" KillCount="3" />
+
+		<TurnIn QuestName="Through Fire and Flames" QuestId="13878" TurnInName="Dorak" TurnInId="34284" />
+		<TurnIn QuestName="In Defense of Far Watch" QuestId="871" TurnInName="Kargal Battlescar" TurnInId="3337" />
+		<PickUp QuestName="The Far Watch Offensive" QuestId="872" GiverName="Kargal Battlescar" GiverId="3337" />
+		<PickUp QuestName="Supplies For The Crossroads" QuestId="5041" GiverName="Halga Bloodeye" GiverId="34258" />
+		
+			<Objective QuestName="Supplies For The Crossroads" QuestId="5041" Type="CollectItem" ItemId="12708" CollectCount="5" />
+			<Objective QuestName="The Far Watch Offensive" QuestId="872" Type="CollectItem" ItemId="5063" CollectCount="1" />
+			<Objective QuestName="The Far Watch Offensive" QuestId="872" Type="KillMob" MobId="3268" KillCount="5" />
+			<Objective QuestName="The Far Watch Offensive" QuestId="872" Type="KillMob" MobId="3268" KillCount="5" />
+			
+		<TurnIn QuestName="The Far Watch Offensive" QuestId="872" TurnInName="Kargal Battlescar" TurnInId="3337" />
+		<TurnIn QuestName="Supplies For The Crossroads" QuestId="5041" TurnInName="Halga Bloodeye" TurnInId="34258" />
+		<PickUp QuestName="Crossroads Caravan Pickup" QuestId="13949" GiverName="Halga Bloodeye" GiverId="34258" />
+
+			<If Condition="HasQuest(13949) &amp;&amp; !IsQuestCompleted(13949)" >
+				<DisableBehavior Name="Combat, Loot" />
+				<If Condition="!IsQuestCompleted(13949)" >
+					<CustomBehavior File="InteractWith" MobId="34258" InteractByGossipOptions="1" NonCompeteDistance="0" X="322.961" Y="-3679.293" Z="27.18561" />
+					<CustomBehavior File="WaitTimer" WaitTime="6000" />
+					<CustomBehavior File="InteractWith" MobId="34430" Range="4" CollectionDistance="50" />
+					<While Condition="Me.IsOnTransport" >
+						<CustomBehavior File="WaitTimer" WaitTime="15000" GoalText="Waiting for Kodo Ride to Finish. It doesn't need to shoot." />
+					</While>
+				</If>
+				<CustomBehavior File="WaitTimer" WaitTime="12000" />
+				<EnableBehavior Name="Combat, Loot" />
+			</If>
+		
+		<TurnIn QuestName="Crossroads Caravan Pickup" QuestId="13949" TurnInName="Kranal Fiss" TurnInId="5907" />
+	</QuestOrder>
+</HBProfile>
