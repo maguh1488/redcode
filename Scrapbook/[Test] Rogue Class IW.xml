@@ -1,0 +1,44 @@
+<HBProfile>
+	<Name>Rogue Class IW Test</Name>
+
+	<MinLevel>3</MinLevel>
+	<MaxLevel>91</MaxLevel>
+
+	<MinDurability>0.2</MinDurability>
+	<MinFreeBagSlots>2</MinFreeBagSlots>
+
+	<MailGrey>False</MailGrey>
+	<MailWhite>False</MailWhite>
+	<MailGreen>True</MailGreen>
+	<MailBlue>True</MailBlue>
+	<MailPurple>True</MailPurple>
+   
+	<SellGrey>True</SellGrey>
+	<SellWhite>True</SellWhite>
+	<SellGreen>True</SellGreen>
+	<SellBlue>False</SellBlue>
+	<SellPurple>False</SellPurple>
+
+	<AvoidMobs>
+ 	</AvoidMobs>
+
+	<Blackspots>
+	</Blackspots>
+
+	<Mailboxes>
+	</Mailboxes>
+
+	<Vendors>
+	</Vendors>
+
+	<QuestOrder>
+		<While Condition="Me.Class == WoWClass.Rogue">
+			<DisableBehavior Name="Combat" />
+			<CustomBehavior File="InteractWith" InteractByCastingSpellId="1752" NumOfTimes="1" KeepTargetSelected="True" MobId="44820" Range="5" WaitForNpcs="False" X="-636.1281" Y="-4245.689" Z="38.15281" />
+			<CustomBehavior File="InteractWith" InteractByCastingSpellId="1752" NumOfTimes="1" KeepTargetSelected="True" MobId="44820" Range="5" WaitForNpcs="False" WaitTime="4000" X="-636.1281" Y="-4245.689" Z="38.15281" />
+			<CustomBehavior File="InteractWith" InteractByCastingSpellId="2098" NumOfTimes="1" MobId="44820" Range="5" WaitForNpcs="False" WaitTime="2000" X="-636.1281" Y="-4245.689" Z="38.15281" />
+			<EnableBehavior Name="Combat" />
+		</While>		
+	</QuestOrder>
+</HBProfile>
+

@@ -27,6 +27,8 @@
 		<Blackspot X="-100.1413" Y="-3654.23" Z="27.18554" Radius="4" Height="4" />
 		<!--Ratchet: Stumpy Tree-->
 		<Blackspot X="-986.8777" Y="-3701.985" Z="6.326562" Radius="4" Height="5" />
+		<!--The Merchant Coast: Lieutenant Pyre-->
+		<Blackspot X="-1405.545" Y="-3841.002" Z="18.73298" Radius="10.78378" />
 	</Blackspots>
 
 	<Mailboxes>
@@ -46,7 +48,7 @@
 		<Vendor Name="Nargal Deatheye" Entry="3479" Type="Repair" X="-356.9962" Y="-2568.861" Z="95.78757" />
 		<!--Ratchet Vendors-->
 		<Vendor Name="Innkeeper Wiley" Entry="6791" Type="Food" X="-1050.036" Y="-3664.799" Z="23.8857" />
-		<Vendor Name="Lizzarik" Entry="3658" Type="Repair" X="-974.7577" Y="-3633.02" Z="19.18394" />
+		<Vendor Name="Vexspindle" Entry="3492" Type="Repair" X="-985.3276" Y="-3675.985" Z="9.546414" />
 		<!--Nozzlepot's Outpost Vendors-->
 		<Vendor Name="Innkeeper Kritzle" Entry="43945" Type="Food" X="1175.09" Y="-3390.79" Z="91.90604" />
 		<Vendor Name="Frazzik" Entry="43957" Type="Repair" X="1167.52" Y="-3401.44" Z="91.66696" />
@@ -427,8 +429,8 @@
 		<CustomBehavior File="Message" Text="Initializing Settings" LogColor="Cyan" />
 		<CustomBehavior File="UserSettings" LootMobs="True" UseFlightPaths="True" PullDistance="25" />
 			<If Condition="!HasQuest(871) &amp;&amp; !IsQuestCompleted(871)" >
-			<CustomBehavior File="RunMacro" Macro="/run for i=1,GetNumQuestLogEntries() do SelectQuestLogEntry(i); SetAbandonQuest(); AbandonQuest(); end" />
-		</If>
+				<CustomBehavior File="RunMacro" Macro="/run for i=1,GetNumQuestLogEntries() do SelectQuestLogEntry(i); SetAbandonQuest(); AbandonQuest(); end" />
+			</If>
 
 		<CustomBehavior File="Message" Text="Compiling Quests: Far Watch Post" LogColor="Cyan" />
 
@@ -462,14 +464,12 @@
 			<If Condition="HasQuest(13949) &amp;&amp; !IsQuestCompleted(13949)">
 				<DisableBehavior Name="Combat, Loot" />
 				<If Condition="!IsQuestCompleted(13949)">
-					<CustomBehavior File="InteractWith" MobId="34258" InteractByGossipOptions="1" NonCompeteDistance="0" X="322.961" Y="-3679.293" Z="27.18561" />
-					<CustomBehavior File="WaitTimer" WaitTime="6000" />
-					<CustomBehavior File="InteractWith" MobId="34430" Range="4" />
+					<CustomBehavior File="InteractWith" MobId="34258" InteractByGossipOptions="1" NonCompeteDistance="0" WaitTime="6000" X="322.961" Y="-3679.293" Z="27.18561" />
+					<CustomBehavior File="InteractWith" MobId="34430" WaitTime="6000" Range="4" />
 					<While Condition="Me.IsOnTransport">
-						<CustomBehavior File="WaitTimer" WaitTime="15000" GoalText="Waiting for Kodo Ride to Finish. It doesn't need to shoot." />
+						<CustomBehavior File="WaitTimer" QuestId="13949" WaitTime="15000" GoalText="Waiting for Kodo Ride to Finish. It doesn't need to shoot." />
 					</While>
 				</If>
-				<CustomBehavior File="WaitTimer" WaitTime="12000" />
 				<EnableBehavior Name="Combat, Loot" />
 			</If>
 		
@@ -534,11 +534,10 @@
 			<If Condition="HasQuest(13975) &amp;&amp; !IsQuestCompleted(13975)">
 				<DisableBehavior Name="Combat, Loot" />
 				<While Condition="!IsQuestCompleted(13975)">
-					<CustomBehavior File="InteractWith" MobId="34578" InteractByGossipOptions="1" NonCompeteDistance="0" X="218.0785" Y="-2936.549" Z="91.823" />
-					<CustomBehavior File="WaitTimer" WaitTime="4500" />
-					<CustomBehavior File="InteractWith" MobId="34577" Range="4" />
+					<CustomBehavior File="InteractWith" MobId="34578" InteractByGossipOptions="1" NonCompeteDistance="0" WaitTime="5500" X="218.0785" Y="-2936.549" Z="91.823" />
+					<CustomBehavior File="InteractWith" MobId="34577" WaitTime="7000" Range="4" />
 					<While Condition="Me.IsOnTransport">
-						<CustomBehavior File="Vehicles\NoControlVehicle" TargetId="34594" NumOfTimes="20" AttackButton="1" OftenToUse="600" />
+						<CustomBehavior File="Vehicles\NoControlVehicle" QuestId="13975" TargetId="34594" NumOfTimes="500" AttackButton="1" OftenToUse="600" />
 					</While>
 				</While>
 				<EnableBehavior Name="Combat, Loot" />
@@ -692,6 +691,7 @@
 			<PickUp QuestName="Deathgates Reinforcements" QuestId="14073" GiverName="Thork" GiverId="3429" />
 			<TurnIn QuestName="The Purloined Payroll" QuestId="13991" TurnInName="Gazrog" TurnInId="3464" />
 
+			<!--Bug: Remove Accidental Dungeon Quest PickUp-->
 			<If Condition="HasQuest(26878)">
 				<CustomBehavior File="AbandonQuest" QuestId="26878" Type="All" />
 			</If>
@@ -719,7 +719,8 @@
 				<If Condition="HasQuest(14066) &amp;&amp; !IsQuestCompleted(14066)">
 					<RunTo DestName="Caravan Wreckage" X="-762.5303" Y="-3580.803" Z="93.76952" />
 				</If>
-				
+			
+			<!--Complete Quest: Investigate the Wreckage-->
 			<If Condition="HasQuest(14066) &amp;&amp; IsQuestCompleted(14066)">
 				<CustomBehavior File="CompleteLogQuest" QuestId="14066" />
 			</If>
@@ -757,9 +758,9 @@
 			<TurnIn QuestName="Its Gotta be the Horn" QuestId="865" TurnInName="Mebok Mizzyrix" TurnInId="3446" />
 			<TurnIn QuestName="The Stolen Silver" QuestId="14067" TurnInName="Gazrog" TurnInId="3464" />
 
-			<If Condition="HasQuest(14045) &amp;&amp; IsQuestCompleted(14045)">
-				<CustomBehavior File="ForceSetVendor" DoSell="True" DoRepair="True" DoMail="True" />
-			</If>
+				<If Condition="HasQuest(14045) &amp;&amp; IsQuestCompleted(14045)">
+					<CustomBehavior File="ForceSetVendor" DoSell="True" DoRepair="True" DoMail="True" />
+				</If>
 
 			<TurnIn QuestName="Find Baron Longshore" QuestId="14045" TurnInName="Baron Longshore" TurnInId="3467" />
 			<PickUp QuestName="The Barons Demands" QuestId="14046" GiverName="Baron Longshore" GiverId="3467" />
@@ -813,6 +814,7 @@
 				<CustomBehavior File="CompleteLogQuest" QuestId="14038" />
 			</If>
 
+				<!--Replace with Behavior: Causing Override Errors-->
 				<Objective QuestName="Ammo Kerblammo" QuestId="14042" Type="UseObject" ObjectId="195203" UseCount="5" />
 
 			<TurnIn QuestName="A Captain's Vengeance" QuestId="891" TurnInName="Captain Thalo'thas Brightsun" TurnInId="3339" />
@@ -831,7 +833,7 @@
 				<!--Objective: Raging River Ride-->
 				<If Condition="HasQuest(26769) &amp;&amp; !IsQuestCompleted(26769)">
 					<DisableBehavior Name="Combat" />
-					<CustomBehavior File="InteractWith" QuestId="26769" MobId="44057" NonCompeteDistance="0" X="-705.0517" Y="-3985.185" Z="19.46049" />
+					<CustomBehavior File="InteractWith" QuestId="26769" MobId="44057" NonCompeteDistance="0" WaitTime="2000" X="-705.0517" Y="-3985.185" Z="19.46049" />
 					<While Condition="Me.IsOnTransport">
 						<CustomBehavior File="WaitTimer" WaitTime="10000" GoalText="Waiting for Boat Ride to End" />
 					</While>
@@ -887,6 +889,7 @@
 
 			<TurnIn QuestName="The Escape" QuestId="863" TurnInName="Sputtervalve" TurnInId="3442" />
 			<TurnIn QuestName="Competition Schmompetition" QuestId="29086" TurnInName="Sputtervalve" TurnInId="3442" />
+			<PickUp QuestName="Samophlange" QuestId="29021" GiverName="Sputtervalve" GiverId="3442" />
 			<TurnIn QuestName="Sludge Beast!" QuestId="29089" TurnInName="Nozzlepot" TurnInId="34698" />
 
 				<Objective QuestName="Hyena Extermination" QuestId="29088" Type="KillMob" MobId="4127" KillCount="6" />
@@ -1042,11 +1045,10 @@
 			<If Condition="HasQuest(29109) &amp;&amp; !IsQuestCompleted(29109)">
 				<DisableBehavior Name="Combat, Loot" />
 				<If Condition="!IsQuestCompleted(29109)">
-					<CustomBehavior File="InteractWith" MobId="52220" InteractByGossipOptions="1" NonCompeteDistance="0" X="-382.92" Y="-2686.299" Z="95.83155" />
-					<CustomBehavior File="WaitTimer" WaitTime="6000" />
-					<CustomBehavior File="InteractWith" MobId="52209" Range="4" />
+					<CustomBehavior File="InteractWith" MobId="52220" InteractByGossipOptions="1" NonCompeteDistance="0" WaitTime="6000" X="-382.92" Y="-2686.299" Z="95.83155" />
+					<CustomBehavior File="InteractWith" MobId="52209" WaitTime="6000" Range="4" />
 					<While Condition="Me.IsOnTransport">
-						<CustomBehavior File="WaitTimer" WaitTime="15000" GoalText="Waiting for Kodo Ride to Finish." />
+						<CustomBehavior File="WaitTimer" QuestId="29109" WaitTime="15000" GoalText="Waiting for Kodo Ride to Finish." />
 					</While>
 				</If>
 				<EnableBehavior Name="Combat, Loot" />

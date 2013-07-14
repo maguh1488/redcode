@@ -9,15 +9,11 @@
 	<!--Profile Made by Liferose-->
 	<!--Version 1.5-->
 	<!--Snippets taken from Kick's SVN and QJAO's Profile-->
-	<!--QuestBehaviors on QJAO's SVN, http://qjao.googlecode.com/svn/trunk/-->
 
 	<Blackspots>
-		<!--What's This? I don't know. It must be bad, so let's blackspot it-->
+		<!--Inherited Blackspot-->
 		<Blackspot X="6415.789" Y="2360.435" Z="471.6999" Radius="27.70644" />
 	</Blackspots>
-	
-	<AvoidMobs>
-	</AvoidMobs>
 	
 	<Vendors>
 		<Vendor Name="Fizzix Blastbolt" Entry="33594" Type="Repair" X="8553.434" Y="915.6268" Z="547.3921" />
