@@ -142,6 +142,6 @@
 			</If>
 
 		<CustomBehavior File="Message" Text="Profile Complete: Loading Next Profile" LogColor="Cyan" />
-		<CustomBehavior File="LoadProfile" ProfileName="..\..\[H - Quest] Profile Loader [Life]" />	
+		<CustomBehavior File="LoadProfile" ProfileName="..\Kalimdor\[H - Quest] Mulgore [Life]" />	
 	</QuestOrder>
 </HBProfile>

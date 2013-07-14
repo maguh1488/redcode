@@ -199,6 +199,6 @@
 		<TurnIn QuestName="Vital Intelligence" QuestId="24972" TurnInName="Deathguard Simmer" TurnInId="1519" />
 
 		<CustomBehavior File="Message" Text="Profile Complete: Loading Next Profile" LogColor="Cyan" />
-		<CustomBehavior File="LoadProfile" ProfileName="..\..\[H - Quest] Profile Loader [Life]" />			
+		<CustomBehavior File="LoadProfile" ProfileName="..\Eastern Kingdoms\[H - Quest] Tirisfal Glades [Life]" />			
 	</QuestOrder>
 </HBProfile>

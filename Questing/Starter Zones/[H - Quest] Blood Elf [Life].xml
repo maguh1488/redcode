@@ -312,6 +312,6 @@
 		<TurnIn QuestName="Completing the Delivery" QuestId="8350" TurnInName="Innkeeper Delaniel" TurnInId="15433" />
 
 		<CustomBehavior File="Message" Text="Profile Complete: Loading Next Profile" LogColor="Cyan" />
-		<CustomBehavior File="LoadProfile" ProfileName="..\..\[H - Quest] Profile Loader [Life]" />	
+		<CustomBehavior File="LoadProfile" ProfileName="..\Eastern Kingdoms\[H - Quest] Eversong Woods [Life]" />	
 	</QuestOrder>
 </HBProfile>
