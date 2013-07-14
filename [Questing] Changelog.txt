@@ -1,0 +1,10 @@
+==================================
+ ==== Life Project Changelog ====
+==================================
+____________________________________
+Revision 55: Sunday, July 14th, 2013
+-- Northern Barrens Test Fixes
+-- Orc Starting Profile Added
+-- Tauren Class Quest Fixes
+-- Quest Template Updated
+-- Misc Cleanup

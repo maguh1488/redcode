@@ -1,8 +1,8 @@
 <HBProfile>
-	<Name></Name>
+	<Name>[H - Quest] Durotar [Life]</Name>
 
-	<MinLevel></MinLevel>
-	<MaxLevel></MaxLevel>
+	<MinLevel>5</MinLevel>
+	<MaxLevel>91</MaxLevel>
 
 	<MinDurability>0.2</MinDurability>
 	<MinFreeBagSlots>2</MinFreeBagSlots>
@@ -32,5 +32,7 @@
 	</Vendors>
 
 	<QuestOrder>
+		<CustomBehavior File="Message" Text="Error: Profile hasn't been made yet! Shutting Down." LogColor="Red" />
+		<CustomBehavior File="Halt" />
 	</QuestOrder>
 </HBProfile>

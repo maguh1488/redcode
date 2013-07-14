@@ -104,7 +104,7 @@
 		<TurnIn QuestName="Rite of Honor" QuestId="14460" TurnInName="Chief Hawkwind" TurnInId="2981" />
 		<PickUp QuestName="Last Rites, First Rites" QuestId="24861" GiverName="Chief Hawkwind" GiverId="2981" />
 
-			<While Condition="HasQuest(24861) &amp;&amp; !IsQuestCompleted(24861)" >
+			<While Condition="HasQuest(24861) &amp;&amp; !IsQuestCompleted(24861)">
 				<RunTo X="-2908.458" Y="-254.5024" Z="59.72401" />
 				<CustomBehavior File="Misc\RunLua" Lua="UseItemByName(50465)" WaitTime="2000" />
 			</While>			
@@ -112,16 +112,24 @@
 		<TurnIn QuestName="Last Rites, First Rites" QuestId="24861" TurnInName="Chief Hawkwind" TurnInId="2981" />
 		<PickUp QuestName="Rites of the Earthmother" QuestId="23733" GiverName="Chief Hawkwind" GiverId="2981" />
 
-		<If Condition="Me.Class == WoWClass.Hunter" >
+		<If Condition="Me.Class == WoWClass.Hunter">
 			<TurnIn QuestName="Etched Note" QuestId="3092" TurnInName="Lanka Farshot" TurnInId="3061" />
 			<PickUp QuestName="The Hunter's Path" QuestId="27021" GiverName="Lanka Farshot" GiverId="3061" />
-				<CustomBehavior File="InteractWith" QuestId="27021" InteractByCastingSpellId="56641" KeepTargetSelected="True" NumOfTimes="100" MobId="44848" Range="40" WaitTime="2000" X="-2920.208" Y="-268.5547" Z="59.95792" />
+			<While Condition="HasQuest(27021) &amp;&amp; !IsQuestCompleted(27021)">
+				<DisableBehavior Name="Combat" />
+				<CustomBehavior File="InteractWith" InteractByCastingSpellId="56641" KeepTargetSelected="True" NumOfTimes="1" MobId="44848" Range="40" WaitTime="2000" X="-2920.208" Y="-268.5547" Z="59.95792" />
+				<EnableBehavior Name="Combat" />
+			</While>
 			<TurnIn QuestName="The Hunter's Path" QuestId="27021" TurnInName="Lanka Farshot" TurnInId="3061" />
 		</If>
-		<If Condition="Me.Class == WoWClass.Shaman" >
+		<If Condition="Me.Class == WoWClass.Shaman">
 			<TurnIn QuestName="Rune-Inscribed Note" QuestId="3093" TurnInName="Meela Dawnstrider" TurnInId="3062" />
 			<PickUp QuestName="Primal Strike" QuestId="27027" GiverName="Meela Dawnstrider" GiverId="3062" />
-				<CustomBehavior File="InteractWith" QuestId="27027" InteractByCastingSpellId="73899" KeepTargetSelected="True" NumOfTimes="100" MobId="44848" Range="5" WaitTime="2000" X="-2920.208" Y="-268.5547" Z="59.95792" />
+			<While Condition="HasQuest(27027) &amp;&amp; !IsQuestCompleted(27027)">
+				<DisableBehavior Name="Combat" />
+				<CustomBehavior File="InteractWith" InteractByCastingSpellId="73899" KeepTargetSelected="True" NumOfTimes="1" MobId="44848" Range="5" WaitTime="2000" X="-2920.208" Y="-268.5547" Z="59.95792" />
+				<EnableBehavior Name="Combat" />
+			</While>
 			<TurnIn QuestName="Primal Strike" QuestId="27027" TurnInName="Meela Dawnstrider" TurnInId="3062" />
 		</If>		
 
@@ -129,7 +137,7 @@
 		<PickUp QuestName="Rite of the Winds" QuestId="24215" GiverName="Dyami Windsoar" GiverId="36803" />
 
 			<If Condition="HasQuest(24215)">
-				<RunTo X="-2930.979" Y="-35.61217" Z="189.737" />
+				<RunTo X="-2931.519" Y="-36.25623" Z="189.8017" />
 				<CustomBehavior File="Misc\RunLua" Lua="UseItemByName(49652)" WaitTime="1000" />
 				<CustomBehavior File="WaitTimer" WaitTime="45000" />
 			</If>
