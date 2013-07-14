@@ -1,0 +1,38 @@
+<HBProfile>
+	<Name>[N - Quest] Ashenvale [Life]</Name>
+
+	<MinLevel>20</MinLevel>
+	<MaxLevel>91</MaxLevel>
+
+	<MinDurability>0.2</MinDurability>
+	<MinFreeBagSlots>2</MinFreeBagSlots>
+
+	<MailGrey>False</MailGrey>
+	<MailWhite>False</MailWhite>
+	<MailGreen>True</MailGreen>
+	<MailBlue>True</MailBlue>
+	<MailPurple>True</MailPurple>
+   
+	<SellGrey>True</SellGrey>
+	<SellWhite>True</SellWhite>
+	<SellGreen>True</SellGreen>
+	<SellBlue>False</SellBlue>
+	<SellPurple>False</SellPurple>
+
+	<AvoidMobs>
+ 	</AvoidMobs>
+
+	<Blackspots>
+	</Blackspots>
+
+	<Mailboxes>
+	</Mailboxes>
+
+	<Vendors>
+	</Vendors>
+
+	<QuestOrder>
+		<CustomBehavior File="Message" Text="Error: Profile hasn't been made yet! Shutting Down." LogColor="Red" />
+		<<CustomBehavior File="Halt" />
+	</QuestOrder>
+</HBProfile>
