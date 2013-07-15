@@ -1,6 +1,19 @@
 ==================================
  ==== Life Project Changelog ====
 ==================================
+
+____________________________________
+Revision 57: Monday, July 15th, 2013
+-- Rogue ClassQ: Eviscerate Can Use 1pt
+-- Added a Durotar Level 10 Checkpoint
+-- [NB] Through Fire and Flames Fixes
+-- Troll Starting Zone Added
+____________________________________
+Revision 56: Monday, July 15th, 2013
+-- Durotar Alpha Version Completed
+-- Misc Northern Barrens Fixes
+-- Tauren Druid Class Quest
+-- Ashenvale Syntax Fix
 ____________________________________
 Revision 55: Sunday, July 14th, 2013
 -- Northern Barrens Test Fixes

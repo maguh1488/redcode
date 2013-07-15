@@ -132,8 +132,7 @@
 		<PickUp QuestName="Eviscerate" QuestId="25141" GiverName="Rwag" GiverId="3155" />
 			<While Condition="HasQuest(25141) &amp;&amp; !IsQuestCompleted(25141)">
 				<DisableBehavior Name="Combat" />
-				<CustomBehavior File="InteractWith" InteractByCastingSpellId="1752" NumOfTimes="1" KeepTargetSelected="True" MobId="44820" Range="5" WaitForNpcs="False" X="-636.1281" Y="-4245.689" Z="38.15281" />
-				<CustomBehavior File="InteractWith" InteractByCastingSpellId="1752" NumOfTimes="1" KeepTargetSelected="True" MobId="44820" Range="5" WaitForNpcs="False" WaitTime="4000" X="-636.1281" Y="-4245.689" Z="38.15281" />
+				<CustomBehavior File="InteractWith" InteractByCastingSpellId="1752" NumOfTimes="1" MobId="44820" Range="5" WaitForNpcs="False" X="-636.1281" Y="-4245.689" Z="38.15281" />
 				<CustomBehavior File="InteractWith" InteractByCastingSpellId="2098" NumOfTimes="1" MobId="44820" Range="5" WaitForNpcs="False" WaitTime="2000" X="-636.1281" Y="-4245.689" Z="38.15281" />
 				<EnableBehavior Name="Combat" />
 			</While>

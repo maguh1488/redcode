@@ -1,0 +1,221 @@
+<HBProfile>
+	<Name>[H - Quest] Troll [Life]</Name>
+
+	<MinLevel>1</MinLevel>
+	<MaxLevel>91</MaxLevel>
+
+	<MinDurability>0.2</MinDurability>
+	<MinFreeBagSlots>2</MinFreeBagSlots>
+
+	<MailGrey>False</MailGrey>
+	<MailWhite>False</MailWhite>
+	<MailGreen>True</MailGreen>
+	<MailBlue>True</MailBlue>
+	<MailPurple>True</MailPurple>
+   
+	<SellGrey>True</SellGrey>
+	<SellWhite>True</SellWhite>
+	<SellGreen>True</SellGreen>
+	<SellBlue>False</SellBlue>
+	<SellPurple>False</SellPurple>
+
+	<Blackspots>
+		<!--Darkspear Training Grounds: Captives Cage to Zabrax-->
+		<Blackspot X="-1147.005" Y="-5521.26" Z="12.01032" Radius="10.13834" />
+		<!--Darkspear Hold: Flag Behind Mailbox-->
+		<Blackspot X="-1291.301" Y="-5567.218" Z="20.99054" Radius="0.8345964" />
+	</Blackspots>
+
+	<Mailboxes>
+		<!--Darkspear Hold Mailbox-->
+		<Mailbox X="-1288.96" Y="-5565.384" Z="20.98449" />
+	</Mailboxes>
+
+	<Vendors>
+		<!--Darkspear Hold Vendors-->
+		<Vendor Name="Torenda" Entry="39031" Type="Food" X="-1307.248" Y="-5557.472" Z="21.02289" />
+		<Vendor Name="Sortura" Entry="39033" Type="Repair" X="-1268.302" Y="-5572.389" Z="20.85505" />
+	</Vendors>
+
+	<Quest Id="24625" Name="Consort of the Sea Witch">
+		<Objective Type="CollectItem" ItemId="50018" CollectCount="1">
+			<CollectFrom>
+				<Mob Name="Naj'tess" Id="39072" />
+			</CollectFrom>
+			<Hotspots>
+				<Hotspot X="-1356.771" Y="-5154.688" Z="13.57923" />
+			</Hotspots>
+		</Objective>
+	</Quest>
+
+	<QuestOrder>
+		<CustomBehavior File="Message" Text="Initializing Settings" LogColor="Cyan" />
+		<CustomBehavior File="UserSettings" LootMobs="True" UseFlightPaths="True" PullDistance="25" />
+
+			<CustomBehavior File="EnablePlugin" Names="Anti Drown,AutoEquip2,Drink Potions,Refreshment,Talented2" />
+			<CustomBehavior File="RunMacro" Macro="/script SetCVar('AutoLootDefault', 1)" WaitTime="1000" />
+
+		<CustomBehavior File="Message" Text="Compiling Quests: Echo Isles" LogColor="Cyan" />
+
+	<If Condition="Me.Class == WoWClass.Mage" >
+		<PickUp QuestName="The Rise of the Darkspear" QuestId="24750" GiverName="Jin'thala" GiverId="37951" />
+		<TurnIn QuestName="The Rise of the Darkspear" QuestId="24750" TurnInName="Soratha" TurnInId="38246" />
+		<PickUp QuestName="The Basics: Hitting Things" QuestId="24751" GiverName="Soratha" GiverId="38246" />
+		
+			<Objective QuestName="The Basics: Hitting Things" QuestId="24751" Type="KillMob" MobId="38038" KillCount="6" />
+		
+		<TurnIn QuestName="The Basics: Hitting Things" QuestId="24751" TurnInName="Soratha" TurnInId="38246" />
+		<PickUp QuestName="A Rough Start" QuestId="24753" GiverName="Soratha" GiverId="38246" />
+		
+			<Objective QuestName="A Rough Start" QuestId="24753" Type="CollectItem" ItemId="50222" CollectCount="1" />
+		
+		<TurnIn QuestName="A Rough Start" QuestId="24753" TurnInName="Soratha" TurnInId="38246" />
+		<PickUp QuestName="Proving Pit" QuestId="24754" GiverName="Soratha" GiverId="38246" />
+
+			<!--Objective: Proving Pit-->
+			<While Condition="HasQuest(24754) &amp;&amp; !IsQuestCompleted(24754)">
+				<CustomBehavior File="InteractWith" QuestId="24754" MobId="39062" InteractByGossipOptions="1" WaitTime="8000" X="-1159.998" Y="-5532.912" Z="11.94282" />
+				<CustomBehavior File="InteractWith" QuestId="24754" WaitForNpcs="False" MobState="Alive" MobId="38142" X="-1148.593" Y="-5530.951" Z="8.105189" />
+				<CustomBehavior File="InteractWith" QuestId="24754" WaitForNpcs="False" MobState="Alive" MobId="38142" X="-1148.593" Y="-5530.951" Z="8.105189" />
+			</While>
+		
+		<TurnIn QuestName="Proving Pit" QuestId="24754" TurnInName="Soratha" TurnInId="38246" />
+		<PickUp QuestName="The Arts of a Mage" QuestId="24752" GiverName="Soratha" GiverId="38246" />
+
+			<!--Objective: The Arts of a Mage-->
+			<While Condition="HasQuest(24752) &amp;&amp; !IsQuestCompleted(24752)">
+				<Disablebehavior Name="Combat" />
+				<CustomBehavior File="InteractWith" InteractByCastingSpellId="122" MobId="38038" NumOfTimes="1" MinRange="3" Range="12" X="-1160.572" Y="-5589.716" Z="11.93505" />
+				<Enablebehavior Name="Combat" />
+			</While>
+
+		<TurnIn QuestName="The Arts of a Mage" QuestId="24752" TurnInName="Soratha" TurnInId="38246" />
+		<PickUp QuestName="More Than Expected" QuestId="24755" GiverName="Soratha" GiverId="38246" />
+		<TurnIn QuestName="More Than Expected" QuestId="24755" TurnInName="Vol'Jin" TurnInId="38966" />
+	</If>
+	<If Condition="Me.Class == WoWClass.Rogue" >
+		<PickUp QuestName="The Rise of the Darkspear" QuestId="24770" GiverName="Jin'thala" GiverId="37951" />
+		<TurnIn QuestName="The Rise of the Darkspear" QuestId="24770" TurnInName="Legati" TurnInId="38244" />
+		<PickUp QuestName="The Basics: Hitting Things" QuestId="24771" GiverName="Legati" GiverId="38244" />
+		
+			<Objective QuestName="The Basics: Hitting Things" QuestId="24771" Type="KillMob" MobId="38038" KillCount="6" />
+		
+		<TurnIn QuestName="The Basics: Hitting Things" QuestId="24771" TurnInName="Legati" TurnInId="38244" />
+
+		<PickUp QuestName="A Rough Start" QuestId="24773" GiverName="Legati" GiverId="38244" />
+		<Objective QuestName="A Rough Start" QuestId="24773" Type="CollectItem" ItemId="50222" CollectCount="1" />
+		<TurnIn QuestName="A Rough Start" QuestId="24773" TurnInName="Legati" TurnInId="38244" />
+
+		<PickUp QuestName="Proving Pit" QuestId="24774" GiverName="Legati" GiverId="38244" />
+		<While Condition="HasQuest(24774) &amp;&amp; !IsQuestCompleted(24774)" >
+			<CustomBehavior File="InteractWith" QuestId="24774" MobId="39062" InteractByGossipOptions="1" WaitTime="2000" X="-1161.016" Y="-5530.047" Z="11.97635" />
+			<CustomBehavior File="WaitTimer" QuestId="24774" WaitTime="6000" GoalText="Waiting for mob to spawn {TimeRemaining}" />
+			<CustomBehavior File="InteractWith" QuestId="24774" WaitForNpcs="False" MobState="Alive" MobId="38142" X="-1161.016" Y="-5530.047" Z="11.97635" />
+		</While>
+		
+		<TurnIn QuestName="Proving Pit" QuestId="24774" TurnInName="Legati" TurnInId="38244" />
+		<PickUp QuestName="The Arts of a Rogue" QuestId="24772" GiverName="Legati" GiverId="38244" />
+		
+			<!--Objective: The Arts of a Rogue-->
+			<While Condition="HasQuest(24772) &amp;&amp; !IsQuestCompleted(24772)" >
+				<DisableBehavior Name="Combat" />
+				<CustomBehavior File="InteractWith" InteractByCastingSpellId="1752" NumOfTimes="1" MobId="38038" Range="5" WaitForNpcs="False" X="-636.1281" Y="-4245.689" Z="38.15281" />
+				<CustomBehavior File="InteractWith" InteractByCastingSpellId="2098" NumOfTimes="1" MobId="38038" Range="5" WaitForNpcs="False" WaitTime="2000" X="-636.1281" Y="-4245.689" Z="38.15281" />
+				<EnableBehavior Name="Combat" />
+			</While>
+		
+		<TurnIn QuestName="The Arts of a Rogue" QuestId="24772" TurnInName="Legati" TurnInId="38244" />
+		<PickUp QuestName="More Than Expected" QuestId="24775" GiverName="Legati" GiverId="38244" />
+		<TurnIn QuestName="More Than Expected" QuestId="24775" TurnInName="Vol'Jin" TurnInId="38966" />
+	</If>	
+
+		<PickUp QuestName="Moraya'" QuestId="25064" GiverName="Vol'jin" GiverId="38966" />
+		<PickUp QuestName="Crab Fishin'" QuestId="25037" GiverName="Tora'jin" GiverId="39007" />
+		<TurnIn QuestName="Moraya" QuestId="25064" TurnInName="Moraya" TurnInId="38005" />
+		<PickUp QuestName="A Troll's Truest Companion" QuestId="24622" GiverName="Moraya" GiverId="38005" />
+		
+			<Objective QuestName="Crab Fishin'" QuestId="25037" Type="CollectItem" ItemId="52080" CollectCount="5" />
+		
+		<TurnIn QuestName="A Troll's Truest Companion" QuestId="24622" TurnInName="Kijara" TurnInId="37969" />
+		<PickUp QuestName="Saving the Young" QuestId="24623" GiverName="Kijara" GiverId="37969" />
+		<PickUp QuestName="Mercy for the Lost" QuestId="24624" GiverName="Tegashi" GiverId="37987" />
+		<PickUp QuestName="Consort of the Sea Witch" QuestId="24625" GiverName="Tegashi" GiverId="37987" />	
+
+			<Objective QuestName="Consort of the Sea Witch" QuestId="24625" Type="CollectItem" ItemId="50018" CollectCount="1" />
+			<!--Objective: Saving the Young-->
+			<CustomBehavior File="InteractWith" QuestId="24623" MobId="39157" InteractByUsingItemId="52283" NumOfTimes="50" Range="15" WaitTime="3500" WaitForNpcs="False">
+				<HuntingGrounds>
+					<Hotspot X="-1340.045" Y="-5193.983" Z="1.089643" />
+					<Hotspot X="-1392.28" Y="-5204.698" Z="3.342993" />
+					<Hotspot X="-1415.315" Y="-5167.379" Z="2.856254" />
+					<Hotspot X="-1382.273" Y="-5107.934" Z="1.421751" />
+					<Hotspot X="-1317.415" Y="-5123.235" Z="1.909135" />
+					<Hotspot X="-1300.368" Y="-5161.654" Z="1.180037" />
+					<Hotspot X="-1334.936" Y="-5190.613" Z="1.244563" />
+					<Hotspot X="-1375.636" Y="-5217.012" Z="3.378045" />
+				</HuntingGrounds>
+			</CustomBehavior>
+			<Objective QuestName="Mercy for the Lost" QuestId="24624" Type="KillMob" MobId="37961" KillCount="8" />
+		
+		<TurnIn QuestName="Mercy for the Lost" QuestId="24624" TurnInName="Tegashi" TurnInId="37987" />
+		<TurnIn QuestName="Consort of the Sea Witch" QuestId="24625" TurnInName="Tegashi" TurnInId="37987" />
+		<TurnIn QuestName="Saving the Young" QuestId="24623" TurnInName="Kijara" TurnInId="37969" />
+		<PickUp QuestName="Young and Vicious" QuestId="24626" GiverName="Kijara" GiverId="37969" />
+
+			<!--Objective: Young and Vicious-->
+			<While Condition="HasQuest(24626) &amp;&amp; !IsQuestCompleted(24626)">
+				<Disablebehavior Name="Combat" />
+				<CustomBehavior File="InteractWith" QuestId="24626" MobId="38002" InteractByUsingItemId="50053" Range="10" CollectionDistance="1000" WaitTime="3000" X="-1585" Y="-5305.04" Z="7.979972" />
+				<RunTo QuestId="24626" X="-1304.525" Y="-5443.421" Z="14.68565" />
+				<CustomBehavior QuestId="24626" File="WaitTimer" WaitTime="10000" />
+				<If Condition="!IsQuestCompleted(24626)">
+					<CustomBehavior File="AbandonQuest" QuestId="24626" Type="Incomplete" />
+					<PickUp QuestName="Young and Vicious" QuestId="24626" GiverName="Kijara" GiverId="37969" />
+					<CustomBehavior File="WaitTimer" QuestId="24626" WaitTime="10000" />
+				</If>
+				<Enablebehavior Name="Combat" />
+			</While>
+
+		<TurnIn QuestName="Young and Vicious" QuestId="24626" TurnInName="Moraya" TurnInId="38005" />
+		<TurnIn QuestName="Crab Fishin'" QuestId="25037" TurnInName="Tora'jin" TurnInId="39007" />
+		<PickUp QuestName="Breaking the Line" QuestId="25035" GiverName="Tortunga" GiverId="38440" />	
+
+			<!--Transport: Breaking the Line-->
+			<If Condition="HasQuest(25035) &amp;&amp; IsQuestCompleted(25035)">
+				<CustomBehavior File="InteractWith" MobId="38989" GossipOptions="1" X="-1328.656" Y="-5556.736" Z="21.4824" />
+				<While Condition="Me.IsOnTransport">
+					<CustomBehavior File="WaitTimer" WaitTime="5000" GoalText="Waiting to be off Raptor." />
+				</While>
+			</If>
+
+		<TurnIn QuestName="Breaking the Line" QuestId="25035" TurnInName="Morakki" TurnInId="38442" />
+		<PickUp QuestName="No More Mercy" QuestId="24812" GiverName="Morakki" GiverId="38442" />
+		<PickUp QuestName="Territorial Fetish" QuestId="24813" GiverName="Morakki" GiverId="38442" />
+			
+			<CustomBehavior File="InteractWith" QuestId="24813" MobId="202113" InteractByUsingItemId="52065" NumOfTimes="100" WaitTime="2000" Range="10" CollectionDistance="1000" X="-734.6435" Y="-5590.083" Z="-9.287653" />
+			<Objective QuestName="No More Mercy" QuestId="24812" Type="KillMob" MobId="38301" MobId2="38300" KillCount="12" />
+
+		<TurnIn QuestName="No More Mercy" QuestId="24812" TurnInName="Morakki" TurnInId="38442" />
+		<TurnIn QuestName="Territorial Fetish" QuestId="24813" TurnInName="Morakki" TurnInId="38442" />
+		<PickUp QuestName="An Ancient Enemy" QuestId="24814" GiverName="Morakki" GiverId="38442" />
+
+			<!--Objective: An Ancient Enemy-->
+			<If Condition="HasQuest(24814) &amp;&amp; !IsQuestCompleted(24814)" >
+				<CustomBehavior File="InteractWith" QuestId="24814" MobId="38225" InteractByGossipOptions="1" WaitTime="1000" X="-743.6827" Y="-5615.54" Z="24.9367" />
+				<CustomBehavior File="WaitTimer" WaitTime="20000" />
+				<While Condition="HasQuest(24814) &amp;&amp; !IsQuestCompleted(24814)" >
+					<CustomBehavior File="InteractWith" MobId="38542" ProactiveCombatStrategy="ClearMobsTargetingUs" WaitForNpcs="False" X="-709.9801" Y="-5581.828" Z="25.50142" />
+				</While>
+				<RunTo X="-716.3348" Y="-5584.135" Z="25.49815" />
+				<CustomBehavior File="WaitTimer" WaitTime="60000" />
+				<CustomBehavior File="InteractWith" MobId="38437" InteractByGossipOptions="1" WaitTime="5000" X="-743.6827" Y="-5615.54" Z="24.9367" />
+			</If>
+
+		<TurnIn QuestName="An Ancient Enemy" QuestId="24814" TurnInName="Vol'jin" TurnInId="38966" />
+		<PickUp QuestName="Sen'jin Village" QuestId="25073" GiverName="Vol'jin" GiverId="38966" />
+		<TurnIn QuestName="Sen'jin Village" QuestId="25073" TurnInName="Master Gadrin" TurnInId="3188" />
+
+		<CustomBehavior File="Message" Text="Profile Complete: Loading Durotar" LogColor="Cyan" />
+		<CustomBehavior File="LoadProfile" ProfileName="..\Kalimdor\[H - Quest] Durotar [Life]" />			
+	</QuestOrder>
+</HBProfile>
