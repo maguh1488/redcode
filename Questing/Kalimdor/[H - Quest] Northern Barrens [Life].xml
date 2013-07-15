@@ -445,9 +445,13 @@
 		<TurnIn QuestName="Plainstrider Menace" QuestId="844" TurnInName="Halga Bloodeye" TurnInId="34258" />
 		<PickUp QuestName="Through Fire and Flames" QuestId="13878" GiverName="Dorak" GiverId="34284" />
 
-		<While Condition="!HasQuest(13878) &amp;&amp; !IsQuestCompleted(13878)">
-			<CustomBehavior File="InteractWith" MobId="195001" MobId2="195003" MobId3="195004" X="-9.880242" Y="-3633.958" Z="27.47055" />
+		<!--Objective: Through Fire and Flames-->
+		<While Condition="HasQuest(13878) &amp;&amp; !IsQuestCompleted(13878)">
+			<CustomBehavior File="InteractWith" MobId="195001" WaitForNpcs="False" X="-9.880242" Y="-3633.958" Z="27.47055" />
+			<CustomBehavior File="InteractWith" MobId2="195003" WaitForNpcs="False" X="-9.880242" Y="-3633.958" Z="27.47055" />
+			<CustomBehavior File="InteractWith" MobId3="195004" WaitForNpcs="False" X="-9.880242" Y="-3633.958" Z="27.47055" />
 		</While>
+
 			<Objective QuestName="In Defense of Far Watch" QuestId="871" Type="KillMob" MobId="3267" KillCount="8" />
 			<Objective QuestName="In Defense of Far Watch" QuestId="871" Type="KillMob" MobId="3265" KillCount="3" />
 

@@ -93,11 +93,7 @@
 	</Quest>
 
 
-
 	<QuestOrder>
-		<!--CustomBehavior File="Message" Text="Error: Profile hasn't been made yet! Shutting Down." LogColor="Red" />
-		<CustomBehavior File="Halt" /-->
-
 		<CustomBehavior File="Message" Text="Initializing Settings" LogColor="Cyan" />
 		<CustomBehavior File="UserSettings" LootMobs="True" UseFlightPaths="True" PullDistance="25" />
 
@@ -254,6 +250,12 @@
 			<Objective QuestName="The Burning Blade" QuestId="25232" Type="CollectItem" ItemId="52564" CollectCount="6" />
 		
 		<TurnIn QuestName="The Burning Blade" QuestId="25232" TurnInName="Orgnil Soulscar" TurnInId="3142" />
+
+		<If Condition="Me.LevelFraction &gt;= 10">
+			<CustomBehavior File="Message" Text="Checkpoint: Switching to Northern Barrens" LogColor="Cyan" />
+			<CustomBehavior File="LoadProfile" ProfileName="[H - Quest] Northern Barrens [Life]" />
+		</If>
+
 		<PickUp QuestName="The Dranoshar Blockade" QuestId="25196" GiverName="Orgnil Soulscar" GiverId="3142" />
 		<PickUp QuestName="Winds in the Desert" QuestId="834" GiverName="Rezlak" GiverId="3293" />
 		<PickUp QuestName="Securing the Lines" QuestId="835" GiverName="Rezlak" GiverId="3293" />
