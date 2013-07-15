@@ -428,6 +428,9 @@
 	<QuestOrder>
 		<CustomBehavior File="Message" Text="Initializing Settings" LogColor="Cyan" />
 		<CustomBehavior File="UserSettings" LootMobs="True" UseFlightPaths="True" PullDistance="25" />
+
+			<CustomBehavior File="EnablePlugin" Names="Anti Drown,AutoEquip2,Drink Potions,Refreshment,Talented2" />
+			<CustomBehavior File="RunMacro" Macro="/script SetCVar('AutoLootDefault', 1)" WaitTime="1000" />
 			<If Condition="!HasQuest(871) &amp;&amp; !IsQuestCompleted(871)" >
 				<CustomBehavior File="RunMacro" Macro="/run for i=1,GetNumQuestLogEntries() do SelectQuestLogEntry(i); SetAbandonQuest(); AbandonQuest(); end" />
 			</If>
@@ -442,7 +445,9 @@
 		<TurnIn QuestName="Plainstrider Menace" QuestId="844" TurnInName="Halga Bloodeye" TurnInId="34258" />
 		<PickUp QuestName="Through Fire and Flames" QuestId="13878" GiverName="Dorak" GiverId="34284" />
 
-			<CustomBehavior File="InteractWith" QuestId="13878" MobId="195001" MobId2="195003" MobId3="195004" NumOfTimes="100" X="-9.880242" Y="-3633.958" Z="27.47055" />
+		<While Condition="!HasQuest(13878) &amp;&amp; !IsQuestCompleted(13878)">
+			<CustomBehavior File="InteractWith" MobId="195001" MobId2="195003" MobId3="195004" X="-9.880242" Y="-3633.958" Z="27.47055" />
+		</While>
 			<Objective QuestName="In Defense of Far Watch" QuestId="871" Type="KillMob" MobId="3267" KillCount="8" />
 			<Objective QuestName="In Defense of Far Watch" QuestId="871" Type="KillMob" MobId="3265" KillCount="3" />
 
@@ -536,6 +541,7 @@
 				<While Condition="!IsQuestCompleted(13975)">
 					<CustomBehavior File="InteractWith" MobId="34578" InteractByGossipOptions="1" NonCompeteDistance="0" WaitTime="5500" X="218.0785" Y="-2936.549" Z="91.823" />
 					<CustomBehavior File="InteractWith" MobId="34577" WaitTime="7000" Range="4" />
+					<!--Behavior Isn't Ending?-->
 					<While Condition="Me.IsOnTransport">
 						<CustomBehavior File="Vehicles\NoControlVehicle" QuestId="13975" TargetId="34594" NumOfTimes="500" AttackButton="1" OftenToUse="600" />
 					</While>
@@ -635,10 +641,10 @@
 				<CustomBehavior File="InteractWith" MobId="195311" InteractByUsingItemId="5165" CollectionDistance="5" WaitTime="1000" X="-1106.75" Y="-2557.45" Z="117.73" />
 			</While>
 			<!--Objective: A Growing Problem-->
-			<If Condition="HasQuest(13998) &amp;&amp; !IsQuestCompleted(13998)">
+			<While Condition="HasQuest(13998) &amp;&amp; !IsQuestCompleted(13998)">
 				<RunTo DestName="Stagnant Oasis" X="-1197.229" Y="-2961.847" Z="88.8626" />
-				<CustomBehavior File="Misc\RunLua" Lua="UseItemByName(46789)" WaitTime="3000" />
-			</If>
+				<CustomBehavior File="Misc\RunLua" Lua="UseItemByName(46789)" WaitTime="30000" />
+			</While>
 
 			<PickUp QuestName="Flushing Out Verog" QuestId="14072" GiverName="Shoe" GiverId="34638" />
 			<PickUp QuestName="King of Centaur Mountain" QuestId="13995" GiverName="Gorgal Angerscar" GiverId="34634" />
@@ -709,8 +715,10 @@
 			<PickUp QuestName="Take it up with Tony" QuestId="14052" GiverName="Wharfmaster Dizzywig" GiverId="3453" />
 
 				<!--Objective: Club Foote-->
-				<CustomBehavior File="InteractWith" QuestId="14034" MobId="34754" InteractByGossipOptions="1" WaitTime="2000" X="-1052.263" Y="-3651.511" Z="23.87792" />
-				<CustomBehavior File="InteractWith" QuestId="14034" MobId="34754" InteractByGossipOptions="1" WaitTime="2000" X="-1052.263" Y="-3651.511" Z="23.87792" />
+				<While Condition="HasQuest(14034) &amp;&amp; !IsQuestCompleted(14034)">
+					<CustomBehavior File="InteractWith" QuestId="14034" MobId="34754" InteractByGossipOptions="1" WaitTime="10000" X="-1052.263" Y="-3651.511" Z="23.87792" />
+					<CustomBehavior File="InteractWith" QuestId="14034" MobId="34754" InteractByGossipOptions="1" WaitForNpc="False" WaitTime="2000" X="-1052.263" Y="-3651.511" Z="23.87792" />
+				</While>
 
 			<TurnIn QuestName="Club Foote" QuestId="14034" TurnInName="Gazlowe" TurnInId="3391" />
 			<PickUp QuestName="Love It or Limpet" QuestId="14038" GiverName="Gazlowe" GiverId="3391" />
@@ -732,8 +740,8 @@
 					<While Condition="!IsQuestCompleted(14068)">
 						<CustomBehavior File="UserSettings" PullDistance="1" />
 						<CustomBehavior File="InteractWith" QuestId="14068" MobId="3255" MobId2="3256" MobId3="44164" MobState="Alive" InteractByUsingItemId="46853" Range="25" CollectionDistance="1000" X="-498.796" Y="-3501.523" Z="92.98463" />
-						<CustomBehavior File="WaitTimer" WaitTime="22000" />
-						<CustomBehavior File="InteractWith" QuestId="14068" IgnoreCombat="True" MobId="195239" CollectionDistance="1000" WaitForNpcs="False" />
+						<CustomBehavior File="WaitTimer" WaitTime="19000" />
+						<CustomBehavior File="InteractWith" QuestId="14068" IgnoreCombat="True" InteractByLooting="True" MobId="195239" CollectionDistance="1000" WaitForNpcs="False" />
 						<CustomBehavior File="UserSettings" PullDistance="25" />
 					</While>
 				</If>
@@ -742,15 +750,17 @@
 
 				<!--Objectives: To Track A Thief-->
 				<If Condition="HasQuest(869)">
-					<RunTo DestName="Caravan Footprints" X="-500.4861" Y="-3377.557" Z="98.0935" />
+					<If Condition="!IsQuestCompleted(869)">
+						<RunTo DestName="Caravan Footprints" X="-500.4861" Y="-3377.557" Z="98.0935" />
+					</If>
 					<CustomBehavior File="CompleteLogQuest" QuestId="869" />
 				</If>
 
 			<PickUp QuestName="The Stolen Silver" QuestId="14067" GiverName="Gazrog" GiverId="3464" />
 
-				<!--CollectItem Death Bug-->
-				<!--Objective QuestName="The Stolen Silver" QuestId="14067" Type="CollectItem" ItemId="5061" CollectCount="1" /-->
-				<CustomBehavior File="CollectThings" QuestId="14067" ObjectId="195224" CollectItemCount="1" CollectItemId="5061" X="-445.4569" Y="-3459.529" Z="94.63277" />
+				<!--CollectItem Gets you killed. CollectThings Can't Find It-->
+				<Objective QuestName="The Stolen Silver" QuestId="14067" Type="CollectItem" ItemId="5061" CollectCount="1" />
+				<!--CustomBehavior File="CollectThings" QuestId="14067" ObjectId="195224" CollectItemCount="1" CollectItemId="5061" X="-445.4569" Y="-3459.529" Z="94.63277" /-->
 				<Objective QuestName="Its Gotta be the Horn" QuestId="865" Type="CollectItem" ItemId="46850" CollectCount="1" />
 				<Objective QuestName="The Stolen Silver" QuestId="14067" Type="KillMob" MobId="44164" KillCount="8" />
 				<Objective QuestName="The Stolen Silver" QuestId="14067" Type="KillMob" MobId="3256" KillCount="4" />
@@ -775,7 +785,8 @@
 			<PickUp QuestName="A Most Unusual Map" QuestId="14049" GiverName="Baron Longshore" GiverId="3467" />
 
 				<!--Objective: A Most Unusual Map-->
-				<CustomBehavior File="InteractWith" QuestId="14049" MobId="195205" InteractByLooting="True" X="-1308.17" Y="-3785.69" Z="19.87" />
+				<!--Used Instead of CollectThings: Blacklisting is Bad-->
+				<CustomBehavior File="InteractWith" QuestId="14049" MobId="195205" NumOfTimes="100" InteractByLooting="True" X="-1308.17" Y="-3785.69" Z="19.87" />
 
 			<TurnIn QuestName="Take it up with Tony" QuestId="14052" TurnInName="Tony Two-Tusk" TurnInId="34749" />
 			<PickUp QuestName="Glomp is Sitting On It" QuestId="14056" GiverName="Tony Two-Tusk" GiverId="34749" />
@@ -791,25 +802,25 @@
 			<PickUp QuestName="Mutiny, Mon!" QuestId="14063" GiverName="Tony Two-Tusk" GiverId="34749" />
 
 				<!--Objective: Mutiny, Mon!-->
-				<If Condition="HasQuest(14063) &amp;&amp; !IsQuestCompleted(14063)" >
-					<RunTo X="-1676.931" Y="-4379.207" Z="10.7226" />
+				<While Condition="HasQuest(14063) &amp;&amp; !IsQuestCompleted(14063)" >
+					<RunTo X="-1678.143" Y="-4380.884" Z="10.77348" />
 					<CustomBehavior File="Misc\RunLua" Lua="UseItemByName(46838)" />
 					<RunTo X="-1669.896" Y="-4386.42" Z="5.308437" />
 					<CustomBehavior File="WaitTimer" WaitTime="15000" />
-					<CustomBehavior File="EscortGroup" QuestId="14063" EscortNpcId="34749" EscortMaxFollowDistance="3" EscortMaxFightDistance="10" />
-				</If>
+					<CustomBehavior File="EscortGroup" QuestId="14063" EscortNpcId="34749" EscortCompleteWhen="QuestCompleteOrFails" EscortMaxFollowDistance="3" EscortMaxFightDistance="10" />
+				</While>
 				<Objective QuestName="WANTED: Cap'n Garvey" QuestId="895" Type="CollectItem" ItemId="5084" CollectCount="1" />
 				<Objective QuestName="Southsea Freebooters" QuestId="887" Type="KillMob" MobId="34779" KillCount="8" />
 				<Objective QuestName="A Captain's Vengeance" QuestId="891" Type="KillMob" MobId="34752" KillCount="1" />
 				<Objective QuestName="A Captain's Vengeance" QuestId="891" Type="KillMob" MobId="34753" KillCount="1" />
 				<Objective QuestName="A Captain's Vengeance" QuestId="891" Type="CollectItem" ItemId="5078" CollectCount="10" />
-				<!--Objective: -->
+				<!--Objective: Love it or Limpet-->
 				<If Condition="HasQuest(14038) &amp;&amp; !IsQuestCompleted(14038)" >
 					<RunTo X="-1468.848" Y="-3967.077" Z="-1.573462" />
 					<CustomBehavior File="Misc\RunLua" Lua="UseItemByName(46829)" WaitTime="2000" />
 				</If>
 
-			<!--Complete Quest: -->
+			<!--Complete Quest: Love it or Limpet-->
 			<If Condition="HasQuest(14038) &amp;&amp; IsQuestCompleted(14038)" >
 				<CustomBehavior File="CompleteLogQuest" QuestId="14038" />
 			</If>
@@ -946,6 +957,7 @@
 			<TurnIn QuestName="Nugget Slugs" QuestId="29027" TurnInName="Wenikee Boltbucket" TurnInId="9316" />
 			<PickUp QuestName="Return to Samophlanger" QuestId="14004" GiverName="Wenikee Boltbucket" GiverId="9316" />
 
+				<!--Transport: Return to Samophlanger-->
 				<If Condition="HasQuest(14004) &amp;&amp; IsQuestCompleted(14004)">
 					<If Condition="Me.Location.Distance(new WoWPoint(858.14, -2347.64, 91.83)) &lt; 500">
 						<CustomBehavior File="InteractWith" MobId="9316" InteractByGossipOptions="1" NonCompeteDistance="0" X="854.8587" Y="-2347.448" Z="91.87091" />
@@ -993,7 +1005,7 @@
 				</If>
 
 			<TurnIn QuestName="The Short Way Home" QuestId="29094" TurnInName="Darsok Swiftdagger" TurnInId="3449" />			
-
+			<!--Loremaster Achievement Marker-->
 			<!--If Condition="Me.LevelFraction &gt;= 20" >
 				<CustomBehavior File="Message" Text="Profile Complete: Loading Ashenvale" LogColor="Cyan" />
 				<CustomBehavior File="LoadProfile" ProfileName="[H - Quest] Ashenvale [Life]" />
