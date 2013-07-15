@@ -112,6 +112,16 @@
 		<TurnIn QuestName="Last Rites, First Rites" QuestId="24861" TurnInName="Chief Hawkwind" TurnInId="2981" />
 		<PickUp QuestName="Rites of the Earthmother" QuestId="23733" GiverName="Chief Hawkwind" GiverId="2981" />
 
+		<If Condition="Me.Class == WoWClass.Druid" >
+			<TurnIn QuestName="Verdant Note" QuestId="3094" TurnInName="Gart Mistrunner" TurnInId="3060" />
+			<PickUp QuestName="Moonfire" QuestId="27067" GiverName="Gart Mistrunner" GiverId="3060" />
+			<While Condition="HasQuest(27067) &amp;&amp; !IsQuestCompleted(27067)">
+				<DisableBehavior Name="Combat" />
+				<CustomBehavior File="InteractWith" InteractByCastingSpellId="8921" KeepTargetSelected="True" NumOfTimes="1" MobId="44848" Range="40" WaitTime="2000" X="-2920.208" Y="-268.5547" Z="59.95792" />
+				<EnableBehavior Name="Combat" />
+			</While>
+			<TurnIn QuestName="Moonfire" QuestId="27067" TurnInName="Gart Mistrunner" TurnInId="3060" />
+		</If>		
 		<If Condition="Me.Class == WoWClass.Hunter">
 			<TurnIn QuestName="Etched Note" QuestId="3092" TurnInName="Lanka Farshot" TurnInId="3061" />
 			<PickUp QuestName="The Hunter's Path" QuestId="27021" GiverName="Lanka Farshot" GiverId="3061" />

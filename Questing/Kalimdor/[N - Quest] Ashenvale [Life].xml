@@ -33,6 +33,6 @@
 
 	<QuestOrder>
 		<CustomBehavior File="Message" Text="Error: Profile hasn't been made yet! Shutting Down." LogColor="Red" />
-		<<CustomBehavior File="Halt" />
+		<CustomBehavior File="Halt" />
 	</QuestOrder>
 </HBProfile>
