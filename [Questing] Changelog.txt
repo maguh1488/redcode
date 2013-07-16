@@ -1,6 +1,11 @@
 ==================================
  ==== Life Project Changelog ====
 ==================================
+
+_____________________________________
+Revision 59: Tuesday, July 17th, 2013
+-- Orc and Troll class quests are finished!
+-- Added Ghostlands riding on accident! Adding the Silverpine one now.
 _____________________________________
 Revision 58: Tuesday, July 16th, 2013
 -- Northern Barrens now leaves on Loremaster, but has checkpoints commented out by default.
