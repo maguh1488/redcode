@@ -1,0 +1,197 @@
+<HBProfile>
+	<Name>[H - Quest] Northern Barrens Riding.xml</Name>
+
+	<MinLevel>20</MinLevel>
+	<MaxLevel>91</MaxLevel>
+
+	<QuestOrder>
+		<If Condition="Me.IsAlliance">
+			<CustomBehavior File="Message" Text="Fatal Error: Please load an appropriate profile!" LogColor="Red" />
+			<CustomBehavior File="Halt" />
+		</If>
+
+		<If Condition="Me.IsHorde">
+			<If Condition="Me.GetSkill(Styx.SkillLine.Riding).CurrentValue == 0 &amp;&amp; Me.Gold &gt;= 5">
+				<CustomBehavior File="UserSettings" UseFlightPaths="True" PullDistance="1" />
+				<CustomBehavior File="ForceSetVendor" DoSell="True" DoRepair="True" DoMail="True" />
+				<CustomBehavior File="Message" Text="Riding: Compiling Training Procedures" LogColor="Cyan" />
+
+				<!--Continential Drift: I'm in Eastern Kingdoms, should be in Kalimdor-->
+				<If Condition="Me.MapId == 0 &amp;&amp; (Me.Race != WoWRace.BloodElf || Me.Race != WoWRace.Undead)">
+					<!--Get out of "Outlands" Zones-->
+					<If Condition="Me.ZoneId == 3433 || Me.ZoneId == 3430 || Me.ZoneId == 3487">
+						<RunTo DestName="Orb of Translocation" X="10038.42" Y="-7000.994" Z="61.76336" />
+						<CustomBehavior File="Message" Text="Transport: Using Orb of Translocation to Undercity" LogColor="Cyan" />
+						<CustomBehavior File="InteractWith" MobId="184502" Range="8" X="10038.42" Y="-7000.994" Z="61.76336" />
+					</If>
+					<CustomBehavior File="Message" Text="Transport: Riding Zepplin to Orgrimmar" LogColor="Cyan" />
+					<CustomBehavior File="UseTransport" TransportId="164871"
+						WaitAtX="2070.155" WaitAtY="289.2588" WaitAtZ="97.0315" 
+						TransportStartX="2062.376" TransportStartY="292.998" TransportStartZ="114.973"
+						TransportEndX="1833.509" TransportEndY="-4391.543" TransportEndZ="152.7679"
+						StandOnX="2067.979" StandOnY="295.2747" StandOnZ="97.23677" 
+						GetOffX="1840.225" GetOffY="-4390.912" GetOffZ="135.2337" />				
+				</If>
+
+				<!--Continential Drift: I'm in Kalimdor, should be in Eastern Kingdoms-->
+				<If Condition="Me.MapId == 1 &amp;&amp; (Me.Race == WoWRace.BloodElf || Me.Race == WoWRace.Undead)">
+					<CustomBehavior File="Message" Text="Transport: Riding Zepplin to The Undercity" LogColor="Cyan" />
+					<CustomBehavior File="UseTransport" TransportId="164871"
+						WaitAtX="1838.676" WaitAtY="-4387.965" WaitAtZ="135.2332"
+						TransportStartX="1833.509" TransportStartY="-4391.543" TransportStartZ="152.7679"
+						TransportEndX="2062.376" TransportEndY="292.998" TransportEndZ="114.973"
+						StandOnX="1834.961" StandOnY="-4385.694" StandOnZ="135.0334" 
+						GetOffX="2066.773" GetOffY="288.873" GetOffZ="97.03159" />				
+					</If>
+
+					<If Condition="Me.Race == WoWRace.BloodElf">
+						<If Condition="Me.ZoneId == 1497 || Me.ZoneId == 3968 || Me.ZoneId == 85">
+							<RunTo DestName="Orb of Translocation" X="1805.826" Y="343.138" Z="70.61736" />
+							<CustomBehavior File="Message" Text="Transport: Using Orb of Translocation to Silvermoon City" LogColor="Cyan" />
+							<CustomBehavior File="InteractWith" MobId="184503" Range="8" X="1805.826" Y="343.138" Z="70.61736" />
+						</If>
+					</If>
+				</If>
+
+				<If Condition="Me.Race == WoWRace.Orc">
+					<If Condition="HasQuest(32669)">
+						<TurnIn QuestName="Learn To Ride" QuestId="32669" TurnInName="Kildar" TurnInId="4752" />
+					</If>
+					<CustomBehavior File="ForceTrainRiding" MobId="4752" />
+					<If Condition="Mount.GroundMounts.Count() &gt; 0">
+						<CustomBehavior File="Message" Text="Riding: Account-Wide Ground Mount(s) Detected!" LogColor="Cyan" />
+						<Else>
+							<CustomBehavior File="Message" Text="Riding: No Mounts Detected. Buying a Mount!" LogColor="Cyan" />
+							<CustomBehavior File="InteractWith" MobId="3362" InteractByBuyingItemId="46099" X="2077.21" Y="-4566.8" Z="49.2534" />
+							<While Condition="HasItem(46099)">
+								<CustomBehavior File="Misc\RunLua" Lua="UseItemByName(46099)" />
+							</While>
+						</Else>
+					</If>
+				</If>
+				<If Condition="Me.Race == WoWRace.Tauren">
+					<If Condition="HasQuest(32670)">
+						<TurnIn QuestName="Learn To Ride" QuestId="32670" TurnInName="Kar Stormsinger" TurnInId="3690" />
+					</If>
+					<CustomBehavior File="ForceTrainRiding" MobId="3690" />
+					<If Condition="Mount.GroundMounts.Count() &gt; 0">
+						<CustomBehavior File="Message" Text="Riding: Account-Wide Ground Mount(s) Detected!" LogColor="Cyan" />
+						<Else>
+							<CustomBehavior File="Message" Text="Riding: No Mounts Detected. Buying a Mount!" LogColor="Cyan" />
+							<CustomBehavior File="InteractWith" MobId="3685" InteractByBuyingItemId="15290" X="-2279.796" Y="-392.0697" Z="-9.396775" />
+							<While Condition="HasItem(15290)">
+								<CustomBehavior File="Misc\RunLua" Lua="UseItemByName(15290)" />
+							</While>
+						</Else>
+					</If>
+				</If>
+				<If Condition="Me.Race == WoWRace.Troll">
+					<If Condition="HasQuest(32671)">
+						<TurnIn QuestName="Learn To Ride" QuestId="32671" TurnInName="Xar'Ti" TurnInId="7953" />
+					</If>
+					<CustomBehavior File="ForceTrainRiding" MobId="7953" />
+					<If Condition="Mount.GroundMounts.Count() &gt; 0">
+						<CustomBehavior File="Message" Text="Riding: Account-Wide Ground Mount(s) Detected!" LogColor="Cyan" />
+						<Else>
+							<CustomBehavior File="Message" Text="Riding: No Mounts Detected. Buying a Mount!" LogColor="Cyan" />
+							<CustomBehavior File="InteractWith" MobId="7952" InteractByBuyingItemId="18790" X="-858.092" Y="-4883.042" Z="22.11629" />
+							<While Condition="HasItem(18790)">
+								<CustomBehavior File="Misc\RunLua" Lua="UseItemByName(18790)" />
+							</While>
+						</Else>
+					</If>
+				</If>
+				<If Condition="Me.Race == WoWRace.Undead">
+					<If Condition="HasQuest(32672)">
+						<TurnIn QuestName="Learn To Ride" QuestId="32672" TurnInName="Velma Warnam" TurnInId="4773" />
+					</If>
+					<CustomBehavior File="ForceTrainRiding" MobId="4773" />
+					<If Condition="Mount.GroundMounts.Count() &gt; 0">
+						<CustomBehavior File="Message" Text="Riding: Account-Wide Ground Mount(s) Detected!" LogColor="Cyan" />
+						<Else>
+							<CustomBehavior File="Message" Text="Riding: No Mounts Detected. Buying a Mount!" LogColor="Cyan" />
+							<CustomBehavior File="InteractWith" MobId="4731" InteractByBuyingItemId="13331" X="2276.172" Y="240.7322" Z="33.39476" />
+							<While Condition="HasItem(13331)">
+								<CustomBehavior File="Misc\RunLua" Lua="UseItemByName(13331)" />
+							</While>
+						</Else>
+					</If>
+				</If>
+				<If Condition="Me.Race == WoWRace.Goblin">
+					<If Condition="HasQuest(32673)">
+						<TurnIn QuestName="Learn To Ride" QuestId="32673" TurnInName="Revi Ramrod" TurnInId="48513" />
+					</If>
+					<CustomBehavior File="ForceTrainRiding" MobId="48513" />
+					<If Condition="Mount.GroundMounts.Count() &gt; 0">
+						<CustomBehavior File="Message" Text="Riding: Account-Wide Ground Mount(s) Detected!" LogColor="Cyan" />
+						<Else>
+							<CustomBehavior File="Message" Text="Riding: No Mounts Detected. Buying a Mount!" LogColor="Cyan" />
+							<CustomBehavior File="InteractWith" MobId="48510" InteractByBuyingItemId="62461" InteractByGossipOptions="1" X="1482.96" Y="-4132.74" Z="52.5905" />
+							<While Condition="HasItem(62461)">
+								<CustomBehavior File="Misc\RunLua" Lua="UseItemByName(62461)" />
+							</While>
+						</Else>
+					</If>
+				</If>
+				<If Condition="Me.Race == WoWRace.BloodElf">
+					<If Condition="HasQuest(32668)">
+					<TurnIn QuestName="Learn To Ride" QuestId="32668" TurnInName="Perascamin" TurnInId="16280" />
+					<CustomBehavior File="ForceTrainRiding" MobId="16280" />
+					<If Condition="Mount.GroundMounts.Count() &gt; 0">
+						<CustomBehavior File="Message" Text="Riding: Account-Wide Ground Mount(s) Detected!" LogColor="Cyan" />
+						<Else>
+							<CustomBehavior File="Message" Text="Riding: No Mounts Detected. Buying a Mount!" LogColor="Cyan" />
+							<CustomBehavior File="InteractWith" MobId="16264" InteractByBuyingItemId="29221" X="9245.224" Y="-7495" Z="36.93785" />
+							<While Condition="HasItem(29221)">
+								<CustomBehavior File="Misc\RunLua" Lua="UseItemByName(29221)" />
+							</While>
+						</Else>
+					</If>
+				</If>
+				<If Condition="Me.Race == WoWRace.Pandaren">
+					<If Condition="HasQuest(32667)">
+						<TurnIn QuestName="Learn To Ride" QuestId="32667" TurnInName="Softpaws" TurnInId="70301" />
+					</If>
+					<CustomBehavior File="ForceTrainRiding" MobId="70301" />
+					<If Condition="Mount.GroundMounts.Count() &gt; 0">
+						<CustomBehavior File="Message" Text="Riding: Account-Wide Ground Mount(s) Detected!" LogColor="Cyan" />
+						<Else>
+							<CustomBehavior File="Message" Text="Riding: No Mounts Detected. Buying a Mount!" LogColor="Cyan" />
+							<CustomBehavior File="InteractWith" MobId="66022" InteractByBuyingItemId="91007" X="2009.267" Y="-4721.249" Z="29.5149" />
+							<While Condition="HasItem(91007)">
+								<CustomBehavior File="Misc\RunLua" Lua="UseItemByName(91007)" />
+							</While>
+						</Else>
+					</If>
+				</If>
+			</If>
+		</If>
+
+		<If Condition="Me.GetSkill(Styx.SkillLine.Riding).CurrentValue == 0">
+			<CustomBehavior File="Message" Text="Fatal Riding Error: We didn't learn riding! Inform Profile Maker!" LogColor="Red" />
+		</If>
+		<If Condition="Mount.GroundMounts.Count() &lt;= 0">
+			<CustomBehavior File="Message" Text="Fatal Riding Error: We didn't get a mount! Inform Profile Maker!" LogColor="Red" />
+		</If>
+
+		<!--Continential Drift: I'm in Eastern Kingdoms, returning to Kalimdor-->
+		<If Condition="Me.MapId == 0">
+			<!--Get out of "Outlands" Zones-->
+			<If Condition="Me.ZoneId == 3433 || Me.ZoneId == 3430 || Me.ZoneId == 3487">
+				<RunTo DestName="Orb of Translocation" X="10038.42" Y="-7000.994" Z="61.76336" />
+				<CustomBehavior File="Message" Text="Transport: Using Orb of Translocation to Undercity" LogColor="Cyan" />
+				<CustomBehavior File="InteractWith" MobId="184502" Range="8" X="10038.42" Y="-7000.994" Z="61.76336" />
+			</If>
+			<CustomBehavior File="Message" Text="Transport: Riding Zepplin to Orgrimmar" LogColor="Cyan" />
+			<CustomBehavior File="UseTransport" TransportId="164871"
+				WaitAtX="2070.155" WaitAtY="289.2588" WaitAtZ="97.0315" 
+				TransportStartX="2062.376" TransportStartY="292.998" TransportStartZ="114.973"
+				TransportEndX="1833.509" TransportEndY="-4391.543" TransportEndZ="152.7679"
+				StandOnX="2067.979" StandOnY="295.2747" StandOnZ="97.23677" 
+				GetOffX="1840.225" GetOffY="-4390.912" GetOffZ="135.2337" />				
+		</If>		
+
+		<CustomBehavior File="Message" Text="Riding: Training Complete! Returning to Profile" LogColor="Cyan" />
+		<CustomBehavior File="LoadProfile" ProfileName="..\Kalimdor\[H - Quest] Northern Barrens [Life]" />	
+	</QuestOrder>
+</HBProfile>

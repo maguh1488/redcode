@@ -286,8 +286,8 @@
 			</Hotspots>
 		</Objective>
 	</Quest>
-	<Quest Id="14067" Name="The Stolen Silver" > 
-		<Objective Type="CollectItem" ItemId="5061" CollectCount="1" >
+	<Quest Id="14067" Name="The Stolen Silver"> 
+		<Objective Type="CollectItem" ItemId="5061" CollectCount="1">
 			<CollectFrom>
 				<GameObject Name="Stolen Silver Lockbox" Id="195224" />
 			</CollectFrom>
@@ -295,14 +295,14 @@
 				<Hotspot X="-445.4569" Y="-3459.529" Z="94.63277" />
 			</Hotspots>
 		</Objective>
-		<Objective Type="KillMob" MobId="44164" KillCount="8" >
+		<Objective Type="KillMob" MobId="44164" KillCount="8">
 			<Hotspots>
 			<Hotspot X="-457.9567" Y="-3379.347" Z="92.97152" />
 			<Hotspot X="-542.2" Y="-3390.213" Z="91.66414" />
 			<Hotspot X="-483.9962" Y="-3469.316" Z="93.20975" />
 			</Hotspots>
 		</Objective>
-		<Objective Type="KillMob" MobId="3256" KillCount="4" >
+		<Objective Type="KillMob" MobId="3256" KillCount="4">
 			<Hotspots>
 				<Hotspot X="-457.9567" Y="-3379.347" Z="92.97152" />
 				<Hotspot X="-542.2" Y="-3390.213" Z="91.66414" />
@@ -310,8 +310,8 @@
 			</Hotspots>
 		</Objective>
 	</Quest>
-	<Quest Id="865" Name="Its Gotta be the Horn" > 
-		<Objective Type="CollectItem" ItemId="46850" CollectCount="1" >
+	<Quest Id="865" Name="Its Gotta be the Horn"> 
+		<Objective Type="CollectItem" ItemId="46850" CollectCount="1">
 			<CollectFrom>
 				<Mob Name="King Reaperclaw" Id="34829" />
 			</CollectFrom>
@@ -431,7 +431,7 @@
 
 			<CustomBehavior File="EnablePlugin" Names="Anti Drown,AutoEquip2,Drink Potions,Refreshment,Talented2" />
 			<CustomBehavior File="RunMacro" Macro="/script SetCVar('AutoLootDefault', 1)" WaitTime="1000" />
-			<If Condition="!HasQuest(871) &amp;&amp; !IsQuestCompleted(871)" >
+			<If Condition="!HasQuest(871) &amp;&amp; !IsQuestCompleted(871)">
 				<CustomBehavior File="RunMacro" Macro="/run for i=1,GetNumQuestLogEntries() do SelectQuestLogEntry(i); SetAbandonQuest(); AbandonQuest(); end" />
 			</If>
 
@@ -546,9 +546,13 @@
 					<CustomBehavior File="InteractWith" MobId="34578" InteractByGossipOptions="1" NonCompeteDistance="0" WaitTime="5500" X="218.0785" Y="-2936.549" Z="91.823" />
 					<CustomBehavior File="InteractWith" MobId="34577" WaitTime="7000" Range="4" />
 					<!--Behavior Isn't Ending?-->
+					<!--While Condition="Me.IsOnTransport">
+						<CustomBehavior File="Vehicles\NoControlVehicle" TargetId="34594" NumOfTimes="40" AttackButton="1" OftenToUse="600" />
+					</While-->
 					<While Condition="Me.IsOnTransport">
-						<CustomBehavior File="Vehicles\NoControlVehicle" QuestId="13975" TargetId="34594" NumOfTimes="500" AttackButton="1" OftenToUse="600" />
-					</While>
+						<CustomBehavior File="RunMacro" Macro="/target Burning Blade Raider" />
+						<CustomBehavior File="RunMacro" Macro="/click [overridebar][vehicleui][possessbar,@vehicle,exists]OverrideActionBarButton1" WaitTime="500" />
+					</While>					
 				</While>
 				<EnableBehavior Name="Combat, Loot" />
 			</If>
@@ -644,418 +648,555 @@
 				<RunTo X="-1106.75" Y="-2557.45" Z="117.73" />
 				<CustomBehavior File="InteractWith" MobId="195311" InteractByUsingItemId="5165" CollectionDistance="5" WaitTime="1000" X="-1106.75" Y="-2557.45" Z="117.73" />
 			</While>
-			<!--Objective: A Growing Problem-->
+			<!--Objective: In Fungus We Trust-->
 			<While Condition="HasQuest(13998) &amp;&amp; !IsQuestCompleted(13998)">
 				<RunTo DestName="Stagnant Oasis" X="-1197.229" Y="-2961.847" Z="88.8626" />
 				<CustomBehavior File="Misc\RunLua" Lua="UseItemByName(46789)" WaitTime="30000" />
 			</While>
 
-			<PickUp QuestName="Flushing Out Verog" QuestId="14072" GiverName="Shoe" GiverId="34638" />
-			<PickUp QuestName="King of Centaur Mountain" QuestId="13995" GiverName="Gorgal Angerscar" GiverId="34634" />
+		<PickUp QuestName="Flushing Out Verog" QuestId="14072" GiverName="Shoe" GiverId="34638" />
+		<PickUp QuestName="King of Centaur Mountain" QuestId="13995" GiverName="Gorgal Angerscar" GiverId="34634" />
 
-				<!--Objective: King of Centaur Mountain-->
-				<CustomBehavior File="EscortGroup" QuestId="13995" EscortNpcId="34634" EscortMaxFightDistance="40" />
-
-			<TurnIn QuestName="King of Centaur Mountain" QuestId="13995" TurnInName="Shoe" TurnInId="34638" />
-			
-				<Objective QuestName="Flushing Out Verog" QuestId="14072" Type="CollectItem" ItemId="46857" CollectCount="4" />
-			
-			<TurnIn QuestName="Flushing Out Verog" QuestId="14072" TurnInName="Shoe" TurnInId="34638" />
-			<PickUp QuestName="Verog the Dervish" QuestId="851" GiverName="Shoe" GiverId="34638" />
-			
-				<!--Objective: Verog the Dervish-->
-				<If Condition="HasQuest(851) &amp;&amp; !IsQuestCompleted(851)">
-					<CustomBehavior File="InteractWith" MobId="34846" MobState="Alive" X="-1210.383" Y="-2729.209" Z="106.678" />
-					<Objective QuestName="Verog the Dervish" QuestId="851" Type="CollectItem" ItemId="5023" CollectCount="1" />
-				</If>
-			
-			<TurnIn QuestName="Verog the Dervish" QuestId="851" TurnInName="Shoe" TurnInId="34638" />
-
-				<!--Wasn't Paying Attention: Test Carefully-->
-				<!--Objective: A Growing Problem-->
-				<If Condition="HasQuest(13988) &amp;&amp; !IsQuestCompleted(13988)">
-					<RunTo DestName="Thunderhead Summit" X="-1470.566" Y="-3295.896" Z="210.7753" />
-					<If Condition="!Me.HasAura(&quot;Tonga's Eyes&quot;)">
-						<CustomBehavior File="Misc\RunLua" Lua="UseItemByName(46782)" />
-					</If>
-					<CustomBehavior File="WaitTimer" WaitTime="25000" />
-				</If>
-
-			<TurnIn QuestName="A Growing Problem" QuestId="13988" TurnInName="Jerrik Highmountain" TurnInId="34626" />
-			<PickUp QuestName="The Stagnant Oasis" QuestId="877" GiverName="Jerrik Highmountain" GiverId="34626" />
-			<PickUp QuestName="Altered Beings" QuestId="880" GiverName="Jerrik Highmountain" GiverId="34626" />
-
-				<Objective QuestName="Altered Beings" QuestId="880" Type="CollectItem" ItemId="5098" CollectCount="6" />
-				<!--Objective: The Stagnant Oasis-->
-				<If Condition="HasQuest(877) &amp;&amp; !IsQuestCompleted(877)">
-					<CustomBehavior File="InteractWith" QuestId="877" NonCompeteDistance="0" MobId="3737" X="-1276.749" Y="-3011.112" Z="72.02942" />
-					<CustomBehavior File="AscendInWater" />
-				</If>
-
-			<TurnIn QuestName="Into the Raptors Den" QuestId="905" TurnInName="Sergra Darkthorn" TurnInId="3338" />
-			<PickUp QuestName="The Purloined Payroll" QuestId="13991" GiverName="Sergra Darkthorn" GiverId="3338" />
-			<TurnIn QuestName="The Stagnant Oasis" QuestId="877" TurnInName="Tonga Runetotem" TurnInId="3448" />
-			<TurnIn QuestName="Altered Beings" QuestId="880" TurnInName="Tonga Runetotem" TurnInId="3448" />
-			<TurnIn QuestName="In Fungus We Trust" QuestId="13998" TurnInName="Apothecary Helbrim" TurnInId="3390" />
-			<PickUp QuestName="Whos Shroomin Who" QuestId="13999" GiverName="Apothecary Helbrim" GiverId="3390" />
-			<PickUp QuestName="Deathgates Reinforcements" QuestId="14073" GiverName="Thork" GiverId="3429" />
-			<TurnIn QuestName="The Purloined Payroll" QuestId="13991" TurnInName="Gazrog" TurnInId="3464" />
-
-			<!--Bug: Remove Accidental Dungeon Quest PickUp-->
-			<If Condition="HasQuest(26878)">
-				<CustomBehavior File="AbandonQuest" QuestId="26878" Type="All" />
+			<!--Objective: King of Centaur Mountain-->
+			<CustomBehavior File="EscortGroup" QuestId="13995" EscortNpcId="34634" EscortMaxFightDistance="40" />
+			<!--Failed King of Centaur Mountain-->
+			<If Condition="!IsQuestCompleted(13995)">
+				<CustomBehavior File="AbandonQuest" QuestId="13995" Type="All" />
+				<PickUp QuestName="King of Centaur Mountain" QuestId="13995" GiverName="Gorgal Angerscar" GiverId="34634" />
 			</If>
 
-			<CustomBehavior File="Message" Text="Compiling Quests: Ratchet" LogColor="Cyan" />
+		<TurnIn QuestName="King of Centaur Mountain" QuestId="13995" TurnInName="Shoe" TurnInId="34638" />
+			
+			<Objective QuestName="Flushing Out Verog" QuestId="14072" Type="CollectItem" ItemId="46857" CollectCount="4" />
+			
+		<TurnIn QuestName="Flushing Out Verog" QuestId="14072" TurnInName="Shoe" TurnInId="34638" />
+		<PickUp QuestName="Verog the Dervish" QuestId="851" GiverName="Shoe" GiverId="34638" />
+			
+			<!--Objective: Verog the Dervish-->
+			<If Condition="HasQuest(851) &amp;&amp; !IsQuestCompleted(851)">
+				<CustomBehavior File="InteractWith" MobId="34846" MobState="Alive" X="-1210.383" Y="-2729.209" Z="106.678" />
+				<Objective QuestName="Verog the Dervish" QuestId="851" Type="CollectItem" ItemId="5023" CollectCount="1" />
+			</If>
+			
+		<TurnIn QuestName="Verog the Dervish" QuestId="851" TurnInName="Shoe" TurnInId="34638" />
 
-			<PickUp QuestName="Investigate the Wreckage" QuestId="14066" GiverName="Gazrog" GiverId="3464" />
-			<TurnIn QuestName="Whos Shroomin Who" QuestId="13999" TurnInName="Sashya" TurnInId="34651" />
-			<PickUp QuestName="A Captains Vengeance" QuestId="891" GiverName="Captain Thalo'thas Brightsun" GiverId="3339" />
-			<PickUp QuestName="Its Gotta Be The Horn" QuestId="865" GiverName="Mebok Mizzyrix" GiverId="3446" />
-			<PickUp QuestName="Wanted Capn Garvey" QuestId="895" GiverName="WANTED" GiverId="3972" GiverType="Object" X="-918.8214" Y="-3719.887" Z="10.31432" />
-			<PickUp QuestName="Club Foote" QuestId="14034" GiverName="Gazlowe" GiverId="3391" />
-			<PickUp QuestName="Find Baron Longshore" QuestId="14045" GiverName="Gazlowe" GiverId="3391" />
-			<PickUp QuestName="Southsea Freebooters" QuestId="887" GiverName="Wharfmaster Dizzywig" GiverId="3453" />
-			<PickUp QuestName="Take it up with Tony" QuestId="14052" GiverName="Wharfmaster Dizzywig" GiverId="3453" />
+			<!--Wasn't Paying Attention: Test Carefully-->
+			<!--Objective: A Growing Problem-->
+			<While Condition="HasQuest(13988) &amp;&amp; !IsQuestCompleted(13988)">
+				<RunTo DestName="Thunderhead Summit" X="-1470.566" Y="-3295.896" Z="210.7753" />
+				<If Condition="!Me.HasAura(&quot;Tonga's Eyes&quot;)">
+					<CustomBehavior File="Misc\RunLua" Lua="UseItemByName(46782)" />
+				</If>
+				<CustomBehavior File="WaitTimer" WaitTime="27000" />
+			 </While>
 
-				<!--Objective: Club Foote-->
-				<While Condition="HasQuest(14034) &amp;&amp; !IsQuestCompleted(14034)">
-					<CustomBehavior File="InteractWith" QuestId="14034" MobId="34754" InteractByGossipOptions="1" WaitTime="10000" X="-1052.263" Y="-3651.511" Z="23.87792" />
-					<CustomBehavior File="InteractWith" QuestId="14034" MobId="34754" InteractByGossipOptions="1" WaitForNpc="False" WaitTime="2000" X="-1052.263" Y="-3651.511" Z="23.87792" />
+		<TurnIn QuestName="A Growing Problem" QuestId="13988" TurnInName="Jerrik Highmountain" TurnInId="34626" />
+		<PickUp QuestName="The Stagnant Oasis" QuestId="877" GiverName="Jerrik Highmountain" GiverId="34626" />
+		<PickUp QuestName="Altered Beings" QuestId="880" GiverName="Jerrik Highmountain" GiverId="34626" />
+
+			<Objective QuestName="Altered Beings" QuestId="880" Type="CollectItem" ItemId="5098" CollectCount="6" />
+			<!--Objective: The Stagnant Oasis-->
+			<If Condition="HasQuest(877) &amp;&amp; !IsQuestCompleted(877)">
+				<CustomBehavior File="InteractWith" QuestId="877" NonCompeteDistance="0" MobId="3737" X="-1276.749" Y="-3011.112" Z="72.02942" />
+				<CustomBehavior File="AscendInWater" />
+			</If>
+
+		<TurnIn QuestName="Into the Raptors Den" QuestId="905" TurnInName="Sergra Darkthorn" TurnInId="3338" />
+		<PickUp QuestName="The Purloined Payroll" QuestId="13991" GiverName="Sergra Darkthorn" GiverId="3338" />
+		<TurnIn QuestName="The Stagnant Oasis" QuestId="877" TurnInName="Tonga Runetotem" TurnInId="3448" />
+		<TurnIn QuestName="Altered Beings" QuestId="880" TurnInName="Tonga Runetotem" TurnInId="3448" />
+		<TurnIn QuestName="In Fungus We Trust" QuestId="13998" TurnInName="Apothecary Helbrim" TurnInId="3390" />
+		<PickUp QuestName="Whos Shroomin Who" QuestId="13999" GiverName="Apothecary Helbrim" GiverId="3390" />
+		<PickUp QuestName="Deathgates Reinforcements" QuestId="14073" GiverName="Thork" GiverId="3429" />
+		<TurnIn QuestName="The Purloined Payroll" QuestId="13991" TurnInName="Gazrog" TurnInId="3464" />
+
+		<!--Bug: Remove Accidental Dungeon Quest PickUp-->
+		<If Condition="HasQuest(26878)">
+			<CustomBehavior File="AbandonQuest" QuestId="26878" Type="All" />
+		</If>
+
+		<!--Riding Training Availability Check-->
+		<If Condition="Me.Level &gt;= 20">
+			<If Condition="Me.GetSkill(Styx.SkillLine.Riding).CurrentValue == 0 &amp;&amp; Me.Gold &gt;= 5">
+				<CustomBehavior File="Message" Text="Riding: Loading Trainer Profile" LogColor="Cyan" />
+				<CustomBehavior File="LoadProfile" ProfileName="..\Riding and Transport\[H - Quest] Northern Barrens Riding" />
+				<ElseIf Condition="Me.Gold &lt; 5">
+					<CustomBehavior File="Message" Text="You don't have enough money to train. Will check again later!" LogColor="Orange" />
+				</ElseIf>
+			</If>
+		</If>
+
+		<!--Placeholder Checkpoint-->
+		<If Condition="Me.Level &gt;= 20">
+			<!--Uncomment to add a Checkpoint-->
+			<!--<CustomBehavior File="Message" Text="Checkpoint Reached: Loading Ashenvale" LogColor="Cyan" />
+			<CustomBehavior File="LoadProfile" ProfileName="[N - Quest] Ashenvale [Life]" />-->
+		</If>			
+
+		<CustomBehavior File="Message" Text="Compiling Quests: Ratchet" LogColor="Cyan" />
+
+		<PickUp QuestName="Investigate the Wreckage" QuestId="14066" GiverName="Gazrog" GiverId="3464" />
+		<TurnIn QuestName="Whos Shroomin Who" QuestId="13999" TurnInName="Sashya" TurnInId="34651" />
+		<PickUp QuestName="A Captains Vengeance" QuestId="891" GiverName="Captain Thalo'thas Brightsun" GiverId="3339" />
+		<PickUp QuestName="Its Gotta Be The Horn" QuestId="865" GiverName="Mebok Mizzyrix" GiverId="3446" />
+		<PickUp QuestName="Wanted Capn Garvey" QuestId="895" GiverName="WANTED" GiverId="3972" GiverType="Object" X="-918.8214" Y="-3719.887" Z="10.31432" />
+		<PickUp QuestName="Club Foote" QuestId="14034" GiverName="Gazlowe" GiverId="3391" />
+		<PickUp QuestName="Find Baron Longshore" QuestId="14045" GiverName="Gazlowe" GiverId="3391" />
+		<PickUp QuestName="Southsea Freebooters" QuestId="887" GiverName="Wharfmaster Dizzywig" GiverId="3453" />
+		<PickUp QuestName="Take it up with Tony" QuestId="14052" GiverName="Wharfmaster Dizzywig" GiverId="3453" />
+
+			<!--Objective: Club Foote-->
+			<While Condition="HasQuest(14034) &amp;&amp; !IsQuestCompleted(14034)">
+				<CustomBehavior File="InteractWith" QuestId="14034" MobId="34754" InteractByGossipOptions="1" WaitTime="10000" X="-1052.263" Y="-3651.511" Z="23.87792" />
+				<CustomBehavior File="InteractWith" QuestId="14034" MobId="34754" InteractByGossipOptions="1" WaitForNpc="False" WaitTime="2000" X="-1052.263" Y="-3651.511" Z="23.87792" />
+			</While>
+
+		<TurnIn QuestName="Club Foote" QuestId="14034" TurnInName="Gazlowe" TurnInId="3391" />
+		<PickUp QuestName="Love It or Limpet" QuestId="14038" GiverName="Gazlowe" GiverId="3391" />
+
+			<!--Objective: Investigate the Wreckage-->
+			<If Condition="HasQuest(14066) &amp;&amp; !IsQuestCompleted(14066)">
+				<RunTo DestName="Caravan Wreckage" X="-762.5303" Y="-3580.803" Z="93.76952" />
+			</If>
+			
+		<!--Complete Quest: Investigate the Wreckage-->
+		<If Condition="HasQuest(14066) &amp;&amp; IsQuestCompleted(14066)">
+			<CustomBehavior File="CompleteLogQuest" QuestId="14066" />
+		</If>
+		<PickUp QuestName="To Track a Thief" QuestId="869" GiverName="Gazrog" GiverId="3464" />
+		<PickUp QuestName="Waptor Twapping" QuestId="14068" GiverName="Kalama" GiverId="34828" />
+
+			<!--Objective: Waptor Twapping-->
+			<If Condition="HasQuest(14068) &amp;&amp; !IsQuestCompleted(14068)">
+				<While Condition="!IsQuestCompleted(14068)">
+					<CustomBehavior File="UserSettings" PullDistance="1" />
+					<CustomBehavior File="InteractWith" QuestId="14068" MobId="3255" MobId2="3256" MobId3="44164" MobState="Alive" InteractByUsingItemId="46853" Range="25" CollectionDistance="1000" X="-498.796" Y="-3501.523" Z="92.98463" />
+					<CustomBehavior File="WaitTimer" WaitTime="19000" />
+					<CustomBehavior File="InteractWith" QuestId="14068" IgnoreCombat="True" InteractByLooting="True" MobId="195239" CollectionDistance="1000" WaitForNpcs="False" />
+					<CustomBehavior File="UserSettings" PullDistance="25" />
 				</While>
-
-			<TurnIn QuestName="Club Foote" QuestId="14034" TurnInName="Gazlowe" TurnInId="3391" />
-			<PickUp QuestName="Love It or Limpet" QuestId="14038" GiverName="Gazlowe" GiverId="3391" />
-
-				<!--Objective: Investigate the Wreckage-->
-				<If Condition="HasQuest(14066) &amp;&amp; !IsQuestCompleted(14066)">
-					<RunTo DestName="Caravan Wreckage" X="-762.5303" Y="-3580.803" Z="93.76952" />
-				</If>
-			
-			<!--Complete Quest: Investigate the Wreckage-->
-			<If Condition="HasQuest(14066) &amp;&amp; IsQuestCompleted(14066)">
-				<CustomBehavior File="CompleteLogQuest" QuestId="14066" />
 			</If>
-			<PickUp QuestName="To Track a Thief" QuestId="869" GiverName="Gazrog" GiverId="3464" />
-			<PickUp QuestName="Waptor Twapping" QuestId="14068" GiverName="Kalama" GiverId="34828" />
 
-				<!--Objective: Waptor Twapping-->
-				<If Condition="HasQuest(14068) &amp;&amp; !IsQuestCompleted(14068)">
-					<While Condition="!IsQuestCompleted(14068)">
-						<CustomBehavior File="UserSettings" PullDistance="1" />
-						<CustomBehavior File="InteractWith" QuestId="14068" MobId="3255" MobId2="3256" MobId3="44164" MobState="Alive" InteractByUsingItemId="46853" Range="25" CollectionDistance="1000" X="-498.796" Y="-3501.523" Z="92.98463" />
-						<CustomBehavior File="WaitTimer" WaitTime="19000" />
-						<CustomBehavior File="InteractWith" QuestId="14068" IgnoreCombat="True" InteractByLooting="True" MobId="195239" CollectionDistance="1000" WaitForNpcs="False" />
-						<CustomBehavior File="UserSettings" PullDistance="25" />
-					</While>
+		<TurnIn QuestName="Waptor Twapping" QuestId="14068" TurnInName="Kalama" TurnInId="34828" />
+
+		<!--Riding Training Availability Check-->
+		<If Condition="Me.Level &gt;= 20">
+			<If Condition="Me.GetSkill(Styx.SkillLine.Riding).CurrentValue == 0 &amp;&amp; Me.Gold &gt;= 5">
+				<CustomBehavior File="Message" Text="Riding: Loading Trainer Profile" LogColor="Cyan" />
+				<CustomBehavior File="LoadProfile" ProfileName="..\Riding and Transport\[H - Quest] Northern Barrens Riding" />
+				<ElseIf Condition="Me.Gold &lt; 5">
+					<CustomBehavior File="Message" Text="You don't have enough money to train. Will check again later!" LogColor="Orange" />
+				</ElseIf>
+			</If>
+		</If>
+
+		<!--Placeholder Checkpoint-->
+		<If Condition="Me.Level &gt;= 20">
+			<!--Uncomment to add a Checkpoint-->
+			<!--<CustomBehavior File="Message" Text="Checkpoint Reached: Loading Ashenvale" LogColor="Cyan" />
+			<CustomBehavior File="LoadProfile" ProfileName="[N - Quest] Ashenvale [Life]" />-->
+		</If>					
+
+			<!--Objectives: To Track A Thief-->
+			<If Condition="HasQuest(869)">
+				<If Condition="!IsQuestCompleted(869)">
+					<RunTo DestName="Caravan Footprints" X="-500.4861" Y="-3377.557" Z="98.0935" />
 				</If>
+				<CustomBehavior File="CompleteLogQuest" QuestId="869" />
+			</If>
 
-			<TurnIn QuestName="Waptor Twapping" QuestId="14068" TurnInName="Kalama" TurnInId="34828" />	
+		<PickUp QuestName="The Stolen Silver" QuestId="14067" GiverName="Gazrog" GiverId="3464" />
 
-				<!--Objectives: To Track A Thief-->
-				<If Condition="HasQuest(869)">
-					<If Condition="!IsQuestCompleted(869)">
-						<RunTo DestName="Caravan Footprints" X="-500.4861" Y="-3377.557" Z="98.0935" />
-					</If>
-					<CustomBehavior File="CompleteLogQuest" QuestId="869" />
-				</If>
-
-			<PickUp QuestName="The Stolen Silver" QuestId="14067" GiverName="Gazrog" GiverId="3464" />
-
-				<!--CollectItem Gets you killed. CollectThings Can't Find It-->
-				<Objective QuestName="The Stolen Silver" QuestId="14067" Type="CollectItem" ItemId="5061" CollectCount="1" />
-				<!--CustomBehavior File="CollectThings" QuestId="14067" ObjectId="195224" CollectItemCount="1" CollectItemId="5061" X="-445.4569" Y="-3459.529" Z="94.63277" /-->
-				<Objective QuestName="Its Gotta be the Horn" QuestId="865" Type="CollectItem" ItemId="46850" CollectCount="1" />
-				<Objective QuestName="The Stolen Silver" QuestId="14067" Type="KillMob" MobId="44164" KillCount="8" />
-				<Objective QuestName="The Stolen Silver" QuestId="14067" Type="KillMob" MobId="3256" KillCount="4" />
+			<!--CollectItem Gets you killed. CollectThings Can't Find It-->
+			<Objective QuestName="The Stolen Silver" QuestId="14067" Type="CollectItem" ItemId="5061" CollectCount="1" />
+			<!--CustomBehavior File="CollectThings" QuestId="14067" ObjectId="195224" CollectItemCount="1" CollectItemId="5061" X="-445.4569" Y="-3459.529" Z="94.63277" /-->
+			<Objective QuestName="Its Gotta be the Horn" QuestId="865" Type="CollectItem" ItemId="46850" CollectCount="1" />
+			<Objective QuestName="The Stolen Silver" QuestId="14067" Type="KillMob" MobId="44164" KillCount="8" />
+			<Objective QuestName="The Stolen Silver" QuestId="14067" Type="KillMob" MobId="3256" KillCount="4" />
 				
-			<TurnIn QuestName="Its Gotta be the Horn" QuestId="865" TurnInName="Mebok Mizzyrix" TurnInId="3446" />
-			<TurnIn QuestName="The Stolen Silver" QuestId="14067" TurnInName="Gazrog" TurnInId="3464" />
+		<TurnIn QuestName="Its Gotta be the Horn" QuestId="865" TurnInName="Mebok Mizzyrix" TurnInId="3446" />
+		<TurnIn QuestName="The Stolen Silver" QuestId="14067" TurnInName="Gazrog" TurnInId="3464" />
 
-				<If Condition="HasQuest(14045) &amp;&amp; IsQuestCompleted(14045)">
-					<CustomBehavior File="ForceSetVendor" DoSell="True" DoRepair="True" DoMail="True" />
-				</If>
-
-			<TurnIn QuestName="Find Baron Longshore" QuestId="14045" TurnInName="Baron Longshore" TurnInId="3467" />
-			<PickUp QuestName="The Barons Demands" QuestId="14046" GiverName="Baron Longshore" GiverId="3467" />
-
-				<!--Objective: The Baron's Demands-->
-				<CustomBehavior File="InteractWith" QuestId="14046" MobId="3467" InteractByGossipOptions="2" NonCompeteDistance="0" X="-1453.614" Y="-3818.275" Z="21.49773" />
-
-			<!--Complete Quest: The Baron's Demands-->
-			<If Condition="HasQuest(14046) &amp;&amp; IsQuestCompleted(14046)" >
-				<CustomBehavior File="CompleteLogQuest" QuestId="14046" />
+			<If Condition="HasQuest(14045) &amp;&amp; IsQuestCompleted(14045)">
+				<CustomBehavior File="ForceSetVendor" DoSell="True" DoRepair="True" DoMail="True" />
 			</If>
-			<PickUp QuestName="A Most Unusual Map" QuestId="14049" GiverName="Baron Longshore" GiverId="3467" />
 
-				<!--Objective: A Most Unusual Map-->
-				<!--Used Instead of CollectThings: Blacklisting is Bad-->
-				<CustomBehavior File="InteractWith" QuestId="14049" MobId="195205" NumOfTimes="100" InteractByLooting="True" X="-1308.17" Y="-3785.69" Z="19.87" />
+		<TurnIn QuestName="Find Baron Longshore" QuestId="14045" TurnInName="Baron Longshore" TurnInId="3467" />
+		<PickUp QuestName="The Barons Demands" QuestId="14046" GiverName="Baron Longshore" GiverId="3467" />
 
-			<TurnIn QuestName="Take it up with Tony" QuestId="14052" TurnInName="Tony Two-Tusk" TurnInId="34749" />
-			<PickUp QuestName="Glomp is Sitting On It" QuestId="14056" GiverName="Tony Two-Tusk" GiverId="34749" />
+			<!--Objective: The Baron's Demands-->
+			<CustomBehavior File="InteractWith" QuestId="14046" MobId="3467" InteractByGossipOptions="2" NonCompeteDistance="0" X="-1453.614" Y="-3818.275" Z="21.49773" />
+
+		<!--Complete Quest: The Baron's Demands-->
+		<If Condition="HasQuest(14046) &amp;&amp; IsQuestCompleted(14046)">
+			<CustomBehavior File="CompleteLogQuest" QuestId="14046" />
+		</If>
+		<PickUp QuestName="A Most Unusual Map" QuestId="14049" GiverName="Baron Longshore" GiverId="3467" />
+
+			<!--Objective: A Most Unusual Map-->
+			<!--Used Instead of CollectThings: Blacklisting is Bad-->
+			<CustomBehavior File="InteractWith" QuestId="14049" MobId="195205" NumOfTimes="100" InteractByLooting="True" X="-1308.17" Y="-3785.69" Z="19.87" />
+
+		<TurnIn QuestName="Take it up with Tony" QuestId="14052" TurnInName="Tony Two-Tusk" TurnInId="34749" />
+		<PickUp QuestName="Glomp is Sitting On It" QuestId="14056" GiverName="Tony Two-Tusk" GiverId="34749" />
 				
-				<Objective QuestName="Glomp is Sitting On It" QuestId="14056" Type="CollectItem" ItemId="46834" CollectCount="1" />
+			<Objective QuestName="Glomp is Sitting On It" QuestId="14056" Type="CollectItem" ItemId="46834" CollectCount="1" />
 			
-			<TurnIn QuestName="Glomp is Sitting On It" QuestId="14056" TurnInName="Tony Two-Tusk" TurnInId="34749" />
-			<PickUp QuestName="Guns. We Need Guns." QuestId="14057" GiverName="Tony Two-Tusk" GiverId="34749" />
+		<TurnIn QuestName="Glomp is Sitting On It" QuestId="14056" TurnInName="Tony Two-Tusk" TurnInId="34749" />
+		<PickUp QuestName="Guns. We Need Guns." QuestId="14057" GiverName="Tony Two-Tusk" GiverId="34749" />
 			
-				<Objective QuestName="Guns. We Need Guns." QuestId="14057" Type="CollectItem" ItemId="46836" CollectCount="6" />
+			<Objective QuestName="Guns. We Need Guns." QuestId="14057" Type="CollectItem" ItemId="46836" CollectCount="6" />
 			
-			<TurnIn QuestName="Guns. We Need Guns." QuestId="14057" TurnInName="Tony Two-Tusk" TurnInId="34749" />
-			<PickUp QuestName="Mutiny, Mon!" QuestId="14063" GiverName="Tony Two-Tusk" GiverId="34749" />
+		<TurnIn QuestName="Guns. We Need Guns." QuestId="14057" TurnInName="Tony Two-Tusk" TurnInId="34749" />
+		<PickUp QuestName="Mutiny, Mon!" QuestId="14063" GiverName="Tony Two-Tusk" GiverId="34749" />
 
-				<!--Objective: Mutiny, Mon!-->
-				<While Condition="HasQuest(14063) &amp;&amp; !IsQuestCompleted(14063)" >
-					<RunTo X="-1678.143" Y="-4380.884" Z="10.77348" />
-					<CustomBehavior File="Misc\RunLua" Lua="UseItemByName(46838)" />
-					<RunTo X="-1669.896" Y="-4386.42" Z="5.308437" />
-					<CustomBehavior File="WaitTimer" WaitTime="15000" />
-					<CustomBehavior File="EscortGroup" QuestId="14063" EscortNpcId="34749" EscortCompleteWhen="QuestCompleteOrFails" EscortMaxFollowDistance="3" EscortMaxFightDistance="10" />
-				</While>
-				<Objective QuestName="WANTED: Cap'n Garvey" QuestId="895" Type="CollectItem" ItemId="5084" CollectCount="1" />
-				<Objective QuestName="Southsea Freebooters" QuestId="887" Type="KillMob" MobId="34779" KillCount="8" />
-				<Objective QuestName="A Captain's Vengeance" QuestId="891" Type="KillMob" MobId="34752" KillCount="1" />
-				<Objective QuestName="A Captain's Vengeance" QuestId="891" Type="KillMob" MobId="34753" KillCount="1" />
-				<Objective QuestName="A Captain's Vengeance" QuestId="891" Type="CollectItem" ItemId="5078" CollectCount="10" />
-				<!--Objective: Love it or Limpet-->
-				<If Condition="HasQuest(14038) &amp;&amp; !IsQuestCompleted(14038)" >
-					<RunTo X="-1468.848" Y="-3967.077" Z="-1.573462" />
-					<CustomBehavior File="Misc\RunLua" Lua="UseItemByName(46829)" WaitTime="2000" />
-				</If>
-
-			<!--Complete Quest: Love it or Limpet-->
-			<If Condition="HasQuest(14038) &amp;&amp; IsQuestCompleted(14038)" >
-				<CustomBehavior File="CompleteLogQuest" QuestId="14038" />
+			<!--Objective: Mutiny, Mon!-->
+			<While Condition="HasQuest(14063) &amp;&amp; !IsQuestCompleted(14063)">
+				<RunTo X="-1678.143" Y="-4380.884" Z="10.77348" />
+				<CustomBehavior File="Misc\RunLua" Lua="UseItemByName(46838)" />
+				<RunTo X="-1669.896" Y="-4386.42" Z="5.308437" />
+				<CustomBehavior File="WaitTimer" WaitTime="15000" />
+				<CustomBehavior File="EscortGroup" QuestId="14063" EscortNpcId="34749" EscortCompleteWhen="QuestCompleteOrFails" EscortMaxFollowDistance="3" EscortMaxFightDistance="10" />
+			</While>
+			<Objective QuestName="WANTED: Cap'n Garvey" QuestId="895" Type="CollectItem" ItemId="5084" CollectCount="1" />
+			<Objective QuestName="Southsea Freebooters" QuestId="887" Type="KillMob" MobId="34779" KillCount="8" />
+			<Objective QuestName="A Captain's Vengeance" QuestId="891" Type="KillMob" MobId="34752" KillCount="1" />
+			<Objective QuestName="A Captain's Vengeance" QuestId="891" Type="KillMob" MobId="34753" KillCount="1" />
+			<Objective QuestName="A Captain's Vengeance" QuestId="891" Type="CollectItem" ItemId="5078" CollectCount="10" />
+			<!--Objective: Love it or Limpet-->
+			<If Condition="HasQuest(14038) &amp;&amp; !IsQuestCompleted(14038)">
+				<RunTo X="-1468.848" Y="-3967.077" Z="-1.573462" />
+				<CustomBehavior File="Misc\RunLua" Lua="UseItemByName(46829)" WaitTime="2000" />
 			</If>
 
-				<!--Replace with Behavior: Causing Override Errors-->
-				<Objective QuestName="Ammo Kerblammo" QuestId="14042" Type="UseObject" ObjectId="195203" UseCount="5" />
+		<!--Complete Quest: Love it or Limpet-->
+		<If Condition="HasQuest(14038) &amp;&amp; IsQuestCompleted(14038)">
+			<CustomBehavior File="CompleteLogQuest" QuestId="14038" />
+		</If>
 
-			<TurnIn QuestName="A Captain's Vengeance" QuestId="891" TurnInName="Captain Thalo'thas Brightsun" TurnInId="3339" />
-			<TurnIn QuestName="Mutiny, Mon!" QuestId="14063" TurnInName="Wharfmaster Dizzywig" TurnInId="3453" />
-			<TurnIn QuestName="Southsea Freebooters" QuestId="887" TurnInName="Wharfmaster Dizzywig" TurnInId="3453" />
-			<TurnIn QuestName="A Most Unusual Map" QuestId="14049" TurnInName="Gazlowe" TurnInId="3391" />
-			<TurnIn QuestName="Ammo Kerblammo" QuestId="14042" TurnInName="Gazlowe" TurnInId="3391" />
-			<TurnIn QuestName="WANTED: Cap'n Garvey" QuestId="895" TurnInName="Gazlowe" TurnInId="3391" />
-			<PickUp QuestName="Gazlowe's Fortune" QuestId="14050" GiverName="Gazlowe" GiverId="3391" />
+			<!--Replace with Behavior: Causing Override Errors-->
+			<Objective QuestName="Ammo Kerblammo" QuestId="14042" Type="UseObject" ObjectId="195203" UseCount="5" />
 
-				<Objective QuestName="Gazlowe's Fortune" QuestId="14050" Type="CollectItem" ItemId="46833" CollectCount="1" />
+		<TurnIn QuestName="A Captain's Vengeance" QuestId="891" TurnInName="Captain Thalo'thas Brightsun" TurnInId="3339" />
+		<TurnIn QuestName="Mutiny, Mon!" QuestId="14063" TurnInName="Wharfmaster Dizzywig" TurnInId="3453" />
+		<TurnIn QuestName="Southsea Freebooters" QuestId="887" TurnInName="Wharfmaster Dizzywig" TurnInId="3453" />
+		<TurnIn QuestName="A Most Unusual Map" QuestId="14049" TurnInName="Gazlowe" TurnInId="3391" />
+		<TurnIn QuestName="Ammo Kerblammo" QuestId="14042" TurnInName="Gazlowe" TurnInId="3391" />
+		<TurnIn QuestName="WANTED: Cap'n Garvey" QuestId="895" TurnInName="Gazlowe" TurnInId="3391" />
+
+		<!--Riding Training Availability Check-->
+		<If Condition="Me.Level &gt;= 20">
+			<If Condition="Me.GetSkill(Styx.SkillLine.Riding).CurrentValue == 0 &amp;&amp; Me.Gold &gt;= 5">
+				<CustomBehavior File="Message" Text="Riding: Loading Trainer Profile" LogColor="Cyan" />
+				<CustomBehavior File="LoadProfile" ProfileName="..\Riding and Transport\[H - Quest] Northern Barrens Riding" />
+				<ElseIf Condition="Me.Gold &lt; 5">
+					<CustomBehavior File="Message" Text="You don't have enough money to train. Will check again later!" LogColor="Orange" />
+				</ElseIf>
+			</If>
+		</If>
+
+		<!--Placeholder Checkpoint-->
+		<If Condition="Me.Level &gt;= 20">
+			<!--Uncomment to add a Checkpoint-->
+			<!--<CustomBehavior File="Message" Text="Checkpoint Reached: Loading Ashenvale" LogColor="Cyan" />
+			<CustomBehavior File="LoadProfile" ProfileName="[N - Quest] Ashenvale [Life]" />-->
+		</If>	
+
+		<PickUp QuestName="Gazlowe's Fortune" QuestId="14050" GiverName="Gazlowe" GiverId="3391" />
+
+			<Objective QuestName="Gazlowe's Fortune" QuestId="14050" Type="CollectItem" ItemId="46833" CollectCount="1" />
 		
-			<TurnIn QuestName="Gazlowe's Fortune" QuestId="14050" TurnInName="Gazlowe" TurnInId="3391" />
-			<PickUp QuestName="Raging River Ride" QuestId="26769" GiverName="Gazlowe" GiverId="3391" />
+		<TurnIn QuestName="Gazlowe's Fortune" QuestId="14050" TurnInName="Gazlowe" TurnInId="3391" />
+		<PickUp QuestName="Raging River Ride" QuestId="26769" GiverName="Gazlowe" GiverId="3391" />
 
-				<!--Objective: Raging River Ride-->
-				<If Condition="HasQuest(26769) &amp;&amp; !IsQuestCompleted(26769)">
-					<DisableBehavior Name="Combat" />
-					<CustomBehavior File="InteractWith" QuestId="26769" MobId="44057" NonCompeteDistance="0" WaitTime="2000" X="-705.0517" Y="-3985.185" Z="19.46049" />
-					<While Condition="Me.IsOnTransport">
-						<CustomBehavior File="WaitTimer" WaitTime="10000" GoalText="Waiting for Boat Ride to End" />
-					</While>
-					<EnableBehavior Name="Combat" />
-				</If>
-
-				<If Condition="HasQuest(26769) &amp;&amp; IsQuestCompleted(26769)">
-					<CustomBehavior File="ForceSetVendor" DoSell="True" DoRepair="True" />
-				</If>
-
-			<TurnIn QuestName="Raging River Ride" QuestId="26769" TurnInName="Nozzlepot" TurnInId="34698" />
-
-			<CustomBehavior File="Message" Text="Compiling Quests: Nozzlepot's Outpost" LogColor="Cyan" />
-
-			<PickUp QuestName="Sludge Investigation" QuestId="29087" GiverName="Nozzlepot" GiverId="34698" />
-			<PickUp QuestName="Hyena Extermination" QuestId="29088" GiverName="Nozzlepot" GiverId="34698" />
-			<PickUp QuestName="Competition Schmompetition" QuestId="29086" GiverName="Sputtervalve" GiverId="3442" />
-			<PickUp QuestName="Competition Schmompetition" QuestId="29086" GiverName="Sputtervalve" GiverId="3442" />
-			<PickUp QuestName="Ignition" QuestId="858" GiverName="Wizzlecrank\'s Shredder" GiverId="3439" />
-
-				<!--Objective: Sludge Investigation-->
-				<CustomBehavior File="InteractWith" QuestId="29087" MobId="52171" NumOfTimes="50">
-					<HuntingGrounds>
-						<Hotspot X="1080.08" Y="-3199.983" Z="82.95158" />
-						<Hotspot X="1100.371" Y="-3167.097" Z="81.52965" />
-						<Hotspot X="1113.344" Y="-3136.671" Z="81.85082" />
-						<Hotspot X="1096.486" Y="-3067.792" Z="82.02166" />
-						<Hotspot X="1079.227" Y="-3041.161" Z="81.49522" />
-					</HuntingGrounds>
-				</CustomBehavior>
-
-			<!--Complete Quest: Sludge Investigation-->
-			<If Condition="HasQuest(29087) &amp;&amp; IsQuestCompleted(29087)" >
-				<CustomBehavior File="CompleteLogQuest" QuestId="29087" />
+			<!--Objective: Raging River Ride-->
+			<If Condition="HasQuest(26769) &amp;&amp; !IsQuestCompleted(26769)">
+				<DisableBehavior Name="Combat" />
+				<CustomBehavior File="InteractWith" QuestId="26769" MobId="44057" NonCompeteDistance="0" WaitTime="2000" X="-705.0517" Y="-3985.185" Z="19.46049" />
+				<While Condition="Me.IsOnTransport">
+					<CustomBehavior File="WaitTimer" WaitTime="10000" GoalText="Waiting for Boat Ride to End" />
+				</While>
+				<EnableBehavior Name="Combat" />
 			</If>
-			<PickUp QuestName="Sludge Beast!" QuestId="29089" GiverName="Nozzlepot" GiverId="34698" />
 
-				<!--Objective: Sludge Beast!-->
-				<While Condition="HasQuest(29089) &amp;&amp; !IsQuestCompleted(29089)">
-					<RunTo X="1078.983" Y="-3152.975" Z="78.15409" />
-					<CustomBehavior File="MyCTM" X="1070.488" Y="-3142.01" Z="67.43808" />
-					<CustomBehavior File="InteractWith" QuestId="29089" MobId="208343" WaitTime="15000" X="1070.488" Y="-3142.01" Z="67.43808" />
-					<CustomBehavior File="AscendInWater" />
-				</While>
-				<Objective QuestName="Ignition" QuestId="858" Type="CollectItem" ItemId="5050" CollectCount="1" />
-				<Objective QuestName="Competition Schmompetition" QuestId="29086" Type="CollectItem" ItemId="68820" CollectCount="6" />
+			<If Condition="HasQuest(26769) &amp;&amp; IsQuestCompleted(26769)">
+				<CustomBehavior File="ForceSetVendor" DoSell="True" DoRepair="True" />
+			</If>
 
-			<TurnIn QuestName="Ignition" QuestId="858" TurnInName="Wizzlecrank's Shredder" TurnInId="3439" />
-			<PickUp QuestName="The Escape" QuestId="863" GiverName="Wizzlecrank's Shredder" GiverId="3439" />
+		<TurnIn QuestName="Raging River Ride" QuestId="26769" TurnInName="Nozzlepot" TurnInId="34698" />
 
-				<!--Objective: The Escape-->
-				<CustomBehavior File="EscortGroup" QuestId="863" EscortNpcId="3439" EscortMaxFightDistance="40" />
+		<CustomBehavior File="Message" Text="Compiling Quests: Nozzlepot's Outpost" LogColor="Cyan" />
 
-			<TurnIn QuestName="The Escape" QuestId="863" TurnInName="Sputtervalve" TurnInId="3442" />
-			<TurnIn QuestName="Competition Schmompetition" QuestId="29086" TurnInName="Sputtervalve" TurnInId="3442" />
-			<PickUp QuestName="Samophlange" QuestId="29021" GiverName="Sputtervalve" GiverId="3442" />
-			<TurnIn QuestName="Sludge Beast!" QuestId="29089" TurnInName="Nozzlepot" TurnInId="34698" />
+		<PickUp QuestName="Sludge Investigation" QuestId="29087" GiverName="Nozzlepot" GiverId="34698" />
+		<PickUp QuestName="Hyena Extermination" QuestId="29088" GiverName="Nozzlepot" GiverId="34698" />
+		<PickUp QuestName="Competition Schmompetition" QuestId="29086" GiverName="Sputtervalve" GiverId="3442" />
+		<PickUp QuestName="Competition Schmompetition" QuestId="29086" GiverName="Sputtervalve" GiverId="3442" />
+		<PickUp QuestName="Ignition" QuestId="858" GiverName="Wizzlecrank\'s Shredder" GiverId="3439" />
 
-				<Objective QuestName="Hyena Extermination" QuestId="29088" Type="KillMob" MobId="4127" KillCount="6" />
+			<!--Objective: Sludge Investigation-->
+			<CustomBehavior File="InteractWith" QuestId="29087" MobId="52171" NumOfTimes="50">
+				<HuntingGrounds>
+					<Hotspot X="1080.08" Y="-3199.983" Z="82.95158" />
+					<Hotspot X="1100.371" Y="-3167.097" Z="81.52965" />
+					<Hotspot X="1113.344" Y="-3136.671" Z="81.85082" />
+					<Hotspot X="1096.486" Y="-3067.792" Z="82.02166" />
+					<Hotspot X="1079.227" Y="-3041.161" Z="81.49522" />
+				</HuntingGrounds>
+			</CustomBehavior>
 
-			<TurnIn QuestName="Samophlange" QuestId="29021" TurnInType="Object" TurnInName="Control Console" TurnInId="4141" X="825.3649" Y="-2689.618" Z="91.7582" />
-			<PickUp QuestName="Samophlange" QuestId="29022" GiverType="Object" GiverName="Control Console" GiverId="4141" X="825.3649" Y="-2689.618" Z="91.7582" />
+		<!--Complete Quest: Sludge Investigation-->
+		<If Condition="HasQuest(29087) &amp;&amp; IsQuestCompleted(29087)">
+			<CustomBehavior File="CompleteLogQuest" QuestId="29087" />
+		</If>
+		<PickUp QuestName="Sludge Beast!" QuestId="29089" GiverName="Nozzlepot" GiverId="34698" />
+
+			<!--Objective: Sludge Beast!-->
+			<While Condition="HasQuest(29089) &amp;&amp; !IsQuestCompleted(29089)">
+				<RunTo X="1078.983" Y="-3152.975" Z="78.15409" />
+				<CustomBehavior File="MyCTM" X="1070.488" Y="-3142.01" Z="67.43808" />
+				<CustomBehavior File="InteractWith" QuestId="29089" MobId="208343" WaitTime="15000" X="1070.488" Y="-3142.01" Z="67.43808" />
+				<CustomBehavior File="AscendInWater" />
+			</While>
+			<Objective QuestName="Ignition" QuestId="858" Type="CollectItem" ItemId="5050" CollectCount="1" />
+			<Objective QuestName="Competition Schmompetition" QuestId="29086" Type="CollectItem" ItemId="68820" CollectCount="6" />
+
+		<TurnIn QuestName="Ignition" QuestId="858" TurnInName="Wizzlecrank's Shredder" TurnInId="3439" />
+		<PickUp QuestName="The Escape" QuestId="863" GiverName="Wizzlecrank's Shredder" GiverId="3439" />
+
+			<!--Objective: The Escape-->
+			<CustomBehavior File="EscortGroup" QuestId="863" EscortNpcId="3439" EscortCompleteWhen="QuestCompleteOrFails" EscortMaxFightDistance="10" />
+
+		<TurnIn QuestName="The Escape" QuestId="863" TurnInName="Sputtervalve" TurnInId="3442" />
+		<TurnIn QuestName="Competition Schmompetition" QuestId="29086" TurnInName="Sputtervalve" TurnInId="3442" />
+		<PickUp QuestName="Samophlange" QuestId="29021" GiverName="Sputtervalve" GiverId="3442" />
+		<TurnIn QuestName="Sludge Beast!" QuestId="29089" TurnInName="Nozzlepot" TurnInId="34698" />
+
+		<!--Riding Training Availability Check-->
+		<If Condition="Me.Level &gt;= 20">
+			<If Condition="Me.GetSkill(Styx.SkillLine.Riding).CurrentValue == 0 &amp;&amp; Me.Gold &gt;= 5">
+				<CustomBehavior File="Message" Text="Riding: Loading Trainer Profile" LogColor="Cyan" />
+				<CustomBehavior File="LoadProfile" ProfileName="..\Riding and Transport\[H - Quest] Northern Barrens Riding" />
+				<ElseIf Condition="Me.Gold &lt; 5">
+					<CustomBehavior File="Message" Text="You don't have enough money to train. Will check again later!" LogColor="Orange" />
+				</ElseIf>
+			</If>
+		</If>
+
+		<!--Placeholder Checkpoint-->
+		<If Condition="Me.Level &gt;= 20">
+			<!--Uncomment to add a Checkpoint-->
+			<!--<CustomBehavior File="Message" Text="Checkpoint Reached: Loading Ashenvale" LogColor="Cyan" />
+			<CustomBehavior File="LoadProfile" ProfileName="[N - Quest] Ashenvale [Life]" />-->
+		</If>	
+
+			<Objective QuestName="Hyena Extermination" QuestId="29088" Type="KillMob" MobId="4127" KillCount="6" />
+
+		<TurnIn QuestName="Samophlange" QuestId="29021" TurnInType="Object" TurnInName="Control Console" TurnInId="4141" X="825.3649" Y="-2689.618" Z="91.7582" />
+		<PickUp QuestName="Samophlange" QuestId="29022" GiverType="Object" GiverName="Control Console" GiverId="4141" X="825.3649" Y="-2689.618" Z="91.7582" />
 				
-				<!--Objective: Samophlange [Fuel Control]-->
-				<If Condition="HasQuest(29022) &amp;&amp; !IsObjectiveComplete(2,29022)">
-					<CustomBehavior File="InteractWith" MobId="61936" CollectionDistance="5" X="844.2264" Y="-2688.962" Z="91.66711" />
-				</If>
-				<!--Objective: Samophlange [Regulator Valve]-->
-				<If Condition="HasQuest(29022) &amp;&amp; !IsObjectiveComplete(3,29022)">
-					<CustomBehavior File="InteractWith" MobId="61935" CollectionDistance="5" X="842.501" Y="-2675.145" Z="91.66706" />
-				</If>
-				<!--Objective: Samophlange [Main Control Valve]-->
-				<If Condition="HasQuest(29022) &amp;&amp; !IsObjectiveComplete(1,29022)">
-					<CustomBehavior File="InteractWith" MobId="4072" CollectionDistance="5" X="829.7905" Y="-2677.597" Z="91.66706" />
-				</If>				
+			<!--Objective: Samophlange [Fuel Control]-->
+			<If Condition="HasQuest(29022) &amp;&amp; !IsObjectiveComplete(2,29022)">
+				<CustomBehavior File="InteractWith" MobId="61936" CollectionDistance="5" X="844.2264" Y="-2688.962" Z="91.66711" />
+			</If>
+			<!--Objective: Samophlange [Regulator Valve]-->
+			<If Condition="HasQuest(29022) &amp;&amp; !IsObjectiveComplete(3,29022)">
+				<CustomBehavior File="InteractWith" MobId="61935" CollectionDistance="5" X="842.501" Y="-2675.145" Z="91.66706" />
+			</If>
+			<!--Objective: Samophlange [Main Control Valve]-->
+			<If Condition="HasQuest(29022) &amp;&amp; !IsObjectiveComplete(1,29022)">
+				<CustomBehavior File="InteractWith" MobId="4072" CollectionDistance="5" X="829.7905" Y="-2677.597" Z="91.66706" />
+			</If>				
 			
-			<TurnIn QuestName="Samophlange" QuestId="29022" TurnInType="Object" TurnInName="Control Console" TurnInId="4141" X="825.3649" Y="-2689.618" Z="91.7582" />
-			<PickUp QuestName="Samophlange" QuestId="29023" GiverType="Object" GiverName="Control Console" GiverId="4141" X="825.3649" Y="-2689.618" Z="91.7582" />
+		<TurnIn QuestName="Samophlange" QuestId="29022" TurnInType="Object" TurnInName="Control Console" TurnInId="4141" X="825.3649" Y="-2689.618" Z="91.7582" />
+		<PickUp QuestName="Samophlange" QuestId="29023" GiverType="Object" GiverName="Control Console" GiverId="4141" X="825.3649" Y="-2689.618" Z="91.7582" />
 			
-				<Objective QuestName="Samophlange" QuestId="29023" Type="CollectItem" ItemId="5089" CollectCount="1" />
+			<Objective QuestName="Samophlange" QuestId="29023" Type="CollectItem" ItemId="5089" CollectCount="1" />
 			
-			<TurnIn QuestName="Samophlange" QuestId="29023" TurnInType="Object" TurnInName="Control Console" TurnInId="4141" X="825.3649" Y="-2689.618" Z="91.7582" />
-			<PickUp QuestName="Samophlange" QuestId="29024" GiverType="Object" GiverName="Control Console" GiverId="4141" X="825.3649" Y="-2689.618" Z="91.7582" />
-			<TurnIn QuestName="Samophlange" QuestId="29024" TurnInName="Sputtervalve" TurnInId="3442" />
-			<PickUp QuestName="Samophlange Repair" QuestId="14003" GiverName="Sputtervalve" GiverId="3442" />
-			<TurnIn QuestName="Hyena Extermination" QuestId="29088" TurnInName="Nozzlepot" TurnInId="34698" />
-			<TurnIn QuestName="Samophlange Repair" QuestId="14003" TurnInName="Brak Blusterpipe" TurnInId="34674" />
-			<PickUp QuestName="Wenikee Boltbucket" QuestId="29026" GiverName="Brak Blusterpipe" GiverId="34674" />
+		<TurnIn QuestName="Samophlange" QuestId="29023" TurnInType="Object" TurnInName="Control Console" TurnInId="4141" X="825.3649" Y="-2689.618" Z="91.7582" />
+		<PickUp QuestName="Samophlange" QuestId="29024" GiverType="Object" GiverName="Control Console" GiverId="4141" X="825.3649" Y="-2689.618" Z="91.7582" />
+		<TurnIn QuestName="Samophlange" QuestId="29024" TurnInName="Sputtervalve" TurnInId="3442" />
+		<PickUp QuestName="Samophlange Repair" QuestId="14003" GiverName="Sputtervalve" GiverId="3442" />
+		<TurnIn QuestName="Hyena Extermination" QuestId="29088" TurnInName="Nozzlepot" TurnInId="34698" />
+		<TurnIn QuestName="Samophlange Repair" QuestId="14003" TurnInName="Brak Blusterpipe" TurnInId="34674" />
+
+		<!--Riding Training Availability Check-->
+		<If Condition="Me.Level &gt;= 20">
+			<If Condition="Me.GetSkill(Styx.SkillLine.Riding).CurrentValue == 0 &amp;&amp; Me.Gold &gt;= 5">
+				<CustomBehavior File="Message" Text="Riding: Loading Trainer Profile" LogColor="Cyan" />
+				<CustomBehavior File="LoadProfile" ProfileName="..\Riding and Transport\[H - Quest] Northern Barrens Riding" />
+				<ElseIf Condition="Me.Gold &lt; 5">
+					<CustomBehavior File="Message" Text="You don't have enough money to train. Will check again later!" LogColor="Orange" />
+				</ElseIf>
+			</If>
+		</If>
+
+		<!--Placeholder Checkpoint-->
+		<If Condition="Me.Level &gt;= 20">
+			<!--Uncomment to add a Checkpoint-->
+			<!--<CustomBehavior File="Message" Text="Checkpoint Reached: Loading Ashenvale" LogColor="Cyan" />
+			<CustomBehavior File="LoadProfile" ProfileName="[N - Quest] Ashenvale [Life]" />-->
+		</If>	
+
+		<PickUp QuestName="Wenikee Boltbucket" QuestId="29026" GiverName="Brak Blusterpipe" GiverId="34674" />
 			
-				<If Condition="HasQuest(29026) &amp;&amp; IsQuestCompleted(29026)">
-					<If Condition="Me.Location.Distance(new WoWPoint(1160.38, -3398.65, 91.67)) &lt; 500">
-						<CustomBehavior File="InteractWith" MobId="34674" InteractByGossipOptions="1" NonCompeteDistance="0" X="1157.476" Y="-3396.661" Z="91.66715" />
-					</If>
+			<If Condition="HasQuest(29026) &amp;&amp; IsQuestCompleted(29026)">
+				<If Condition="Me.Location.Distance(new WoWPoint(1160.38, -3398.65, 91.67)) &lt; 500">
+					<CustomBehavior File="InteractWith" MobId="34674" InteractByGossipOptions="1" NonCompeteDistance="0" X="1157.476" Y="-3396.661" Z="91.66715" />
 				</If>
+			</If>
 
-			<TurnIn QuestName="Wenikee Boltbucket" QuestId="29026" TurnInName="Wenikee Boltbucket" TurnInId="9316" />
-			<PickUp QuestName="Nugget Slugs" QuestId="29027" GiverName="Wenikee Boltbucket" GiverId="9316" />
-			<PickUp QuestName="A Burning Threat" QuestId="29090" GiverName="Brogor" GiverId="52192" />
+		<TurnIn QuestName="Wenikee Boltbucket" QuestId="29026" TurnInName="Wenikee Boltbucket" TurnInId="9316" />
+		<PickUp QuestName="Nugget Slugs" QuestId="29027" GiverName="Wenikee Boltbucket" GiverId="9316" />
+		<PickUp QuestName="A Burning Threat" QuestId="29090" GiverName="Brogor" GiverId="52192" />
 
-				<!--Objective: Nugget Slugs-->
-				<CustomBehavior File="CollectThings" QuestId="29027" ObjectId="161752" CollectItemCount="10" CollectUntil="RequiredCountReached" CollectItemId="11143">
-					<Hotspot X="748.4818" Y="-2264.224" Z="92.31093" />
-					<Hotspot X="608.0336" Y="-2256.795" Z="91.66663" />
-					<Hotspot X="600.2293" Y="-2214.502" Z="91.66699" />
-					<Hotspot X="574.3745" Y="-2162.557" Z="91.66699" />
-				</CustomBehavior>
-				<Objective QuestName="A Burning Threat" QuestId="29090" Type="KillMob" MobId="3379" KillCount="8" />
+			<!--Objective: Nugget Slugs-->
+			<CustomBehavior File="CollectThings" QuestId="29027" ObjectId="161752" CollectItemCount="10" CollectUntil="RequiredCountReached" CollectItemId="11143">
+				<Hotspot X="748.4818" Y="-2264.224" Z="92.31093" />
+				<Hotspot X="608.0336" Y="-2256.795" Z="91.66663" />
+				<Hotspot X="600.2293" Y="-2214.502" Z="91.66699" />
+				<Hotspot X="574.3745" Y="-2162.557" Z="91.66699" />
+			</CustomBehavior>
+			<Objective QuestName="A Burning Threat" QuestId="29090" Type="KillMob" MobId="3379" KillCount="8" />
 
-			<TurnIn QuestName="A Burning Threat" QuestId="29090" TurnInName="Brogor" TurnInId="52192" />
-			<TurnIn QuestName="Nugget Slugs" QuestId="29027" TurnInName="Wenikee Boltbucket" TurnInId="9316" />
-			<PickUp QuestName="Return to Samophlanger" QuestId="14004" GiverName="Wenikee Boltbucket" GiverId="9316" />
+		<TurnIn QuestName="A Burning Threat" QuestId="29090" TurnInName="Brogor" TurnInId="52192" />
+		<TurnIn QuestName="Nugget Slugs" QuestId="29027" TurnInName="Wenikee Boltbucket" TurnInId="9316" />
+		<!--Riding Training Availability Check-->
+		<If Condition="Me.Level &gt;= 20">
+			<If Condition="Me.GetSkill(Styx.SkillLine.Riding).CurrentValue == 0 &amp;&amp; Me.Gold &gt;= 5">
+				<CustomBehavior File="Message" Text="Riding: Loading Trainer Profile" LogColor="Cyan" />
+				<CustomBehavior File="LoadProfile" ProfileName="..\Riding and Transport\[H - Quest] Northern Barrens Riding" />
+				<ElseIf Condition="Me.Gold &lt; 5">
+					<CustomBehavior File="Message" Text="You don't have enough money to train. Will check again later!" LogColor="Orange" />
+				</ElseIf>
+			</If>
+		</If>
 
-				<!--Transport: Return to Samophlanger-->
-				<If Condition="HasQuest(14004) &amp;&amp; IsQuestCompleted(14004)">
-					<If Condition="Me.Location.Distance(new WoWPoint(858.14, -2347.64, 91.83)) &lt; 500">
-						<CustomBehavior File="InteractWith" MobId="9316" InteractByGossipOptions="1" NonCompeteDistance="0" X="854.8587" Y="-2347.448" Z="91.87091" />
-					</If>
+		<!--Placeholder Checkpoint-->
+		<If Condition="Me.Level &gt;= 20">
+			<!--Uncomment to add a Checkpoint-->
+			<!--<CustomBehavior File="Message" Text="Checkpoint Reached: Loading Ashenvale" LogColor="Cyan" />
+			<CustomBehavior File="LoadProfile" ProfileName="[N - Quest] Ashenvale [Life]" />-->
+		</If>	
+
+		<PickUp QuestName="Return to Samophlanger" QuestId="14004" GiverName="Wenikee Boltbucket" GiverId="9316" />
+
+			<!--Transport: Return to Samophlanger-->
+			<If Condition="HasQuest(14004) &amp;&amp; IsQuestCompleted(14004)">
+				<If Condition="Me.Location.Distance(new WoWPoint(858.14, -2347.64, 91.83)) &lt; 500">
+					<CustomBehavior File="InteractWith" MobId="9316" InteractByGossipOptions="1" NonCompeteDistance="0" X="854.8587" Y="-2347.448" Z="91.87091" />
 				</If>
+			</If>
 
-			<TurnIn QuestName="Return to Samophlanger" QuestId="14004" TurnInName="Sputtervalve" TurnInId="3442" />
-			<PickUp QuestName="Read the Manual" QuestId="14006" GiverName="Sputtervalve" GiverId="3442" />
-			<PickUp QuestName="Miner's Fortune" QuestId="29015" GiverName="Brak Blusterpipe" GiverId="34674" />
+		<TurnIn QuestName="Return to Samophlanger" QuestId="14004" TurnInName="Sputtervalve" TurnInId="3442" />
+		<PickUp QuestName="Read the Manual" QuestId="14006" GiverName="Sputtervalve" GiverId="3442" />
+		<PickUp QuestName="Miner's Fortune" QuestId="29015" GiverName="Brak Blusterpipe" GiverId="34674" />
 
-				<!--Objective: Read the Manual-->
-				<While Condition="HasQuest(14006) &amp;&amp; !IsQuestCompleted(14006)">
-					<!--Collect: Samophlange Manual Cover-->
-					<If Condition="!HasItem(11147)">
-						<CustomBehavior File="CollectThings" MobId="9336" CollectItemCount="1" CollectUntil="RequiredCountReached" CollectItemId="11147" X="1341.065" Y="-3493.27" Z="93.54988" />
-					</If>
-					<!--Collect: 5 Samophlange Manual Pages-->
-					<If Condition="GetItemCount(11148) &lt; 5">
-						<CustomBehavior File="CollectThings" MobId="3286" MobId2="3283" CollectItemCount="5" CollectUntil="RequiredCountReached" CollectItemId="11148">
-							<Hotspot X="1261.725" Y="-3621.95" Z="90.01929" />
-							<Hotspot X="1308.001" Y="-3625.193" Z="92.07192" />
-							<Hotspot X="1346.243" Y="-3570.672" Z="92.09566" />
-						</CustomBehavior>
-					</If>
-					<CustomBehavior File="Misc\RunLua" Lua="UseItemByName(11147)" WaitTime="2000" />
-				</While>
-				<!--Objective: Miner's Fortune-->
-				<If Condition="HasQuest(29015) &amp;&amp; !IsQuestCompleted(29015)">
-					<CustomBehavior File="CollectThings" MobId="3286" MobId2="3283" CollectItemCount="1" CollectUntil="RequiredCountReached" CollectItemId="5097">
+			<!--Objective: Read the Manual-->
+			<While Condition="HasQuest(14006) &amp;&amp; !IsQuestCompleted(14006)">
+				<!--Collect: Samophlange Manual Cover-->
+				<If Condition="!HasItem(11147)">
+					<CustomBehavior File="CollectThings" MobId="9336" CollectItemCount="1" CollectUntil="RequiredCountReached" CollectItemId="11147" X="1341.065" Y="-3493.27" Z="93.54988" />
+				</If>
+				<!--Collect: 5 Samophlange Manual Pages-->
+				<If Condition="GetItemCount(11148) &lt; 5">
+					<CustomBehavior File="CollectThings" MobId="3286" MobId2="3283" CollectItemCount="5" CollectUntil="RequiredCountReached" CollectItemId="11148">
 						<Hotspot X="1261.725" Y="-3621.95" Z="90.01929" />
 						<Hotspot X="1308.001" Y="-3625.193" Z="92.07192" />
 						<Hotspot X="1346.243" Y="-3570.672" Z="92.09566" />
 					</CustomBehavior>
 				</If>
-
-			<TurnIn QuestName="Miner's Fortune" QuestId="29015" TurnInName="Brak Blusterpipe" TurnInId="34674" />
-			<TurnIn QuestName="Read the Manual" QuestId="14006" TurnInName="Sputtervalve" TurnInId="3442" />			
-			<PickUp QuestName="The Short Way Home" QuestId="29094" GiverName="Sputtervalve" GiverId="3442" />
-
-				<If Condition="HasQuest(29094) &amp;&amp; !IsQuestCompleted(29094)" >
-					<CustomBehavior File="InteractWith" MobId="52203" NonCompeteDistance="0" X="1140.633" Y="-3368.61" Z="94.15554" />
-					<While Condition="Me.IsOnTransport">
-						<CustomBehavior File="WaitTimer" QuestId="29094" WaitTime="10000" GoalText="Waiting till the Rocket Ride is Over." />
-					</While>
-				</If>
-
-			<TurnIn QuestName="The Short Way Home" QuestId="29094" TurnInName="Darsok Swiftdagger" TurnInId="3449" />			
-			<!--Loremaster Achievement Marker-->
-			<!--If Condition="Me.LevelFraction &gt;= 20" >
-				<CustomBehavior File="Message" Text="Profile Complete: Loading Ashenvale" LogColor="Cyan" />
-				<CustomBehavior File="LoadProfile" ProfileName="[H - Quest] Ashenvale [Life]" />
-			</If-->
-
-			<CustomBehavior File="Message" Text="Compiling Quests: Darsok's Outpost" LogColor="Cyan" />
-
-			<PickUp QuestName="Harpy Raiders" QuestId="867" GiverName="Darsok Swiftdagger" GiverId="3449" />
-			<PickUp QuestName="Harpy Lieutenants" QuestId="875" GiverName="Darsok Swiftdagger" GiverId="3449" />
-			<TurnIn QuestName="Deathgate's Reinforcements" QuestId="14073" TurnInName="Regthar Deathgate" TurnInId="3389" />
-			<PickUp QuestName="Hezrul Bloodmark" QuestId="852" GiverName="Regthar Deathgate" GiverId="3389" />
-			<PickUp QuestName="Centaur Bracers" QuestId="855" GiverName="Regthar Deathgate" GiverId="3389" />
-
-				<Objective QuestName="Hezrul Bloodmark" QuestId="852" Type="CollectItem" ItemId="5025" CollectCount="1" />
-				<Objective QuestName="Centaur Bracers" QuestId="855" Type="CollectItem" ItemId="5030" CollectCount="10" />
-			
-			<TurnIn QuestName="Centaur Bracers" QuestId="855" TurnInName="Regthar Deathgate" TurnInId="3389" />
-			<TurnIn QuestName="Hezrul Bloodmark" QuestId="852" TurnInName="Regthar Deathgate" TurnInId="3389" />
-			<!--Difficult Group Quest: Limiting Level Range-->
-			<If Condition="Me.LevelFraction &gt;= 23">
-				<PickUp QuestName="Counterattack!" QuestId="4021" GiverName="Regthar Deathgate" GiverId="3389" />
-
-					<Objective QuestName="Counterattack!" QuestId="4021" Type="CollectItem" ItemId="11227" CollectCount="1" />
-				
-				<TurnIn QuestName="Counterattack!" QuestId="4021" TurnInName="Regthar Deathgate" TurnInId="3389" />
+				<CustomBehavior File="Misc\RunLua" Lua="UseItemByName(11147)" WaitTime="2000" />
+			</While>
+			<!--Objective: Miner's Fortune-->
+			<If Condition="HasQuest(29015) &amp;&amp; !IsQuestCompleted(29015)">
+				<CustomBehavior File="CollectThings" MobId="3286" MobId2="3283" CollectItemCount="1" CollectUntil="RequiredCountReached" CollectItemId="5097">
+					<Hotspot X="1261.725" Y="-3621.95" Z="90.01929" />
+					<Hotspot X="1308.001" Y="-3625.193" Z="92.07192" />
+					<Hotspot X="1346.243" Y="-3570.672" Z="92.09566" />
+				</CustomBehavior>
 			</If>
 
-				<Objective QuestName="Harpy Lieutenants" QuestId="875" Type="KillMob" MobId="3278" KillCount="6" />
-				<Objective QuestName="Harpy Raiders" QuestId="867" Type="CollectItem" ItemId="5064" CollectCount="6" />
+		<TurnIn QuestName="Miner's Fortune" QuestId="29015" TurnInName="Brak Blusterpipe" TurnInId="34674" />
+		<TurnIn QuestName="Read the Manual" QuestId="14006" TurnInName="Sputtervalve" TurnInId="3442" />		
+		<PickUp QuestName="The Short Way Home" QuestId="29094" GiverName="Sputtervalve" GiverId="3442" />
+
+			<If Condition="HasQuest(29094) &amp;&amp; !IsQuestCompleted(29094)">
+				<CustomBehavior File="InteractWith" MobId="52203" NonCompeteDistance="0" X="1140.633" Y="-3368.61" Z="94.15554" />
+				<While Condition="Me.IsOnTransport">
+					<CustomBehavior File="WaitTimer" QuestId="29094" WaitTime="10000" GoalText="Waiting till the Rocket Ride is Over." />
+				</While>
+			</If>
+
+		<TurnIn QuestName="The Short Way Home" QuestId="29094" TurnInName="Darsok Swiftdagger" TurnInId="3449" />
 			
-			<!--Complete Quest: Harpy Lieutenants-->
-			<If Condition="HasQuest(875) &amp;&amp; IsQuestCompleted(875)" >
-				<CustomBehavior File="CompleteLogQuest" QuestId="875" />
-			</If>	
-			<!--Complete Quest: Harpy Raiders-->
-			<If Condition="HasQuest(867) &amp;&amp; IsQuestCompleted(867)" >
-				<CustomBehavior File="CompleteLogQuest" QuestId="867" />
-			</If>	
-			<PickUp QuestName="Serena Bloodfeather" QuestId="876" GiverName="Darsok Swiftdagger" GiverId="3449" />
+		<!--Riding Training Availability Check-->
+		<If Condition="Me.Level &gt;= 20">
+			<If Condition="Me.GetSkill(Styx.SkillLine.Riding).CurrentValue == 0 &amp;&amp; Me.Gold &gt;= 5">
+				<CustomBehavior File="Message" Text="Riding: Loading Trainer Profile" LogColor="Cyan" />
+				<CustomBehavior File="LoadProfile" ProfileName="..\Riding and Transport\[H - Quest] Northern Barrens Riding" />
+				<ElseIf Condition="Me.Gold &lt; 5">
+					<CustomBehavior File="Message" Text="You don't have enough money to train. Will check again later!" LogColor="Orange" />
+				</ElseIf>
+			</If>
+		</If>
+
+		<!--Placeholder Checkpoint-->
+		<If Condition="Me.Level &gt;= 20">
+			<!--Uncomment to add a Checkpoint-->
+			<!--<CustomBehavior File="Message" Text="Checkpoint Reached: Loading Ashenvale" LogColor="Cyan" />
+			<CustomBehavior File="LoadProfile" ProfileName="[N - Quest] Ashenvale [Life]" />-->
+		</If>						
 			
-				<Objective QuestName="Serena Bloodfeather" QuestId="876" Type="CollectItem" ItemId="5067" CollectCount="1" />
+		<!--Northern Barrens Loremaster Marker-->
+		<If Condition="IsAchievementCompleted(4933)">
+			<CustomBehavior File="Message" Text="Zone Loremaster Complete: Loading Ashenvale" LogColor="Cyan" />
+			<CustomBehavior File="LoadProfile" ProfileName="[H - Quest] Ashenvale [Life]" />
+			<Else>
+				<CustomBehavior File="Message" Text="Error: You don't have the appropriate amount of quests completed! Contact profile owner!" LogColor="Red" />
+			</Else>
+		</If>
+
+		<CustomBehavior File="Message" Text="Compiling Quests: Darsok's Outpost" LogColor="Cyan" />
+
+		<PickUp QuestName="Harpy Raiders" QuestId="867" GiverName="Darsok Swiftdagger" GiverId="3449" />
+		<PickUp QuestName="Harpy Lieutenants" QuestId="875" GiverName="Darsok Swiftdagger" GiverId="3449" />
+		<TurnIn QuestName="Deathgate's Reinforcements" QuestId="14073" TurnInName="Regthar Deathgate" TurnInId="3389" />
+		<PickUp QuestName="Hezrul Bloodmark" QuestId="852" GiverName="Regthar Deathgate" GiverId="3389" />
+		<PickUp QuestName="Centaur Bracers" QuestId="855" GiverName="Regthar Deathgate" GiverId="3389" />
+
+			<Objective QuestName="Hezrul Bloodmark" QuestId="852" Type="CollectItem" ItemId="5025" CollectCount="1" />
+			<Objective QuestName="Centaur Bracers" QuestId="855" Type="CollectItem" ItemId="5030" CollectCount="10" />
 			
-			<TurnIn QuestName="Serena Bloodfeather" QuestId="876" TurnInName="Darsok Swiftdagger" TurnInId="3449" />
-			<PickUp QuestName="Report to Thork" QuestId="29095" GiverName="Darsok Swiftdagger" GiverId="3449" />
-			<TurnIn QuestName="Report to Thork" QuestId="29095" TurnInName="Thork" TurnInId="3429" />
-			<PickUp QuestName="Mor'shan Caravan Pick-Up" QuestId="29109" GiverName="Thork" GiverId="3429" />
+		<TurnIn QuestName="Centaur Bracers" QuestId="855" TurnInName="Regthar Deathgate" TurnInId="3389" />
+		<TurnIn QuestName="Hezrul Bloodmark" QuestId="852" TurnInName="Regthar Deathgate" TurnInId="3389" />
+		<!--Difficult Group Quest: Limiting Level Range-->
+		<If Condition="Me.Level &gt;= 23">
+			<PickUp QuestName="Counterattack!" QuestId="4021" GiverName="Regthar Deathgate" GiverId="3389" />
+
+				<Objective QuestName="Counterattack!" QuestId="4021" Type="CollectItem" ItemId="11227" CollectCount="1" />
+				
+			<TurnIn QuestName="Counterattack!" QuestId="4021" TurnInName="Regthar Deathgate" TurnInId="3389" />
+		</If>
+
+			<Objective QuestName="Harpy Lieutenants" QuestId="875" Type="KillMob" MobId="3278" KillCount="6" />
+			<Objective QuestName="Harpy Raiders" QuestId="867" Type="CollectItem" ItemId="5064" CollectCount="6" />
+			
+		<!--Complete Quest: Harpy Lieutenants-->
+		<If Condition="HasQuest(875) &amp;&amp; IsQuestCompleted(875)">
+			<CustomBehavior File="CompleteLogQuest" QuestId="875" />
+		</If>	
+		<!--Complete Quest: Harpy Raiders-->
+		<If Condition="HasQuest(867) &amp;&amp; IsQuestCompleted(867)">
+			<CustomBehavior File="CompleteLogQuest" QuestId="867" />
+		</If>	
+		<PickUp QuestName="Serena Bloodfeather" QuestId="876" GiverName="Darsok Swiftdagger" GiverId="3449" />
+			
+			<Objective QuestName="Serena Bloodfeather" QuestId="876" Type="CollectItem" ItemId="5067" CollectCount="1" />
+			
+		<TurnIn QuestName="Serena Bloodfeather" QuestId="876" TurnInName="Darsok Swiftdagger" TurnInId="3449" />
+		<PickUp QuestName="Report to Thork" QuestId="29095" GiverName="Darsok Swiftdagger" GiverId="3449" />
+		<TurnIn QuestName="Report to Thork" QuestId="29095" TurnInName="Thork" TurnInId="3429" />
+		<PickUp QuestName="Mor'shan Caravan Pick-Up" QuestId="29109" GiverName="Thork" GiverId="3429" />
 
 			<!--Objective: Mor'shan Caravan Pick-Up-->
 			<If Condition="HasQuest(29109) &amp;&amp; !IsQuestCompleted(29109)">
@@ -1086,7 +1227,7 @@
 				<While Condition="!IsQuestCompleted(29111)">
 					<CustomBehavior File="InteractWith" MobId="52207" InteractByGossipOptions="1" NonCompeteDistance="0" WaitTime="4500" X="295.3355" Y="-2529.947" Z="91.66685" />
 					<CustomBehavior File="InteractWith" MobId="52314" Range="4" WaitTime="6000" X="295.8784" Y="-2538.484" Z="91.66685" />
-					<While Condition="Me.IsOnTransport" >
+					<While Condition="Me.IsOnTransport">
 						<CustomBehavior File="RunMacro" Macro="/target Burning Blade Bruiser" />
 						<CustomBehavior File="RunMacro" Macro="/click [overridebar][vehicleui][possessbar,@vehicle,exists]OverrideActionBarButton2" WaitTime="100" />
 						<CustomBehavior File="RunMacro" Macro="/target Burning Blade Attacker" />
