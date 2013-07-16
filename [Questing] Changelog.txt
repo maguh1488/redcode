@@ -1,7 +1,13 @@
 ==================================
  ==== Life Project Changelog ====
 ==================================
-
+_____________________________________
+Revision 58: Tuesday, July 16th, 2013
+-- Northern Barrens now leaves on Loremaster, but has checkpoints commented out by default.
+-- Northern Barrens is now afk friendly. Minor problems with vehicles and bird spirits.
+-- Northern Barrens now supports Riding Training! Silverpine will once implemented.
+-- Added another Durotar checkpoint, one of many to come.
+-- Longer Changelogs!
 ____________________________________
 Revision 57: Monday, July 15th, 2013
 -- Rogue ClassQ: Eviscerate Can Use 1pt
