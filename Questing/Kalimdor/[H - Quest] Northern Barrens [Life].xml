@@ -719,7 +719,7 @@
 		<If Condition="Me.Level &gt;= 20">
 			<If Condition="Me.GetSkill(Styx.SkillLine.Riding).CurrentValue == 0 &amp;&amp; Me.Gold &gt;= 5">
 				<CustomBehavior File="Message" Text="Riding: Loading Trainer Profile" LogColor="Cyan" />
-				<CustomBehavior File="LoadProfile" ProfileName="..\Riding and Transport\[H - Quest] Northern Barrens Riding" />
+				<CustomBehavior File="LoadProfile" ProfileName="..\Riding and Transports\[H - Quest] Northern Barrens Riding" />
 				<ElseIf Condition="Me.Gold &lt; 5">
 					<CustomBehavior File="Message" Text="You don't have enough money to train. Will check again later!" LogColor="Orange" />
 				</ElseIf>
@@ -783,7 +783,7 @@
 		<If Condition="Me.Level &gt;= 20">
 			<If Condition="Me.GetSkill(Styx.SkillLine.Riding).CurrentValue == 0 &amp;&amp; Me.Gold &gt;= 5">
 				<CustomBehavior File="Message" Text="Riding: Loading Trainer Profile" LogColor="Cyan" />
-				<CustomBehavior File="LoadProfile" ProfileName="..\Riding and Transport\[H - Quest] Northern Barrens Riding" />
+				<CustomBehavior File="LoadProfile" ProfileName="..\Riding and Transports\[H - Quest] Northern Barrens Riding" />
 				<ElseIf Condition="Me.Gold &lt; 5">
 					<CustomBehavior File="Message" Text="You don't have enough money to train. Will check again later!" LogColor="Orange" />
 				</ElseIf>
@@ -888,7 +888,7 @@
 		<If Condition="Me.Level &gt;= 20">
 			<If Condition="Me.GetSkill(Styx.SkillLine.Riding).CurrentValue == 0 &amp;&amp; Me.Gold &gt;= 5">
 				<CustomBehavior File="Message" Text="Riding: Loading Trainer Profile" LogColor="Cyan" />
-				<CustomBehavior File="LoadProfile" ProfileName="..\Riding and Transport\[H - Quest] Northern Barrens Riding" />
+				<CustomBehavior File="LoadProfile" ProfileName="..\Riding and Transports\[H - Quest] Northern Barrens Riding" />
 				<ElseIf Condition="Me.Gold &lt; 5">
 					<CustomBehavior File="Message" Text="You don't have enough money to train. Will check again later!" LogColor="Orange" />
 				</ElseIf>
@@ -931,7 +931,7 @@
 		<PickUp QuestName="Hyena Extermination" QuestId="29088" GiverName="Nozzlepot" GiverId="34698" />
 		<PickUp QuestName="Competition Schmompetition" QuestId="29086" GiverName="Sputtervalve" GiverId="3442" />
 		<PickUp QuestName="Competition Schmompetition" QuestId="29086" GiverName="Sputtervalve" GiverId="3442" />
-		<PickUp QuestName="Ignition" QuestId="858" GiverName="Wizzlecrank\'s Shredder" GiverId="3439" />
+		<PickUp QuestName="Ignition" QuestId="858" GiverName="Wizzlecrank's Shredder" GiverId="3439" />
 
 			<!--Objective: Sludge Investigation-->
 			<CustomBehavior File="InteractWith" QuestId="29087" MobId="52171" NumOfTimes="50">
@@ -964,7 +964,7 @@
 		<PickUp QuestName="The Escape" QuestId="863" GiverName="Wizzlecrank's Shredder" GiverId="3439" />
 
 			<!--Objective: The Escape-->
-			<CustomBehavior File="EscortGroup" QuestId="863" EscortNpcId="3439" EscortCompleteWhen="QuestCompleteOrFails" EscortMaxFightDistance="10" />
+			<CustomBehavior File="EscortGroup" QuestId="863" EscortNpcId="3439" EscortCompleteWhen="QuestCompleteOrFails" EscortMaxFightDistance="15" />
 
 		<TurnIn QuestName="The Escape" QuestId="863" TurnInName="Sputtervalve" TurnInId="3442" />
 		<TurnIn QuestName="Competition Schmompetition" QuestId="29086" TurnInName="Sputtervalve" TurnInId="3442" />
@@ -975,7 +975,7 @@
 		<If Condition="Me.Level &gt;= 20">
 			<If Condition="Me.GetSkill(Styx.SkillLine.Riding).CurrentValue == 0 &amp;&amp; Me.Gold &gt;= 5">
 				<CustomBehavior File="Message" Text="Riding: Loading Trainer Profile" LogColor="Cyan" />
-				<CustomBehavior File="LoadProfile" ProfileName="..\Riding and Transport\[H - Quest] Northern Barrens Riding" />
+				<CustomBehavior File="LoadProfile" ProfileName="..\Riding and Transports\[H - Quest] Northern Barrens Riding" />
 				<ElseIf Condition="Me.Gold &lt; 5">
 					<CustomBehavior File="Message" Text="You don't have enough money to train. Will check again later!" LogColor="Orange" />
 				</ElseIf>
@@ -1023,7 +1023,7 @@
 		<If Condition="Me.Level &gt;= 20">
 			<If Condition="Me.GetSkill(Styx.SkillLine.Riding).CurrentValue == 0 &amp;&amp; Me.Gold &gt;= 5">
 				<CustomBehavior File="Message" Text="Riding: Loading Trainer Profile" LogColor="Cyan" />
-				<CustomBehavior File="LoadProfile" ProfileName="..\Riding and Transport\[H - Quest] Northern Barrens Riding" />
+				<CustomBehavior File="LoadProfile" ProfileName="..\Riding and Transports\[H - Quest] Northern Barrens Riding" />
 				<ElseIf Condition="Me.Gold &lt; 5">
 					<CustomBehavior File="Message" Text="You don't have enough money to train. Will check again later!" LogColor="Orange" />
 				</ElseIf>
@@ -1064,7 +1064,7 @@
 		<If Condition="Me.Level &gt;= 20">
 			<If Condition="Me.GetSkill(Styx.SkillLine.Riding).CurrentValue == 0 &amp;&amp; Me.Gold &gt;= 5">
 				<CustomBehavior File="Message" Text="Riding: Loading Trainer Profile" LogColor="Cyan" />
-				<CustomBehavior File="LoadProfile" ProfileName="..\Riding and Transport\[H - Quest] Northern Barrens Riding" />
+				<CustomBehavior File="LoadProfile" ProfileName="..\Riding and Transports\[H - Quest] Northern Barrens Riding" />
 				<ElseIf Condition="Me.Gold &lt; 5">
 					<CustomBehavior File="Message" Text="You don't have enough money to train. Will check again later!" LogColor="Orange" />
 				</ElseIf>
@@ -1117,8 +1117,12 @@
 			</If>
 
 		<TurnIn QuestName="Miner's Fortune" QuestId="29015" TurnInName="Brak Blusterpipe" TurnInId="34674" />
-		<TurnIn QuestName="Read the Manual" QuestId="14006" TurnInName="Sputtervalve" TurnInId="3442" />		
+		<TurnIn QuestName="Read the Manual" QuestId="14006" TurnInName="Sputtervalve" TurnInId="3442" />
 		<PickUp QuestName="The Short Way Home" QuestId="29094" GiverName="Sputtervalve" GiverId="3442" />
+
+		<If Condition="HasItem(5088)">
+			<CustomBehavior File="DeleteItems" Ids="5088" />
+		</If>
 
 			<If Condition="HasQuest(29094) &amp;&amp; !IsQuestCompleted(29094)">
 				<CustomBehavior File="InteractWith" MobId="52203" NonCompeteDistance="0" X="1140.633" Y="-3368.61" Z="94.15554" />
@@ -1133,7 +1137,7 @@
 		<If Condition="Me.Level &gt;= 20">
 			<If Condition="Me.GetSkill(Styx.SkillLine.Riding).CurrentValue == 0 &amp;&amp; Me.Gold &gt;= 5">
 				<CustomBehavior File="Message" Text="Riding: Loading Trainer Profile" LogColor="Cyan" />
-				<CustomBehavior File="LoadProfile" ProfileName="..\Riding and Transport\[H - Quest] Northern Barrens Riding" />
+				<CustomBehavior File="LoadProfile" ProfileName="..\Riding and Transports\[H - Quest] Northern Barrens Riding" />
 				<ElseIf Condition="Me.Gold &lt; 5">
 					<CustomBehavior File="Message" Text="You don't have enough money to train. Will check again later!" LogColor="Orange" />
 				</ElseIf>
@@ -1150,7 +1154,7 @@
 		<!--Northern Barrens Loremaster Marker-->
 		<If Condition="IsAchievementCompleted(4933)">
 			<CustomBehavior File="Message" Text="Zone Loremaster Complete: Loading Ashenvale" LogColor="Cyan" />
-			<CustomBehavior File="LoadProfile" ProfileName="[H - Quest] Ashenvale [Life]" />
+			<CustomBehavior File="LoadProfile" ProfileName="[N - Quest] Ashenvale [Life]" />
 			<Else>
 				<CustomBehavior File="Message" Text="Error: You don't have the appropriate amount of quests completed! Contact profile owner!" LogColor="Red" />
 			</Else>

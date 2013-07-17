@@ -29,10 +29,119 @@
 	</Mailboxes>
 
 	<Vendors>
+		<!--The Mor'Shan Ramparts Vendors-->
+		<Vendor Name="Marrok" Entry="43637" Type="Food" X="1241.15" Y="-2215.71" Z="106.897" />
+		<Vendor Name="Ornag" Entry="43645" Type="Repair" X="1236.83" Y="-2233.08" Z="91.90649" />
 	</Vendors>
 
 	<QuestOrder>
-		<CustomBehavior File="Message" Text="Error: Profile hasn't been made yet! Shutting Down." LogColor="Red" />
+		<CustomBehavior File="Message" Text="Error: Profile is only 16% complete! Shutting Down." LogColor="Red" />
 		<CustomBehavior File="Halt" />
+		<CustomBehavior File="Message" Text="Initializing Settings" LogColor="Cyan" />
+		<CustomBehavior File="UserSettings" LootMobs="True" UseFlightPaths="True" PullDistance="25" />
+
+			<CustomBehavior File="EnablePlugin" Names="Anti Drown,AutoEquip2,Drink Potions,Refreshment,Talented2" />
+			<CustomBehavior File="RunMacro" Macro="/script SetCVar('AutoLootDefault', 1)" WaitTime="1000" />
+			<If Condition="!HasQuest(13612) &amp;&amp; !IsQuestCompleted(13612)">
+				<CustomBehavior File="RunMacro" Macro="/run for i=1,GetNumQuestLogEntries() do SelectQuestLogEntry(i); SetAbandonQuest(); AbandonQuest(); end" />
+			</If>
+
+		<CustomBehavior File="Message" Text="Compiling Quests: The Mor'Shan Ramparts" LogColor="Cyan" />
+		
+		<PickUp QuestName="Mor'shan Defense" QuestId="13612" GiverName="Kadrak" GiverId="8582" />
+		<PickUp QuestName="Find Gorat!" QuestId="13618" GiverName="Kadrak" GiverId="8582" />
+		<PickUp QuestName="Empty Quivers" QuestId="13615" GiverName="Truun" GiverId="33284" />
+		<PickUp QuestName="Rescue the Fallen" QuestId="13613" GiverName="Dinah Halfmoon" GiverId="33263" />
+		<TurnIn QuestName="Find Gorat!" QuestId="13618" TurnInName="Gorat" TurnInId="33294" />
+		<PickUp QuestName="Final Report" QuestId="13619" GiverName="Gorat" GiverId="33294" />
+
+			<!--Objective: Rescue the Fallen-->
+			<If Condition="HasQuest(13613) &amp;&amp; !IsQuestCompleted(13613)">
+				<RunTo X="1353.957" Y="-2256.85" Z="89.9626" />
+				<CustomBehavior File="InteractWith" QuestId="13613" MobId="33266" InteractByUsingItemId="45001" NumOfTimes="50" WaitTime="2500" CollectionDistance="500">
+					<HuntingGrounds>
+						<Hotspot X="1364.948" Y="-2227.067" Z="92.147" />
+						<Hotspot X="1473.429" Y="-2234.297" Z="92.604" />
+						<Hotspot X="1374.053" Y="-2119.594" Z="92.66486" />
+					</HuntingGrounds>
+				</CustomBehavior>
+			</If>
+
+			<Objective QuestName="Empty Quivers" QuestId="13615" Type="CollectItem" ItemId="45004" CollectCount="10" />
+			<Objective QuestName="Mor'shan Defense" QuestId="13612" Type="KillMob" MobId="33193" KillCount="5" />
+			<Objective QuestName="Mor'shan Defense" QuestId="13612" Type="KillMob" MobId="33195" KillCount="5" />
+
+
+		<TurnIn QuestName="Mor'shan Defense" QuestId="13612" TurnInName="Kadrak" TurnInId="8582" />	
+		<TurnIn QuestName="Final Report" QuestId="13619" TurnInName="Kadrak" TurnInId="8582" />
+		<PickUp QuestName="To Dinah, at Once!" QuestId="13620" GiverName="Kadrak" GiverId="8582" />
+		<TurnIn QuestName="Empty Quivers" QuestId="13615" TurnInName="Truun" TurnInId="33284" />
+		<TurnIn QuestName="Rescue the Fallen" QuestId="13613" TurnInName="Dinah Halfmoon" TurnInId="33263" />
+		<TurnIn QuestName="To Dinah, at Once!" QuestId="13620" TurnInName="Dinah Halfmoon" TurnInId="33263" />
+		<PickUp QuestName="Gorat's Vengeance" QuestId="13621" GiverName="Dinah Halfmoon" GiverId="33263" />
+
+			<!--Objective: Gorat's Vengeance-->
+			<If Condition="HasQuest(13621) &amp;&amp; !IsQuestCompleted(13621)">
+				<CustomBehavior File="InteractWith" QuestId="13621" MobId="33294" InteractByUsingItemId="45023" WaitTime="10000" X="1424.852" Y="-2002.947" Z="95.88847" />
+				<CustomBehavior File="EscortGroup" QuestId="13621" EscortNpcId="33304" />
+			</If>
+
+		<TurnIn QuestName="Gorat's Vengeance" QuestId="13621" TurnInName="Kadrak" TurnInId="8582" />
+		<PickUp QuestName="Got Wood?" QuestId="13628" GiverName="Truun" GiverId="33284" />			
+
+			<If Condition="HasQuest(13628) &amp;&amp; !IsQuestCompleted(13628)">
+				<CustomBehavior File="ForcedDismount" />
+				<DisableBehavior Name="Combat, Loot" />
+				<CustomBehavior File="InteractWith" MobId="8582" GossipOptions="1" X="1233.077" Y="-2249.259" Z="91.72605" />
+				<CustomBehavior File="InteractWith" MobId="33374" X="1233.077" Y="-2249.259" Z="91.72605" />
+				<While Condition="Me.IsOnTransport">
+					<CustomBehavior File="WaitTimer" WaitTime="10000" GoalText="Waiting for Brutusk to Stop" />
+				</While>
+				<EnableBehavior Name="Combat, Loot" />
+			</If>
+
+		<TurnIn QuestName="Got Wood?" QuestId="13628" TurnInName="Gorka" TurnInId="33421" />	
+
+		<CustomBehavior File="Message" Text="Compiling Quests: Warsong Labor Camp" LogColor="Cyan" />
+
+		<PickUp QuestName="Management Material" QuestId="13640" GiverName="Gorka" GiverId="33421" />
+
+			<!--Objective: Management Material-->
+			<While Condition="HasQuest(13640) &amp;&amp; !IsQuestCompleted(13640)">
+				<CustomBehavior File="UserSettings" Preset="NoDistractions" />
+
+				<CustomBehavior File="EscortGroup" QuestId="13640" EscortCompleteWhen="QuestCompleteOrFails" 
+					StartEscortGossipOptions="1" StartNpcId="33440" EscortNpcId="33440" EscortCountMax="1" PriorityTargetId="33458" 
+					NonCompeteDistance="20" EscortMaxFollowDistance="7" EscortMaxFightDistance="20">
+					<SearchPath>
+						<Hotspot Name="Road" X="1514.038" Y="-2391.767" Z="94.69323" />
+						<Hotspot Name="North of Crane" X="1632.734" Y="-2440.688" Z="105.0203" />
+						<Hotspot Name="Den Discovery" X="1673.981" Y="-2520.092" Z="95.98528" />
+						<Hotspot Name="South of Camp" X="1580.096" Y="-2526.936" Z="103.4794" />
+					</SearchPath>
+				</CustomBehavior>
+
+				<CustomBehavior File="InteractWith" MobId="194349" IgnoreLoSToTarget="True" InteractByLooting="True" NumOfTimes="5" WaitForNpcs="False"  />
+				<CustomBehavior File="UserSettings" Preset="UserOriginal" />
+			</While>
+
+		<TurnIn QuestName="Management Material" QuestId="13640" TurnInName="Gorka" TurnInId="33421" />
+		<PickUp QuestName="Needs a Little Lubrication" QuestId="13651" GiverName="Gorka" GiverId="33421" />
+			
+			<Objective QuestName="Needs a Little Lubrication" QuestId="13651" Type="CollectItem" ItemId="45071" CollectCount="5" />
+		
+		<TurnIn QuestName="Needs a Little Lubrication" QuestId="13651" TurnInName="Gorka" TurnInId="33421" />		
+<CustomBehavior File="Halt" />
+
+
+
+
+
+	<Objective QuestName="Mor'shan Defense" QuestId="13612" Type="KillMob" MobId="33193" KillCount="5" />
+	<Objective QuestName="Mor'shan Defense" QuestId="13612" Type="KillMob" MobId="33195" KillCount="5" />
+	<TurnIn QuestName="Mor'shan Defense" QuestId="13612" TurnInName="Kadrak" TurnInId="8582" />
+<TurnIn QuestName="Find Gorat!" QuestId="13618" TurnInName="Gorat" TurnInId="33294" />
+
+
 	</QuestOrder>
 </HBProfile>
