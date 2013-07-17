@@ -1,7 +1,12 @@
 ==================================
  ==== Life Project Changelog ====
 ==================================
-
+_______________________________________
+Revision 60: Wednesday, July 18th, 2013
+-- Delete Useless Item from Samophlange Quests
+-- Fixed Northern Barrens Riding LoadProfile
+-- Fixed "The Escape" EscortMaxFightDistance
+-- Ashenvale is 16% complete!
 _____________________________________
 Revision 59: Tuesday, July 17th, 2013
 -- Orc and Troll class quests are finished!
