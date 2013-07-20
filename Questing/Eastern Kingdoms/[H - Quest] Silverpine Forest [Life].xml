@@ -58,6 +58,45 @@
 			</Hotspots>
 		</Objective>
 	</Quest>
+	<Quest Id="27360" Name="Vengeance for Our Soldiers">
+		<Objective Type="KillMob" MobId="45403" KillCount="10">
+			<Hotspots>
+				<Hotspot X="-1419.215" Y="1511.498" Z="20.82067" />
+				<Hotspot X="-1426.626" Y="1573.105" Z="20.64243" />
+				<Hotspot X="-1459.638" Y="1552.108" Z="20.48691" />
+				<Hotspot X="-1482.303" Y="1621.546" Z="20.48545" />
+				<Hotspot X="-1491.021" Y="1680.75" Z="20.48575" />
+				<Hotspot X="-1555.027" Y="1684.538" Z="20.48504" />
+			</Hotspots>
+		</Objective>
+	</Quest>
+	<Quest Id="27364" Name="On Whose Orders?">
+		<Objective Type="CollectItem" ItemId="60977" CollectCount="1">
+			<CollectFrom>
+				<Mob Name="Master Sergeant Pietro Zaren" Id="45405" />
+			</CollectFrom>
+			<Hotspots>
+				<Hotspot X="-1528.83" Y="1587.73" Z="26.53709" />
+			</Hotspots>
+		</Objective>
+	</Quest>
+	<Quest Id="27474" Name="Breaking the Barrier">
+		<Objective Type="CollectItem" ItemId="61306" CollectCount="1">
+			<CollectFrom>
+				<GameObject Name="Ambermill Codex" Id="205534" />
+			</CollectFrom>
+			<Hotspots>
+				<Hotspot X="-133.4848" Y="784.0015" Z="67.3825" />
+			</Hotspots>
+		</Objective>
+	</Quest>
+	<Quest Id="27580" Name="Sowing Discord">
+		<Objective Type="KillMob" MobId="45995" KillCount="1">
+			<Hotspots>
+				<Hotspot X="-552.5573" Y="1673.876" Z="14.26527" />
+			</Hotspots>
+		</Objective>
+	</Quest>
 
 	<QuestOrder>
 
@@ -297,7 +336,15 @@
 			<PickUp QuestName="Seek and Destroy" QuestId="27193" GiverName="Lady Sylvanas Windrunner" GiverId="44365" />
 		</If>
 
-			<Objective QuestName="Seek and Destroy" QuestId="27193" Type="CollectItem" ItemId="60867" CollectCount="1" />
+			<!--Objective: Seek and Destroy-->
+			<If Condition="HasQuest(27193) &amp;&amp; !IsQuestCompleted(27193)">
+				<Runto DestName="Smithers" X="143.5521" Y="1529.008" Z="114.9597" />
+				<While Condition="!IsQuestCompleted(27193)">
+					<CustomBehavior File="WaitTimer" QuestId="27193" WaitTime="10000" GoalText="Waiting for Smithers to Jump Down" />
+				</While>
+			</If>
+			<!--This Objective Doesn't Work With or Without and Override: Data Error?-->
+			<!--Objective QuestName="Seek and Destroy" QuestId="27193" Type="CollectItem" ItemId="60867" CollectCount="1" /-->
 
 		<If Condition="HasQuest(27193)">
 			<CustomBehavior File="CompleteLogQuest" QuestId="27193" />
@@ -391,7 +438,7 @@
 				<CustomBehavior File="WaitTimer" QuestId="27401" WaitTime="45000" />
 			</While>
 
-		<If Condition="HasQuest(27401)">
+		<If Condition="HasQuest(27401) &amp;&amp; IsQuestCompleted(27401)">
 		    <CustomBehavior File="CompleteLogQuest" QuestId="27401" />
 		</If>
 
@@ -458,12 +505,12 @@
 
 		<TurnIn QuestName="Rise, Godfrey" QuestId="27472" TurnInName="Lady Sylvanas Windrunner" TurnInId="45617" />
 		<PickUp QuestName="Breaking the Barrier" QuestId="27474" GiverName="Lady Sylvanas Windrunner" GiverId="45617" />
-		<PickUp QuestName="Unyielding Servitors" QuestId="27475" GiverName="Daschla" GiverId="45626" />
+		<PickUp QuestName="Unyielding Servitors" QuestId="27475" GiverName="Daschla" GiverId="45626" X="-147.1362" Y="1270.597" Z="52.00219" />
 
 			<Objective QuestName="Breaking the Barrier" QuestId="27474" Type="CollectItem" ItemId="61306" CollectCount="1" />
 			<Objective QuestName="Unyielding Servitors" QuestId="27475" Type="CollectItem" ItemId="61307" CollectCount="6" />
 		
-		<TurnIn QuestName="Unyielding Servitors" QuestId="27475" TurnInName="Daschla" TurnInId="45626" />
+		<TurnIn QuestName="Unyielding Servitors" QuestId="27475" TurnInName="Daschla" TurnInId="45626" X="-147.1362" Y="1270.597" Z="52.00219" />
 		<TurnIn QuestName="Breaking the Barrier" QuestId="27474" TurnInName="Lady Sylvanas Windrunner" TurnInId="45617" />
 		<PickUp QuestName="Dalar Dawnweaver" QuestId="27476" GiverName="Lady Sylvanas Windrunner" GiverId="45617" />
 		<!--Use Taxi When I don't have a Migraine-->
@@ -492,6 +539,11 @@
 
 			<Objective QuestName="Relios the Relic Keeper" QuestId="27478" Type="CollectItem" ItemId="61312" CollectCount="1" />
 			<Objective QuestName="Practical Vengeance" QuestId="27483" Type="KillMob" MobId="2358" KillCount="12" />
+
+		<If Condition="!HasQuest(27480) &amp;&amp; HasItem(61310)">
+			<PickUp QuestName="Ley Energies" QuestId="27480" GiverType="Item" GiverId="61310" />
+		</If>
+
 			<Objective QuestName="Ley Energies" QuestId="27480" Type="CollectItem" ItemId="61311" CollectCount="8" />
 			
 			<If Condition="HasQuest(27478) || HasQuest(27480) || HasQuest(27483)">
@@ -523,7 +575,7 @@
 
 		<If Condition="HasQuest(27513) &amp;&amp; !IsQuestCompleted(27513)">
 			<If Condition="!Me.HasAura(85361)" >
-				<CustomBehavior File="InteractWith" QuestId="27513" InteractByGossipOptions="1" MobId="45752" NonCompeteDistance="0" />
+				<CustomBehavior File="InteractWith" QuestId="27513" InteractByGossipOptions="1" MobId="45752" NonCompeteDistance="0" X="-290.9761" Y="1014.151" Z="113.8954" />
 			</If>
 		</If>
 
@@ -591,6 +643,9 @@
 
 		<TurnIn QuestName="Of No Consequence" QuestId="27547" TurnInName="Baron Ashbury" TurnInId="45880" />
 		<TurnIn QuestName="Lessons in Fear" QuestId="27548" TurnInName="Lord Walden" TurnInId="45879" />
+
+		<!--Achievement Marker-->
+
 		<PickUp QuestName="7th Legion Battle Plans" QuestId="27577" GiverName="Lord Walden" GiverId="45879" />
 		<PickUp QuestName="Sowing Discord" QuestId="27580" GiverName="Lord Godfrey" GiverId="45878" />
 

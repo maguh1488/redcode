@@ -169,13 +169,8 @@
 				<CustomBehavior File="CastSpellOn" MobHpPercentLeft="100" MobId="15274" Range="7" SpellId1="28730" SpellId2="80483" SpellId3="129597" SpellId4="25046" SpellId5="69179"/>
 			</While>
 
-			<!--Objectives: A Fistful of Silvers, The Shrine of Dath'Remar, Unfortunate Measures, & Solanian's Belongings-->
 			<Objective QuestName="A Fistful of Slivers" QuestId="8336" Type="CollectItem" ItemId="20482" CollectCount="6" />
-
-			<If Condition="HasQuest(8345) &amp;&amp; !IsQuestCompleted(8345)">
-				<Objective QuestName="The Shrine of Dath'Remar" QuestId="8345" Type="UseObject" ObjectId="180516" UseCount="1" />	
-			</If>
-
+			<Objective QuestName="The Shrine of Dath'Remar" QuestId="8345" Type="UseObject" ObjectId="180516" UseCount="1" />	
 			<Objective QuestName="Solanian's Belongings" QuestId="8330" Type="CollectItem" ItemId="20471" CollectCount="1" />
 			<Objective QuestName="Unfortunate Measures" QuestId="8326" Type="CollectItem" Name="Lynx Collar" ItemId="20797" CollectCount="8"/>
 			<Objective QuestName="Solanian's Belongings" QuestId="8330" Type="CollectItem" ItemId="20470" CollectCount="1" />
