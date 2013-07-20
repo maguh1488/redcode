@@ -90,6 +90,7 @@
 		<PickUp QuestName="Feed of Evil" QuestId="14461" GiverName="Adana Thunderhorn" GiverId="36694" />
 		<PickUp QuestName="The Battleboars" QuestId="14459" GiverName="Adana Thunderhorn" GiverId="36694" />
 
+			<!--Objective: Feed of Evil-->
 			<CustomBehavior File="InteractWith" QuestId="14461" QuestObjectiveIndex="1" InteractByUsingItemId="49539" MobId="36727" NumOfTimes="100" X="-3402.709" Y="-263.1781" Z="61.45258" />
 			<CustomBehavior File="InteractWith" QuestId="14461" QuestObjectiveIndex="2" InteractByUsingItemId="49539" MobId="37155" NumOfTimes="100" X="-3391.046" Y="-212.9838" Z="61.69099" />
 			<CustomBehavior File="InteractWith" QuestId="14461" QuestObjectiveIndex="3" InteractByUsingItemId="49539" MobId="37156" NumOfTimes="100" X="-3361.886" Y="-231.7121" Z="61.8663" />
@@ -104,6 +105,7 @@
 		<TurnIn QuestName="Rite of Honor" QuestId="14460" TurnInName="Chief Hawkwind" TurnInId="2981" />
 		<PickUp QuestName="Last Rites, First Rites" QuestId="24861" GiverName="Chief Hawkwind" GiverId="2981" />
 
+			<!--Objective: Last Rites, First Rites-->
 			<While Condition="HasQuest(24861) &amp;&amp; !IsQuestCompleted(24861)">
 				<RunTo X="-2908.458" Y="-254.5024" Z="59.72401" />
 				<CustomBehavior File="Misc\RunLua" Lua="UseItemByName(50465)" WaitTime="2000" />
@@ -115,33 +117,86 @@
 		<If Condition="Me.Class == WoWClass.Druid" >
 			<TurnIn QuestName="Verdant Note" QuestId="3094" TurnInName="Gart Mistrunner" TurnInId="3060" />
 			<PickUp QuestName="Moonfire" QuestId="27067" GiverName="Gart Mistrunner" GiverId="3060" />
-			<While Condition="HasQuest(27067) &amp;&amp; !IsQuestCompleted(27067)">
-				<DisableBehavior Name="Combat" />
-				<CustomBehavior File="InteractWith" InteractByCastingSpellId="8921" KeepTargetSelected="True" NumOfTimes="1" MobId="44848" Range="40" WaitTime="2000" X="-2920.208" Y="-268.5547" Z="59.95792" />
-				<EnableBehavior Name="Combat" />
-			</While>
+
+				<!--Objective: Moonfire-->
+				<While Condition="HasQuest(27067) &amp;&amp; !IsQuestCompleted(27067)">
+					<DisableBehavior Name="Combat" />
+					<CustomBehavior File="InteractWith" InteractByCastingSpellId="8921" KeepTargetSelected="True" NumOfTimes="1" MobId="44848" Range="40" WaitTime="2000" X="-2920.208" Y="-268.5547" Z="59.95792" />
+					<EnableBehavior Name="Combat" />
+				</While>
+
 			<TurnIn QuestName="Moonfire" QuestId="27067" TurnInName="Gart Mistrunner" TurnInId="3060" />
 		</If>		
 		<If Condition="Me.Class == WoWClass.Hunter">
 			<TurnIn QuestName="Etched Note" QuestId="3092" TurnInName="Lanka Farshot" TurnInId="3061" />
 			<PickUp QuestName="The Hunter's Path" QuestId="27021" GiverName="Lanka Farshot" GiverId="3061" />
-			<While Condition="HasQuest(27021) &amp;&amp; !IsQuestCompleted(27021)">
-				<DisableBehavior Name="Combat" />
-				<CustomBehavior File="InteractWith" InteractByCastingSpellId="56641" KeepTargetSelected="True" NumOfTimes="1" MobId="44848" Range="40" WaitTime="2000" X="-2920.208" Y="-268.5547" Z="59.95792" />
-				<EnableBehavior Name="Combat" />
-			</While>
+
+				<!--Objective: The Hunter's Path-->
+				<While Condition="HasQuest(27021) &amp;&amp; !IsQuestCompleted(27021)">
+					<DisableBehavior Name="Combat" />
+					<CustomBehavior File="InteractWith" InteractByCastingSpellId="56641" KeepTargetSelected="True" NumOfTimes="1" MobId="44848" Range="40" WaitTime="2000" X="-2920.208" Y="-268.5547" Z="59.95792" />
+					<EnableBehavior Name="Combat" />
+				</While>
+
 			<TurnIn QuestName="The Hunter's Path" QuestId="27021" TurnInName="Lanka Farshot" TurnInId="3061" />
+		</If>
+		<If Condition="Me.Class == WoWClass.Monk" >
+			<TurnIn QuestName="Calligraphed Note" QuestId="31165" TurnInName="Shoyu" TurnInId="63327" X="-2910.488" Y="-260.8889" Z="59.53426" />
+			<PickUp QuestName="Tiger Palm" QuestId="31166" GiverName="Shoyu" GiverId="63327" X="-2910.488" Y="-260.8889" Z="59.53426" />
+
+				<!--Objective: Tiger Palm-->
+				<While Condition="HasQuest(31166) &amp;&amp; !IsQuestCompleted(31166)">
+					<DisableBehavior Name="Combat" />
+					<CustomBehavior File="InteractWith" InteractByCastingSpellId="100780" NumOfTimes="1" MobId="44848" Range="5" X="-2920.208" Y="-268.5547" Z="59.95792" />
+					<CustomBehavior File="InteractWith" InteractByCastingSpellId="100787" NumOfTimes="1" MobId="44848" Range="5" WaitForNpcs="False" WaitTime="2000" X="-2920.208" Y="-268.5547" Z="59.95792" />
+					<EnableBehavior Name="Combat" />
+				</While>
+
+			<TurnIn QuestName="Tiger Palm" QuestId="31166" TurnInName="Shoyu" TurnInId="63327" X="-2910.488" Y="-260.8889" Z="59.53426" />
+		</If>
+		<If Condition="Me.Class == WoWClass.Paladin">
+			<TurnIn QuestName="Consecrated Note" QuestId="27015" TurnInName="Sunwalker Helaku" TurnInId="37737" />
+			<PickUp QuestName="The Way of the Sunwalkers" QuestId="27023" GiverName="Sunwalker Helaku" GiverId="37737" />
+			
+				<!--Objective: The Way of the Sunwalkers-->
+				<While Condition="HasQuest(27023) &amp;&amp; !IsQuestCompleted(27023)">
+					<DisableBehavior Name="Combat" />
+					<If Condition="!Me.HasAura(105361)">
+						<CustomBehavior File="Misc\RunLua" Lua="CastSpellByID(105361)" WaitTime="1000" />
+					</If>
+					<CustomBehavior File="InteractWith" MobId="44848" WaitTime="3000" X="-2920.208" Y="-268.5547" Z="59.95792" />
+					<EnableBehavior Name="Combat" />
+				</While>
+
+			<TurnIn QuestName="The Way of the Sunwalkers" QuestId="27023" TurnInName="Sunwalker Helaku" TurnInId="37737" />
 		</If>
 		<If Condition="Me.Class == WoWClass.Shaman">
 			<TurnIn QuestName="Rune-Inscribed Note" QuestId="3093" TurnInName="Meela Dawnstrider" TurnInId="3062" />
 			<PickUp QuestName="Primal Strike" QuestId="27027" GiverName="Meela Dawnstrider" GiverId="3062" />
-			<While Condition="HasQuest(27027) &amp;&amp; !IsQuestCompleted(27027)">
-				<DisableBehavior Name="Combat" />
-				<CustomBehavior File="InteractWith" InteractByCastingSpellId="73899" KeepTargetSelected="True" NumOfTimes="1" MobId="44848" Range="5" WaitTime="2000" X="-2920.208" Y="-268.5547" Z="59.95792" />
-				<EnableBehavior Name="Combat" />
-			</While>
+
+				<!--Objective: Primal Strike-->
+				<While Condition="HasQuest(27027) &amp;&amp; !IsQuestCompleted(27027)">
+					<DisableBehavior Name="Combat" />
+					<CustomBehavior File="InteractWith" InteractByCastingSpellId="73899" KeepTargetSelected="True" NumOfTimes="1" MobId="44848" Range="5" WaitTime="2000" X="-2920.208" Y="-268.5547" Z="59.95792" />
+					<EnableBehavior Name="Combat" />
+				</While>
+
 			<TurnIn QuestName="Primal Strike" QuestId="27027" TurnInName="Meela Dawnstrider" TurnInId="3062" />
-		</If>		
+		</If>
+		<If Condition="Me.Class == WoWClass.Warrior">
+			<TurnIn QuestName="Simple Note" QuestId="3091" TurnInName="Harutt Thunderhorn" TurnInId="3059" />
+			<PickUp QuestName="The First Lesson" QuestId="27020" GiverName="Harutt Thunderhorn" GiverId="3059" />
+
+				<!---Objective: Charge-->
+				<While Condition="HasQuest(27020) &amp;&amp; !IsQuestCompleted(27020)">
+					<Disablebehavior Name="Combat" />
+					<RunTo X="-2927.235" Y="-282.0792" Z="59.25224" />
+					<CustomBehavior File="InteractWith" InteractByCastingSpellId="100" MobId="44848" MinRange="8" Range="25" X="-2927.235" Y="-282.0792" Z="59.25224" />
+					<Enablebehavior Name="Combat" />
+				</While>
+			
+			<TurnIn QuestName="The First Lesson" QuestId="27020" TurnInName="Harutt Thunderhorn" TurnInId="3059" />
+		</If>
 
 		<TurnIn QuestName="Rites of the Earthmother" QuestId="23733" TurnInName="Dyami Windsoar" TurnInId="36803" />
 		<PickUp QuestName="Rite of the Winds" QuestId="24215" GiverName="Dyami Windsoar" GiverId="36803" />

@@ -23,6 +23,8 @@
  	</AvoidMobs>
 
 	<Blackspots>
+		<!--Splintertree Post: NE Path-->
+		<Blackspot X="2153.805" Y="-2498.847" Z="80.44029" Radius="29.13994" />
 	</Blackspots>
 
 	<Mailboxes>
@@ -35,8 +37,8 @@
 	</Vendors>
 
 	<QuestOrder>
-		<CustomBehavior File="Message" Text="Error: Profile is only 16% complete! Shutting Down." LogColor="Red" />
-		<CustomBehavior File="Halt" />
+		<!--CustomBehavior File="Message" Text="Error: Profile is only 16% complete! Shutting Down." LogColor="Red" />
+		<CustomBehavior File="Halt" /-->
 		<CustomBehavior File="Message" Text="Initializing Settings" LogColor="Cyan" />
 		<CustomBehavior File="UserSettings" LootMobs="True" UseFlightPaths="True" PullDistance="25" />
 
@@ -127,21 +129,78 @@
 
 		<TurnIn QuestName="Management Material" QuestId="13640" TurnInName="Gorka" TurnInId="33421" />
 		<PickUp QuestName="Needs a Little Lubrication" QuestId="13651" GiverName="Gorka" GiverId="33421" />
-			
+
+			<!--Needs Override?-->
 			<Objective QuestName="Needs a Little Lubrication" QuestId="13651" Type="CollectItem" ItemId="45071" CollectCount="5" />
 		
-		<TurnIn QuestName="Needs a Little Lubrication" QuestId="13651" TurnInName="Gorka" TurnInId="33421" />		
-<CustomBehavior File="Halt" />
+		<TurnIn QuestName="Needs a Little Lubrication" QuestId="13651" TurnInName="Gorka" TurnInId="33421" />
+		<PickUp QuestName="Torek's Assault" QuestId="6544" GiverName="Torek" GiverId="12858" />
+			
+			<While Condition="(HasQuest(6544)) &amp;&amp; (!IsQuestCompleted(6544))" >
+				<CustomBehavior File="EscortGroup" QuestId="6544" EscortNpcId="12858" 
+					EscortCompleteWhen="QuestCompleteOrFails" EscortNpcId2="12859" 
+					EscortMaxFollowDistance="10" EscortMaxFightDistance="17" />
+				<If Condition="!IsQuestCompleted(6544)">
+					<CustomBehavior File="AbandonQuest" QuestId="6544" Type="Failed" />
+					<PickUp QuestName="Torek's Assault" QuestId="6544" GiverName="Torek" GiverId="12858" />			
+					<CustomBehavior File="WaitTimer" WaitTime="5000" />
+				</If>
+			</While>
 
+		<PickUp QuestName="Crisis at Splintertree" QuestId="13653" GiverName="Gorka" GiverId="33421" />
+			
+			<!--Objective: Crisis at Splintertree-->
+			<While Condition="HasQuest(13653) &amp;&amp; !IsQuestCompleted(13653)">
+				<RunTo DestName="Gorka" X="1582.116" Y="-2503.114" Z="98.00448" />
+				<CustomBehavior QuestId="13653" File="ForcedDismount" />
+				<CustomBehavior File="InteractWith" MobId="33421" InteractByGossipOptions="1" WaitTime="16000" X="1582.116" Y="-2503.114" Z="98.00448" />		
+				<While Condition="Me.IsOnTransport">
+					<CustomBehavior File="WaitTimer" WaitTime="15000" GoalText="Waiting to get off of Brutusk" />
+				</While>
+			</While>
 
+		<TurnIn QuestName="Crisis at Splintertree" QuestId="13653" TurnInName="Kadrak" TurnInId="8582" />	
+		<PickUp QuestName="To the Rescue!" QuestId="13712" GiverName="Kadrak" GiverId="8582" />
 
+			<!--Objective: To the Rescue!-->
+			<While Condition="HasQuest(13712) &amp;&amp; !IsQuestCompleted(13712)">
+				<CustomBehavior File="InteractWith" QuestId="13712" MobId="8582" NumOfTimes="1" WaitForNpcs="False" InteractByGossipOptions="1" X="1234.354" Y="-2247.047" Z="91.75333" />
+				<CustomBehavior File="ForcedDismount" />
+				<CustomBehavior File="WaitTimer" WaitTime="30000" GoalText="Waiting for Brutusk's Fat Ass' {TimeRemaining}" />
 
+				<!--Brutusk Missing: Take Flight Instead-->
+				<If Condition="Me.ZoneId == 17">
+					<CustomBehavior File="InteractWith" QuestId="13712" MobId="8582" NumOfTimes="1" WaitForNpcs="False" GossipOptions="2" X="1236.776" Y="-2251.217" Z="91.92881" />
+					<CustomBehavior File="ForcedDismount" />
+					<CustomBehavior File="WaitTimer" WaitTime="65000" GoalText="Waiting for flight to End: {TimeRemaining}" />
+				</If>
+				
+				<!--Let Brutusk Dance-->
+				<If Condition="Me.IsOnTransport">
+					<CustomBehavior File="WaitTimer" WaitTime="125000" GoalText="Waiting for Brutusk to get to Splintertree {TimeRemaining}" />
+				</If>
+				
+				<!--Stuck on Transport-->
+				<While Condition="Me.IsOnTransport">
+					<CustomBehavior File="Message" Text="It looks like we got stuck here! Waiting 30s (This Quest is broken by Blizzard)" LogColor="Orange" />
+					<CustomBehavior File="Message" Text="If you are still stuck here, hearth to Orgrimmar and press start" LogColor="Orange" />
+					<CustomBehavior File="WaitTimer" WaitTime="30000" GoalText="Waiting for ride {TimeRemaining}" />
+				</While>
+				
+				<!-- Drop quest and try again -->
+				<If Condition="HasQuest(13712) &amp;&amp; !IsQuestCompleted(13712)" >
+					<CustomBehavior File="AbandonQuest" QuestId="13712" Type="Incomplete" />
+					<CustomBehavior File="NoCombatMoveTo" X="1233.051" Y="-2247.807" Z="91.73113" />
+					<PickUp QuestName="To the Rescue!" QuestId="13712" GiverName="Kadrak" GiverId="8582" />
+				</If>
+			</While>
 
-	<Objective QuestName="Mor'shan Defense" QuestId="13612" Type="KillMob" MobId="33193" KillCount="5" />
-	<Objective QuestName="Mor'shan Defense" QuestId="13612" Type="KillMob" MobId="33195" KillCount="5" />
-	<TurnIn QuestName="Mor'shan Defense" QuestId="13612" TurnInName="Kadrak" TurnInId="8582" />
-<TurnIn QuestName="Find Gorat!" QuestId="13618" TurnInName="Gorat" TurnInId="33294" />
+		<TurnIn QuestName="To the Rescue!" QuestId="13712" TurnInName="Kadrak" TurnInId="33837" />
+		<TurnIn QuestName="Torek's Assault" QuestId="6544" TurnInName="Ertog Ragetusk" TurnInId="12877" />
+		
+		<CustomBehavior File="Message" Text="Compiling Quests: Splintertree Post" LogColor="Cyan" />
 
+		<PickUp QuestName="Blood of the Weak" QuestId="13803" GiverName="Kadrak" GiverId="33837" />
 
 	</QuestOrder>
 </HBProfile>

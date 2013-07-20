@@ -48,7 +48,7 @@
 
 	<QuestOrder>
 		<CustomBehavior File="Message" Text="Initializing Settings" LogColor="Cyan" />
-		<CustomBehavior File="UserSettings" LootMobs="True" UseFlightPaths="True" PullDistance="25" />
+		<CustomBehavior File="UserSettings" LootMobs="True" UseFlightPaths="True" PullDistance="29" />
 		
 		<CustomBehavior File="Message" Text="Compiling Quests: Calston Estate" LogColor="Cyan" />
 
@@ -174,21 +174,23 @@
 		<If Condition="HasQuest(24992)">
 			<TurnIn QuestName="Escaped From Gilneas" QuestId="24992" TurnInName="Executor Zygand" TurnInId="1515" />
 		</If>
-
-		<TurnIn QuestName="A Thorn in our Side" QuestId="24981" TurnInName="Executor Zygand" TurnInId="1515" />
-
 		<If Condition="IsQuestCompleted(24992)">
 			<PickUp QuestName="Annihilate the Worgen" QuestId="24993" GiverName="Executor Zygand" GiverId="1515" />
 		</If>
+
+		<TurnIn QuestName="A Thorn in our Side" QuestId="24981" TurnInName="Executor Zygand" TurnInId="1515" />
 		<TurnIn QuestName="Darkhound Pounding" QuestId="24990" TurnInName="Junior Apothecary Holland" TurnInId="10665" />
 		<PickUp QuestName="Holland's Experiment" QuestId="24996" GiverName="Junior Apothecary Holland" GiverId="10665" />
 		<TurnIn QuestName="Holland's Experiment" QuestId="24996" TurnInName="Captured Mountaineer" TurnInId="2211" />
 
-			<If Condition="IsQuestCompleted(24992)">
+			<!--Objective: Annihilate the Worgen-->
+			<If Condition="HasQuest(24993) &amp;&amp; !IsQuestCompleted(24993)">
+				<CustomBehavior File="UserSettings" PullDistance="5" />
 				<Objective QuestName="Annihilate the Worgen" QuestId="24993" Type="KillMob" MobId="38967" KillCount="5" />
+				<CustomBehavior File="UserSettings" Preset="UserOriginal" />
 			</If>
 
-		<If Condition="IsQuestCompleted(24992)">
+		<If Condition="HasQuest(24993) &amp;&amp; IsQuestCompleted(24993)">
 			<TurnIn QuestName="Annihilate the Worgen" QuestId="24993" TurnInName="Executor Zygand" TurnInId="1515" />
 		</If>
 

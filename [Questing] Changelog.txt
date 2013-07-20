@@ -1,6 +1,15 @@
 ==================================
  ==== Life Project Changelog ====
 ==================================
+______________________________________
+Revision 61: Thursday, July 19th, 2013
+-- Silverpine Forest OverRide Error Fixes
+-- Tirisfal Glades: Annihilate the Worgen Fixed?
+-- Minor Ashenvale Work: Mid 20% Complete
+-- Weird Blood Elf Condition: Will re-evaluate once I re-do BE class quests
+-- Night Elf Start Added & Teldrassil Placeholder
+-- Horde Pandaren Added: Goes straight into Northern Barrens
+-- Background Worgen & Death Knight Profiles
 _______________________________________
 Revision 60: Wednesday, July 18th, 2013
 -- Delete Useless Item from Samophlange Quests

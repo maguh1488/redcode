@@ -622,6 +622,7 @@
 				<RunTo X="-1053.514" Y="-2586.98" Z="91.62601" />
 				<CustomBehavior File="InteractWith" MobId="195311" InteractByUsingItemId="5165" CollectionDistance="5" WaitTime="1000" X="-1053.514" Y="-2586.98" Z="91.62601" />
 			</While>
+
 			<!--Objective: Into the Raptors Den [Red Nest]-->
 			<While Condition="HasQuest(905) &amp;&amp; !IsObjectiveComplete(1,905)">
 				<If Condition="!HasItem(5165)">
@@ -635,6 +636,7 @@
 				<RunTo X="-1068.43" Y="-2652.30" Z="91.79" />
 				<CustomBehavior File="InteractWith" MobId="195311" InteractByUsingItemId="5165" CollectionDistance="5" WaitTime="1000" X="-1068.43" Y="-2652.30" Z="91.79" />
 			</While>
+
 			<!--Objective: Into the Raptors Den [Yellow Nest]-->
 			<While Condition="HasQuest(905) &amp;&amp; !IsObjectiveComplete(2,905)">
 				<If Condition="!HasItem(5165)">
@@ -648,6 +650,7 @@
 				<RunTo X="-1106.75" Y="-2557.45" Z="117.73" />
 				<CustomBehavior File="InteractWith" MobId="195311" InteractByUsingItemId="5165" CollectionDistance="5" WaitTime="1000" X="-1106.75" Y="-2557.45" Z="117.73" />
 			</While>
+
 			<!--Objective: In Fungus We Trust-->
 			<While Condition="HasQuest(13998) &amp;&amp; !IsQuestCompleted(13998)">
 				<RunTo DestName="Stagnant Oasis" X="-1197.229" Y="-2961.847" Z="88.8626" />
@@ -659,6 +662,7 @@
 
 			<!--Objective: King of Centaur Mountain-->
 			<CustomBehavior File="EscortGroup" QuestId="13995" EscortNpcId="34634" EscortMaxFightDistance="40" />
+			
 			<!--Failed King of Centaur Mountain-->
 			<If Condition="!IsQuestCompleted(13995)">
 				<CustomBehavior File="AbandonQuest" QuestId="13995" Type="All" />
@@ -680,7 +684,6 @@
 			
 		<TurnIn QuestName="Verog the Dervish" QuestId="851" TurnInName="Shoe" TurnInId="34638" />
 
-			<!--Wasn't Paying Attention: Test Carefully-->
 			<!--Objective: A Growing Problem-->
 			<While Condition="HasQuest(13988) &amp;&amp; !IsQuestCompleted(13988)">
 				<RunTo DestName="Thunderhead Summit" X="-1470.566" Y="-3295.896" Z="210.7753" />
@@ -695,6 +698,7 @@
 		<PickUp QuestName="Altered Beings" QuestId="880" GiverName="Jerrik Highmountain" GiverId="34626" />
 
 			<Objective QuestName="Altered Beings" QuestId="880" Type="CollectItem" ItemId="5098" CollectCount="6" />
+			
 			<!--Objective: The Stagnant Oasis-->
 			<If Condition="HasQuest(877) &amp;&amp; !IsQuestCompleted(877)">
 				<CustomBehavior File="InteractWith" QuestId="877" NonCompeteDistance="0" MobId="3737" X="-1276.749" Y="-3011.112" Z="72.02942" />

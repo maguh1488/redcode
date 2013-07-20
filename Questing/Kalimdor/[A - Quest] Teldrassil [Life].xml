@@ -1,0 +1,50 @@
+<HBProfile>
+	<Name>[A - Quest] Teldrassil [Life]</Name>
+
+	<MinLevel>5</MinLevel>
+	<MaxLevel>91</MaxLevel>
+
+	<MinDurability>0.2</MinDurability>
+	<MinFreeBagSlots>2</MinFreeBagSlots>
+
+	<MailGrey>False</MailGrey>
+	<MailWhite>False</MailWhite>
+	<MailGreen>True</MailGreen>
+	<MailBlue>True</MailBlue>
+	<MailPurple>True</MailPurple>
+   
+	<SellGrey>True</SellGrey>
+	<SellWhite>True</SellWhite>
+	<SellGreen>True</SellGreen>
+	<SellBlue>False</SellBlue>
+	<SellPurple>False</SellPurple>
+
+	<AvoidMobs>
+ 	</AvoidMobs>
+
+	<Blackspots>
+	</Blackspots>
+
+	<Mailboxes>
+		<!--Dolanaar Vendor-->
+		<Mailbox X="9850.111" Y="957.8356" Z="1306.785" />
+	</Mailboxes>
+
+	<Vendors>
+		<!--Dolanaar Vendors-->
+		<Vendor Name="Innkeeper Keldamyr" Entry="6736" Type="Food" X="9802.209" Y="982.6077" Z="1313.896" />
+		<Vendor Name="Shalomon" Entry="3609" Type="Repair" X="9812.371" Y="947.5777" Z="1308.769" />
+	</Vendors>
+
+	<QuestOrder>
+		<CustomBehavior File="Message" Text="Initializing Settings" LogColor="Cyan" />
+
+			<!--Settings Configuration-->
+			<CustomBehavior File="UserSettings" LootMobs="True" UseFlightPaths="True" PullDistance="25" />
+			<CustomBehavior File="EnablePlugin" Names="Anti Drown,AutoEquip2,Drink Potions,Refreshment,Talented2" />
+			<CustomBehavior File="RunMacro" Macro="/script SetCVar('AutoLootDefault', 1)" WaitTime="1000" />
+
+		<CustomBehavior File="Message" Text="Compiling Quests: ...Error! Profile Not Complete!" LogColor="Red" />
+		<CustomBehavior File="Halt" />
+	</QuestOrder>
+</HBProfile>
