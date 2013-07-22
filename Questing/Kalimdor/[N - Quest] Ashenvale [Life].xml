@@ -20,21 +20,120 @@
 	<SellPurple>False</SellPurple>
 
 	<AvoidMobs>
+		<!--Alliance QuestGiver-->
+		<Mob Name="Gaivan Shadewalker" Id="33777" />
  	</AvoidMobs>
 
 	<Blackspots>
-		<!--Splintertree Post: NE Path-->
+		<!--Splintertree Post: North East Path-->
 		<Blackspot X="2153.805" Y="-2498.847" Z="80.44029" Radius="29.13994" />
+		<!--Blackfathom Camp-->
+		<Blackspot X="3879.197" Y="647.5704" Z="8.880411" Radius="35.79582" />
 	</Blackspots>
 
 	<Mailboxes>
+		<!--Hellscream's Reach-->
+		<Mailbox X="3042.039" Y="-532.4149" Z="205.6395" />
 	</Mailboxes>
 
 	<Vendors>
 		<!--The Mor'Shan Ramparts Vendors-->
 		<Vendor Name="Marrok" Entry="43637" Type="Food" X="1241.15" Y="-2215.71" Z="106.897" />
 		<Vendor Name="Ornag" Entry="43645" Type="Repair" X="1236.83" Y="-2233.08" Z="91.90649" />
+		<!--Splintertree Post Vendors-->
+		<Vendor Name="Innkeeper Kaylisk" Entry="12196" Type="Food" X="2341.864" Y="-2566.989" Z="103.093" />
+		<Vendor Name="Burkrum" Entry="6028" Type="Repair" X="2346.262" Y="-2582.214" Z="103.0935" />
+		<!--Zoram'gar Outpost Vendors-->
+		<Vendor Name="Innkeeper Duras" Entry="43606" Type="Food" X="3360.08" Y="950.816" Z="7.404301" />
+		<Vendor Name="Toral" Entry="43615" Type="Repair" X="3319.01" Y="1040.83" Z="4.057649" />
+		<!--Hellscream's Watch Vendors-->
+		<Vendor Name="Innkeeper Linkasa" Entry="43624" Type="Food" X="3051.23" Y="-526.09" Z="205.6395" />
+		<Vendor Name="Shenara" Entry="43625" Type="Repair" X="2989.99" Y="-483.747" Z="198.6276" />
 	</Vendors>
+
+	<Quest Id="26448" Name="Destroy the Legion">
+		<Objective Type="KillMob" MobId="11697" KillCount="15">
+			<Hotspots>
+				<Hotspot X="2106.383" Y="-2947.819" Z="112.3336" />
+				<Hotspot X="2171.51" Y="-2954.652" Z="118.8538" />
+				<Hotspot X="2145.981" Y="-3033.528" Z="113.4765" />
+				<Hotspot X="2096.197" Y="-3078.244" Z="108.7765" />
+				<Hotspot X="2018.64" Y="-3151.614" Z="101.8183" />
+				<Hotspot X="1972.46" Y="-3177.893" Z="100.9771" />
+				<Hotspot X="1954.885" Y="-3139.126" Z="101.6319" />
+				<Hotspot X="1933.427" Y="-3079.604" Z="104.6199" />
+				<Hotspot X="1969.862" Y="-2984.563" Z="104.5381" />
+			</Hotspots>
+		</Objective>
+	</Quest>
+	<Quest Name="Wet Work" Id="13865" >
+		<Objective Type="KillMob" MobId="34177" Name="Ashenvale Scout" KillCount="12">
+			<Hotspots>
+				<Hotspot X="2442.417" Y="-3120.513" Z="123.9113" />
+				<Hotspot X="2381.191" Y="-3162.039" Z="118.1499" />
+				<Hotspot X="2446.531" Y="-3300.907" Z="110.1913" />
+				<Hotspot X="2484.254" Y="-3272.582" Z="118.3477" />
+				<Hotspot X="2537.279" Y="-3260.697" Z="128.8321" />
+				<Hotspot X="2582.677" Y="-3281.467" Z="133.4868" />
+				<Hotspot X="2636.767" Y="-3314.157" Z="132.6564" />
+			</Hotspots>
+		</Objective>
+				<Objective Type="KillMob" MobId="34208" Name="Protector Endolar" KillCount="1">
+			<Hotspots>
+				<Hotspot X="2518.577" Y="-3227.686" Z="130.2938" />
+			</Hotspots>
+		</Objective>
+				<Objective Type="KillMob" MobId="34294" Name="Protector Dorinar" KillCount="1">
+			<Hotspots>
+				<Hotspot X="2324.543" Y="-3252.532" Z="107.5983" /> 
+			</Hotspots>
+		</Objective>
+				<Objective Type="KillMob" MobId="34204" Name="Protector Arminon" KillCount="1">
+			<Hotspots>
+				<Hotspot X="2445.13" Y="-3244.656" Z="115.8749" />
+			</Hotspots>
+		</Objective>
+	</Quest>
+	<Quest Id="13871" Name="Security!">
+		<Objective Type="CollectItem" ItemId="46147" CollectCount="1">
+			<CollectFrom>
+				<Mob Name="Kaldorei Assassin" Id="34206" />
+			</CollectFrom>
+			<Hotspots>
+				<Hotspot X="2471.76" Y="-3546.283" Z="99.26853" />
+				<Hotspot X="2413.808" Y="-3562.999" Z="99.28705" />
+				<Hotspot X="2424.337" Y="-3519.173" Z="99.31619" />
+				<Hotspot X="2442.44" Y="-3476.127" Z="91.72279" />
+				<Hotspot X="2422.863" Y="-3473.552" Z="92.91798" />
+				<Hotspot X="2392.989" Y="-3492.604" Z="94.28128" />
+				<Hotspot X="2463.032" Y="-3477.657" Z="92.47218" />
+				<Hotspot X="2471.503" Y="-3489.447" Z="92.49441" />
+				<Hotspot X="2443.865" Y="-3436.849" Z="95.86751" />
+				<Hotspot X="2449.571" Y="-3407.155" Z="100.2342" />
+				<Hotspot X="2476.541" Y="-3422.998" Z="104.2572" />
+				<Hotspot X="2499.956" Y="-3445.174" Z="105.515" />
+			</Hotspots>
+		</Objective>
+	</Quest>
+	<Quest Id="6442" Name="Naga at the Zoram Strand">
+		<Objective Type="CollectItem" ItemId="5490" CollectCount="20">
+			<CollectFrom>
+				<Mob Name="Wrathtail Sorceress" Id="3717" />
+				<Mob Name="Wrathtail Wave Rider" Id="3713" />
+			</CollectFrom>
+			<Hotspots>
+				<Hotspot X="3468.245" Y="978.6954" Z="2.866953" />
+				<Hotspot X="3533.477" Y="1017.938" Z="1.862595" />
+				<Hotspot X="3567.297" Y="983.4821" Z="1.982904" />
+				<Hotspot X="3563.981" Y="935.8932" Z="1.625012" />
+				<Hotspot X="3580.971" Y="876.4304" Z="2.707436" />
+				<Hotspot X="3645.341" Y="863.7339" Z="1.210483" />
+				<Hotspot X="3677.878" Y="891.3516" Z="1.089726" />
+				<Hotspot X="3673.159" Y="916.996" Z="2.159494" />
+				<Hotspot X="3685.315" Y="873.979" Z="1.316164" />
+			</Hotspots>
+		</Objective>
+	</Quest>
 
 	<QuestOrder>
 		<!--CustomBehavior File="Message" Text="Error: Profile is only 16% complete! Shutting Down." LogColor="Red" />
@@ -136,7 +235,7 @@
 		<TurnIn QuestName="Needs a Little Lubrication" QuestId="13651" TurnInName="Gorka" TurnInId="33421" />
 		<PickUp QuestName="Torek's Assault" QuestId="6544" GiverName="Torek" GiverId="12858" />
 			
-			<While Condition="(HasQuest(6544)) &amp;&amp; (!IsQuestCompleted(6544))" >
+			<While Condition="HasQuest(6544) &amp;&amp; !IsQuestCompleted(6544)">
 				<CustomBehavior File="EscortGroup" QuestId="6544" EscortNpcId="12858" 
 					EscortCompleteWhen="QuestCompleteOrFails" EscortNpcId2="12859" 
 					EscortMaxFollowDistance="10" EscortMaxFightDistance="17" />
@@ -187,7 +286,7 @@
 					<CustomBehavior File="WaitTimer" WaitTime="30000" GoalText="Waiting for ride {TimeRemaining}" />
 				</While>
 				
-				<!-- Drop quest and try again -->
+				<!--Super Stuck: Let's Try Again!-->
 				<If Condition="HasQuest(13712) &amp;&amp; !IsQuestCompleted(13712)" >
 					<CustomBehavior File="AbandonQuest" QuestId="13712" Type="Incomplete" />
 					<CustomBehavior File="NoCombatMoveTo" X="1233.051" Y="-2247.807" Z="91.73113" />
@@ -201,6 +300,366 @@
 		<CustomBehavior File="Message" Text="Compiling Quests: Splintertree Post" LogColor="Cyan" />
 
 		<PickUp QuestName="Blood of the Weak" QuestId="13803" GiverName="Kadrak" GiverId="33837" />
+		<TurnIn QuestName="Torek's Assault" QuestId="6544" TurnInName="Ertog Ragetusk" TurnInId="12877" />
+		<PickUp QuestName="Ashenvale Outrunners" QuestId="6503" GiverName="Kuray'bin" GiverId="12867" />
+		<PickUp QuestName="Destroy the Legion" QuestId="26448" GiverName="Valusha" GiverId="17355" />
 
+			<!--Cleaning: Force Repair, Sell, & Mail-->
+			<If Condition="HasQuest(13803) &amp;&amp; IsQuestCompleted(13803)">
+				<CustomBehavior File="Message" Text="Cleaning: Repairing, Selling, &amp; Mailing. Please Wait" LogColor="Cyan" />
+				<CustomBehavior File="ForceSetVendor" DoSell="True" DoRepair="True" DoMail="True" />
+			</If>
+
+		<TurnIn QuestName="Blood of the Weak" QuestId="13803" TurnInName="Durak" TurnInId="33760" X="2456.776" Y="-2463.134" Z="109.8879" />
+		<PickUp QuestName="Pierce Their Heart!" QuestId="13805" GiverName="Durak" GiverId="33760" X="2456.776" Y="-2463.134" Z="109.8879" />
+		<PickUp QuestName="Playing With Felfire" QuestId="13730" GiverName="Splintertree Demolisher" GiverId="33726" />
+		<PickUp QuestName="Dead Elves Walking" QuestId="13801" GiverName="Pixel" GiverId="12724" />
+
+			<!--Objective: Playing with Felfire-->
+			<CustomBehavior File="InteractWith" QuestId="13730" MobId="33736" InteractByUsingItemId="45478" WaitTime="1000" NumOfTimes="50" Range="10">
+				<HuntingGrounds>
+					<Hotspot X="2106.383" Y="-2947.819" Z="112.3336" />
+					<Hotspot X="2171.51" Y="-2954.652" Z="118.8538" />
+					<Hotspot X="2145.981" Y="-3033.528" Z="113.4765" />
+					<Hotspot X="2096.197" Y="-3078.244" Z="108.7765" />
+					<Hotspot X="2018.64" Y="-3151.614" Z="101.8183" />
+					<Hotspot X="1972.46" Y="-3177.893" Z="100.9771" />
+					<Hotspot X="1954.885" Y="-3139.126" Z="101.6319" />
+					<Hotspot X="1933.427" Y="-3079.604" Z="104.6199" />
+					<Hotspot X="1969.862" Y="-2984.563" Z="104.5381" />
+				</HuntingGrounds>
+			</CustomBehavior>
+
+			<Objective QuestName="Destroy the Legion" QuestId="26448" Type="KillMob" MobId="11697" KillCount="15" />
+
+		<!--PickUp: Diabolical Plans-->
+		<If Condition="!HasQuest(26447) &amp;&amp; !IsQuestCompleted(26447)">
+			<SetGrindArea>
+				<GrindArea>
+					<Factions>90</Factions>
+					<Hotspots>
+						<Hotspot X="2106.383" Y="-2947.819" Z="112.3336" />
+						<Hotspot X="2171.51" Y="-2954.652" Z="118.8538" />
+						<Hotspot X="2145.981" Y="-3033.528" Z="113.4765" />
+						<Hotspot X="2096.197" Y="-3078.244" Z="108.7765" />
+						<Hotspot X="2018.64" Y="-3151.614" Z="101.8183" />
+						<Hotspot X="1972.46" Y="-3177.893" Z="100.9771" />
+						<Hotspot X="1954.885" Y="-3139.126" Z="101.6319" />
+						<Hotspot X="1933.427" Y="-3079.604" Z="104.6199" />
+						<Hotspot X="1969.862" Y="-2984.563" Z="104.5381" />
+					</Hotspots>
+ 				</GrindArea>
+			</SetGrindArea>
+			<GrindTo Condition="HasItem(23797)" GoalText="Farming for Diabolical Plans" />
+
+			<PickUp QuestName="Diabolical Plans" QuestId="26447" GiverType="Item" GiverId="23797" />
+		</If>
+
+			<Objective QuestName="Ashenvale Outrunners" QuestId="6503" Type="KillMob" MobId="12856" KillCount="9" />
+
+			<!--Objective: Pierce Their Heart!-->
+			<If Condition="HasQuest(13805) &amp;&amp; !IsQuestCompleted(13805)">
+				<RunTo DestName="Forest Heart" X="1816.453" Y="-2653.943" Z="52.9456" />
+				<CustomBehavior File="WaitTimer" WaitTime="2000"/>
+				<!--Dislike: Replace with Lua-->
+				<UseItem ItemId="45683" QuestId="13805" X="1817.922" Y="-2652.812" Z="52.8696" />
+			</If>
+
+			<Objective QuestName="Dead Elves Walking" QuestId="13801" Type="KillMob" MobId="3803" KillCount="15" />
+
+		<TurnIn QuestName="Dead Elves Walking" QuestId="13801" TurnInName="Pixel" TurnInId="12724" />
+		<TurnIn QuestName="Pierce Their Heart!" QuestId="13805" TurnInName="Kadrak" TurnInId="33837" X="2318.859" Y="-2532.536" Z="100.8213" />
+		<PickUp QuestName="Mission Improbable" QuestId="13808" GiverName="Kadrak" GiverId="33837" X="2318.859" Y="-2532.536" Z="100.8213" />
+		<PickUp QuestName="Bad News Bear-er" QuestId="13848" GiverName="Kadrak" GiverId="33837" X="2318.859" Y="-2532.536" Z="100.8213" />
+
+			<If Condition="HasQuest(13848) &amp;&amp; IsQuestCompleted(13848) &amp;&amp; Me.Z &gt; 20">
+				<CustomBehavior File="InteractWith" MobId="12616" GossipOptions="2" X="2306.892" Y="-2524.323" Z="103.773" />
+			</If>
+
+		<TurnIn QuestName="Bad News Bear-er" QuestId="13848" TurnInName="Commander Grimfang" TurnInId="34122" />
+		<TurnIn QuestName="Ashenvale Outrunners" QuestId="6503" TurnInName="Kuray'bin" TurnInId="12867" />
+		<TurnIn QuestName="Destroy the Legion" QuestId="26448" TurnInName="Valusha" TurnInId="17355" />
+        <TurnIn QuestName="Diabolical Plans" QuestId="26447" TurnInName="Valusha" TurnInId="17355" />
+        <PickUp QuestName="Never Again!" QuestId="26449" GiverName="Valusha" GiverId="17355" />
+		<TurnIn QuestName="Playing With Felfire" QuestId="13730" TurnInName="Splintertree Demolisher" TurnInId="33726" />
+		<PickUp QuestName="Tell No One!" QuestId="13751" GiverName="Splintertree Demolisher" GiverId="33726" />
+		<TurnIn QuestName="Tell No One!" QuestId="13751" TurnInName="Durak" TurnInId="33760" X="2456.776" Y="-2463.134" Z="109.8879" />
+		<PickUp QuestName="Dirty Deeds" QuestId="13797" GiverName="Durak" GiverId="33760" X="2456.776" Y="-2463.134" Z="109.8879" />
+
+			<Objective QuestName="Dirty Deeds" QuestId="13797" Type="CollectItem" ItemId="45576" CollectCount="10" />
+
+		<TurnIn QuestName="Dirty Deeds" QuestId="13797" TurnInName="Durak" TurnInId="33760" />
+		<PickUp QuestName="Rain of Destruction" QuestId="13798" GiverName="Durak" GiverId="33760" X="2456.776" Y="-2463.134" Z="109.8879" />
+
+			<!--Objective: Rain of Destruction-->
+			<While Condition="HasQuest(13798) &amp;&amp; !IsQuestCompleted(13798)">
+				<DisableBehavior Name="Combat" />
+				<CustomBehavior File="UserSettings" UseMount="False" />
+
+				<RunTo DestName="Splintertree Guard Tower" X="2247.413" Y="-2502.456" Z="118.5945" />
+				<CustomBehavior File="InteractWith" InteractByUsingItemId="45598" MobId="33912" MobId2="33914" MinRange="15" Range="150" WaitTime="15000" 
+				CollectionDistance="500" ProactiveCombatStrategy="NoClear" IgnoreLoSToTarget="True" X="2247.413" Y="-2502.456" Z="118.5945" />
+			</While>
+
+		<If Condition="HasQuest(13798) &amp;&amp; IsQuestCompleted(13798)">
+			<TurnIn QuestName="Rain of Destruction" QuestId="13798" TurnInName="Durak" TurnInId="33977" />
+
+			<EnableBehavior Name="Combat" />
+			<CustomBehavior File="UserSettings" UseMount="True" />
+		</If>
+
+		<PickUp QuestName="All Apologies" QuestId="13841" GiverName="Splintertree Demolisher" GiverId="33726" />
+		<TurnIn QuestName="All Apologies" QuestId="13841" TurnInName="Garrosh Hellscream" TurnInId="39605" />
+		<PickUp QuestName="Dread Head Redemption" QuestId="13842" GiverName="Garrosh Hellscream" GiverId="39605" />
+
+			<!--Objective: Dread Head Redemption-->
+			<If Condition="HasQuest(13842) &amp;&amp; !IsQuestCompleted(13842)">
+				<RunTo DestName="Durak" X="2457.892" Y="-2463.774" Z="109.6444" />
+				<CustomBehavior File="InteractWith" QuestId="13842" MobId="44414" GossipOptions="1" X="2457.892" Y="-2463.774" Z="109.6444" />
+				<CustomBehavior File="WaitTimer" WaitTime="16000" GoalText="Waiting for Durak to finish his rant." />
+				<Objective QuestName="Dread Head Redemption" QuestId="13842" Type="CollectItem" ItemId="60638" CollectCount="1" />
+			</If>
+
+		<TurnIn QuestName="Dread Head Redemption" QuestId="13842" TurnInName="Garrosh Hellscream" TurnInId="39605" />
+			
+			<!--Transport: To Splintertree-->
+			<If Condition="Me.ZoneId != 331 &amp;&amp; HasQuest(26449) &amp;&amp; !IsQuestCompleted(26449)">
+				<RunTo DestName="Wind Rider Master Doras" X="1801.505" Y="-4366.614" Z="102.5716" />
+				<CustomBehavior File="TaxiRide" MobId="3310" DestName="Splintertree Post"/>
+				<CustomBehavior File="Message" Text="Cleaning: Repairing, Selling, &amp; Mailing. Please Wait" LogColor="Cyan" />
+				<CustomBehavior File="ForceSetVendor" DoSell="True" DoRepair="True" DoMail="True" />				
+			</If>
+
+			<Objective QuestName="Never Again!" QuestId="26449" Type="CollectItem" ItemId="45477" CollectCount="1" />
+			<Objective QuestName="Never Again!" QuestId="26449" Type="CollectItem" ItemId="45476" CollectCount="1" />
+
+		<TurnIn QuestName="Never Again!" QuestId="26449" TurnInName="Valusha" TurnInId="17355" />
+		<PickUp QuestName="Demon Duty" QuestId="13806" GiverName="Locke Okarr" GiverId="11820" />
+		<PickUp QuestName="Satyr Horns" QuestId="6441" GiverName="Pixel" GiverId="12724" />
+
+			<!--Objective: Mission Improbable-->
+			<If Condition="HasQuest(13808) &amp;&amp; IsQuestCompleted(13808)">
+				<RunTo X="2611.031" Y="-3058.034" Z="156.4043" />
+				<CustomBehavior File="WaitTimer" WaitTime="2000" />
+				<CustomBehavior File="Misc\RunLua" Lua="UseItemByName(45710)" WaitTime="1000" />
+				<CustomBehavior File="WaitTimer" WaitTime="8000" GoalText="Waiting for Krokk" />
+			</If>
+
+		<TurnIn QuestName="Mission Improbable" QuestId="13808" TurnInName="Krokk" TurnInId="33889" X="2611.031" Y="-3058.034" Z="156.4043" />
+
+		<CustomBehavior File="Message" Text="Compiling Quests: Warsong Lumber Camp" LogColor="Cyan" />
+
+		<PickUp QuestName="Making Stumps" QuestId="13815" GiverName="Krokk" GiverId="33889" X="2611.031" Y="-3058.034" Z="156.4043" />
+		<PickUp QuestName="Wet Work" QuestId="13865" GiverName="Krokk" GiverId="33889" X="2611.031" Y="-3058.034" Z="156.4043" />
+
+			<!--Objective: Making Stumps-->
+			<CustomBehavior File="InteractWith" QuestId="13815" InteractByUsingItemId="45807" MobId="34167" NumOfTimes="50" Range="5" MobState="Alive">
+				<HuntingGrounds>
+					<Hotspot X="2442.417" Y="-3120.513" Z="123.9113" />
+					<Hotspot X="2381.191" Y="-3162.039" Z="118.1499" />
+					<Hotspot X="2446.531" Y="-3300.907" Z="110.1913" />
+					<Hotspot X="2484.254" Y="-3272.582" Z="118.3477" />
+					<Hotspot X="2537.279" Y="-3260.697" Z="128.8321" />
+					<Hotspot X="2582.677" Y="-3281.467" Z="133.4868" />
+					<Hotspot X="2636.767" Y="-3314.157" Z="132.6564" />
+				</HuntingGrounds>
+			</CustomBehavior>
+
+			<Objective QuestName="Wet Work" QuestId="13865" Type="KillMob" MobId="34208" KillCount="1" />
+			<Objective QuestName="Wet Work" QuestId="13865" Type="KillMob" MobId="34294" KillCount="1" />
+			<Objective QuestName="Wet Work" QuestId="13865" Type="KillMob" MobId="34204" KillCount="1" />
+			<Objective QuestName="Wet Work" QuestId="13865" Type="KillMob" MobId="34177" KillCount="12" />
+
+		<!--TurnIn: Summoning Krok-->
+		<If Condition="HasQuest(13815) &amp;&amp; IsQuestCompleted(13815)">
+			<RunTo X="2611.031" Y="-3058.034" Z="156.4043" />
+			<CustomBehavior File="WaitTimer" WaitTime="2000" />
+			<CustomBehavior File="Misc\RunLua" Lua="UseItemByName(45710)" WaitTime="1000" />
+			<CustomBehavior File="WaitTimer" WaitTime="8000" GoalText="Waiting for Krokk" />
+		</If>
+
+		<TurnIn QuestName="Wet Work" QuestId="13865" TurnInName="Krokk" TurnInId="33889" X="2611.031" Y="-3058.034" Z="156.4043" />
+		<TurnIn QuestName="Making Stumps" QuestId="13815" TurnInName="Krokk" TurnInId="33889" X="2611.031" Y="-3058.034" Z="156.4043" />
+		<PickUp QuestName="As Good as it Gets" QuestId="13870" GiverName="Krokk" GiverId="33889" X="2611.031" Y="-3058.034" Z="156.4043" />
+		<TurnIn QuestName="As Good as it Gets" QuestId="13870" TurnInName="Overseer Gorthak" TurnInId="17304" />
+		<PickUp QuestName="Security!" QuestId="13871" GiverName="Overseer Gorthak" GiverId="17304" />
+			
+			<Objective QuestName="Security!" QuestId="13871" Type="CollectItem" ItemId="46147" CollectCount="1" />
+		
+		<TurnIn QuestName="Security!" QuestId="13871" TurnInName="Overseer Gorthak" TurnInId="17304" />
+		<PickUp QuestName="Sheelah's Last Wish" QuestId="13873" GiverName="Guardian Menerin" GiverId="34233" />
+		<TurnIn QuestName="Sheelah's Last Wish" QuestId="13873" TurnInName="Guardian Gurtar" TurnInId="34242" />
+		<PickUp QuestName="Gurtar's Request" QuestId="13875" GiverName="Guardian Gurtar" GiverId="34242" X="2802.91" Y="-3466.646" Z="115.8374" />
+
+			<!--Objective: Gurtar's Request-->
+			<If Condition="HasQuest(13875) &amp;&amp; !IsQuestCompleted(13875)">
+				<Objective QuestName="Gurtar's Request" QuestId="13875" Type="CollectItem" ItemId="46315" CollectCount="8" />
+				<RunTo DestName="Draaka" X="2284.148" Y="-2538.907" Z="98.32883" />
+				<CustomBehavior File="WaitTimer" WaitTime="2000" />
+				<CustomBehavior File="Misc\RunLua" Lua="UseItemByName(46316)" WaitTime="1000" />
+				<CustomBehavior File="WaitTimer" WaitTime="5000" GoalText="Waiting for Draaka" />
+			</If>
+
+		<TurnIn QuestName="Gurtar's Request" QuestId="13875" TurnInName="Splintertree Demolisher" TurnInId="33726" />
+
+			<!--Objective: Demon Duty-->
+			<While Condition="HasQuest(13806) &amp;&amp; !IsQuestCompleted(13806)">
+				<CustomBehavior File="InteractWith" QuestId="13806" MobId="194612" NumOfTimes="20" Range="5" CollectionDistance="500" X="2913.082" Y="-2827.083" Z="209.0692" />
+			</While>
+
+			<Objective QuestName="Satyr Horns" QuestId="6441" Type="CollectItem" ItemId="5481" CollectCount="16" />
+
+		
+		<TurnIn QuestName="Demon Duty" QuestId="13806" TurnInName="Locke Okarr" TurnInId="11820" />
+		<TurnIn QuestName="Satyr Horns" QuestId="6441" TurnInName="Pixel" TurnInId="12724" />
+
+		<CustomBehavior File="Message" Text="Compiling Quests: Zoram'gar Outpost" LogColor="Cyan" />
+
+		<PickUp QuestName="Keep the Fires Burning" QuestId="13890" GiverName="Commander Grimfang" GiverId="34122" />
+		<!--<PickUp QuestName="Lousy Pieces of Ship" QuestId="13883" GiverName="Dagrun Ragehammer" GiverId="34303" />-->
+		<PickUp QuestName="The Essence of Aku'Mai" QuestId="26890" GiverName="Dagrun Ragehammer" GiverId="34303" />
+		<PickUp QuestName="Naga at the Zoram Strand" QuestId="6442" GiverName="Marukai" GiverId="12719" />
+		<PickUp QuestName="Vorsha the Lasher" QuestId="6641" GiverName="Muglash" GiverId="12717" X="3358.74" Y="964.2664" Z="7.404287" />
+			
+			<!--Objective: Vorsha the Lasher-->
+			<While Condition="HasQuest(6641) &amp;&amp; !IsQuestCompleted(6641)" >
+				<CustomBehavior File="UserSettings" Preset="NoDistractions" />
+				<CustomBehavior QuestId="6641" File="ForcedDismount" />
+
+				<CustomBehavior File="EscortGroup" QuestId="6641" EscortNpcId="12717" EscortCountMax="1" EscortCompleteWhen="DestinationReached" EscortCompleteX="3609.234" EscortCompleteY="1146.588" EscortCompleteZ="7.994207" />
+				<CustomBehavior File="WaitTimer" WaitTime="13000" />
+				<CustomBehavior File="InteractWith" MobId="178247" NonCompeteDistance="0" CollectionDistance="20" />
+				<CustomBehavior File="EscortGroup" QuestId="6641" EscortNpcId="12717" EscortCountMax="1" EscortCompleteWhen="QuestCompleteOrFails" EscortMaxFollowDistance="10" EscortMaxFightDistance="17" />
+				
+				<CustomBehavior File="UserSettings" Preset="UserOriginal" />
+				<If Condition="!IsQuestCompleted(6641)">
+					<CustomBehavior File="AbandonQuest" QuestId="6641" WaitTime="3000" Type="Failed" />
+					<PickUp QuestName="Vorsha the Lasher" QuestId="6641" GiverName="Muglash" GiverId="12717" X="3358.74" Y="964.2664" Z="7.404287" />
+				</If>
+			</While>
+
+		<TurnIn QuestName="Vorsha the Lasher" QuestId="6641" TurnInName="Warsong Runner" TurnInId="12863" />
+		
+			<!--Objective: Lousy Pieces of Ship [Death Isn't Navigable; Skipping]-->
+			<!--<CustomBehavior File="CollectThings" CollectUntil="QuestComplete" QuestId="13883" ObjectId="195012" CollectItemId="46357">
+				<Hotspot X="3382.079" Y="1218.511" Z="-33.38941" />
+				<Hotspot X="3449.213" Y="1244.482" Z="-31.41919" />
+				<Hotspot X="3426.487" Y="1285.843" Z="-41.5831" />
+				<Hotspot X="3401.664" Y="1159.047" Z="-21.58662" />
+			</CustomBehavior>-->
+
+			<!--Objective: Keep the Fires Burning-->
+			<If Condition="HasQuest(13890) &amp;&amp; !IsQuestCompleted(13890)">
+				<CustomBehavior File="CollectThings" CollectUntil="RequiredCountReached" QuestId="13890" MobId="3721" CollectItemId="46365" CollectItemCount="10" HuntingGroundRadius="200" X="3402.582" Y="1194.723" Z="-1.727643" />
+				<CustomBehavior File="AscendInWater" />
+
+				<!--Create: Mystlash Hydra Oil-->
+				<If Condition="!HasItem(46366)">
+					<CustomBehavior File="WaitTimer" WaitTime="2000" />
+					<RunTo X="3313.824" Y="1033.419" Z="4.058152" />
+					<CustomBehavior File="Misc\RunLua" Lua="UseItemByName(46365)" WaitTime="2000" />
+				</If>
+				<!--UseObject: Lighthouse Fire-->
+				<If Condition="!IsQuestCompleted(13890)">
+					<CustomBehavior File="InteractWith" QuestId="13890" MobId="195024" NumOfTimes="1"
+					NonCompeteDistance="0" Range="5" WaitTime="2000" X="3561.869" Y="1312.178" Z="36.55131" />
+				</If>
+			</If>
+
+			<Objective QuestName="Naga at the Zoram Strand" QuestId="6442" Type="CollectItem" ItemId="5490" CollectCount="20" />
+		
+		<TurnIn QuestName="Keep the Fires Burning" QuestId="13890" TurnInName="Commander Grimfang" TurnInId="34122" />
+		<PickUp QuestName="Before You Go..." QuestId="13920" GiverName="Commander Grimfang" GiverId="34122" />
+		<TurnIn QuestName="Naga at the Zoram Strand" QuestId="6442" TurnInName="Marukai" TurnInId="12719" />
+		<PickUp QuestName="Deep Despair" QuestId="13901" GiverName="Marukai" GiverId="12719" />
+		<!--<TurnIn QuestName="Lousy Pieces of Ship" QuestId="13883" TurnInName="Dagrun Ragehammer" TurnInId="34303" />-->
+
+			<Objective QuestName="The Essence of Aku'Mai" QuestId="26890" Type="CollectItem" ItemId="16784" CollectCount="20" />
+			<Objective QuestName="Deep Despair" QuestId="13901" Type="KillMob" MobId="4802" KillCount="6" />
+			<Objective QuestName="Before You Go..." QuestId="13920" Type="CollectItem" ItemId="46392" CollectCount="5" />
+
+		<TurnIn QuestName="The Essence of Aku'Mai" QuestId="26890" TurnInName="Dagrun Ragehammer" TurnInId="34303" />
+			
+			<!--CleanUp: Delete Sapphire of Aku'Mai-->
+			<While Condition="HasItem(16784)">
+				<CustomBehavior File="DeleteItems" Ids="16784" />
+			</While>
+
+		<TurnIn QuestName="Deep Despair" QuestId="13901" TurnInName="Marukai" TurnInId="12719" />
+		<TurnIn QuestName="Before You Go..." QuestId="13920" TurnInName="Commander Grimfang" TurnInId="34122" />
+
+			<!--CleanUp: Delete Damp Note-->
+			<If Condition="HasItem(16790)">
+				<CustomBehavior File="DeleteItems" Ids="16790" />
+			</If>	
+
+		<!--Transition: Have we started Hellscream's Watch?-->
+		<If Condition="!HasQuest(13936) &amp;&amp; !IsQuestCompleted(13936)">
+			<PickUp QuestName="To Hellscream's Watch" QuestId="13923" GiverName="Commander Grimfang" GiverId="34122" />
+
+			<!--Transport: To Hellscream's Watch-->
+			<If Condition="HasQuest(13923) &amp;&amp; Me.Y &gt; 800">
+				<CustomBehavior File="InteractWith" MobId="11901" GossipOptions="2" NumOfTimes="1"
+				WaitTime="1000" NonCompeteDistance="0" X="3347.99" Y="1053.536" Z="3.128762" />
+				<!--Bot Should Taxi Wait-->
+			</If>
+
+			<TurnIn QuestName="To Hellscream's Watch" QuestId="13923" TurnInName="Captain Goggath" TurnInId="34359" />
+		</If>
+
+		<CustomBehavior File="Message" Text="Compiling Quests: Hellscream's Watch" LogColor="Cyan" />
+
+		<PickUp QuestName="Tweedle's Dumb" QuestId="13936" GiverName="Captain Goggath" GiverId="34359" X="3029.162" Y="-519.3588" Z="203.8066" />
+			
+			<!--Cleaning: Force Repair, Sell, & Mail-->
+			<If Condition="HasQuest(13936) &amp;&amp; !IsQuestCompleted(13936)">
+				<CustomBehavior File="Message" Text="Cleaning: Repairing, Selling, &amp; Mailing. Please Wait" LogColor="Cyan" />
+				<CustomBehavior File="ForceSetVendor" DoSell="True" DoRepair="True" DoMail="True" />
+			</If>
+
+		<TurnIn QuestName="Tweedle's Dumb" QuestId="13936" TurnInName="Tweedle" TurnInId="34395" />
+		<PickUp QuestName="Set Us Up the Bomb" QuestId="13942" GiverName="Tweedle" GiverId="34395" />
+		<PickUp QuestName="Between a Rock and a Thistlefur" QuestId="216" GiverName="Karang Amakkar" GiverId="12757" />
+		<PickUp QuestName="Breathing Room" QuestId="13943" GiverName="Captain Goggath" GiverId="34359" />
+		<PickUp QuestName="Troll Charm" QuestId="6462" GiverName="Mitsuwa" GiverId="12721" />
+
+			<Objective QuestName="Set Us Up the Bomb" QuestId="13942" Type="CollectItem" ItemId="46698" CollectCount="10" />
+			<Objective QuestName="Troll Charm" QuestId="6462" Type="CollectItem" ItemId="16602" CollectCount="8" />
+			<!--Skipping Freedom to Ruul Escort: Annoying TurnIn Location-->
+			<Objective QuestName="Between a Rock and a Thistlefur" QuestId="216" Type="KillMob" MobId="3925" KillCount="15" />
+			<Objective QuestName="Breathing Room" QuestId="13943" Type="KillMob" MobId="34420" KillCount="3" />
+			<Objective QuestName="Breathing Room" QuestId="13943" Type="KillMob" MobId="34419" KillCount="10" />
+
+		<TurnIn QuestName="Between a Rock and a Thistlefur" QuestId="216" TurnInName="Karang Amakkar" TurnInId="12757" />
+		<TurnIn QuestName="Troll Charm" QuestId="6462" TurnInName="Mitsuwa" TurnInId="12721" />
+		<TurnIn QuestName="Set Us Up the Bomb" QuestId="13942" TurnInName="Tweedle" TurnInId="34395" />
+		<PickUp QuestName="Small Hands, Short Fuse" QuestId="13944" GiverName="Tweedle" GiverId="34395" />
+
+			<!--Objective: Small Hands, Short Fuse-->
+			<If Condition="HasQuest(13944) &amp;&amp; !IsQuestCompleted(13944)">
+				<RunTo DestName="Broken-down Wagon" X="2979.137" Y="-507.4618" Z="200.6322" />
+				<CustomBehavior File="Misc\RunLua" Lua="UseItemByName(46701)" WaitTime="1000" />
+			</If>
+
+		<TurnIn QuestName="Small Hands, Short Fuse" QuestId="13944" TurnInName="Captain Goggath" TurnInId="34359" />
+		<TurnIn QuestName="Breathing Room" QuestId="13943" TurnInName="Captain Goggath" TurnInId="34359" />
+		<PickUp QuestName="Blastranaar!" QuestId="13947" GiverName="Captain Goggath" GiverId="34359" />
+		
+			<!--Objective: Blastranaar!-->
+			<If Condition="HasQuest(13947) &amp;&amp; !IsQuestCompleted(13947)">
+				<If Condition="!Me.IsOnTransport">
+					<CustomBehavior File="InteractWith" QuestId="13947" MobId="34429" NumOfTimes="1"
+						GossipOptions="2" CollectionDistance="10" X="3050.128" Y="-496.0035" Z="205.6394"/>
+				</If>
+				<CustomBehavior File="SpecificQuests\13947-Ashenvale-Blastranaar!" />
+				<CustomBehavior File="WaitTimer" WaitTime="25000" GoalText="Returning to Hellscream's Reach" />
+			</If>
+
+		<TurnIn QuestName="Blastranaar!" QuestId="13947" TurnInName="Captain Goggath" TurnInId="34359" />
+		<PickUp QuestName="Condition Critical!" QuestId="13958" GiverName="Captain Goggath" GiverId="34359" />
+		<PickUp QuestName="Tweedle's Tiny Package" QuestId="13974" GiverName="Tweedle" GiverId="34395" />
+		<PickUp QuestName="Thunder Peak" QuestId="13879" GiverName="Broyk" GiverId="34510" />
+
+		<CustomBehavior File="Message" Text="Compiling Quests: Silverwind Refuge" LogColor="Cyan" />		
 	</QuestOrder>
 </HBProfile>

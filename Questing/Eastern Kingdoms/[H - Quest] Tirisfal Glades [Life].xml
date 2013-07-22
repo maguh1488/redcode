@@ -170,15 +170,9 @@
 		<TurnIn QuestName="The Chill of Death" QuestId="24988" TurnInName="Gretchen Dedmar" TurnInId="1521" />
 		<PickUp QuestName="Return to the Magistrate" QuestId="24989" GiverName="Deathguard Linnea" GiverId="1495" />
 		<TurnIn QuestName="Return to the Magistrate" QuestId="24989" TurnInName="Magistrate Sevren" TurnInId="1499" />
-
-		<If Condition="HasQuest(24992)">
-			<TurnIn QuestName="Escaped From Gilneas" QuestId="24992" TurnInName="Executor Zygand" TurnInId="1515" />
-		</If>
-		<If Condition="IsQuestCompleted(24992)">
-			<PickUp QuestName="Annihilate the Worgen" QuestId="24993" GiverName="Executor Zygand" GiverId="1515" />
-		</If>
-
 		<TurnIn QuestName="A Thorn in our Side" QuestId="24981" TurnInName="Executor Zygand" TurnInId="1515" />
+		<TurnIn QuestName="Escaped From Gilneas" QuestId="24992" TurnInName="Executor Zygand" TurnInId="1515" />
+		<PickUp QuestName="Annihilate the Worgen" QuestId="24993" GiverName="Executor Zygand" GiverId="1515" />
 		<TurnIn QuestName="Darkhound Pounding" QuestId="24990" TurnInName="Junior Apothecary Holland" TurnInId="10665" />
 		<PickUp QuestName="Holland's Experiment" QuestId="24996" GiverName="Junior Apothecary Holland" GiverId="10665" />
 		<TurnIn QuestName="Holland's Experiment" QuestId="24996" TurnInName="Captured Mountaineer" TurnInId="2211" />
@@ -190,9 +184,7 @@
 				<CustomBehavior File="UserSettings" Preset="UserOriginal" />
 			</If>
 
-		<If Condition="HasQuest(24993) &amp;&amp; IsQuestCompleted(24993)">
-			<TurnIn QuestName="Annihilate the Worgen" QuestId="24993" TurnInName="Executor Zygand" TurnInId="1515" />
-		</If>
+		<TurnIn QuestName="Annihilate the Worgen" QuestId="24993" TurnInName="Executor Zygand" TurnInId="1515" />
 
 		<CustomBehavior File="Message" Text="Compiling Quests: Garren's Haunt" LogColor="Cyan" />
 

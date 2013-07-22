@@ -51,8 +51,11 @@
 
 	<QuestOrder>
 		<CustomBehavior File="Message" Text="Initializing Settings" LogColor="Cyan" />
-		<CustomBehavior File="UserSettings" LootMobs="True" UseFlightPaths="True" PullDistance="25" />
-
+		
+			<CustomBehavior File="UserSettings" LootMobs="True" UseFlightPaths="True" PullDistance="25" />
+			<CustomBehavior File="EnablePlugin" Names="Anti Drown,AutoEquip2,Drink Potions,Refreshment,Talented2" />
+			<CustomBehavior File="RunMacro" Macro="/script SetCVar('AutoLootDefault', 1)" WaitTime="1000" />
+		
 		<CustomBehavior File="Message" Text="Compiling Quests: Deathknell" LogColor="Cyan" />
 
 		<PickUp QuestName="Fresh Out of the Grave" QuestId="24959" GiverName="Agatha" GiverId="49044" />
@@ -102,8 +105,10 @@
 			<TurnIn QuestName="Scribbled Scroll" QuestId="31146" TurnInName="Ting, Strong of Stomach" TurnInId="63272" X="1859.834" Y="1568.839" Z="94.31393" />
 			<PickUp QuestName="Tiger Palm" QuestId="31147" GiverName="Ting, Strong of Stomach" GiverId="63272" X="1857.422" Y="1568.047" Z="94.31378" />
 			<While Condition="HasQuest(31147) &amp;&amp; !IsQuestCompleted(31147)">
+				<DisableBehavior Name="Combat" />
 				<CustomBehavior File="InteractWith" QuestId="31147" InteractByCastingSpellId="100780" MobId="44794" Range="5" WaitTime="1000" X="1833.566" Y="1607.483" Z="95.68764" />
 				<CustomBehavior File="InteractWith" QuestId="31147" InteractByCastingSpellId="100787" MobId="44794" Range="5" X="1833.566" Y="1607.483" Z="95.68764" />
+				<EnableBehavior Name="Combat" />
 			</While>
 			<TurnIn QuestName="Tiger Palm" QuestId="31147" TurnInName="Ting, Strong of Stomach" TurnInId="63272" X="1857.422" Y="1568.047" Z="94.31378" />
 		</If>
@@ -114,8 +119,10 @@
 			<TurnIn QuestName="Trail-Worn Scroll" QuestId="24962" TurnInId="38911" TurnInName="Xavier the Huntsman" />
 			<PickUp QuestName="The Thrill of the Hunt" QuestId="24964" GiverId="38911" GiverName="Xavier the Huntsman" />
 			<If Condition="HasQuest(24964) &amp;&amp; !IsQuestCompleted(24964)">
+				<DisableBehavior Name="Combat" />
 				<RunTo X="1833.566" Y="1607.483" Z="95.68764" />
 				<CustomBehavior File="InteractWith" QuestId="24964" InteractByCastingSpellId="56641" NumOfTimes="100" MobId="44794" Range="40" WaitTime="2000" X="1833.566" Y="1607.483" Z="95.68764" />
+				<EnableBehavior Name="Combat" />
 			</If>
 			<TurnIn QuestName="The Thrill of the Hunt" QuestId="24964" TurnInId="38911" TurnInName="Xavier the Huntsman" />
 		</If>

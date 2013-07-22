@@ -1,29 +1,102 @@
 <HBProfile>
-	<Name>Project Rose: Profile Loader</Name>
+	<Name>Life Project: Profile Loader</Name>
 
 	<MinLevel>1</MinLevel>
 	<MaxLevel>91</MaxLevel>
 
 	<QuestOrder>
-		<CustomBehavior File="Message" Text="Setting Project-Wide Settings" LogColor="Cyan" />
-			<CustomBehavior File="RunMacro" Macro="/script SetCVar('AutoLootDefault', 1)" WaitTime="1000" />
-			<CustomBehavior File="EnablePlugin" Names="Anti Drown,AutoEquip2,Drink Potions,Refreshment,Talented2" />
-			
-			<If Condition="(Me.LevelFraction &gt;= 20) &amp;&amp; Me.GetSkill(Styx.SkillLine.Riding).CurrentValue == 0 &amp;&amp; Me.Gold &gt;= 4">
-				<CustomBehavior File="Message" Text="Riding is needed, however I have no way of training you yet!" LogColor="Cyan" />
-			</If>
+		<CustomBehavior File="Message" Text="Compiling Appropriate Leveling Zone" LogColor="Cyan" />
 
-		<CustomBehavior File="Message" Text="Listening to Sorting Hat" LogColor="Cyan" />
-
-		<If Condition="Me.IsAlliance">
-			<CustomBehavior File="Message" Text="This project currently does not support the Alliance" LogColor="Red" />
+		<If Condition="Me.Level &lt;= 1">
+			<CustomBehavior File="UserDialog" AllowBotStop="True" SoundCue="Exclamation" SoundCueInterval="10" ExpiryTime="50"
+			Title="Welcome to Life Project" Text="Thank you for using my profiles!\n\nThis profile loader is a convenience, and picks the default route for your race.\nYou're free to load any of the other appropriate zone profiles once level 5.\n\nThis message will not display again." />
 		</If>
 
-		<!--Blood Elf Sorting Hat-->
+		<If Condition="Me.Class == WoWClass.DeathKnight">
+			<CustomBehavior File="Message" Text="Death Knight profile is undergoing maintenance. Shutting Down!" LogColor="Red" />
+			<CustomBehavior File="UserSettings" StopBot="True" />
+		</If>
+
+		<If Condition="Me.Race == WoWRace.Human">
+			<CustomBehavior File="Message" Text="The Human profile isn't ready yet D: Shutting Down!" LogColor="Red" />
+			<CustomBehavior File="UserSettings" StopBot="True" />
+		</If>
+		<If Condition="Me.Race == WoWRace.Dwarf">
+			<CustomBehavior File="Message" Text="The Dwarf profile isn't ready yet D: Shutting Down!" LogColor="Red" />
+			<CustomBehavior File="UserSettings" StopBot="True" />
+		</If>
+		<If Condition="Me.Race == WoWRace.NightElf">
+			<CustomBehavior File="LoadProfile" ProfileName="Starter Zones\[A - Quest] Night Elf [Life]" />
+		</If>
+		<If Condition="Me.Race == WoWRace.Gnome">
+			<CustomBehavior File="Message" Text="The Gnome profile isn't ready yet D: Shutting Down!" LogColor="Red" />
+			<CustomBehavior File="UserSettings" StopBot="True" />
+		</If>
+		<If Condition="Me.Race == WoWRace.Draenei">
+			<CustomBehavior File="Message" Text="The Draenei profile isn't ready yet D: Shutting Down!" LogColor="Red" />
+			<CustomBehavior File="UserSettings" StopBot="True" />
+		</If>
+		<If Condition="Me.Race == WoWRace.Worgen">
+			<CustomBehavior File="Message" Text="The Worgen profile is undergoing extensive testing and shall be released soon. Shutting Down!" LogColor="Red" />
+			<CustomBehavior File="UserSettings" StopBot="True" />
+		</If>
+
+		<If Condition="Me.Race == WoWRace.Orc">
+			<If Condition="Me.LevelFraction &gt;= 20">
+				<CustomBehavior File="Message" Text="Ashenvale is 16% Complete! Only those Beta testing should go manually load it!" LogColor="Red" />
+				<CustomBehavior File="UserSettings" StopBot="True" />
+			</If>
+			<If Condition="Me.LevelFraction &gt;= 10">
+				<CustomBehavior File="LoadProfile" ProfileName="Kalimdor\[H - Quest] Northern Barrens [Life]" />
+			</If>
+			<If Condition="Me.LevelFraction &gt;= 5">
+				<CustomBehavior File="LoadProfile" ProfileName="Kalimdor\[H - Quest] Durotar [Life]" />
+			</If>
+			<CustomBehavior File="LoadProfile" ProfileName="Starter Zones\[H - Quest] Orc [Life]" />
+		</If>
+		<If Condition="Me.Race == WoWRace.Undead">
+			<If Condition="Me.LevelFraction &gt;= 20">
+				<CustomBehavior File="Message" Text="Hillsbrad Foothills has issues with the HBCore. Until a Developer fixes it please load the Ashenvale profile!" LogColor="Red" />
+				<CustomBehavior File="UserSettings" StopBot="True" />
+			</If>
+			<If Condition="Me.LevelFraction &gt;= 10">
+				<CustomBehavior File="LoadProfile" ProfileName="Eastern Kingdoms\[H - Quest] Silverpine Forest [Life]" />
+			</If>
+			<If Condition="Me.LevelFraction &gt;= 5">
+				<CustomBehavior File="LoadProfile" ProfileName="Eastern Kingdoms\[H - Quest] Tirisfal Glades [Life]" />
+			</If>
+			<CustomBehavior File="LoadProfile" ProfileName="Starter Zones\[H - Quest] Undead [Life]" />
+		</If>
+		<If Condition="Me.Race == WoWRace.Tauren">
+			<If Condition="Me.LevelFraction &gt;= 20">
+				<CustomBehavior File="Message" Text="Ashenvale is 16% Complete! Only those Beta testing should go manually load it!" LogColor="Red" />
+				<CustomBehavior File="UserSettings" StopBot="True" />
+			</If>
+			<If Condition="Me.LevelFraction &gt;= 10">
+				<CustomBehavior File="LoadProfile" ProfileName="Eastern Kingdoms\[H - Quest] Northern Barrens [Life]" />
+			</If>
+			<If Condition="Me.LevelFraction &gt;= 5">
+				<CustomBehavior File="LoadProfile" ProfileName="Eastern Kingdoms\[H - Quest] Mulgore [Life]" />
+			</If>
+			<CustomBehavior File="LoadProfile" ProfileName="Starter Zones\[H - Quest] Tauren [Life]" />
+		</If>
+		<If Condition="Me.Race == WoWRace.Troll">
+			<If Condition="Me.LevelFraction &gt;= 20">
+				<CustomBehavior File="Message" Text="Ashenvale is 16% Complete! Only those Beta testing should go manually load it!" LogColor="Red" />
+				<CustomBehavior File="UserSettings" StopBot="True" />
+			</If>
+			<If Condition="Me.LevelFraction &gt;= 10">
+				<CustomBehavior File="LoadProfile" ProfileName="Kalimdor\[H - Quest] Northern Barrens [Life]" />
+			</If>
+			<If Condition="Me.LevelFraction &gt;= 5">
+				<CustomBehavior File="LoadProfile" ProfileName="Kalimdor\[H - Quest] Durotar [Life]" />
+			</If>
+			<CustomBehavior File="LoadProfile" ProfileName="Starter Zones\[H - Quest] Troll [Life]" />
+		</If>
 		<If Condition="Me.Race == WoWRace.BloodElf">
 			<If Condition="Me.LevelFraction &gt;= 20 &amp;&amp; IsQuestCompleted(9156)">
-				<CustomBehavior File="Message" Text="Hillsbrad Foothills is Currently Broken. Halting!" LogColor="Cyan" />
-				<CustomBehavior File="Halt" />
+				<CustomBehavior File="Message" Text="Hillsbrad Foothills has issues with the HBCore. Until a Developer fixes it please load the Ashenvale profile!" LogColor="Red" />
+				<CustomBehavior File="UserSettings" StopBot="True" />
 			</If>
 			<If Condition="Me.LevelFraction &gt;= 10 &amp;&amp; IsQuestCompleted(9363)">
 				<CustomBehavior File="LoadProfile" ProfileName="Eastern Kingdoms\[H - Quest] Ghostlands [Life]" />
@@ -31,33 +104,25 @@
 			<If Condition="Me.LevelFraction &gt;= 5 &amp;&amp; IsQuestCompleted(24972)">
 				<CustomBehavior File="LoadProfile" ProfileName="Eastern Kingdoms\[H - Quest] Eversong Woods [Life]" />
 			</If>
-			<CustomBehavior File="LoadProfile" ProfileName="Eastern Kingdoms\Starter Zones\[H - Quest] Blood Elf [Life]" />
+			<CustomBehavior File="LoadProfile" ProfileName="Starter Zones\[H - Quest] Blood Elf [Life]" />
+		</If>
+		<If Condition="Me.Race == WoWRace.Goblin">
+			<If Condition="Me.LevelFraction &gt;= 20">
+				<CustomBehavior File="Message" Text="Ashenvale is 16% Complete! Only those Beta testing should go manually load it!" LogColor="Red" />
+				<CustomBehavior File="UserSettings" StopBot="True" />
+			</If>
+			<If Condition="Me.LevelFraction &gt;= 10 &amp;&amp; IsQuestCompleted(25267)">
+				<CustomBehavior File="LoadProfile" ProfileName="Kalimdor\[H - Quest] Northern Barrens [Life]" />
+			</If>
+			<CustomBehavior File="Message" Text="Goblin profile is undergoing maintenance. Shutting Down!" LogColor="Red" />
+			<CustomBehavior File="UserSettings" StopBot="True" />
+			<!--CustomBehavior File="LoadProfile" ProfileName="Starter Zones\[H - Quest] Goblin [Life]" /-->
 		</If>
 
-		<!--Undead Sorting Hat-->
-		<If Condition="Me.Race == WoWRace.Undead">
-			<If Condition="Me.LevelFraction &gt;= 20 &amp;&amp; IsQuestCompleted(27601)">
-				<CustomBehavior File="Message" Text="Hillsbrad Foothills is Currently Broken. Halting!" LogColor="Cyan" />
-				<CustomBehavior File="Halt" />
-			</If>
-			<If Condition="Me.LevelFraction &gt;= 10 &amp;&amp; IsQuestCompleted(25012)">
-				<CustomBehavior File="LoadProfile" ProfileName="Eastern Kingdoms\[H - Quest] Silverpine Forest [Life]" />
-			</If>
-			<If Condition="Me.LevelFraction &gt;= 5 &amp;&amp; IsQuestCompleted(24972)">
-				<CustomBehavior File="LoadProfile" ProfileName="Eastern Kingdoms\[H - Quest] Tirisfal Glades [Life]" />
-			</If>
-			<CustomBehavior File="LoadProfile" ProfileName="Eastern Kingdoms\Starter Zones\[H - Quest] Undead [Life]" />
+		<If Condition="Me.Race == WoWRace.Pandaren">
+			<CustomBehavior File="Message" Text="Manually load the Alliance or Horde Pandaren profile in the Starter Zones -> Pandaren folder!" LogColor="Orange" />
+			<CustomBehavior File="UserSettings" StopBot="True" />
 		</If>
-
-		<!--Tauren Sorting Hat-->
-		<If Condition="Me.Race == WoWRace.Tauren">
-			<If Condition="Me.LevelFraction &gt;= 5 &amp;&amp; IsQuestCompleted(24215)">
-				<CustomBehavior File="LoadProfile" ProfileName="Eastern Kingdoms\[H - Quest] Mulgore [Life]" />
-			</If>
-			<CustomBehavior File="LoadProfile" ProfileName="Eastern Kingdoms\Starter Zones\[H - Quest] Tauren [Life]" />
-		</If>
-
-
 
 	</QuestOrder>
 </HBProfile>

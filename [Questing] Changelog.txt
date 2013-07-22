@@ -1,6 +1,12 @@
 ==================================
  ==== Life Project Changelog ====
 ==================================
+____________________________________
+Revision 63: Monday, July 22nd, 2013
+-- Ashenvale 81% Completed
+-- Profile Loader now Accompanies all Races & Death Knights
+-- Cosmetic Profile Fixes to Northern Barrens and Undead
+-- Hopefully yet another Annihilate the Worgen Fix
 ______________________________________
 Revision 61: Thursday, July 19th, 2013
 -- Silverpine Forest OverRide Error Fixes
