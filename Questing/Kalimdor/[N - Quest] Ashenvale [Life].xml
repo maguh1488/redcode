@@ -49,6 +49,9 @@
 		<!--Hellscream's Watch Vendors-->
 		<Vendor Name="Innkeeper Linkasa" Entry="43624" Type="Food" X="3051.23" Y="-526.09" Z="205.6395" />
 		<Vendor Name="Shenara" Entry="43625" Type="Repair" X="2989.99" Y="-483.747" Z="198.6276" />
+		<!--Silverwind Refuge Vendors-->
+		<Vendor Name="Innkeeper Chin'toka" Entry="43633" Type="Food" X="2091.67" Y="-1208.05" Z="101.793" />
+		<Vendor Name="Dro Shadowfree" Entry="43568" Type="Repair" X="2141.16" Y="-1215.74" Z="96.4018" />
 	</Vendors>
 
 	<Quest Id="26448" Name="Destroy the Legion">
@@ -134,13 +137,37 @@
 			</Hotspots>
 		</Objective>
 	</Quest>
+	<Quest Id="13962" Name="Stalemate">
+		<Objective Type="KillMob" MobId="4273" KillCount="1">
+			<Hotspots>
+				<Hotspot X="2706.134" Y="-1880.22" Z="234.2841" />
+			</Hotspots>
+		</Objective>
+	</Quest>
+<Quest Id="13967" Name="Thinning the... Herd?">
+	<Objective Type="CollectItem" ItemId="46741" CollectCount="15">
+		<CollectFrom>
+			<Mob Name="Foulweald Warrior" Id="3743" />
+			<Mob Name="Foulweald Totemic" Id="3750" />
+			<Mob Name="Foulweald Pathfinder" Id="3745" />
+		</CollectFrom>
+		<Hotspots>
+			<Hotspot X="2294.582" Y="-1416.414" Z="86.90558" />
+			<Hotspot X="2270.949" Y="-1449.679" Z="90.11123" />
+			<Hotspot X="2226.909" Y="-1525.832" Z="89.98167" />
+			<Hotspot X="2198.165" Y="-1563.782" Z="85.87692" />
+			<Hotspot X="2244.388" Y="-1586.973" Z="87.08325" />
+			<Hotspot X="2153.89" Y="-1638.06" Z="80.92967" />
+		</Hotspots>
+	</Objective>
+</Quest>
+
+
 
 	<QuestOrder>
-		<!--CustomBehavior File="Message" Text="Error: Profile is only 16% complete! Shutting Down." LogColor="Red" />
-		<CustomBehavior File="Halt" /-->
 		<CustomBehavior File="Message" Text="Initializing Settings" LogColor="Cyan" />
-		<CustomBehavior File="UserSettings" LootMobs="True" UseFlightPaths="True" PullDistance="25" />
-
+			
+			<CustomBehavior File="UserSettings" LootMobs="True" UseFlightPaths="True" PullDistance="25" />
 			<CustomBehavior File="EnablePlugin" Names="Anti Drown,AutoEquip2,Drink Potions,Refreshment,Talented2" />
 			<CustomBehavior File="RunMacro" Macro="/script SetCVar('AutoLootDefault', 1)" WaitTime="1000" />
 			<If Condition="!HasQuest(13612) &amp;&amp; !IsQuestCompleted(13612)">
@@ -660,6 +687,175 @@
 		<PickUp QuestName="Tweedle's Tiny Package" QuestId="13974" GiverName="Tweedle" GiverId="34395" />
 		<PickUp QuestName="Thunder Peak" QuestId="13879" GiverName="Broyk" GiverId="34510" />
 
-		<CustomBehavior File="Message" Text="Compiling Quests: Silverwind Refuge" LogColor="Cyan" />		
+		<CustomBehavior File="Message" Text="Compiling Quests: Silverwind Refuge" LogColor="Cyan" />
+
+		<!--TurnIn Object: Sharptalon's Claw-->
+		<If Condition="HasItem(16305)">
+			<PickUp QuestName="Sharptalon's Claw" QuestId="2" GiverType="Item" GiverName="Sharptalon's Claw" GiverId="16305" />
+			<TurnIn QuestName="Sharptalon's Claw" QuestId="2" TurnInName="Senani Thunderheart" TurnInId="12696" />
+		</If>
+
+		<PickUp QuestName="Thinning the... Herd?" QuestId="13967" GiverName="Senani Thunderheart" GiverId="12696" />
+
+		<If Condition="HasQuest(13974) &amp;&amp; IsQuestCompleted(13974)">
+			<TurnIn QuestName="Tweedle's Tiny Package" QuestId="13974" TurnInName="Flooz" TurnInId="34569" />
+			<CustomBehavior File="WaitTimer" WaitTime="7000" />
+		</If>
+
+		<PickUp QuestName="Mass Production" QuestId="13977" GiverName="Flooz" GiverId="34569" />
+		<PickUp QuestName="Simmer Down Now" QuestId="25" GiverName="Captain Tarkan" GiverId="34559" X="2075.384" Y="-1190.809" Z="100.9865" />
+
+			<Objective QuestName="Simmer Down Now" QuestId="25" Type="KillMob" MobId="12759" KillCount="1" />
+			<Objective QuestName="Simmer Down Now" QuestId="25" Type="KillMob" MobId="3917" KillCount="12" />
+
+		<!--PickUp Object: The Befouled Element-->
+		<If Condition="HasItem(16408)">
+			<PickUp QuestName="The Befouled Element" QuestId="1918" GiverName="Befouled Water Globe" GiverId="16408" GiverType="Item" />
+		</If>
+
+		<TurnIn QuestName="Simmer Down Now" QuestId="25" TurnInName="Captain Tarkan" TurnInId="34559" X="2075.384" Y="-1190.809" Z="100.9865" />
+
+		<!--TurnIn Object: The Befouled Element-->
+		<If Condition="HasQuest(1918)">
+			<TurnIn QuestName="The Befouled Element" QuestId="1918" TurnInName="Mastok Wrilehiss" TurnInId="12737" />
+		</If>
+
+		<TurnIn QuestName="Thunder Peak" QuestId="13879" TurnInName="Stikwad" TurnInId="34512" />
+		<PickUp QuestName="Put Out The Fire" QuestId="13884" GiverName="Arctanus" GiverId="34292" />
+		<PickUp QuestName="Hot Lava" QuestId="13880" GiverName="Core" GiverId="34290" />
+
+			<!--Objective: Hot Lava-->
+			<CustomBehavior File="InteractWith" QuestId="13880" MobId="195002" IgnoreLoSToTarget="True" InteractByUsingItemId="46352" NumOfTimes="50" Range="20">
+				<HuntingGrounds>
+					<Hotspot X="2543.045" Y="-1290.606" Z="120.5894" />
+					<Hotspot X="2581.047" Y="-1314.002" Z="134.4346" />
+					<Hotspot X="2631.853" Y="-1279.226" Z="145.843" />
+					<Hotspot X="2666.364" Y="-1245.67" Z="156.9903" />
+					<Hotspot X="2693.375" Y="-1211.346" Z="158.5446" />
+					<Hotspot X="2773.902" Y="-1186.586" Z="175.6436" />
+					<Hotspot X="2807.437" Y="-1122.01" Z="185.6721" />
+					<Hotspot X="2676.091" Y="-1093.69" Z="148.5607" />
+				</HuntingGrounds>
+			</CustomBehavior>
+
+
+			<!--Objective: Put Out The Fire [Get Another Freezing Surger]-->
+			<If Condition="!Me.HasAura(65178) &amp;&amp; HasQuest(13884) &amp;&amp; !IsQuestCompleted(13884)">
+				<CustomBehavior File="InteractWith" QuestId="13884" MobId="34292" GossipOptions="1" NonCompeteDistance="0" X="2498.446" Y="-1303.5" Z="135.0336" />
+			</If>
+
+			<Objective QuestName="Put Out The Fire" QuestId="13884" Type="KillMob" MobId="34314" KillCount="10" />
+
+		<TurnIn QuestName="Put Out The Fire" QuestId="13884" TurnInName="Arctanus" TurnInId="34292" />
+		<TurnIn QuestName="Hot Lava" QuestId="13880" TurnInName="Core" TurnInId="34290" />
+		<PickUp QuestName="Vortex" QuestId="13888" GiverName="The Vortex" GiverId="34289" />
+
+			<!--Objective: Vortex-->
+			<While Condition="HasQuest(13888) &amp;&amp; !IsQuestCompleted(13888)">
+				<CustomBehavior File="Message" Text="Warning: Custom UI addons may break this quest!" LogColor="Orange" />
+
+				<DisableBehavior Name="Combat" />
+				<If Condition="!Me.IsOnTransport">
+					<CustomBehavior File="InteractWith" MobId="34289" GossipOptions="1" NonCompeteDistance="0" X="2498.446" Y="-1303.5" Z="135.0336" />
+				</If>
+
+				<!--Actual Fighting-->
+				<While Condition="Me.IsOnTransport &amp;&amp; !IsQuestCompleted(13888)">
+					<CustomBehavior File="RunMacro" Macro="/target Lord Magmathar" />
+					<CustomBehavior File="Misc\RunLua" Lua="OverrideActionBarButton3:Click()" WaitTime="1000" />
+					<CustomBehavior File="RunMacro" Macro="/target Lord Magmathar" />
+					<CustomBehavior File="Misc\RunLua" Lua="OverrideActionBarButton2:Click()" WaitTime="1000" />
+					<CustomBehavior File="RunMacro" Macro="/target Lord Magmathar" />
+					<CustomBehavior File="Misc\RunLua" Lua="OverrideActionBarButton1:Click()" WaitTime="1000" />
+				</While>
+
+				<If Condition="Me.IsOnTransport">
+					<CustomBehavior File="WaitTimer" WaitTime="15000" GoalText="Waiting for Teleport" />
+				</If>
+				<EnableBehavior Name="Combat" />
+			</While>
+
+		<TurnIn QuestName="Vortex" QuestId="13888" TurnInName="Stikwad" TurnInId="34512" />
+		<TurnIn QuestName="Condition Critical!" QuestId="13958" TurnInName="Thagg" TurnInId="34518" />
+
+		<!--Navigation Issue: Cannot Develop Full Path to Top-->
+		<!--<PickUp QuestName="Stalemate" QuestId="13962" GiverName="Thagg" GiverId="34518" />-->
+
+			<!--<Objective QuestName="Stalemate" QuestId="13962" Type="KillMob" MobId="4273" KillCount="1" />-->
+
+		<!--<TurnIn QuestName="Stalemate" QuestId="13962" TurnInName="Thagg" TurnInId="34518" />-->
+			
+		<!--PickUp: Shadumbra's Head-->
+		<If Condition="!HasQuest(24) &amp;&amp; !IsQuestCompleted(24)">
+			<SetGrindArea>
+				<GrindArea>
+					<Factions>1097</Factions>
+					<Hotspots>
+						<Hotspot X="2655.6" Y="-1855.297" Z="188.0255" />
+						<Hotspot X="2670.427" Y="-1836.465" Z="189.0256" />
+						<Hotspot X="2702.137" Y="-1828.334" Z="193.567" />
+						<Hotspot X="2745.446" Y="-1846.985" Z="196.1558" />
+						<Hotspot X="2753.331" Y="-1893.576" Z="190.3399" />
+					</Hotspots>
+ 				</GrindArea>
+			</SetGrindArea>
+			<GrindTo Condition="HasItem(16304)" GoalText="Farming for Shadumbra's Head" />
+
+		<PickUp QuestName="Shadumbra's Head" QuestId="24" GiverType="Item" GiverName="Shadumbra's Head" GiverId="16304" />
+		</If>
+
+		<TurnIn QuestName="Shadumbra's Head" QuestId="24" TurnInName="Captain Goggath" TurnInId="34359" />
+		<TurnIn QuestName="Mass Production" QuestId="13977" TurnInName="Foreman Jynx" TurnInId="34596" />
+		<PickUp QuestName="They're Out There!" QuestId="13980" GiverName="Foreman Jynx" GiverId="34596" />
+		<PickUp QuestName="Building Your Own Coffin" QuestId="13983" GiverName="Foreman Jynx" GiverId="34596" />
+
+			<Objective QuestName="Building Your Own Coffin" QuestId="13983" Type="CollectItem" ItemId="46772" CollectCount="3" />
+			<Objective QuestName="Building Your Own Coffin" QuestId="13983" Type="CollectItem" ItemId="46773" CollectCount="3" />
+			<Objective QuestName="Building Your Own Coffin" QuestId="13983" Type="CollectItem" ItemId="46771" CollectCount="5" />
+
+			<!--Objective: They're Out There!-->
+			<While Condition="HasQuest(13980) &amp;&amp; !IsQuestCompleted(13980)">
+				<CustomBehavior File="UserSettings" UseMount="False" />
+				<CustomBehavior File="ForcedDismount" />
+
+				<If Condition="!Me.HasAura(65739)">
+					<RunTo X="2129.699" Y="-644.2228" Z="104.7444" />
+					<CustomBehavior File="Misc\RunLua" Lua="UseItemByName(46776)" WaitTime="1000" />
+				</If>
+
+				<If Condition="Me.HasAura(65739)">
+					<SetGrindArea>		
+						<GrindArea>
+							<MobID>34603</MobID>
+							<Hotspots> 
+								<Hotspot X="2305.243" Y="-939.764" Z="88.07816" />
+								<Hotspot X="2275.195" Y="-896.2372" Z="94.26099" />
+								<Hotspot X="2261.362" Y="-868.4515" Z="99.82585" />
+								<Hotspot X="2219.278" Y="-858.299" Z="100.6624" />
+								<Hotspot X="2238.407" Y="-793.2831" Z="107.2923" />
+								<Hotspot X="2196.235" Y="-747.1132" Z="104.7655" />
+								<Hotspot X="2157.373" Y="-710.6165" Z="104.1675" />
+								<Hotspot X="2149.371" Y="-605.0961" Z="104.3413" />
+								<Hotspot X="2240.2" Y="-593.1157" Z="103.8889" />
+							</Hotspots>
+						</GrindArea>
+					</SetGrindArea>		
+					<GrindTo Condition="IsQuestCompleted(13980) || !Me.HasAura(65739)" GoalText="Killing Ashenvale Assassins" />
+					
+					<CustomBehavior File="Misc\RunLua" Lua="UseItemByName(46776)" WaitTime="1000" />
+				</If>
+				<CustomBehavior File="UserSettings" UseMount="True" />
+			</While>
+
+		<TurnIn QuestName="Building Your Own Coffin" QuestId="13983" TurnInName="Foreman Jynx" TurnInId="34596" />
+		<TurnIn QuestName="They're Out There!" QuestId="13980" TurnInName="Foreman Jynx" TurnInId="34596" />	
+
+			<Objective QuestName="Thinning the... Herd?" QuestId="13967" Type="CollectItem" ItemId="46741" CollectCount="15" />
+	
+		<TurnIn QuestName="Thinning the... Herd?" QuestId="13967" TurnInName="Senani Thunderheart" TurnInId="12696" />
+		<!--Ignored Quest: King of the Foulweald-->
+
+		<CustomBehavior File="Message" Text="Profile Complete: Loading Stonetalon Mountains" LogColor="Cyan" />
+		<CustomBehavior File="LoadProfile" ProfileName="[N - Quest] Stonetalon Mountains [Life]" />		
 	</QuestOrder>
 </HBProfile>
