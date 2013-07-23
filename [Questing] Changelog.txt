@@ -1,8 +1,12 @@
 ==================================
  ==== Life Project Changelog ====
 ==================================
+_____________________________________
+Revision 63: Tuesday, July 23rd, 2013
+-- Ashenvale Complete! Checkpoints to Come
+-- Stonetalon Mountains 68% Completed
 ____________________________________
-Revision 63: Monday, July 22nd, 2013
+Revision 62: Monday, July 22nd, 2013
 -- Ashenvale 81% Completed
 -- Profile Loader now Accompanies all Races & Death Knights
 -- Cosmetic Profile Fixes to Northern Barrens and Undead
