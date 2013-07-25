@@ -434,6 +434,38 @@
 			<If Condition="!HasQuest(871) &amp;&amp; !IsQuestCompleted(871)">
 				<CustomBehavior File="RunMacro" Macro="/run for i=1,GetNumQuestLogEntries() do SelectQuestLogEntry(i); SetAbandonQuest(); AbandonQuest(); end" />
 			</If>
+			<!--Continential Drift: I'm in Eastern Kingdoms, should be in Kalimdor-->
+			<If Condition="Me.MapId == 0">
+				<CustomBehavior File="Message" Text="Transport: Getting you to Kalimdor" LogColor="Orange" />
+				<!--Get out of "Outlands" Zones-->
+				<If Condition="Me.ZoneId == 3433 || Me.ZoneId == 3430 || Me.ZoneId == 3487">
+					<RunTo DestName="Orb of Translocation" X="10038.42" Y="-7000.994" Z="61.76336" />
+					<CustomBehavior File="Message" Text="Transport: Using Orb of Translocation to Undercity" LogColor="Cyan" />
+					<CustomBehavior File="InteractWith" MobId="184502" Range="8" X="10038.42" Y="-7000.994" Z="61.76336" />
+				</If>
+				<CustomBehavior File="Message" Text="Transport: Riding Zepplin to Orgrimmar" LogColor="Cyan" />
+				<CustomBehavior File="UseTransport" TransportId="164871"
+					WaitAtX="2070.155" WaitAtY="289.2588" WaitAtZ="97.0315" 
+					TransportStartX="2062.376" TransportStartY="292.998" TransportStartZ="114.973"
+					TransportEndX="1833.509" TransportEndY="-4391.543" TransportEndZ="152.7679"
+					StandOnX="2067.979" StandOnY="295.2747" StandOnZ="97.23677" 
+					GetOffX="1840.225" GetOffY="-4390.912" GetOffZ="135.2337" />				
+			</If>			
+			<!--Riding Training Availability Check-->
+			<If Condition="Me.Level &gt;= 20 &amp;&amp; Me.Level &lt; 90">
+				<If Condition="Me.GetSkill(Styx.SkillLine.Riding).CurrentValue == 0 &amp;&amp; Me.Gold &gt;= 5">
+					<CustomBehavior File="Message" Text="Riding: Loading Trainer Profile" LogColor="Cyan" />
+					<CustomBehavior File="LoadProfile" ProfileName="..\Riding and Transports\[H - Quest] Northern Barrens Riding" />
+					<ElseIf Condition="Me.Gold &lt; 5 &amp;&amp; Me.GetSkill(Styx.SkillLine.Riding).CurrentValue == 0">
+						<CustomBehavior File="Message" Text="You don't have enough money to train. Will check again later!" LogColor="Orange" />
+					</ElseIf>
+				</If>
+			</If>
+
+			<If Condition="Me.Level &gt;= 20 &amp;&amp; Me.Level &lt; 90">
+				<CustomBehavior File="Message" Text="Checkpoint Reached: Loading Ashenvale" LogColor="Cyan" />
+				<CustomBehavior File="LoadProfile" ProfileName="[N - Quest] Ashenvale [Life]" />
+			</If>
 
 		<CustomBehavior File="Message" Text="Compiling Quests: Far Watch Post" LogColor="Cyan" />
 
@@ -711,7 +743,6 @@
 		<TurnIn QuestName="Altered Beings" QuestId="880" TurnInName="Tonga Runetotem" TurnInId="3448" />
 		<TurnIn QuestName="In Fungus We Trust" QuestId="13998" TurnInName="Apothecary Helbrim" TurnInId="3390" />
 		<PickUp QuestName="Whos Shroomin Who" QuestId="13999" GiverName="Apothecary Helbrim" GiverId="3390" />
-		<PickUp QuestName="Deathgates Reinforcements" QuestId="14073" GiverName="Thork" GiverId="3429" />
 		<TurnIn QuestName="The Purloined Payroll" QuestId="13991" TurnInName="Gazrog" TurnInId="3464" />
 
 		<!--Bug: Remove Accidental Dungeon Quest PickUp-->
@@ -720,21 +751,19 @@
 		</If>
 
 		<!--Riding Training Availability Check-->
-		<If Condition="Me.Level &gt;= 20">
+		<If Condition="Me.Level &gt;= 20 &amp;&amp; Me.Level &lt; 90">
 			<If Condition="Me.GetSkill(Styx.SkillLine.Riding).CurrentValue == 0 &amp;&amp; Me.Gold &gt;= 5">
 				<CustomBehavior File="Message" Text="Riding: Loading Trainer Profile" LogColor="Cyan" />
 				<CustomBehavior File="LoadProfile" ProfileName="..\Riding and Transports\[H - Quest] Northern Barrens Riding" />
-				<ElseIf Condition="Me.Gold &lt; 5">
+				<ElseIf Condition="Me.Gold &lt; 5 &amp;&amp; Me.GetSkill(Styx.SkillLine.Riding).CurrentValue == 0">
 					<CustomBehavior File="Message" Text="You don't have enough money to train. Will check again later!" LogColor="Orange" />
 				</ElseIf>
 			</If>
 		</If>
 
-		<!--Placeholder Checkpoint-->
-		<If Condition="Me.Level &gt;= 20">
-			<!--Uncomment to add a Checkpoint-->
-			<!--<CustomBehavior File="Message" Text="Checkpoint Reached: Loading Ashenvale" LogColor="Cyan" />
-			<CustomBehavior File="LoadProfile" ProfileName="[N - Quest] Ashenvale [Life]" />-->
+		<If Condition="Me.Level &gt;= 20 &amp;&amp; Me.Level &lt; 90">
+			<CustomBehavior File="Message" Text="Checkpoint Reached: Loading Ashenvale" LogColor="Cyan" />
+			<CustomBehavior File="LoadProfile" ProfileName="[N - Quest] Ashenvale [Life]" />
 		</If>			
 
 		<CustomBehavior File="Message" Text="Compiling Quests: Ratchet" LogColor="Cyan" />
@@ -784,21 +813,19 @@
 		<TurnIn QuestName="Waptor Twapping" QuestId="14068" TurnInName="Kalama" TurnInId="34828" />
 
 		<!--Riding Training Availability Check-->
-		<If Condition="Me.Level &gt;= 20">
+		<If Condition="Me.Level &gt;= 20 &amp;&amp; Me.Level &lt; 90">
 			<If Condition="Me.GetSkill(Styx.SkillLine.Riding).CurrentValue == 0 &amp;&amp; Me.Gold &gt;= 5">
 				<CustomBehavior File="Message" Text="Riding: Loading Trainer Profile" LogColor="Cyan" />
 				<CustomBehavior File="LoadProfile" ProfileName="..\Riding and Transports\[H - Quest] Northern Barrens Riding" />
-				<ElseIf Condition="Me.Gold &lt; 5">
+				<ElseIf Condition="Me.Gold &lt; 5 &amp;&amp; Me.GetSkill(Styx.SkillLine.Riding).CurrentValue == 0">
 					<CustomBehavior File="Message" Text="You don't have enough money to train. Will check again later!" LogColor="Orange" />
 				</ElseIf>
 			</If>
 		</If>
 
-		<!--Placeholder Checkpoint-->
-		<If Condition="Me.Level &gt;= 20">
-			<!--Uncomment to add a Checkpoint-->
-			<!--<CustomBehavior File="Message" Text="Checkpoint Reached: Loading Ashenvale" LogColor="Cyan" />
-			<CustomBehavior File="LoadProfile" ProfileName="[N - Quest] Ashenvale [Life]" />-->
+		<If Condition="Me.Level &gt;= 20 &amp;&amp; Me.Level &lt; 90">
+			<CustomBehavior File="Message" Text="Checkpoint Reached: Loading Ashenvale" LogColor="Cyan" />
+			<CustomBehavior File="LoadProfile" ProfileName="[N - Quest] Ashenvale [Life]" />
 		</If>					
 
 			<!--Objectives: To Track A Thief-->
@@ -889,21 +916,19 @@
 		<TurnIn QuestName="WANTED: Cap'n Garvey" QuestId="895" TurnInName="Gazlowe" TurnInId="3391" />
 
 		<!--Riding Training Availability Check-->
-		<If Condition="Me.Level &gt;= 20">
+		<If Condition="Me.Level &gt;= 20 &amp;&amp; Me.Level &lt; 90">
 			<If Condition="Me.GetSkill(Styx.SkillLine.Riding).CurrentValue == 0 &amp;&amp; Me.Gold &gt;= 5">
 				<CustomBehavior File="Message" Text="Riding: Loading Trainer Profile" LogColor="Cyan" />
 				<CustomBehavior File="LoadProfile" ProfileName="..\Riding and Transports\[H - Quest] Northern Barrens Riding" />
-				<ElseIf Condition="Me.Gold &lt; 5">
+				<ElseIf Condition="Me.Gold &lt; 5 &amp;&amp; Me.GetSkill(Styx.SkillLine.Riding).CurrentValue == 0">
 					<CustomBehavior File="Message" Text="You don't have enough money to train. Will check again later!" LogColor="Orange" />
 				</ElseIf>
 			</If>
 		</If>
 
-		<!--Placeholder Checkpoint-->
-		<If Condition="Me.Level &gt;= 20">
-			<!--Uncomment to add a Checkpoint-->
-			<!--<CustomBehavior File="Message" Text="Checkpoint Reached: Loading Ashenvale" LogColor="Cyan" />
-			<CustomBehavior File="LoadProfile" ProfileName="[N - Quest] Ashenvale [Life]" />-->
+		<If Condition="Me.Level &gt;= 20 &amp;&amp; Me.Level &lt; 90">
+			<CustomBehavior File="Message" Text="Checkpoint Reached: Loading Ashenvale" LogColor="Cyan" />
+			<CustomBehavior File="LoadProfile" ProfileName="[N - Quest] Ashenvale [Life]" />
 		</If>	
 
 		<PickUp QuestName="Gazlowe's Fortune" QuestId="14050" GiverName="Gazlowe" GiverId="3391" />
@@ -976,21 +1001,19 @@
 		<TurnIn QuestName="Sludge Beast!" QuestId="29089" TurnInName="Nozzlepot" TurnInId="34698" />
 
 		<!--Riding Training Availability Check-->
-		<If Condition="Me.Level &gt;= 20">
+		<If Condition="Me.Level &gt;= 20 &amp;&amp; Me.Level &lt; 90">
 			<If Condition="Me.GetSkill(Styx.SkillLine.Riding).CurrentValue == 0 &amp;&amp; Me.Gold &gt;= 5">
 				<CustomBehavior File="Message" Text="Riding: Loading Trainer Profile" LogColor="Cyan" />
 				<CustomBehavior File="LoadProfile" ProfileName="..\Riding and Transports\[H - Quest] Northern Barrens Riding" />
-				<ElseIf Condition="Me.Gold &lt; 5">
+				<ElseIf Condition="Me.Gold &lt; 5 &amp;&amp; Me.GetSkill(Styx.SkillLine.Riding).CurrentValue == 0">
 					<CustomBehavior File="Message" Text="You don't have enough money to train. Will check again later!" LogColor="Orange" />
 				</ElseIf>
 			</If>
 		</If>
 
-		<!--Placeholder Checkpoint-->
-		<If Condition="Me.Level &gt;= 20">
-			<!--Uncomment to add a Checkpoint-->
-			<!--<CustomBehavior File="Message" Text="Checkpoint Reached: Loading Ashenvale" LogColor="Cyan" />
-			<CustomBehavior File="LoadProfile" ProfileName="[N - Quest] Ashenvale [Life]" />-->
+		<If Condition="Me.Level &gt;= 20 &amp;&amp; Me.Level &lt; 90">
+			<CustomBehavior File="Message" Text="Checkpoint Reached: Loading Ashenvale" LogColor="Cyan" />
+			<CustomBehavior File="LoadProfile" ProfileName="[N - Quest] Ashenvale [Life]" />
 		</If>	
 
 			<Objective QuestName="Hyena Extermination" QuestId="29088" Type="KillMob" MobId="4127" KillCount="6" />
@@ -1024,21 +1047,19 @@
 		<TurnIn QuestName="Samophlange Repair" QuestId="14003" TurnInName="Brak Blusterpipe" TurnInId="34674" />
 
 		<!--Riding Training Availability Check-->
-		<If Condition="Me.Level &gt;= 20">
+		<If Condition="Me.Level &gt;= 20 &amp;&amp; Me.Level &lt; 90">
 			<If Condition="Me.GetSkill(Styx.SkillLine.Riding).CurrentValue == 0 &amp;&amp; Me.Gold &gt;= 5">
 				<CustomBehavior File="Message" Text="Riding: Loading Trainer Profile" LogColor="Cyan" />
 				<CustomBehavior File="LoadProfile" ProfileName="..\Riding and Transports\[H - Quest] Northern Barrens Riding" />
-				<ElseIf Condition="Me.Gold &lt; 5">
+				<ElseIf Condition="Me.Gold &lt; 5 &amp;&amp; Me.GetSkill(Styx.SkillLine.Riding).CurrentValue == 0">
 					<CustomBehavior File="Message" Text="You don't have enough money to train. Will check again later!" LogColor="Orange" />
 				</ElseIf>
 			</If>
 		</If>
 
-		<!--Placeholder Checkpoint-->
-		<If Condition="Me.Level &gt;= 20">
-			<!--Uncomment to add a Checkpoint-->
-			<!--<CustomBehavior File="Message" Text="Checkpoint Reached: Loading Ashenvale" LogColor="Cyan" />
-			<CustomBehavior File="LoadProfile" ProfileName="[N - Quest] Ashenvale [Life]" />-->
+		<If Condition="Me.Level &gt;= 20 &amp;&amp; Me.Level &lt; 90">
+			<CustomBehavior File="Message" Text="Checkpoint Reached: Loading Ashenvale" LogColor="Cyan" />
+			<CustomBehavior File="LoadProfile" ProfileName="[N - Quest] Ashenvale [Life]" />
 		</If>	
 
 		<PickUp QuestName="Wenikee Boltbucket" QuestId="29026" GiverName="Brak Blusterpipe" GiverId="34674" />
@@ -1065,21 +1086,19 @@
 		<TurnIn QuestName="A Burning Threat" QuestId="29090" TurnInName="Brogor" TurnInId="52192" />
 		<TurnIn QuestName="Nugget Slugs" QuestId="29027" TurnInName="Wenikee Boltbucket" TurnInId="9316" />
 		<!--Riding Training Availability Check-->
-		<If Condition="Me.Level &gt;= 20">
+		<If Condition="Me.Level &gt;= 20 &amp;&amp; Me.Level &lt; 90">
 			<If Condition="Me.GetSkill(Styx.SkillLine.Riding).CurrentValue == 0 &amp;&amp; Me.Gold &gt;= 5">
 				<CustomBehavior File="Message" Text="Riding: Loading Trainer Profile" LogColor="Cyan" />
 				<CustomBehavior File="LoadProfile" ProfileName="..\Riding and Transports\[H - Quest] Northern Barrens Riding" />
-				<ElseIf Condition="Me.Gold &lt; 5">
+				<ElseIf Condition="Me.Gold &lt; 5 &amp;&amp; Me.GetSkill(Styx.SkillLine.Riding).CurrentValue == 0">
 					<CustomBehavior File="Message" Text="You don't have enough money to train. Will check again later!" LogColor="Orange" />
 				</ElseIf>
 			</If>
 		</If>
 
-		<!--Placeholder Checkpoint-->
-		<If Condition="Me.Level &gt;= 20">
-			<!--Uncomment to add a Checkpoint-->
-			<!--<CustomBehavior File="Message" Text="Checkpoint Reached: Loading Ashenvale" LogColor="Cyan" />
-			<CustomBehavior File="LoadProfile" ProfileName="[N - Quest] Ashenvale [Life]" />-->
+		<If Condition="Me.Level &gt;= 20 &amp;&amp; Me.Level &lt; 90">
+			<CustomBehavior File="Message" Text="Checkpoint Reached: Loading Ashenvale" LogColor="Cyan" />
+			<CustomBehavior File="LoadProfile" ProfileName="[N - Quest] Ashenvale [Life]" />
 		</If>	
 
 		<PickUp QuestName="Return to Samophlanger" QuestId="14004" GiverName="Wenikee Boltbucket" GiverId="9316" />
@@ -1138,21 +1157,19 @@
 		<TurnIn QuestName="The Short Way Home" QuestId="29094" TurnInName="Darsok Swiftdagger" TurnInId="3449" />
 			
 		<!--Riding Training Availability Check-->
-		<If Condition="Me.Level &gt;= 20">
+		<If Condition="Me.Level &gt;= 20 &amp;&amp; Me.Level &lt; 90">
 			<If Condition="Me.GetSkill(Styx.SkillLine.Riding).CurrentValue == 0 &amp;&amp; Me.Gold &gt;= 5">
 				<CustomBehavior File="Message" Text="Riding: Loading Trainer Profile" LogColor="Cyan" />
 				<CustomBehavior File="LoadProfile" ProfileName="..\Riding and Transports\[H - Quest] Northern Barrens Riding" />
-				<ElseIf Condition="Me.Gold &lt; 5">
+				<ElseIf Condition="Me.Gold &lt; 5 &amp;&amp; Me.GetSkill(Styx.SkillLine.Riding).CurrentValue == 0">
 					<CustomBehavior File="Message" Text="You don't have enough money to train. Will check again later!" LogColor="Orange" />
 				</ElseIf>
 			</If>
 		</If>
 
-		<!--Placeholder Checkpoint-->
-		<If Condition="Me.Level &gt;= 20">
-			<!--Uncomment to add a Checkpoint-->
-			<!--<CustomBehavior File="Message" Text="Checkpoint Reached: Loading Ashenvale" LogColor="Cyan" />
-			<CustomBehavior File="LoadProfile" ProfileName="[N - Quest] Ashenvale [Life]" />-->
+		<If Condition="Me.Level &gt;= 20 &amp;&amp; Me.Level &lt; 90">
+			<CustomBehavior File="Message" Text="Checkpoint Reached: Loading Ashenvale" LogColor="Cyan" />
+			<CustomBehavior File="LoadProfile" ProfileName="[N - Quest] Ashenvale [Life]" />
 		</If>						
 			
 		<!--Northern Barrens Loremaster Marker-->
@@ -1168,6 +1185,7 @@
 
 		<PickUp QuestName="Harpy Raiders" QuestId="867" GiverName="Darsok Swiftdagger" GiverId="3449" />
 		<PickUp QuestName="Harpy Lieutenants" QuestId="875" GiverName="Darsok Swiftdagger" GiverId="3449" />
+		<PickUp QuestName="Deathgate's Reinforcements" QuestId="14073" GiverName="Thork" GiverId="3429" />
 		<TurnIn QuestName="Deathgate's Reinforcements" QuestId="14073" TurnInName="Regthar Deathgate" TurnInId="3389" />
 		<PickUp QuestName="Hezrul Bloodmark" QuestId="852" GiverName="Regthar Deathgate" GiverId="3389" />
 		<PickUp QuestName="Centaur Bracers" QuestId="855" GiverName="Regthar Deathgate" GiverId="3389" />

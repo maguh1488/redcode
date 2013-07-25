@@ -497,6 +497,6 @@
 		<TurnIn QuestName="Sen'jin Village" QuestId="25073" TurnInName="Master Gadrin" TurnInId="3188" />
 
 		<CustomBehavior File="Message" Text="Profile Complete: Loading Durotar" LogColor="Cyan" />
-		<CustomBehavior File="LoadProfile" ProfileName="..\Kalimdor\[H - Quest] Durotar [Life]" />			
+		<CustomBehavior File="LoadProfile" ProfileName="..\Kalimdor\[H - Quest] Durotar [Life]" />	
 	</QuestOrder>
 </HBProfile>

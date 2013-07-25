@@ -64,6 +64,23 @@
 			<If Condition="!HasQuest(25945) &amp;&amp; !IsQuestCompleted(25945)">
 				<CustomBehavior File="RunMacro" Macro="/run for i=1,GetNumQuestLogEntries() do SelectQuestLogEntry(i); SetAbandonQuest(); AbandonQuest(); end" />
 			</If>
+			<!--Continential Drift: I'm in Eastern Kingdoms, should be in Kalimdor-->
+			<If Condition="Me.MapId == 0">
+				<CustomBehavior File="Message" Text="Transport: Getting you to Kalimdor" LogColor="Orange" />
+				<!--Get out of "Outlands" Zones-->
+				<If Condition="Me.ZoneId == 3433 || Me.ZoneId == 3430 || Me.ZoneId == 3487">
+					<RunTo DestName="Orb of Translocation" X="10038.42" Y="-7000.994" Z="61.76336" />
+					<CustomBehavior File="Message" Text="Transport: Using Orb of Translocation to Undercity" LogColor="Cyan" />
+					<CustomBehavior File="InteractWith" MobId="184502" Range="8" X="10038.42" Y="-7000.994" Z="61.76336" />
+				</If>
+				<CustomBehavior File="Message" Text="Transport: Riding Zepplin to Orgrimmar" LogColor="Cyan" />
+				<CustomBehavior File="UseTransport" TransportId="164871"
+					WaitAtX="2070.155" WaitAtY="289.2588" WaitAtZ="97.0315" 
+					TransportStartX="2062.376" TransportStartY="292.998" TransportStartZ="114.973"
+					TransportEndX="1833.509" TransportEndY="-4391.543" TransportEndZ="152.7679"
+					StandOnX="2067.979" StandOnY="295.2747" StandOnZ="97.23677" 
+					GetOffX="1840.225" GetOffY="-4390.912" GetOffZ="135.2337" />				
+			</If>
 
 		<CustomBehavior File="Message" Text="Compiling Quests: The Fold" LogColor="Cyan" />
 
@@ -290,7 +307,89 @@
 		<TurnIn QuestName="Kobold Fury!" QuestId="26068" TurnInName="Subjugator Devo" TurnInId="42023" />
 		<PickUp QuestName="All's Quiet on the Southern Front" QuestId="26073" GiverName="Witch Doctor Jin'Zil" GiverId="3995" />
 		<TurnIn QuestName="All's Quiet on the Southern Front" QuestId="26073" TurnInName="Overlord Krom'gar" TurnInId="41023" />
+		<PickUp QuestName="Beginning of the End" QuestId="26074" GiverName="Overlord Krom'gar" GiverId="41023" />
+		
+			<!--Objective: Beginning of the End-->
+			<If Condition="HasQuest(26074) &amp;&amp; !IsQuestCompleted(26074)">
+				<CustomBehavior File="InteractWith" MobId="42029" NonCompeteDistance="0" Range="9" IgnoreLoSToTarget="True" X="898.9622" Y="-33.95522" Z="95.32738" />
+				<While Condition="Me.IsOnTransport">
+					<CustomBehavior File="WaitTimer" WaitTime="10000" GoalText="Waiting for the Krom'gar Balloon to Land" />
+				</While>
+			</If>
+		
+		<TurnIn QuestName="Beginning of the End" QuestId="26074" TurnInName="Jibbly Rakit" TurnInId="42033" />
 
-			<!--Balloon Ride to Sludgeworks-->
+		<CustomBehavior File="Message" Text="Compiling Quests: The Sludgewerks" LogColor="Cyan" />
+
+		<PickUp QuestName="The Turd Problem" QuestId="26075" GiverName="Jibbly Rakit" GiverId="42033" />
+			
+			<Objective QuestName="The Turd Problem" QuestId="26075" Type="KillMob" MobId="4012" KillCount="6" />
+		
+		<TurnIn QuestName="The Turd Problem" QuestId="26075" TurnInName="Jibbly Rakit" TurnInId="42033" />
+		<PickUp QuestName="Spy Infestation" QuestId="26076" GiverName="Jibbly Rakit" GiverId="42033" />
+			
+			<While Condition="HasQuest(26076) &amp;&amp; !IsQuestCompleted(26076)">
+				<CustomBehavior File="InteractWith" MobId="42035" InteractByUsingItemId="56800" MobState="Alive" Range="5" WaitTime="3000">
+					<HuntingGrounds>
+						<Hotspot X="1791.239" Y="754.7161" Z="137.3524" />
+						<Hotspot X="1750.058" Y="759.1528" Z="134.6814" />
+						<Hotspot X="1715.917" Y="755.055" Z="133.1963" />
+						<Hotspot X="1697.48" Y="753.676" Z="132.518" />
+						<Hotspot X="1694.742" Y="781.7564" Z="130.861" />
+						<Hotspot X="1717.218" Y="818.3292" Z="127.354" />
+						<Hotspot X="1737.71" Y="859.2083" Z="129.2509" />
+						<Hotspot X="1649.53" Y="782.7709" Z="131.1637" />
+					</HuntingGrounds>
+				</CustomBehavior>
+			</While>
+		
+		<TurnIn QuestName="Spy Infestation" QuestId="26076" TurnInName="Jibbly Rakit" TurnInId="42033" />
+		<PickUp QuestName="Final Delivery" QuestId="26077" GiverName="Jibbly Rakit" GiverId="42033" />
+		
+			<!--Objective: Final Delivery-->
+			<If Condition="HasQuest(26077) &amp;&amp; !IsQuestCompleted(26077)">
+				<RunTo X="1614.259" Y="881.6822" Z="147.7032" />
+				<CustomBehavior File="InteractWith" MobId="41418" NonCompeteDistance="0" Range="15" IgnoreLoSToTarget="True" X="1614.259" Y="881.6822" Z="147.7032" />
+				<While Condition="Me.IsOnTransport">
+					<CustomBehavior File="WaitTimer" WaitTime="10000" GoalText="Waiting for the Krom'gar Balloon to Land" />
+				</While>
+			</If>		
+
+		<TurnIn QuestName="Final Delivery" QuestId="26077" TurnInName="General Grebo" TurnInId="42050" />
+
+		<CustomBehavior File="Message" Text="Compiling Quests: Cliffwalker Post" LogColor="Cyan" />
+
+		<PickUp QuestName="To Battlescar!" QuestId="26082" GiverName="General Grebo" GiverId="42050" />
+	
+			<Objective QuestName="To Battlescar!" QuestId="26082" Type="KillMob" MobId="35150" KillCount="5" />
+			<Objective QuestName="To Battlescar!" QuestId="26082" Type="KillMob" MobId="42056" KillCount="20" />
+	
+		<TurnIn QuestName="To Battlescar!" QuestId="26082" TurnInName="General Grebo" TurnInId="42050" />
+		<PickUp QuestName="Proof of Lies" QuestId="26097" GiverName="High Chieftain Cliffwalker" GiverId="42039" />
+		<TurnIn QuestName="Proof of Lies" QuestId="26097" TurnInName="Orthus Cliffwalker" TurnInId="42091" X="1580.775" Y="1555.872" Z="158.0497" />
+		<PickUp QuestName="Betrayal at the Grove" QuestId="26098" GiverName="Orthus Cliffwalker" GiverId="42091" />
+		<TurnIn QuestName="Betrayal at the Grove" QuestId="26098" TurnInName="High Chieftain Cliffwalker" TurnInId="42039" />
+		<PickUp QuestName="Is This Justice?" QuestId="26099" GiverName="High Chieftain Cliffwalker" GiverId="42039" />
+
+			<While Condition="HasQuest(26099) &amp;&amp; !IsQuestCompleted(26099)">
+				<RunTo X="2115.111" Y="1231.719" Z="451.9319" />
+				<CustomBehavior File="WaitTimer" WaitTime="20000" GoalText="Waiting to kill Grebo" />
+			</While>
+
+		<TurnIn QuestName="Is This Justice?" QuestId="26099" TurnInName="Masha Cliffwalker" TurnInId="42047" />
+		<PickUp QuestName="The General is Dead" QuestId="26100" GiverName="Masha Cliffwalker" GiverId="42047" />
+		<TurnIn QuestName="The General is Dead" QuestId="26100" TurnInName="Overlord Krom'gar" TurnInId="41023" />
+		<PickUp QuestName="Might Makes Right" QuestId="26101" GiverName="Overlord Krom'gar" GiverId="41023" />
+		<TurnIn QuestName="Might Makes Right" QuestId="26101" TurnInName="Overlord Krom'gar" TurnInId="42106" />
+		<PickUp QuestName="To Be Horde..." QuestId="26115" GiverName="Overlord Krom'gar" GiverId="42106" />
+		
+			<While Condition="HasQuest(26115) &amp;&amp; !IsQuestCompleted(26115)">
+				<CustomBehavior File="WaitTimer" WaitTime="20000" GoalText="Waiting for the Druid Tower to be Nuked" />
+			</While>
+
+		<TurnIn QuestName="To Be Horde..." QuestId="26115" TurnInName="High Chieftain Cliffwalker" TurnInId="42039" />
+
+		<CustomBehavior File="Message" Text="Profile Complete: Loading Desolace" LogColor="Cyan" />
+		<CustomBehavior File="LoadProfile" ProfileName="[N - Quest] Desolace [Life]" />	
 	</QuestOrder>
 </HBProfile>

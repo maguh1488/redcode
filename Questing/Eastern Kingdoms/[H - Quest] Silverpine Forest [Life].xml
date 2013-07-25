@@ -48,6 +48,10 @@
 	<Blackspots>
 	</Blackspots>
 
+	<Blacklist>
+		<Mob Name="General Marstone" Entry="45995" Flags="Pull" />
+	</Blacklist>
+
 	<Quest Id="27193" Name="Seek and Destroy">
 		<Objective Type="CollectItem" ItemId="60867" CollectCount="1">
 			<CollectFrom>
