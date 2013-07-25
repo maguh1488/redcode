@@ -1,6 +1,14 @@
 ==================================
  ==== Life Project Changelog ====
 ==================================
+______________________________________
+Revision 64: Thursday: July 24th, 2013
+-- Silverpine Tweak to accompany the Dwarf
+-- Durotar now supports EK -> KA Transports
+-- Northern Barrens has more Checkpoints and Supports EK -> KA
+-- Ashenvale Stump Blackspot, Objective tag issue replaced with CollectThings
+-- Stonetalon supports EK -> KA, Quests Finished! Sans 2 Issues
+-- Basic Draenei, Gnome, and Death Knight starters added. Needs Work!
 _____________________________________
 Revision 63: Tuesday, July 23rd, 2013
 -- Ashenvale Complete! Checkpoints to Come

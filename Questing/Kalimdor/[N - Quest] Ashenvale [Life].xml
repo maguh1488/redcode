@@ -54,6 +54,23 @@
 		<Vendor Name="Dro Shadowfree" Entry="43568" Type="Repair" X="2141.16" Y="-1215.74" Z="96.4018" />
 	</Vendors>
 
+	<Quest Id="13651" Name="Needs a Little Lubrication">
+		<Objective Type="CollectItem" ItemId="45071" CollectCount="5">
+			<CollectFrom>
+				<Mob Name="Rotting Slime" Id="3928" />
+			</CollectFrom>
+			<Hotspots>
+				<Hotspot X="1783.536" Y="-2394.596" Z="98.35992" />
+				<Hotspot X="1770.548" Y="-2451.956" Z="91.81968" />
+				<Hotspot X="1781.563" Y="-2481.064" Z="88.77956" />
+				<Hotspot X="1830.719" Y="-2526.607" Z="73.30381" />
+				<Hotspot X="1861.836" Y="-2563.895" Z="74.7789" />
+				<Hotspot X="1784.105" Y="-2583.704" Z="85.94539" />
+				<Hotspot X="1693.712" Y="-2540.061" Z="93.5088" />
+				<Hotspot X="1641.354" Y="-2489.121" Z="99.66045" />
+			</Hotspots>
+		</Objective>
+	</Quest>
 	<Quest Id="26448" Name="Destroy the Legion">
 		<Objective Type="KillMob" MobId="11697" KillCount="15">
 			<Hotspots>
@@ -144,25 +161,23 @@
 			</Hotspots>
 		</Objective>
 	</Quest>
-<Quest Id="13967" Name="Thinning the... Herd?">
-	<Objective Type="CollectItem" ItemId="46741" CollectCount="15">
-		<CollectFrom>
-			<Mob Name="Foulweald Warrior" Id="3743" />
-			<Mob Name="Foulweald Totemic" Id="3750" />
-			<Mob Name="Foulweald Pathfinder" Id="3745" />
-		</CollectFrom>
-		<Hotspots>
-			<Hotspot X="2294.582" Y="-1416.414" Z="86.90558" />
-			<Hotspot X="2270.949" Y="-1449.679" Z="90.11123" />
-			<Hotspot X="2226.909" Y="-1525.832" Z="89.98167" />
-			<Hotspot X="2198.165" Y="-1563.782" Z="85.87692" />
-			<Hotspot X="2244.388" Y="-1586.973" Z="87.08325" />
-			<Hotspot X="2153.89" Y="-1638.06" Z="80.92967" />
-		</Hotspots>
-	</Objective>
-</Quest>
-
-
+	<Quest Id="13967" Name="Thinning the... Herd?">
+		<Objective Type="CollectItem" ItemId="46741" CollectCount="15">
+			<CollectFrom>
+				<Mob Name="Foulweald Warrior" Id="3743" />
+				<Mob Name="Foulweald Totemic" Id="3750" />
+				<Mob Name="Foulweald Pathfinder" Id="3745" />
+			</CollectFrom>
+			<Hotspots>
+				<Hotspot X="2294.582" Y="-1416.414" Z="86.90558" />
+				<Hotspot X="2270.949" Y="-1449.679" Z="90.11123" />
+				<Hotspot X="2226.909" Y="-1525.832" Z="89.98167" />
+				<Hotspot X="2198.165" Y="-1563.782" Z="85.87692" />
+				<Hotspot X="2244.388" Y="-1586.973" Z="87.08325" />
+				<Hotspot X="2153.89" Y="-1638.06" Z="80.92967" />
+			</Hotspots>
+		</Objective>
+	</Quest>
 
 	<QuestOrder>
 		<CustomBehavior File="Message" Text="Initializing Settings" LogColor="Cyan" />
@@ -172,6 +187,23 @@
 			<CustomBehavior File="RunMacro" Macro="/script SetCVar('AutoLootDefault', 1)" WaitTime="1000" />
 			<If Condition="!HasQuest(13612) &amp;&amp; !IsQuestCompleted(13612)">
 				<CustomBehavior File="RunMacro" Macro="/run for i=1,GetNumQuestLogEntries() do SelectQuestLogEntry(i); SetAbandonQuest(); AbandonQuest(); end" />
+			</If>
+			<!--Continential Drift: I'm in Eastern Kingdoms, should be in Kalimdor-->
+			<If Condition="Me.MapId == 0">
+				<CustomBehavior File="Message" Text="Transport: Getting you to Kalimdor" LogColor="Orange" />
+				<!--Get out of "Outlands" Zones-->
+				<If Condition="Me.ZoneId == 3433 || Me.ZoneId == 3430 || Me.ZoneId == 3487">
+					<RunTo DestName="Orb of Translocation" X="10038.42" Y="-7000.994" Z="61.76336" />
+					<CustomBehavior File="Message" Text="Transport: Using Orb of Translocation to Undercity" LogColor="Cyan" />
+					<CustomBehavior File="InteractWith" MobId="184502" Range="8" X="10038.42" Y="-7000.994" Z="61.76336" />
+				</If>
+				<CustomBehavior File="Message" Text="Transport: Riding Zepplin to Orgrimmar" LogColor="Cyan" />
+				<CustomBehavior File="UseTransport" TransportId="164871"
+					WaitAtX="2070.155" WaitAtY="289.2588" WaitAtZ="97.0315" 
+					TransportStartX="2062.376" TransportStartY="292.998" TransportStartZ="114.973"
+					TransportEndX="1833.509" TransportEndY="-4391.543" TransportEndZ="152.7679"
+					StandOnX="2067.979" StandOnY="295.2747" StandOnZ="97.23677" 
+					GetOffX="1840.225" GetOffY="-4390.912" GetOffZ="135.2337" />				
 			</If>
 
 		<CustomBehavior File="Message" Text="Compiling Quests: The Mor'Shan Ramparts" LogColor="Cyan" />
@@ -217,16 +249,19 @@
 		<TurnIn QuestName="Gorat's Vengeance" QuestId="13621" TurnInName="Kadrak" TurnInId="8582" />
 		<PickUp QuestName="Got Wood?" QuestId="13628" GiverName="Truun" GiverId="33284" />			
 
-			<If Condition="HasQuest(13628) &amp;&amp; !IsQuestCompleted(13628)">
+			<!--Objective: Got Wood?-->
+			<While Condition="HasQuest(13628) &amp;&amp; !IsQuestCompleted(13628)">
 				<CustomBehavior File="ForcedDismount" />
+				<CustomBehavior File="UserSettings" UseMount="False" />
 				<DisableBehavior Name="Combat, Loot" />
 				<CustomBehavior File="InteractWith" MobId="8582" GossipOptions="1" X="1233.077" Y="-2249.259" Z="91.72605" />
 				<CustomBehavior File="InteractWith" MobId="33374" X="1233.077" Y="-2249.259" Z="91.72605" />
 				<While Condition="Me.IsOnTransport">
 					<CustomBehavior File="WaitTimer" WaitTime="10000" GoalText="Waiting for Brutusk to Stop" />
 				</While>
+				<CustomBehavior File="UserSettings" UseMount="True" />
 				<EnableBehavior Name="Combat, Loot" />
-			</If>
+			</While>
 
 		<TurnIn QuestName="Got Wood?" QuestId="13628" TurnInName="Gorka" TurnInId="33421" />	
 
@@ -249,15 +284,31 @@
 					</SearchPath>
 				</CustomBehavior>
 
-				<CustomBehavior File="InteractWith" MobId="194349" IgnoreLoSToTarget="True" InteractByLooting="True" NumOfTimes="5" WaitForNpcs="False"  />
+				<!--Add Large Stump Blackspot-->
+				<CustomBehavior File="InteractWith" MobId="194349" IgnoreLoSToTarget="True" InteractByLooting="True" NumOfTimes="5" WaitForNpcs="False">
+					<Blackspots>
+						<!--Stump the Workers Walk Up-->
+						<Blackspot X="1620.736" Y="-2513" Z="97.57805" Radius="7.310919" />
+					</Blackspots>
+				</CustomBehavior>
 				<CustomBehavior File="UserSettings" Preset="UserOriginal" />
 			</While>
 
 		<TurnIn QuestName="Management Material" QuestId="13640" TurnInName="Gorka" TurnInId="33421" />
 		<PickUp QuestName="Needs a Little Lubrication" QuestId="13651" GiverName="Gorka" GiverId="33421" />
 
-			<!--Needs Override?-->
-			<Objective QuestName="Needs a Little Lubrication" QuestId="13651" Type="CollectItem" ItemId="45071" CollectCount="5" />
+			<!--It Doesn't Dismount-->
+			<!--Objective QuestName="Needs a Little Lubrication" QuestId="13651" Type="CollectItem" ItemId="45071" CollectCount="5" /-->
+			<CustomBehavior File="CollectThings" QuestId="13651" CollectUntil="RequiredCountReached" CollectItemCount="5" MobId="3928" CollectItemId="45071">
+				<Hotspot X="1783.536" Y="-2394.596" Z="98.35992" />
+				<Hotspot X="1770.548" Y="-2451.956" Z="91.81968" />
+				<Hotspot X="1781.563" Y="-2481.064" Z="88.77956" />
+				<Hotspot X="1830.719" Y="-2526.607" Z="73.30381" />
+				<Hotspot X="1861.836" Y="-2563.895" Z="74.7789" />
+				<Hotspot X="1784.105" Y="-2583.704" Z="85.94539" />
+				<Hotspot X="1693.712" Y="-2540.061" Z="93.5088" />
+				<Hotspot X="1641.354" Y="-2489.121" Z="99.66045" />
+			</CustomBehavior>
 		
 		<TurnIn QuestName="Needs a Little Lubrication" QuestId="13651" TurnInName="Gorka" TurnInId="33421" />
 		<PickUp QuestName="Torek's Assault" QuestId="6544" GiverName="Torek" GiverId="12858" />
@@ -737,7 +788,6 @@
 					<Hotspot X="2676.091" Y="-1093.69" Z="148.5607" />
 				</HuntingGrounds>
 			</CustomBehavior>
-
 
 			<!--Objective: Put Out The Fire [Get Another Freezing Surger]-->
 			<If Condition="!Me.HasAura(65178) &amp;&amp; HasQuest(13884) &amp;&amp; !IsQuestCompleted(13884)">
