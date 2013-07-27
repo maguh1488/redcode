@@ -2,6 +2,12 @@
  ==== Life Project Changelog ====
 ==================================
 ______________________________________
+Revision 65: Saturday: July 27th, 2013
+-- Profile Loader is now Politically Correct
+-- Minor Tweaks with Gnome, Night Elf, and Death Knight
+-- Dun Morogh & Loch Modan are now added! Checkpoints to Follow
+-- Goblin profile is added, but it has a few issues still
+______________________________________
 Revision 64: Thursday: July 24th, 2013
 -- Silverpine Tweak to accompany the Dwarf
 -- Durotar now supports EK -> KA Transports

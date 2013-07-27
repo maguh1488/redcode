@@ -19,14 +19,8 @@
 	<SellBlue>False</SellBlue>
 	<SellPurple>False</SellPurple>
 
-	<AvoidMobs>
- 	</AvoidMobs>
-
-	<Blackspots>
-	</Blackspots>
-
 	<Mailboxes>
-		<!--Dolanaar Vendor-->
+		<!--Dolanaar Mailbox-->
 		<Mailbox X="9850.111" Y="957.8356" Z="1306.785" />
 	</Mailboxes>
 
@@ -166,6 +160,11 @@
 			<CustomBehavior File="UserSettings" LootMobs="True" UseFlightPaths="True" PullDistance="25" />
 			<CustomBehavior File="EnablePlugin" Names="Anti Drown,AutoEquip2,Drink Potions,Refreshment,Talented2" />
 			<CustomBehavior File="RunMacro" Macro="/script SetCVar('AutoLootDefault', 1)" WaitTime="1000" />
+			<!--Extreme Racial Prejudice-->
+			<If Condition="Me.Race != WoWRace.NightElf">
+				<CustomBehavior File="Message" Text="You're not a Night Elf. Finding Appropriate Profile!" LogColor="Cyan" />
+				<CustomBehavior File="LoadProfile" ProfileName="..\[N - Quest] Profile Loader [Life].xml" />					
+			</If>
 
 		<CustomBehavior File="Message" Text="Compiling Quests: Shadowglen" LogColor="Cyan" />
 
@@ -318,7 +317,7 @@
 
 			<!--Transition: Set Hearthstone & Force Sell-->
 			<If Condition="HasQuest(28731)">
-				<!--Set Hearthstone: Dolanaar-->
+				<CustomBehavior File="Message" Text="Setting Hearthstone &amp; Selling. Please Wait!" LogColor="Cyan" />
 				<CustomBehavior File="InteractWith" MobId="6736" GossipOptions="2" X="9803.061" Y="979.2196" Z="1313.897" /> 
 				<CustomBehavior File="ForceSetVendor" DoMail="True" DoRepair="True" DoSell="True" />
 			</If>

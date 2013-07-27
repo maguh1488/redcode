@@ -112,9 +112,6 @@
 </Quest>
 
 <QuestOrder>
-	<!--CustomBehavior File="Message" Text="Error: Profile is not complete! Shutting Down." LogColor="Red" />
-	<CustomBehavior File="Halt" /-->
-
 	<If Condition="Me.Class != WoWClass.DeathKnight">
 		<CustomBehavior File="Message" Text="Fatal Error: Please load an appropriate profile!" LogColor="Red" />
 		<CustomBehavior File="Halt" />
@@ -139,6 +136,7 @@
 	<PickUp QuestName="The Emblazoned Runeblade" QuestId="12619" GiverName="Razuvious" GiverId="28357" />
 
 		<Objective QuestName="The Emblazoned Runeblade" QuestId="12619" Type="CollectItem" ItemId="38607" CollectCount="1" />
+		
 		<!--Objective: The Emblazoned Runeblade-->
 		<CustomBehavior File="InteractWith" QuestId="12619" MobId="191746" MobId2="191747" MobId3="191748" MinRange="5" Range="10" IgnoreLoSToTarget="True" InteractByUsingItemId="38607" X="2461.763" Y="-5594.074" Z="414.1215" />
 
