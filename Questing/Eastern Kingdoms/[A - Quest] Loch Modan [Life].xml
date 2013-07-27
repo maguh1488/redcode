@@ -252,7 +252,7 @@
 		</If>
 
 		<PickUp QuestName="Resupplying the Excavation" QuestId="13639" GiverName="Jern Hornhelm" GiverId="1105" />
-
+		<CustomBehavior File="Halt" />
 			<!--Transport: Resupplying the Excavation-->
 			<If Condition="HasQuest(13639)">
 				<CustomBehavior File="NoCombatMoveTo" X="-5700.184" Y="-3547.385" Z="305.2467" />

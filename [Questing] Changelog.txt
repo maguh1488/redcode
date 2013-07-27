@@ -1,6 +1,11 @@
 ==================================
  ==== Life Project Changelog ====
 ==================================
+_________________________________________
+Revision 66-67: Saturday: July 27th, 2013
+-- Developmental Profiles have a Section Now
+-- Minor Gnome - Dun Morogh - Loch Modan Additions
+-- Added Revisions to Files
 ______________________________________
 Revision 65: Saturday: July 27th, 2013
 -- Profile Loader is now Politically Correct

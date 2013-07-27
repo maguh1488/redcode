@@ -1,5 +1,5 @@
 <HBProfile>
-	<Name>[A - Quest] Night Elf [Life]</Name>
+	<Name>[A - Quest] Night Elf [Life] [$Rev$]</Name>
 
 	<MinLevel>1</MinLevel>
 	<MaxLevel>91</MaxLevel>
@@ -210,8 +210,8 @@
 				<!--Objective: A Rogue's Advantage-->
 				<While Condition="HasQuest(26946) &amp;&amp; !IsQuestCompleted(26946)">
 					<DisableBehavior Name="Combat" />
-					<CustomBehavior File="InteractWith" InteractByCastingSpellId="1752" NumOfTimes="1" MobId="44614" Range="5" WaitForNpcs="False" X="10480.49" Y="814.8147" Z="1322.745" />
-					<CustomBehavior File="InteractWith" InteractByCastingSpellId="2098" NumOfTimes="1" MobId="44614" Range="5" WaitForNpcs="False" WaitTime="2000" X="10480.49" Y="814.8147" Z="1322.745" />
+					<CustomBehavior File="InteractWith" InteractByCastingSpellId="1752" MobId="44614" Range="5" WaitForNpcs="False" X="10480.49" Y="814.8147" Z="1322.745" />
+					<CustomBehavior File="InteractWith" InteractByCastingSpellId="2098" MobId="44614" Range="5" WaitForNpcs="False" WaitTime="2000" X="10480.49" Y="814.8147" Z="1322.745" />
 					<EnableBehavior Name="Combat" />
 				</While>
 

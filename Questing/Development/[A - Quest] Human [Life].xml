@@ -1,0 +1,340 @@
+<HBProfile>
+	<Name>[A - Quest] Human [Life] [$Rev$]</Name>
+
+	<MinLevel>1</MinLevel>
+	<MaxLevel>91</MaxLevel>
+
+	<MinDurability>0.2</MinDurability>
+	<MinFreeBagSlots>2</MinFreeBagSlots>
+
+	<MailGrey>False</MailGrey>
+	<MailWhite>False</MailWhite>
+	<MailGreen>True</MailGreen>
+	<MailBlue>True</MailBlue>
+	<MailPurple>True</MailPurple>
+   
+	<SellGrey>True</SellGrey>
+	<SellWhite>True</SellWhite>
+	<SellGreen>True</SellGreen>
+	<SellBlue>False</SellBlue>
+	<SellPurple>False</SellPurple>
+
+	<AvoidMobs>
+ 	</AvoidMobs>
+
+	<Blackspots>
+	</Blackspots>
+
+	<Mailboxes>
+	</Mailboxes>
+
+	<Vendors>
+	</Vendors>
+
+	<QuestOrder>
+		<CustomBehavior File="Message" Text="Initializing Settings" LogColor="Cyan" />
+			
+			<CustomBehavior File="UserSettings" LootMobs="True" UseFlightPaths="True" PullDistance="25" />
+			<CustomBehavior File="EnablePlugin" Names="Anti Drown,AutoEquip2,Drink Potions,Refreshment,Talented2" />
+			<CustomBehavior File="RunMacro" Macro="/script SetCVar('AutoLootDefault', 1)" WaitTime="1000" />
+
+		<CustomBehavior File="Message" Text="Compiling Quests: Northshire Abbey" LogColor="Cyan" />
+
+		<If Condition="Me.Race != WoWRace.Human">
+		</If>
+
+		<If Condition="Me.Class == WoWClass.Warrior">
+			<PickUp QuestName="Beating them Back!" QuestId="28766" GiverName="Marshal McBride" GiverId="197" />
+				
+				<Objective QuestName="Beating them Back!" QuestId="28766" Type="KillMob" MobId="49871" KillCount="6" />
+			
+			<TurnIn QuestName="Beating them Back!" QuestId="28766" TurnInName="Marshal McBride" TurnInId="197" />
+			<PickUp QuestName="Lions for Lambs" QuestId="28774" GiverName="Marshal McBride" GiverId="197" />
+			
+				<Objective QuestName="Lions for Lambs" QuestId="28774" Type="KillMob" MobId="49874" KillCount="8" />
+			
+			<TurnIn QuestName="Lions for Lambs" QuestId="28774" TurnInName="Marshal McBride" TurnInId="197" />
+			<PickUp QuestName="Simple Letter" QuestId="3100" GiverName="Marshal McBride" GiverId="197" />
+			<TurnIn QuestName="Simple Letter" QuestId="3100" TurnInName="Llane Beshere" TurnInId="911" />
+			<PickUp QuestName="Charging into Battle" QuestId="26913" GiverName="Llane Beshere" GiverId="911" />
+				
+				<!--Objective: Charging into Battle-->
+				<While Condition="HasQuest(26913) &amp;&amp; !IsQuestCompleted(26913)">
+					<RunTo X="-8963.851" Y="-145.0901" Z="81.67974" />
+					<CustomBehavior File="InteractWith" QuestId="26913" MobId="44548" WaitTime="8000" X="-8963.851" Y="-145.0901" Z="81.67974" />	
+					<RunTo X="-8953.739" Y="-146.4005" Z="81.65711" />
+					<CustomBehavior File="CastSpellOn" QuestId="26913" SpellId="100" MobId="44548" NumOfTimes="1" MobHpPercentLeft="100" MinRange="18" X="-8965.57" Y="-146.288" Z="81.50985" />
+				</While>
+			
+			<TurnIn QuestName="Charging into Battle" QuestId="26913" TurnInName="Llane Beshere" TurnInId="911" X="-8918.364" Y="-208.4109" Z="82.12605" />
+			<PickUp QuestName="Join the Battle!" QuestId="28789" GiverName="Llane Beshere" GiverId="911" />
+			<TurnIn QuestName="Join the Battle!" QuestId="28789" TurnInName="Sergeant Willem" TurnInId="823" />
+			<PickUp QuestName="Fear No Evil" QuestId="28813" GiverName="Brother Paxton" GiverId="951" />
+			
+				<CustomBehavior File="InteractWith" QuestId="28813" MobId="50047" NumOfTimes="100" CollectionDistance="500" X="-8769.394" Y="-190.3564" Z="84.5011" />
+			
+			<TurnIn QuestName="Fear No Evil" QuestId="28813" TurnInName="Brother Paxton" TurnInId="951" />
+			<PickUp QuestName="They Sent Assassins" QuestId="28797" GiverName="Sergeant Willem" GiverId="823" />
+			
+				<Objective QuestName="They Sent Assassins" QuestId="28797" Type="KillMob" MobId="50039" KillCount="8" />
+			
+			<TurnIn QuestName="They Sent Assassins" QuestId="28797" TurnInName="Sergeant Willem" TurnInId="823" />
+			<PickUp QuestName="The Rear is Clear" QuestId="28823" GiverName="Sergeant Willem" GiverId="823" />
+			<TurnIn QuestName="The Rear is Clear" QuestId="28823" TurnInName="Marshal McBride" TurnInId="197" />
+		</If>
+		<If Condition="Me.Class == WoWClass.Hunter">
+			<PickUp QuestName="Beating them Back!" QuestId="28767" GiverName="Marshal McBride" GiverId="197" />
+			
+				<Objective QuestName="Beating them Back!" QuestId="28767" Type="KillMob" MobId="49871" KillCount="6" />
+			
+			<TurnIn QuestName="Beating them Back!" QuestId="28767" TurnInName="Marshal McBride" TurnInId="197" />
+			<PickUp QuestName="Lions for Lambs" QuestId="28759" GiverName="Marshal McBride" GiverId="197" />
+			
+				<Objective QuestName="Lions for Lambs" QuestId="28759" Type="KillMob" MobId="49874" KillCount="8" />
+			
+			<TurnIn QuestName="Lions for Lambs" QuestId="28759" TurnInName="Marshal McBride" TurnInId="197" />
+			<PickUp QuestName="Etched Letter" QuestId="26910" GiverName="Marshal McBride" GiverId="197" />
+			<TurnIn QuestName="Etched Letter" QuestId="26910" TurnInName="Ashley Blank" TurnInId="43278" />
+			<PickUp QuestName="The Hunter's Path" QuestId="26917" GiverName="Ashley Blank" GiverId="43278" />
+			
+				<!--Objective: The Hunter's Path-->
+				<If Condition="HasQuest(26917) &amp;&amp; !IsQuestCompleted(26917)">
+					<CustomBehavior File="CastSpellOn" QuestId="26917" SpellId="56641" MobId="44548" NumOfTimes="5" MobHpPercentLeft="100" MinRange="14" X="-8965.57" Y="-146.288" Z="81.50985" />
+				</If>
+			
+			<TurnIn QuestName="The Hunter's Path" QuestId="26917" TurnInName="Ashley Blank" TurnInId="43278" />
+			<PickUp QuestName="Join the Battle!" QuestId="28780" GiverName="Ashley Blank" GiverId="43278" />
+			<TurnIn QuestName="Join the Battle!" QuestId="28780" TurnInName="Sergeant Willem" TurnInId="823" />
+			<PickUp QuestName="Fear No Evil" QuestId="28806" GiverName="Brother Paxton" GiverId="951" />
+			
+				<CustomBehavior File="InteractWith" QuestId="28806" MobId="50047" NumOfTimes="100" CollectionDistance="500" X="-8769.394" Y="-190.3564" Z="84.5011" />
+			
+			<TurnIn QuestName="Fear No Evil" QuestId="28806" TurnInName="Brother Paxton" TurnInId="951" />
+			<PickUp QuestName="They Sent Assassins" QuestId="28791" GiverName="Sergeant Willem" GiverId="823" />
+			
+				<Objective QuestName="They Sent Assassins" QuestId="28791" Type="KillMob" MobId="50039" KillCount="8" />
+			
+			<TurnIn QuestName="They Sent Assassins" QuestId="28791" TurnInName="Sergeant Willem" TurnInId="823" />
+			<PickUp QuestName="The Rear is Clear" QuestId="28817" GiverName="Sergeant Willem" GiverId="823" />
+			<TurnIn QuestName="The Rear is Clear" QuestId="28817" TurnInName="Marshal McBride" TurnInId="197" />
+		</If>
+		<If Condition="Me.Class == WoWClass.Warlock">
+			<PickUp QuestName="Beating them Back!" QuestId="28765" GiverName="Marshal McBride" GiverId="197" />
+			
+				<Objective QuestName="Beating them Back!" QuestId="28765" Type="KillMob" MobId="49871" KillCount="6" />
+			
+			<TurnIn QuestName="Beating them Back!" QuestId="28765" TurnInName="Marshal McBride" TurnInId="197" />
+			<PickUp QuestName="Lions for Lambs" QuestId="28773" GiverName="Marshal McBride" GiverId="197" />
+			
+				<Objective QuestName="Lions for Lambs" QuestId="28773" Type="KillMob" MobId="49874" KillCount="8" />
+			
+			<TurnIn QuestName="Lions for Lambs" QuestId="28773" TurnInName="Marshal McBride" TurnInId="197" />
+			<PickUp QuestName="Tainted Letter" QuestId="3105" GiverName="Marshal McBride" GiverId="197" />		
+			<TurnIn QuestName="Tainted Letter" QuestId="3105" TurnInName="Drusilla La Salle" TurnInId="459" />
+			<PickUp QuestName="Immolation" QuestId="26914" GiverName="Drusilla La Salle" GiverId="459" />
+			
+				<!--Objective: Immolation-->
+				<If Condition="HasQuest(26914) &amp;&amp; !IsQuestCompleted(26914)">
+					<CustomBehavior File="CastSpellOn" QuestId="26914" SpellId="172" MobId="44548" NumOfTimes="5" MobHpPercentLeft="100" MinRange="14" X="-8965.57" Y="-146.288" Z="81.50985" />
+				</If>
+			
+			<TurnIn QuestName="Immolation" QuestId="26914" TurnInName="Drusilla La Salle" TurnInId="459" />
+			<PickUp QuestName="Join the Battle!" QuestId="28788" GiverName="Drusilla La Salle" GiverId="459" />
+			<TurnIn QuestName="Join the Battle!" QuestId="28788" TurnInName="Sergeant Willem" TurnInId="823" />
+			<PickUp QuestName="Fear No Evil" QuestId="28812" GiverName="Brother Paxton" GiverId="951" />
+				
+				<CustomBehavior File="InteractWith" QuestId="28812" MobId="50047" NumOfTimes="100" CollectionDistance="500" X="-8769.394" Y="-190.3564" Z="84.5011" />
+			
+			<TurnIn QuestName="Fear No Evil" QuestId="28812" TurnInName="Brother Paxton" TurnInId="951" />
+			<PickUp QuestName="They Sent Assassins" QuestId="28796" GiverName="Sergeant Willem" GiverId="823" />
+			
+				<Objective QuestName="They Sent Assassins" QuestId="28796" Type="KillMob" MobId="50039" KillCount="8" />
+			
+			<TurnIn QuestName="They Sent Assassins" QuestId="28796" TurnInName="Sergeant Willem" TurnInId="823" />
+			<PickUp QuestName="The Rear is Clear" QuestId="28822" GiverName="Sergeant Willem" GiverId="823" />
+			<TurnIn QuestName="The Rear is Clear" QuestId="28822" TurnInName="Marshal McBride" TurnInId="197" />
+		</If>
+		<If Condition="Me.Class == WoWClass.Rogue">
+			<PickUp QuestName="Beating them Back!" QuestId="28764" GiverName="Marshal McBride" GiverId="197" />
+			
+				<Objective QuestName="Beating them Back!" QuestId="28764" Type="KillMob" MobId="49871" KillCount="6" />
+			
+			<TurnIn QuestName="Beating them Back!" QuestId="28764" TurnInName="Marshal McBride" TurnInId="197" />
+			<PickUp QuestName="Lions for Lambs" QuestId="28772" GiverName="Marshal McBride" GiverId="197" />
+				
+				<Objective QuestName="Lions for Lambs" QuestId="28772" Type="KillMob" MobId="49874" KillCount="8" />
+			
+			<TurnIn QuestName="Lions for Lambs" QuestId="28772" TurnInName="Marshal McBride" TurnInId="197" />
+			<PickUp QuestName="Encrypted Letter" QuestId="3102" GiverName="Marshal McBride" GiverId="197" />
+			<TurnIn QuestName="Encrypted Letter" QuestId="3102" TurnInName="Jorik Kerridan" TurnInId="915" />
+			<PickUp QuestName="The Deepest Cut" QuestId="26915" GiverName="Jorik Kerridan" GiverId="915" />
+			
+				<!--Objective: The Deepest Cut-->
+				<While Condition="HasQuest(26915) &amp;&amp; !IsQuestCompleted(26915)">
+					<CustomBehavior File="CastSpellOn" SpellId="1752" MobId="44548" NumOfTimes="1" MobHpPercentLeft="100" MinRange="3" X="-8965.57" Y="-146.288" Z="81.50985" />
+					<CustomBehavior File="CastSpellOn" SpellId="2098" MobId="44548" NumOfTimes="1" MobHpPercentLeft="100" MinRange="3" X="-8965.57" Y="-146.288" Z="81.50985" />
+				</While>
+			
+			<TurnIn QuestName="The Deepest Cut" QuestId="26915" TurnInName="Jorik Kerridan" TurnInId="915" />
+			<PickUp QuestName="Join the Battle!" QuestId="28787" GiverName="Jorik Kerridan" GiverId="915" />
+			<TurnIn QuestName="Join the Battle!" QuestId="28787" TurnInName="Sergeant Willem" TurnInId="823" />
+			<PickUp QuestName="Fear No Evil" QuestId="28811" GiverName="Brother Paxton" GiverId="951" />
+				
+				<CustomBehavior File="InteractWith" QuestId="28811" MobId="50047" NumOfTimes="100" CollectionDistance="500" X="-8769.394" Y="-190.3564" Z="84.5011" />
+			
+			<TurnIn QuestName="Fear No Evil" QuestId="28811" TurnInName="Brother Paxton" TurnInId="951" />
+			<PickUp QuestName="They Sent Assassins" QuestId="28795" GiverName="Sergeant Willem" GiverId="823" />
+				
+				<Objective QuestName="They Sent Assassins" QuestId="28795" Type="KillMob" MobId="50039" KillCount="8" />
+		
+			<TurnIn QuestName="They Sent Assassins" QuestId="28795" TurnInName="Sergeant Willem" TurnInId="823" />	
+			<PickUp QuestName="The Rear is Clear" QuestId="28821" GiverName="Sergeant Willem" GiverId="823" />
+			<TurnIn QuestName="The Rear is Clear" QuestId="28821" TurnInName="Marshal McBride" TurnInId="197" />
+		</If>
+		<If Condition="Me.Class == WoWClass.Paladin">
+			<PickUp QuestName="Beating them Back!" QuestId="28762" GiverName="Marshal McBride" GiverId="197" />
+			
+				<Objective QuestName="Beating them Back!" QuestId="28762" Type="KillMob" MobId="49871" KillCount="6" />
+			
+			<TurnIn QuestName="Beating them Back!" QuestId="28762" TurnInName="Marshal McBride" TurnInId="197" />
+			<PickUp QuestName="Lions for Lambs" QuestId="28770" GiverName="Marshal McBride" GiverId="197" />
+				
+				<Objective QuestName="Lions for Lambs" QuestId="28770" Type="KillMob" MobId="49874" KillCount="8" />
+			
+			<TurnIn QuestName="Lions for Lambs" QuestId="28770" TurnInName="Marshal McBride" TurnInId="197" />
+			<PickUp QuestName="Consecrated Letter" QuestId="3101" GiverName="Marshal McBride" GiverId="197" />
+			<TurnIn QuestName="Consecrated Letter" QuestId="3101" TurnInName="Brother Sammuel" TurnInId="925" />
+			<PickUp QuestName="The Power of the Light" QuestId="26918" GiverName="Brother Sammuel" GiverId="925" />
+			
+				<!--Objective: The Power of the Light-->
+				<If Condition="HasQuest(26918) &amp;&amp; !IsQuestCompleted(26918)">
+					<RunTo X="-8967.868" Y="-153.4938" Z="81.50329" />
+					<CustomBehavior File="InteractWith" QuestId="26918" MobId="44548" NumOfTimes="1" X="-8967.868" Y="-153.4938" Z="81.50329" />
+				</If>
+			
+			<TurnIn QuestName="The Power of the Light" QuestId="26918" TurnInName="Brother Sammuel" TurnInId="925" />
+			<PickUp QuestName="Join the Battle!" QuestId="28785" GiverName="Brother Sammuel" GiverId="925" />
+			<TurnIn QuestName="Join the Battle!" QuestId="28785" TurnInName="Sergeant Willem" TurnInId="823" />
+			<PickUp QuestName="Fear No Evil" QuestId="28809" GiverName="Brother Paxton" GiverId="951" />
+				
+				<CustomBehavior File="InteractWith" QuestId="28809" MobId="50047" NumOfTimes="100" CollectionDistance="500" X="-8769.394" Y="-190.3564" Z="84.5011" />
+			
+			<TurnIn QuestName="Fear No Evil" QuestId="28809" TurnInName="Brother Paxton" TurnInId="951" />
+			<PickUp QuestName="They Sent Assassins" QuestId="28793" GiverName="Sergeant Willem" GiverId="823" />
+			
+				<Objective QuestName="They Sent Assassins" QuestId="28793" Type="KillMob" Name="Goblin Assassin" MobId="50039" KillCount="8" />
+			
+			<TurnIn QuestName="They Sent Assassins" QuestId="28793" TurnInName="Sergeant Willem" TurnInId="823" />
+			<PickUp QuestName="The Rear is Clear" QuestId="28819" GiverName="Sergeant Willem" GiverId="823" />
+			<TurnIn QuestName="The Rear is Clear" QuestId="28819" TurnInName="Marshal McBride" TurnInId="197" />
+		</If>
+		<If Condition="Me.Class == WoWClass.Priest">
+			<PickUp QuestName="Beating them Back!" QuestId="28763" GiverName="Marshal McBride" GiverId="197" />
+				
+				<Objective QuestName="Beating them Back!" QuestId="28763" Type="KillMob" MobId="49871" KillCount="6" />
+			
+			<TurnIn QuestName="Beating them Back!" QuestId="28763" TurnInName="Marshal McBride" TurnInId="197" />
+			<PickUp QuestName="Lions for Lambs" QuestId="28771" GiverName="Marshal McBride" GiverId="197" />
+			
+				<Objective QuestName="Lions for Lambs" QuestId="28771" Type="KillMob" MobId="49874" KillCount="8" />
+			
+			<TurnIn QuestName="Lions for Lambs" QuestId="28771" TurnInName="Marshal McBride" TurnInId="197" />
+			<PickUp QuestName="Hallowed Letter" QuestId="3103" GiverName="Marshal McBride" GiverId="197" />
+			<TurnIn QuestName="Hallowed Letter" QuestId="3103" TurnInName="Priestess Anetta" TurnInId="375" />
+			<PickUp QuestName="Healing the Wounded" QuestId="26919" GiverName="Priestess Anetta" GiverId="375" />
+				
+				<!--Objective: Healing the Wounded-->
+				<If Condition="HasQuest(26919) &amp;&amp; !IsQuestCompleted(26919)">
+					<CustomBehavior File="CastSpellOn" QuestId="26919" SpellId="589" MobId="44548" NumOfTimes="5" MobHpPercentLeft="100" MinRange="3" X="-8858.6" Y="-197.16" Z="81.92604" />
+				</If>
+			
+			<TurnIn QuestName="Healing the Wounded" QuestId="26919" TurnInName="Priestess Anetta" TurnInId="375" />
+			<PickUp QuestName="Join the Battle!" QuestId="28786" GiverName="Priestess Anetta" GiverId="375" />
+			<TurnIn QuestName="Join the Battle!" QuestId="28786" TurnInName="Sergeant Willem" TurnInId="823" />
+			<PickUp QuestName="Fear No Evil" QuestId="28810" GiverName="Brother Paxton" GiverId="951" />
+
+				<CustomBehavior File="InteractWith" QuestId="28810" MobId="50047" NumOfTimes="100" CollectionDistance="500" X="-8769.394" Y="-190.3564" Z="84.5011" />
+			
+			<TurnIn QuestName="Fear No Evil" QuestId="28810" TurnInName="Brother Paxton" TurnInId="951" />
+			<PickUp QuestName="They Sent Assassins" QuestId="28794" GiverName="Sergeant Willem" GiverId="823" />
+		
+				<Objective QuestName="They Sent Assassins" QuestId="28794" Type="KillMob" MobId="50039" KillCount="8" />
+		
+			<TurnIn QuestName="They Sent Assassins" QuestId="28794" TurnInName="Sergeant Willem" TurnInId="823" />
+			<PickUp QuestName="The Rear is Clear" QuestId="28820" GiverName="Sergeant Willem" GiverId="823" />
+			<TurnIn QuestName="The Rear is Clear" QuestId="28820" TurnInName="Marshal McBride" TurnInId="197" />
+		</If>
+		<If Condition="Me.Class == WoWClass.Mage">
+			<PickUp QuestName="Beating them Back!" QuestId="28757" GiverName="Marshal McBride" GiverId="197" />
+				
+				<Objective QuestName="Beating them Back!" QuestId="28757" Type="KillMob" MobId="49871" KillCount="6" />
+			
+			<TurnIn QuestName="Beating them Back!" QuestId="28757" TurnInName="Marshal McBride" TurnInId="197" />
+			<PickUp QuestName="Lions for Lambs" QuestId="28769" GiverName="Marshal McBride" GiverId="197" />
+				
+				<Objective QuestName="Lions for Lambs" QuestId="28769" Type="KillMob" MobId="49874" KillCount="8" />
+			
+			<TurnIn QuestName="Lions for Lambs" QuestId="28769" TurnInName="Marshal McBride" TurnInId="197" />
+			<PickUp QuestName="Glyphic Letter" QuestId="3104" GiverName="Marshal McBride" GiverId="197" />
+			<TurnIn QuestName="Glyphic Letter" QuestId="3104" TurnInName="Khelden Bremen" TurnInId="198" />
+			<PickUp QuestName="Mastering the Arcane" QuestId="26916" GiverName="Khelden Bremen" GiverId="198" />
+				
+				<!--Objective: Mastering the Arcane-->
+				<While Condition="HasQuest(26916) &amp;&amp; !IsQuestCompleted(26916)">
+					<CustomBehavior File="CastSpellOn" SpellId="122" MobId="44548" NumOfTimes="1" MobHpPercentLeft="100" MinRange="5" X="-8965.57" Y="-146.288" Z="81.50985" />
+				</While>
+			
+			<TurnIn QuestName="Mastering the Arcane" QuestId="26916" TurnInName="Khelden Bremen" TurnInId="198" />
+			<PickUp QuestName="Join the Battle!" QuestId="28784" GiverName="Khelden Bremen" GiverId="198" />
+			<TurnIn QuestName="Join the Battle!" QuestId="28784" TurnInName="Sergeant Willem" TurnInId="823" />
+			<PickUp QuestName="Fear No Evil" QuestId="28808" GiverName="Brother Paxton" GiverId="951" />
+				
+				<CustomBehavior File="InteractWith" QuestId="28808" MobId="50047" NumOfTimes="100" CollectionDistance="500" X="-8769.394" Y="-190.3564" Z="84.5011" />
+			
+			<TurnIn QuestName="Fear No Evil" QuestId="28808" TurnInName="Brother Paxton" TurnInId="951" />
+			<PickUp QuestName="They Sent Assassins" QuestId="28792" GiverName="Sergeant Willem" GiverId="823" />
+				
+				<Objective QuestName="They Sent Assassins" QuestId="28792" Type="KillMob" MobId="50039" KillCount="8" />
+		
+			<TurnIn QuestName="They Sent Assassins" QuestId="28792" TurnInName="Sergeant Willem" TurnInId="823" />
+			<PickUp QuestName="The Rear is Clear" QuestId="28818" GiverName="Sergeant Willem" GiverId="823" />
+			<TurnIn QuestName="The Rear is Clear" QuestId="28818" TurnInName="Marshal McBride" TurnInId="197" />
+		</If>
+		<If Condition="Me.Class == WoWClass.Monk">
+			<PickUp QuestName="Beating Them Back!" QuestId="31139" GiverName="Marshal McBride" GiverId="197" />
+			
+				<Objective QuestName="Beating Them Back!" QuestId="31139" Type="KillMob" MobId="49871" KillCount="6" />
+			
+			<TurnIn QuestName="Beating Them Back!" QuestId="31139" TurnInName="Marshal McBride" TurnInId="197" />
+			<PickUp QuestName="Lions for Lambs" QuestId="31140" GiverName="Marshal McBride" GiverId="197" />
+			
+				<Objective QuestName="Lions for Lambs" QuestId="31140" Type="KillMob" MobId="49874" KillCount="8" />
+			
+			<TurnIn QuestName="Lions for Lambs" QuestId="31140" TurnInName="Marshal McBride" TurnInId="197" />
+			<PickUp QuestName="Calligraphed Letter" QuestId="31141" GiverName="Marshal McBride" GiverId="197" />
+			<TurnIn QuestName="Calligraphed Letter" QuestId="31141" TurnInName="Bao" TurnInId="63258" />
+			<PickUp QuestName="Palm of the Tiger" QuestId="31142" GiverName="Bao" GiverId="63258" />
+			
+				<!--Objective: Palm of the Tiger-->
+				<While Condition="HasQuest(31142) &amp;&amp; !IsQuestCompleted(31142)">
+					<CustomBehavior File="CastSpellOn" SpellId="100780" MobId="44548" NumOfTimes="1" MobHpPercentLeft="100" MinRange="5" X="-8965.57" Y="-146.288" Z="81.50985" />
+					<CustomBehavior File="CastSpellOn" SpellId="100787" MobId="44548" NumOfTimes="1" MobHpPercentLeft="100" MinRange="5" X="-8965.57" Y="-146.288" Z="81.50985" />
+				</While>
+			
+			<TurnIn QuestName="Palm of the Tiger" QuestId="31142" TurnInName="Bao" TurnInId="63258" />
+			<PickUp QuestName="Join the Battle!" QuestId="31143" GiverName="Bao" GiverId="63258" />
+			<TurnIn QuestName="Join the Battle!" QuestId="31143" TurnInName="Sergeant Willem" TurnInId="823" />
+			<PickUp QuestName="They Sent Assassins" QuestId="31144" GiverName="Sergeant Willem" GiverId="823" />
+				
+				<Objective QuestName="They Sent Assassins" QuestId="31144" Type="KillMob" MobId="50039" KillCount="8" />
+			
+			<TurnIn QuestName="They Sent Assassins" QuestId="31144" TurnInName="Sergeant Willem" TurnInId="823" />
+			<PickUp QuestName="The Rear is Clear" QuestId="31145" GiverName="Sergeant Willem" GiverId="823" />
+			<TurnIn QuestName="The Rear is Clear" QuestId="31145" TurnInName="Marshal McBride" TurnInId="197" />
+		</If>
+
+		
+		<PickUp QuestName="Blackrock Invasion" QuestId="26389" GiverName="Marshal McBride" GiverId="197" />
+		<PickUp QuestName="Extinguishing Hope" QuestId="26391" GiverName="Milly Osworth" GiverId="9296" />
+	</QuestOrder>
+</HBProfile>

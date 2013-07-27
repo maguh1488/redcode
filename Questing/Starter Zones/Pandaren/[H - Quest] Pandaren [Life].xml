@@ -1,7 +1,7 @@
 <HBProfile>
-	<Name>[H - Quest] Pandaren [Life]</Name>
+	<Name>[H - Quest] Pandaren [Life] [$Rev$]</Name>
 
-	<!--Credits to Kick & Brodie for some objectives-->
+	<!--Credits to Kick & Brodie for Some Objectives-->
 
 	<MinLevel>1</MinLevel>
 	<MaxLevel>91</MaxLevel>

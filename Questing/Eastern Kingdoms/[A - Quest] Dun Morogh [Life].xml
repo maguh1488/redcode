@@ -1,5 +1,5 @@
 <HBProfile>
-	<Name>[A - Quest] Dun Morogh [Life]</Name>
+	<Name>[A - Quest] Dun Morogh [Life] [$Rev$]</Name>
 
 	<MinLevel>5</MinLevel>
 	<MaxLevel>91</MaxLevel>
@@ -52,15 +52,8 @@
 		
 		<!--Gnomes: Transition Quest & Cleaning-->
 		<If Condition="Me.Race == WoWRace.Gnome">
+			<PickUp QuestName="Bound for Kharanos" QuestId="26380" GiverName="Ciara Deepstone" GiverId="42933" />
 			<If Condition="HasQuest(26380)">
-				<TurnIn QuestName="Bound for Kharanos" QuestId="26380" TurnInName="Innkeeper Belm" TurnInId="1247" />
-				<CustomBehavior File="Message" Text="Setting Hearthstone &amp; Cleaning. Please Wait!" LogColor="Cyan" />
-				<CustomBehavior File="InteractWith" GossipOptions="2" NonCompeteDistance="0" MobId="1247" X="-5600.008" Y="-530.071" Z="399.6532" />
-				<CustomBehavior File="ForceSetVendor" DoSell="True" DoRepair="True" DoMail="True" />
-			</If>
-
-			<If Condition="!HasQuest(26380) &amp;&amp; !IsQuestCompleted(26380)">
-				<PickUp QuestName="Bound for Kharanos" QuestId="26380" GiverName="Ciara Deepstone" GiverId="42933" />
 				<TurnIn QuestName="Bound for Kharanos" QuestId="26380" TurnInName="Innkeeper Belm" TurnInId="1247" />
 				<CustomBehavior File="Message" Text="Setting Hearthstone &amp; Cleaning. Please Wait!" LogColor="Cyan" />
 				<CustomBehavior File="InteractWith" GossipOptions="2" NonCompeteDistance="0" MobId="1247" X="-5600.008" Y="-530.071" Z="399.6532" />
