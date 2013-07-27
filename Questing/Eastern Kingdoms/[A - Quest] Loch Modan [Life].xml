@@ -1,5 +1,5 @@
 <HBProfile>
-	<Name>[A - Quest] Loch Modan [Life]</Name>
+	<Name>[A - Quest] Loch Modan [Life] [$Rev$]</Name>
 
 	<MinLevel>10</MinLevel>
 	<MaxLevel>91</MaxLevel>
@@ -395,6 +395,9 @@
 			</While>
 
 		<TurnIn QuestName="The Winds of Loch Modan" QuestId="27116" TurnInName="Mountaineer Stormpike" TurnInId="1343" />
-		<TurnIn QuestName="Explorers' League Document (6 of 6)" QuestId="13659" TurnInName="Torren Squarejaw" TurnInId="1153" />	
+		<TurnIn QuestName="Explorers' League Document (6 of 6)" QuestId="13659" TurnInName="Torren Squarejaw" TurnInId="1153" />
+
+		<CustomBehavior File="Message" Text="Profile Complete: Loading" LogColor="Cyan" />
+		<CustomBehavior File="LoadProfile" ProfileName="[N - Quest] Ashenvale [Life]" />		
 	</QuestOrder>
 </HBProfile>
