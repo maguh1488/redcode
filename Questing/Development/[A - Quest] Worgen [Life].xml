@@ -1,0 +1,243 @@
+<HBProfile>
+	<Name>[A - Quest] Worgen [Life] [$Rev$]</Name>
+
+	<MinLevel>1</MinLevel>
+	<MaxLevel>91</MaxLevel>
+
+	<MinDurability>0.2</MinDurability>
+	<MinFreeBagSlots>2</MinFreeBagSlots>
+
+	<MailGrey>False</MailGrey>
+	<MailWhite>False</MailWhite>
+	<MailGreen>True</MailGreen>
+	<MailBlue>True</MailBlue>
+	<MailPurple>True</MailPurple>
+   
+	<SellGrey>True</SellGrey>
+	<SellWhite>True</SellWhite>
+	<SellGreen>True</SellGreen>
+	<SellBlue>False</SellBlue>
+	<SellPurple>False</SellPurple>
+
+	<AvoidMobs>
+ 	</AvoidMobs>
+
+	<Blackspots>
+	</Blackspots>
+
+	<Mailboxes>
+	</Mailboxes>
+
+	<Vendors>
+		<Vendor Name="Marie Allen" Entry="43558" Type="Repair" X="-2456.46" Y="1539.8" Z="18.69155" />
+		<Vendor Name="Karen Murray" Entry="42853" Type="Repair" X="-1354.778" Y="1203.944" Z="35.15623" />
+		<Vendor Name="Marie Allen" Entry="38783" Type="Repair" X="-1314.288" Y="2146.639" Z="6.887578" />
+		<Vendor Name="Samantha Buckley" Entry="36695" Type="Repair" X="-1894.104" Y="2299.844" Z="44.16436" />
+		<!--Military District Vendors-->
+		<Vendor Name="Marie Allen" Entry="38853" Type="Food" X="-1634.16" Y="1301.483" Z="19.66315" />
+	</Vendors>
+
+	<Quest Id="14093" Name="All Hell Breaks Loose">
+		<Objective Type="KillMob" MobId="34884" KillCount="6">
+			<Hotspots>
+				<Hotspot X="-1421.039" Y="1420.778" Z="35.55622" />
+				<Hotspot X="-1474.792" Y="1426.769" Z="35.55622" />
+				<Hotspot X="-1549.699" Y="1420.084" Z="35.55622" />
+				<Hotspot X="-1566.581" Y="1393.97" Z="36.03257" />
+				<Hotspot X="-1559.322" Y="1351.481" Z="35.55695" />
+				<Hotspot X="-1519.431" Y="1338.643" Z="35.55742" />
+				<Hotspot X="-1486.861" Y="1346.448" Z="35.55742" />
+			</Hotspots>
+		</Objective>
+	</Quest>
+	<Quest Id="14094" Name="Salvage the Supplies">
+		<Objective Type="CollectItem" ItemId="46896" CollectCount="4">
+			<CollectFrom>
+				<GameObject Name="Supply Crate" Id="195306" />
+			</CollectFrom>
+			<Hotspots>
+				<Hotspot X="-1421.039" Y="1420.778" Z="35.55622" />
+				<Hotspot X="-1474.792" Y="1426.769" Z="35.55622" />
+				<Hotspot X="-1549.699" Y="1420.084" Z="35.55622" />
+				<Hotspot X="-1566.581" Y="1393.97" Z="36.03257" />
+				<Hotspot X="-1559.322" Y="1351.481" Z="35.55695" />
+				<Hotspot X="-1519.431" Y="1338.643" Z="35.55742" />
+				<Hotspot X="-1486.861" Y="1346.448" Z="35.55742" />
+			</Hotspots>
+		</Objective>
+	</Quest>
+	<Quest Id="24930" Name="While You're At It">
+		<Objective Type="KillMob" MobId="35118" KillCount="5">
+			<Hotspots>
+				<Hotspot X="-1720.192" Y="1454.347" Z="52.74117" />
+				<Hotspot X="-1748.16" Y="1426.507" Z="52.74476" />
+				<Hotspot X="-1717.244" Y="1405.608" Z="21.66872" />
+			</Hotspots>
+		</Objective>
+	</Quest>
+
+	<QuestOrder>
+		<CustomBehavior File="Message" Text="Initializing Settings" LogColor="Cyan" />
+		<CustomBehavior File="UserSettings" LootMobs="True" UseFlightPaths="False" PullDistance="25" />
+
+			<CustomBehavior File="EnablePlugin" Names="Anti Drown,AutoEquip2,Drink Potions,Refreshment,Talented2" />
+			<CustomBehavior File="RunMacro" Macro="/script SetCVar('AutoLootDefault', 1)" WaitTime="1000" />
+
+		<CustomBehavior File="Message" Text="Compiling Quests: Merchant Square" LogColor="Cyan" />
+
+		<PickUp QuestName="Lockdown!" QuestId="14078" GiverName="Prince Liam Greymane" GiverId="34850" />
+		<TurnIn QuestName="Lockdown!" QuestId="14078" TurnInName="Lieutenant Walden" TurnInId="34863" />
+		<PickUp QuestName="Something's Amiss" QuestId="14091" GiverName="Lieutenant Walden" GiverId="34863" />
+		<TurnIn QuestName="Something's Amiss" QuestId="14091" TurnInName="Prince Liam Greymane" TurnInId="34913" />
+		<PickUp QuestName="All Hell Breaks Loose" QuestId="14093" GiverName="Prince Liam Greymane" GiverId="34913" />
+		<PickUp QuestName="Evacuate the Merchant Square" QuestId="14098" GiverName="Prince Liam Greymane" GiverId="34913" />
+		<PickUp QuestName="Salvage the Supplies" QuestId="14094" GiverName="Gwen Armstead" GiverId="34936" />
+
+			<!--Objective: Evacuate the Merchant Square-->
+			<CustomBehavior File="InteractWith" QuestId="14098" MobId="195327" NumOfTimes="100" Range="3" WaitTime="6000">
+				<HuntingGrounds>
+					<Hotspot X="-1421.039" Y="1420.778" Z="35.55622" />
+					<Hotspot X="-1474.792" Y="1426.769" Z="35.55622" />
+					<Hotspot X="-1549.699" Y="1420.084" Z="35.55622" />
+					<Hotspot X="-1566.581" Y="1393.97" Z="36.03257" />
+					<Hotspot X="-1559.322" Y="1351.481" Z="35.55695" />
+					<Hotspot X="-1519.431" Y="1338.643" Z="35.55742" />
+					<Hotspot X="-1486.861" Y="1346.448" Z="35.55742" />
+				</HuntingGrounds>
+			</CustomBehavior>
+
+			<Objective QuestName="Salvage the Supplies" QuestId="14094" Type="CollectItem" ItemId="46896" CollectCount="4" />
+			<Objective QuestName="All Hell Breaks Loose" QuestId="14093" Type="KillMob" MobId="34884" KillCount="6" />
+
+		<TurnIn QuestName="Salvage the Supplies" QuestId="14094" TurnInName="Gwen Armstead" TurnInId="34936" />
+		<TurnIn QuestName="All Hell Breaks Loose" QuestId="14093" TurnInName="Prince Liam Greymane" TurnInId="34913" />
+		<TurnIn QuestName="Evacuate the Merchant Square" QuestId="14098" TurnInName="Prince Liam Greymane" TurnInId="34913" />
+		<PickUp QuestName="Royal Orders" QuestId="14099" GiverName="Prince Liam Greymane" GiverId="34913" />
+		<TurnIn QuestName="Royal Orders" QuestId="14099" TurnInName="Gwen Armstead" TurnInId="35840" />
+
+		<CustomBehavior File="Message" Text="Compiling Quests: Military District" LogColor="Cyan" />
+
+		<If Condition="Me.Class == WoWClass.Druid">
+			<PickUp QuestName="The Winds Know Your Name... Apparently" QuestId="14280" GiverName="Gwen Armstead" GiverId="35840" />
+			<TurnIn QuestName="The Winds Know Your Name... Apparently" QuestId="14280" TurnInName="Celestine of the Harvest" TurnInId="35873" />
+			<PickUp QuestName="Moonfire" QuestId="14283" GiverName="Celestine of the Harvest" GiverId="35873" />
+			<While Condition="HasQuest(14283) &amp;&amp; !IsQuestCompleted(14283)">
+				<CustomBehavior File="CastSpellOn" QuestId="14283" SpellId="8921" MobId="35118" WaitTime="2000" NumOfTimes="3" X="-1702.011" Y="1307.625" Z="19.78224" />
+			</While>
+			<TurnIn QuestName="Moonfire" QuestId="14283" TurnInName="Celestine of the Harvest" TurnInId="35873" />
+			<PickUp QuestName="Safety in Numbers" QuestId="14291" GiverName="Celestine of the Harvest" GiverId="35873" />
+			<TurnIn QuestName="Safety in Numbers" QuestId="14291" TurnInName="King Genn Greymane" TurnInId="35112" />
+		</If>
+		<If Condition="Me.Class == WoWClass.Hunter">
+			<PickUp QuestName="Someone's Keeping Track of You" QuestId="14275" GiverName="Gwen Armstead" GiverId="35840" />
+			<TurnIn QuestName="Someone's Keeping Track of You" QuestId="14275" TurnInName="Huntsman Blake" TurnInId="35874" />
+			<PickUp QuestName="Steady Shot" QuestId="14276" GiverName="Huntsman Blake" GiverId="35874" />
+			<While Condition="HasQuest(14276) &amp;&amp; !IsQuestCompleted(14276)">
+				<CustomBehavior File="CastSpellOn" QuestId="14276" SpellId="56641" MobId="35118" WaitTime="2000" NumOfTimes="3" X="-1702.011" Y="1307.625" Z="19.78224" />
+			</While>
+			<TurnIn QuestName="Steady Shot" QuestId="14276" TurnInName="Huntsman Blake" TurnInId="35874" />
+			<PickUp QuestName="Safety in Numbers" QuestId="14290" GiverName="Huntsman Blake" GiverId="35874" />
+			<TurnIn QuestName="Safety in Numbers" QuestId="14290" TurnInName="King Genn Greymane" TurnInId="35112" />
+		</If>
+		<If Condition="Me.Class == WoWClass.Mage">
+			<PickUp QuestName="Arcane Inquiries" QuestId="14277" GiverName="Gwen Armstead" GiverId="35840" />
+			<TurnIn QuestName="Arcane Inquiries" QuestId="14277" TurnInName="Myriam Spellwaker" TurnInId="35872" />
+			<PickUp QuestName="Frost Nova" QuestId="14281" GiverName="Myriam Spellwaker" GiverId="35872" />
+
+				<!--Objective: Frost Nova-->
+				<While Condition="HasQuest(14281) &amp;&amp; !IsQuestCompleted(14281)">
+					<Disablebehavior Name="Combat" />
+					<CustomBehavior File="InteractWith" InteractByCastingSpellId="122" MobId="35118" Range="12" X="-1676.905" Y="1342.043" Z="15.13525" />
+					<Enablebehavior Name="Combat" />
+				</While>
+
+			<TurnIn QuestName="Frost Nova" QuestId="14281" TurnInName="Myriam Spellwaker" TurnInId="35872" />
+			<PickUp QuestName="Safety in Numbers" QuestId="14288" GiverName="Myriam Spellwaker" GiverId="35872" />
+			<TurnIn QuestName="Safety in Numbers" QuestId="14288" TurnInName="King Genn Greymane" TurnInId="35112" />
+		</If>
+		<If Condition="Me.Class == WoWClass.Priest">
+			<PickUp QuestName="Seek the Sister" QuestId="14278" GiverName="Gwen Armstead" GiverId="35840" />
+			<TurnIn QuestName="Seek the Sister" QuestId="14278" TurnInName="Sister Almyra" TurnInId="35870" />
+			<PickUp QuestName="Learning the Word" QuestId="14279" GiverName="Sister Almyra" GiverId="35870" />
+			<While Condition="HasQuest(14279) &amp;&amp; !IsQuestCompleted(14279)" >
+				<CustomBehavior File="CastSpellOn" QuestId="14279" SpellId="589" MobId="35118" NumOfTimes="2" X="-1684.177" Y="1348.677" Z="15.13515" />
+			</While>
+			<If Condition="HasQuest(14279) &amp;&amp; IsQuestCompleted(14279)" >
+				<CustomBehavior File="NoCombatMoveTo" X="-1695.146" Y="1308.727" Z="19.78265" />
+			</If>
+			<TurnIn QuestName="Learning the Word" QuestId="14279" TurnInName="Sister Almyra" TurnInId="35870" X="-1695.146" Y="1308.727" Z="19.78265" />
+			<PickUp QuestName="Safety in Numbers" QuestId="14289" GiverName="Sister Almyra" GiverId="35870" />
+			<TurnIn QuestName="Safety in Numbers" QuestId="14289" TurnInName="King Genn Greymane" TurnInId="35112" />
+		</If>
+		<If Condition="Me.Class == WoWClass.Rogue">
+			<PickUp QuestName="Someone's Looking for You" QuestId="14269" GiverName="Gwen Armstead" GiverId="35840" />
+			<TurnIn QuestName="Someone's Looking for You" QuestId="14269" TurnInName="Loren the Fence" TurnInId="35871" />
+			<PickUp QuestName="Eviscerate" QuestId="14272" GiverName="Loren the Fence" GiverId="35871" />
+			<While Condition="HasQuest(14272) &amp;&amp; !IsQuestCompleted(14272)">
+				<CustomBehavior File="CastSpellOn" SpellId="1752" MobId="35118" WaitTime="2000" NumOfTimes="1" X="-1702.011" Y="1307.625" Z="19.78224" />
+				<CustomBehavior File="CastSpellOn" SpellId="2098" MobId="35118" WaitTime="2000" NumOfTimes="1" X="-1702.011" Y="1307.625" Z="19.78224" />
+			</While>
+			<TurnIn QuestName="Eviscerate" QuestId="14272" TurnInName="Loren the Fence" TurnInId="35871" />
+			<PickUp QuestName="Safety in Numbers" QuestId="14285" GiverName="Loren the Fence" GiverId="35871" />
+			<TurnIn QuestName="Safety in Numbers" QuestId="14285" TurnInName="King Genn Greymane" TurnInId="35112" />
+		</If>
+		<If Condition="Me.Class == WoWClass.Warlock">
+			<PickUp QuestName="Shady Associates" QuestId="14273" GiverName="Gwen Armstead" GiverId="35840" />
+			<TurnIn QuestName="Shady Associates" QuestId="14273" TurnInName="Vitus Darkwalker" TurnInId="35869" />
+			<PickUp QuestName="Corruption" QuestId="14274" GiverName="Vitus Darkwalker" GiverId="35869" />
+			<While Condition="HasQuest(14274) &amp;&amp; !IsQuestCompleted(14274)">
+				<CustomBehavior File="CastSpellOn" QuestId="14274" SpellId="172" MobId="35118" WaitTime="2000" NumOfTimes="3" X="-1702.011" Y="1307.625" Z="19.78224" />
+			</While>
+			<TurnIn QuestName="Corruption" QuestId="14274" TurnInName="Vitus Darkwalker" TurnInId="35869" />
+			<PickUp QuestName="Safety in Numbers" QuestId="14287" GiverName="Vitus Darkwalker" GiverId="35869" />
+			<TurnIn QuestName="Safety in Numbers" QuestId="14287" TurnInName="King Genn Greymane" TurnInId="35112" />
+		</If>
+		<If Condition="Me.Class == WoWClass.Warrior">
+			<PickUp QuestName="Your Instructor" QuestId="14265" GiverName="Gwen Armstead" GiverId="35840" />
+			<TurnIn QuestName="Your Instructor" QuestId="14265" TurnInName="Sergeant Cleese" TurnInId="35839" />
+			<PickUp QuestName="Charge" QuestId="14266" GiverName="Sergeant Cleese" GiverId="35839" />
+			<While Condition="HasQuest(14266) &amp;&amp; !IsQuestCompleted(14266)">
+				<RunTo X="-1690.695" Y="1321.011" Z="19.32768" />
+				<CustomBehavior File="CastSpellOn" SpellId="100" MobId="35118" WaitTime="2000" NumOfTimes="1" X="-1702.011" Y="1307.625" Z="19.78224" />
+			</While>
+			<TurnIn QuestName="Charge" QuestId="14266" TurnInName="Sergeant Cleese" TurnInId="35839" />
+			<PickUp QuestName="Safety in Numbers" QuestId="14286" GiverName="Sergeant Cleese" GiverId="35839" />
+			<TurnIn QuestName="Safety in Numbers" QuestId="14286" TurnInName="King Genn Greymane" TurnInId="35112" />
+		</If>
+
+		<PickUp QuestName="Old Divisions" QuestId="14157" GiverName="King Genn Greymane" GiverId="35112" />
+		<PickUp QuestName="While You're At It" QuestId="24930" GiverName="Lord Godfrey" GiverId="35115" />
+
+			<!--Transport: Old Divisions-->
+			<If Condition="HasQuest(14157)" >
+				<CustomBehavior File="NoCombatMoveTo" X="-1752.176" Y="1417.58" Z="23.02" />
+			</If>
+
+		<TurnIn QuestName="Old Divisions" QuestId="14157" TurnInName="Captain Broderick" TurnInId="50371" />
+		<PickUp QuestName="The Prison Rooftop" QuestId="28850" GiverName="Captain Broderick" GiverId="50371" />
+		<TurnIn QuestName="The Prison Rooftop" QuestId="28850" TurnInName="Lord Darius Crowley" TurnInId="35077" X="-1679.734" Y="1442.122" Z="52.28712" />
+		<PickUp QuestName="By the Skin of His Teeth" QuestId="14154" GiverName="Lord Darius Crowley" GiverId="35077" X="-1679.734" Y="1442.122" Z="52.28712" />
+
+			<!--Objective: By the Skin of His Teeth-->
+			<While Condition="HasQuest(14154) &amp;&amp; !IsQuestCompleted(14154)">
+				<CustomBehavior File="EscortGroup" QuestId="14154" EscortNpcId="35077" EscortMaxFightDistance="5" EscortMaxFollowDistance="3" EscortCompleteWhen="QuestCompleteOrFails" />
+				<CustomBehavior File="AbandonQuest" QuestId="14154" Type="Failed" />
+				<PickUp QuestName="By the Skin of His Teeth" QuestId="14154" GiverName="Lord Darius Crowley" GiverId="35077" X="-1679.734" Y="1442.122" Z="52.28712" />
+			</While>
+
+		<TurnIn QuestName="By the Skin of His Teeth" QuestId="14154" TurnInName="Lord Darius Crowley" TurnInId="35077" />
+		<PickUp QuestName="Brothers In Arms" QuestId="26129" GiverName="Lord Darius Crowley" GiverId="35077" />
+
+			<Objective QuestName="While You're At It" QuestId="24930" Type="KillMob" MobId="35118" KillCount="5" />
+
+			<!--Transport: While You're At It-->
+			<If Condition="HasQuest(24930) &amp;&amp; IsQuestCompleted(24930)">
+				<CustomBehavior File="NoCombatMoveTo" X="-1764.218" Y="1351.734" Z="19.78275"  />
+			</If>
+
+		<TurnIn QuestName="While You're At It" QuestId="24930" TurnInName="Lord Godfrey" TurnInId="35115" />
+		<TurnIn QuestName="Brothers In Arms" QuestId="26129" TurnInName="King Genn Greymane" TurnInId="35112" />
+		<PickUp QuestName="The Rebel Lord's Arsenal" QuestId="14159" GiverName="King Genn Greymane" GiverId="35112" />
+
+	</QuestOrder>
+</HBProfile>

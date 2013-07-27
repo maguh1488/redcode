@@ -1,8 +1,5 @@
 <HBProfile>
-	<Name>[N - Quest] Death Knight [Life]</Name>
-	
-	<!--Profile Originally by Nesox-->
-	<!--Modified by Kick, TheBrodieman, & Liferose-->
+	<Name>[N - Quest] Death Knight [Life] [$Rev$]</Name>
 
 	<MinLevel>55</MinLevel>
 	<MaxLevel>70</MaxLevel>

@@ -1,0 +1,176 @@
+<HBProfile>
+	<Name>[N - Quest] Desolace [Life] [$Rev$]</Name>
+
+	<MinLevel>30</MinLevel>
+	<MaxLevel>91</MaxLevel>
+
+	<MinDurability>0.2</MinDurability>
+	<MinFreeBagSlots>2</MinFreeBagSlots>
+
+	<MailGrey>False</MailGrey>
+	<MailWhite>False</MailWhite>
+	<MailGreen>True</MailGreen>
+	<MailBlue>True</MailBlue>
+	<MailPurple>True</MailPurple>
+   
+	<SellGrey>True</SellGrey>
+	<SellWhite>True</SellWhite>
+	<SellGreen>True</SellGreen>
+	<SellBlue>False</SellBlue>
+	<SellPurple>False</SellPurple>
+
+	<AvoidMobs>
+ 	</AvoidMobs>
+
+	<Blackspots>
+	</Blackspots>
+
+	<Blacklist>
+		<Mob Name="Disciple of Elune" Id="35384" Flags="Pull" />
+	</Blacklist>
+
+	<Mailboxes>
+	</Mailboxes>
+
+	<Vendors>
+		<!--Furien's Post Vendor-->
+		<Vendor Name="Drumion" Entry="43899" Type="Food" X="-429.215" Y="2221.91" Z="89.0656" />
+	</Vendors>
+
+	<QuestOrder>
+		<CustomBehavior File="Message" Text="Initializing Settings" LogColor="Cyan" />
+			
+			<CustomBehavior File="UserSettings" LootMobs="True" UseFlightPaths="True" PullDistance="25" />
+			<CustomBehavior File="EnablePlugin" Names="Anti Drown,AutoEquip2,Drink Potions,Refreshment,Talented2" />
+			<CustomBehavior File="RunMacro" Macro="/script SetCVar('AutoLootDefault', 1)" WaitTime="1000" />
+			<!--If Condition="!HasQuest(25945) &amp;&amp; !IsQuestCompleted(25945)">
+				<CustomBehavior File="RunMacro" Macro="/run for i=1,GetNumQuestLogEntries() do SelectQuestLogEntry(i); SetAbandonQuest(); AbandonQuest(); end" />
+			</If-->
+			<!--Continential Drift: I'm in Eastern Kingdoms, should be in Kalimdor-->
+			<If Condition="Me.MapId == 0">
+				<CustomBehavior File="Message" Text="Transport: Getting you to Kalimdor" LogColor="Orange" />
+				<!--Get out of "Outlands" Zones-->
+				<If Condition="Me.ZoneId == 3433 || Me.ZoneId == 3430 || Me.ZoneId == 3487">
+					<RunTo DestName="Orb of Translocation" X="10038.42" Y="-7000.994" Z="61.76336" />
+					<CustomBehavior File="Message" Text="Transport: Using Orb of Translocation to Undercity" LogColor="Cyan" />
+					<CustomBehavior File="InteractWith" MobId="184502" Range="8" X="10038.42" Y="-7000.994" Z="61.76336" />
+				</If>
+				<CustomBehavior File="Message" Text="Transport: Riding Zepplin to Orgrimmar" LogColor="Cyan" />
+				<CustomBehavior File="UseTransport" TransportId="164871"
+					WaitAtX="2070.155" WaitAtY="289.2588" WaitAtZ="97.0315" 
+					TransportStartX="2062.376" TransportStartY="292.998" TransportStartZ="114.973"
+					TransportEndX="1833.509" TransportEndY="-4391.543" TransportEndZ="152.7679"
+					StandOnX="2067.979" StandOnY="295.2747" StandOnZ="97.23677" 
+					GetOffX="1840.225" GetOffY="-4390.912" GetOffZ="135.2337" />
+			</If>
+
+		<CustomBehavior File="Message" Text="Compiling Quests: Tethris Aran" LogColor="Cyan" />
+
+		<PickUp QuestName="My Time Has Passed" QuestId="14184" GiverName="Furien" GiverId="35286" />
+
+			<!--Transport: My Time Has Passed-->
+			<If Condition="HasQuest(14184) &amp;&amp; IsQuestCompleted(14184) &amp;&amp; Me.X &gt;= 100">
+				<If Condition="!Me.IsOnTransport">
+					<CustomBehavior File="InteractWith" MobId="35287" NonCompeteDistance="0" X="190.6651" Y="1776.628" Z="90.54229" />
+				</If>
+				<While Condition="Me.IsOnTransport">
+					<CustomBehavior File="WaitTimer" WaitTime="10000" GoalText="Waiting for the Dragonhawk to Land" />
+				</While>
+			</If>
+
+		<TurnIn QuestName="My Time Has Passed" QuestId="14184" TurnInName="Cerelia" TurnInId="35295" />
+		<PickUp QuestName="Avenge Furien!" QuestId="14188" GiverName="Cerelia" GiverId="35295" />
+		<TurnIn QuestName="Avenge Furien!" QuestId="14188" TurnInName="Sorrem" TurnInId="35298" />
+		<PickUp QuestName="Translation" QuestId="14189" GiverName="Sorrem" GiverId="35298" />
+
+			<!--Transport: Translation-->
+			<If Condition="HasQuest(14189) &amp;&amp; IsQuestCompleted(14189) &amp;&amp; Me.Y &gt;= 2000">
+				<If Condition="!Me.IsOnTransport">
+					<CustomBehavior File="InteractWith" MobId="35315" GossipOptions="1" NonCompeteDistance="0" WaitTime="5000" X="-438.2397" Y="2240.22" Z="92.35146" />
+				</If>
+				<While Condition="Me.IsOnTransport">
+					<CustomBehavior File="WaitTimer" WaitTime="10000" GoalText="Waiting for the Dragonhawk to Land" />
+				</While>
+			</If>	
+
+		<TurnIn QuestName="Translation" QuestId="14189" TurnInType="Object" TurnInName="Ancient Tablets" TurnInId="195433" X="-424.2953" Y="1120.694" Z="96.02788" />
+		<PickUp QuestName="Furien's Footsteps" QuestId="14191" GiverType="Object" GiverName="Ancient Tablets" GiverId="195433" X="-424.2953" Y="1120.694" Z="96.02788" />
+			
+			<!--Objective: Visiting Elune's Cathedral-->
+			<If Condition="HasQuest(14191) &amp;&amp; !IsObjectiveComplete(1,14191)">
+				<Runto DestName="Elune's Cathedral Ruins" X="-342.4779" Y="818.0663" Z="94.31705" />
+			</If>
+
+		<PickUp QuestName="To the Hilt!" QuestId="14219" GiverType="Object" GiverName="Elune's Handmaiden" GiverId="195517" X="-342.4779" Y="818.0663" Z="94.31705" />
+
+			<!--Objective: Visiting Elune's Temple-->
+			<If Condition="HasQuest(14191) &amp;&amp; !IsObjectiveComplete(2,14191)">
+				<Runto DestName="Elune's Temple Ruins" X="-241.9999" Y="696.2969" Z="100.8941" />
+			</If>
+
+		<PickUp QuestName="Ten Pounds of Flesh" QuestId="14213" GiverType="Object" GiverName="Elune's Brazier" GiverId="195497" X="-241.9999" Y="696.2969" Z="100.8941" />
+
+			<!--Objective: Visiting Elune's Sanctuary-->
+			<If Condition="HasQuest(14191) &amp;&amp; !IsObjecwtiveComplete(3,14191)">
+				<Runto DestName="Elune's Sanctuary Ruins" X="-92.13528" Y="756.1975" Z="126.2357" />
+			</If>
+		
+		<!--TurnIn: Furien's Footsteps [Obtain: Nothing a Couple of Melons Won't Fix]-->
+		<While Condition="HasQuest(14191) &amp;&amp; IsQuestCompleted(14191)">
+			<CustomBehavior File="CompleteLogQuest" QuestId="14191" />
+		</While>
+
+			<!--Objective: Nothing a Couple of Melons Won't Fix-->
+			<If Condition="HasQuest(14360) &amp;&amp; !IsQuestCompleted(14360)">
+				<Objective QuestName="Nothing a Couple of Melons Won't Fix" QuestId="14360" Type="CollectItem" ItemId="48106" CollectCount="8" />
+				<Runto DestName="Cup of Elune" X="-91.52148" Y="773.9774" Z="132.8922" />
+				<CustomBehavior File="Misc\RunLua" Lua="UseItemByName(48106)" WaitTime="3000" />
+			</If>
+
+		<!--TurnIn: Nothing a Couple of Melons Won't Fix [Obtain: All Becoming Clearer]-->
+		<While Condition="HasQuest(14360) &amp;&amp; IsQuestCompleted(14360)">
+			<CustomBehavior File="CompleteLogQuest" QuestId="14360" />
+		</While>
+
+			<!--Objective: Ten Pounds of Flesh-->
+			<If Condition="HasQuest(14213) &amp;&amp; !IsQuestCompleted(14213)">
+				<CustomBehavior File="UserSettings" QuestId="14213" UseMount="False" />
+				<CustomBehavior File="Message" Text="Mounting Temporarily Disabled for Objective Bug" LogColor="Orange" />
+				<Objective QuestName="Ten Pounds of Flesh" QuestId="14213" Type="CollectItem" ItemId="48857" CollectCount="10" />
+				<CustomBehavior File="UserSettings" QuestId="14213" UseMount="True" />
+			</If>
+
+			<!--Objective: To the Hilt-->
+			<If Condition="HasQuest(14219) &amp;&amp; !IsQuestCompleted(14219)">
+				<CustomBehavior File="UserSettings" QuestId="14219" UseMount="False" />
+				<CustomBehavior File="Message" Text="Mounting Temporarily Disabled for Objective Bug" LogColor="Orange" />
+				<Objective QuestName="To the Hilt!" QuestId="14219" Type="CollectItem" ItemId="48943" CollectCount="20" />
+				<CustomBehavior File="UserSettings" QuestId="14219" UseMount="True" />
+			</If>
+			
+			<!--Objective: Ten Pounds of Flesh-->
+			<If Condition="HasQuest(14213) &amp;&amp; !IsQuestCompleted(14213)">
+				<Runto DestName="Elune's Brazier" X="-242.2906" Y="698.0887" Z="100.8941" />
+				<CustomBehavior File="Misc\RunLua" Lua="UseItemByName(48857)" WaitTime="3000" />
+			</If>
+
+		<TurnIn QuestName="Ten Pounds of Flesh" QuestId="14213" TurnInType="Object" TurnInName="Elune's Brazier" TurnInId="195497" X="-242.2906" Y="698.0887" Z="100.8941" />
+
+			<!--Objective: To the Hilt-->
+			<If Condition="HasQuest(14219) &amp;&amp; !IsQuestCompleted(14219)">
+				<Runto DestName="Elune's Handmaiden" X="-342.568" Y="818.4635" Z="94.45354" />
+				<CustomBehavior File="Misc\RunLua" Lua="UseItemByName(48943)" WaitTime="3000" />
+			</If>
+
+		<TurnIn QuestName="To the Hilt!" QuestId="14219" TurnInType="Object" TurnInName="Elune's Handmaiden" TurnInId="195517" X="-342.568" Y="818.4635" Z="94.45354" />	
+
+			<If Condition="HasQuest(14195) &amp;&amp; !IsQuestCompleted(14195)">
+				<RunTo DestName="Elune's Palace" X="60.34458" Y="875.1161" Z="141.766" />
+			</If>
+
+		<TurnIn QuestName="All Becoming Clearer" QuestId="14195" TurnInType="Object" TurnInName="Ancient Vortex Runestone" TurnInId="195445" X="60.34458" Y="875.1161" Z="141.766" />	
+
+		<!--PickUp: Firestarter. Test Workarounds Tomorrow for this Vehicle-->			
+
+	</QuestOrder>
+</HBProfile>

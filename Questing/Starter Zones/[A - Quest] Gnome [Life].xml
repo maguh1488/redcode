@@ -1,5 +1,5 @@
 <HBProfile>
-	<Name>[A - Quest] Gnome [Life]</Name>
+	<Name>[A - Quest] Gnome [Life] [$Rev$]</Name>
 
 	<MinLevel>1</MinLevel>
 	<MaxLevel>91</MaxLevel>
@@ -30,6 +30,8 @@
 	<Blackspots>
 		<!--New Tinkertown: Platform Board-->
 		<Blackspot X="-5115.432" Y="445.6443" Z="398.4287" Radius="0.9211662" />
+		<!--New Tinkertown: Gnome Flag-->
+		<Blackspot X="-5191.488" Y="480.6887" Z="387.8672" Radius="0.5471934" />
 	</Blackspots>
 
 	<Mailboxes>
@@ -118,9 +120,9 @@
 		<PickUp QuestName="To the Surface" QuestId="27674" GiverName="Technician Braggle" GiverId="46255" />
 
 			<!--Transport: To the Surface-->
-			<If Condition="HasQuest(27674) &amp;&amp; Me.Z &lt; 300">
+			<While Condition="HasQuest(27674) &amp;&amp; Me.Z &lt; 300">
 				<CustomBehavior File="InteractWith" MobId="46293" GossipOptions="1" WaitTime="2000" X="-5181.149" Y="687.7326" Z="287.976" />
-			</If>
+			</While>
 
 		<TurnIn QuestName="To the Surface" QuestId="27674" TurnInName="Nevin Twistwrench" TurnInId="42396" />
 
@@ -186,22 +188,6 @@
 		<PickUp QuestName="What's Left Behind" QuestId="26264" GiverName="Tock Sprysprocket" GiverId="42611" />
 		<PickUp QuestName="Dealing with the Fallout" QuestId="26265" GiverName="Corporal Fizzwhistle" GiverId="42630" />
 
-		<If Condition="Me.Class == WoWClass.Mage">
-			<PickUp QuestName="A Job for the Multi-Bot" QuestId="26205" GiverName="Engineer Grindspark" GiverId="42553" />
-			<PickUp QuestName="The Arts of a Mage" QuestId="26198" GiverName="Bipsi Frostflinger" GiverId="42331" />
-				
-				<!--Objective: The Arts of a Mage-->
-				<While Condition="HasQuest(26198) &amp;&amp; !IsQuestCompleted(26198)">
-					<Disablebehavior Name="Combat" />
-					<CustomBehavior File="InteractWith" InteractByCastingSpellId="122" MobId="44171" Range="12" X="-5130.365" Y="426.8183" Z="396.4332" />
-					<Enablebehavior Name="Combat" />
-				</While>			
-
-			<TurnIn QuestName="The Arts of a Mage" QuestId="26198" TurnInName="Bipsi Frostflinger" TurnInId="42331" />
-			<PickUp QuestName="What's Left Behind" QuestId="26264" GiverName="Tock Sprysprocket" GiverId="42611" />
-			
-		</If>
-
 			<!--Objective: A Job for the Multi-Bot-->
 			<CustomBehavior File="InteractWith" QuestId="26205" MobId="203975" NumOfTimes="100" WaitTime="3500" Range="3">
 				<HuntingGrounds>
@@ -221,6 +207,32 @@
 		<TurnIn QuestName="A Job for the Multi-Bot" QuestId="26205" TurnInName="Engineer Grindspark" TurnInId="42553" />
 		<PickUp QuestName="What's Keeping Jessup?" QuestId="26316" GiverName="Captain Tread Sparknozzle" GiverId="42489" />
 
+
+		<If Condition="Me.Class == WoWClass.Mage">
+			<PickUp QuestName="The Arts of a Mage" QuestId="26198" GiverName="Bipsi Frostflinger" GiverId="42331" />
+				
+				<!--Objective: The Arts of a Mage-->
+				<While Condition="HasQuest(26198) &amp;&amp; !IsQuestCompleted(26198)">
+					<Disablebehavior Name="Combat" />
+					<CustomBehavior File="InteractWith" InteractByCastingSpellId="122" MobId="44171" Range="12" X="-5130.365" Y="426.8183" Z="396.4332" />
+					<Enablebehavior Name="Combat" />
+				</While>			
+
+			<TurnIn QuestName="The Arts of a Mage" QuestId="26198" TurnInName="Bipsi Frostflinger" TurnInId="42331" />
+		</If>
+		<If Condition="Me.Class == WoWClass.Monk">
+			<PickUp QuestName="The Arts of a Monk" QuestId="31138" GiverName="Xi, Friend to the Small" GiverId="63238" />
+
+				<!--Objective: The Arts of a Monk-->
+				<While Condition="HasQuest(31138) &amp;&amp; !IsQuestCompleted(31138)">
+					<DisableBehavior Name="Combat" />
+					<CustomBehavior File="InteractWith" InteractByCastingSpellId="100780" MobId="44171" Range="5" WaitTime="1000" X="-5130.365" Y="426.8183" Z="396.4332" />
+					<CustomBehavior File="InteractWith" InteractByCastingSpellId="100787" MobId="44171" Range="5" X="-5130.365" Y="426.8183" Z="396.4332" />
+					<EnableBehavior Name="Combat" />
+				</While>	
+
+			<TurnIn QuestName="The Arts of a Monk" QuestId="31138" TurnInName="Xi, Friend to the Small" TurnInId="63238" />
+		</If>
 		<If Condition="Me.Class == WoWClass.Priest">
 			<PickUp QuestName="The Arts of a Priest" QuestId="26200" GiverName="Doc Cogspin" GiverId="42323" />
 
@@ -233,6 +245,40 @@
 				</While>
 
 			<TurnIn QuestName="The Arts of a Priest" QuestId="26200" TurnInName="Doc Cogspin" TurnInId="42323" />		
+		</If>
+		<If Condition="Me.Class == WoWClass.Warlock">
+			<PickUp QuestName="The Power of a Warlock" QuestId="26201" GiverName="Alamar Grimm" GiverId="460" />
+
+				<!--Objective: The Power of a Warlock-->
+				<While Condition="HasQuest(26201) &amp;&amp; !IsQuestCompleted(26201)">
+					<Disablebehavior Name="Combat" />
+					<RunTo DestName="Training Dummies" X="-5130.365" Y="426.8183" Z="396.4332" />
+					<CustomBehavior File="InteractWith" InteractByCastingSpellId="172" MobId="44171" Range="40" X="-5130.365" Y="426.8183" Z="396.4332" />
+					<Enablebehavior Name="Combat" />
+				</While>
+
+			<TurnIn QuestName="The Power of a Warlock" QuestId="26201" TurnInName="Alamar Grimm" TurnInId="460" />
+		</If>
+		<If Condition="Me.Class == WoWClass.Rogue">
+			<PickUp QuestName="The Arts of a Rogue" QuestId="26207" GiverName="Kelsey Steelspark" GiverId="42366" />
+
+				<!--Objective: The Arts of a Rogue-->
+				<While Condition="HasQuest(26207) &amp;&amp; !IsQuestCompleted(26207)">
+					<Disablebehavior Name="Combat" />
+					<RunTo DestName="Training Dummies" X="-5130.365" Y="426.8183" Z="396.4332" />
+					<CustomBehavior File="InteractWith" InteractByCastingSpellId="1752" MobId="44171" Range="5" WaitForNpcs="False" X="-5130.365" Y="426.8183" Z="396.4332" />
+					<CustomBehavior File="InteractWith" InteractByCastingSpellId="2098" MobId="44171" Range="5" WaitForNpcs="False" WaitTime="2000" X="-5130.365" Y="426.8183" Z="396.4332" />
+					<Enablebehavior Name="Combat" />
+				</While>
+
+			<TurnIn QuestName="The Arts of a Rogue" QuestId="26207" TurnInName="Kelsey Steelspark" TurnInId="42366" />
+		</If>
+		<If Condition="Me.Class == WoWClass.Warrior">
+			<PickUp QuestName="The Arts of a Warrior" QuestId="26204" GiverName="Drill Sergeant Steamcrank" GiverId="42324" />
+
+				<CustomBehavior File="Halt" />
+
+			<TurnIn QuestName="The Arts of a Warrior" QuestId="26204" TurnInName="Drill Sergeant Steamcrank" TurnInId="42324" />
 		</If>
 
 		<TurnIn QuestName="What's Keeping Jessup?" QuestId="26316" TurnInName="Jessup McCree" TurnInId="42708" />
