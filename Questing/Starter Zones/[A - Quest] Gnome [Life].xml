@@ -58,8 +58,9 @@
 	<QuestOrder>
 		<CustomBehavior File="Message" Text="Initializing Settings" LogColor="Cyan" />
 			
+			<!--Flying Mobs: Fixing Melee Issues with PullDistance="3"-->
 			<If Condition="!IsQuestCompleted(27674)">
-				<CustomBehavior File="UserSettings" LootMobs="True" UseFlightPaths="False" PullDistance="3" />
+				<CustomBehavior File="UserSettings" LootMobs="True" UseFlightPaths="False" PullDistance="5" />
 			</If>
 			<CustomBehavior File="EnablePlugin" Names="Anti Drown,AutoEquip2,Drink Potions,Refreshment,Talented2" />
 			<CustomBehavior File="RunMacro" Macro="/script SetCVar('AutoLootDefault', 1)" WaitTime="1000" />
@@ -68,7 +69,23 @@
 
 		<PickUp QuestName="Pinned Down" QuestId="27670" GiverName="Nevin Twistwrench" GiverId="45966" />
 			
-			<Objective QuestName="Pinned Down" QuestId="27670" Type="KillMob" MobId="46363" KillCount="6" />
+			<!--Objective QuestName="Pinned Down" QuestId="27670" Type="KillMob" MobId="46363" KillCount="6" /-->
+			<!--Objective: Pinned Down-->
+			<If Condition="HasQuest(27670) &amp;&amp; !IsQuestCompleted(27670)">
+				<SetGrindArea>
+					<GrindArea>
+						<Factions>36</Factions>
+						<Hotspots>
+							<Hotspot X="-4985.754" Y="812.705" Z="276.2351" />
+							<Hotspot X="-5006.854" Y="812.4373" Z="276.2351" />
+							<Hotspot X="-5015.544" Y="792.2637" Z="276.2245" />
+							<Hotspot X="-4961.816" Y="789.5774" Z="276.2379" />
+							<Hotspot X="-4962.327" Y="758.7289" Z="276.2398" />
+						</Hotspots>
+					</GrindArea>  
+				</SetGrindArea>
+				<GrindTo Condition="IsQuestCompleted(27670)" />
+			</If>
 		
 		<TurnIn QuestName="Pinned Down" QuestId="27670" TurnInName="Nevin Twistwrench" TurnInId="45966" />
 		<PickUp QuestName="Report to Carvo Blastbolt" QuestId="28167" GiverName="Nevin Twistwrench" GiverId="45966" />
@@ -165,6 +182,9 @@
 			<Objective QuestName="Scrounging for Parts" QuestId="26222" Type="CollectItem" ItemId="57764" CollectCount="7" />
 		
 		<TurnIn QuestName="Scrounging for Parts" QuestId="26222" TurnInName="Engineer Grindspark" TurnInId="42553" />
+		<PickUp QuestName="A Job for the Multi-Bot" QuestId="26205" GiverName="Engineer Grindspark" GiverId="42553" />
+		<PickUp QuestName="What's Left Behind" QuestId="26264" GiverName="Tock Sprysprocket" GiverId="42611" />
+		<PickUp QuestName="Dealing with the Fallout" QuestId="26265" GiverName="Corporal Fizzwhistle" GiverId="42630" />
 
 		<If Condition="Me.Class == WoWClass.Mage">
 			<PickUp QuestName="A Job for the Multi-Bot" QuestId="26205" GiverName="Engineer Grindspark" GiverId="42553" />
@@ -179,7 +199,7 @@
 
 			<TurnIn QuestName="The Arts of a Mage" QuestId="26198" TurnInName="Bipsi Frostflinger" TurnInId="42331" />
 			<PickUp QuestName="What's Left Behind" QuestId="26264" GiverName="Tock Sprysprocket" GiverId="42611" />
-			<PickUp QuestName="Dealing with the Fallout" QuestId="26265" GiverName="Corporal Fizzwhistle" GiverId="42630" />
+			
 		</If>
 
 			<!--Objective: A Job for the Multi-Bot-->
@@ -200,6 +220,21 @@
 		<TurnIn QuestName="What's Left Behind" QuestId="26264" TurnInName="Tock Sprysprocket" TurnInId="42611" />
 		<TurnIn QuestName="A Job for the Multi-Bot" QuestId="26205" TurnInName="Engineer Grindspark" TurnInId="42553" />
 		<PickUp QuestName="What's Keeping Jessup?" QuestId="26316" GiverName="Captain Tread Sparknozzle" GiverId="42489" />
+
+		<If Condition="Me.Class == WoWClass.Priest">
+			<PickUp QuestName="The Arts of a Priest" QuestId="26200" GiverName="Doc Cogspin" GiverId="42323" />
+
+				<!--Objective: The Arts of a Priest-->
+				<While Condition="HasQuest(26200) &amp;&amp; !IsQuestCompleted(26200)">
+					<Disablebehavior Name="Combat" />
+					<RunTo DestName="Training Dummies" X="-5130.365" Y="426.8183" Z="396.4332" />
+					<CustomBehavior File="InteractWith" InteractByCastingSpellId="589" MobId="44171" Range="40" X="-5130.365" Y="426.8183" Z="396.4332" />
+					<Enablebehavior Name="Combat" />
+				</While>
+
+			<TurnIn QuestName="The Arts of a Priest" QuestId="26200" TurnInName="Doc Cogspin" TurnInId="42323" />		
+		</If>
+
 		<TurnIn QuestName="What's Keeping Jessup?" QuestId="26316" TurnInName="Jessup McCree" TurnInId="42708" />
 		<PickUp QuestName="Get Me Explosives Back!" QuestId="26285" GiverName="Jessup McCree" GiverId="42708" />
 		<PickUp QuestName="Missing in Action" QuestId="26284" GiverName="Jessup McCree" GiverId="42708" />
@@ -249,6 +284,6 @@
 		<PickUp QuestName="Bound for Kharanos" QuestId="26380" GiverName="Ciara Deepstone" GiverId="42933" X="-5410.04" Y="-306.828" Z="400.6929" />
 		
 		<CustomBehavior File="Message" Text="Profile Complete: Loading Dun Morogh" LogColor="Cyan" />
-		<CustomBehavior File="LoadProfile" ProfileName="..\Kalimdor\[A - Quest] Dun Morogh [Life]" />
+		<CustomBehavior File="LoadProfile" ProfileName="..\Eastern Kingdoms\[A - Quest] Dun Morogh [Life]" />
 	</QuestOrder>
 </HBProfile>
