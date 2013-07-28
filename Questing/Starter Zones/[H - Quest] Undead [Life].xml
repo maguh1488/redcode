@@ -30,25 +30,6 @@
 		<Vendor Name="Archibald Kava" Entry="2113" Type="Repair" X="1865.681" Y="1568.675" Z="94.31359" />		
 	</Vendors>
 
-	<Quest Id="24971" Name="Assault on the Rotbrain Encampment">
-		<Objective Type="KillMob" MobId="49424" KillCount="1">
-			<Hotspots>
-				<Hotspot X="1844.051" Y="1341.314" Z="78.00833" />
-				<Hotspot X="1817.298" Y="1304.038" Z="94.45231" />
-				<Hotspot X="1792.326" Y="1353.829" Z="88.382" />
-				<Hotspot X="1757.151" Y="1360.743" Z="93.58543" />
-			</Hotspots>
-		</Objective>
-		<Objective Type="KillMob" MobId="49422" KillCount="8">
-			<Hotspots>
-				<Hotspot X="1844.051" Y="1341.314" Z="78.00833" />
-				<Hotspot X="1817.298" Y="1304.038" Z="94.45231" />
-				<Hotspot X="1792.326" Y="1353.829" Z="88.382" />
-				<Hotspot X="1757.151" Y="1360.743" Z="93.58543" />
-			</Hotspots>
-		</Objective>
-	</Quest>
-
 	<QuestOrder>
 		<CustomBehavior File="Message" Text="Initializing Settings" LogColor="Cyan" />
 		
@@ -72,6 +53,7 @@
 			<CustomBehavior File="InteractWith" QuestId="24960" QuestObjectiveIndex="2" NonCompeteDistance="0" MobId="49230" NumOfTimes="10" GossipOptions="1,1" X="1750.27" Y="1640.774" Z="117.7434" />
 			<CustomBehavior File="InteractWith" QuestId="24960" QuestObjectiveIndex="1" NonCompeteDistance="0" MobId="38895" NumOfTimes="10" GossipOptions="1,1" X="1754.847" Y="1666.377" Z="121.3625" />
 			<CustomBehavior File="InteractWith" QuestId="24960" QuestObjectiveIndex="3" NonCompeteDistance="0" MobId="49231" NumOfTimes="10" GossipOptions="1,1, 1" X="1740.547" Y="1702.709" Z="128.2191" />
+			
 			<Objective QuestName="Those That Couldn't Be Saved" QuestId="26799" Type="KillMob" MobId="1501" KillCount="6" />
 
 		<TurnIn QuestName="Those That Couldn't Be Saved" QuestId="26799" TurnInName="Undertaker Mordo" TurnInId="1568" />
@@ -81,7 +63,16 @@
 		<PickUp QuestName="Recruitment" QuestId="26800" GiverName="Deathguard Saltain" GiverId="1740" />
 		<PickUp QuestName="Scourge on our Perimeter" QuestId="26801" GiverName="Shadow Priest Sarvis" GiverId="1569" />
 			
-			<CustomBehavior File="InteractWith" QuestId="26800" MobId="49340" NumOfTimes="25" WaitTime="1000" CollectionDistance="950" X="1917.501" Y="1531.432" Z="86.90942" />
+			<!--Objective: Recruitment-->
+			<CustomBehavior File="InteractWith" QuestId="26800" MobId="49340" NumOfTimes="50" WaitTime="1000" AuraIdOnMob="29266">
+				<HuntingGrounds>
+					<Hotspot X="1917.557" Y="1530.374" Z="86.91794" />
+					<Hotspot X="1887.535" Y="1546.49" Z="88.43366" />
+					<Hotspot X="1918.376" Y="1603.407" Z="83.99671" />
+					<Hotspot X="1985.105" Y="1565.268" Z="78.69968" />
+				</HuntingGrounds>
+			</CustomBehavior>
+			
 			<Objective QuestName="Scourge on our Perimeter" QuestId="26801" Type="KillMob" MobId="1890" KillCount="8" />
 
 		<TurnIn QuestName="Recruitment" QuestId="26800" TurnInName="Deathguard Saltain" TurnInId="1740" />
@@ -208,4 +199,24 @@
 		<CustomBehavior File="Message" Text="Profile Complete: Loading Next Profile" LogColor="Cyan" />
 		<CustomBehavior File="LoadProfile" ProfileName="..\Eastern Kingdoms\[H - Quest] Tirisfal Glades [Life]" />			
 	</QuestOrder>
+
+	<Quest Id="24971" Name="Assault on the Rotbrain Encampment">
+		<Objective Type="KillMob" MobId="49424" KillCount="1">
+			<Hotspots>
+				<Hotspot X="1844.051" Y="1341.314" Z="78.00833" />
+				<Hotspot X="1817.298" Y="1304.038" Z="94.45231" />
+				<Hotspot X="1792.326" Y="1353.829" Z="88.382" />
+				<Hotspot X="1757.151" Y="1360.743" Z="93.58543" />
+			</Hotspots>
+		</Objective>
+		<Objective Type="KillMob" MobId="49422" KillCount="8">
+			<Hotspots>
+				<Hotspot X="1844.051" Y="1341.314" Z="78.00833" />
+				<Hotspot X="1817.298" Y="1304.038" Z="94.45231" />
+				<Hotspot X="1792.326" Y="1353.829" Z="88.382" />
+				<Hotspot X="1757.151" Y="1360.743" Z="93.58543" />
+			</Hotspots>
+		</Objective>
+	</Quest>
+
 </HBProfile>

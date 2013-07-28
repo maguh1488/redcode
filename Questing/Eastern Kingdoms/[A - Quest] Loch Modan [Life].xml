@@ -19,9 +19,6 @@
 	<SellBlue>False</SellBlue>
 	<SellPurple>False</SellPurple>
 
-	<AvoidMobs>
- 	</AvoidMobs>
-
 	<Blackspots>
 		<!--Thelsamar Mailbox-->
 		<Blackspot X="-5365.616" Y="-2954.135" Z="323.8456" Radius="1.146926" />

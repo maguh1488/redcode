@@ -1,0 +1,55 @@
+<HBProfile>
+	<Name>[A - Quest] Dwarf [Life] [$Rev$]</Name>
+
+	<MinLevel>1</MinLevel>
+	<MaxLevel>91</MaxLevel>
+
+	<MinDurability>0.2</MinDurability>
+	<MinFreeBagSlots>2</MinFreeBagSlots>
+
+	<MailGrey>False</MailGrey>
+	<MailWhite>False</MailWhite>
+	<MailGreen>True</MailGreen>
+	<MailBlue>True</MailBlue>
+	<MailPurple>True</MailPurple>
+   
+	<SellGrey>True</SellGrey>
+	<SellWhite>True</SellWhite>
+	<SellGreen>True</SellGreen>
+	<SellBlue>False</SellBlue>
+	<SellPurple>False</SellPurple>
+
+	<Mailboxes>
+		<!--Coldridge Valley Mailbox-->
+		<Mailbox X="-6169.064" Y="377.0725" Z="398.8772" />
+	</Mailboxes>
+
+	<Vendors>
+		<!--Coldridge Valley Vendors-->
+		<Vendor Name="Adlin Pridedrift" Entry="829" Type="Food" X="-6225.237" Y="320.3721" Z="383.1176" />
+		<Vendor Name="Rybrad Coldbank" Entry="945" Type="Repair" X="-6101.101" Y="390.5695" Z="395.5436" />
+	</Vendors>
+
+	<QuestOrder>
+		<CustomBehavior File="Message" Text="Initializing Settings" LogColor="Cyan" />
+			
+			<CustomBehavior File="UserSettings" LootMobs="True" UseFlightPaths="True" PullDistance="25" />
+			<CustomBehavior File="EnablePlugin" Names="Anti Drown,AutoEquip2,Drink Potions,Refreshment,Talented2" />
+			<CustomBehavior File="RunMacro" Macro="/script SetCVar('AutoLootDefault', 1)" WaitTime="1000" />
+			<!--Extreme Racial Prejudice-->
+			<If Condition="Me.Race != WoWRace.Dwarf">
+				<CustomBehavior File="Message" Text="You're not a Dwarf. Finding Appropriate Profile!" LogColor="Cyan" />
+				<CustomBehavior File="LoadProfile" ProfileName="..\[N - Quest] Profile Loader [Life].xml" />					
+			</If>	
+
+		<CustomBehavior File="Message" Text="Compiling Quests: Coldridge Valley" LogColor="Cyan" />
+
+		<PickUp QuestName="Hold the Line!" QuestId="24469" GiverName="Joren Ironstock" GiverId="37081" />
+			
+			<Objective QuestName="Hold the Line!" QuestId="24469" Type="KillMob" MobId="37070" KillCount="6" />
+		
+		<TurnIn QuestName="Hold the Line!" QuestId="24469" TurnInName="Joren Ironstock" TurnInId="37081" />
+		<PickUp QuestName="Give 'em What-For" QuestId="24470" GiverName="Joren Ironstock" GiverId="37081" />
+		<PickUp QuestName="Aid for the Wounded" QuestId="24471" GiverName="Sten Stoutarm" GiverId="658" />
+	</QuestOrder>
+</HBProfile>
