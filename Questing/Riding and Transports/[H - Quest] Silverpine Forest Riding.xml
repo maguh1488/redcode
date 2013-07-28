@@ -16,7 +16,7 @@
 				<CustomBehavior File="ForceSetVendor" DoSell="True" DoRepair="True" DoMail="True" />
 				<CustomBehavior File="Message" Text="Riding: Compiling Training Procedures" LogColor="Cyan" />
 
-				<!--Continential Drift: I'm in Eastern Kingdoms, should be in Kalimdor-->
+				<!--Continental Drift: I'm in Eastern Kingdoms, should be in Kalimdor-->
 				<If Condition="Me.MapId == 0 &amp;&amp; (Me.Race != WoWRace.BloodElf || Me.Race != WoWRace.Undead)">
 					<!--Get out of "Outlands" Zones-->
 					<If Condition="Me.ZoneId == 3433 || Me.ZoneId == 3430 || Me.ZoneId == 3487">
@@ -33,7 +33,7 @@
 						GetOffX="1840.225" GetOffY="-4390.912" GetOffZ="135.2337" />				
 				</If>
 
-				<!--Continential Drift: I'm in Kalimdor, should be in Eastern Kingdoms-->
+				<!--Continental Drift: I'm in Kalimdor, should be in Eastern Kingdoms-->
 				<If Condition="Me.MapId == 1 &amp;&amp; (Me.Race == WoWRace.BloodElf || Me.Race == WoWRace.Undead)">
 					<CustomBehavior File="Message" Text="Transport: Riding Zepplin to The Undercity" LogColor="Cyan" />
 					<CustomBehavior File="UseTransport" TransportId="164871"
@@ -174,7 +174,7 @@
 			<CustomBehavior File="Message" Text="Fatal Riding Error: We didn't get a mount! Inform Profile Maker!" LogColor="Red" />
 		</If>
 
-		<!--Continential Drift: I'm in Kalimdor, returning to Eastern Kingdoms-->
+		<!--Continental Drift: I'm in Kalimdor, returning to Eastern Kingdoms-->
 		<If Condition="Me.MapId == 1">
 			<CustomBehavior File="Message" Text="Transport: Riding Zepplin to The Undercity" LogColor="Cyan" />
 			<CustomBehavior File="UseTransport" TransportId="164871"

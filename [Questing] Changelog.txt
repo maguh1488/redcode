@@ -1,6 +1,11 @@
 ==================================
  ==== Life Project Changelog ====
 ==================================
+Revision 68: Sunday: July 28th, 2013
+-- Hillsbrad Foothills Finished. Sans Errors and Checkpoints
+-- Goblin and Undead had Minor Fixes
+-- Developmental profiles for Dwarf and Arathi Highlands added
+-- Terms of Use Warning added for Developmental profiles
 _________________________________________
 Revision 66-67: Saturday: July 27th, 2013
 -- Developmental Profiles have a Section Now

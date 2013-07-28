@@ -1,0 +1,22 @@
+        ========================
+         ==== Life Project ====
+        ========================
+
+The "Development" folder houses profiles
+that are in the process of being made or
+undergoing maintenance. 
+
+The use of such profiles is not supported
+in any meaning of the word. The finished
+product may not be compatible with what is
+currently in the Development folder, making
+it dangerous to use them with normal leveling.
+
+If you wish to test them and understand what
+is a profile issue or a bot issue, and the 
+risks feel free to go ahead. Issue reporting
+is always encouraged. I will try to report 
+bugs to the Trello page, please go there 
+before trying to submit any bug.
+
+https://trello.com/b/QuyDxb43/life-project
