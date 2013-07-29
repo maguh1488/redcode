@@ -74,6 +74,27 @@
 			</Hotspots>
 		</Objective>
 	</Quest>
+	<Quest Id="27095" Name="Skitterweb Menace">
+		<Objective Type="KillMob" MobId="1781" KillCount="12">
+			<Hotspots>
+				<Hotspot X="1270.795" Y="1983.402" Z="18.92227" />
+				<Hotspot X="1244.267" Y="2011.845" Z="15.69411" />
+				<Hotspot X="1196.969" Y="1999.078" Z="8.749343" />
+				<Hotspot X="1208.189" Y="1915.099" Z="10.56856" />
+			</Hotspots>
+		</Objective>
+	</Quest>
+	<Quest Id="27097" Name="Rise, Forsaken">
+		<Objective Type="KillMob" MobId="44953" KillCount="15">
+			<Hotspots>
+				<Hotspot X="843.5644" Y="688.6876" Z="53.95019" />
+				<Hotspot X="885.1203" Y="688.4056" Z="53.77671" />
+				<Hotspot X="908.9064" Y="682.9832" Z="53.28685" />
+				<Hotspot X="933.7776" Y="687.2894" Z="59.54331" />
+				<Hotspot X="948.7601" Y="715.366" Z="59.28374" />
+			</Hotspots>
+		</Objective>
+	</Quest>
 	<Quest Id="27364" Name="On Whose Orders?">
 		<Objective Type="CollectItem" ItemId="60977" CollectCount="1">
 			<CollectFrom>
@@ -149,14 +170,14 @@
 		<TurnIn QuestName="Dangerous Intentions" QuestId="27039" TurnInType="Object" TurnInName="Abandoned Outhouse" TurnInId="205143" X="1304.182" Y="1184.322" Z="52.29048" />
 		<PickUp QuestName="Waiting to Exsanguinate" QuestId="27045" GiverType="Object" GiverName="Abandoned Outhouse" GiverId="205143" X="1304.182" Y="1184.322" Z="52.29048" />
 
-		  <While Condition="HasQuest(27045) &amp;&amp; !IsQuestCompleted(27045)">
-		  	<RunTo X="1312.918" Y="1210.172" Z="58.51078" />
-		  	<CustomBehavior File="WaitTimer" WaitTime="22000" />
-		    <CustomBehavior File="InteractWith" QuestId="27045" MobId="44894" NonCompeteDistance="0" X="1312.918" Y="1210.172" Z="58.51078" />
-		    <CustomBehavior File="WaitTimer" QuestId="27045" WaitTime="135000" />
-		  </While>
-
-		  <DisableBehavior Name="Combat" />
+			<!--Objective: Waiting to Exsanguinate-->
+			<While Condition="HasQuest(27045) &amp;&amp; !IsQuestCompleted(27045)">
+				<RunTo X="1312.918" Y="1210.172" Z="58.51078" />
+				<CustomBehavior File="WaitTimer" WaitTime="22000" />
+				<CustomBehavior File="InteractWith" QuestId="27045" MobId="44894" NonCompeteDistance="0" X="1312.918" Y="1210.172" Z="58.51078" />
+				<CustomBehavior File="WaitTimer" QuestId="27045" WaitTime="135000" />
+				<DisableBehavior Name="Combat" />
+			</While>
 
 		<TurnIn QuestName="Waiting to Exsanguinate" QuestId="27045" TurnInName="Deathstalker Commander Belmont" TurnInId="44789" />
 		<PickUp QuestName="Belmont's Report" QuestId="27056" GiverName="Deathstalker Commander Belmont" GiverId="44789" />
@@ -167,15 +188,13 @@
 		<PickUp QuestName="The Warchief's Fleet" QuestId="27065" GiverName="Lady Sylvanas Windrunner" GiverId="44365" />
 
 		<If Condition="HasQuest(27065) &amp;&amp; IsQuestCompleted(27065)">
-			<RunTo X="1095.007" Y="1586.849" Z="28.52898" />
+			<RunTo DestName="Forsaken Rear Guard" X="1095.007" Y="1586.849" Z="28.52898" />
 			<CustomBehavior File="SetHearthstone" MobId="45496" X="1095.007" Y="1586.849" Z="28.52898" />
 			<CustomBehavior File="ForceSetVendor" DoSell="True" DoRepair="True" DoMail="True" />
+			<EnableBehavior Name="Combat" />
 		</If>
 
 		<TurnIn QuestName="The Warchief's Fleet" QuestId="27065" TurnInName="Admiral Hatchet" TurnInId="44916" />
-
-			<EnableBehavior Name="Combat" />
-
 		<PickUp QuestName="Steel Thunder" QuestId="27069" GiverName="Admiral Hatchet" GiverId="44916" />
 		<PickUp QuestName="Give 'em Hell!" QuestId="27073" GiverName="Warlord Torok" GiverId="44917" />
 		<PickUp QuestName="Playing Dirty" QuestId="27082" GiverName="Apothecary Wormcrud" GiverId="44912" />

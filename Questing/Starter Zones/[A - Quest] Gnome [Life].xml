@@ -45,18 +45,6 @@
 		<Vendor Name="Vallo Shinesteel" Entry="42626" Type="Repair" X="-5166.412" Y="470.7014" Z="389.8929" />
 	</Vendors>
 
-	<Quest Id="27670" Name="Pinned Down">
-		<Objective Type="KillMob" MobId="46363" KillCount="6">
-			<Hotspots>
-				<Hotspot X="-4985.754" Y="812.705" Z="276.2351" />
-				<Hotspot X="-5006.854" Y="812.4373" Z="276.2351" />
-				<Hotspot X="-5015.544" Y="792.2637" Z="276.2245" />
-				<Hotspot X="-4961.816" Y="789.5774" Z="276.2379" />
-				<Hotspot X="-4962.327" Y="758.7289" Z="276.2398" />
-			</Hotspots>
-		</Objective>
-	</Quest>
-
 	<QuestOrder>
 		<CustomBehavior File="Message" Text="Initializing Settings" LogColor="Cyan" />
 			
@@ -332,4 +320,17 @@
 		<CustomBehavior File="Message" Text="Profile Complete: Loading Dun Morogh" LogColor="Cyan" />
 		<CustomBehavior File="LoadProfile" ProfileName="..\Eastern Kingdoms\[A - Quest] Dun Morogh [Life]" />
 	</QuestOrder>
+
+	<Quest Id="27670" Name="Pinned Down">
+		<Objective Type="KillMob" MobId="46363" KillCount="6">
+			<Hotspots>
+				<Hotspot X="-4985.754" Y="812.705" Z="276.2351" />
+				<Hotspot X="-5006.854" Y="812.4373" Z="276.2351" />
+				<Hotspot X="-5015.544" Y="792.2637" Z="276.2245" />
+				<Hotspot X="-4961.816" Y="789.5774" Z="276.2379" />
+				<Hotspot X="-4962.327" Y="758.7289" Z="276.2398" />
+			</Hotspots>
+		</Objective>
+	</Quest>
+
 </HBProfile>
