@@ -1,6 +1,13 @@
 ==================================
  ==== Life Project Changelog ====
 ==================================
+____________________________________
+Revision 69: Monday: July 29th, 2013
+-- Dwarf Starter Profile Released
+-- Dun Morogh Ironforge Flight Master Fixes
+-- Minor Silverpine Forest Overrides/Fixes
+-- Migrating Gnome Overrides to Bottom
+____________________________________
 Revision 68: Sunday: July 28th, 2013
 -- Hillsbrad Foothills Finished. Sans Errors and Checkpoints
 -- Goblin and Undead had Minor Fixes

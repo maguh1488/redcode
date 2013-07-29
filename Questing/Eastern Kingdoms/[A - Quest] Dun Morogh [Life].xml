@@ -76,12 +76,11 @@
 			<TurnIn QuestName="Ride to Ironforge" QuestId="6391" TurnInName="Golnir Bouldertoe" TurnInId="4256" />
 			<PickUp QuestName="Gryth Thurden" QuestId="6388" GiverName="Golnir Bouldertoe" GiverId="4256" />
 			<!--Bug: Can't Update Flightmaster W/This Quest-->
-			<If Condition="HasQuest(6388) &amp;&amp; IsQuestCompleted(6388)">
 				<CustomBehavior File="UserSettings" UseFlightPaths="False" />
-				<TurnIn QuestName="Gryth Thurden" QuestId="6388" TurnInName="Gryth Thurden" TurnInId="1573" />
-				<CustomBehavior File="UserSettings" UseFlightPaths="True" />
-			</If>
+			<TurnIn QuestName="Gryth Thurden" QuestId="6388" TurnInName="Gryth Thurden" TurnInId="1573" />
 			<PickUp QuestName="Return to Gremlock" QuestId="6392" GiverName="Gryth Thurden" GiverId="1573" />
+				<CustomBehavior File="RunMacro" Macro="/click QuestFrameAcceptButton" />
+				<CustomBehavior File="UserSettings" UseFlightPaths="True" />
 			<TurnIn QuestName="Return to Gremlock" QuestId="6392" TurnInName="Gremlock Pilsnor" TurnInId="1699" />
 		</If>
 
