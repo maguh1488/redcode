@@ -181,7 +181,7 @@
 			<If Condition="HasQuest(24993) &amp;&amp; !IsQuestCompleted(24993)">
 				<CustomBehavior File="UserSettings" PullDistance="5" />
 				<Objective QuestName="Annihilate the Worgen" QuestId="24993" Type="KillMob" MobId="38967" KillCount="5" />
-				<CustomBehavior File="UserSettings" Preset="UserOriginal" />
+				<CustomBehavior File="UserSettings" PullDistance="25" />
 			</If>
 
 		<TurnIn QuestName="Annihilate the Worgen" QuestId="24993" TurnInName="Executor Zygand" TurnInId="1515" />
@@ -291,7 +291,7 @@
 		<TurnIn QuestName="Take to the Skies" QuestId="25012" TurnInName="Executor Zygand" TurnInId="1515" />
 		<PickUp QuestName="Warchief's Command: Silverpine Forest!" QuestId="26964" GiverName="Executor Zygand" GiverId="1515" />
 
-		<CustomBehavior File="Message" Text="Profile Complete: Loading Next Profile" LogColor="Cyan" />
-		<CustomBehavior File="LoadProfile" ProfileName="..\[H - Quest] Profile Loader [Life]" />	
+		<CustomBehavior File="Message" Text="Profile Complete: Loading Silverpine Forest" LogColor="Cyan" />
+		<CustomBehavior File="LoadProfile" ProfileName="[H - Quest] Silverpine Forest [Life]" />	
 	</QuestOrder>
 </HBProfile>

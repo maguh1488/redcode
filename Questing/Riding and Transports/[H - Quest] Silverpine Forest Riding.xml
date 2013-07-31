@@ -183,15 +183,14 @@
 				TransportEndX="2062.376" TransportEndY="292.998" TransportEndZ="114.973"
 				StandOnX="1834.961" StandOnY="-4385.694" StandOnZ="135.0334" 
 				GetOffX="2066.773" GetOffY="288.873" GetOffZ="97.03159" />				
-			</If>
+		</If>
 
-			<!--Get out of "Outlands" Zones-->
-			<If Condition="Me.ZoneId == 3433 || Me.ZoneId == 3430 || Me.ZoneId == 3487">
-				<RunTo DestName="Orb of Translocation" X="10038.42" Y="-7000.994" Z="61.76336" />
-				<CustomBehavior File="Message" Text="Transport: Using Orb of Translocation to Undercity" LogColor="Cyan" />
-				<CustomBehavior File="InteractWith" MobId="184502" Range="8" X="10038.42" Y="-7000.994" Z="61.76336" />
-			</If>
-		</If>	
+		<!--Get out of "Outlands" Zones-->
+		<If Condition="Me.ZoneId == 3433 || Me.ZoneId == 3430 || Me.ZoneId == 3487">
+			<RunTo DestName="Orb of Translocation" X="10038.42" Y="-7000.994" Z="61.76336" />
+			<CustomBehavior File="Message" Text="Transport: Using Orb of Translocation to Undercity" LogColor="Cyan" />
+			<CustomBehavior File="InteractWith" MobId="184502" Range="8" X="10038.42" Y="-7000.994" Z="61.76336" />
+		</If>
 
 		<CustomBehavior File="Message" Text="Riding: Training Complete! Returning to Profile" LogColor="Cyan" />
 		<CustomBehavior File="LoadProfile" ProfileName="..\Kalimdor\[H - Quest] Silverpine Forest [Life]" />	

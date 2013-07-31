@@ -1,6 +1,14 @@
 ==================================
  ==== Life Project Changelog ====
 ==================================
+_____________________________________
+Revision 70: Tuesday, July 30th, 2013
+-- Silverpine Riding Return Syntax Repaired
+-- Northern Barrens Checkpoints Only Work > 60 Now
+-- Silverpine Forest Checkpoints & Riding Now Added
+-- There is no Thrallmar in Loch Modan: Temporary Level Change
+-- Added Bahrum's Post (So Far), to Dun Morogh
+-- Beginning Arathi Highlands
 ____________________________________
 Revision 69: Monday: July 29th, 2013
 -- Dwarf Starter Profile Released

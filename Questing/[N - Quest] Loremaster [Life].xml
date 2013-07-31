@@ -1,0 +1,38 @@
+<HBProfile>
+	<Name>[N - Quest] Loremaster [Life] [$Rev: 67 $]</Name>
+
+	<MinLevel>1</MinLevel>
+	<MaxLevel>91</MaxLevel>
+
+	<MinDurability>0.2</MinDurability>
+	<MinFreeBagSlots>2</MinFreeBagSlots>
+
+	<MailGrey>False</MailGrey>
+	<MailWhite>False</MailWhite>
+	<MailGreen>True</MailGreen>
+	<MailBlue>True</MailBlue>
+	<MailPurple>True</MailPurple>
+   
+	<SellGrey>True</SellGrey>
+	<SellWhite>True</SellWhite>
+	<SellGreen>True</SellGreen>
+	<SellBlue>False</SellBlue>
+	<SellPurple>False</SellPurple>
+
+	<AvoidMobs>
+ 	</AvoidMobs>
+
+	<Blackspots>
+	</Blackspots>
+
+	<Mailboxes>
+	</Mailboxes>
+
+	<Vendors>
+	</Vendors>
+
+	<QuestOrder>
+		<CustomBehavior File="Message" Text="While many profiles of mine do currently have Loremaster capabilities, there aren't enough that support the framework to use this profile. Shutting Down!" LogColor="Red" />
+		<CustomBehavior File="Halt" />
+	</QuestOrder>
+</HBProfile>

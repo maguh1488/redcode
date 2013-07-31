@@ -19,6 +19,14 @@
 	<SellBlue>False</SellBlue>
 	<SellPurple>False</SellPurple>
 
+	<AvoidMobs>
+		<Mob Name="Korok the Colossus" Id="45301" />
+ 	</AvoidMobs>
+
+	<Blacklist>
+		<Mob Name="General Marstone" Entry="45995" Flags="Pull" />
+	</Blacklist>
+
 	<Mailboxes>
 		<!--Forsaken Rear Guard Mailbox-->
 		<Mailbox X="1078.974" Y="1586.654" Z="27.70355" />
@@ -41,98 +49,68 @@
 		<Vendor Name="Harris Franklin" Entry="51709" Type="Food" X="-140.5608" Y="1292.561" Z="49.75549" />
 	</Vendors>
 
-	<AvoidMobs>
-		<Mob Name="Korok the Colossus" Id="45301" />
- 	</AvoidMobs>
-
-	<Blackspots>
-	</Blackspots>
-
-	<Blacklist>
-		<Mob Name="General Marstone" Entry="45995" Flags="Pull" />
-	</Blacklist>
-
-	<Quest Id="27193" Name="Seek and Destroy">
-		<Objective Type="CollectItem" ItemId="60867" CollectCount="1">
-			<CollectFrom>
-				<Mob Name="Caretaker Smithers" Id="45219" />
-			</CollectFrom>
-			<Hotspots>
-				<Hotspot X="143.5521" Y="1529.008" Z="114.9597" />
-			</Hotspots>
-		</Objective>
-	</Quest>
-	<Quest Id="27360" Name="Vengeance for Our Soldiers">
-		<Objective Type="KillMob" MobId="45403" KillCount="10">
-			<Hotspots>
-				<Hotspot X="-1419.215" Y="1511.498" Z="20.82067" />
-				<Hotspot X="-1426.626" Y="1573.105" Z="20.64243" />
-				<Hotspot X="-1459.638" Y="1552.108" Z="20.48691" />
-				<Hotspot X="-1482.303" Y="1621.546" Z="20.48545" />
-				<Hotspot X="-1491.021" Y="1680.75" Z="20.48575" />
-				<Hotspot X="-1555.027" Y="1684.538" Z="20.48504" />
-			</Hotspots>
-		</Objective>
-	</Quest>
-	<Quest Id="27095" Name="Skitterweb Menace">
-		<Objective Type="KillMob" MobId="1781" KillCount="12">
-			<Hotspots>
-				<Hotspot X="1270.795" Y="1983.402" Z="18.92227" />
-				<Hotspot X="1244.267" Y="2011.845" Z="15.69411" />
-				<Hotspot X="1196.969" Y="1999.078" Z="8.749343" />
-				<Hotspot X="1208.189" Y="1915.099" Z="10.56856" />
-			</Hotspots>
-		</Objective>
-	</Quest>
-	<Quest Id="27097" Name="Rise, Forsaken">
-		<Objective Type="KillMob" MobId="44953" KillCount="15">
-			<Hotspots>
-				<Hotspot X="843.5644" Y="688.6876" Z="53.95019" />
-				<Hotspot X="885.1203" Y="688.4056" Z="53.77671" />
-				<Hotspot X="908.9064" Y="682.9832" Z="53.28685" />
-				<Hotspot X="933.7776" Y="687.2894" Z="59.54331" />
-				<Hotspot X="948.7601" Y="715.366" Z="59.28374" />
-			</Hotspots>
-		</Objective>
-	</Quest>
-	<Quest Id="27364" Name="On Whose Orders?">
-		<Objective Type="CollectItem" ItemId="60977" CollectCount="1">
-			<CollectFrom>
-				<Mob Name="Master Sergeant Pietro Zaren" Id="45405" />
-			</CollectFrom>
-			<Hotspots>
-				<Hotspot X="-1528.83" Y="1587.73" Z="26.53709" />
-			</Hotspots>
-		</Objective>
-	</Quest>
-	<Quest Id="27474" Name="Breaking the Barrier">
-		<Objective Type="CollectItem" ItemId="61306" CollectCount="1">
-			<CollectFrom>
-				<GameObject Name="Ambermill Codex" Id="205534" />
-			</CollectFrom>
-			<Hotspots>
-				<Hotspot X="-133.4848" Y="784.0015" Z="67.3825" />
-			</Hotspots>
-		</Objective>
-	</Quest>
-	<Quest Id="27580" Name="Sowing Discord">
-		<Objective Type="KillMob" MobId="45995" KillCount="1">
-			<Hotspots>
-				<Hotspot X="-552.5573" Y="1673.876" Z="14.26527" />
-			</Hotspots>
-		</Objective>
-	</Quest>
-
 	<QuestOrder>
-
 		<CustomBehavior File="Message" Text="Initializing Settings" LogColor="Cyan" />
-		<CustomBehavior File="UserSettings" LootMobs="True" UseFlightPaths="True" PullDistance="25" />
 
-  		<If Condition="(Me.Class == WoWClass.Hunter) || (Me.Class == WoWClass.Priest) || (Me.Class == WoWClass.Mage) || (Me.Class == WoWClass.Warlock) || ((Me.Class == WoWClass.Druid) &amp;&amp; (StyxWoW.Me.Specialization == WoWSpec.DruidBalance)) || ((Me.Class == WoWClass.Shaman) &amp;&amp; (StyxWoW.Me.Specialization == WoWSpec.ShamanElemental))">
-    		<CustomBehavior File="UserSettings" PullDistance="40" />
-    	</If>
+			<!--Settings-->
+			<CustomBehavior File="EnablePlugin" Names="Anti Drown,AutoEquip2,Drink Potions,Refreshment,Talented2" />
+			<CustomBehavior File="RunMacro" Macro="/script SetCVar('AutoLootDefault', 1)" WaitTime="1000" />
+			<If Condition="(Me.Class == WoWClass.Hunter) || (Me.Class == WoWClass.Priest) || (Me.Class == WoWClass.Mage) || (Me.Class == WoWClass.Warlock) || ((Me.Class == WoWClass.Druid)
+				&amp;&amp; (StyxWoW.Me.Specialization == WoWSpec.DruidBalance)) || ((Me.Class == WoWClass.Shaman) &amp;&amp; (StyxWoW.Me.Specialization == WoWSpec.ShamanElemental))">
+				<CustomBehavior File="UserSettings" LootMobs="True" UseFlightPaths="True" PullDistance="40" />
+				<Else>
+					<CustomBehavior File="UserSettings" LootMobs="True" UseFlightPaths="True" PullDistance="25" />
+				</Else>
+			</If>
 
-	<CustomBehavior File="Message" Text="Compiling Quests: Forsaken High Command" LogColor="Cyan" />
+			<!--Training Availability Check-->
+			<If Condition="Me.Level &gt;= 20">
+				<If Condition="Me.GetSkill(Styx.SkillLine.Riding).CurrentValue == 0 &amp;&amp; Me.Gold &gt;= 5">
+					<CustomBehavior File="Message" Text="Riding: Loading Trainer Profile" LogColor="Cyan" />
+					<CustomBehavior File="LoadProfile" ProfileName="..\Riding and Transports\[H - Quest] Northern Barrens Riding" />
+					<ElseIf Condition="Me.Gold &lt; 5 &amp;&amp; Me.GetSkill(Styx.SkillLine.Riding).CurrentValue == 0">
+						<CustomBehavior File="Message" Text="You don't have enough money to train. Will check again later!" LogColor="Orange" />
+					</ElseIf>
+				</If>
+			</If>
+
+			<!--Leveling or Loremaster: Sorting Hat-->
+			<If Condition="Me.Level &gt;= 20 &amp;&amp; Me.Level &lt; 60">
+				<CustomBehavior File="Message" Text="Checkpoint Reached: Loading Hillsbrad Foothills" LogColor="Cyan" />
+				<CustomBehavior File="LoadProfile" ProfileName="[H - Quest] Hillsbrad Foothills [Life]" />
+				<!--Checking for Eastern Kingdoms Loremaster-->
+				<ElseIf Condition="Me.Level &gt;= 60 &amp;&amp; IsAchievementCompleted(1676)">
+					<CustomBehavior File="Message" Text="Kingdoms Loremaster: Continent Achievement Complete! Returning to Loader" LogColor="Cyan" />
+					<CustomBehavior File="LoadProfile" ProfileName="../[N - Quest] Loremaster [Life]" />
+				</ElseIf>
+				<!--Checking for Silverpine Forest Loremaster-->
+				<ElseIf Condition="Me.Level &gt;= 60 &amp;&amp; !IsAchievementCompleted(4894)">
+					<CustomBehavior File="Message" Text="Kingdoms Loremaster: Completing Silverpine Forest" LogColor="Cyan" />
+				</ElseIf>
+				<Else>
+					<CustomBehavior File="Message" Text="Kingdoms Loremaster: Disabled Until Level 60 or Higher" LogColor="Cyan" />
+				</Else>
+			</If>
+
+			<!--Continental Drift: I'm in Kalimdor, returning to Eastern Kingdoms-->
+			<If Condition="Me.MapId == 1">
+				<CustomBehavior File="Message" Text="Transport: Riding Zepplin to The Undercity" LogColor="Cyan" />
+				<CustomBehavior File="UseTransport" TransportId="164871"
+					WaitAtX="1838.676" WaitAtY="-4387.965" WaitAtZ="135.2332"
+					TransportStartX="1833.509" TransportStartY="-4391.543" TransportStartZ="152.7679"
+					TransportEndX="2062.376" TransportEndY="292.998" TransportEndZ="114.973"
+					StandOnX="1834.961" StandOnY="-4385.694" StandOnZ="135.0334" 
+					GetOffX="2066.773" GetOffY="288.873" GetOffZ="97.03159" />				
+			</If>
+
+			<!--Get out of "Outlands" Zones-->
+			<If Condition="Me.ZoneId == 3433 || Me.ZoneId == 3430 || Me.ZoneId == 3487">
+				<RunTo DestName="Orb of Translocation" X="10038.42" Y="-7000.994" Z="61.76336" />
+				<CustomBehavior File="Message" Text="Transport: Using Orb of Translocation to Undercity" LogColor="Cyan" />
+				<CustomBehavior File="InteractWith" MobId="184502" Range="8" X="10038.42" Y="-7000.994" Z="61.76336" />
+			</If>			    	
+
+		<CustomBehavior File="Message" Text="Compiling Quests: Forsaken High Command" LogColor="Cyan" />
 
 		<If Condition="HasQuest(26964)">
 			<TurnIn QuestName="Warchief's Command: Silverpine Forest!" QuestId="26964" TurnInName="Grand Executor Mortuus" TurnInId="44615" />
@@ -180,19 +158,25 @@
 			</While>
 
 		<TurnIn QuestName="Waiting to Exsanguinate" QuestId="27045" TurnInName="Deathstalker Commander Belmont" TurnInId="44789" />
+
+		<If Condition="Me.Level &gt;= 20 &amp;&amp; Me.Level &lt; 60">
+			<CustomBehavior File="Message" Text="Checkpoint Reached: Loading Hillsbrad Foothills" LogColor="Cyan" />
+			<CustomBehavior File="LoadProfile" ProfileName="[H - Quest] Hillsbrad Foothills [Life]" />
+		</If>
+
 		<PickUp QuestName="Belmont's Report" QuestId="27056" GiverName="Deathstalker Commander Belmont" GiverId="44789" />
 		<TurnIn QuestName="Belmont's Report" QuestId="27056" TurnInName="Lady Sylvanas Windrunner" TurnInId="44365" />
 
-	<CustomBehavior File="Message" Text="Compiling Quests: Forsaken Rear Guard" LogColor="Cyan" />
+		<CustomBehavior File="Message" Text="Compiling Quests: Forsaken Rear Guard" LogColor="Cyan" />
 
 		<PickUp QuestName="The Warchief's Fleet" QuestId="27065" GiverName="Lady Sylvanas Windrunner" GiverId="44365" />
 
-		<If Condition="HasQuest(27065) &amp;&amp; IsQuestCompleted(27065)">
-			<RunTo DestName="Forsaken Rear Guard" X="1095.007" Y="1586.849" Z="28.52898" />
-			<CustomBehavior File="SetHearthstone" MobId="45496" X="1095.007" Y="1586.849" Z="28.52898" />
-			<CustomBehavior File="ForceSetVendor" DoSell="True" DoRepair="True" DoMail="True" />
-			<EnableBehavior Name="Combat" />
-		</If>
+			<If Condition="HasQuest(27065) &amp;&amp; IsQuestCompleted(27065)">
+				<RunTo DestName="Forsaken Rear Guard" X="1095.007" Y="1586.849" Z="28.52898" />
+				<CustomBehavior File="SetHearthstone" MobId="45496" X="1095.007" Y="1586.849" Z="28.52898" />
+				<CustomBehavior File="ForceSetVendor" DoSell="True" DoRepair="True" DoMail="True" />
+				<EnableBehavior Name="Combat" />
+			</If>
 
 		<TurnIn QuestName="The Warchief's Fleet" QuestId="27065" TurnInName="Admiral Hatchet" TurnInId="44916" />
 		<PickUp QuestName="Steel Thunder" QuestId="27069" GiverName="Admiral Hatchet" GiverId="44916" />
@@ -271,6 +255,12 @@
 
 		<PickUp QuestName="Orcs are in Order" QuestId="27096" GiverName="Admiral Hatchet" GiverId="44916" />
 		<TurnIn QuestName="Orcs are in Order" QuestId="27096" TurnInName="Lady Sylvanas Windrunner" TurnInId="44365" />
+
+		<If Condition="Me.Level &gt;= 20 &amp;&amp; Me.Level &lt; 60">
+			<CustomBehavior File="Message" Text="Checkpoint Reached: Loading Hillsbrad Foothills" LogColor="Cyan" />
+			<CustomBehavior File="LoadProfile" ProfileName="[H - Quest] Hillsbrad Foothills [Life]" />
+		</If>
+
 		<PickUp QuestName="Rise, Forsaken" QuestId="27097" GiverName="Lady Sylvanas Windrunner" GiverId="44365" />
 
 			<Objective QuestName="Rise, Forsaken" QuestId="27097" Type="KillMob" MobId="44953" KillCount="15" />
@@ -304,6 +294,12 @@
 			</While>
 
 		<TurnIn QuestName="Lordaeron" QuestId="27098" TurnInName="Lady Sylvanas Windrunner" TurnInId="44365" />
+
+		<If Condition="Me.Level &gt;= 20 &amp;&amp; Me.Level &lt; 60">
+			<CustomBehavior File="Message" Text="Checkpoint Reached: Loading Hillsbrad Foothills" LogColor="Cyan" />
+			<CustomBehavior File="LoadProfile" ProfileName="[H - Quest] Hillsbrad Foothills [Life]" />
+		</If>
+
 		<PickUp QuestName="Honor the Dead" QuestId="27180" GiverName="Lady Sylvanas Windrunner" GiverId="44365" />
 
 		<If Condition="!HasQuest(27226) &amp;&amp; !IsQuestCompleted(27226)">
@@ -334,6 +330,11 @@
 
 		<TurnIn QuestName="The Waters Run Red..." QuestId="27232" TurnInName="Admiral Hatchet" TurnInId="44916" />
 		<TurnIn QuestName="Hair of the Dog" QuestId="27226" TurnInName="Warlord Torok" TurnInId="44917" />
+
+		<If Condition="Me.Level &gt;= 20 &amp;&amp; Me.Level &lt; 60">
+			<CustomBehavior File="Message" Text="Checkpoint Reached: Loading Hillsbrad Foothills" LogColor="Cyan" />
+			<CustomBehavior File="LoadProfile" ProfileName="[H - Quest] Hillsbrad Foothills [Life]" />
+		</If>
 
 			<If Condition="HasQuest(27180) &amp;&amp; !IsQuestCompleted(27180)">
 				<CustomBehavior File="InteractWith" QuestId="27180" MobId="45197" NumOfTimes="1000" Range="5" CollectionDistance="1000">
@@ -390,7 +391,12 @@
 
 		<TurnIn QuestName="Nowhere to Run" QuestId="27195" TurnInName="Lady Sylvanas Windrunner" TurnInId="44365" />
 
-	<CustomBehavior File="Message" Text="Compiling Quests: Ruins of Gilneas" LogColor="Cyan" />
+		<If Condition="Me.Level &gt;= 20 &amp;&amp; Me.Level &lt; 60">
+			<CustomBehavior File="Message" Text="Checkpoint Reached: Loading Hillsbrad Foothills" LogColor="Cyan" />
+			<CustomBehavior File="LoadProfile" ProfileName="[H - Quest] Hillsbrad Foothills [Life]" />
+		</If>		
+
+		<CustomBehavior File="Message" Text="Compiling Quests: Ruins of Gilneas" LogColor="Cyan" />
 
 		<PickUp QuestName="To Forsaken Forward Command" QuestId="27290" GiverName="Lady Sylvanas Windrunner" GiverId="44365" />
 
@@ -440,6 +446,12 @@
 			</If>
 
 		<TurnIn QuestName="Break in Communications: Rutsak's Guard" QuestId="27350" TurnInName="Captain Rutsak" TurnInId="45389" />
+
+		<If Condition="Me.Level &gt;= 20 &amp;&amp; Me.Level &lt; 60">
+			<CustomBehavior File="Message" Text="Checkpoint Reached: Loading Hillsbrad Foothills" LogColor="Cyan" />
+			<CustomBehavior File="LoadProfile" ProfileName="[H - Quest] Hillsbrad Foothills [Life]" />
+		</If>
+
 		<PickUp QuestName="Vengeance for Our Soldiers" QuestId="27360" GiverName="Captain Rutsak" GiverId="45389" />
 		<If Condition="!HasQuest(27364) &amp;&amp; !IsQuestCompleted(27364)">
 		  <PickUp QuestName="On Whose Orders?" QuestId="27364" GiverName="Forward Commander Onslaught" GiverId="45315" />
@@ -471,6 +483,12 @@
 
 		<TurnIn QuestName="Vengeance for Our Soldiers" QuestId="27360" TurnInName="Captain Rutsak" TurnInId="45389" />
 		<TurnIn QuestName="Fall Back!" QuestId="27405" TurnInName="Deathstalker Commander Belmont" TurnInId="45312" />
+
+		<If Condition="Me.Level &gt;= 20 &amp;&amp; Me.Level &lt; 60">
+			<CustomBehavior File="Message" Text="Checkpoint Reached: Loading Hillsbrad Foothills" LogColor="Cyan" />
+			<CustomBehavior File="LoadProfile" ProfileName="[H - Quest] Hillsbrad Foothills [Life]" />
+		</If>
+
 		<PickUp QuestName="A Man Named Godfrey" QuestId="27406" GiverName="Deathstalker Commander Belmont" GiverId="45312" />
 
 		<If Condition="!HasQuest(27423) &amp;&amp; !IsQuestCompleted(27423)">
@@ -516,17 +534,26 @@
 		<TurnIn QuestName="The Great Escape" QuestId="27438" TurnInName="Lady Sylvanas Windrunner" TurnInId="45525" />
 		<PickUp QuestName="Rise, Godfrey" QuestId="27472" GiverName="Lady Sylvanas Windrunner" GiverId="45525" />
 
+			<!--Objective: Rise, Godfrey-->
 			<While Condition="!IsQuestCompleted(27472)">
 				<CustomBehavior File="ForcedDismount" />
+				<CustomBehavior File="UserSettings" UseFlightPaths="False" />
 				<CustomBehavior File="WaitTimer" QuestId="27472" WaitTime="92000" GoalText="Waiting for Godfrey to Rise: {TimeRemaining}" />
 				<If Condition="!IsQuestCompleted">
 					<CustomBehavior File="Message" Text="We failed? Restarting." LogColor="Cyan" />
 					<CustomBehavior File="AbandonQuest" QuestId="27472" />
 					<PickUp QuestName="Rise, Godfrey" QuestId="27472" GiverName="Lady Sylvanas Windrunner" GiverId="45525" />
 				</If>
+				<CustomBehavior File="UserSettings" UseFlightPaths="True" />
 			</While>
 
 		<TurnIn QuestName="Rise, Godfrey" QuestId="27472" TurnInName="Lady Sylvanas Windrunner" TurnInId="45617" />
+
+		<If Condition="Me.Level &gt;= 20 &amp;&amp; Me.Level &lt; 60">
+			<CustomBehavior File="Message" Text="Checkpoint Reached: Loading Hillsbrad Foothills" LogColor="Cyan" />
+			<CustomBehavior File="LoadProfile" ProfileName="[H - Quest] Hillsbrad Foothills [Life]" />
+		</If>
+
 		<PickUp QuestName="Breaking the Barrier" QuestId="27474" GiverName="Lady Sylvanas Windrunner" GiverId="45617" />
 		<PickUp QuestName="Unyielding Servitors" QuestId="27475" GiverName="Daschla" GiverId="45626" X="-147.1362" Y="1270.597" Z="52.00219" />
 
@@ -580,6 +607,12 @@
 		<TurnIn QuestName="Relios the Relic Keeper" QuestId="27478" TurnInName="Dalar Dawnweaver" TurnInId="1938" />
 		<TurnIn QuestName="Practical Vengeance" QuestId="27483" TurnInName="Dalar Dawnweaver" TurnInId="1938" />
 		<TurnIn QuestName="Ley Energies" QuestId="27480" TurnInName="Dalar Dawnweaver" TurnInId="1938" />
+
+		<If Condition="Me.Level &gt;= 20 &amp;&amp; Me.Level &lt; 60">
+			<CustomBehavior File="Message" Text="Checkpoint Reached: Loading Hillsbrad Foothills" LogColor="Cyan" />
+			<CustomBehavior File="LoadProfile" ProfileName="[H - Quest] Hillsbrad Foothills [Life]" />
+		</If>
+
 		<PickUp QuestName="Only One May Enter" QuestId="27484" GiverName="Dalar Dawnweaver" GiverId="1938" />
 
 		<If Condition="HasQuest(27484) &amp;&amp; IsQuestCompleted(27484)">
@@ -604,9 +637,14 @@
 
 			<Objective QuestName="Transdimensional Warfare: Chapter II" QuestId="27513" Type="KillMob" MobId="45756" KillCount="20" />
 
-		<If Condition="HasQuest(27513)" >
+		<If Condition="HasQuest(27513)">
 			<CustomBehavior File="CompleteLogQuest" QuestId="27513" />
 		</If>
+
+		<If Condition="Me.Level &gt;= 20 &amp;&amp; Me.Level &lt; 60">
+			<CustomBehavior File="Message" Text="Checkpoint Reached: Loading Hillsbrad Foothills" LogColor="Cyan" />
+			<CustomBehavior File="LoadProfile" ProfileName="[H - Quest] Hillsbrad Foothills [Life]" />
+		</If>		
 
 		<If Condition="!HasQuest(27518) &amp;&amp; !IsQuestCompleted(27518)">
 			<PickUp QuestName="Transdimensional Warfare: Chapter III" QuestId="27518" GiverName="Lady Sylvanas Windrunner" GiverId="45617" />
@@ -618,10 +656,16 @@
 			</While>
 
 		<TurnIn QuestName="A Wolf in Bear's Clothing" QuestId="27510" TurnInName="High Warlord Cromush" TurnInId="45631" />
-		<TurnIn QuestName="Transdimensional Warfare: Chapter III" QuestId="27518" TurnInName="Lady Sylvanas Windrunner" TurnInId="45617" />		
+
+		<If Condition="Me.Level &gt;= 20 &amp;&amp; Me.Level &lt; 60">
+			<CustomBehavior File="Message" Text="Checkpoint Reached: Loading Hillsbrad Foothills" LogColor="Cyan" />
+			<CustomBehavior File="LoadProfile" ProfileName="[H - Quest] Hillsbrad Foothills [Life]" />
+		</If>
+
+		<TurnIn QuestName="Transdimensional Warfare: Chapter III" QuestId="27518" TurnInName="Lady Sylvanas Windrunner" TurnInId="45617" />	
 		
 			<If Condition="!HasQuest(27542) &amp;&amp; !IsQuestCompleted(27542)">
-				<While Condition="HasQuestAvailable(45617)" >
+				<While Condition="HasQuestAvailable(45617)">
 					<CustomBehavior File="InteractWith" KeepTargetSelected="True" NonCompeteDistance="0" MobState="Alive" MobId="45617" X="-152.5979" Y="1271.395" Z="51.39357" />
 					<CustomBehavior File="RunMacro" Macro="/click QuestFrameCompleteQuestButton" />
 					<CustomBehavior File="WaitTimer" WaitTime="1000" />
@@ -667,6 +711,11 @@
 		<TurnIn QuestName="Of No Consequence" QuestId="27547" TurnInName="Baron Ashbury" TurnInId="45880" />
 		<TurnIn QuestName="Lessons in Fear" QuestId="27548" TurnInName="Lord Walden" TurnInId="45879" />
 
+		<If Condition="Me.Level &gt;= 20 &amp;&amp; Me.Level &lt; 60">
+			<CustomBehavior File="Message" Text="Checkpoint Reached: Loading Hillsbrad Foothills" LogColor="Cyan" />
+			<CustomBehavior File="LoadProfile" ProfileName="[H - Quest] Hillsbrad Foothills [Life]" />
+		</If>
+
 		<!--Achievement Marker-->
 
 		<PickUp QuestName="7th Legion Battle Plans" QuestId="27577" GiverName="Lord Walden" GiverId="45879" />
@@ -700,6 +749,12 @@
 			<Objective QuestName="7th Legion Battle Plans" QuestId="27577" Type="CollectItem" ItemId="61510" CollectCount="1" />
 
 		<TurnIn QuestName="7th Legion Battle Plans" QuestId="27577" TurnInName="Lord Walden" TurnInId="45879" />
+
+		<If Condition="Me.Level &gt;= 20 &amp;&amp; Me.Level &lt; 60">
+			<CustomBehavior File="Message" Text="Checkpoint Reached: Loading Hillsbrad Foothills" LogColor="Cyan" />
+			<CustomBehavior File="LoadProfile" ProfileName="[H - Quest] Hillsbrad Foothills [Life]" />
+		</If>
+
 		<PickUp QuestName="On Her Majesty's Secret Service" QuestId="27594" GiverName="Lord Godfrey" GiverId="45878" />
 			
 			<If Condition="HasQuest(27594) &amp;&amp; !IsQuestCompleted(27594)">
@@ -718,6 +773,12 @@
 			</If>
 
 		<TurnIn QuestName="Cities in Dust" QuestId="27601" TurnInName="Lady Sylvanas Windrunner" TurnInId="46124" />
+
+		<If Condition="Me.Level &gt;= 20 &amp;&amp; Me.Level &lt; 60">
+			<CustomBehavior File="Message" Text="Checkpoint Reached: Loading Hillsbrad Foothills" LogColor="Cyan" />
+			<CustomBehavior File="LoadProfile" ProfileName="[H - Quest] Hillsbrad Foothills [Life]" />
+		</If>
+
 		<PickUp QuestName="Empire of Dirt" QuestId="27746" GiverName="Lady Sylvanas Windrunner" GiverId="46124" />
 		<PickUp QuestName="Warchief's Command: Hillsbrad Foothills!" QuestId="28089" GiverName="High Warlord Cromush" GiverId="46125" />
 
@@ -727,4 +788,76 @@
 		<CustomBehavior File="Message" Text="Profile Complete: Loading Next Profile" LogColor="Cyan" />
 		<CustomBehavior File="LoadProfile" ProfileName="..\[H - Quest] Profile Loader [Life]" />	
 	</QuestOrder>
+
+	<Quest Id="27193" Name="Seek and Destroy">
+		<Objective Type="CollectItem" ItemId="60867" CollectCount="1">
+			<CollectFrom>
+				<Mob Name="Caretaker Smithers" Id="45219" />
+			</CollectFrom>
+			<Hotspots>
+				<Hotspot X="143.5521" Y="1529.008" Z="114.9597" />
+			</Hotspots>
+		</Objective>
+	</Quest>
+	<Quest Id="27360" Name="Vengeance for Our Soldiers">
+		<Objective Type="KillMob" MobId="45403" KillCount="10">
+			<Hotspots>
+				<Hotspot X="-1419.215" Y="1511.498" Z="20.82067" />
+				<Hotspot X="-1426.626" Y="1573.105" Z="20.64243" />
+				<Hotspot X="-1459.638" Y="1552.108" Z="20.48691" />
+				<Hotspot X="-1482.303" Y="1621.546" Z="20.48545" />
+				<Hotspot X="-1491.021" Y="1680.75" Z="20.48575" />
+				<Hotspot X="-1555.027" Y="1684.538" Z="20.48504" />
+			</Hotspots>
+		</Objective>
+	</Quest>
+	<Quest Id="27095" Name="Skitterweb Menace">
+		<Objective Type="KillMob" MobId="1781" KillCount="12">
+			<Hotspots>
+				<Hotspot X="1270.795" Y="1983.402" Z="18.92227" />
+				<Hotspot X="1244.267" Y="2011.845" Z="15.69411" />
+				<Hotspot X="1196.969" Y="1999.078" Z="8.749343" />
+				<Hotspot X="1208.189" Y="1915.099" Z="10.56856" />
+			</Hotspots>
+		</Objective>
+	</Quest>
+	<Quest Id="27097" Name="Rise, Forsaken">
+		<Objective Type="KillMob" MobId="44953" KillCount="15">
+			<Hotspots>
+				<Hotspot X="843.5644" Y="688.6876" Z="53.95019" />
+				<Hotspot X="885.1203" Y="688.4056" Z="53.77671" />
+				<Hotspot X="908.9064" Y="682.9832" Z="53.28685" />
+				<Hotspot X="933.7776" Y="687.2894" Z="59.54331" />
+				<Hotspot X="948.7601" Y="715.366" Z="59.28374" />
+			</Hotspots>
+		</Objective>
+	</Quest>
+	<Quest Id="27364" Name="On Whose Orders?">
+		<Objective Type="CollectItem" ItemId="60977" CollectCount="1">
+			<CollectFrom>
+				<Mob Name="Master Sergeant Pietro Zaren" Id="45405" />
+			</CollectFrom>
+			<Hotspots>
+				<Hotspot X="-1528.83" Y="1587.73" Z="26.53709" />
+			</Hotspots>
+		</Objective>
+	</Quest>
+	<Quest Id="27474" Name="Breaking the Barrier">
+		<Objective Type="CollectItem" ItemId="61306" CollectCount="1">
+			<CollectFrom>
+				<GameObject Name="Ambermill Codex" Id="205534" />
+			</CollectFrom>
+			<Hotspots>
+				<Hotspot X="-133.4848" Y="784.0015" Z="67.3825" />
+			</Hotspots>
+		</Objective>
+	</Quest>
+	<Quest Id="27580" Name="Sowing Discord">
+		<Objective Type="KillMob" MobId="45995" KillCount="1">
+			<Hotspots>
+				<Hotspot X="-552.5573" Y="1673.876" Z="14.26527" />
+			</Hotspots>
+		</Objective>
+	</Quest>
+
 </HBProfile>
