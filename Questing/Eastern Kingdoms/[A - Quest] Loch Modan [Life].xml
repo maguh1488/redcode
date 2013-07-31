@@ -1,7 +1,7 @@
 <HBProfile>
 	<Name>[A - Quest] Loch Modan [Life] [$Rev$]</Name>
 
-	<MinLevel>10</MinLevel>
+	<MinLevel>9</MinLevel>
 	<MaxLevel>91</MaxLevel>
 
 	<MinDurability>0.2</MinDurability>
@@ -33,7 +33,7 @@
 		<!--Valley of Kings Vendors-->
 		<Vendor Name="Greishan Ironstove" Entry="3291" Type="Food" X="-5767.147" Y="-2651.951" Z="330.084" />
 		<Vendor Name="Thorvald Deepforge" Entry="6030" Type="Repair" X="-5854.738" Y="-2646.693" Z="308.9741" />
-		<!--Thrallmar Vendors-->
+		<!--Thelsamar Vendors-->
 		<Vendor Name="Innkeeper Hearthstove" Entry="6734" Type="Food" X="-5377.913" Y="-2973.908" Z="323.1692" />
 		<Vendor Name="Morhan Coppertongue" Entry="167" Type="Repair" X="-5343.68" Y="-2932.134" Z="324.3619" />
 		<!--Algaz Station Vendor-->

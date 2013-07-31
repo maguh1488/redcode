@@ -248,7 +248,18 @@
 		<PickUp QuestName="Trouble at the Lake" QuestId="25986" GiverName="Senator Mehr Stonehallow" GiverId="1977" />
 		<TurnIn QuestName="Trouble at the Lake" QuestId="25986" TurnInName="Sergeant Bahrum" TurnInId="41786" />
 
-		<!--Bahrum's Post Ignored-->
+		<CustomBehavior File="Message" Text="Compiling Quests: Bahrum's Post" LogColor="Cyan" />
+
+		<PickUp QuestName="Entombed in Ice" QuestId="25978" GiverName="Sergeant Bahrum" GiverId="41786" />
+		<PickUp QuestName="Dealing with the Surge" QuestId="25979" GiverName="Khurgorn Singefeather" GiverId="41804" />
+
+			<Objective QuestName="Entombed in Ice" QuestId="25978" Type="KillMob" MobId="41768" KillCount="6" />
+			<Objective QuestName="Dealing with the Surge" QuestId="25979" Type="KillMob" MobId="41762" KillCount="6" />
+
+		<TurnIn QuestName="Entombed in Ice" QuestId="25978" TurnInName="Sergeant Bahrum" TurnInId="41786" />
+		<TurnIn QuestName="Dealing with the Surge" QuestId="25979" TurnInName="Khurgorn Singefeather" TurnInId="41804" />
+
+
 
 		<CustomBehavior File="Message" Text="Profile Complete: Loading Loch Modan" LogColor="Cyan" />
 		<CustomBehavior File="LoadProfile" ProfileName="[A - Quest] Loch Modan [Life]" />
