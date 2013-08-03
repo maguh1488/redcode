@@ -1,0 +1,209 @@
+<HBProfile>
+	<Name>[A - Quest] Elwynn Forest [Life] [$Rev: 67 $]</Name>
+
+	<MinLevel>5</MinLevel>
+	<MaxLevel>91</MaxLevel>
+
+	<MinDurability>0.2</MinDurability>
+	<MinFreeBagSlots>2</MinFreeBagSlots>
+
+	<MailGrey>False</MailGrey>
+	<MailWhite>False</MailWhite>
+	<MailGreen>True</MailGreen>
+	<MailBlue>True</MailBlue>
+	<MailPurple>True</MailPurple>
+   
+	<SellGrey>True</SellGrey>
+	<SellWhite>True</SellWhite>
+	<SellGreen>True</SellGreen>
+	<SellBlue>False</SellBlue>
+	<SellPurple>False</SellPurple>
+
+	<Mailboxes>
+		<!--Northshire Valley Mailbox-->
+		<Mailbox X="-8907.67" Y="-129.0542" Z="81.03912" />
+		<!--Goldshire Mailbox-->
+		<Mailbox X="-9455.704" Y="47.17312" Z="56.60661" />
+	</Mailboxes>
+
+	<Vendors>
+		<!--Northshire Valley Vendors-->
+		<Vendor Name="Brother Danil" Entry="152" Type="Food" X="-8901.59" Y="-112.716" Z="81.84892" />
+		<Vendor Name="Godric Rothgar" Entry="1213" Type="Repair" X="-8898.231" Y="-119.8379" Z="81.83279" />
+		<!--Goldshire Vendors-->
+		<Vendor Name="Innkeeper Farley" Entry="295" Type="Food" X="-9462.663" Y="16.19151" Z="56.96266" />
+		<Vendor Name="Andrew Krighton" Entry="2046" Type="Repair" X="-9464.16" Y="87.8281" Z="58.34372" />
+		<!--Eastvale Logging Camp-->
+		<Vendor Name="Drake Lindgren" Entry="1250" Type="Food" X="-9483.098" Y="-1356.247" Z="46.95789" />
+		<Vendor Name="Rallic Finn" Entry="1198" Type="Repair" X="-9469.282" Y="-1355.242" Z="47.20529" />
+	</Vendors>
+
+	<QuestOrder>
+		<CustomBehavior File="Message" Text="Initializing Settings" LogColor="Cyan" />
+			
+			<!--Settings Configuration-->
+			<CustomBehavior File="UserSettings" LootMobs="True" UseFlightPaths="True" PullDistance="25" />
+			<CustomBehavior File="EnablePlugin" Names="Anti Drown,AutoEquip2,DrinkPotions,Refreshment,Talented2" />
+			<CustomBehavior File="RunMacro" Macro="/script SetCVar('AutoLootDefault', 1)" WaitTime="1000" />
+
+			<!--Leveling or Loremaster: Sorting Hat-->
+			<If Condition="Me.Level &gt;= 10 &amp;&amp; Me.Level &lt; 60">
+				<CustomBehavior File="Message" Text="Checkpoint Reached: Loading Westfall" LogColor="Cyan" />
+				<CustomBehavior File="LoadProfile" ProfileName="[A - Quest] Westfall [Life]" />
+			</If>
+
+		<CustomBehavior File="Message" Text="Compiling Quests: Goldshire" LogColor="Cyan" />
+
+			<If Condition="!HasQuest(62) &amp;&amp; !IsQuestCompleted(62)">
+				<CustomBehavior File="RunMacro" Macro="/run for i=1,GetNumQuestLogEntries() do SelectQuestLogEntry(i); SetAbandonQuest(); AbandonQuest(); end" />
+			</If>
+
+			<If Condition="Me.Race == WoWRace.Human">
+				<PickUp QuestName="A Swift Message" QuestId="26393" GiverName="Smith Argus" GiverId="514" />
+			</If>
+
+		<PickUp QuestName="The Fargodeep Mine" QuestId="62" GiverName="Marshal Dughan" GiverId="240" />
+		<PickUp QuestName="Kobold Candles" QuestId="60" GiverName="William Pestle" GiverId="253" />
+		<PickUp QuestName="Gold Dust Exchange" QuestId="47" GiverName="Remy Two Times" GiverId="241" />
+
+		<If Condition="Me.Race == WoWRace.Human">
+			<TurnIn QuestName="A Swift Message" QuestId="26393" TurnInName="Bartlett the Brave" TurnInId="42983" />
+			<PickUp QuestName="Continue to Stormwind" QuestId="26394" GiverName="Bartlett the Brave" GiverId="42983" />
+			<TurnIn QuestName="Continue to Stormwind" QuestId="26394" TurnInName="Osric Strang" TurnInId="1323" />
+			<PickUp QuestName="Dungar Longdrink" QuestId="26395" GiverName="Osric Strang" GiverId="1323" />
+			<TurnIn QuestName="Dungar Longdrink" QuestId="26395" TurnInName="Dungar Longdrink" TurnInId="352" />
+			<PickUp QuestName="Return to Argus" QuestId="26396" GiverName="Dungar Longdrink" GiverId="352" />
+			<TurnIn QuestName="Return to Argus" QuestId="26396" TurnInName="Smith Argus" TurnInId="514" />	
+		</If>
+
+			<!--Objective: The Fargodeep Mine-->
+			<If Condition="HasQuest(62) &amp;&amp; !IsQuestCompleted(62)">
+				<RunTo DestName="Fargodeep Mine" X="-9797.482" Y="157.5921" Z="25.47056" />
+			</If>
+
+			<Objective QuestName="Gold Dust Exchange" QuestId="47" Type="CollectItem" ItemId="773" CollectCount="10" />
+			<Objective QuestName="Kobold Candles" QuestId="60" Type="CollectItem" ItemId="772" CollectCount="8" />
+	
+		<TurnIn QuestName="Gold Dust Exchange" QuestId="47" TurnInName="Remy Two Times" TurnInId="241" />
+		<TurnIn QuestName="The Fargodeep Mine" QuestId="62" TurnInName="Marshal Dughan" TurnInId="240" />
+		<PickUp QuestName="The Jasperlode Mine" QuestId="76" GiverName="Marshal Dughan" GiverId="240" />
+		<TurnIn QuestName="Kobold Candles" QuestId="60" TurnInName="William Pestle" TurnInId="253" />
+
+		<CustomBehavior File="Message" Text="Compiling Quests: Maclure &amp; Stonefield" LogColor="Cyan" />
+
+		<PickUp QuestName="A Visit With Maybell" QuestId="26150" GiverName="William Pestle" GiverId="253" />
+		<TurnIn QuestName="A Visit With Maybell" QuestId="26150" TurnInName="Maybell Maclure" TurnInId="251" />
+		<PickUp QuestName="Young Lovers" QuestId="106" GiverName="Maybell Maclure" GiverId="251" />
+		<TurnIn QuestName="Young Lovers" QuestId="106" TurnInName="Tommy Joe Stonefield" TurnInId="252" />
+		<PickUp QuestName="Speak with Gramma" QuestId="111" GiverName="Tommy Joe Stonefield" GiverId="252" />
+		<TurnIn QuestName="Speak with Gramma" QuestId="111" TurnInName="Gramma Stonefield" TurnInId="248" />
+		<PickUp QuestName="Note to William" QuestId="107" GiverName="Gramma Stonefield" GiverId="248" />
+		<PickUp QuestName="Lost Necklace" QuestId="85" GiverName="Auntie Bernice Stonefield" GiverId="246" />
+		<PickUp QuestName="Princess Must Die!" QuestId="88" GiverName="Ma Stonefield" GiverId="244" />
+			
+			<Objective QuestName="Princess Must Die!" QuestId="88" Type="CollectItem" ItemId="1006" CollectCount="1" />
+		
+		<TurnIn QuestName="Princess Must Die!" QuestId="88" TurnInName="Ma Stonefield" TurnInId="244" />
+		<TurnIn QuestName="Lost Necklace" QuestId="85" TurnInName="Billy Maclure" TurnInId="247" />
+		<PickUp QuestName="Pie For Billy" QuestId="86" GiverName="Billy Maclure" GiverId="247" />
+			
+			<Objective QuestName="Pie For Billy" QuestId="86" Type="CollectItem" ItemId="60401" CollectCount="4" />
+		
+		<TurnIn QuestName="Pie For Billy" QuestId="86" TurnInName="Auntie Bernice Stonefield" TurnInId="246" />
+		<PickUp QuestName="Back to Billy" QuestId="84" GiverName="Auntie Bernice Stonefield" GiverId="246" />
+		<TurnIn QuestName="Back to Billy" QuestId="84" TurnInName="Billy Maclure" TurnInId="247" />
+		<PickUp QuestName="Goldtooth" QuestId="87" GiverName="Billy Maclure" GiverId="247" />
+			
+			<Objective QuestName="Goldtooth" QuestId="87" Type="CollectItem" ItemId="981" CollectCount="1" />
+		
+		<TurnIn QuestName="Goldtooth" QuestId="87" TurnInName="Auntie Bernice Stonefield" TurnInId="246" />
+		<TurnIn QuestName="Note to William" QuestId="107" TurnInName="William Pestle" TurnInId="253" />
+		<PickUp QuestName="Collecting Kelp" QuestId="112" GiverName="William Pestle" GiverId="253" />
+		
+			<!--Objective: The Jasperlode Mine-->
+			<If Condition="HasQuest(76) &amp;&amp; !IsQuestCompleted(76)">
+				<RunTo DestName="Jasperlode Mine" X="-9094.923" Y="-563.9295" Z="62.05739" />
+			</If>
+
+			<Objective QuestName="Collecting Kelp" QuestId="112" Type="CollectItem" ItemId="1256" CollectCount="4" />
+	
+		<If Condition="HasQuest(112) &amp;&amp; IsQuestCompleted(112)">
+			<CustomBehavior File="NoCombatMoveTo" X="-9479.771" Y="64.49422" Z="56.19001" />
+			<TurnIn QuestName="Collecting Kelp" QuestId="112" TurnInName="William Pestle" TurnInId="253" />
+			<CustomBehavior File="Message" Text="Selling, Repairing, &amp; Mailing. Please Wait!" LogColor="Cyan" />
+			<CustomBehavior File="ForceSetVendor" DoSell="True" DoRepair="True" DoMail="True" />
+		</If>
+
+		<PickUp QuestName="The Escape" QuestId="114" GiverName="William Pestle" GiverId="253" />
+		<TurnIn QuestName="The Jasperlode Mine" QuestId="76" TurnInName="Marshal Dughan" TurnInId="240" />
+		<TurnIn QuestName="The Escape" QuestId="114" TurnInName="Maybell Maclure" TurnInId="251" />
+		
+		<If Condition="!HasQuest(35) &amp;&amp; !IsQuestCompleted(35)">
+			<PickUp QuestName="Further Concerns" QuestId="35" GiverName="Marshal Dughan" GiverId="240" />
+			<CustomBehavior File="InteractWith" MobId="240" InteractByGossipOptions="1" X="-9462.989" Y="73.41283" Z="56.59271" />
+			<CustomBehavior File="WaitTimer" WaitTime="85000" GoalText="Waiting to get to Guard Thomas" />
+		</If>
+
+		<CustomBehavior File="Message" Text="Compiling Quests: Eastvale Logging Camp" LogColor="Cyan" />
+
+		<TurnIn QuestName="Further Concerns" QuestId="35" TurnInName="Guard Thomas" TurnInId="261" />
+		<PickUp QuestName="Find the Lost Guards" QuestId="37" GiverName="Guard Thomas" GiverId="261" />
+		<PickUp QuestName="Protect the Frontier" QuestId="52" GiverName="Guard Thomas" GiverId="261" />
+		<PickUp QuestName="Bounty on Murlocs" QuestId="46" GiverType="Object" GiverName="Bounty Board" GiverId="203733" X="-9613.295" Y="-1034.03" Z="40.15746" />
+		<PickUp QuestName="Wanted: James Clark" QuestId="26152" GiverType="Object" GiverName="Bounty Board" GiverId="203733" X="-9613.295" Y="-1034.03" Z="40.15746" />
+
+			<Objective QuestName="Protect the Frontier" QuestId="52" Type="KillMob" MobId="118" KillCOunt="8" />
+			<Objective QuestName="Protect the Frontier" QuestId="52" Type="KillMob" MobId="822" KillCOunt="5" />
+		
+		<TurnIn QuestName="Protect the Frontier" QuestId="52" TurnInName="Guard Thomas" TurnInId="261" />
+		<TurnIn QuestName="Find the Lost Guards" QuestId="37" TurnInType="Object" TurnInName="A Half Eaten Body" TurnInId="55" X="-9336.17" Y="-986.3837" Z="67.19099" />
+		<PickUp QuestName="Discover Rolf's Fate" QuestId="45" GiverType="Object" GiverName="A Half Eaten Body" GiverId="55" X="-9336.17" Y="-986.3837" Z="67.19099" />
+		<TurnIn QuestName="Discover Rolf's Fate" QuestId="45" TurnInType="Object" TurnInName="Rolf's Corpse" TurnInId="56" X="-9227.254" Y="-1233.754" Z="72.99467" />
+		<PickUp QuestName="Report to Thomas" QuestId="71" GiverType="Object" GiverName="Rolf's corpse" GiverId="56" X="-9227.254" Y="-1233.754" Z="72.99467" />
+
+			<Objective QuestName="Bounty on Murlocs" QuestId="46" Type="CollectItem" ItemId="780" CollectCount="8" />
+			<Objective QuestName="Wanted: James Clark" QuestId="26152" Type="CollectItem" ItemId="57122" CollectCount="1" />
+
+		<TurnIn QuestName="Wanted: James Clark" QuestId="26152" TurnInName="Marshal McCree" TurnInId="42256" />
+		<TurnIn QuestName="Report to Thomas" QuestId="71" TurnInName="Guard Thomas" TurnInId="261" />
+		<TurnIn QuestName="Bounty on Murlocs" QuestId="46" TurnInName="Guard Thomas" TurnInId="261" />
+		<PickUp QuestName="Hero's Call: Westfall!" QuestId="26378" GiverName="Guard Thomas" GiverId="261" />
+		<TurnIn QuestName="Hero's Call: Westfall!" QuestId="26378" TurnInName="Lieutenant Horatio Laine" TurnInId="42308" />
+	</QuestOrder>
+
+	<Quest Id="60" Name="Kobold Candles">
+		<Objective Type="CollectItem" ItemId="772" CollectCount="8">
+			<CollectFrom>
+				<Mob Name="Kobold Tunneler" Entry="475" />
+				<Mob Name="Kobold Miner" Entry="40" />
+			</CollectFrom>
+			<Hotspots>
+				<Hotspot X="-9832.432" Y="182.7243" Z="22.3842" />
+				<Hotspot X="-9792.709" Y="150.3204" Z="24.4151" />
+				<Hotspot X="-9803.512" Y="112.4938" Z="24.25237" />
+				<Hotspot X="-9792.441" Y="93.36254" Z="28.46692" />
+				<Hotspot X="-9753.906" Y="108.7151" Z="25.84596" />
+				<Hotspot X="-9753.877" Y="144.5279" Z="20.21083" />
+				<Hotspot X="-9751.548" Y="109.0019" Z="14.37454" />
+			</Hotspots>
+		</Objective>
+	</Quest>
+	<Quest Id="47" Name="Gold Dust Exchange">
+		<Objective Type="CollectItem" ItemId="773" CollectCount="10">
+			<CollectFrom>
+				<Mob Name="Kobold Tunneler" Entry="475" />
+				<Mob Name="Kobold Miner" Entry="40" />
+			</CollectFrom>
+			<Hotspots>
+				<Hotspot X="-9832.432" Y="182.7243" Z="22.3842" />
+				<Hotspot X="-9792.709" Y="150.3204" Z="24.4151" />
+				<Hotspot X="-9803.512" Y="112.4938" Z="24.25237" />
+				<Hotspot X="-9792.441" Y="93.36254" Z="28.46692" />
+				<Hotspot X="-9753.906" Y="108.7151" Z="25.84596" />
+				<Hotspot X="-9753.877" Y="144.5279" Z="20.21083" />
+				<Hotspot X="-9751.548" Y="109.0019" Z="14.37454" />
+			</Hotspots>
+		</Objective>
+	</Quest>
+
+</HBProfile>

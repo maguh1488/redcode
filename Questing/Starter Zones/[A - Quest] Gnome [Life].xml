@@ -52,14 +52,13 @@
 			<If Condition="!IsQuestCompleted(27674)">
 				<CustomBehavior File="UserSettings" LootMobs="True" UseFlightPaths="False" PullDistance="5" />
 			</If>
-			<CustomBehavior File="EnablePlugin" Names="Anti Drown,AutoEquip2,Drink Potions,Refreshment,Talented2" />
+			<CustomBehavior File="EnablePlugin" Names="Anti Drown,AutoEquip2,DrinkPotions,Refreshment,Talented2" />
 			<CustomBehavior File="RunMacro" Macro="/script SetCVar('AutoLootDefault', 1)" WaitTime="1000" />
 
 		<CustomBehavior File="Message" Text="Compiling Quests: The Old Dormitory" LogColor="Cyan" />	
 
 		<PickUp QuestName="Pinned Down" QuestId="27670" GiverName="Nevin Twistwrench" GiverId="45966" />
 			
-			<!--Objective QuestName="Pinned Down" QuestId="27670" Type="KillMob" MobId="46363" KillCount="6" /-->
 			<!--Objective: Pinned Down-->
 			<If Condition="HasQuest(27670) &amp;&amp; !IsQuestCompleted(27670)">
 				<SetGrindArea>

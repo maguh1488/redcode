@@ -1,0 +1,82 @@
+<HBProfile>
+	<Name>[N - Quest] The Hinterlands [Life] [$Rev: 67 $]</Name>
+
+	<MinLevel>30</MinLevel>
+	<MaxLevel>35</MaxLevel>
+
+	<MinDurability>0.2</MinDurability>
+	<MinFreeBagSlots>2</MinFreeBagSlots>
+
+	<MailGrey>False</MailGrey>
+	<MailWhite>False</MailWhite>
+	<MailGreen>True</MailGreen>
+	<MailBlue>True</MailBlue>
+	<MailPurple>True</MailPurple>
+   
+	<SellGrey>True</SellGrey>
+	<SellWhite>True</SellWhite>
+	<SellGreen>True</SellGreen>
+	<SellBlue>False</SellBlue>
+	<SellPurple>False</SellPurple>
+
+	<Mailboxes>
+	</Mailboxes>
+
+	<Vendors>
+	</Vendors>
+
+	<QuestOrder>
+		<CustomBehavior File="Message" Text="Initializing Settings" LogColor="Cyan" />
+
+			<!--Settings-->
+			<CustomBehavior File="RunMacro" Macro="/script SetCVar('AutoLootDefault', 1)" WaitTime="1000" />
+			<CustomBehavior File="EnablePlugin" Names="Anti Drown,AutoEquip2,DrinkPotions,Refreshment,Talented2" />
+			<If Condition="(Me.Class == WoWClass.Hunter) || (Me.Class == WoWClass.Priest) || (Me.Class == WoWClass.Mage) || (Me.Class == WoWClass.Warlock) || ((Me.Class == WoWClass.Druid)
+				&amp;&amp; (StyxWoW.Me.Specialization == WoWSpec.DruidBalance)) || ((Me.Class == WoWClass.Shaman) &amp;&amp; (StyxWoW.Me.Specialization == WoWSpec.ShamanElemental))">
+				<CustomBehavior File="UserSettings" LootMobs="True" UseFlightPaths="True" PullDistance="40" />
+				<Else>
+					<CustomBehavior File="UserSettings" LootMobs="True" UseFlightPaths="True" PullDistance="25" />
+				</Else>
+			</If>
+
+			<!--Leveling or Loremaster: Sorting Hat-->
+			<If Condition="Me.Level &gt;= 35 &amp;&amp; Me.Level &lt; 60">
+				<CustomBehavior File="Message" Text="Checkpoint Reached: Loading Western Plaguelands" LogColor="Cyan" />
+				<CustomBehavior File="LoadProfile" ProfileName="[N - Quest] Western Plaguelands [Life]" />
+				<!--Checking for Eastern Kingdoms Loremaster-->
+				<ElseIf Condition="Me.Level &gt;= 60 &amp;&amp; IsAchievementCompleted(1676)">
+					<CustomBehavior File="Message" Text="Kingdoms Loremaster: Continent Achievement Complete! Returning to Loader" LogColor="Cyan" />
+					<CustomBehavior File="LoadProfile" ProfileName="../[N - Quest] Loremaster [Life]" />
+				</ElseIf>
+				<!--Checking for The Hinterlands Loremaster-->
+				<ElseIf Condition="Me.Level &gt;= 60 &amp;&amp; !IsAchievementCompleted(4897)">
+					<CustomBehavior File="Message" Text="Kingdoms Loremaster: Completing The Hinterlands" LogColor="Cyan" />
+				</ElseIf>
+				<Else>
+					<CustomBehavior File="Message" Text="Kingdoms Loremaster: Disabled Until Level 60 or Higher" LogColor="Cyan" />
+				</Else>
+			</If>
+
+			<!--Continental Drift: I'm in Kalimdor, returning to Eastern Kingdoms-->
+			<If Condition="Me.MapId == 1">
+				<CustomBehavior File="Message" Text="Transport: Riding Zepplin to The Undercity" LogColor="Cyan" />
+				<CustomBehavior File="UseTransport" TransportId="164871"
+					WaitAtX="1838.676" WaitAtY="-4387.965" WaitAtZ="135.2332"
+					TransportStartX="1833.509" TransportStartY="-4391.543" TransportStartZ="152.7679"
+					TransportEndX="2062.376" TransportEndY="292.998" TransportEndZ="114.973"
+					StandOnX="1834.961" StandOnY="-4385.694" StandOnZ="135.0334" 
+					GetOffX="2066.773" GetOffY="288.873" GetOffZ="97.03159" />				
+			</If>
+
+			<!--Get out of "Outlands" Zones-->
+			<If Condition="Me.ZoneId == 3433 || Me.ZoneId == 3430 || Me.ZoneId == 3487">
+				<RunTo DestName="Orb of Translocation" X="10038.42" Y="-7000.994" Z="61.76336" />
+				<CustomBehavior File="Message" Text="Transport: Using Orb of Translocation to Undercity" LogColor="Cyan" />
+				<CustomBehavior File="InteractWith" MobId="184502" Range="8" X="10038.42" Y="-7000.994" Z="61.76336" />
+			</If>			    	
+
+			<CustomBehavior File="Message" Text="Compiling Quests: Revantusk Village" LogColor="Cyan" />		
+			
+			<TurnIn QuestName="Revantusk Village" QuestId="26430" TurnInName="Elder Torntusk" TurnInId="42613" />
+	</QuestOrder>
+</HBProfile>

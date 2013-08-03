@@ -66,7 +66,7 @@
 		<CustomBehavior File="Message" Text="Initializing Settings" LogColor="Cyan" />
 			
 			<CustomBehavior File="UserSettings" LootMobs="True" UseFlightPaths="True" PullDistance="25" />
-			<CustomBehavior File="EnablePlugin" Names="Anti Drown,AutoEquip2,Drink Potions,Refreshment,Talented2" />
+			<CustomBehavior File="EnablePlugin" Names="Anti Drown,AutoEquip2,DrinkPotions,Refreshment,Talented2" />
 			<CustomBehavior File="RunMacro" Macro="/script SetCVar('AutoLootDefault', 1)" WaitTime="1000" />
 
 		<CustomBehavior File="Message" Text="Compiling Quests: Southpoint Gate" LogColor="Cyan" />
@@ -78,7 +78,7 @@
 			<TurnIn QuestName="Warchief's Command: Hillsbrad Foothills!" QuestId="28089" TurnInName="High Executor Darthalia" TurnInId="2215" />
 		</If>
 
-		<If Condition="!HasQuest(28096) &amp;&amp; !IsQuestCompleted(28096)" >
+		<If Condition="!HasQuest(28096) &amp;&amp; !IsQuestCompleted(28096)">
 			<CustomBehavior File="RunMacro" Macro="/run for i=1,GetNumQuestLogEntries() do SelectQuestLogEntry(i); SetAbandonQuest(); AbandonQuest(); end" />
 		</If>		
 

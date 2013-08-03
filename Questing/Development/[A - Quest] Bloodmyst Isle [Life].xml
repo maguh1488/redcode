@@ -23,14 +23,363 @@
  	</AvoidMobs>
 
 	<Blackspots>
+		<!--Add Odesyus' Landing Flag Blackspot-->
+		<!--Brodie's Inherited-->
+		<Blackspot X="-3404.97" Y="-12333.91" Z="15.11601" Radius="4.970026" />
+		<Blackspot X="-3451.653" Y="-12410.89" Z="16.14512" Radius="4.680147" />
+		<Blackspot X="-4684.104" Y="-12402.54" Z="12.10968" Radius="2.91243" />
 	</Blackspots>
 
 	<Mailboxes>
+		<!--Blood Watch Mailbox-->
+		<Hotspot X="-2045.71" Y="-11875.4" Z="46.66464" />
 	</Mailboxes>
 
 	<Vendors>
+		<!-- Azure Watch -->
+		<Vendor Name="Caregiver Chellan" Entry="16553" Type="Food" X="-4127.806" Y="-12467.68" Z="44.08744" />
+		<Vendor Name="Otonambusi" Entry="18810" Type="Food" X="-4209.451" Y="-12456.21" Z="45.54395" />
+		<Vendor Name="Nabek" Entry="17930" Type="Repair" X="-4235.529" Y="-12518.16" Z="46.20815" />
+		<Vendor Name="Diktynna" Entry="17101" Type="Sell" X="-4266.344" Y="-12985.36" Z="2.272953" />
+		<!-- Kessel's Crossing -->
+		<Vendor Name="Little Azimi" Entry="21145" Type="Food" X="-2655.952" Y="-12132.31" Z="16.91483" />
+		<!--Blood Watch Vendors-->
+		<Vendor Name="Caregiver Topher Loaal" Entry="17553" Type="Food" X="-2059.199" Y="-11897.04" Z="45.65863" />
+		<Vendor Name="Beega" Entry="17667" Type="Repair" X="-1990.958" Y="-11814.47" Z="54.50079" />
+		<Vendor Name="Clopper Wizbang" Entry="17421" Type="Food" X="-1219.877" Y="-11450" Z="0.9981117" />
+		<!--The Bloodwash Vendor-->
+		<Vendor Name="Clopper Wizbang" Entry="17421" Type="Food" X="-1219.877" Y="-11450" Z="0.9981602" />
 	</Vendors>
 
 	<QuestOrder>
+		<CustomBehavior File="Message" Text="Initializing Settings" LogColor="Cyan" />
+			
+			<!--Settings Configuration-->
+			<CustomBehavior File="UserSettings" LootMobs="True" UseFlightPaths="True" PullDistance="25" />
+			<CustomBehavior File="EnablePlugin" Names="Anti Drown,AutoEquip2,DrinkPotions,Refreshment,Talented2" />
+			<CustomBehavior File="RunMacro" Macro="/script SetCVar('AutoLootDefault', 1)" WaitTime="1000" />
+
+			<!--Clear Quest Log-->
+			<!--If Condition="!HasQuest(9623) &amp;&amp; !IsQuestCompleted(9623)">
+				<CustomBehavior File="RunMacro" Macro="/run for i=1,GetNumQuestLogEntries() do SelectQuestLogEntry(i); SetAbandonQuest(); AbandonQuest(); end" />
+			</If-->
+
+		<CustomBehavior File="Message" Text="Compiling Quests: Azuremyst Transition" LogColor="Cyan" />
+
+		<PickUp QuestName="Coming of Age" QuestId="9623" GiverName="Exarch Menelaous" GiverId="17116" />
+		<TurnIn QuestName="Coming of Age" QuestId="9623" TurnInName="Torallius the Pack Handler" TurnInId="17584" />
+		<PickUp QuestName="Elekks Are Serious Business" QuestId="9625" GiverName="Torallius the Pack Handler" GiverId="17584" />
+		<TurnIn QuestName="Elekks Are Serious Business" QuestId="9625" TurnInName="Vorkhan the Elekk Herder" TurnInId="17586" />
+
+		<CustomBehavior File="Message" Text="Compiling Quests: Kessel's Crossing" LogColor="Cyan" />
+
+		<PickUp QuestName="The Kessel Run" QuestId="9663" GiverName="Kessel" GiverId="17649" />
+		
+		<!--OBjective: The Kessel Run-->
+		<If Condition="HasQuest(9663) &amp;&amp; !IsQuestCompleted(9663)">
+			<DisableBehavior Name="Combat, Loot" />
+			<CustomBehavior File="UserSettings" UseFlightPaths="False" />
+			
+			<CustomBehavior File="InteractWith" MobId="17440" ProactiveCombatStrategy="NoClear" X="-3357.455" Y="-12397.28" Z="25.19392" />
+			<CustomBehavior File="InteractWith" MobId="17116" ProactiveCombatStrategy="NoClear" X="-4167.066" Y="-12422.21" Z="42.36566" />
+			<CustomBehavior File="InteractWith" MobId="17240" ProactiveCombatStrategy="NoClear" X="-4700.432" Y="-12413.37" Z="11.61146" />
+			
+			<CustomBehavior File="NoCombatMoveTo" X="-2664.555" Y="-12135.26" Z="16.8898" />
+			<CustomBehavior File="UserSettings" UseFlightPaths="True" />
+			<EnableBehavior Name="Combat, Loot" />
+		</If>
+
+		<TurnIn QuestName="The Kessel Run" QuestId="9663" TurnInName="Kessel" TurnInId="17649" />
+		<PickUp QuestName="Declaration of Power" QuestId="9666" GiverName="Kessel" GiverId="17649" />
+		<PickUp QuestName="Alien Predators" QuestId="9634" GiverName="Vorkhan the Elekk Herder" GiverId="17586" />
+		<PickUp QuestName="A Favorite Treat" QuestId="9624" GiverName="Aonar" GiverId="17599" />
+
+			<Objective QuestName="A Favorite Treat" QuestId="9624" Type="CollectItem" ItemId="23927" CollectCount="10" />
+			<Objective QuestName="Alien Predators" QuestId="9634" Type="KillMob" MobId="17525" KillCount="10" />
+		
+		<TurnIn QuestName="Alien Predators" QuestId="9634" TurnInName="Vorkhan the Elekk Herder" TurnInId="17586" />
+		<TurnIn QuestName="A Favorite Treat" QuestId="9624" TurnInName="Aonar" TurnInId="17599" />
+
+			<!--Objective: Declaration of Power-->
+			<CustomBehavior File="InteractWith" QuestId="9666" QuestObjectiveIndex="2" MobId="17701" InteractByUsingItemId="24084" MobState="Dead" X="-2230.15" Y="-12321.19" Z="57.30" />
+	
+		<If Condition="IsQuestCompleted(9559)">
+			<PickUp QuestName="Saving Princess Stillpine" QuestId="9667" GiverName="Princess Stillpine" GiverId="17682" />
+				
+			<!--Objective: Saving Princess Stillpine-->
+			<CustomBehavior File="CollectThings" QuestId="9667" CollectItemId="24099" CollectItemCount="1" MobState="Alive"
+				MobId="17702" MobId2="17321" MobId3="17320"
+				HuntingGroundRadius="100" X="-2426.52" Y="-12169.85" Z="32.64" />
+			<CustomBehavior File="InteractWith" QuestId="9667" MobId="181928" X="-2519.77" Y="-12301.85" Z="14.15" />
+		</If>
+
+		<TurnIn QuestName="Declaration of Power" QuestId="9666" TurnInName="Kessel" TurnInId="17649" />
+
+		<CustomBehavior File="Message" Text="Compiling Quests: Blood Watch" LogColor="Cyan" />
+
+		<PickUp QuestName="Report to Exarch Admetius" QuestId="9668" GiverName="Kessel" GiverId="17649" />
+
+			<!--Blood Watch (3584)-->
+			<If Condition="HasQuest(9668)">
+				<CustomBehavior File="Message" Text="Setting Hearthstone, Selling, Repairing, &amp; Mailing. Please Wait!" LogColor="Cyan" />
+				<CustomBehavior File="InteractWith" MobId="17553" InteractByGossipOptions="1" NonCompeteDistance="0" X="-2057.698" Y="-11894.07" Z="46.14776" />
+				<CustomBehavior File="ForceSetVendor" DoSell="True" DoRepair="True" DoMail="True" />
+			</If>
+
+		<TurnIn QuestName="Report to Exarch Admetius" QuestId="9668" TurnInName="Exarch Admetius" TurnInId="17658" />
+		<PickUp QuestName="What Argus Means To Me" QuestId="9693" GiverName="Exarch Admetius" GiverId="17658" />
+		<PickUp QuestName="Learning from the Crystals" QuestId="9581" GiverName="Harbringer Mikolaas" GiverId="17423" />
+		<PickUp QuestName="Catch and Release" QuestId="9629" GiverName="Morae" GiverId="17434" />
+		<PickUp QuestName="Wanted: Deathclaw" QuestId="9646" GiverType="Object" GiverName="Wanted Poster" GiverId="181889" X="-2044.08" Y="-11876.8" Z="46.59869" />
+		<PickUp QuestName="Mac'Aree Mushroom Menagerie" QuestId="9648" GiverName="Jessera of Mac'Aree" GiverId="17663" />
+
+		<If Condition="HasQuest(9667) &amp;&amp; IsQuestCompleted(9667)">
+			<TurnIn QuestName="Saving Princess Stillpine" QuestId="9667" TurnInName="Stillpine Ambassador Frasaboo" TurnInId="18803" />
+		</If>
+
+		<TurnIn QuestName="What Argus Means To Me" QuestId="9693" TurnInName="Vindicator Boros" TurnInId="17684" />
+		<PickUp QuestName="Blood Watch" QuestId="9694" GiverName="Vindicator Boros" GiverId="17684" />
+
+			<Objective QuestName="Mac'Aree Mushroom Menagerie" QuestId="9648" Type="CollectItem" ItemId="24041" CollectCount="1" />
+			<Objective QuestName="Mac'Aree Mushroom Menagerie" QuestId="9648" Type="CollectItem" ItemId="24043" CollectCount="1" />
+
+			<!--Catch and Release-->
+			<CustomBehavior File="InteractWith" QuestId="9629" MobId="17326" InteractByUsingItemId="23995" Range="30" MinRange="20" NumOfTimes="100" ProactiveCombatStrategy="ClearMobsTargetingUs">
+				<HuntingGrounds>
+					<Hotspot X="-2807.626" Y="-11526.62" Z="3.446817" />
+					<Hotspot X="-2807.036" Y="-11403.02" Z="6.981555" />
+					<Hotspot X="-2806.112" Y="-11610.58" Z="1.427304" />
+					<Hotspot X="-2789.243" Y="-11658.02" Z="2.483292" />
+				</HuntingGrounds>
+			</CustomBehavior>
+
+			<!--Collect: Cruelfin's Necklace-->
+			<If Condition="!HasItem(23870) &amp;&amp; !HasQuest(9576) &amp;&amp; !IsQuestCompleted(9576)">
+				<CustomBehavior File="CollectThings" MobId="17496" CollectItemId="23870" CollectItemCount="1" >
+					<Hotspot X="-2807.626" Y="-11526.62" Z="3.446817" />
+					<Hotspot X="-2807.036" Y="-11403.02" Z="6.981555" />
+					<Hotspot X="-2806.112" Y="-11610.58" Z="1.427304" />
+					<Hotspot X="-2789.243" Y="-11658.02" Z="2.483292" />
+				</CustomBehavior>
+			</If>
+		
+		<PickUp QuestName="Cruelfin's Necklace" QuestId="9576" GiverType="Item" GiverId="23870" />	
+		
+			<!--Objective: Learning from the Crystals-->
+			<If Condition="HasQuest(9581) &amp;&amp; !IsQuestCompleted(9581)">
+				<RunTo X="-2573.906" Y="-11969.64" Z="24.32564" />
+				<CustomBehavior File="Misc\RunLua" Lua="UseItemByName(23875)" />
+			</If>
+
+			<Objective QuestName="Mac'Aree Mushroom Menagerie" QuestId="9648" Type="CollectItem" ItemId="24042" CollectCount="1" />
+			<Objective QuestName="Mac'Aree Mushroom Menagerie" QuestId="9648" Type="CollectItem" ItemId="24040" CollectCount="1" />
+
+		<TurnIn QuestName="Catch and Release" QuestId="9629" TurnInName="Morae" TurnInId="17434" />
+		<TurnIn QuestName="Cruelfin's Necklace" QuestId="9576" TurnInName="Morae" TurnInId="17434" />
+		<PickUp QuestName="Victims of Corruption" QuestId="9574" GiverName="Morae" GiverId="17434" />
+		<TurnIn QuestName="Mac'Aree Mushroom Menagerie" QuestId="9648" TurnInName="Jessera of Mac'Aree" TurnInId="17663" />
+		<TurnIn QuestName="Learning from the Crystals" QuestId="9581" TurnInName="Harbringer Mikolaas" TurnInId="17423" />
+		<PickUp QuestName="The Missing Survey Team" QuestId="9620" GiverName="Harbringer Mikolaas" GiverId="17423" />
+
+		<!--TurnIn: The Missing Survey Team-->
+		<CustomBehavior File="InteractWith" MobId="17600" InteractByQuestFrameDisposition="Complete" CollectionDistance="3" TerminateWhen="!HasQuest(9620)" NumOfTimes="50" NonCompeteDistance="0" X="-1811.947" Y="-12071.35" Z="32.59786" />
+			
+		<!--PickUp: Salvaging the Data-->
+		<If Condition="!HasQuest(9628) &amp;&amp; !IsQuestCompleted(9628)">
+			<CustomBehavior File="InteractWith" MobId="17600" InteractByQuestFrameDisposition="Accept" CollectionDistance="3" TerminateWhen="HasQuest(9628)" NumOfTimes="50" NonCompeteDistance="0" X="-1811.947" Y="-12071.35" Z="32.59786" />
+		</If>
+
+			<Objective QuestName="Salvaging the Data" QuestId="9628" Type="CollectItem" ItemId="23932" CollectCount="1" />
+
+		<TurnIn QuestName="Salvaging the Data" QuestId="9628" TurnInName="Harbringer Mikolaas" TurnInId="17423" />
+
+			<!--Repairing and Cleaning-->
+			<If Condition="HasQuest(9628)">
+				<CustomBehavior File="Message" Text="Selling, Repairing, &amp; Mailing. Please Wait!" LogColor="Cyan" />
+				<CustomBehavior File="ForceSetVendor" DoSell="True" DoRepair="True" DoMail="True" />
+			</If>
+
+		<PickUp QuestName="The Second Sample" QuestId="9584" GiverName="Harbinger Mikolaas" GiverId="17423" />
+		<PickUp QuestName="Irradiated Crystal Shards" QuestId="9641" GiverName="Vindicator Boros" GiverId="17684" />
+
+		<If Condition="GetItemCount(23984) &gt;= 10">
+			<TurnIn QuestName="Irradiated Crystal Shards" QuestId="9641" TurnInName="Vindicator Boros" TurnInId="17684" />
+		</If>
+
+			<!--Using Crystal Shards-->
+			<If Condition="HasItem(23985)">
+				<CustomBehavior File="Misc\RunLua" Lua="UseItemByName(23985)" />
+				<ElseIf Condition="HasItem(23986)">
+					<CustomBehavior File="Misc\RunLua" Lua="UseItemByName(23986)" />
+				</ElseIf>
+				<ElseIf Condition="HasItem(23989)">
+					<CustomBehavior File="Misc\RunLua" Lua="UseItemByName(23989)" />
+				</ElseIf>
+			</If>
+			
+		<PickUp QuestName="Explorers' League, Is That Something for Gnomes?" QuestId="10063" GiverName="Prospector Nachlan" GiverId="18804" />
+		<PickUp QuestName="Know Thine Enemy" QuestId="9567" GiverName="Vindicator Aalesia" GiverId="17433" />
+
+			<Objective QuestName="Victims of Corruption" QuestId="9574" Type="CollectItem" ItemId="23869" CollectCount="6" />
+			<Objective QuestName="Know Thine Enemy" QuestId="9567" Type="CollectItem" ItemId="23859" CollectCount="1" />
+
+			<!--Collect: Tzerak's Armor Plate-->
+			<If Condition="!HasItem(23900) &amp;&amp; !HasQuest(9594) &amp;&amp; !IsQuestCompleted(9594)">
+				<CustomBehavior File="CollectThings" MobId="17528" CollectItemId="23900" CollectItemCount="1">
+					<Hotspot X="-2316.637" Y="-11267.46" Z="35.81659" />
+				</CustomBehavior>
+			</If>
+
+		<PickUp QuestName="Signs of the Legion" QuestId="9594" GiverName="Tzerak's Armor Plate" GiverType="Item" GiverId="23900" />
+			
+			<Objective QuestName="Signs of the Legion" QuestId="9594" Type="KillMob" MobId="17337" KillCount="8" />
+			<Objective QuestName="Signs of the Legion" QuestId="9594" Type="KillMob" MobId="17339" KillCount="8" />
+		
+		<TurnIn QuestName="Victims of Corruption" QuestId="9574" TurnInName="Morae" TurnInId="17434" />
+		<TurnIn QuestName="Know Thine Enemy" QuestId="9567" TurnInName="Vindicator Aalesia" TurnInId="17433" />
+		<TurnIn QuestName="Signs of the Legion" QuestId="9594" TurnInName="Vindicator Aalesia" TurnInId="17433" />
+		<PickUp QuestName="Containing the Threat" QuestId="9569" GiverName="Vindicator Aalesia" GiverId="17433" />
+		<PickUp QuestName="Constrictor Vines" QuestId="9643" GiverName="Tracker Lyceon" GiverId="17642" />
+		<PickUp QuestName="The Bear Necessities" QuestId="9580" GiverName="Tracker Lyceon" GiverId="17642" />
+
+			<!--Objective: The Second Sample-->
+			<If Condition="HasQuest(9584) &amp;&amp; !IsQuestCompleted(9584)">
+				<RunTo X="-1798.419" Y="-11561.29" Z="35.07915" />
+				<CustomBehavior File="Misc\RunLua" Lua="UseItemByName(23876)" />
+			</If>
+
+			<Objective QuestName="Blood Watch" QuestId="9694" Type="KillMob" MobId="17604" KillCount="10" />
+			<Objective QuestName="Constrictor Vines" QuestId="9643" Type="CollectItem" ItemId="23994" CollectCount="6" />
+			<Objective QuestName="The Bear Necessities" QuestId="9580" Type="CollectItem" ItemId="24026" CollectCount="8" />
+
+		<TurnIn QuestName="Constrictor Vines" QuestId="9643" TurnInName="Tracker Lyceon" TurnInId="17642" />
+		<TurnIn QuestName="The Bear Necessities" QuestId="9580" TurnInName="Tracker Lyceon" TurnInId="17642" />
+		<PickUp QuestName="Culling the Flutterers" QuestId="9647" GiverName="Tracker Lyceon" GiverId="17642" />
+		<PickUp QuestName="Ysera's Tears" QuestId="9649" GiverName="Jessera of Mac'Aree" GiverId="17663" />
+		<TurnIn QuestName="Blood Watch" QuestId="9694" TurnInName="Vindicator Boros" TurnInId="17684" />
+		<PickUp QuestName="Intercepting the Message" QuestId="9779" GiverName="Vindicator Boros" GiverId="17684" />
+		<TurnIn QuestName="The Second Sample" QuestId="9584" TurnInName="Harbinger Mikolaas" TurnInId="17423" />
+		<PickUp QuestName="The Final Sample" QuestId="9585" GiverName="Harbinger Mikolaas" GiverId="17423" />
+		<PickUp QuestName="Searching for Galaen" QuestId="9578" GiverName="Morae" GiverId="17434" />
+
+		<!--Complete Quest: Urgent Delivery-->
+		<If Condition="IsQuestCompleted(9506) &amp;&amp; !IsQuestCompleted(9671)">
+			<CustomBehavior File="InteractWith" MobId="17703" InteractByQuestFrameDisposition="Complete" NonCompeteDistance="0" TerminateWhen="IsQuestCompleted(9671)">
+				<HuntingGrounds>
+					<Hotspot X="-1954.393" Y="-11827.29" Z="56.71006" />
+					<Hotspot X="-1964.226" Y="-11902.26" Z="49.72919" />
+					<Hotspot X="-2008.892" Y="-11846.62" Z="48.36517" />
+					<Hotspot X="-2073.946" Y="-11844.89" Z="51.5916" />
+				</HuntingGrounds>
+			</CustomBehavior>
+		</If>
+
+		<!--PickUp: The Bloodcurse Legacy-->
+		<!--While Condition="!HasQuest(9672) &amp;&amp; !IsQuestCompleted(9672)"-->
+			<!--Obtain: A Letter from the Admiral-->
+			<!--If Condition="!HasItem(24132) &amp;&amp; !HasQuest(9672)">
+				<CustomBehavior File="InteractWith" MobId="182950" X="-2044.465" Y="-11873.95" Z="46.78653" />
+				<CustomBehavior File="Misc\RunLua" Lua="for i=1,50,1 do AutoLootMailItem(i) end" />
+			</If-->
+			<!--Mailbox is Slow, Waiting for It-->
+			<!--If Condition="!HasItem(24132)">
+				<CustomBehavior File="WaitTimer" WaitTime="20000" VarientTime="6000" GoalText="Waiting for the Mailbox" />
+			</If-->
+			<!--Picking Up: The Bloodcurse Legacy-->
+			<!--If Condition="HasItem(24132) &amp;&amp; !HasQuest(9672)">
+				<PickUp QuestName="The Bloodcurse Legacy" QuestId="9672" GiverType="Item" GiverId="24132" />
+			</If>
+		</While-->
+
+		<CustomBehavior File="Message" Text="Compiling Quests: The Bloodwash" LogColor="Cyan" />
+
+		<TurnIn QuestName="Explorers' League, Is That Something for Gnomes?" QuestId="10063" TurnInName="Clopper Wizbang" TurnInId="17421" />
+		<PickUp QuestName="Pilfered Equipment" QuestId="9548" GiverName="Clopper Wizbang" GiverId="17421" />
+		<PickUp QuestName="Artifacts of the Blacksilt" QuestId="9549" GiverName="Clopper Wizbang" GiverId="17421" />
+
+			<Objective QuestName="Pilfered Equipment" QuestId="9548" Type="CollectItem" ItemId="23830" CollectCount="1" />
+			<Objective QuestName="Artifacts of the Blacksilt" QuestId="9549" Type="CollectItem" ItemId="23834" CollectCount="3" />
+			<Objective QuestName="Artifacts of the Blacksilt" QuestId="9549" Type="CollectItem" ItemId="23833" CollectCount="6" />
+		
+		<TurnIn QuestName="Artifacts of the Blacksilt" QuestId="9549" TurnInName="Clopper Wizbang" TurnInId="17421" />	
+		<TurnIn QuestName="Pilfered Equipment" QuestId="9548" TurnInName="Clopper Wizbang" TurnInId="17421" />
+	
+		<If Condition="HasItem(23837) &amp;&amp; !IsQuestCompleted(9550)">
+			<PickUp QuestName="A Map to Where?" QuestId="9550" GiverType="Item" GiverId="23837" />
+		</If>
+
+		<!--Objective: I Shoot Magic Into the Darkness-->
+
+		<CustomBehavior File="Message" Text="Compiling Quests: Axxarien" LogColor="Cyan" />
+
+			<Objective QuestName="Wanted: Deathclaw" QuestId="9646" Type="CollectItem" ItemId="24025" CollectCount="1" />
+
+			<!--Objective: The Final Sample-->
+			<If Condition="HasQuest(9585) &amp;&amp; !IsQuestCompleted(9585)">
+				<RunTo X="-1434.254" Y="-11414.83" Z="68.66674" />
+				<CustomBehavior File="Misc\RunLua" Lua="UseItemByName(23877)" />
+			</If>
+
+			<Objective QuestName="Containing the Threat" QuestId="9569" Type="CollectItem" ItemId="23863" CollectCount="5" />
+			<Objective QuestName="Containing the Threat" QuestId="9569" Type="KillMob" MobId="17494" KillCount="1" />
+			<Objective QuestName="Containing the Threat" QuestId="9569" Type="KillMob" MobId="17342" KillCount="1" />
+			<Objective QuestName="Containing the Threat" QuestId="9569" Type="KillMob" MobId="17340" KillCount="5" />	
 	</QuestOrder>
+
+	<Quest Id="9624" Name="A Favorite Treat">
+		<Objective Type="CollectItem" ItemId="23927" CollectCount="10">
+			<CollectFrom>
+				<GameObject Name="Sand Pear" Id="181854" />
+			</CollectFrom>
+			<Hotspots>
+				<Hotspot X="-2688.127" Y="-12081.57" Z="14.57118" />
+				<Hotspot X="-2691.209" Y="-12000.75" Z="13.66007" />
+				<Hotspot X="-2744.263" Y="-12019.96" Z="10.75072" />
+				<Hotspot X="-2643.348" Y="-11958.08" Z="18.34594" />
+				<Hotspot X="-2611.367" Y="-12023.1" Z="25.77906" />
+				<Hotspot X="-2530.742" Y="-12048.17" Z="30.62125" />
+			</Hotspots>
+		</Objective>
+	</Quest>
+	<Quest Id="9634" Name="Alien Predators">
+		<Objective Type="KillMob" MobId="17525" KillCount="10">
+			<Hotspots>
+				<Hotspot X="-2688.127" Y="-12081.57" Z="14.57118" />
+				<Hotspot X="-2691.209" Y="-12000.75" Z="13.66007" />
+				<Hotspot X="-2744.263" Y="-12019.96" Z="10.75072" />
+				<Hotspot X="-2643.348" Y="-11958.08" Z="18.34594" />
+				<Hotspot X="-2611.367" Y="-12023.1" Z="25.77906" />
+				<Hotspot X="-2530.742" Y="-12048.17" Z="30.62125" />
+			</Hotspots>
+		</Objective>
+	</Quest>
+	<Quest Id="9648" Name="Mac'Aree Mushroom Menagerie">
+		<Objective Type="CollectItem" ItemId="24042" CollectCount="1">
+			<Hotspots>
+				<Hotspot X="-2281.519" Y="-12255.12" Z="28.41909" />
+				<Hotspot X="-2237.645" Y="-12293.83" Z="54.05091" />
+			</Hotspots>
+		</Objective>
+		<Objective Type="CollectItem" ItemId="24043" CollectCount="1">
+			<Hotspots>
+				<Hotspot X="-2566.683" Y="-11509.05" Z="28.59532" />
+				<Hotspot X="-2499.197" Y="-11520.88" Z="33.02991" />
+				<Hotspot X="-2411.069" Y="-11567.8" Z="22.80359" />
+			</Hotspots>
+		</Objective>
+	</Quest>
+	<Quest Id="9574" Name="Victims of Corruption">
+		<Objective Type="CollectItem" ItemId="23869" CollectCount="6">
+			<CollectFrom>
+				<Mob Name="Corrupted Treant" Entry="17352" />
+			</CollectFrom>
+			<Hotspots>
+				<Hotspot X="-2336.171" Y="-11753.23" Z="17.11824" />
+				<Hotspot X="-2374.536" Y="-11730.62" Z="18.29706" />
+				<Hotspot X="-2389.583" Y="-11710.67" Z="20.40538" />
+				<Hotspot X="-2484.173" Y="-11696.42" Z="14.68405" />
+			</Hotspots>
+		</Objective>
+	</Quest>
+
 </HBProfile>

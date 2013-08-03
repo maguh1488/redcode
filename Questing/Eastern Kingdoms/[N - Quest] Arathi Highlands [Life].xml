@@ -44,8 +44,8 @@
 	<QuestOrder>
 		<CustomBehavior File="Message" Text="Initializing Settings" LogColor="Cyan" />
 
-			<!--Settings-->
-			<CustomBehavior File="EnablePlugin" Names="Anti Drown,AutoEquip2,Drink Potions,Refreshment,Talented2" />
+			<!--Settings Configuration-->
+			<CustomBehavior File="EnablePlugin" Names="Anti Drown,AutoEquip2,DrinkPotions,Refreshment,Talented2" />
 			<CustomBehavior File="RunMacro" Macro="/script SetCVar('AutoLootDefault', 1)" WaitTime="1000" />
 			<If Condition="(Me.Class == WoWClass.Hunter) || (Me.Class == WoWClass.Priest) || (Me.Class == WoWClass.Mage) || (Me.Class == WoWClass.Warlock) || ((Me.Class == WoWClass.Druid)
 				&amp;&amp; (StyxWoW.Me.Specialization == WoWSpec.DruidBalance)) || ((Me.Class == WoWClass.Shaman) &amp;&amp; (StyxWoW.Me.Specialization == WoWSpec.ShamanElemental))">
@@ -54,8 +54,6 @@
 					<CustomBehavior File="UserSettings" LootMobs="True" UseFlightPaths="True" PullDistance="25" />
 				</Else>
 			</If>
-
-			<EnableBehavior Name="Combat" />
 
 			<!--Training Availability Check-->
 			<If Condition="Me.Level &gt;= 20">
@@ -69,22 +67,22 @@
 			</If>
 
 			<!--Leveling or Loremaster: Sorting Hat-->
-			<!--If Condition="Me.Level &gt;= 30 &amp;&amp; Me.Level &lt; 60">
+			<If Condition="Me.Level &gt;= 30 &amp;&amp; Me.Level &lt; 60">
 				<CustomBehavior File="Message" Text="Checkpoint Reached: Loading The Hinterlands" LogColor="Cyan" />
-				<CustomBehavior File="LoadProfile" ProfileName="[N - Quest] The Hinterlands [Life]" /-->
+				<CustomBehavior File="LoadProfile" ProfileName="[N - Quest] The Hinterlands [Life]" />
 				<!--Checking for Eastern Kingdoms Loremaster-->
-				<!--ElseIf Condition="Me.Level &gt;= 60 &amp;&amp; IsAchievementCompleted(1676)">
+				<ElseIf Condition="Me.Level &gt;= 60 &amp;&amp; IsAchievementCompleted(1676)">
 					<CustomBehavior File="Message" Text="Kingdoms Loremaster: Continent Achievement Complete! Returning to Loader" LogColor="Cyan" />
 					<CustomBehavior File="LoadProfile" ProfileName="../[N - Quest] Loremaster [Life]" />
-				</ElseIf-->
-				<!--Checking for Silverpine Forest Loremaster-->
-				<!--ElseIf Condition="Me.Level &gt;= 60 &amp;&amp; !IsAchievementCompleted(4894)">
+				</ElseIf>
+				<!--Checking for The Hinterlands Loremaster-->
+				<ElseIf Condition="Me.Level &gt;= 60 &amp;&amp; !IsAchievementCompleted(4897)">
 					<CustomBehavior File="Message" Text="Kingdoms Loremaster: Completing The Hinterlands" LogColor="Cyan" />
 				</ElseIf>
 				<Else>
 					<CustomBehavior File="Message" Text="Kingdoms Loremaster: Disabled Until Level 60 or Higher" LogColor="Cyan" />
 				</Else>
-			</If-->
+			</If>
 
 			<!--Continental Drift: I'm in Kalimdor, returning to Eastern Kingdoms-->
 			<If Condition="Me.MapId == 1">
@@ -109,6 +107,10 @@
 		<If Condition="HasQuest(28619)">
 			<TurnIn QuestName="Warchief's Command: Arathi Highlands" QuestId="28619" TurnInName="Dark Ranger Alina" TurnInId="41949" />
 		</If>		
+
+		<If Condition="!HasQuest(26053) &amp;&amp; !IsQuestCompleted(26053)">
+			<CustomBehavior File="RunMacro" Macro="/run for i=1,GetNumQuestLogEntries() do SelectQuestLogEntry(i); SetAbandonQuest(); AbandonQuest(); end" />
+		</If>
 
 		<PickUp QuestName="Clearing the Highlands" QuestId="26053" GiverName="Deathstalker Maudria" GiverId="41966" />
 		<PickUp QuestName="To Steal From Thieves" QuestId="26428" GiverName="Genavie Callow" GiverId="4486" />
@@ -231,7 +233,19 @@
 		<PickUp QuestName="Myzrael's Tale" QuestId="26911" GiverName="Stone of Inner Binding" GiverId="2702" GiverType="Object" X="-1510.337" Y="-2170.79" Z="17.26296" />
 		<TurnIn QuestName="Myzrael's Tale" QuestId="26911" TurnInName="Zaruk" TurnInId="2787" />
 		<TurnIn QuestName="Guile of the Raptor" QuestId="26108" TurnInName="Gor'mul" TurnInId="42130" />
-		<PickUp QuestName="Revantusk Village" QuestId="26430" GiverName="Drum Fel" GiverId="2771" />		
+		<PickUp QuestName="Revantusk Village" QuestId="26430" GiverName="Drum Fel" GiverId="2771" />
+		<PickUp QuestName="The Princess Unleashed" QuestId="26912" GiverName="Zaruk" GiverId="2787" />
+			
+			<!--Objective: The Princess Unleashed-->
+			<While Condition="HasQuest(26912) &amp;&amp; !IsQuestCompleted(26912)">
+				<RunTo X="-942.0483" Y="-3119.223" Z="49.05191" />
+				<CustomBehavior File="Misc\RunLua" Lua="UseItemByName(4472)" WaitTime="20000" />
+			</While>
+		
+		<TurnIn QuestName="The Princess Unleashed" QuestId="26912" TurnInType="Object" TurnInName="Shards of Myzrael" TurnInId="138492" X="-942.0483" Y="-3119.223" Z="49.05191" />
+
+		<CustomBehavior File="Message" Text="Profile Complete: Loading The Hinterlands" LogColor="Cyan" />
+		<CustomBehavior File="LoadProfile" ProfileName="[N - Quest] The Hinterlands [Life]" />		
 	</QuestOrder>
 
 	<Quest Id="26053" Name="Clearing the Highlands"> 
