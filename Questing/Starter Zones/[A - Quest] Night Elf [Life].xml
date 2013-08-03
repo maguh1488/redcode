@@ -33,133 +33,14 @@
 		<Vendor Name="Shalomon" Entry="3609" Type="Repair" X="9812.371" Y="947.5777" Z="1308.769" />
 	</Vendors>
 
-	<Quest Id="28713" Name="The Balance of Nature">
-		<Objective Type="KillMob" MobId="2031" KillCount="6">
-			<Hotspots>
-				<Hotspot X="10284.86" Y="815.9288" Z="1337.941" />
-				<Hotspot X="10284.58" Y="730.0662" Z="1337.881" />
-				<Hotspot X="10340.73" Y="679.037" Z="1330.318" />
-				<Hotspot X="10393.84" Y="672.5342" Z="1325.955" />
-				<Hotspot X="10417.48" Y="929.5509" Z="1319.563" />
-				<Hotspot X="10384.59" Y="982.2064" Z="1328.184" />
-			</Hotspots>
-		</Objective>
-	</Quest>
-	<Quest Id="28715" Name="Demonic Thieves">
-		<Objective Type="CollectItem" ItemId="46700" CollectCount="5">
-			<CollectFrom>
-				<GameObject Name="Melithar's Stolen Bags" Id="195074" />
-			</CollectFrom>
-			<Hotspots>
-				<Hotspot X="10267.44" Y="937.5374" Z="1339.416" />
-				<Hotspot X="10255.02" Y="973.1749" Z="1341.645" />
-				<Hotspot X="10273.33" Y="981.8939" Z="1341.989" />
-				<Hotspot X="10285.08" Y="959.9882" Z="1335.983" />
-				<Hotspot X="10291.11" Y="1001.629" Z="1342.577" />
-				<Hotspot X="10311.36" Y="1027.576" Z="1341.249" />
-				<Hotspot X="10354.1" Y="1019.607" Z="1336.873" />
-				<Hotspot X="10336.07" Y="1037.899" Z="1339.319" />
-			</Hotspots>
-		</Objective>
-	</Quest>
-	<Quest Id="28714" Name="Fel Moss Corruption">
-		<Objective Type="CollectItem" ItemId="3297" CollectCount="6">
-			<CollectFrom>
-				<Mob Name="Grell" Id="1988" />
-				<Mob Name="Grellkin" Id="1989" />
-			</CollectFrom>
-			<Hotspots>
-				<Hotspot X="10267.44" Y="937.5374" Z="1339.416" />
-				<Hotspot X="10255.02" Y="973.1749" Z="1341.645" />
-				<Hotspot X="10273.33" Y="981.8939" Z="1341.989" />
-				<Hotspot X="10285.08" Y="959.9882" Z="1335.983" />
-				<Hotspot X="10291.11" Y="1001.629" Z="1342.577" />
-				<Hotspot X="10311.36" Y="1027.576" Z="1341.249" />
-				<Hotspot X="10354.1" Y="1019.607" Z="1336.873" />
-				<Hotspot X="10336.07" Y="1037.899" Z="1339.319" />
-			</Hotspots>
-		</Objective>
-	</Quest>
-	<Quest Id="28724" Name="Iverron's Antidote">
-		<Objective Type="CollectItem" ItemId="10641" CollectCount="7">
-			<CollectFrom>
-				<GameObject Name="Moonpetal Lily" Id="207346" />
-			</CollectFrom>
-			<Hotspots>
-				<Hotspot X="10563.47" Y="898.0357" Z="1309.999" />
-				<Hotspot X="10539.89" Y="926.1318" Z="1312.371" />
-				<Hotspot X="10504.31" Y="897.0372" Z="1310.426" />
-				<Hotspot X="10518.89" Y="866.9496" Z="1311.137" />
-				<Hotspot X="10583.03" Y="859.7395" Z="1308.001" />
-				<Hotspot X="10563.96" Y="816.8184" Z="1309.21" />
-			</Hotspots>
-		</Objective>
-	</Quest>
-	<Quest Id="28726" Name="Webwood Corruption">
-		<Objective Type="KillMob" MobId="1986" KillCount="12">
-			<Hotspots>
-				<Hotspot X="10779.66" Y="928.9778" Z="1338.403" />
-				<Hotspot X="10818.47" Y="940.9799" Z="1336.491" />
-				<Hotspot X="10848.67" Y="965.2408" Z="1335.317" />
-				<Hotspot X="10863.54" Y="977.5611" Z="1336.486" />
-				<Hotspot X="10890.83" Y="983.6367" Z="1336.905" />
-				<Hotspot X="10911.43" Y="965.2033" Z="1338.866" />
-				<Hotspot X="10848.33" Y="919.2296" Z="1334.172" />
-				<Hotspot X="10923.49" Y="935.2542" Z="1321.496" />
-				<Hotspot X="10950" Y="968.9399" Z="1328.766" />
-				<Hotspot X="10973.94" Y="935.8207" Z="1337.789" />
-			</Hotspots>
-		</Objective>
-	</Quest>
-	<Quest Id="28727" Name="Vile Touch">
-		<Objective Type="KillMob" MobId="1994" KillCount="1">
-			<Hotspots>
-				<Hotspot X="10973.94" Y="935.8207" Z="1337.789" />
-			</Hotspots>
-		</Objective>
-	</Quest>
-	<Quest Id="488" Name="Zenn's Bidding">
-		<Objective Type="CollectItem" ItemId="3409" CollectCount="2">
-			<CollectFrom>
-				<Mob Name="Nightsaber" Id="2042" />
-			</CollectFrom>
-			<Hotspots>
-				<Hotspot X="10013.08" Y="479.9788" Z="1313.945" />
-				<Hotspot X="9980.747" Y="428.3409" Z="1309.446" />
-				<Hotspot X="9974.313" Y="366.8678" Z="1312.625" />
-				<Hotspot X="10074.82" Y="441.8385" Z="1322.064" />
-			</Hotspots>
-		</Objective>
-		<Objective Type="CollectItem" ItemId="3411" CollectCount="2">
-			<CollectFrom>
-				<Mob Name="Strigid Owl" Id="1995" />
-			</CollectFrom>
-			<Hotspots>
-				<Hotspot X="9995.418" Y="569.2999" Z="1314.008" />
-				<Hotspot X="10010.6" Y="485.8519" Z="1313.816" />
-				<Hotspot X="10070.2" Y="494.0125" Z="1320.896" />
-				<Hotspot X="10061.02" Y="573.4304" Z="1323.377" />
-			</Hotspots>
-		</Objective>
-		<Objective Type="CollectItem" ItemId="3412" CollectCount="2">
-			<CollectFrom>
-				<Mob Name="Webwood Lurker" Id="1998" />
-			</CollectFrom>
-			<Hotspots>
-				<Hotspot X="9967.737" Y="702.0175" Z="1317.637" />
-				<Hotspot X="9872.036" Y="733.1455" Z="1306.484" />
-				<Hotspot X="9809.425" Y="759.9942" Z="1303.377" />
-			</Hotspots>
-		</Objective>
-	</Quest>
-
 	<QuestOrder>
 		<CustomBehavior File="Message" Text="Initializing Settings" LogColor="Cyan" />
 
 			<!--Settings Configuration-->
 			<CustomBehavior File="UserSettings" LootMobs="True" UseFlightPaths="True" PullDistance="25" />
-			<CustomBehavior File="EnablePlugin" Names="Anti Drown,AutoEquip2,Drink Potions,Refreshment,Talented2" />
+			<CustomBehavior File="EnablePlugin" Names="Anti Drown,AutoEquip2,DrinkPotions,Refreshment,Talented2" />
 			<CustomBehavior File="RunMacro" Macro="/script SetCVar('AutoLootDefault', 1)" WaitTime="1000" />
+
 			<!--Extreme Racial Prejudice-->
 			<If Condition="Me.Race != WoWRace.NightElf">
 				<CustomBehavior File="Message" Text="You're not a Night Elf. Finding Appropriate Profile!" LogColor="Cyan" />
@@ -327,4 +208,125 @@
 		<CustomBehavior File="Message" Text="Profile Complete: Loading Teldrassil" LogColor="Cyan" />
 		<CustomBehavior File="LoadProfile" ProfileName="..\Kalimdor\[A - Quest] Teldrassil [Life]" />	
 	</QuestOrder>
+
+	<Quest Id="28713" Name="The Balance of Nature">
+		<Objective Type="KillMob" MobId="2031" KillCount="6">
+			<Hotspots>
+				<Hotspot X="10284.86" Y="815.9288" Z="1337.941" />
+				<Hotspot X="10284.58" Y="730.0662" Z="1337.881" />
+				<Hotspot X="10340.73" Y="679.037" Z="1330.318" />
+				<Hotspot X="10393.84" Y="672.5342" Z="1325.955" />
+				<Hotspot X="10417.48" Y="929.5509" Z="1319.563" />
+				<Hotspot X="10384.59" Y="982.2064" Z="1328.184" />
+			</Hotspots>
+		</Objective>
+	</Quest>
+	<Quest Id="28715" Name="Demonic Thieves">
+		<Objective Type="CollectItem" ItemId="46700" CollectCount="5">
+			<CollectFrom>
+				<GameObject Name="Melithar's Stolen Bags" Id="195074" />
+			</CollectFrom>
+			<Hotspots>
+				<Hotspot X="10267.44" Y="937.5374" Z="1339.416" />
+				<Hotspot X="10255.02" Y="973.1749" Z="1341.645" />
+				<Hotspot X="10273.33" Y="981.8939" Z="1341.989" />
+				<Hotspot X="10285.08" Y="959.9882" Z="1335.983" />
+				<Hotspot X="10291.11" Y="1001.629" Z="1342.577" />
+				<Hotspot X="10311.36" Y="1027.576" Z="1341.249" />
+				<Hotspot X="10354.1" Y="1019.607" Z="1336.873" />
+				<Hotspot X="10336.07" Y="1037.899" Z="1339.319" />
+			</Hotspots>
+		</Objective>
+	</Quest>
+	<Quest Id="28714" Name="Fel Moss Corruption">
+		<Objective Type="CollectItem" ItemId="3297" CollectCount="6">
+			<CollectFrom>
+				<Mob Name="Grell" Id="1988" />
+				<Mob Name="Grellkin" Id="1989" />
+			</CollectFrom>
+			<Hotspots>
+				<Hotspot X="10267.44" Y="937.5374" Z="1339.416" />
+				<Hotspot X="10255.02" Y="973.1749" Z="1341.645" />
+				<Hotspot X="10273.33" Y="981.8939" Z="1341.989" />
+				<Hotspot X="10285.08" Y="959.9882" Z="1335.983" />
+				<Hotspot X="10291.11" Y="1001.629" Z="1342.577" />
+				<Hotspot X="10311.36" Y="1027.576" Z="1341.249" />
+				<Hotspot X="10354.1" Y="1019.607" Z="1336.873" />
+				<Hotspot X="10336.07" Y="1037.899" Z="1339.319" />
+			</Hotspots>
+		</Objective>
+	</Quest>
+	<Quest Id="28724" Name="Iverron's Antidote">
+		<Objective Type="CollectItem" ItemId="10641" CollectCount="7">
+			<CollectFrom>
+				<GameObject Name="Moonpetal Lily" Id="207346" />
+			</CollectFrom>
+			<Hotspots>
+				<Hotspot X="10563.47" Y="898.0357" Z="1309.999" />
+				<Hotspot X="10539.89" Y="926.1318" Z="1312.371" />
+				<Hotspot X="10504.31" Y="897.0372" Z="1310.426" />
+				<Hotspot X="10518.89" Y="866.9496" Z="1311.137" />
+				<Hotspot X="10583.03" Y="859.7395" Z="1308.001" />
+				<Hotspot X="10563.96" Y="816.8184" Z="1309.21" />
+			</Hotspots>
+		</Objective>
+	</Quest>
+	<Quest Id="28726" Name="Webwood Corruption">
+		<Objective Type="KillMob" MobId="1986" KillCount="12">
+			<Hotspots>
+				<Hotspot X="10779.66" Y="928.9778" Z="1338.403" />
+				<Hotspot X="10818.47" Y="940.9799" Z="1336.491" />
+				<Hotspot X="10848.67" Y="965.2408" Z="1335.317" />
+				<Hotspot X="10863.54" Y="977.5611" Z="1336.486" />
+				<Hotspot X="10890.83" Y="983.6367" Z="1336.905" />
+				<Hotspot X="10911.43" Y="965.2033" Z="1338.866" />
+				<Hotspot X="10848.33" Y="919.2296" Z="1334.172" />
+				<Hotspot X="10923.49" Y="935.2542" Z="1321.496" />
+				<Hotspot X="10950" Y="968.9399" Z="1328.766" />
+				<Hotspot X="10973.94" Y="935.8207" Z="1337.789" />
+			</Hotspots>
+		</Objective>
+	</Quest>
+	<Quest Id="28727" Name="Vile Touch">
+		<Objective Type="KillMob" MobId="1994" KillCount="1">
+			<Hotspots>
+				<Hotspot X="10973.94" Y="935.8207" Z="1337.789" />
+			</Hotspots>
+		</Objective>
+	</Quest>
+	<Quest Id="488" Name="Zenn's Bidding">
+		<Objective Type="CollectItem" ItemId="3409" CollectCount="2">
+			<CollectFrom>
+				<Mob Name="Nightsaber" Id="2042" />
+			</CollectFrom>
+			<Hotspots>
+				<Hotspot X="10013.08" Y="479.9788" Z="1313.945" />
+				<Hotspot X="9980.747" Y="428.3409" Z="1309.446" />
+				<Hotspot X="9974.313" Y="366.8678" Z="1312.625" />
+				<Hotspot X="10074.82" Y="441.8385" Z="1322.064" />
+			</Hotspots>
+		</Objective>
+		<Objective Type="CollectItem" ItemId="3411" CollectCount="2">
+			<CollectFrom>
+				<Mob Name="Strigid Owl" Id="1995" />
+			</CollectFrom>
+			<Hotspots>
+				<Hotspot X="9995.418" Y="569.2999" Z="1314.008" />
+				<Hotspot X="10010.6" Y="485.8519" Z="1313.816" />
+				<Hotspot X="10070.2" Y="494.0125" Z="1320.896" />
+				<Hotspot X="10061.02" Y="573.4304" Z="1323.377" />
+			</Hotspots>
+		</Objective>
+		<Objective Type="CollectItem" ItemId="3412" CollectCount="2">
+			<CollectFrom>
+				<Mob Name="Webwood Lurker" Id="1998" />
+			</CollectFrom>
+			<Hotspots>
+				<Hotspot X="9967.737" Y="702.0175" Z="1317.637" />
+				<Hotspot X="9872.036" Y="733.1455" Z="1306.484" />
+				<Hotspot X="9809.425" Y="759.9942" Z="1303.377" />
+			</Hotspots>
+		</Objective>
+	</Quest>
+
 </HBProfile>

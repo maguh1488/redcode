@@ -19,29 +19,37 @@
 	<SellBlue>False</SellBlue>
 	<SellPurple>False</SellPurple>
 
-	<AvoidMobs>
- 	</AvoidMobs>
-
-	<Blackspots>
-	</Blackspots>
-
 	<Mailboxes>
+		<!--Northshire Valley Mailbox-->
+		<Mailbox X="-8907.67" Y="-129.0542" Z="81.03912" />
+		<!--Goldshire Mailbox-->
+		<Mailbox X="-9455.704" Y="47.17312" Z="56.60661" />
 	</Mailboxes>
 
 	<Vendors>
+		<!--Northshire Valley Vendors-->
+		<Vendor Name="Brother Danil" Entry="152" Type="Food" X="-8901.59" Y="-112.716" Z="81.84892" />
+		<Vendor Name="Godric Rothgar" Entry="1213" Type="Repair" X="-8898.231" Y="-119.8379" Z="81.83279" />
+		<!--Goldshire Vendors-->
+		<Vendor Name="Innkeeper Farley" Entry="295" Type="Food" X="-9462.663" Y="16.19151" Z="56.96266" />
+		<Vendor Name="Andrew Krighton" Entry="2046" Type="Repair" X="-9464.16" Y="87.8281" Z="58.34372" />
 	</Vendors>
 
 	<QuestOrder>
 		<CustomBehavior File="Message" Text="Initializing Settings" LogColor="Cyan" />
 			
+			<!--Settings Configuration-->
 			<CustomBehavior File="UserSettings" LootMobs="True" UseFlightPaths="True" PullDistance="25" />
-			<CustomBehavior File="EnablePlugin" Names="Anti Drown,AutoEquip2,Drink Potions,Refreshment,Talented2" />
+			<CustomBehavior File="EnablePlugin" Names="Anti Drown,AutoEquip2,DrinkPotions,Refreshment,Talented2" />
 			<CustomBehavior File="RunMacro" Macro="/script SetCVar('AutoLootDefault', 1)" WaitTime="1000" />
 
-		<CustomBehavior File="Message" Text="Compiling Quests: Northshire Abbey" LogColor="Cyan" />
+			<!--Extreme Racial Prejudice-->
+			<If Condition="Me.Race != WoWRace.Human">
+				<CustomBehavior File="Message" Text="You're not a Human. Finding Appropriate Profile!" LogColor="Cyan" />
+				<CustomBehavior File="LoadProfile" ProfileName="..\[N - Quest] Profile Loader [Life].xml" />
+			</If>
 
-		<If Condition="Me.Race != WoWRace.Human">
-		</If>
+		<CustomBehavior File="Message" Text="Compiling Quests: Northshire Abbey" LogColor="Cyan" />
 
 		<If Condition="Me.Class == WoWClass.Warrior">
 			<PickUp QuestName="Beating them Back!" QuestId="28766" GiverName="Marshal McBride" GiverId="197" />
@@ -98,22 +106,33 @@
 			<PickUp QuestName="The Hunter's Path" QuestId="26917" GiverName="Ashley Blank" GiverId="43278" />
 			
 				<!--Objective: The Hunter's Path-->
-				<If Condition="HasQuest(26917) &amp;&amp; !IsQuestCompleted(26917)">
-					<CustomBehavior File="CastSpellOn" QuestId="26917" SpellId="56641" MobId="44548" NumOfTimes="5" MobHpPercentLeft="100" MinRange="14" X="-8965.57" Y="-146.288" Z="81.50985" />
-				</If>
+				<While Condition="HasQuest(26917) &amp;&amp; !IsQuestCompleted(26917)">
+					<RunTo DestName="Training Dummies" X="-8954.836" Y="-154.4586" Z="81.51112" />
+					<DisableBehavior Name="Combat" />
+					<CustomBehavior File="InteractWith" MobId="44548" InteractByCastingSpellId="56641" NumOfTimes="1" Range="40" WaitTime="1000" X="-8954.836" Y="-154.4586" Z="81.51112" />
+					<EnableBehavior Name="Combat" />
+				</While>
 			
 			<TurnIn QuestName="The Hunter's Path" QuestId="26917" TurnInName="Ashley Blank" TurnInId="43278" />
 			<PickUp QuestName="Join the Battle!" QuestId="28780" GiverName="Ashley Blank" GiverId="43278" />
 			<TurnIn QuestName="Join the Battle!" QuestId="28780" TurnInName="Sergeant Willem" TurnInId="823" />
+			<PickUp QuestName="They Sent Assassins" QuestId="28791" GiverName="Sergeant Willem" GiverId="823" />
 			<PickUp QuestName="Fear No Evil" QuestId="28806" GiverName="Brother Paxton" GiverId="951" />
 			
-				<CustomBehavior File="InteractWith" QuestId="28806" MobId="50047" NumOfTimes="100" CollectionDistance="500" X="-8769.394" Y="-190.3564" Z="84.5011" />
-			
-			<TurnIn QuestName="Fear No Evil" QuestId="28806" TurnInName="Brother Paxton" TurnInId="951" />
-			<PickUp QuestName="They Sent Assassins" QuestId="28791" GiverName="Sergeant Willem" GiverId="823" />
+				<!--Objective: Fear No Evil-->
+				<CustomBehavior File="InteractWith" QuestId="28806" MobId="50047" NumOfTimes="100">
+					<HuntingGrounds>
+						<Hotspot X="-8809.531" Y="-210.779" Z="83.09924" />
+						<Hotspot X="-8782.778" Y="-262.856" Z="81.37782" />
+						<Hotspot X="-8753.458" Y="-231.0695" Z="86.25385" />
+						<Hotspot X="-8748.09" Y="-174.4239" Z="85.49564" />
+						<Hotspot X="-8731.524" Y="-117.8102" Z="85.43202" />
+					</HuntingGrounds>
+				</CustomBehavior>
 			
 				<Objective QuestName="They Sent Assassins" QuestId="28791" Type="KillMob" MobId="50039" KillCount="8" />
-			
+
+			<TurnIn QuestName="Fear No Evil" QuestId="28806" TurnInName="Brother Paxton" TurnInId="951" />
 			<TurnIn QuestName="They Sent Assassins" QuestId="28791" TurnInName="Sergeant Willem" TurnInId="823" />
 			<PickUp QuestName="The Rear is Clear" QuestId="28817" GiverName="Sergeant Willem" GiverId="823" />
 			<TurnIn QuestName="The Rear is Clear" QuestId="28817" TurnInName="Marshal McBride" TurnInId="197" />
@@ -207,23 +226,36 @@
 			<PickUp QuestName="The Power of the Light" QuestId="26918" GiverName="Brother Sammuel" GiverId="925" />
 			
 				<!--Objective: The Power of the Light-->
-				<If Condition="HasQuest(26918) &amp;&amp; !IsQuestCompleted(26918)">
-					<RunTo X="-8967.868" Y="-153.4938" Z="81.50329" />
-					<CustomBehavior File="InteractWith" QuestId="26918" MobId="44548" NumOfTimes="1" X="-8967.868" Y="-153.4938" Z="81.50329" />
-				</If>
+				<While Condition="HasQuest(26918) &amp;&amp; !IsQuestCompleted(26918)">
+					<DisableBehavior Name="Combat" />
+					<If Condition="!Me.HasAura(105361)">
+						<CustomBehavior File="Misc\RunLua" Lua="CastSpellByID(105361)" WaitTime="1000" />
+					</If>				
+					<RunTo DestName="Training Dummies" X="-8966.866" Y="-152.2855" Z="81.50294" />
+					<CustomBehavior File="InteractWith" QuestId="26918" MobId="44548" Range="5" X="-8966.866" Y="-152.2855" Z="81.50294" />
+					<EnableBehavior Name="Combat" />
+				</While>
 			
 			<TurnIn QuestName="The Power of the Light" QuestId="26918" TurnInName="Brother Sammuel" TurnInId="925" />
 			<PickUp QuestName="Join the Battle!" QuestId="28785" GiverName="Brother Sammuel" GiverId="925" />
 			<TurnIn QuestName="Join the Battle!" QuestId="28785" TurnInName="Sergeant Willem" TurnInId="823" />
+			<PickUp QuestName="They Sent Assassins" QuestId="28793" GiverName="Sergeant Willem" GiverId="823" />
 			<PickUp QuestName="Fear No Evil" QuestId="28809" GiverName="Brother Paxton" GiverId="951" />
 				
-				<CustomBehavior File="InteractWith" QuestId="28809" MobId="50047" NumOfTimes="100" CollectionDistance="500" X="-8769.394" Y="-190.3564" Z="84.5011" />
-			
-			<TurnIn QuestName="Fear No Evil" QuestId="28809" TurnInName="Brother Paxton" TurnInId="951" />
-			<PickUp QuestName="They Sent Assassins" QuestId="28793" GiverName="Sergeant Willem" GiverId="823" />
-			
+				<!--Objective: Fear No Evil-->
+				<CustomBehavior File="InteractWith" QuestId="28809" MobId="50047" NumOfTimes="100">
+					<HuntingGrounds>
+						<Hotspot X="-8809.531" Y="-210.779" Z="83.09924" />
+						<Hotspot X="-8782.778" Y="-262.856" Z="81.37782" />
+						<Hotspot X="-8753.458" Y="-231.0695" Z="86.25385" />
+						<Hotspot X="-8748.09" Y="-174.4239" Z="85.49564" />
+						<Hotspot X="-8731.524" Y="-117.8102" Z="85.43202" />
+					</HuntingGrounds>
+				</CustomBehavior>
+
 				<Objective QuestName="They Sent Assassins" QuestId="28793" Type="KillMob" Name="Goblin Assassin" MobId="50039" KillCount="8" />
 			
+			<TurnIn QuestName="Fear No Evil" QuestId="28809" TurnInName="Brother Paxton" TurnInId="951" />
 			<TurnIn QuestName="They Sent Assassins" QuestId="28793" TurnInName="Sergeant Willem" TurnInId="823" />
 			<PickUp QuestName="The Rear is Clear" QuestId="28819" GiverName="Sergeant Willem" GiverId="823" />
 			<TurnIn QuestName="The Rear is Clear" QuestId="28819" TurnInName="Marshal McBride" TurnInId="197" />
@@ -241,25 +273,36 @@
 			<TurnIn QuestName="Lions for Lambs" QuestId="28771" TurnInName="Marshal McBride" TurnInId="197" />
 			<PickUp QuestName="Hallowed Letter" QuestId="3103" GiverName="Marshal McBride" GiverId="197" />
 			<TurnIn QuestName="Hallowed Letter" QuestId="3103" TurnInName="Priestess Anetta" TurnInId="375" />
-			<PickUp QuestName="Healing the Wounded" QuestId="26919" GiverName="Priestess Anetta" GiverId="375" />
+			<PickUp QuestName="Learning the Word" QuestId="26919" GiverName="Priestess Anetta" GiverId="375" />
 				
 				<!--Objective: Healing the Wounded-->
-				<If Condition="HasQuest(26919) &amp;&amp; !IsQuestCompleted(26919)">
-					<CustomBehavior File="CastSpellOn" QuestId="26919" SpellId="589" MobId="44548" NumOfTimes="5" MobHpPercentLeft="100" MinRange="3" X="-8858.6" Y="-197.16" Z="81.92604" />
-				</If>
+				<While Condition="HasQuest(26919) &amp;&amp; !IsQuestCompleted(26919)">
+					<Disablebehavior Name="Combat" />
+					<RunTo DestName="Training Dummies" X="-8955.245" Y="-155.3126" Z="81.50877" />
+					<CustomBehavior File="InteractWith" InteractByCastingSpellId="589" MobId="44548" Range="40" NonCompeteDistance="3" WaitTime="1000" X="-8955.245" Y="-155.3126" Z="81.50877" />
+					<Enablebehavior Name="Combat" />
+				</While>
 			
-			<TurnIn QuestName="Healing the Wounded" QuestId="26919" TurnInName="Priestess Anetta" TurnInId="375" />
+			<TurnIn QuestName="Learning the Word" QuestId="26919" TurnInName="Priestess Anetta" TurnInId="375" />
 			<PickUp QuestName="Join the Battle!" QuestId="28786" GiverName="Priestess Anetta" GiverId="375" />
 			<TurnIn QuestName="Join the Battle!" QuestId="28786" TurnInName="Sergeant Willem" TurnInId="823" />
+			<PickUp QuestName="They Sent Assassins" QuestId="28794" GiverName="Sergeant Willem" GiverId="823" />
 			<PickUp QuestName="Fear No Evil" QuestId="28810" GiverName="Brother Paxton" GiverId="951" />
 
-				<CustomBehavior File="InteractWith" QuestId="28810" MobId="50047" NumOfTimes="100" CollectionDistance="500" X="-8769.394" Y="-190.3564" Z="84.5011" />
+				<!--Objective: Fear No Evil-->
+				<CustomBehavior File="InteractWith" QuestId="28810" MobId="50047" NumOfTimes="100">
+					<HuntingGrounds>
+						<Hotspot X="-8809.531" Y="-210.779" Z="83.09924" />
+						<Hotspot X="-8782.778" Y="-262.856" Z="81.37782" />
+						<Hotspot X="-8753.458" Y="-231.0695" Z="86.25385" />
+						<Hotspot X="-8748.09" Y="-174.4239" Z="85.49564" />
+						<Hotspot X="-8731.524" Y="-117.8102" Z="85.43202" />
+					</HuntingGrounds>
+				</CustomBehavior>
+
+				<Objective QuestName="They Sent Assassins" QuestId="28794" Type="KillMob" MobId="50039" KillCount="8" />
 			
 			<TurnIn QuestName="Fear No Evil" QuestId="28810" TurnInName="Brother Paxton" TurnInId="951" />
-			<PickUp QuestName="They Sent Assassins" QuestId="28794" GiverName="Sergeant Willem" GiverId="823" />
-		
-				<Objective QuestName="They Sent Assassins" QuestId="28794" Type="KillMob" MobId="50039" KillCount="8" />
-		
 			<TurnIn QuestName="They Sent Assassins" QuestId="28794" TurnInName="Sergeant Willem" TurnInId="823" />
 			<PickUp QuestName="The Rear is Clear" QuestId="28820" GiverName="Sergeant Willem" GiverId="823" />
 			<TurnIn QuestName="The Rear is Clear" QuestId="28820" TurnInName="Marshal McBride" TurnInId="197" />
@@ -333,8 +376,83 @@
 			<TurnIn QuestName="The Rear is Clear" QuestId="31145" TurnInName="Marshal McBride" TurnInId="197" />
 		</If>
 
-		
 		<PickUp QuestName="Blackrock Invasion" QuestId="26389" GiverName="Marshal McBride" GiverId="197" />
 		<PickUp QuestName="Extinguishing Hope" QuestId="26391" GiverName="Milly Osworth" GiverId="9296" />
+
+			<!--Objective: Extinguishing Hope-->
+			<CustomBehavior File="InteractWith" QuestId="26391" MobId="42940" InteractByUsingItemId="58362" Range="10" NumOfTimes="100" WaitTime="2000">
+				<HuntingGrounds>
+					<Hotspot X="-9059.803" Y="-289.3979" Z="73.43095" />
+					<Hotspot X="-9036.552" Y="-315.1826" Z="73.65794" />
+					<Hotspot X="-9048.843" Y="-355.4338" Z="73.51853" />
+					<Hotspot X="-9069.039" Y="-336.378" Z="73.45265" />
+					<Hotspot X="-9108.095" Y="-348.9857" Z="73.43291" />
+				</HuntingGrounds>
+			</CustomBehavior>
+
+			<Objective QuestName="Blackrock Invasion" QuestId="26389" Type="CollectItem" ItemId="58361" CollectCount="8" />
+
+		<TurnIn QuestName="Extinguishing Hope" QuestId="26391" TurnInName="Milly Osworth" TurnInId="9296" />
+		<TurnIn QuestName="Blackrock Invasion" QuestId="26389" TurnInName="Marshal McBride" TurnInId="197" />
+		<PickUp QuestName="Ending the Invasion!" QuestId="26390" GiverName="Marshal McBride" GiverId="197" />
+			
+			<Objective QuestName="Ending the Invasion!" QuestId="26390" Type="KillMob" MobId="42938" KillCount="1" />		
+		
+		<TurnIn QuestName="Ending the Invasion!" QuestId="26390" TurnInName="Marshal McBride" TurnInId="197" />
+		<PickUp QuestName="Report to Goldshire" QuestId="54" GiverName="Marshal McBride" GiverId="197" />
+		<PickUp QuestName="Rest and Relaxation" QuestId="2158" GiverName="Falkhaan Isenstrider" GiverId="6774" />
+
+			<!--Hearthstone, Selling, Repairing, Mailing-->
+			<If Condition="HasQuest(54)">
+				<TurnIn QuestName="Report to Goldshire" QuestId="54" TurnInName="Marshal Dughan" TurnInId="240" />
+
+				<CustomBehavior File="Message" Text="Setting Hearthstone, Selling, Repairing, &amp; Mailing. Please Wait!" LogColor="Cyan" />
+				<TurnIn QuestName="Rest and Relaxation" QuestId="2158" TurnInName="Innkeeper Farley" TurnInId="295" />
+				<!--Lion's Pride Inn (5637)-->
+				<CustomBehavior File="InteractWith" MobId="295" GossipOptions="2" NonCompeteDistance="0" X="-9464.433" Y="16.37263" Z="56.96368" />
+				<CustomBehavior File="ForceSetVendor" DoSell="True" DoRepair="True" DoMail="True" />
+			</If>
+
+			<!--Goofed the HasQuest-->
+			<If Condition="HasQuest(2158)">
+				<TurnIn QuestName="Rest and Relaxation" QuestId="2158" TurnInName="Innkeeper Farley" TurnInId="295" />	
+			</If>
+
+		<CustomBehavior File="Message" Text="Profile Complete: Loading Elwynn Forest" LogColor="Cyan" />
+		<CustomBehavior File="LoadProfile" ProfileName="..\Eastern Kingdoms\[A - Quest] Elwynn Forest [Life]" />
 	</QuestOrder>
+
+	<Quest Id="26390" Name="Ending the Invasion!">
+		<Objective Type="KillMob" MobId="42938" KillCount="1">
+			<Hotspots>
+				<Hotspot X="-8886.826" Y="-441.1153" Z="68.24305" />
+			</Hotspots>
+		</Objective>
+	</Quest>
+	<Quest Id="28771" Name="Lions for Lambs">
+		<Objective Type="KillMob" MobId="49874" KillCount="8">
+			<Hotspots>
+				<Hotspot X="-8964.133" Y="-44.69847" Z="91.20314" />
+				<Hotspot X="-8929.106" Y="-57.69943" Z="89.6625" />
+				<Hotspot X="-8870.937" Y="-80.62974" Z="82.86373" />
+				<Hotspot X="-8834.194" Y="-99.90842" Z="84.45006" />
+				<Hotspot X="-8791.348" Y="-61.86593" Z="90.33534" />
+			</Hotspots>
+		</Objective>
+	</Quest>
+	<Quest Id="26389" Name="Blackrock Invasion">
+		<Objective Type="CollectItem" ItemId="58361" CollectCount="8">
+			<CollectFrom>
+				<Mob Name="Blackrock Invader" Entry="42937" />
+			</CollectFrom>
+			<Hotspots>
+				<Hotspot X="-8964.133" Y="-44.69847" Z="91.20314" />
+				<Hotspot X="-8929.106" Y="-57.69943" Z="89.6625" />
+				<Hotspot X="-8870.937" Y="-80.62974" Z="82.86373" />
+				<Hotspot X="-8834.194" Y="-99.90842" Z="84.45006" />
+				<Hotspot X="-8791.348" Y="-61.86593" Z="90.33534" />
+			</Hotspots>
+		</Objective>
+	</Quest>	
+
 </HBProfile>

@@ -19,6 +19,11 @@
 	<SellBlue>False</SellBlue>
 	<SellPurple>False</SellPurple>
 
+	<Avoidmobs>
+		<!--Draenei Training Dummy-->
+		<Mob Name="Training Dummy" Entry="44703" />
+	</Avoidmobs>
+
 	<Blackspots>
 		<!--Ammen Vale Crystal-->
 		<Blackspot X="-4029.209" Y="-13713.11" Z="70.51244" Radius="5.534916" />
@@ -40,26 +45,19 @@
 		<Vendor Name="Kioni" Entry="17929" Type="Repair" X="-4225.71" Y="-12523.13" Z="45.44451" />
 	</Vendors>
 
-	<Quest Id="9280" Name="Replenishing the Healing Crystals">
-		<Objective Type="CollectItem" ItemId="22889" CollectCount="6">
-			<CollectFrom>
-				<Mob Name="Vale Moth" Id="16520" />
-			</CollectFrom>
-			<Hotspots>
-				<Hotspot X="-4012.202" Y="-13739.07" Z="68.78873" />
-				<Hotspot X="-3937.309" Y="-13734.15" Z="62.22201" />
-				<Hotspot X="-3901.857" Y="-13674.38" Z="62.70543" />
-				<Hotspot X="-3974.797" Y="-13634.95" Z="57.68211" />
-			</Hotspots>
-		</Objective>
-	</Quest>
-
 	<QuestOrder>
 		<CustomBehavior File="Message" Text="Initializing Settings" LogColor="Cyan" />
 			
+			<!--Settings Configuration-->
 			<CustomBehavior File="UserSettings" LootMobs="True" UseFlightPaths="True" PullDistance="25" />
-			<CustomBehavior File="EnablePlugin" Names="Anti Drown,AutoEquip2,Drink Potions,Refreshment,Talented2" />
+			<CustomBehavior File="EnablePlugin" Names="Anti Drown,AutoEquip2,DrinkPotions,Refreshment,Talented2" />
 			<CustomBehavior File="RunMacro" Macro="/script SetCVar('AutoLootDefault', 1)" WaitTime="1000" />
+
+			<!--Extreme Racial Prejudice-->
+			<If Condition="Me.Race != WoWRace.Draenei">
+				<CustomBehavior File="Message" Text="You're not a Draenei. Finding Appropriate Profile!" LogColor="Cyan" />
+				<CustomBehavior File="LoadProfile" ProfileName="..\[N - Quest] Profile Loader [Life].xml" />					
+			</If>
 
 		<CustomBehavior File="Message" Text="Compiling Quests: Ammen Vale" LogColor="Cyan" />
 
@@ -84,85 +82,87 @@
 			<Objective QuestName="Volatile Mutations" QuestId="10302" Type="KillMob" MobId="16516" KillCount="8" />
 
 			<!--Objective: Rescue the Survivors-->
-			<If Condition="HasSpell(59542)">
-				<CustomBehavior File="InteractWith" QuestId="9283" InteractByCastingSpellId="59542" MobId="16483" MobHpPercentLeft="10" Range="5">			
-					<HuntingGrounds>
-						<Hotspot X="-4012.202" Y="-13739.07" Z="68.78873" />
-						<Hotspot X="-3937.309" Y="-13734.15" Z="62.22201" />
-						<Hotspot X="-3901.857" Y="-13674.38" Z="62.70543" />
-						<Hotspot X="-3974.797" Y="-13634.95" Z="57.68211" />
-					</HuntingGrounds>
-				</CustomBehavior>
-			</If>
-			<If Condition="HasSpell(59543)">
-				<CustomBehavior File="InteractWith" QuestId="9283" InteractByCastingSpellId="59543" MobId="16483" MobHpPercentLeft="10" Range="5">			
-					<HuntingGrounds>
-						<Hotspot X="-4012.202" Y="-13739.07" Z="68.78873" />
-						<Hotspot X="-3937.309" Y="-13734.15" Z="62.22201" />
-						<Hotspot X="-3901.857" Y="-13674.38" Z="62.70543" />
-						<Hotspot X="-3974.797" Y="-13634.95" Z="57.68211" />
-					</HuntingGrounds>
-				</CustomBehavior>
-			</If>
-			<If Condition="HasSpell(59544)">
-				<CustomBehavior File="InteractWith" QuestId="9283" InteractByCastingSpellId="59544" MobId="16483" MobHpPercentLeft="10" Range="5">			
-					<HuntingGrounds>
-						<Hotspot X="-4012.202" Y="-13739.07" Z="68.78873" />
-						<Hotspot X="-3937.309" Y="-13734.15" Z="62.22201" />
-						<Hotspot X="-3901.857" Y="-13674.38" Z="62.70543" />
-						<Hotspot X="-3974.797" Y="-13634.95" Z="57.68211" />
-					</HuntingGrounds>
-				</CustomBehavior>
-			</If>
-			<If Condition="HasSpell(59545)">
-				<CustomBehavior File="InteractWith" QuestId="9283" InteractByCastingSpellId="59545" MobId="16483" MobHpPercentLeft="10" Range="5">
-					<HuntingGrounds>
-						<Hotspot X="-4012.202" Y="-13739.07" Z="68.78873" />
-						<Hotspot X="-3937.309" Y="-13734.15" Z="62.22201" />
-						<Hotspot X="-3901.857" Y="-13674.38" Z="62.70543" />
-						<Hotspot X="-3974.797" Y="-13634.95" Z="57.68211" />
-					</HuntingGrounds>
-				</CustomBehavior>
-			</If>
-			<If Condition="HasSpell(59547)">
-				<CustomBehavior File="InteractWith" QuestId="9283" InteractByCastingSpellId="59547" MobId="16483" MobHpPercentLeft="10" Range="5">
-					<HuntingGrounds>
-						<Hotspot X="-4012.202" Y="-13739.07" Z="68.78873" />
-						<Hotspot X="-3937.309" Y="-13734.15" Z="62.22201" />
-						<Hotspot X="-3901.857" Y="-13674.38" Z="62.70543" />
-						<Hotspot X="-3974.797" Y="-13634.95" Z="57.68211" />
-					</HuntingGrounds>
-				</CustomBehavior>
-			</If>
-			<If Condition="HasSpell(59548)">
-				<CustomBehavior File="InteractWith" QuestId="9283" InteractByCastingSpellId="59548" MobId="16483" MobHpPercentLeft="10" Range="5">			
-					<HuntingGrounds>
-						<Hotspot X="-4012.202" Y="-13739.07" Z="68.78873" />
-						<Hotspot X="-3937.309" Y="-13734.15" Z="62.22201" />
-						<Hotspot X="-3901.857" Y="-13674.38" Z="62.70543" />
-						<Hotspot X="-3974.797" Y="-13634.95" Z="57.68211" />
-					</HuntingGrounds>
-				</CustomBehavior>
-			</If>
-			<If Condition="HasSpell(28880)">
-				<CustomBehavior File="InteractWith" QuestId="9283" InteractByCastingSpellId="28880" MobId="16483" MobHpPercentLeft="10" Range="5">
-					<HuntingGrounds>
-						<Hotspot X="-4012.202" Y="-13739.07" Z="68.78873" />
-						<Hotspot X="-3937.309" Y="-13734.15" Z="62.22201" />
-						<Hotspot X="-3901.857" Y="-13674.38" Z="62.70543" />
-						<Hotspot X="-3974.797" Y="-13634.95" Z="57.68211" />
-					</HuntingGrounds>
-				</CustomBehavior>
-			</If>
-			<If Condition="HasSpell(121093)">
-				<CustomBehavior File="InteractWith" QuestId="9283" InteractByCastingSpellId="121093" MobId="16483" MobHpPercentLeft="10" Range="5">			
-					<HuntingGrounds>
-						<Hotspot X="-4012.202" Y="-13739.07" Z="68.78873" />
-						<Hotspot X="-3937.309" Y="-13734.15" Z="62.22201" />
-						<Hotspot X="-3901.857" Y="-13674.38" Z="62.70543" />
-						<Hotspot X="-3974.797" Y="-13634.95" Z="57.68211" />
-					</HuntingGrounds>
-				</CustomBehavior>
+			<If Condition="HasQuest(9283) &amp;&amp; !IsQuestCompleted(9283)">
+				<If Condition="HasSpell(59542)">
+					<CustomBehavior File="InteractWith" InteractByCastingSpellId="59542" MobId="16483" MobHpPercentLeft="10" Range="5">			
+						<HuntingGrounds>
+							<Hotspot X="-4012.202" Y="-13739.07" Z="68.78873" />
+							<Hotspot X="-3937.309" Y="-13734.15" Z="62.22201" />
+							<Hotspot X="-3901.857" Y="-13674.38" Z="62.70543" />
+							<Hotspot X="-3974.797" Y="-13634.95" Z="57.68211" />
+						</HuntingGrounds>
+					</CustomBehavior>
+				</If>
+				<If Condition="HasSpell(59543)">
+					<CustomBehavior File="InteractWith" InteractByCastingSpellId="59543" MobId="16483" MobHpPercentLeft="10" Range="5">			
+						<HuntingGrounds>
+							<Hotspot X="-4012.202" Y="-13739.07" Z="68.78873" />
+							<Hotspot X="-3937.309" Y="-13734.15" Z="62.22201" />
+							<Hotspot X="-3901.857" Y="-13674.38" Z="62.70543" />
+							<Hotspot X="-3974.797" Y="-13634.95" Z="57.68211" />
+						</HuntingGrounds>
+					</CustomBehavior>
+				</If>
+				<If Condition="HasSpell(59544)">
+					<CustomBehavior File="InteractWith" InteractByCastingSpellId="59544" MobId="16483" MobHpPercentLeft="10" Range="5">			
+						<HuntingGrounds>
+							<Hotspot X="-4012.202" Y="-13739.07" Z="68.78873" />
+							<Hotspot X="-3937.309" Y="-13734.15" Z="62.22201" />
+							<Hotspot X="-3901.857" Y="-13674.38" Z="62.70543" />
+							<Hotspot X="-3974.797" Y="-13634.95" Z="57.68211" />
+						</HuntingGrounds>
+					</CustomBehavior>
+				</If>
+				<If Condition="HasSpell(59545)">
+					<CustomBehavior File="InteractWith" InteractByCastingSpellId="59545" MobId="16483" MobHpPercentLeft="10" Range="5">
+						<HuntingGrounds>
+							<Hotspot X="-4012.202" Y="-13739.07" Z="68.78873" />
+							<Hotspot X="-3937.309" Y="-13734.15" Z="62.22201" />
+							<Hotspot X="-3901.857" Y="-13674.38" Z="62.70543" />
+							<Hotspot X="-3974.797" Y="-13634.95" Z="57.68211" />
+						</HuntingGrounds>
+					</CustomBehavior>
+				</If>
+				<If Condition="HasSpell(59547)">
+					<CustomBehavior File="InteractWith" InteractByCastingSpellId="59547" MobId="16483" MobHpPercentLeft="10" Range="5">
+						<HuntingGrounds>
+							<Hotspot X="-4012.202" Y="-13739.07" Z="68.78873" />
+							<Hotspot X="-3937.309" Y="-13734.15" Z="62.22201" />
+							<Hotspot X="-3901.857" Y="-13674.38" Z="62.70543" />
+							<Hotspot X="-3974.797" Y="-13634.95" Z="57.68211" />
+						</HuntingGrounds>
+					</CustomBehavior>
+				</If>
+				<If Condition="HasSpell(59548)">
+					<CustomBehavior File="InteractWith" InteractByCastingSpellId="59548" MobId="16483" MobHpPercentLeft="10" Range="5">			
+						<HuntingGrounds>
+							<Hotspot X="-4012.202" Y="-13739.07" Z="68.78873" />
+							<Hotspot X="-3937.309" Y="-13734.15" Z="62.22201" />
+							<Hotspot X="-3901.857" Y="-13674.38" Z="62.70543" />
+							<Hotspot X="-3974.797" Y="-13634.95" Z="57.68211" />
+						</HuntingGrounds>
+					</CustomBehavior>
+				</If>
+				<If Condition="HasSpell(28880)">
+					<CustomBehavior File="InteractWith" InteractByCastingSpellId="28880" MobId="16483" MobHpPercentLeft="10" Range="5">
+						<HuntingGrounds>
+							<Hotspot X="-4012.202" Y="-13739.07" Z="68.78873" />
+							<Hotspot X="-3937.309" Y="-13734.15" Z="62.22201" />
+							<Hotspot X="-3901.857" Y="-13674.38" Z="62.70543" />
+							<Hotspot X="-3974.797" Y="-13634.95" Z="57.68211" />
+						</HuntingGrounds>
+					</CustomBehavior>
+				</If>
+				<If Condition="HasSpell(121093)">
+					<CustomBehavior File="InteractWith" InteractByCastingSpellId="121093" MobId="16483" MobHpPercentLeft="10" Range="5">			
+						<HuntingGrounds>
+							<Hotspot X="-4012.202" Y="-13739.07" Z="68.78873" />
+							<Hotspot X="-3937.309" Y="-13734.15" Z="62.22201" />
+							<Hotspot X="-3901.857" Y="-13674.38" Z="62.70543" />
+							<Hotspot X="-3974.797" Y="-13634.95" Z="57.68211" />
+						</HuntingGrounds>
+					</CustomBehavior>
+				</If>
 			</If>
 
 		<TurnIn QuestName="Volatile Mutations" QuestId="10302" TurnInName="Botanist Taerix" TurnInId="16514" />
@@ -206,7 +206,20 @@
 			<PickUp QuestName="Charge!" QuestId="27091" GiverName="Delios Silverblade" GiverId="43010" />
 		</If>
 		<If Condition="Me.Class == WoWClass.Paladin">
-			<PickUp QuestName="Ways of the Light" QuestId="10069" GiverName="Jesthenis Sunstriker" GiverId="15280" />
+			<PickUp QuestName="The Light's Power" QuestId="26966" GiverName="Aurelon" GiverId="16501" />
+
+				<!--Objective: The Light's Power-->
+				<While Condition="HasQuest(26966) &amp;&amp; !IsQuestCompleted(26966)">
+					<DisableBehavior Name="Combat" />
+					<If Condition="!Me.HasAura(105361)">
+						<CustomBehavior File="Misc\RunLua" Lua="CastSpellByID(105361)" WaitTime="1000" />
+					</If>				
+					<RunTo DestName="Training Dummies" X="-4048.938" Y="-13750.2" Z="76.27335" />
+					<CustomBehavior File="InteractWith" MobId="44703" Range="5" X="-4048.938" Y="-13750.2" Z="76.27335" />
+					<EnableBehavior Name="Combat" />
+				</While>
+
+			<TurnIn QuestName="The Light's Power" QuestId="26966" TurnInName="Aurelon" TurnInId="16501" />
 		</If>
 		<If Condition="Me.Class == WoWClass.Hunter">
 			<PickUp QuestName="Steady Shot" QuestId="10070" GiverName="Ranger Sallina" GiverId="15513" />
@@ -235,7 +248,10 @@
 		<PickUp QuestName="Healing the Lake" QuestId="9294" GiverName="Botanist Taerix" GiverId="16514" />
 
 			<!--Objective: Healing the Lake-->
-			<CustomBehavior File="InteractWith" QuestId="9294" MobId="181433" IgnoreLoSToTarget="True" NonCompeteDistance="0" Range="30" X="-4365.726" Y="-13640.46" Z="39.92455" />
+			<While Condition="HasQuest(9294) &amp;&amp; !IsQuestCompleted(9294)">
+				<RunTo DestName="Irradiated Power Crystal" X="-4390.021" Y="-13657.1" Z="39.06654" />
+				<CustomBehavior File="InteractWith" QuestId="9294" MobId="181433" IgnoreLoSToTarget="True" NonCompeteDistance="0" Range="30" X="-4388.271" Y="-13654.93" Z="38.93961" />
+			</While>
 
 			<!--Objective: Inoculation-->
 			<CustomBehavior File="InteractWith" QuestId="9303" InteractByUsingItemId="22962" MobId="16518" CollectionDistance="500" NumOfTimes="50" Range="10" WaitTime="1000">
@@ -266,13 +282,14 @@
 		<PickUp QuestName="Blood Elf Spy" QuestId="9311" GiverId="16546" GiverName="Tolaan" X="-4445.659" Y="-13430.91" Z="51.25468" />
 			
 			<Objective QuestName="Blood Elf Spy" QuestId="9311" Type="KillMob" Name="Surveyor Candress" MobId="16522" KillCount="1" />
+		
+		<TurnIn QuestName="Blood Elf Spy" QuestId="9311" TurnInId="16535" TurnInName="Vindicator Aldar" X="-4195.092" Y="-13735.76" Z="73.72334" />
 
 		<If Condition="HasItem(24414)">
-			<PickUp QuestName="Blood Elf Plans" QuestId="9798" GiverName="Blood Elf Plans" GiverId="24414" GiverType="Item" />
+			<PickUp QuestName="Blood Elf Plans" QuestId="9798" GiverType="Item" GiverName="Blood Elf Plans" GiverId="24414" />
 			<TurnIn QuestName="Blood Elf Plans" QuestId="9798" TurnInId="16535" TurnInName="Vindicator Aldar" X="-4195.092" Y="-13735.76" Z="73.72334" />
 		</If>
 		
-		<TurnIn QuestName="Blood Elf Spy" QuestId="9311" TurnInId="16535" TurnInName="Vindicator Aldar" X="-4195.092" Y="-13735.76" Z="73.72334" />
 		<PickUp QuestName="The Emitter" QuestId="9312" GiverId="16535" GiverName="Vindicator Aldar" X="-4195.092" Y="-13735.76" Z="73.72334" />
 		<TurnIn QuestName="The Emitter" QuestId="9312" TurnInId="17071" TurnInName="Technician Zhanaa" X="-4184.554" Y="-13733.05" Z="74.13895" />
 		<PickUp QuestName="Travel to Azure Watch" QuestId="9313" GiverId="17071" GiverName="Technician Zhanaa" X="-4184.554" Y="-13733.05" Z="74.13895" />
@@ -308,4 +325,19 @@
 		<CustomBehavior File="Message" Text="Profile Complete: Loading Azuremyst Isle" LogColor="Cyan" />
 		<CustomBehavior File="LoadProfile" ProfileName="..\Kalimdor\[A - Quest] Azuremyst Isle [Life]" />	
 	</QuestOrder>
+
+	<Quest Id="9280" Name="Replenishing the Healing Crystals">
+		<Objective Type="CollectItem" ItemId="22889" CollectCount="6">
+			<CollectFrom>
+				<Mob Name="Vale Moth" Id="16520" />
+			</CollectFrom>
+			<Hotspots>
+				<Hotspot X="-4012.202" Y="-13739.07" Z="68.78873" />
+				<Hotspot X="-3937.309" Y="-13734.15" Z="62.22201" />
+				<Hotspot X="-3901.857" Y="-13674.38" Z="62.70543" />
+				<Hotspot X="-3974.797" Y="-13634.95" Z="57.68211" />
+			</Hotspots>
+		</Objective>
+	</Quest>
+
 </HBProfile>

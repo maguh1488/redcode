@@ -13,8 +13,6 @@
 		<CustomBehavior File="Message" Text="Warning!: " LogColor="Orange" />
 
 		<CustomBehavior File="UserSettings" LootMobs="True" UseFlightPaths="True" PullDistance="25" />
-
-		<CustomBehavior File="SetHearthstone" MobId="" X="" Y="" Z="" />
 		<CustomBehavior File="ForceSetVendor" DoSell="True" DoRepair="True" DoMail="True" />
 
 		<!--Common Conditions-->
@@ -24,6 +22,7 @@
 		<If Condition="HasItem()"></If>
 		<If Condition="!IsAchievementCompleted(,)"></If>
 		<While Condition="GetItemCount() &gt;= 10"></While>
+		<If Condition="Me.HearthstoneAreaId != "></If>
 
 	</QuestOrder>
 </HBProfile>

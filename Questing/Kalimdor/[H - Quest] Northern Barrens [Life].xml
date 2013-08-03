@@ -19,9 +19,6 @@
 	<SellBlue>False</SellBlue>
 	<SellPurple>False</SellPurple>
 
-	<AvoidMobs>
- 	</AvoidMobs>
-
 	<Blackspots>
 		<!--Central Razormane Spike Fire-->
 		<Blackspot X="-100.1413" Y="-3654.23" Z="27.18554" Radius="4" Height="4" />
@@ -59,18 +56,12 @@
 	<QuestOrder>
 		<CustomBehavior File="Message" Text="Initializing Settings" LogColor="Cyan" />
 			
-			<!--Settings-->
-			<CustomBehavior File="EnablePlugin" Names="Anti Drown,AutoEquip2,Drink Potions,Refreshment,Talented2" />
+			<!--Settings Configuration-->
+			<CustomBehavior File="UserSettings" LootMobs="True" UseFlightPaths="True" PullDistance="25" />
+			<CustomBehavior File="EnablePlugin" Names="Anti Drown,AutoEquip2,DrinkPotions,Refreshment,Talented2" />
 			<CustomBehavior File="RunMacro" Macro="/script SetCVar('AutoLootDefault', 1)" WaitTime="1000" />
 			<If Condition="!HasQuest(871) &amp;&amp; !IsQuestCompleted(871)">
 				<CustomBehavior File="RunMacro" Macro="/run for i=1,GetNumQuestLogEntries() do SelectQuestLogEntry(i); SetAbandonQuest(); AbandonQuest(); end" />
-			</If>
-			<If Condition="(Me.Class == WoWClass.Hunter) || (Me.Class == WoWClass.Priest) || (Me.Class == WoWClass.Mage) || (Me.Class == WoWClass.Warlock) || ((Me.Class == WoWClass.Druid)
-				&amp;&amp; (StyxWoW.Me.Specialization == WoWSpec.DruidBalance)) || ((Me.Class == WoWClass.Shaman) &amp;&amp; (StyxWoW.Me.Specialization == WoWSpec.ShamanElemental))">
-				<CustomBehavior File="UserSettings" LootMobs="True" UseFlightPaths="True" PullDistance="40" />
-				<Else>
-					<CustomBehavior File="UserSettings" LootMobs="True" UseFlightPaths="True" PullDistance="25" />
-				</Else>
 			</If>
 
 			<!--Training Availability Check-->
@@ -117,7 +108,7 @@
 					TransportStartX="2062.376" TransportStartY="292.998" TransportStartZ="114.973"
 					TransportEndX="1833.509" TransportEndY="-4391.543" TransportEndZ="152.7679"
 					StandOnX="2067.979" StandOnY="295.2747" StandOnZ="97.23677" 
-					GetOffX="1840.225" GetOffY="-4390.912" GetOffZ="135.2337" />				
+					GetOffX="1840.225" GetOffY="-4390.912" GetOffZ="135.2337" />
 			</If>
 
 		<CustomBehavior File="Message" Text="Compiling Quests: Far Watch Post" LogColor="Cyan" />
@@ -230,7 +221,7 @@
 				<While Condition="!IsQuestCompleted(13975)">
 					<CustomBehavior File="InteractWith" MobId="34578" InteractByGossipOptions="1" NonCompeteDistance="0" WaitTime="5500" X="218.0785" Y="-2936.549" Z="91.823" />
 					<CustomBehavior File="InteractWith" MobId="34577" WaitTime="7000" Range="4" />
-					<!--Behavior Isn't Ending?-->
+					<!--Behavior Isn't Terminating?-->
 					<!--While Condition="Me.IsOnTransport">
 						<CustomBehavior File="Vehicles\NoControlVehicle" TargetId="34594" NumOfTimes="40" AttackButton="1" OftenToUse="600" />
 					</While-->

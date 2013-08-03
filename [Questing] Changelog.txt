@@ -2,6 +2,11 @@
  ==== Life Project Changelog ====
 ==================================
 _____________________________________
+Revision 71: Friday, August 2nd, 2013
+-- Drink Potions is Automatically Turned Off
+-- More Draenei -> Azuremyst -> Bloodmyst Work
+-- Tons of Various Minor Fixes 
+_____________________________________
 Revision 70: Tuesday, July 30th, 2013
 -- Silverpine Riding Return Syntax Repaired
 -- Northern Barrens Checkpoints Only Work > 60 Now

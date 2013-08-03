@@ -53,7 +53,7 @@
 		<CustomBehavior File="Message" Text="Initializing Settings" LogColor="Cyan" />
 
 			<!--Settings-->
-			<CustomBehavior File="EnablePlugin" Names="Anti Drown,AutoEquip2,Drink Potions,Refreshment,Talented2" />
+			<CustomBehavior File="EnablePlugin" Names="Anti Drown,AutoEquip2,DrinkPotions,Refreshment,Talented2" />
 			<CustomBehavior File="RunMacro" Macro="/script SetCVar('AutoLootDefault', 1)" WaitTime="1000" />
 			<If Condition="(Me.Class == WoWClass.Hunter) || (Me.Class == WoWClass.Priest) || (Me.Class == WoWClass.Mage) || (Me.Class == WoWClass.Warlock) || ((Me.Class == WoWClass.Druid)
 				&amp;&amp; (StyxWoW.Me.Specialization == WoWSpec.DruidBalance)) || ((Me.Class == WoWClass.Shaman) &amp;&amp; (StyxWoW.Me.Specialization == WoWSpec.ShamanElemental))">
@@ -373,10 +373,10 @@
 		<If Condition="HasQuest(27193)">
 			<CustomBehavior File="CompleteLogQuest" QuestId="27193" />
 		</If>
-		<If Condition="!HasQuest(27194) &amp;&amp; !IsQuestCompleted(27194)">
-		  <PickUp QuestName="Cornered and Crushed!" QuestId="27194" GiverName="Lady Sylvanas Windrunner" GiverId="44365" />
-		</If>
-		<TurnIn QuestName="Cornered and Crushed!" QuestId="27194" TurnInName="Master Forteski" TurnInId="45228" />
+		
+		<PickUp QuestName="Cornered and Crushed!" QuestId="27194" GiverName="Lady Sylvanas Windrunner" GiverId="44365" />
+
+		<TurnIn QuestName="Cornered and Crushed!" QuestId="27194" TurnInName="Master Forteski" TurnInId="45228" X="371.996" Y="1102.406" Z="106.3294" />
 		<PickUp QuestName="Nowhere to Run" QuestId="27195" GiverName="Master Forteski" GiverId="45228" />
 
 			<While Condition="!IsQuestCompleted(27195)">
@@ -473,9 +473,9 @@
 				<CustomBehavior File="WaitTimer" QuestId="27401" WaitTime="45000" />
 			</While>
 
-		<If Condition="HasQuest(27401) &amp;&amp; IsQuestCompleted(27401)">
+		<While Condition="HasQuest(27401) &amp;&amp; IsQuestCompleted(27401)">
 		    <CustomBehavior File="CompleteLogQuest" QuestId="27401" />
-		</If>
+		</While>
 
 		<If Condition="!HasQuest(27405) &amp;&amp; !IsQuestCompleted(27405)">
 		  <PickUp QuestName="Fall Back!" QuestId="27405" GiverName="Forward Commander Onslaught" GiverId="45315" />
@@ -537,6 +537,7 @@
 			<!--Objective: Rise, Godfrey-->
 			<While Condition="!IsQuestCompleted(27472)">
 				<CustomBehavior File="ForcedDismount" />
+				<!--Needs to be Altered-->
 				<CustomBehavior File="UserSettings" UseFlightPaths="False" />
 				<CustomBehavior File="WaitTimer" QuestId="27472" WaitTime="92000" GoalText="Waiting for Godfrey to Rise: {TimeRemaining}" />
 				<If Condition="!IsQuestCompleted">
