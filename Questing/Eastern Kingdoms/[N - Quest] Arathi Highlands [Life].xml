@@ -28,61 +28,67 @@
 		<Blackspot X="-1260.549" Y="-2539.954" Z="46.04787" Radius="119.232" />
 	</Blackspots>
 
-	<Mailboxes>
-		<!--Hammerfall Mailbox-->
-		<Mailbox X="-929.5679" Y="-3525.444" Z="70.93375" />
-	</Mailboxes>
-
-	<Vendors>
-		<!--Galen's Fall Vendor-->
-		<Vendor Name="Audrid Grenich" Entry="44047" Type="Sell" X="-948.955" Y="-1611.26" Z="51.32804" />
-		<!--Hammerfall Vendors-->
-		<Vendor Name="Innkeeper Adegwa" Entry="9501" Type="Food" X="-912.3739" Y="-3524.924" Z="72.64717" />
-		<Vendor Name="Mu'uta" Entry="9555" Type="Repair" X="-933.8503" Y="-3477.469" Z="51.30418" />
-	</Vendors>
-
 	<QuestOrder>
 		<CustomBehavior File="Message" Text="Initializing Settings" LogColor="Cyan" />
 
-			<!--Settings Configuration-->
-			<CustomBehavior File="EnablePlugin" Names="Anti Drown,AutoEquip2,DrinkPotions,Refreshment,Talented2" />
-			<CustomBehavior File="RunMacro" Macro="/script SetCVar('AutoLootDefault', 1)" WaitTime="1000" />
-			<If Condition="(Me.Class == WoWClass.Hunter) || (Me.Class == WoWClass.Priest) || (Me.Class == WoWClass.Mage) || (Me.Class == WoWClass.Warlock) || ((Me.Class == WoWClass.Druid)
-				&amp;&amp; (StyxWoW.Me.Specialization == WoWSpec.DruidBalance)) || ((Me.Class == WoWClass.Shaman) &amp;&amp; (StyxWoW.Me.Specialization == WoWSpec.ShamanElemental))">
-				<CustomBehavior File="UserSettings" LootMobs="True" UseFlightPaths="True" PullDistance="40" />
-				<Else>
-					<CustomBehavior File="UserSettings" LootMobs="True" UseFlightPaths="True" PullDistance="25" />
-				</Else>
+			<!--Extreme Racial Prejudice-->
+			<If Condition="Me.IsAlliance">
+				<CustomBehavior File="Message" Text="Error: Alliance support isn't finished yet! Shutting Down" LogColor="Cyan" />
+				<CustomBehavior File="Halt" />
 			</If>
 
 			<!--Training Availability Check-->
-			<If Condition="Me.Level &gt;= 20">
-				<If Condition="Me.GetSkill(Styx.SkillLine.Riding).CurrentValue == 0 &amp;&amp; Me.Gold &gt;= 5">
-					<CustomBehavior File="Message" Text="Riding: Loading Trainer Profile" LogColor="Cyan" />
-					<CustomBehavior File="LoadProfile" ProfileName="..\Riding and Transports\[H - Quest] Northern Barrens Riding" />
-					<ElseIf Condition="Me.Gold &lt; 5 &amp;&amp; Me.GetSkill(Styx.SkillLine.Riding).CurrentValue == 0">
-						<CustomBehavior File="Message" Text="You don't have enough money to train. Train on your Own!" LogColor="Orange" />
-					</ElseIf>
-				</If>
+			<If Condition="Me.GetSkill(Styx.SkillLine.Riding).CurrentValue == 0 &amp;&amp; Me.Gold &gt;= 5 &amp;&amp; Me.Level &gt;= 20">
+				<CustomBehavior File="Message" Text="Riding: Loading Trainer Profile" LogColor="Cyan" />
+					<ClearMailbox />
+					<ClearVendor />
+				<CustomBehavior File="LoadProfile" ProfileName="..\Riding and Transports\[H - Quest] Silverpine Forest Riding" />
 			</If>
 
-			<!--Leveling or Loremaster: Sorting Hat-->
+			<!--Leveling or Loremaster: Harry Potter Sorting Hat-->
 			<If Condition="Me.Level &gt;= 30 &amp;&amp; Me.Level &lt; 60">
 				<CustomBehavior File="Message" Text="Checkpoint Reached: Loading The Hinterlands" LogColor="Cyan" />
+					<ClearMailbox />
+					<ClearVendor />
 				<CustomBehavior File="LoadProfile" ProfileName="[N - Quest] The Hinterlands [Life]" />
-				<!--Checking for Eastern Kingdoms Loremaster-->
-				<ElseIf Condition="Me.Level &gt;= 60 &amp;&amp; IsAchievementCompleted(1676)">
-					<CustomBehavior File="Message" Text="Kingdoms Loremaster: Continent Achievement Complete! Returning to Loader" LogColor="Cyan" />
-					<CustomBehavior File="LoadProfile" ProfileName="../[N - Quest] Loremaster [Life]" />
+
+				<!--Checking for Zone Loremaster-->
+				<ElseIf Condition="Me.Level &gt;= 60 &amp;&amp; IsAchievementCompleted(4896)">
+					<CustomBehavior File="Message" Text="Loremaster: Arathi Highlands Complete! Loading The Hinterlands" LogColor="Cyan" />
+						<ClearVendor />
+						<ClearMailbox />
+					<CustomBehavior File="LoadProfile" ProfileName="[N - Quest] The Hinterlands [Life]" />
 				</ElseIf>
-				<!--Checking for The Hinterlands Loremaster-->
-				<ElseIf Condition="Me.Level &gt;= 60 &amp;&amp; !IsAchievementCompleted(4897)">
-					<CustomBehavior File="Message" Text="Kingdoms Loremaster: Completing The Hinterlands" LogColor="Cyan" />
+
+				<!--We Don't Have Zone Loremaster-->
+				<ElseIf Condition="Me.Level &gt;= 60 &amp;&amp; !IsAchievementCompleted(4896)">
+					<CustomBehavior File="Message" Text="Loremaster: Completing Arathi Highlands" LogColor="Cyan" />
 				</ElseIf>
-				<Else>
-					<CustomBehavior File="Message" Text="Kingdoms Loremaster: Disabled Until Level 60 or Higher" LogColor="Cyan" />
-				</Else>
 			</If>
+
+			<!--Settings Configuration-->
+			<CustomBehavior File="UserSettings" LootMobs="True" UseFlightPaths="True" PullDistance="25" />
+			<CustomBehavior File="EnablePlugin" Names="Anti Drown,AutoEquip2,DrinkPotions,Refreshment,Talented2" />
+			<CustomBehavior File="RunMacro" Macro="/script SetCVar('AutoLootDefault', 1)" WaitTime="1000" />
+
+			<!--Mailboxes-->
+			<SetMailbox>
+				<Mailboxes>
+					<!--Hammerfall Mailbox-->
+					<Mailbox X="-929.5679" Y="-3525.444" Z="70.93375" />
+				</Mailboxes>
+			</SetMailbox>
+
+			<!--Vendors-->
+			<SetVendor>
+				<Vendors>
+					<!--Galen's Fall Vendor-->
+					<Vendor Name="Audrid Grenich" Entry="44047" Type="Sell" X="-948.955" Y="-1611.26" Z="51.32804" />
+					<!--Hammerfall Vendors-->
+					<Vendor Name="Innkeeper Adegwa" Entry="9501" Type="Food" X="-912.3739" Y="-3524.924" Z="72.64717" />
+					<Vendor Name="Mu'uta" Entry="9555" Type="Repair" X="-933.8503" Y="-3477.469" Z="51.30418" />
+				</Vendors>
+			</SetVendor>
 
 			<!--Continental Drift: I'm in Kalimdor, returning to Eastern Kingdoms-->
 			<If Condition="Me.MapId == 1">
@@ -97,10 +103,10 @@
 
 			<!--Get out of "Outlands" Zones-->
 			<If Condition="Me.ZoneId == 3433 || Me.ZoneId == 3430 || Me.ZoneId == 3487">
-				<RunTo DestName="Orb of Translocation" X="10038.42" Y="-7000.994" Z="61.76336" />
 				<CustomBehavior File="Message" Text="Transport: Using Orb of Translocation to Undercity" LogColor="Cyan" />
-				<CustomBehavior File="InteractWith" MobId="184502" Range="8" X="10038.42" Y="-7000.994" Z="61.76336" />
-			</If>			    	
+				<RunTo DestName="Orb of Translocation" X="10038.42" Y="-7000.994" Z="61.76336" />
+				<CustomBehavior File="InteractWith" MobId="184502" Range="8" WaitTime="10000" X="10038.42" Y="-7000.994" Z="61.76336" />
+			</If>
 
 		<CustomBehavior File="Message" Text="Compiling Quests: Galen's Fall" LogColor="Cyan" />
 
@@ -112,9 +118,9 @@
 			<CustomBehavior File="RunMacro" Macro="/run for i=1,GetNumQuestLogEntries() do SelectQuestLogEntry(i); SetAbandonQuest(); AbandonQuest(); end" />
 		</If>
 
+		<PickUp QuestName="First Blood" QuestId="26022" GiverName="Dark Ranger Alina" GiverId="41949" />
 		<PickUp QuestName="Clearing the Highlands" QuestId="26053" GiverName="Deathstalker Maudria" GiverId="41966" />
 		<PickUp QuestName="To Steal From Thieves" QuestId="26428" GiverName="Genavie Callow" GiverId="4486" />
-		<PickUp QuestName="First Blood" QuestId="26022" GiverName="Dark Ranger Alina" GiverId="41949" />
 		
 			<Objective QuestName="First Blood" QuestId="26022" Type="CollectItem" ItemId="4495" CollectCount="10" />
 			<Objective QuestName="Clearing the Highlands" QuestId="26053" Type="KillMob" MobId="2562" KillCount="8" />
@@ -245,6 +251,8 @@
 		<TurnIn QuestName="The Princess Unleashed" QuestId="26912" TurnInType="Object" TurnInName="Shards of Myzrael" TurnInId="138492" X="-942.0483" Y="-3119.223" Z="49.05191" />
 
 		<CustomBehavior File="Message" Text="Profile Complete: Loading The Hinterlands" LogColor="Cyan" />
+			<ClearMailbox />
+			<ClearVendor />
 		<CustomBehavior File="LoadProfile" ProfileName="[N - Quest] The Hinterlands [Life]" />		
 	</QuestOrder>
 

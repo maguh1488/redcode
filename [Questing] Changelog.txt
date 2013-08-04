@@ -1,6 +1,12 @@
 ==================================
  ==== Life Project Changelog ====
 ==================================
+________________________________________
+Revision 72: Saturday, August, 3rd, 2013
+-- New Daisy Chain Framework Testing
+-- Hillsbrad Foothills Fixes
+-- Adding More Frameworks
+-- New Science Lab for Testing
 _____________________________________
 Revision 71: Friday, August 2nd, 2013
 -- Drink Potions is Automatically Turned Off
