@@ -24,73 +24,71 @@
  	</AvoidMobs>
 
 	<Blacklist>
-		<Mob Name="General Marstone" Entry="45995" Flags="Pull" />
+		<Mob Name="General Marstone" Entry="45995" Flags="Pull, Combat" />
 	</Blacklist>
-
-	<Mailboxes>
-		<!--Forsaken Rear Guard Mailbox-->
-		<Mailbox X="1078.974" Y="1586.654" Z="27.70355" />
-		<!--The Sepulcher Mailbox-->
-		<Mailbox X="484.1003" Y="1512.505" Z="135.0216" />
-	</Mailboxes>
-
-	<Vendors>
-		<!--Forsaken High Command Vendor-->
-		<Vendor Name="Apothecary Harrington" Entry="45491" Type="Food" X="1445.27" Y="1072.9" Z="60.46035" />
-		<!--Forsaken Rear Guard Vendors-->
-		<Vendor Name="Commander Hickley" Entry="45496" Type="Food" X="1097.57" Y="1587.29" Z="28.53036" />
-		<Vendor Name="&quot;Salty&quot; Gorgar" Entry="45497" Type="Repair" X="1036.46" Y="1581" Z="27.57658" />
-		<!--The Sepulcher Vendors-->
-		<Vendor Name="Innkeeper Bates" Entry="6739" Type="Food" X="471.135" Y="1500.55" Z="135.5222" />
-		<Vendor Name="Alexandre Lefevre" Entry="3552" Type="Repair" X="567.634" Y="1576.57" Z="132.2935" />
-		<!--Forsaken Forward Command Vendor-->
-		<Vendor Name="Provisioner Angelus" Entry="45484" Type="Food" X="-947.821" Y="1624.81" Z="68.33994" />
-		<!--The Forsaken Front-->
-		<Vendor Name="Harris Franklin" Entry="51709" Type="Food" X="-140.5608" Y="1292.561" Z="49.75549" />
-	</Vendors>
 
 	<QuestOrder>
 		<CustomBehavior File="Message" Text="Initializing Settings" LogColor="Cyan" />
 
-			<!--Settings-->
-			<CustomBehavior File="EnablePlugin" Names="Anti Drown,AutoEquip2,DrinkPotions,Refreshment,Talented2" />
-			<CustomBehavior File="RunMacro" Macro="/script SetCVar('AutoLootDefault', 1)" WaitTime="1000" />
-			<If Condition="(Me.Class == WoWClass.Hunter) || (Me.Class == WoWClass.Priest) || (Me.Class == WoWClass.Mage) || (Me.Class == WoWClass.Warlock) || ((Me.Class == WoWClass.Druid)
-				&amp;&amp; (StyxWoW.Me.Specialization == WoWSpec.DruidBalance)) || ((Me.Class == WoWClass.Shaman) &amp;&amp; (StyxWoW.Me.Specialization == WoWSpec.ShamanElemental))">
-				<CustomBehavior File="UserSettings" LootMobs="True" UseFlightPaths="True" PullDistance="40" />
-				<Else>
-					<CustomBehavior File="UserSettings" LootMobs="True" UseFlightPaths="True" PullDistance="25" />
-				</Else>
+			<!--Extreme Racial Prejudice-->
+			<If Condition="Me.IsAlliance">
+				<CustomBehavior File="Message" Text="Error: There are no Alliance quests here! Shutting Down" LogColor="Cyan" />
+				<CustomBehavior File="Halt" />
 			</If>
 
-			<!--Training Availability Check-->
-			<If Condition="Me.Level &gt;= 20">
-				<If Condition="Me.GetSkill(Styx.SkillLine.Riding).CurrentValue == 0 &amp;&amp; Me.Gold &gt;= 5">
-					<CustomBehavior File="Message" Text="Riding: Loading Trainer Profile" LogColor="Cyan" />
-					<CustomBehavior File="LoadProfile" ProfileName="..\Riding and Transports\[H - Quest] Northern Barrens Riding" />
-					<ElseIf Condition="Me.Gold &lt; 5 &amp;&amp; Me.GetSkill(Styx.SkillLine.Riding).CurrentValue == 0">
-						<CustomBehavior File="Message" Text="You don't have enough money to train. Will check again later!" LogColor="Orange" />
-					</ElseIf>
-				</If>
-			</If>
-
-			<!--Leveling or Loremaster: Sorting Hat-->
+			<!--Leveling or Loremaster: Harry Potter Sorting Hat-->
 			<If Condition="Me.Level &gt;= 20 &amp;&amp; Me.Level &lt; 60">
 				<CustomBehavior File="Message" Text="Checkpoint Reached: Loading Hillsbrad Foothills" LogColor="Cyan" />
+					<ClearMailbox />
+					<ClearVendor />
 				<CustomBehavior File="LoadProfile" ProfileName="[H - Quest] Hillsbrad Foothills [Life]" />
-				<!--Checking for Eastern Kingdoms Loremaster-->
-				<ElseIf Condition="Me.Level &gt;= 60 &amp;&amp; IsAchievementCompleted(1676)">
-					<CustomBehavior File="Message" Text="Kingdoms Loremaster: Continent Achievement Complete! Returning to Loader" LogColor="Cyan" />
-					<CustomBehavior File="LoadProfile" ProfileName="../[N - Quest] Loremaster [Life]" />
+
+				<!--Checking for Zone Loremaster-->
+				<ElseIf Condition="Me.Level &gt;= 60 &amp;&amp; IsAchievementCompleted(4894)">
+					<CustomBehavior File="Message" Text="Loremaster: Silverpine Forest Complete! Loading Hillsbrad Foothills" LogColor="Cyan" />
+						<ClearVendor />
+						<ClearMailbox />
+					<CustomBehavior File="LoadProfile" ProfileName="[H - Quest] Hillsbrad Foothills [Life]" />
 				</ElseIf>
-				<!--Checking for Silverpine Forest Loremaster-->
+
+				<!--We Don't Have Zone Loremaster-->
 				<ElseIf Condition="Me.Level &gt;= 60 &amp;&amp; !IsAchievementCompleted(4894)">
-					<CustomBehavior File="Message" Text="Kingdoms Loremaster: Completing Silverpine Forest" LogColor="Cyan" />
+					<CustomBehavior File="Message" Text="Loremaster: Completing Silverpine Forest" LogColor="Cyan" />
 				</ElseIf>
-				<Else>
-					<CustomBehavior File="Message" Text="Kingdoms Loremaster: Disabled Until Level 60 or Higher" LogColor="Cyan" />
-				</Else>
 			</If>
+
+			<!--Settings Configuration-->
+			<CustomBehavior File="UserSettings" LootMobs="True" UseFlightPaths="True" PullDistance="25" />
+			<CustomBehavior File="EnablePlugin" Names="Anti Drown,AutoEquip2,DrinkPotions,Refreshment,Talented2" />
+			<CustomBehavior File="RunMacro" Macro="/script SetCVar('AutoLootDefault', 1)" WaitTime="1000" />
+
+			<!--Mailboxes-->
+			<SetMailbox>
+				<Mailboxes>
+					<!--Forsaken Rear Guard Mailbox-->
+					<Mailbox X="1078.974" Y="1586.654" Z="27.70355" />
+					<!--The Sepulcher Mailbox-->
+					<Mailbox X="484.1003" Y="1512.505" Z="135.0216" />
+				</Mailboxes>
+			</SetMailbox>
+
+			<!--Vendors-->
+			<SetVendor>
+				<Vendors>
+					<!--Forsaken High Command Vendor-->
+					<Vendor Name="Apothecary Harrington" Entry="45491" Type="Food" X="1445.27" Y="1072.9" Z="60.46035" />
+					<!--Forsaken Rear Guard Vendors-->
+					<Vendor Name="Commander Hickley" Entry="45496" Type="Food" X="1097.57" Y="1587.29" Z="28.53036" />
+					<Vendor Name="&quot;Salty&quot; Gorgar" Entry="45497" Type="Repair" X="1036.46" Y="1581" Z="27.57658" />
+					<!--The Sepulcher Vendors-->
+					<Vendor Name="Innkeeper Bates" Entry="6739" Type="Food" X="471.135" Y="1500.55" Z="135.5222" />
+					<Vendor Name="Alexandre Lefevre" Entry="3552" Type="Repair" X="567.634" Y="1576.57" Z="132.2935" />
+					<!--Forsaken Forward Command Vendor-->
+					<Vendor Name="Provisioner Angelus" Entry="45484" Type="Food" X="-947.821" Y="1624.81" Z="68.33994" />
+					<!--The Forsaken Front-->
+					<Vendor Name="Harris Franklin" Entry="51709" Type="Food" X="-140.5608" Y="1292.561" Z="49.75549" />
+				</Vendors>
+			</SetVendor>
 
 			<!--Continental Drift: I'm in Kalimdor, returning to Eastern Kingdoms-->
 			<If Condition="Me.MapId == 1">
@@ -105,16 +103,22 @@
 
 			<!--Get out of "Outlands" Zones-->
 			<If Condition="Me.ZoneId == 3433 || Me.ZoneId == 3430 || Me.ZoneId == 3487">
-				<RunTo DestName="Orb of Translocation" X="10038.42" Y="-7000.994" Z="61.76336" />
 				<CustomBehavior File="Message" Text="Transport: Using Orb of Translocation to Undercity" LogColor="Cyan" />
-				<CustomBehavior File="InteractWith" MobId="184502" Range="8" X="10038.42" Y="-7000.994" Z="61.76336" />
-			</If>			    	
+				<RunTo DestName="Orb of Translocation" X="10038.42" Y="-7000.994" Z="61.76336" />
+				<CustomBehavior File="InteractWith" MobId="184502" Range="8" WaitTime="10000" X="10038.42" Y="-7000.994" Z="61.76336" />
+			</If>
 
 		<CustomBehavior File="Message" Text="Compiling Quests: Forsaken High Command" LogColor="Cyan" />
 
 		<If Condition="HasQuest(26964)">
 			<TurnIn QuestName="Warchief's Command: Silverpine Forest!" QuestId="26964" TurnInName="Grand Executor Mortuus" TurnInId="44615" />
 		</If>
+
+			<!--Clear Quest Log-->
+			<If Condition="!HasQuest(26965) &amp;&amp; !IsQuestCompleted(26965)">
+				<CustomBehavior File="RunMacro" Macro="/run for i=1,GetNumQuestLogEntries() do SelectQuestLogEntry(i); SetAbandonQuest(); AbandonQuest(); end" />
+			</If>
+
 		<PickUp QuestName="The Warchief Cometh" QuestId="26965" GiverName="Grand Executor Mortuus" GiverId="44615" />
 			
 			<!--Monitor This, Interaction Problem-->
@@ -161,6 +165,8 @@
 
 		<If Condition="Me.Level &gt;= 20 &amp;&amp; Me.Level &lt; 60">
 			<CustomBehavior File="Message" Text="Checkpoint Reached: Loading Hillsbrad Foothills" LogColor="Cyan" />
+				<ClearMailbox />
+				<ClearVendor />
 			<CustomBehavior File="LoadProfile" ProfileName="[H - Quest] Hillsbrad Foothills [Life]" />
 		</If>
 
@@ -258,6 +264,8 @@
 
 		<If Condition="Me.Level &gt;= 20 &amp;&amp; Me.Level &lt; 60">
 			<CustomBehavior File="Message" Text="Checkpoint Reached: Loading Hillsbrad Foothills" LogColor="Cyan" />
+				<ClearMailbox />
+				<ClearVendor />
 			<CustomBehavior File="LoadProfile" ProfileName="[H - Quest] Hillsbrad Foothills [Life]" />
 		</If>
 
@@ -297,6 +305,8 @@
 
 		<If Condition="Me.Level &gt;= 20 &amp;&amp; Me.Level &lt; 60">
 			<CustomBehavior File="Message" Text="Checkpoint Reached: Loading Hillsbrad Foothills" LogColor="Cyan" />
+				<ClearMailbox />
+				<ClearVendor />
 			<CustomBehavior File="LoadProfile" ProfileName="[H - Quest] Hillsbrad Foothills [Life]" />
 		</If>
 
@@ -310,6 +320,7 @@
 		<PickUp QuestName="Hair of the Dog" QuestId="27226" GiverName="Warlord Torok" GiverId="44917" />
 		<PickUp QuestName="Reinforcements from Fenris" QuestId="27231" GiverName="Admiral Hatchet" GiverId="44916" />
 
+			<!--Objective: Hair of the Dog-->
 			<If Condition="HasQuest(27226) &amp;&amp; !IsQuestCompleted(27226)">
 				<CustomBehavior File="InteractWith" QuestId="27226" MobId="45196" NumOfTimes="1000" NotMoving="True" Range="10" InteractByUsingItemId="60870" CollectionDistance="1000">
 					<HuntingGrounds>
@@ -333,9 +344,12 @@
 
 		<If Condition="Me.Level &gt;= 20 &amp;&amp; Me.Level &lt; 60">
 			<CustomBehavior File="Message" Text="Checkpoint Reached: Loading Hillsbrad Foothills" LogColor="Cyan" />
+				<ClearMailbox />
+				<ClearVendor />
 			<CustomBehavior File="LoadProfile" ProfileName="[H - Quest] Hillsbrad Foothills [Life]" />
 		</If>
 
+			<!--Objective: Honor the Dead-->
 			<If Condition="HasQuest(27180) &amp;&amp; !IsQuestCompleted(27180)">
 				<CustomBehavior File="InteractWith" QuestId="27180" MobId="45197" NumOfTimes="1000" Range="5" CollectionDistance="1000">
 					<HuntingGrounds>
@@ -346,7 +360,6 @@
 				</CustomBehavior>
 			</If>
 
-		<!--Not sure what happened here, confirm-->
 		<TurnIn QuestName="Honor the Dead" QuestId="27180" TurnInName="Lady Sylvanas Windrunner" TurnInId="44365" />
 
 			<If Condition="HasQuest(27181) &amp;&amp; !IsQuestCompleted(27181)">
@@ -356,9 +369,9 @@
 		<If Condition="HasQuest(27181)">
 			<CustomBehavior File="CompleteLogQuest" QuestId="27181" />
 		</If>
-		<If Condition="!HasQuest(27193) &amp;&amp; !IsQuestCompleted(27193)">
-			<PickUp QuestName="Seek and Destroy" QuestId="27193" GiverName="Lady Sylvanas Windrunner" GiverId="44365" />
-		</If>
+		
+		<PickUp QuestName="Seek and Destroy" QuestId="27193" GiverName="Lady Sylvanas Windrunner" GiverId="44365" />
+
 
 			<!--Objective: Seek and Destroy-->
 			<If Condition="HasQuest(27193) &amp;&amp; !IsQuestCompleted(27193)">
@@ -393,6 +406,8 @@
 
 		<If Condition="Me.Level &gt;= 20 &amp;&amp; Me.Level &lt; 60">
 			<CustomBehavior File="Message" Text="Checkpoint Reached: Loading Hillsbrad Foothills" LogColor="Cyan" />
+				<ClearMailbox />
+				<ClearVendor />
 			<CustomBehavior File="LoadProfile" ProfileName="[H - Quest] Hillsbrad Foothills [Life]" />
 		</If>		
 
@@ -449,6 +464,8 @@
 
 		<If Condition="Me.Level &gt;= 20 &amp;&amp; Me.Level &lt; 60">
 			<CustomBehavior File="Message" Text="Checkpoint Reached: Loading Hillsbrad Foothills" LogColor="Cyan" />
+				<ClearMailbox />
+				<ClearVendor />
 			<CustomBehavior File="LoadProfile" ProfileName="[H - Quest] Hillsbrad Foothills [Life]" />
 		</If>
 
@@ -486,6 +503,8 @@
 
 		<If Condition="Me.Level &gt;= 20 &amp;&amp; Me.Level &lt; 60">
 			<CustomBehavior File="Message" Text="Checkpoint Reached: Loading Hillsbrad Foothills" LogColor="Cyan" />
+				<ClearMailbox />
+				<ClearVendor />
 			<CustomBehavior File="LoadProfile" ProfileName="[H - Quest] Hillsbrad Foothills [Life]" />
 		</If>
 
@@ -552,6 +571,8 @@
 
 		<If Condition="Me.Level &gt;= 20 &amp;&amp; Me.Level &lt; 60">
 			<CustomBehavior File="Message" Text="Checkpoint Reached: Loading Hillsbrad Foothills" LogColor="Cyan" />
+				<ClearMailbox />
+				<ClearVendor />
 			<CustomBehavior File="LoadProfile" ProfileName="[H - Quest] Hillsbrad Foothills [Life]" />
 		</If>
 
@@ -569,6 +590,7 @@
 		<PickUp QuestName="Relios the Relic Keeper" QuestId="27478" GiverName="Dalar Dawnweaver" GiverId="1938" />
 		<PickUp QuestName="Practical Vengeance" QuestId="27483" GiverName="Dalar Dawnweaver" GiverId="1938" />
 
+			<!--Transport: Dalaran Crater-->
 			<If Condition="(HasQuest(27478) &amp;&amp; !IsQuestCompleted(27478)) || (!IsQuestCompleted(27480)) || (HasQuest(27483) &amp;&amp; !IsQuestCompleted(27483))">
 				<If Condition="Me.ZoneId != 267">
 					<RunTo X="453.7728" Y="1467.669" Z="125.034" />
@@ -576,13 +598,14 @@
 				</If>
 			</If>
 
-			<If Condition="!HasItem(61310) &amp;&amp; !IsQuestCompleted(27480)">
-				<CustomBehavior File="CollectThings" QuestId="27480" MobId="45728" MobState="Alive" CollectItemCount="1" CollectItemId="61310" CollectUntil="RequiredCountReached">
-					<Hotspot X="290.918" Y="376.7807" Z="-65.02187" />
-					<Hotspot X="338.4034" Y="358.639" Z="-63.60585" />
-					<Hotspot X="243.4399" Y="397.5527" Z="-56.97059" />
-				</CustomBehavior>
-			</If>
+		<!--PickUp: Ley Energies-->
+		<If Condition="!HasItem(61310) &amp;&amp; !IsQuestCompleted(27480)">
+			<CustomBehavior File="CollectThings" QuestId="27480" MobId="45728" MobState="Alive" CollectItemCount="1" CollectItemId="61310" CollectUntil="RequiredCountReached">
+				<Hotspot X="290.918" Y="376.7807" Z="-65.02187" />
+				<Hotspot X="338.4034" Y="358.639" Z="-63.60585" />
+				<Hotspot X="243.4399" Y="397.5527" Z="-56.97059" />
+			</CustomBehavior>
+		</If>
 
 		<If Condition="!HasQuest(27480) &amp;&amp; HasItem(61310)">
 			<PickUp QuestName="Ley Energies" QuestId="27480" GiverType="Item" GiverId="61310" />
@@ -611,6 +634,8 @@
 
 		<If Condition="Me.Level &gt;= 20 &amp;&amp; Me.Level &lt; 60">
 			<CustomBehavior File="Message" Text="Checkpoint Reached: Loading Hillsbrad Foothills" LogColor="Cyan" />
+				<ClearMailbox />
+				<ClearVendor />
 			<CustomBehavior File="LoadProfile" ProfileName="[H - Quest] Hillsbrad Foothills [Life]" />
 		</If>
 
@@ -631,7 +656,7 @@
 		<PickUp QuestName="Transdimensional Warfare: Chapter II" QuestId="27513" GiverName="Ambermill Dimensional Portal" GiverId="45752" />
 
 		<If Condition="HasQuest(27513) &amp;&amp; !IsQuestCompleted(27513)">
-			<If Condition="!Me.HasAura(85361)" >
+			<If Condition="!Me.HasAura(85361)">
 				<CustomBehavior File="InteractWith" QuestId="27513" InteractByGossipOptions="1" MobId="45752" NonCompeteDistance="0" X="-290.9761" Y="1014.151" Z="113.8954" />
 			</If>
 		</If>
@@ -644,6 +669,8 @@
 
 		<If Condition="Me.Level &gt;= 20 &amp;&amp; Me.Level &lt; 60">
 			<CustomBehavior File="Message" Text="Checkpoint Reached: Loading Hillsbrad Foothills" LogColor="Cyan" />
+				<ClearMailbox />
+				<ClearVendor />
 			<CustomBehavior File="LoadProfile" ProfileName="[H - Quest] Hillsbrad Foothills [Life]" />
 		</If>		
 
@@ -660,6 +687,8 @@
 
 		<If Condition="Me.Level &gt;= 20 &amp;&amp; Me.Level &lt; 60">
 			<CustomBehavior File="Message" Text="Checkpoint Reached: Loading Hillsbrad Foothills" LogColor="Cyan" />
+				<ClearMailbox />
+				<ClearVendor />
 			<CustomBehavior File="LoadProfile" ProfileName="[H - Quest] Hillsbrad Foothills [Life]" />
 		</If>
 
@@ -677,20 +706,21 @@
 		<PickUp QuestName="Lessons in Fear" QuestId="27548" GiverName="Lord Walden" GiverId="45879" X="-152.5979" Y="1271.395" Z="51.39357" />
 		<PickUp QuestName="Of No Consequence" QuestId="27547" GiverName="Baron Ashbury" GiverId="45880" X="-152.5979" Y="1271.395" Z="51.39357" />
 		
-		<If Condition="HasQuest(27550) &amp;&amp; !IsQuestCompleted(27550)">
-			<While Condition="!IsObjectiveComplete(2, 27550)">
-				<RunTo X="-389.9888" Y="1509.37" Z="19.31355" />
-				<CustomBehavior File="Misc\RunLua" Lua="UseItemByName(61374)" WaitTime="1000" />
-			</While>
-			<While Condition="!IsObjectiveComplete(1, 27550)">
-				<RunTo X="-359.6927" Y="1541.638" Z="24.19101" />
-				<CustomBehavior File="Misc\RunLua" Lua="UseItemByName(61374)" WaitTime="1000" />
-			</While>
-			<While Condition="!IsObjectiveComplete(3, 27550)">
-				<RunTo X="-381.7389" Y="1606.223" Z="18.65797" />
-				<CustomBehavior File="Misc\RunLua" Lua="UseItemByName(61374)" WaitTime="1000" />
-			</While>
-		</If>
+			<!--Objective: Pyrewood's Fall-->
+			<If Condition="HasQuest(27550) &amp;&amp; !IsQuestCompleted(27550)">
+				<While Condition="!IsObjectiveComplete(2, 27550)">
+					<RunTo X="-389.9888" Y="1509.37" Z="19.31355" />
+					<CustomBehavior File="Misc\RunLua" Lua="UseItemByName(61374)" WaitTime="1000" />
+				</While>
+				<While Condition="!IsObjectiveComplete(1, 27550)">
+					<RunTo X="-359.6927" Y="1541.638" Z="24.19101" />
+					<CustomBehavior File="Misc\RunLua" Lua="UseItemByName(61374)" WaitTime="1000" />
+				</While>
+				<While Condition="!IsObjectiveComplete(3, 27550)">
+					<RunTo X="-381.7389" Y="1606.223" Z="18.65797" />
+					<CustomBehavior File="Misc\RunLua" Lua="UseItemByName(61374)" WaitTime="1000" />
+				</While>
+			</If>
 		
 		<TurnIn QuestName="Pyrewood's Fall" QuestId="27550" TurnInName="Lord Godfrey" TurnInId="45878" X="-381.7389" Y="1606.223" Z="18.65797" />
 
@@ -714,6 +744,8 @@
 
 		<If Condition="Me.Level &gt;= 20 &amp;&amp; Me.Level &lt; 60">
 			<CustomBehavior File="Message" Text="Checkpoint Reached: Loading Hillsbrad Foothills" LogColor="Cyan" />
+				<ClearMailbox />
+				<ClearVendor />
 			<CustomBehavior File="LoadProfile" ProfileName="[H - Quest] Hillsbrad Foothills [Life]" />
 		</If>
 
@@ -740,6 +772,13 @@
 			<CustomBehavior File="CompleteLogQuest" QuestId="27575" />
 		</If>
 
+		<If Condition="Me.Level &gt;= 25 &amp;&amp; Me.Level &lt; 60">
+			<CustomBehavior File="Message" Text="Checkpoint Reached: Loading Hillsbrad Foothills" LogColor="Cyan" />
+				<ClearMailbox />
+				<ClearVendor />
+			<CustomBehavior File="LoadProfile" ProfileName="[H - Quest] Hillsbrad Foothills [Life]" />
+		</If>		
+
 			<If Condition="!IsQuestCompleted(27580) &amp;&amp; (Me.Level &lt;= 23)">
 				<CustomBehavior File="Message" Text="You will probably die many times. Kill the OP dwarf manually by slowly attacking with the minions tanking." LogColor="Orange" />
 			</If>
@@ -753,6 +792,8 @@
 
 		<If Condition="Me.Level &gt;= 20 &amp;&amp; Me.Level &lt; 60">
 			<CustomBehavior File="Message" Text="Checkpoint Reached: Loading Hillsbrad Foothills" LogColor="Cyan" />
+				<ClearMailbox />
+				<ClearVendor />
 			<CustomBehavior File="LoadProfile" ProfileName="[H - Quest] Hillsbrad Foothills [Life]" />
 		</If>
 
@@ -777,6 +818,8 @@
 
 		<If Condition="Me.Level &gt;= 20 &amp;&amp; Me.Level &lt; 60">
 			<CustomBehavior File="Message" Text="Checkpoint Reached: Loading Hillsbrad Foothills" LogColor="Cyan" />
+				<ClearMailbox />
+				<ClearVendor />
 			<CustomBehavior File="LoadProfile" ProfileName="[H - Quest] Hillsbrad Foothills [Life]" />
 		</If>
 
@@ -786,8 +829,10 @@
 		<TurnIn QuestName="Warchief's Command: Hillsbrad Foothills!" QuestId="28089" TurnInName="High Executor Darthalia" TurnInId="2215" />
 		<TurnIn QuestName="Empire of Dirt" QuestId="27746" TurnInName="High Executor Darthalia" TurnInId="2215" />
 
-		<CustomBehavior File="Message" Text="Profile Complete: Loading Next Profile" LogColor="Cyan" />
-		<CustomBehavior File="LoadProfile" ProfileName="..\[H - Quest] Profile Loader [Life]" />	
+		<CustomBehavior File="Message" Text="Profile Complete: Loading Hillsbrad Foothills" LogColor="Cyan" />
+			<ClearMailbox />
+			<ClearVendor />
+		<CustomBehavior File="LoadProfile" ProfileName="[H - Quest] Hillsbrad Foothills [Life]" />	
 	</QuestOrder>
 
 	<Quest Id="27193" Name="Seek and Destroy">

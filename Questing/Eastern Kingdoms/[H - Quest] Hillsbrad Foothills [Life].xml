@@ -21,8 +21,9 @@
 
 	<AvoidMobs>
 		<!--They're Harmless Darling-->
-		<Mob Name="Hillsbrad Sentry" Entry="2270" />
+		<!--Mob Name="Hillsbrad Sentry" Entry="2270" />
 		<Mob Name="Hillsbrad Foreman" Entry="2503" />
+		<Mob Name="Creeper Egg" Entry="47203" /-->
 		<!--Heroes of the Horde-->
 		<Mob Name="Vanndar Stormpike" Entry="48508" />
 		<Mob Name="Captain Balinda Stonehearth" Entry="48507" />
@@ -37,37 +38,91 @@
 		<Mob Name="Lieutenant Haggerdin" Entry="13841" />
  	</AvoidMobs>
 
-	<Mailboxes>
-		<!--Tarren Mill-->
-		<Mailbox X="-39.96592" Y="-915.4774" Z="55.51593" />
-	</Mailboxes>
-
-	<Vendors>
-		<!--The Sludge Fields Vendors-->
-		<Vendor Name="Kenneth Lamb" Entry="49397" Type="Food" X="-485.6615" Y="94.10069" Z="56.84064" />
-		<Vendor Name="Marcus Hagnod" Entry="49404" Type="Repair" X="-497.3976" Y="119.4028" Z="57.2649" />
-		<!--Tarren Mill Vendors-->
-		<Vendor Name="Kayren Soothallow" Entry="2401" Type="Food" X="-53.9236" Y="-907.637" Z="56.20948" />
-		<Vendor Name="Ott" Entry="3539" Type="Repair" X="-59.941" Y="-954.156" Z="54.28908" />
-		<!--Alterac Battleground Flare-->
-		<Vendor Name="Jorek Ironside" Entry="13219" Type="Repair" X="393.567" Y="-976.087" Z="110.1351" />
-	</Vendors>
-
 	<Blackspots>
 		<!--Corrahn's Dagger Forge-->
 		<Blackspot X="-34.64258" Y="-591.1284" Z="153.8889" Radius="3.39284" />
 	</Blackspots>
 
 	<Blacklist>
-		<Mob Name="Creeper Egg" Entry="47203" Flags="Combat" />
+		<Mob Name="Creeper Egg" Entry="47203" Flags="Pull, Combat" />
 	</Blacklist>
 
 	<QuestOrder>
 		<CustomBehavior File="Message" Text="Initializing Settings" LogColor="Cyan" />
-			
+
+			<!--Training Availability Check-->
+			<If Condition="Me.GetSkill(Styx.SkillLine.Riding).CurrentValue == 0 &amp;&amp; Me.Gold &gt;= 5 &amp;&amp; Me.Level &gt;= 20">
+				<CustomBehavior File="Message" Text="Riding: Loading Trainer Profile" LogColor="Cyan" />
+					<ClearMailbox />
+					<ClearVendor />
+				<CustomBehavior File="LoadProfile" ProfileName="..\Riding and Transports\[H - Quest] Silverpine Forest Riding" />
+			</If>
+
+			<!--Leveling or Loremaster: Harry Potter Sorting Hat-->
+			<If Condition="Me.Level &gt;= 25 &amp;&amp; Me.Level &lt; 60">
+				<CustomBehavior File="Message" Text="Checkpoint Reached: Loading Arathi Highlands" LogColor="Cyan" />
+					<ClearMailbox />
+					<ClearVendor />
+				<CustomBehavior File="LoadProfile" ProfileName="[N - Quest] Arathi Highlands [Life]" />
+
+				<!--Checking for Zone Loremaster-->
+				<ElseIf Condition="Me.Level &gt;= 60 &amp;&amp; IsAchievementCompleted(4895)">
+					<CustomBehavior File="Message" Text="Loremaster: Hillsbrad Foothills Complete! Loading Arathi Highlands" LogColor="Cyan" />
+						<ClearVendor />
+						<ClearMailbox />
+					<CustomBehavior File="LoadProfile" ProfileName="[N - Quest] Arathi Highlands [Life]" />
+				</ElseIf>
+
+				<!--We Don't Have Zone Loremaster-->
+				<ElseIf Condition="Me.Level &gt;= 60 &amp;&amp; !IsAchievementCompleted(4895)">
+					<CustomBehavior File="Message" Text="Loremaster: Completing Hillsbrad Foothills" LogColor="Cyan" />
+				</ElseIf>
+			</If>
+
+			<!--Settings Configuration-->
 			<CustomBehavior File="UserSettings" LootMobs="True" UseFlightPaths="True" PullDistance="25" />
 			<CustomBehavior File="EnablePlugin" Names="Anti Drown,AutoEquip2,DrinkPotions,Refreshment,Talented2" />
 			<CustomBehavior File="RunMacro" Macro="/script SetCVar('AutoLootDefault', 1)" WaitTime="1000" />
+
+			<!--Mailboxes-->
+			<SetMailbox>
+				<Mailboxes>
+					<!--Tarren Mill-->
+					<Mailbox X="-39.96592" Y="-915.4774" Z="55.51593" />
+				</Mailboxes>
+			</SetMailbox>
+
+			<!--Vendors-->
+			<SetVendor>
+				<Vendors>
+					<!--The Sludge Fields Vendors-->
+					<Vendor Name="Kenneth Lamb" Entry="49397" Type="Food" X="-485.6615" Y="94.10069" Z="56.84064" />
+					<Vendor Name="Marcus Hagnod" Entry="49404" Type="Repair" X="-497.3976" Y="119.4028" Z="57.2649" />
+					<!--Tarren Mill Vendors-->
+					<Vendor Name="Kayren Soothallow" Entry="2401" Type="Food" X="-53.9236" Y="-907.637" Z="56.20948" />
+					<Vendor Name="Ott" Entry="3539" Type="Repair" X="-59.941" Y="-954.156" Z="54.28908" />
+					<!--Alterac Battleground Flare-->
+					<Vendor Name="Jorek Ironside" Entry="13219" Type="Repair" X="393.567" Y="-976.087" Z="110.1351" />
+				</Vendors>
+			</SetVendor>
+
+			<!--Continental Drift: I'm in Kalimdor, returning to Eastern Kingdoms-->
+			<If Condition="Me.MapId == 1">
+				<CustomBehavior File="Message" Text="Transport: Riding Zepplin to The Undercity" LogColor="Cyan" />
+				<CustomBehavior File="UseTransport" TransportId="164871"
+					WaitAtX="1838.676" WaitAtY="-4387.965" WaitAtZ="135.2332"
+					TransportStartX="1833.509" TransportStartY="-4391.543" TransportStartZ="152.7679"
+					TransportEndX="2062.376" TransportEndY="292.998" TransportEndZ="114.973"
+					StandOnX="1834.961" StandOnY="-4385.694" StandOnZ="135.0334" 
+					GetOffX="2066.773" GetOffY="288.873" GetOffZ="97.03159" />				
+			</If>
+
+			<!--Get out of "Outlands" Zones-->
+			<If Condition="Me.ZoneId == 3433 || Me.ZoneId == 3430 || Me.ZoneId == 3487">
+				<CustomBehavior File="Message" Text="Transport: Using Orb of Translocation to Undercity" LogColor="Cyan" />
+				<RunTo DestName="Orb of Translocation" X="10038.42" Y="-7000.994" Z="61.76336" />
+				<CustomBehavior File="InteractWith" MobId="184502" Range="8" WaitTime="10000" X="10038.42" Y="-7000.994" Z="61.76336" />
+			</If>
 
 		<CustomBehavior File="Message" Text="Compiling Quests: Southpoint Gate" LogColor="Cyan" />
 
@@ -113,7 +168,11 @@
 		<PickUp QuestName="Glorious Harvest" QuestId="28114" GiverName="Apothecary Underhill" GiverId="47432" />
 		<PickUp QuestName="Past Their Prime" QuestId="28115" GiverName="Apothecary Underhill" GiverId="47432" />
 
-	    	<CustomBehavior File="InteractWith" QuestId="28114" MobId="47203" InteractByLooting="True" NumOfTimes="200" CollectionDistance="1000">
+			<!--Objective: Glorious Harvest-->
+	    	<CustomBehavior File="InteractWith" QuestId="28114" MobId="47203" InteractByLooting="True" NumOfTimes="200" ProactiveCombatStrategy="ClearMobsTargetingUs">
+				<AvoidMobs>
+					<Mob Name="Creeper Egg" Entry="47203" />
+				</AvoidMobs>
 				<HuntingGrounds>
 					<Hotspot X="-684.1111" Y="348.5129" Z="63.06081" />
 					<Hotspot X="-699.2821" Y="308.1685" Z="50.80106" />
@@ -136,9 +195,14 @@
 		<TurnIn QuestName="Past Their Prime" QuestId="28115" TurnInName="Spider-Handler Sarus" TurnInId="47551" />
 		<PickUp QuestName="Coastal Delicacies!" QuestId="28146" GiverName="Spider-Handler Sarus" GiverId="47551" />
 
+			<If Condition="Me.Level &gt;= 60">
+				<CustomBehavior File="UserDialog" AllowBotStop="True" SoundCue="Exclamation" SoundCueInterval="5" ExpiryTime="180" Title="CombatUseItemOnV2!" 
+				ExpiryAction="InputEnabled_BotStop" Text="You're too high of a level, and will one shot the mobs.\n\nPlease do this quest manually!" />
+			</If>
+
 			<!--Objective: Human Infestation-->
 			<CustomBehavior File="CombatUseItemOnV2" QuestId="28138" ItemId="63079" ItemAppliesAuraId="AssumeItemUseAlwaysSucceeds" MobId1="2503" MobId2="2269" 
-				MobId3="2270" UseWhenMobHasHealthPercent="35" MaxRangeToUseItem="20" UseItemStrategy="UseItemOncePerTarget" RecallPetAtMobPercentHealth="100">
+				MobId3="2270" UseWhenMobHasHealthPercent="30" MaxRangeToUseItem="5" UseItemStrategy="UseItemOncePerTarget" RecallPetAtMobPercentHealth="50">
           		<HuntingGrounds>
 					<Hotspot X="-874.1949" Y="231.1803" Z="9.425097" />
 					<Hotspot X="-886.1464" Y="196.5407" Z="11.98429" />
@@ -217,7 +281,7 @@
 		</If>
 
 			<!--Objective: Discretion is Key-->
-			<While Condition="HasQuest(28197) &amp;&amp; !IsObjectiveComplete(2,28197)">
+			<While Condition="HasQuest(28197) &amp;&amp; !IsObjectiveComplete(1,28197)">
 				<RunTo X="-621.2864" Y="-35.79159" Z="45.71925" />
 				<CustomBehavior File="WaitTimer" QuestId="28197" WaitTime="10000" />
 				<RunTo X="-622.3611" Y="-54.09921" Z="46.32125" />
@@ -325,6 +389,14 @@
 		<PickUp QuestName="Trouble at Southshore" QuestId="28251" GiverName="Master Apothecary Lydon" GiverId="47900" X="-503.0333" Y="65.4761" Z="53.9869" />
 		<TurnIn QuestName="Trouble at Southshore" QuestId="28251" TurnInName="Serge Hinott" TurnInId="2391" />
 
+		<If Condition="Me.Level &gt;= 25 &amp;&amp; Me.Level &lt; 60">
+			<CustomBehavior File="Message" Text="Checkpoint Reached: Loading Arathi Highlands" LogColor="Cyan" />
+			<PickUp QuestName="Warchief's Command: Arathi Highlands!" QuestId="28619" GiverType="Object" GiverName="Warchief's Command Board" GiverId="41949" X="-42.61619" Y="-900.3021" Z="55.85835" />
+				<ClearMailbox />
+				<ClearVendor />
+			<CustomBehavior File="LoadProfile" ProfileName="[N - Quest] Arathi Highlands [Life]" />
+		</If>
+
 		<CustomBehavior File="Message" Text="Compiling Quests: Ruins of Southshore" LogColor="Cyan" />
 
 		<PickUp QuestName="Studies in Lethality" QuestId="28324" GiverName="Serge Hinott" GiverId="2391" />
@@ -400,8 +472,18 @@
 		<TurnIn QuestName="Studies in Lethality" QuestId="28324" TurnInName="Serge Hinott" TurnInId="2391" />
 		<TurnIn QuestName="Green Living" QuestId="28325" TurnInName="Serge Hinott" TurnInId="2391" />
 
-		<CustomBehavior File="Message" Text="Compiling Quests: Kingslayer Orkus" LogColor="Cyan" />
+		<If Condition="Me.Level &gt;= 25 &amp;&amp; Me.Level &lt; 60">
+			<CustomBehavior File="Message" Text="Checkpoint Reached: Loading Arathi Highlands" LogColor="Cyan" />
+			<PickUp QuestName="Warchief's Command: Arathi Highlands!" QuestId="28619" GiverType="Object" GiverName="Warchief's Command Board" GiverId="41949" X="-42.61619" Y="-900.3021" Z="55.85835" />
+				<ClearMailbox />
+				<ClearVendor />
+			<CustomBehavior File="LoadProfile" ProfileName="[N - Quest] Arathi Highlands [Life]" />
+		</If>
 
+		<CustomBehavior File="Message" Text="Compiling Quests: Kingslayer Orkus" LogColor="Cyan" />
+		
+		<PickUp QuestName="Can You Smell What the Lok'tar is Cooking?" QuestId="28344" GiverName="Helcular" GiverId="48129" />
+		<TurnIn QuestName="Can You Smell What the Lok'tar is Cooking?" QuestId="28344" TurnInName="Kingslayer Orkus" TurnInId="48218" />
 		<PickUp QuestName="*Gurgle* HELP! *Gurgle*" QuestId="28345" GiverName="Kingslayer Orkus" GiverId="48218" />
 
 			<While Condition="HasQuest(28345) &amp;&amp; !IsQuestCompleted(28345)">
@@ -450,6 +532,15 @@
 			
 		<TurnIn QuestName="Preemptive Strike" QuestId="28356" TurnInName="Helcular" TurnInId="48129" />
 		<TurnIn QuestName="Kasha Will Fly Again" QuestId="28354" TurnInName="Kingslayer Orkus" TurnInId="48218" />
+
+		<If Condition="Me.Level &gt;= 25 &amp;&amp; Me.Level &lt; 60">
+			<CustomBehavior File="Message" Text="Checkpoint Reached: Loading Arathi Highlands" LogColor="Cyan" />
+			<PickUp QuestName="Warchief's Command: Arathi Highlands!" QuestId="28619" GiverType="Object" GiverName="Warchief's Command Board" GiverId="41949" X="-42.61619" Y="-900.3021" Z="55.85835" />
+				<ClearMailbox />
+				<ClearVendor />
+			<CustomBehavior File="LoadProfile" ProfileName="[N - Quest] Arathi Highlands [Life]" />
+		</If>
+
 		<PickUp QuestName="The Road to Purgation" QuestId="28375" GiverName="Kingslayer Orkus" GiverId="48218" />
 
 		<!--I can't tell if this is completed mid-cinematic or not-->
@@ -477,39 +568,46 @@
 		 	<CustomBehavior File="InteractWith" MobId="48470" CollectionDistance="8" />
 		 	<CustomBehavior File="RunMacro" Macro="/click QuestFrameCompleteQuestButton" WaitTime="1000" />
 		</While>
-		<!--PickUp: They Will Never Expect This...-->
+		<!--PickUp: Heroes of the Horde!-->
 		<While Condition="!HasQuest(28400) &amp;&amp; !IsQuestCompleted(28400)">
 			<RunTo X="-1400.118" Y="580.9775" Z="70.01397" />
 		 	<CustomBehavior File="InteractWith" MobId="48503" CollectionDistance="8" />
 		 	<CustomBehavior File="RunMacro" Macro="/click QuestFrameAcceptButton" WaitTime="1000" />
 		</While>
 
-		<While Condition="HasQuest(28400) &amp;&amp; !IsQuestCompleted(28400)">
-			<RunTo X="-1339.351" Y="524.8765" Z="97.24924" />
-			<CustomBehavior File="ForcedDismount" />
-			<CustomBehavior File="WaitTimer" WaitTime="55000" GoalText="Waiting for Orkus's Speech {TimeRemaining}" />
-			<CustomBehavior File="InteractWith" MobId="48503" InteractByGossipOptions="1" CollectionDistance="20" />
-			<CustomBehavior File="WaitTimer" WaitTime="10000" />
-			<If Condition="!HasItem(64307)">
-				<CustomBehavior File="InteractWith" MobId="48515" QuestId="28400" MobState="Dead" NumOfTimes="10" CollectionDistance="1000" InteractByLooting="True" />
-			</If>
-			<While Condition="!IsObjectiveComplete(2,28400)">
-				<CustomBehavior File="WaitTimer" QuestId="28400" WaitTime="10000" VariantTime="5000" />
+			<!--Objective: Heroes of the Horde!-->
+			<While Condition="HasQuest(28400) &amp;&amp; !IsQuestCompleted(28400)">
+				<RunTo X="-1339.351" Y="524.8765" Z="97.24924" />
+				<CustomBehavior File="ForcedDismount" />
+				<CustomBehavior File="WaitTimer" WaitTime="55000" GoalText="Waiting for Orkus's Speech {TimeRemaining}" />
+				<CustomBehavior File="InteractWith" MobId="48503" InteractByGossipOptions="1" CollectionDistance="20" />
+				<CustomBehavior File="WaitTimer" WaitTime="10000" />
+				<If Condition="!HasItem(64307)">
+					<CustomBehavior File="InteractWith" MobId="48515" QuestId="28400" MobState="Dead" NumOfTimes="10" TerminateWhen="HasItem(64307)" CollectionDistance="1000" InteractByLooting="True" />
+				</If>
+				<While Condition="!IsObjectiveComplete(2,28400)">
+					<CustomBehavior File="WaitTimer" QuestId="28400" WaitTime="10000" VariantTime="5000" />
+				</While>
+				<If Condition="!IsObjectiveComplete(1,28400)">
+					<CustomBehavior File="AbandonQuest" QuestId="28400" />
+				 	<PickUp QuestName="Heroes of the Horde!" QuestId="28400" GiverName="Kingslayer Orkus" GiverId="48503" X="-1400.118" Y="580.9775" Z="70.01397" />
+				</If>
 			</While>
-			<If Condition="!IsObjectiveComplete(1,28400)">
-				<CustomBehavior File="AbandonQuest" QuestId="28400" />
-				<RunTo X="-1400.118" Y="580.9775" Z="70.01397" />
-			 	<CustomBehavior File="InteractWith" MobId="48503" CollectionDistance="8" />
-			 	<CustomBehavior File="RunMacro" Macro="/click QuestFrameAcceptButton" WaitTime="1000" />
-			</If>
-		</While>
 
 		<If Condition="HasQuest(28400) &amp;&amp; IsQuestCompleted(28400)">
-			<CustomBehavior File="SetHearthstone" MobId="2388" X="-49.87444" Y="-964.7033" Z="53.44724" />
+			<CustomBehavior File="InteractWith" MobId="2388" InteractByGossipOptions="1" NonCompeteDistance="0" X="-49.87444" Y="-964.7033" Z="53.44724" />
 			<CustomBehavior File="ForceSetVendor" DoSell="True" DoRepair="True" DoMail="True" />
 		</If>		
 
 		<TurnIn QuestName="Heroes of the Horde!" QuestId="28400" TurnInName="High Warlord Cromush" TurnInId="48545" />
+
+		<If Condition="Me.Level &gt;= 25 &amp;&amp; Me.Level &lt; 60">
+			<CustomBehavior File="Message" Text="Checkpoint Reached: Loading Arathi Highlands" LogColor="Cyan" />
+			<PickUp QuestName="Warchief's Command: Arathi Highlands!" QuestId="28619" GiverType="Object" GiverName="Warchief's Command Board" GiverId="41949" X="-42.61619" Y="-900.3021" Z="55.85835" />
+				<ClearMailbox />
+				<ClearVendor />
+			<CustomBehavior File="LoadProfile" ProfileName="[N - Quest] Arathi Highlands [Life]" />
+		</If>
 
 		<CustomBehavior File="Message" Text="Compiling Quests: Tarren Mill" LogColor="Cyan" />
 
@@ -557,6 +655,14 @@
 		<TurnIn QuestName="Stagwiches" QuestId="28489" TurnInName="Derak Nightfall" TurnInId="2397" />
 		<TurnIn QuestName="A Fighting Chance" QuestId="28495" TurnInName="Advisor Duskingdawn" TurnInId="17092" />	
 
+		<If Condition="Me.Level &gt;= 25 &amp;&amp; Me.Level &lt; 60">
+			<CustomBehavior File="Message" Text="Checkpoint Reached: Loading Arathi Highlands" LogColor="Cyan" />
+			<PickUp QuestName="Warchief's Command: Arathi Highlands!" QuestId="28619" GiverType="Object" GiverName="Warchief's Command Board" GiverId="41949" X="-42.61619" Y="-900.3021" Z="55.85835" />
+				<ClearMailbox />
+				<ClearVendor />
+			<CustomBehavior File="LoadProfile" ProfileName="[N - Quest] Arathi Highlands [Life]" />
+		</If>
+
 		<CustomBehavior File="Message" Text="Compiling Quests: Naze, Dagger, &amp; Headland" LogColor="Cyan" />
 
 		<TurnIn QuestName="Aid of the Frostwolf" QuestId="28587" TurnInName="Voggah Deathgrip" TurnInId="13817" />
@@ -577,6 +683,7 @@
 		<PickUp QuestName="Breaking the Hand" QuestId="28556" GiverName="High Warlord Cromush" GiverId="48545" />
 		<PickUp QuestName="Cry of the Banshee" QuestId="28538" GiverName="Melisara" GiverId="2278" />
 
+			<!--Objective: Cry of the Banshee-->
 			<CustomBehavior File="CombatUseItemOnV2" QuestId="28538" ItemId="64445" MobId1="48742" MobId2="48741"
 				UseWhenMobHasHealthPercent="35" 
 				MaxRangeToUseItem="45" 
@@ -595,6 +702,7 @@
 				<CustomBehavior File="Misc\RunLua" Lua="UseItemByName(64471)" WaitTime="4000" />
 			</While>
 
+		<!--TurnIn: Cry of the Banshee-->
 		<If Condition="HasQuest(28538) &amp;&amp; IsQuestCompleted(28538)">
 			<CustomBehavior File="CompleteLogQuest" QuestId="28538" />
 		</If>
@@ -608,9 +716,11 @@
 			<Objective QuestName="Decimation" QuestId="28566" Type="KillMob" MobId="48880" KillCount="1" />
 			<Objective QuestName="Decimation" QuestId="28566" Type="KillMob" MobId="48878" KillCount="12" />
 
+		<!--TurnIn: Decimation-->
 		<If Condition="HasQuest(28566) &amp;&amp; IsQuestCompleted(28566)">
 			<CustomBehavior File="CompleteLogQuest" QuestId="28566" />
 		</If>
+		<!--PickUp: Deception and Trickery-->
 		<While Condition="!HasQuest(28604) &amp;&amp; !IsQuestCompleted(28604)">
 			<CustomBehavior File="ForcedDismount" />
 		 	<CustomBehavior File="InteractWith" MobId="49035" CollectionDistance="8" />
@@ -659,8 +769,16 @@
 		<If Condition="HasQuest(28603) &amp;&amp; IsQuestCompleted(28603)">
 			<CustomBehavior File="CompleteLogQuest" QuestId="28603" />
 		</If>
-
 		<TurnIn QuestName="Deception and Trickery" QuestId="28604" TurnInName="Lilith" TurnInId="49035" />
+
+		<If Condition="Me.Level &gt;= 25 &amp;&amp; Me.Level &lt; 60">
+			<CustomBehavior File="Message" Text="Checkpoint Reached: Loading Arathi Highlands" LogColor="Cyan" />
+			<PickUp QuestName="Warchief's Command: Arathi Highlands!" QuestId="28619" GiverType="Object" GiverName="Warchief's Command Board" GiverId="41949" X="-42.61619" Y="-900.3021" Z="55.85835" />
+				<ClearMailbox />
+				<ClearVendor />
+			<CustomBehavior File="LoadProfile" ProfileName="[N - Quest] Arathi Highlands [Life]" />
+		</If>
+
 		<PickUp QuestName="Domination" QuestId="28605" GiverName="Melisara" GiverId="2278" />
 
 			<!--Objective: Breaking the Hand [Gavin's Naze]-->
@@ -683,9 +801,19 @@
 		<TurnIn QuestName="Stompike Apocalypse" QuestId="28616" TurnInName="High Warlord Cromush" TurnInId="48545" />
 		<TurnIn QuestName="Eastpoint Tower" QuestId="28620" TurnInName="Nils Beerot" TurnInId="49201" />
 
+		<If Condition="Me.Level &gt;= 25 &amp;&amp; Me.Level &lt; 60">
+			<CustomBehavior File="Message" Text="Checkpoint Reached: Loading Arathi Highlands" LogColor="Cyan" />
+			<PickUp QuestName="Warchief's Command: Arathi Highlands!" QuestId="28619" GiverType="Object" GiverName="Warchief's Command Board" GiverId="41949" X="-42.61619" Y="-900.3021" Z="55.85835" />
+				<ClearMailbox />
+				<ClearVendor />
+			<CustomBehavior File="LoadProfile" ProfileName="[N - Quest] Arathi Highlands [Life]" />
+		</If>
+
 			<!--Ignoring Eastpoint Tower-->
 
 		<CustomBehavior File="Message" Text="Profile Complete: Loading Arathi Highlands" LogColor="Cyan" />
+			<ClearMailbox />
+			<ClearVendor />
 		<CustomBehavior File="LoadProfile" ProfileName="[N - Quest] Arathi Highlands [Life]" />
 	</QuestOrder>
 

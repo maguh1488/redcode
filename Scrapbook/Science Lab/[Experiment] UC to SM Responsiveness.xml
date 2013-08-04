@@ -1,0 +1,44 @@
+<HBProfile>
+	<Name>Undercity to Silvermoon</Name>
+
+	<MinLevel>1</MinLevel>
+	<MaxLevel>91</MaxLevel>
+
+	<MinDurability>0.2</MinDurability>
+	<MinFreeBagSlots>2</MinFreeBagSlots>
+
+	<MailGrey>False</MailGrey>
+	<MailWhite>False</MailWhite>
+	<MailGreen>True</MailGreen>
+	<MailBlue>True</MailBlue>
+	<MailPurple>True</MailPurple>
+   
+	<SellGrey>True</SellGrey>
+	<SellWhite>True</SellWhite>
+	<SellGreen>True</SellGreen>
+	<SellBlue>False</SellBlue>
+	<SellPurple>False</SellPurple>
+
+	<Blackspots>
+		<!--Ruins of Lordaeron Bridge Arm-->
+		<Blackspot X="1748.005" Y="244.2746" Z="61.59024" Radius="1.529144" />
+	</Blackspots>
+
+	<QuestOrder>
+		<While Condition="Me.Level &gt;= 1">
+			<!--Get out of "Outlands" Zones-->
+			<If Condition="Me.ZoneId == 3433 || Me.ZoneId == 3430 || Me.ZoneId == 3487">
+				<CustomBehavior File="Message" Text="Transport: Using Orb of Translocation to Undercity" LogColor="Cyan" />
+				<RunTo DestName="Orb of Translocation" X="10038.42" Y="-7000.994" Z="61.76336" />
+				<CustomBehavior File="InteractWith" MobId="184502" Range="8" WaitTime="10000" X="10038.42" Y="-7000.994" Z="61.76336" />
+			</If>
+
+			<!--Get In "Outlands" Zones-->
+			<If Condition="Me.ZoneId != 3433 || Me.ZoneId != 3430 || Me.ZoneId != 3487">
+				<CustomBehavior File="Message" Text="Transport: Using Orb of Translocation to Silvermoon City" LogColor="Cyan" />
+				<RunTo DestName="Orb of Translocation" X="1805.826" Y="343.138" Z="70.61736" />
+				<CustomBehavior File="InteractWith" MobId="184503" Range="8" WaitTime="10000" X="1805.826" Y="343.138" Z="70.61736" />
+			</If>
+		</While>
+	</QuestOrder>
+</HBProfile>

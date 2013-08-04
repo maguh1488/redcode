@@ -1,0 +1,30 @@
+<QuestOrder>
+	<!--Get out of "Outlands" Zones-->
+	<If Condition="Me.ZoneId == 3433 || Me.ZoneId == 3430 || Me.ZoneId == 3487">
+		<RunTo DestName="Orb of Translocation" X="10038.42" Y="-7000.994" Z="61.76336" />
+		<CustomBehavior File="Message" Text="Transport: Using Orb of Translocation to Undercity" LogColor="Cyan" />
+		<CustomBehavior File="InteractWith" MobId="184502" Range="8" X="10038.42" Y="-7000.994" Z="61.76336" />
+	</If>
+
+	<!--Continental Drift: I'm in Kalimdor, returning to Eastern Kingdoms-->
+	<If Condition="Me.MapId == 1">
+		<CustomBehavior File="Message" Text="Transport: Riding Zepplin to The Undercity" LogColor="Cyan" />
+		<CustomBehavior File="UseTransport" TransportId="164871"
+			WaitAtX="1838.676" WaitAtY="-4387.965" WaitAtZ="135.2332"
+			TransportStartX="1833.509" TransportStartY="-4391.543" TransportStartZ="152.7679"
+			TransportEndX="2062.376" TransportEndY="292.998" TransportEndZ="114.973"
+			StandOnX="1834.961" StandOnY="-4385.694" StandOnZ="135.0334" 
+			GetOffX="2066.773" GetOffY="288.873" GetOffZ="97.03159" />				
+	</If>
+
+	<!--Continental Drift: I'm in Eastern Kingdoms, should be in Kalimdor-->
+	<If Condition="Me.MapId == 0">
+		<CustomBehavior File="Message" Text="Transport: Riding Zepplin to Orgrimmar" LogColor="Cyan" />
+		<CustomBehavior File="UseTransport" TransportId="164871"
+			WaitAtX="2070.155" WaitAtY="289.2588" WaitAtZ="97.0315" 
+			TransportStartX="2062.376" TransportStartY="292.998" TransportStartZ="114.973"
+			TransportEndX="1833.509" TransportEndY="-4391.543" TransportEndZ="152.7679"
+			StandOnX="2067.979" StandOnY="295.2747" StandOnZ="97.23677" 
+			GetOffX="1840.225" GetOffY="-4390.912" GetOffZ="135.2337" />
+	</If>
+</QuestOrder>
