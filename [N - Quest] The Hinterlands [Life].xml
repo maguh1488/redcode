@@ -1,0 +1,467 @@
+<HBProfile>
+	<Name>[N - Quest] The Hinterlands [Life] [$Rev: 67 $]</Name>
+
+	<MinLevel>30</MinLevel>
+	<MaxLevel>91</MaxLevel>
+
+	<MinDurability>0.2</MinDurability>
+	<MinFreeBagSlots>2</MinFreeBagSlots>
+
+	<MailGrey>False</MailGrey>
+	<MailWhite>False</MailWhite>
+	<MailGreen>True</MailGreen>
+	<MailBlue>True</MailBlue>
+	<MailPurple>True</MailPurple>
+   
+	<SellGrey>True</SellGrey>
+	<SellWhite>True</SellWhite>
+	<SellGreen>True</SellGreen>
+	<SellBlue>False</SellBlue>
+	<SellPurple>False</SellPurple>
+
+	<QuestOrder>
+		<CustomBehavior File="Message" Text="Initializing Settings" LogColor="Cyan" />
+
+			<!--Extreme Racial Prejudice-->
+			<If Condition="Me.IsAlliance">
+				<CustomBehavior File="Message" Text="Error: Alliance support isn't finished yet! Shutting Down" LogColor="Cyan" />
+				<CustomBehavior File="Halt" />
+			</If>
+
+			<!--Leveling or Loremaster: Harry Potter Sorting Hat-->
+			<If Condition="Me.Level &gt;= 35 &amp;&amp; Me.Level &lt; 60">
+				<CustomBehavior File="Message" Text="Checkpoint Reached: Loading Western Plaguelands" LogColor="Cyan" />
+					<ClearMailbox />
+					<ClearVendor />
+				<CustomBehavior File="LoadProfile" ProfileName="[N - Quest] The Hinterlands [Life]" />
+
+				<!--Checking for Zone Loremaster-->
+				<ElseIf Condition="Me.Level &gt;= 60 &amp;&amp; IsAchievementCompleted(4897)">
+					<CustomBehavior File="Message" Text="Loremaster: The Hinterlands Complete! Loading Western Plaguelands" LogColor="Cyan" />
+						<ClearVendor />
+						<ClearMailbox />
+					<CustomBehavior File="LoadProfile" ProfileName="[N - Quest] Western Plaguelands [Life]" />
+				</ElseIf>
+
+				<!--We Don't Have Zone Loremaster-->
+				<ElseIf Condition="Me.Level &gt;= 60 &amp;&amp; !IsAchievementCompleted(4897)">
+					<CustomBehavior File="Message" Text="Loremaster: Completing The Hinterlands" LogColor="Cyan" />
+				</ElseIf>
+			</If>
+
+			<!--Settings Configuration-->
+			<CustomBehavior File="UserSettings" LootMobs="True" UseFlightPaths="True" PullDistance="25" />
+			<CustomBehavior File="EnablePlugin" Names="Anti Drown,AutoEquip2,DrinkPotions,Refreshment,Talented2" />
+			<CustomBehavior File="RunMacro" Macro="/script SetCVar('AutoLootDefault', 1)" WaitTime="1000" />
+
+			<!--Mailboxes-->
+			<SetMailbox>
+				<Mailboxes>
+					<!--Revantusk Village Mailbox-->
+					<Mailbox X="-597.8563" Y="-4611.434" Z="9.673935" />
+				</Mailboxes>
+			</SetMailbox>
+
+			<!--Vendors-->
+			<SetVendor>
+				<Vendors>
+					<!--Revantusk Village Vendors-->
+					<Vendor Name="Lard" Entry="14731" Type="Food" X="-622.0334" Y="-4583.398" Z="11.68747" />
+					<Vendor Name="Smith Slagtree" Entry="14737" Type="Repair" X="-595.7503" Y="-4559.671" Z="9.106455" />
+					<!--Hiri'watha Research Station Vendors-->
+					<Vendor Name="Bitsy" Entry="43739" Type="Food" X="-21.6719" Y="-2799.42" Z="121.7311" />
+					<Vendor Name="Marvin Winters" Entry="43750" Type="Repair" X="-42.8698" Y="-2811.92" Z="122.3342" />
+				</Vendors>
+			</SetVendor>
+
+			<!--Continental Drift: I'm in Kalimdor, returning to Eastern Kingdoms-->
+			<If Condition="Me.MapId == 1">
+				<CustomBehavior File="Message" Text="Transport: Riding Zepplin to The Undercity" LogColor="Cyan" />
+				<CustomBehavior File="UseTransport" TransportId="164871"
+					WaitAtX="1838.676" WaitAtY="-4387.965" WaitAtZ="135.2332"
+					TransportStartX="1833.509" TransportStartY="-4391.543" TransportStartZ="152.7679"
+					TransportEndX="2062.376" TransportEndY="292.998" TransportEndZ="114.973"
+					StandOnX="1834.961" StandOnY="-4385.694" StandOnZ="135.0334"
+					GetOffX="2066.773" GetOffY="288.873" GetOffZ="97.03159" />
+			</If>
+
+			<!--Get out of "Outlands" Zones-->
+			<If Condition="Me.ZoneId == 3433 || Me.ZoneId == 3430 || Me.ZoneId == 3487">
+				<CustomBehavior File="Message" Text="Transport: Using Orb of Translocation to Undercity" LogColor="Cyan" />
+				<RunTo DestName="Orb of Translocation" X="10038.42" Y="-7000.994" Z="61.76336" />
+				<CustomBehavior File="InteractWith" MobId="184502" Range="8" WaitTime="10000" X="10038.42" Y="-7000.994" Z="61.76336" />
+			</If>
+		
+		<CustomBehavior File="Message" Text="Compiling Quests: Revantusk Village" LogColor="Cyan" />
+			
+			<!--Transport: Hammerfall to Revantusk Village-->
+			<If Condition="HasQuest(26430) &amp;&amp; Me.ZoneId == 45">
+				<CustomBehavior File="Message" Text="Transport: Flying to Revantusk Village from Hammerfall" LogColor="Cyan" />
+				<CustomBehavior File="InteractWith" MobId="2851" InteractByGossipOptions="2" NonCompeteDistance="0" WaitTime="2000" X="-918.0201" Y="-3498.137" Z="70.45307" />
+				<!--Automatic Taxi Wait-->
+			</If>
+
+			<!--Setting Hearthstone & Cleaning-->
+			<If Condition="!HasQuest(26212) &amp;&amp; !IsQuestCompleted(26212) &amp;&amp; Me.Level &lt; 60">
+				<CustomBehavior File="Message" Text="Setting Hearthstone, Selling, Repairing, &amp; Mailing. Please Wait!" LogColor="Cyan" />
+				<CustomBehavior File="ForceSetVendor" DoSell="True" DoRepair="True" DoMail="True" />
+				<!--Revantusk Village(3317)-->
+				<CustomBehavior File="InteractWith" MobId="14731" InteractByGossipOptions="1" NonCompeteDistance="0" X="-622.0334" Y="-4583.398" Z="11.68747" />
+				<!--Big Boys Don't Need Hearthstones-->
+				<ElseIf Condition="Me.Level &gt;= 60">
+					<CustomBehavior File="Message" Text="Selling, Repairing, &amp; Mailing. Please Wait!" LogColor="Cyan" />
+					<CustomBehavior File="ForceSetVendor" DoSell="True" DoRepair="True" DoMail="True" />
+				</ElseIf>
+			</If>
+
+		<PickUp QuestName="Lard Lost His Lunch" QuestId="26212" GiverName="Lard" GiverId="14731" />
+		<If Condition="HasQuest(26430)">
+			<TurnIn QuestName="Revantusk Village" QuestId="26430" TurnInName="Elder Torntusk" TurnInId="42613" />
+		</If>
+		<PickUp QuestName="The Savage Dwarves" QuestId="26238" GiverName="Elder Torntusk" GiverId="42613" />
+		<PickUp QuestName="Thornar Thunderclash" QuestId="26263" GiverName="Elder Torntusk" GiverId="42613" />
+		<PickUp QuestName="Gammerita, Mon!" QuestId="26210" GiverName="Katoom the Angler" GiverId="14740" />
+		<PickUp QuestName="Snapjaws, Mon!" QuestId="26211" GiverName="Katoom the Angler" GiverId="14740" />
+		<PickUp QuestName="Stalking the Stalkers" QuestId="26223" GiverName="Huntsman Markhor" GiverId="14741" />
+		<PickUp QuestName="Stomp To My Beat" QuestId="26240" GiverName="Mystic Yayo'jin" GiverId="14739" />
+		<PickUp QuestName="Pupellyverbos Port" QuestId="26225" GiverName="Grognard" GiverId="42464" />
+
+			<Objective QuestName="Gammerita, Mon!" QuestId="26210" Type="CollectItem" ItemId="19023" CollectCount="1" />
+				
+			<!--Objective: Lard Lost His Lunch-->
+			<While Condition="HasQuest(26212) &amp;&amp; !IsQuestCompleted(26212)">
+				<RunTo DestName="Lard's Picnic Basket" X="412.1252" Y="-4824.884" Z="11.16059" />
+				<CustomBehavior File="InteractWith" MobId="179910" Range="3" X="412.1252" Y="-4824.884" Z="11.16059" />
+				<CustomBehavior File="WaitTimer" WaitTime="5000" />
+			</While>
+
+			<Objective QuestName="Snapjaws, Mon!" QuestId="26211" Type="KillMob" MobId="2505" KillCount="10" />
+			<Objective QuestName="Pupellyverbos Port" QuestId="26225" Type="CollectItem" ItemId="3900" CollectCount="12" />
+
+		<TurnIn QuestName="Pupellyverbos Port" QuestId="26225" TurnInName="Grognard" TurnInId="42464" />
+		<TurnIn QuestName="Gammerita, Mon!" QuestId="26210" TurnInName="Katoom the Angler" TurnInId="14740" />
+		<TurnIn QuestName="Snapjaws, Mon!" QuestId="26211" TurnInName="Katoom the Angler" TurnInId="14740" />
+		<TurnIn QuestName="Lard Lost His Lunch" QuestId="26212" TurnInName="Lard" TurnInId="14731" />
+
+			<!--Opening Lard's Special Picnic Basket-->
+			<If Condition="HasItem(19035)">
+				<CustomBehavior File="Misc\RunLua" Lua="UseItemByName(19035)" WaitTime="5000" />
+				<CustomBehavior File="Message" Text="Selling, Repairing, &amp; Mailing. Please Wait!" LogColor="Cyan" />
+				<CustomBehavior File="ForceSetVendor" DoSell="True" DoRepair="True" DoMail="True" />
+			</If>
+
+			<Objective QuestName="Thornar Thunderclash" QuestId="26263" Type="KillMob" MobId="42610" KillCount="1" />
+
+			<!--Objective: Stomp To My Beat-->
+			<CustomBehavior File="InteractWith" QuestId="26240" MobId="42536" ProactiveCombatStrategy="ClearMobsTargetingUs" 
+				InteractByUsingItemId="57920" AuraIdMissingFromMob="95966" NumOfTimes="100" Range="15">
+				<HuntingGrounds>
+					<Hotspot X="191.3123" Y="-4326.587" Z="119.4949" />
+					<Hotspot X="183.7413" Y="-4363.692" Z="117.072" />
+					<Hotspot X="226.8896" Y="-4405.067" Z="119.4669" />
+				</HuntingGrounds>
+			</CustomBehavior>
+
+			<Objective QuestName="The Savage Dwarves" QuestId="26238" Type="KillMob" MobId="42518" KillCount="10" />
+			<Objective QuestName="Stalking the Stalkers" QuestId="26223" Type="KillMob" MobId="2926" KillCount="8" />
+
+		<TurnIn QuestName="Stomp To My Beat" QuestId="26240" TurnInName="Mystic Yayo'jin" TurnInId="14739" />
+		<TurnIn QuestName="Stalking the Stalkers" QuestId="26223" TurnInName="Huntsman Markhor" TurnInId="14741" />
+		<PickUp QuestName="Hunt the Savages" QuestId="26224" GiverName="Huntsman Markhor" GiverId="14741" />
+		<TurnIn QuestName="The Savage Dwarves" QuestId="26238" TurnInName="Elder Torntusk" TurnInId="42613" />
+		<TurnIn QuestName="Thornar Thunderclash" QuestId="26263" TurnInName="Elder Torntusk" TurnInId="42613" />
+		<PickUp QuestName="Skulk Rock Clean-Up" QuestId="26267" GiverName="Elder Torntusk" GiverId="42613" />
+		<PickUp QuestName="Skulk Rock Supplies" QuestId="26268" GiverName="Elder Torntusk" GiverId="42613" />
+
+			<!--Cleaning-->
+			<If Condition="!HasQuest(26283) &amp;&amp; !IsQuestCompleted(26283)">
+				<CustomBehavior File="Message" Text="Selling, Repairing, &amp; Mailing. Please Wait!" LogColor="Cyan" />
+				<CustomBehavior File="ForceSetVendor" DoSell="True" DoRepair="True" DoMail="True" />
+			</If>
+
+		<PickUp QuestName="Prime Slime" QuestId="26283" GiverName="Malcom Fendelson" GiverId="42612" />
+
+			<!--Issue: Singular Disables Itself When Sucked In-->
+			<Objective QuestName="Prime Slime" QuestId="26283" Type="CollectItem" ItemId="58082" CollectCount="1" />
+			<Objective QuestName="Skulk Rock Supplies" QuestId="26268" Type="CollectItem" ItemId="57989" CollectCount="5" />
+			<Objective QuestName="Skulk Rock Clean-Up" QuestId="26267" Type="KillMob" MobId="2656" KillCount="10" />
+			<Objective QuestName="Hunt the Savages" QuestId="26224" Type="KillMob" MobId="2929" KillCount="10" />
+
+		<TurnIn QuestName="Prime Slime" QuestId="26283" TurnInName="Malcom Fendelson" TurnInId="42612" />
+
+			<!--Opening: Slimy Bag-->
+			<While Condition="HasItem(20766)">
+				<CustomBehavior File="Misc\RunLua" Lua="UseItemByName(20766)" WaitTime="2000" />
+			</While>
+
+		<TurnIn QuestName="Hunt the Savages" QuestId="26224" TurnInName="Huntsman Markhor" TurnInId="14741" />
+
+			<!--Cleaning-->
+			<If Condition="!HasQuest(26267) &amp;&amp; !IsQuestCompleted(26267)">
+				<CustomBehavior File="Message" Text="Selling, Repairing, &amp; Mailing. Please Wait!" LogColor="Cyan" />
+				<CustomBehavior File="ForceSetVendor" DoSell="True" DoRepair="True" DoMail="True" />
+			</If>
+
+		<TurnIn QuestName="Skulk Rock Clean-Up" QuestId="26267" TurnInName="Elder Torntusk" TurnInId="42613" />
+		<TurnIn QuestName="Skulk Rock Supplies" QuestId="26268" TurnInName="Elder Torntusk" TurnInId="42613" />
+		<PickUp QuestName="The Fall of Jintha'Alor" QuestId="26432" GiverName="Elder Torntusk" GiverId="42613" />
+
+		<CustomBehavior File="Message" Text="Compiling Quests: Jintha'Alor" LogColor="Cyan" />
+
+		<TurnIn QuestName="The Fall of Jintha'Alor" QuestId="26432" TurnInName="Primal Torntusk" TurnInId="42642" />
+		<PickUp QuestName="Start Taking Back" QuestId="26306" GiverName="Primal Torntusk" GiverId="42642" />
+		<PickUp QuestName="Heads Up" QuestId="26366" GiverName="Primal Torntusk" GiverId="42642" />
+		<PickUp QuestName="Faces of Evil" QuestId="26357" GiverName="Kotonga" GiverId="42624" />
+		<PickUp QuestName="All That Skitters" QuestId="26310" GiverName="Eliza Darkgrin" GiverId="42622" />
+
+			<Objective QuestName="Heads Up" QuestId="26366" Type="CollectItem" ItemId="58236" CollectCount="1" />
+
+			<!--Objective: Faces of Evil-->
+			<CustomBehavior File="InteractWith" QuestId="26357" MobId="42704" InteractByUsingItemId="58209" Range="10" IgnoreLoSToTarget="True" NumOfTimes="50">
+				<HuntingGrounds>
+					<Hotspot X="-292.3743" Y="-4116.449" Z="136.4744" />
+					<Hotspot X="-291.2626" Y="-4164.373" Z="136.4373" />
+					<Hotspot X="-337.8339" Y="-4139.259" Z="152.0748" />
+					<Hotspot X="-277.1734" Y="-4089.099" Z="152.1427" />
+					<Hotspot X="-207.0009" Y="-4082.362" Z="151.8747" />
+				</HuntingGrounds>
+			</CustomBehavior>
+
+			<!--Objective: All That Skitters-->
+			<CustomBehavior File="InteractWith" QuestId="26310" MobId="42689" Range="5" MobState="Alive" NumOfTimes="50">
+				<HuntingGrounds>
+					<Hotspot X="-292.3743" Y="-4116.449" Z="136.4744" />
+					<Hotspot X="-291.2626" Y="-4164.373" Z="136.4373" />
+					<Hotspot X="-337.8339" Y="-4139.259" Z="152.0748" />
+					<Hotspot X="-277.1734" Y="-4089.099" Z="152.1427" />
+					<Hotspot X="-207.0009" Y="-4082.362" Z="151.8747" />
+				</HuntingGrounds>
+			</CustomBehavior>
+
+			<Objective QuestName="Start Taking Back" QuestId="26306" Type="KillMob" MobId="2641" KillCount="5" />
+			<Objective QuestName="Start Taking Back" QuestId="26306" Type="KillMob" MobId="2640" KillCount="5" />
+
+		<TurnIn QuestName="All That Skitters" QuestId="26310" TurnInName="Eliza Darkgrin" TurnInId="42622" />
+		<PickUp QuestName="Dark Vessels" QuestId="26309" GiverName="Eliza Darkgrin" GiverId="42622" />
+		<TurnIn QuestName="Start Taking Back" QuestId="26306" TurnInName="Primal Torntusk" TurnInId="42642" />
+		<TurnIn QuestName="Heads Up" QuestId="26366" TurnInName="Primal Torntusk" TurnInId="42642" />
+		<PickUp QuestName="Death to the Vilebranch" QuestId="26307" GiverName="Primal Torntusk" GiverId="42642" />
+
+			<Objective QuestName="Dark Vessels" QuestId="26309" Type="CollectItem" ItemId="19071" CollectCount="5" />
+			<Objective QuestName="Death to the Vilebranch" QuestId="26307" Type="KillMob" MobId="2642" KillCount="1" />
+			<Objective QuestName="Death to the Vilebranch" QuestId="26307" Type="KillMob" MobId="2643" KillCount="5" />
+
+		<TurnIn QuestName="Dark Vessels" QuestId="26309" TurnInName="Eliza Darkgrin" TurnInId="42622" />
+		<PickUp QuestName="Venomous Secrets" QuestId="26368" GiverName="Eliza Darkgrin" GiverId="42622" />
+		<TurnIn QuestName="Death to the Vilebranch" QuestId="26307" TurnInName="Primal Torntusk" TurnInId="42642" />
+		<PickUp QuestName="It's Ours Now" QuestId="26308" GiverName="Primal Torntusk" GiverId="42642" />
+		<PickUp QuestName="Ongo'longo's Revenge" QuestId="26367" GiverName="Primal Torntusk" GiverId="42642" />
+
+			<!--Transport: Middle of Jintha'Alor-->
+			<If Condition="HasQuest(26367) &amp;&amp; !IsQuestCompleted(26367) &amp;&amp; Me.Z &lt; 130">
+				<CustomBehavior File="InteractWith" MobId="42624" InteractByGossipOptions="1" NonCompeteDistance="0" WaitTime="2000" X="-234.5868" Y="-4184.814" Z="121.3843" />
+			</If>
+
+			<Objective QuestName="Ongo'longo's Revenge" QuestId="26367" Type="KillMob" MobId="42815" KillCount="1" />
+			<Objective QuestName="Venomous Secrets" QuestId="26368" Type="CollectItem" ItemId="58239" CollectCount="6" />
+			<Objective QuestName="It's Ours Now" QuestId="26308" Type="KillMob" MobId="2647" KillCount="5" />
+			<Objective QuestName="It's Ours Now" QuestId="26308" Type="KillMob" MobId="2646" KillCount="5" />
+
+			<!--Transport: Return to Base [Monitor This: Spamming]-->
+			<While Condition="HasQuest(26308) &amp;&amp; IsQuestCompleted(26308) &amp;&amp; Me.Z &gt; 130">
+				<CustomBehavior File="InteractWith" MobId="204002" InteractByGossipOptions="1" NonCompeteDistance="0" WaitTime="2000" X="-262.0493" Y="-3827.328" Z="238.3505" />
+			</While>
+			
+		<TurnIn QuestName="Venomous Secrets" QuestId="26368" TurnInName="Eliza Darkgrin" TurnInId="42622" />
+		<TurnIn QuestName="It's Ours Now" QuestId="26308" TurnInName="Primal Torntusk" TurnInId="42642" />
+		<TurnIn QuestName="Ongo'longo's Revenge" QuestId="26367" TurnInName="Primal Torntusk" TurnInId="42642" />
+		<PickUp QuestName="Summit of Fate" QuestId="26363" GiverName="Primal Torntusk" GiverId="42642" />
+
+			<!--Transport: Middle of Jintha'Alor-->
+			<If Condition="HasQuest(26363) &amp;&amp; !IsQuestCompleted(26363) &amp;&amp; Me.Z &lt; 130">
+				<CustomBehavior File="InteractWith" MobId="42624" InteractByGossipOptions="1" NonCompeteDistance="0" WaitTime="2000" X="-234.5868" Y="-4184.814" Z="121.3843" />
+			</If>
+
+			<!--Objective: Summit of Fate [Area Has Meshing Issues?]-->
+			<CustomBehavior File="InteractWith" QuestId="26363" MobId="42857" Range="5" MobState="Dead" NumOfTimes="50">
+				<HuntingGrounds>
+					<Hotspot X="-512.1829" Y="-3850.856" Z="227.4898" />
+					<Hotspot X="-518.3007" Y="-3887.469" Z="227.4899" />
+					<Hotspot X="-553.9289" Y="-3891.952" Z="227.4899" />
+				</HuntingGrounds>
+			</CustomBehavior>		
+		
+			<!--Transport: Return to Base [Monitor This: Spamming]-->
+			<While Condition="HasQuest(26363) &amp;&amp; IsQuestCompleted(26363) &amp;&amp; Me.Z &gt; 130">
+				<CustomBehavior File="InteractWith" MobId="204002" InteractByGossipOptions="1" NonCompeteDistance="0" WaitTime="2000" X="-262.0493" Y="-3827.328" Z="238.3505" />
+			</While>
+
+		<TurnIn QuestName="Summit of Fate" QuestId="26363" TurnInName="Primal Torntusk" TurnInId="42642" />
+		<PickUp QuestName="Hunt the Keeper" QuestId="26369" GiverName="Primal Torntusk" GiverId="42642" />
+
+			<!--Transport: Middle of Jintha'Alor-->
+			<If Condition="HasQuest(26369) &amp;&amp; !IsQuestCompleted(26369) &amp;&amp; Me.Z &lt; 130">
+				<CustomBehavior File="InteractWith" MobId="42624" InteractByGossipOptions="1" NonCompeteDistance="0" WaitTime="2000" X="-234.5868" Y="-4184.814" Z="121.3843" />
+			</If>
+
+			<Objective QuestName="Hunt the Keeper" QuestId="26369" Type="CollectItem" ItemId="58241" CollectCount="1" />
+
+			<!--Transport: Return to Base [Monitor This: Spamming]-->
+			<While Condition="HasQuest(26369) &amp;&amp; IsQuestCompleted(26369) &amp;&amp; Me.Z &gt; 130">
+				<CustomBehavior File="InteractWith" MobId="204002" InteractByGossipOptions="1" NonCompeteDistance="0" WaitTime="2000" X="-262.0493" Y="-3827.328" Z="238.3505" />
+			</While>
+
+		<TurnIn QuestName="Hunt the Keeper" QuestId="26369" TurnInName="Primal Torntusk" TurnInId="42642" />
+		<PickUp QuestName="Darkcleric Marnal" QuestId="26384" GiverName="Eliza Darkgrin" GiverId="42622" />
+
+		<CustomBehavior File="Message" Text="Compiling Quests: Hiri'watha Research Station" LogColor="Cyan" />
+
+		<TurnIn QuestName="Darkcleric Marnal" QuestId="26384" TurnInName="Darkcleric Marnal" TurnInId="42898" />
+
+		<!--Setting Hearthstone & Cleaning-->
+		<If Condition="!HasQuest(26381) &amp;&amp; !IsQuestCompleted(26381) &amp;&amp; Me.Level &lt; 60">
+			<CustomBehavior File="Message" Text="Setting Hearthstone, Selling, &amp; Repairing. Please Wait!" LogColor="Cyan" />
+			<CustomBehavior File="ForceSetVendor" DoSell="True" DoRepair="True" />
+			<!--Revantusk Village(3317)-->
+			<CustomBehavior File="InteractWith" MobId="43739" InteractByGossipOptions="1" NonCompeteDistance="0" X="-21.6719" Y="-2799.42" Z="121.7311" />
+			<!--Big Boys Don't Need Hearthstones-->
+			<ElseIf Condition="Me.Level &gt;= 60">
+				<CustomBehavior File="Message" Text="Selling, &amp; Repairing. Please Wait!" LogColor="Cyan" />
+				<CustomBehavior File="ForceSetVendor" DoSell="True" DoRepair="True" />
+			</ElseIf>
+		</If>
+
+		<PickUp QuestName="The Eye of Shadra" QuestId="26381" GiverName="Darkcleric Marnal" GiverId="42898" />		
+		<PickUp QuestName="Can't Make An Omelette Without..." QuestId="26382" GiverName="Apothecary Surlis" GiverId="42896" />
+	
+			<Objective QuestName="The Eye of Shadra" QuestId="26381" Type="CollectItem" ItemId="58282" CollectCount="1" />
+			<Objective QuestName="Can't Make An Omelette Without..." QuestId="26382" Type="CollectItem" ItemId="58252" CollectCount="5" />
+
+		<TurnIn QuestName="The Eye of Shadra" QuestId="26381" TurnInName="Darkcleric Marnal" TurnInId="42898" />
+		<PickUp QuestName="The Fang of Shadra" QuestId="26406" GiverName="Darkcleric Marnal" GiverId="42898" />
+		<TurnIn QuestName="Can't Make An Omelette Without..." QuestId="26382" TurnInName="Apothecary Surlis" TurnInId="42896" />
+		<PickUp QuestName="Starvation Diet" QuestId="26387" GiverName="Apothecary Surlis" GiverId="42896" />
+
+			<Objective QuestName="The Fang of Shadra" QuestId="26406" Type="CollectItem" ItemId="58281" CollectCount="1" />
+			<Objective QuestName="Starvation Diet" QuestId="26387" Type="KillMob" MobId="42907" KillCount="6" />
+
+		<TurnIn QuestName="The Fang of Shadra" QuestId="26406" TurnInName="Darkcleric Marnal" TurnInId="42898" />
+		<PickUp QuestName="The Shell of Shadra" QuestId="26418" GiverName="Darkcleric Marnal" GiverId="42898" />
+		<TurnIn QuestName="Starvation Diet" QuestId="26387" TurnInName="Apothecary Surlis" TurnInId="42896" />
+
+		<!--Achievement Marker-->
+
+			<Objective QuestName="The Shell of Shadra" QuestId="26418" Type="CollectItem" ItemId="58779" CollectCount="1" />
+		
+		<TurnIn QuestName="The Shell of Shadra" QuestId="26418" TurnInName="Darkcleric Marnal" TurnInId="42898" />
+
+			<!--Cleaning-->
+			<If Condition="!HasQuest(26558) &amp;&amp; !IsQuestCompleted(26558)">
+				<CustomBehavior File="Message" Text="Selling, &amp; Repairing. Please Wait!" LogColor="Cyan" />
+				<CustomBehavior File="ForceSetVendor" DoSell="True" DoRepair="True" />
+			</If>
+
+		<PickUp QuestName="Summoning Shadra" QuestId="26558" GiverName="Darkcleric Marnal" GiverId="42898" />
+
+		<CustomBehavior File="Message" Text="Compiling Quests: Shadra'Alor" LogColor="Cyan" />
+
+			<!--Objective: Summoning Shadra [Eastern Temple]-->
+			<While Condition="HasQuest(26558) &amp;&amp; !IsObjectiveComplete(2,26558)">
+				<RunTo DestName="Eastern Temple" X="-369.3662" Y="-3000.108" Z="109.5629" />
+				<CustomBehavior File="Misc\RunLua" Lua="UseItemByName(58784)" WaitTime="2000" />
+			</While>
+
+			<!--Objective: Summoning Shadra [Northwestern Temple]-->
+			<While Condition="HasQuest(26558) &amp;&amp; !IsObjectiveComplete(1,26558)">
+				<RunTo DestName="Northwestern Temple" X="-260.1062" Y="-2811.959" Z="113.7507" />
+				<CustomBehavior File="Misc\RunLua" Lua="UseItemByName(58784)" WaitTime="2000" />
+			</While>
+
+			<!--Objective: Summoning Shadra [Southwestern Temple]-->
+			<While Condition="HasQuest(26558) &amp;&amp; !IsObjectiveComplete(3,26558)">
+				<RunTo DestName="Eastern Temple" X="-486.4645" Y="-2828.299" Z="114.487" />
+				<CustomBehavior File="Misc\RunLua" Lua="UseItemByName(58784)" WaitTime="2000" />
+			</While>
+
+		<TurnIn QuestName="Summoning Shadra" QuestId="26558" TurnInName="Deathstalker Lookout" TurnInId="43299" />
+		<PickUp QuestName="Shadra the Venom Queen" QuestId="26419" GiverName="Deathstalker Lookout" GiverId="43299" />
+		
+			<!--Objective: Shadra the Vendom Queen-->
+			<While Condition="HasQuest(26419) &amp;&amp; !IsQuestCompleted(26419)">
+
+				<CustomBehavior File="WaitTimer" WaitTime="6000" />
+				<RunTo DestName="Shadra'Alor Lake" X="-328.028" Y="-2891.876" Z="73.55474" />
+
+				<CustomBehavior File="InteractWith" QuestId="26419" MobId="43007" WaitForNpcs="False" NonCompeteDistance="0" MobState="Alive" X="-328.028" Y="-2891.876" Z="73.55474" />
+		
+				<!--Stupid Spider was Killing / Missing-->
+				<If Condition="!IsQuestCompleted(26419)">
+					<CustomBehavior File="AbandonQuest" QuestId="26419" Type="All" />
+					<CustomBehavior File="WaitTimer" WaitTime="30000" GoalText="Spider Wasn't Killed, Waiting Before Trying Again" />
+					<PickUp QuestName="Shadra the Venom Queen" QuestId="26419" GiverName="Deathstalker Lookout" GiverId="43299" />
+				</If>
+			</While>
+		
+		<TurnIn QuestName="Shadra the Venom Queen" QuestId="26419" TurnInName="Darkcleric Marnal" TurnInId="42898" />
+		<PickUp QuestName="The Battle for Andorhal" QuestId="28508" GiverName="Darkcleric Marnal" GiverId="42898" />
+
+		<CustomBehavior File="Message" Text="Profile Complete: Loading Western Plaguelands" LogColor="Cyan" />
+			<If Condition="!HasQuest(28508) &amp;&amp; !IsQuestCompleted(28508)">
+				<PickUp QuestName="The Battle for Andorhal" QuestId="28508" GiverName="Darkcleric Marnal" GiverId="42898" />
+			</If>
+			<ClearMailbox />
+			<ClearVendor />
+		<CustomBehavior File="LoadProfile" ProfileName="[N - Quest] Western Plaguelands [Life]" />		
+	</QuestOrder>
+
+	<Quest Id="26306" Name="Start Taking Back">
+		<Objective Type="KillMob" MobId="2641" KillCount="5">
+			<Hotspots>
+				<Hotspot X="-292.3743" Y="-4116.449" Z="136.4744" />
+				<Hotspot X="-291.2626" Y="-4164.373" Z="136.4373" />
+				<Hotspot X="-337.8339" Y="-4139.259" Z="152.0748" />
+				<Hotspot X="-277.1734" Y="-4089.099" Z="152.1427" />
+			</Hotspots>
+		</Objective>
+		<Objective Type="KillMob" MobId="2640" KillCount="5">
+			<Hotspots>
+				<Hotspot X="-292.3743" Y="-4116.449" Z="136.4744" />
+				<Hotspot X="-291.2626" Y="-4164.373" Z="136.4373" />
+				<Hotspot X="-337.8339" Y="-4139.259" Z="152.0748" />
+				<Hotspot X="-277.1734" Y="-4089.099" Z="152.1427" />
+			</Hotspots>
+		</Objective>
+	</Quest>
+	<Quest Id="26309" Name="Dark Vessels">
+		<Objective Type="CollectItem" ItemId="19071" CollectCount="5">
+			<CollectFrom>
+				<GameObject Name="Vessel of Tainted Blood" Entry="179922" />
+			</CollectFrom>
+			<Hotspots>
+				<Hotspot X="-292.3743" Y="-4116.449" Z="136.4744" />
+				<Hotspot X="-291.2626" Y="-4164.373" Z="136.4373" />
+				<Hotspot X="-337.8339" Y="-4139.259" Z="152.0748" />
+				<Hotspot X="-277.1734" Y="-4089.099" Z="152.1427" />
+				<Hotspot X="-256.7175" Y="-3976.666" Z="195.3342" />
+			</Hotspots>
+		</Objective>
+	</Quest>
+	<Quest Id="26381" Name="The Eye of Shadra">
+		<Objective Type="CollectItem" ItemId="58282" CollectCount="1">
+			<CollectFrom>
+				<GameObject Name="Cache of Shadra" Entry="204133" />
+			</CollectFrom>
+			<Hotspots>
+				<Hotspot X="467.8034" Y="-3327.434" Z="119.997" />
+			</Hotspots>
+		</Objective>
+	</Quest>
+	<Quest Id="26419" Name="Shadra the Venom Queen">
+		<Objective Type="KillMob" MobId="43007" KillCount="1">
+			<Hotspots>
+				<Hotspot X="-333.0698" Y="-2904.649" Z="76.93935" />
+			</Hotspots>
+		</Objective>
+	</Quest>
+
+</HBProfile>
