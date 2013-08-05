@@ -1,8 +1,13 @@
 ==================================
  ==== Life Project Changelog ====
 ==================================
+Revision 73: Sunday, August 4th, 2013
+-- The Hinterlands Quests Completed
+-- Azuremyst Isle Completed
+-- Added Arathi Highlands Checkpoints
+-- Western Plaguelands Framework
 ________________________________________
-Revision 72: Saturday, August, 3rd, 2013
+Revision 72: Saturday, August 3rd, 2013
 -- New Daisy Chain Framework Testing
 -- Hillsbrad Foothills Fixes
 -- Adding More Frameworks
