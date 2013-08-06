@@ -19,20 +19,6 @@
 	<SellBlue>False</SellBlue>
 	<SellPurple>False</SellPurple>
 
-	<Mailboxes>
-		<!--Dolanaar Mailbox-->
-		<Mailbox X="9850.111" Y="957.8356" Z="1306.785" />
-	</Mailboxes>
-
-	<Vendors>
-		<!--Aldrassil Vendors-->
-		<Vendor Name="Lyrai" Entry="3587" Type="Food" X="10442.93" Y="783.989" Z="1337.285" />
-		<Vendor Name="Janna Brightmoon" Entry="3590" Type="Repair" X="10438.1" Y="787.2949" Z="1337.285" />
-		<!--Dolanaar Vendors-->
-		<Vendor Name="Innkeeper Keldamyr" Entry="6736" Type="Food" X="9802.209" Y="982.6077" Z="1313.896" />
-		<Vendor Name="Shalomon" Entry="3609" Type="Repair" X="9812.371" Y="947.5777" Z="1308.769" />
-	</Vendors>
-
 	<QuestOrder>
 		<CustomBehavior File="Message" Text="Initializing Settings" LogColor="Cyan" />
 
@@ -46,6 +32,26 @@
 				<CustomBehavior File="Message" Text="You're not a Night Elf. Finding Appropriate Profile!" LogColor="Cyan" />
 				<CustomBehavior File="LoadProfile" ProfileName="..\[N - Quest] Profile Loader [Life].xml" />					
 			</If>
+
+			<!--Mailboxes-->
+			<SetMailbox>
+				<Mailboxes>
+					<!--Dolanaar Mailbox-->
+					<Mailbox X="9850.111" Y="957.8356" Z="1306.785" />
+				</Mailboxes>
+			</SetMailbox>
+
+			<!--Vendors-->
+			<SetVendor>
+				<Vendors>
+					<!--Aldrassil Vendors-->
+					<Vendor Name="Lyrai" Entry="3587" Type="Food" X="10442.93" Y="783.989" Z="1337.285" />
+					<Vendor Name="Janna Brightmoon" Entry="3590" Type="Repair" X="10438.1" Y="787.2949" Z="1337.285" />
+					<!--Dolanaar Vendors-->
+					<Vendor Name="Innkeeper Keldamyr" Entry="6736" Type="Food" X="9802.209" Y="982.6077" Z="1313.896" />
+					<Vendor Name="Shalomon" Entry="3609" Type="Repair" X="9812.371" Y="947.5777" Z="1308.769" />
+				</Vendors>
+			</SetVendor>			
 
 		<CustomBehavior File="Message" Text="Compiling Quests: Shadowglen" LogColor="Cyan" />
 
@@ -106,10 +112,10 @@
 			
 				<!--Objective: Learning the Word-->
 				<While Condition="HasQuest(26949) &amp;&amp; !IsQuestCompleted(26949)">
-					<Disablebehavior Name="Combat" />
+					<DisableBehavior Name="Combat" />
 					<RunTo X="10398.9" Y="808.3467" Z="1317.693" />
 					<CustomBehavior File="InteractWith" InteractByCastingSpellId="589" MobId="44614" Range="40" CollectionDistance="10" X="10398.9" Y="808.3467" Z="1317.693" />
-					<Enablebehavior Name="Combat" />
+					<EnableBehavior Name="Combat" />
 				</While>
 
 			<TurnIn QuestName="Healing for the Wounded" QuestId="26949" TurnInName="Shanda" TurnInId="3595" />
@@ -118,11 +124,16 @@
 		<If Condition="Me.Class == WoWClass.Druid">
 			<PickUp QuestName="Verdant Sigil" QuestId="3120" GiverName="Melithar Staghelm" GiverId="2077" />
 			<TurnIn QuestName="Verdant Sigil" QuestId="3120" TurnInName="Mardant Strongoak" TurnInId="3597" />
-			<PickUp QuestName="A Healer's Touch" QuestId="26948" GiverName="Mardant Strongoak" GiverId="3597" />
-			<If Condition="!IsQuestCompleted(26948)">
-				<CustomBehavior File="CastSpellOn" QuestId="26948" SpellId="8921" NpcId="44614" NumOfTimes="5" MobHpPercentLeft="100" MinRange="3" X="10404.43" Y="780.3768" Z="1322.713" />
-			</If>
-			<TurnIn QuestName="A Healer's Touch" QuestId="26948" TurnInName="Mardant Strongoak" TurnInId="3597" />
+			<PickUp QuestName="Moonfire" QuestId="26948" GiverName="Mardant Strongoak" GiverId="3597" />
+
+				<!--Objective: Moonfire-->
+				<While Condition="HasQuest(26948) &amp;&amp; !IsQuestCompleted(26948)">
+					<DisableBehavior Name="Combat" />
+					<CustomBehavior File="InteractWith" InteractByCastingSpellId="8921" MobId="44614" Range="40" CollectionDistance="10" X="10479.92" Y="811.5631" Z="1322.745" />
+					<EnableBehavior Name="Combat" />
+				</While>
+
+			<TurnIn QuestName="Moonfire" QuestId="26948" TurnInName="Mardant Strongoak" TurnInId="3597" />
 			<PickUp QuestName="Priestess of the Moon" QuestId="28723" GiverName="Mardant Strongoak" GiverId="3597" />
 		</If>
 		<If Condition="Me.Class == WoWClass.Mage">
@@ -206,6 +217,8 @@
 		<TurnIn QuestName="Teldrassil: Passing Awareness" QuestId="28731" TurnInName="Corithras Moonrage" TurnInId="3515" />
 
 		<CustomBehavior File="Message" Text="Profile Complete: Loading Teldrassil" LogColor="Cyan" />
+			<ClearMailbox />
+			<ClearVendor />
 		<CustomBehavior File="LoadProfile" ProfileName="..\Kalimdor\[A - Quest] Teldrassil [Life]" />	
 	</QuestOrder>
 

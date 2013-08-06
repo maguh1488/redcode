@@ -210,6 +210,7 @@
 		<TurnIn QuestName="Maggot Eye" QuestId="24998" TurnInName="Apprentice Crispin" TurnInId="38978" />
 		<PickUp QuestName="Planting the Seed of Fear" QuestId="24999" GiverName="Apprentice Crispin" GiverId="38978" />
 			
+			<!--Objective: Planting the Seed of Fear-->
 			<If Condition="HasQuest(24999) &amp;&amp; !IsQuestCompleted(24999)">
 				<RunTo X="2955.555" Y="20.30797" Z="7.128024" />
 				<CustomBehavior File="SpecificQuests\24999-TirisfalGlades-PlantingtheSeedofFear" />

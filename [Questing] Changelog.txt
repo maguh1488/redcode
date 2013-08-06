@@ -1,6 +1,13 @@
 ==================================
  ==== Life Project Changelog ====
 ==================================
+______________________________________
+Revision 74: Tuesday, August 6th, 2013
+-- The Hinterlands Is Now Deployed
+-- Working on WPL: Needs 2 Behaviors, Maybe Plugin
+-- Night Elf Druids Are Happy Now
+-- Darkshore Development Started
+_____________________________________
 Revision 73: Sunday, August 4th, 2013
 -- The Hinterlands Quests Completed
 -- Azuremyst Isle Completed

@@ -115,9 +115,11 @@
 			</If>
 
 		<PickUp QuestName="Lard Lost His Lunch" QuestId="26212" GiverName="Lard" GiverId="14731" />
+
 		<If Condition="HasQuest(26430)">
 			<TurnIn QuestName="Revantusk Village" QuestId="26430" TurnInName="Elder Torntusk" TurnInId="42613" />
 		</If>
+		
 		<PickUp QuestName="The Savage Dwarves" QuestId="26238" GiverName="Elder Torntusk" GiverId="42613" />
 		<PickUp QuestName="Thornar Thunderclash" QuestId="26263" GiverName="Elder Torntusk" GiverId="42613" />
 		<PickUp QuestName="Gammerita, Mon!" QuestId="26210" GiverName="Katoom the Angler" GiverId="14740" />

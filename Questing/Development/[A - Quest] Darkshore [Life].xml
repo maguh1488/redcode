@@ -1,0 +1,69 @@
+<HBProfile>
+	<Name>[A - Quest] Teldrassil [Life] [$Rev: 71 $]</Name>
+
+	<MinLevel>5</MinLevel>
+	<MaxLevel>91</MaxLevel>
+
+	<MinDurability>0.2</MinDurability>
+	<MinFreeBagSlots>2</MinFreeBagSlots>
+
+	<MailGrey>False</MailGrey>
+	<MailWhite>False</MailWhite>
+	<MailGreen>True</MailGreen>
+	<MailBlue>True</MailBlue>
+	<MailPurple>True</MailPurple>
+   
+	<SellGrey>True</SellGrey>
+	<SellWhite>True</SellWhite>
+	<SellGreen>True</SellGreen>
+	<SellBlue>False</SellBlue>
+	<SellPurple>False</SellPurple>
+
+	<Blackspots>
+		<!--Darnassus: Flamboyant Teleporting Tree of Evil Doom-->
+		<Blackspot X="9947.922" Y="2628.305" Z="1316.899" Radius="13.01805" />
+	</Blackspots>
+
+	<QuestOrder>
+		<CustomBehavior File="Message" Text="Initializing Settings" LogColor="Cyan" />
+
+			<!--Settings Configuration-->
+			<CustomBehavior File="UserSettings" LootMobs="True" UseFlightPaths="True" PullDistance="25" />
+			<CustomBehavior File="EnablePlugin" Names="Anti Drown,AutoEquip2,DrinkPotions,Refreshment,Talented2" />
+			<CustomBehavior File="RunMacro" Macro="/script SetCVar('AutoLootDefault', 1)" WaitTime="1000" />
+
+			<!--Mailboxes-->
+			<SetMailbox>
+				<Mailboxes>
+
+				</Mailboxes>
+			</SetMailbox>
+
+			<!--Vendors-->
+			<SetVendor>
+				<Vendors>
+
+				</Vendors>
+			</SetVendor>			
+
+			<!--Continental Drift: Inner Teldrassil to Rut'theran Village-->
+			<If Condition="Me.ZoneId == 1657 || Me.ZoneId == 6450 || (Me.ZoneId == 141 &amp;&amp; Me.Z &gt; 1000)">
+				<CustomBehavior File="Message" Text="Transport: Using Darnassus Portal to Rut'theran" LogColor="Cyan" />
+				<RunTo DestName="Darnassus Portal" X="9946.25" Y="2612.97" Z="1316.245" />
+				<CustomBehavior File="MyCTM" X="9947.438" Y="2621.536" Z="1317.558" />
+				<CustomBehavior File="WaitTimer" WaitTime="5000" />
+			</If>
+			
+			<!--Continental Drift: Rut'theran Village to Lor'danel-->
+			<!--<If Condition="Me.ZoneId == 141 &amp;&amp; Me.Z &lt; 100">
+				<CustomBehavior File="Message" Text="Transport: Flying to Lor'danel" LogColor="Cyan" />
+				<CustomBehavior File="TaxiRide" MobId="3838" DestName="Lor'danel" />
+			</If>-->
+
+			<!--Add Stormwind to Rut'theran Transport-->
+
+		<CustomBehavior File="Message" Text="Compiling Quests: Lor'danel" LogColor="Cyan" />
+
+			<PickUp QuestName="The Last Wave of Survivors" QuestId="13518" GiverName="Dentaria Silverglade" GiverId="32973" />
+	</QuestOrder>
+</HBProfile>
