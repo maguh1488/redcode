@@ -1,7 +1,7 @@
 <HBProfile>
 	<Name>[N - Quest] Western Plaguelands [Life] [$Rev: 67 $]</Name>
 
-	<MinLevel>30</MinLevel>
+	<MinLevel>34</MinLevel>
 	<MaxLevel>91</MaxLevel>
 
 	<MinDurability>0.2</MinDurability>
@@ -64,7 +64,9 @@
 			<!--Vendors-->
 			<SetVendor>
 				<Vendors>
-
+					<!--Andorhal Vendors-->
+					<Vendor Name="Nicolette Garner" Entry="47854" Type="Food" X="1498.47" Y="-1684.44" Z="68.88494" />
+					<Vendor Name="Donald Emery" Entry="47864" Type="Repair" X="1476.04" Y="-1617.46" Z="67.97048" />
 				</Vendors>
 			</SetVendor>
 
@@ -88,13 +90,83 @@
 		
 		<CustomBehavior File="Message" Text="Compiling Quests: Andorhal" LogColor="Cyan" />
 
-			<!--Transport: Hammerfall to Revantusk Village-->
-			<If Condition="HasQuest(28508) &amp;&amp; Me.ZoneId == 47">
-				<CustomBehavior File="Message" Text="Transport: Flying to Andorhal from Hiri'watha" LogColor="Cyan" />
-				<CustomBehavior File="InteractWith" MobId="43573" InteractByGossipOptions="2" NonCompeteDistance="0" WaitTime="2000" X="-24.0503" Y="-2824.4" Z="126.2305" />
-				<!--Automatic Taxi Wait-->
+		<!--Transport: Hammerfall to Revantusk Village-->
+		<If Condition="HasQuest(28508) &amp;&amp; Me.ZoneId == 47">
+			<CustomBehavior File="Message" Text="Transport: Flying to Andorhal from Hiri'watha" LogColor="Cyan" />
+			<CustomBehavior File="InteractWith" MobId="43573" InteractByGossipOptions="2" NonCompeteDistance="0" WaitTime="2000" X="-24.0503" Y="-2824.4" Z="126.2305" />
+			<!--Automatic Taxi Wait-->
+		</If>
+
+		<!--Setting Hearthstone & Cleaning-->
+		<If Condition="!HasQuest(26922) &amp;&amp; !IsQuestCompleted(26922) &amp;&amp; Me.Level &lt; 60">
+			<CustomBehavior File="Message" Text="Setting Hearthstone, Selling, &amp; Repairing. Please Wait!" LogColor="Cyan" />
+			<CustomBehavior File="ForceSetVendor" DoSell="True" DoRepair="True" />
+			<!--Andorhal(193) [InteractWith Not Possible: No Gossip Options]-->
+			<CustomBehavior File="SetHearthstone" MobId="47857" X="1537.4" Y="-1661.51" Z="67.90248" />
+			<!--Big Boys Don't Need Hearthstones-->
+			<ElseIf Condition="Me.Level &gt;= 60">
+				<CustomBehavior File="Message" Text="Selling, &amp; Repairing. Please Wait!" LogColor="Cyan" />
+				<CustomBehavior File="ForceSetVendor" DoSell="True" DoRepair="True" />
+			</ElseIf>
+		</If>
+
+		<PickUp QuestName="The Endless Flow" QuestId="26922" GiverName="Jearl Donald" GiverId="44462" />
+
+		<If Condition="HasQuest(28508)">
+			<TurnIn QuestName="The Battle for Andorhal" QuestId="28508" TurnInName="Koltira Deathweaver" TurnInId="44452" />
+		</If>
+
+		<PickUp QuestName="Scourge First... Alliance Later" QuestId="26921" GiverName="Koltira Deathweaver" GiverId="44452" />
+
+			<!--Objective: The Endless Flow [TheEndlessFlowHook.cs]-->
+			<While Condition="HasQuest(26922) &amp;&amp; !IsQuestCompleted(26922)">
+				<CustomBehavior File="Hooks\TheEndlessFlowHook" />
+				<RunTo X="1557.902" Y="-1472.108" Z="68.39581" />
+				<CustomBehavior File="WaitTimer" WaitTime="5000" />
+			</While>
+
+			<Objective QuestName="War Machines" QuestId="26923" Type="KillMob" MobId="44562" KillCount="6" />
+			<Objective QuestName="Scourge First... Alliance Later" QuestId="26921" Type="KillMob" MobId="44574" KillCount="15" />
+
+			<If Condition="HasQuest(26921) &amp;&amp; IsQuestCompleted(26921)">
+				<CustomBehavior File="UserSettings" PullDistance="1" />
 			</If>
 
+		<TurnIn QuestName="War Machines" QuestId="26923" TurnInName="Lindsay Ravensun" TurnInId="44466" />
+		<TurnIn QuestName="Scourge First... Alliance Later" QuestId="26921" TurnInName="Koltira Deathweaver" TurnInId="44452" />
+		<PickUp QuestName="Scholomancer" QuestId="26924" GiverName="Koltira Deathweaver" GiverId="44452" />
+		<PickUp QuestName="Brute Strength" QuestId="27117" GiverName="Koltira Deathweaver" GiverId="44452" />
+		<TurnIn QuestName="The Endless Flow" QuestId="26922" TurnInName="Jearl Donald" TurnInId="44462" />
+		<PickUp QuestName="Araj the Summoner" QuestId="26925" GiverName="Jearl Donald" GiverId="44462" />
 
+			<If Condition="HasQuest(27117) &amp;&amp; IsQuestCompleted(27117)">
+				<CustomBehavior File="UserSettings" PullDistance="1" />
+			</If>
+
+			<!--If Not Close Enough X="1381.17" Y="-1528" Z="59.80033" />-->
+			<Objective QuestName="Araj the Summoner" QuestId="26925" Type="CollectItem" ItemId="17114" CollectCount="1" />
+			<Objective QuestName="Scholomancer" QuestId="26924" Type="KillMob" MobId="44323" KillCount="1" />
+			<Objective QuestName="Brute Strength" QuestId="27117" Type="KillMob" MobId="44317" KillCount="1" />
+
+			<If Condition="HasQuest(27117) &amp;&amp; IsQuestCompleted(27117)">
+				<CustomBehavior File="UserSettings" PullDistance="1" />
+			</If>
+
+		<TurnIn QuestName="Scholomancer" QuestId="26924" TurnInName="Koltira Deathweaver" TurnInId="44452" />			
 	</QuestOrder>
+
+	<Quest Id="26923" Name="War Machines">
+		<Objective Type="KillMob" MobId="44562" KillCount="6">
+			<Hotspots>
+				<Hotspot X="1499.286" Y="-1540.836" Z="59.44576" />
+				<Hotspot X="1454.381" Y="-1537.898" Z="56.05662" />
+				<Hotspot X="1458.656" Y="-1464.94" Z="56.9353" />
+				<Hotspot X="1423.62" Y="-1419.609" Z="55.66785" />
+				<Hotspot X="1334.522" Y="-1507.083" Z="59.04338" />
+				<Hotspot X="1330.06" Y="-1556.269" Z="58.90183" />
+				<Hotspot X="1370.523" Y="-1622.698" Z="58.46399" />
+			</Hotspots>
+		</Objective>
+	</Quest>
+
 </HBProfile>

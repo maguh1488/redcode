@@ -19,22 +19,10 @@
 	<SellBlue>False</SellBlue>
 	<SellPurple>False</SellPurple>
 
-	<AvoidMobs>
- 	</AvoidMobs>
-
 	<Blackspots>
+		<!--Darnassus: Flamboyant Teleporting Tree of Evil Doom-->
+		<Blackspot X="9947.922" Y="2628.305" Z="1316.899" Radius="13.01805" />
 	</Blackspots>
-
-	<Mailboxes>
-		<!--Dolanaar Vendor-->
-		<Mailbox X="9850.111" Y="957.8356" Z="1306.785" />
-	</Mailboxes>
-
-	<Vendors>
-		<!--Dolanaar Vendors-->
-		<Vendor Name="Innkeeper Keldamyr" Entry="6736" Type="Food" X="9802.209" Y="982.6077" Z="1313.896" />
-		<Vendor Name="Shalomon" Entry="3609" Type="Repair" X="9812.371" Y="947.5777" Z="1308.769" />
-	</Vendors>
 
 	<QuestOrder>
 		<CustomBehavior File="Message" Text="Initializing Settings" LogColor="Cyan" />
@@ -44,7 +32,238 @@
 			<CustomBehavior File="EnablePlugin" Names="Anti Drown,AutoEquip2,DrinkPotions,Refreshment,Talented2" />
 			<CustomBehavior File="RunMacro" Macro="/script SetCVar('AutoLootDefault', 1)" WaitTime="1000" />
 
-		<CustomBehavior File="Message" Text="Compiling Quests: ...Error! Profile Not Complete!" LogColor="Red" />
-		<CustomBehavior File="Halt" />
+			<!--Mailboxes-->
+			<SetMailbox>
+				<Mailboxes>
+					<!--Dolanaar Mailbox-->
+					<Mailbox X="9850.111" Y="957.8356" Z="1306.785" />
+				</Mailboxes>
+			</SetMailbox>
+
+			<!--Vendors-->
+			<SetVendor>
+				<Vendors>
+					<!--Aldrassil Vendors-->
+					<Vendor Name="Lyrai" Entry="3587" Type="Food" X="10442.93" Y="783.989" Z="1337.285" />
+					<Vendor Name="Janna Brightmoon" Entry="3590" Type="Repair" X="10438.1" Y="787.2949" Z="1337.285" />
+					<!--Dolanaar Vendors-->
+					<Vendor Name="Innkeeper Keldamyr" Entry="6736" Type="Food" X="9802.209" Y="982.6077" Z="1313.896" />
+					<Vendor Name="Shalomon" Entry="3609" Type="Repair" X="9812.371" Y="947.5777" Z="1308.769" />
+				</Vendors>
+			</SetVendor>			
+
+		<CustomBehavior File="Message" Text="Compiling Quests: Dolanaar" LogColor="Cyan" />
+
+		<PickUp QuestName="Teldrassil: The Refusal of the Aspects" QuestId="929" GiverName="Corithras Moonrage" GiverId="3515" />
+
+		<If Condition="Me.Race == WoWRace.NightElf">
+			<PickUp QuestName="Reminders of Home" QuestId="6344" GiverName="Nyoma" GiverId="4265" />
+		</If>
+
+		<PickUp QuestName="A Troubling Breeze" QuestId="475" GiverName="Athridas Bearmantle" GiverId="2078" />
+
+		<If Condition="Me.Race == WoWRace.NightElf">
+			<TurnIn QuestName="Reminders of Home" QuestId="6344" TurnInName="Fidelio" TurnInId="40553" />
+			<PickUp QuestName="To Darnassus" QuestId="6341" GiverName="Fidelio" GiverId="40553" />
+			<TurnIn QuestName="To Darnassus" QuestId="6341" TurnInName="Sister Aquinne" TurnInId="7316" />
+			<PickUp QuestName="An Unexpected Gift" QuestId="6342" GiverName="Sister Aquinne" GiverId="7316" />
+			<TurnIn QuestName="An Unexpected Gift" QuestId="6342" TurnInName="Leora" TurnInId="40552" />
+			<PickUp QuestName="Return to Nyoma" QuestId="6343" GiverName="Leora" GiverId="40552" />
+			<TurnIn QuestName="Return to Nyoma" QuestId="6343" TurnInName="Nyoma" TurnInId="4265" />
+		</If>
+		
+		<PickUp QuestName="Seek Redemption!" QuestId="489" GiverName="Syral Bladeleaf" GiverId="2083" />
+		<PickUp QuestName="The Emerald Dreamcatcher" QuestId="2438" GiverName="Tallonkai Swiftroot" GiverId="3567" />
+		<TurnIn QuestName="A Troubling Breeze" QuestId="475" TurnInName="Gaerolas Talvethren" TurnInId="2107" />
+		<PickUp QuestName="Gnarlpine Corruption" QuestId="476" GiverName="Gaerolas Talvethren" GiverId="2107" />
+
+			<Objective QuestName="The Emerald Dreamcatcher" QuestId="2438" Type="CollectItem" ItemId="8048" CollectCount="1" />
+
+			<!--Objective: Teldrassil: The Refusal of the Aspects-->
+			<While Condition="HasQuest(929) &amp;&amp; !IsQuestCompleted(929)">
+				<RunTo DestName="Starbreeze Village Moonwell" X="9859.722" Y="587.5277" Z="1300.701" />
+				<CustomBehavior File="Misc\RunLua" Lua="UseItemByName(5619)" WaitTime="2000" />
+			</While>
+
+		<TurnIn QuestName="The Emerald Dreamcatcher" QuestId="2438" TurnInName="Tallonkai Swiftroot" TurnInId="3567" />
+		<PickUp QuestName="Ferocitas the Dream Eater" QuestId="2459" GiverName="Tallonkai Swiftroot" GiverId="3567" />
+		<TurnIn QuestName="Gnarlpine Corruption" QuestId="476" TurnInName="Athridas Bearmantle" TurnInId="2078" />
+		<PickUp QuestName="The Relics of Wakening" QuestId="483" GiverName="Athridas Bearmantle" GiverId="2078" />
+		<PickUp QuestName="Resident Danger" QuestId="13945" GiverName="Sintinel Kyra Starsong" GiverId="2081" />
+
+			<!--Cleaning-->
+			<If Condition="HasQuest(929) &amp;&amp; IsQuestCompleted(929)">
+				<CustomBehavior File="Message" Text="Selling, Repairing, &amp; Mailing. Please Wait!" LogColor="Cyan" />
+				<CustomBehavior File="ForceSetVendor" DoSell="True" DoRepair="True" DoMail="True" />
+			</If>
+
+		<TurnIn QuestName="Teldrassil: The Refusal of the Aspects" QuestId="929" TurnInName="Corithras Moonrage" TurnInId="3515" />
+
+			<Objective QuestName="Ferocitas the Dream Eater" QuestId="2459" Type="CollectItem" ItemId="8050" CollectCount="1" />
+			<Objective QuestName="Ferocitas the Dream Eater" QuestId="2459" Type="KillMob" MobId="7235" KillCount="7" />
+			<Objective QuestName="Seek Redemption!" QuestId="489" Type="CollectItem" ItemId="3418" CollectCount="3" />
+
+		<TurnIn QuestName="Seek Redemption!" QuestId="489" TurnInName="Zenn Foulhoof" TurnInId="2150" />
+		<TurnIn QuestName="Ferocitas the Dream Eater" QuestId="2459" TurnInName="Tallonkai Swiftroot" TurnInId="3567" />
+		<PickUp QuestName="Twisted Hatred" QuestId="932" GiverName="Tallonkai Swiftroot" GiverId="3567" />
+		<PickUp QuestName="Nature's Reprisal" QuestId="13946" GiverName="Syral Bladeleaf" GiverId="2083" />
+
+			<!--Objective: Nature's Reprisal-->
+			<CustomBehavior File="InteractWith" QuestId="13946" MobId="2002" MobId2="2003" InteractByUsingItemId="46716" NumOfTimes="100" Range="30" ProactiveCombatStrategy="NoClear">
+				<HuntingGrounds>
+					<Hotspot X="10045.72" Y="1036.04" Z="1329.88" />
+					<Hotspot X="10085.78" Y="1029.088" Z="1328.41" />
+					<Hotspot X="10092.97" Y="1067.079" Z="1325.791" />
+					<Hotspot X="10112.9" Y="1114.284" Z="1322.39" />
+					<Hotspot X="10074.11" Y="1118.406" Z="1325.804" />
+					<Hotspot X="10126.23" Y="1077.941" Z="1326.567" />
+				</HuntingGrounds>
+			</CustomBehavior>
+
+			<Objective QuestName="Twisted Hatred" QuestId="932" Type="CollectItem" ItemId="5221" CollectCollect="1" />
+	
+			<If Condition="HasQuest(932) &amp;&amp; IsQuestCompleted(932)">
+				<DisableBehavior Name="Combat, Loot" />
+			</If>
+
+		<TurnIn QuestName="Nature's Reprisal" QuestId="13946" TurnInName="Syral Bladeleaf" TurnInId="2083" />
+
+			<If Condition="HasQuest(932) &amp;&amp; IsQuestCompleted(932)">
+				<EnableBehavior Name="Combat, Loot" />
+			</If>
+
+		<TurnIn QuestName="Twisted Hatred" QuestId="932" TurnInName="Tallonkai Swiftroot" TurnInId="3567" />
+
+			<!--Transport: Dolanaar to Ban'ethil Barrow Den-->
+			<If Condition="HasQuest(13945) &amp;&amp; !IsQuestCompleted(13945) &amp;&amp; Me.Y &lt;= 1200">
+				<CustomBehavior File="InteractWith" MobId="34761" InteractByGossipOptions="1" NonCompeteDistance="0" X="9822.085" Y="969.2761" Z="1308.775" />
+				<While Condition="Me.IsOnTransport">
+					<CustomBehavior File="WaitTimer" WaitTime="7000" GoalText="Waiting To Arrive At: Ban'ethil Barrow Den" />
+				</While>
+			</If>
+
+		<PickUp QuestName="The Sleeping Druid" QuestId="2541" GiverName="Oben Rageclaw" GiverId="7317" />
+			
+			<Objective QuestName="The Relics of Wakening" QuestId="483" Type="CollectItem" ItemId="3405" CollectCount="1" />
+			<Objective QuestName="The Relics of Wakening" QuestId="483" Type="CollectItem" ItemId="3406" CollectCount="1" />
+			<Objective QuestName="The Relics of Wakening" QuestId="483" Type="CollectItem" ItemId="3407" CollectCount="1" />
+			<Objective QuestName="The Relics of Wakening" QuestId="483" Type="CollectItem" ItemId="3408" CollectCount="1" />
+			<Objective QuestName="The Sleeping Druid" QuestId="2541" Type="CollectItem" ItemId="8363" CollectCount="1" />
+		
+		<TurnIn QuestName="The Sleeping Druid" QuestId="2541" TurnInName="Oben Rageclaw" TurnInId="7317" />
+		<PickUp QuestName="Druid of the Claw" QuestId="2561" GiverName="Oben Rageclaw" GiverId="7317" />
+			
+			<!--Objective: Druid of the Claw-->
+			<While Condition="HasQuest(2561) &amp;&amp; !IsQuestCompleted(2561)">
+				<CustomBehavior File="InteractWith" QuestId="2561" MobId="7318" MobState="Dead" InteractByUsingItemId="8149" NonCompeteDistance="0" X="9779.32" Y="1547.71" Z="1299.22" />
+			</While>
+
+		<TurnIn QuestName="Druid of the Claw" QuestId="2561" TurnInName="Oben Rageclaw" TurnInId="7317" />
+			
+			<Objective QuestName="Resident Danger" QuestId="13945" Type="KillMob" MobId="2010" KillCount="20" />
+		
+		<TurnIn QuestName="Resident Danger" QuestId="13945" TurnInName="Sintinel Kyra Starsong" TurnInId="2081" />
+		
+			<!--Cleaning-->
+			<If Condition="HasQuest(483) &amp;&amp; IsQuestCompleted(483)">
+				<CustomBehavior File="Message" Text="Selling, Repairing, &amp; Mailing. Please Wait!" LogColor="Cyan" />
+				<CustomBehavior File="ForceSetVendor" DoSell="True" DoRepair="True" DoMail="True" />
+			</If>
+
+		<TurnIn QuestName="The Relics of Wakening" QuestId="483" TurnInName="Athridas Bearmantle" TurnInId="2078" />
+		<PickUp QuestName="Ursal the Mauler" QuestId="486" GiverName="Athridas Bearmantle" GiverId="2078" />
+		<PickUp QuestName="Road to Darnassus" QuestId="487" GiverName="Moon Priestess Amara" GiverId="2151" />
+			
+			<Objective QuestName="Ursal the Mauler" QuestId="486" Type="KillMob" MobId="2039" KillCount="1" />
+			<Objective QuestName="Road to Darnassus" QuestId="487" Type="KillMob" MobId="2152" KillCount="8" />
+	
+		<TurnIn QuestName="Road to Darnassus" QuestId="487" TurnInName="Moon Priestess Amara" TurnInId="2151" />
+		<TurnIn QuestName="Ursal the Mauler" QuestId="486" TurnInName="Athridas Bearmantle" TurnInId="2078" />
+		<PickUp QuestName="Denalan's Earth" QuestId="997" GiverName="Syral Bladeleaf" GiverId="2083" />
+		
+		<If Condition="HasQuest(997) &amp;&amp; IsQuestCompleted(997)">
+			<TurnIn QuestName="Denalan's Earth" QuestId="997" TurnInName="Denalan" TurnInId="2080" />
+			<CustomBehavior File="WaitTimer" WaitTime="15000" />
+		</If>
+
+		<CustomBehavior File="Message" Text="Compiling Quests: Lake Al'Ameth" LogColor="Cyan" />
+
+		<PickUp QuestName="Timberling Seeds" QuestId="918" GiverName="Denalan" GiverId="2080" />
+		<PickUp QuestName="Timberling Sprouts" QuestId="919" GiverName="Denalan" GiverId="2080" />
+		
+			<Objective QuestName="Timberling Sprouts" QuestId="919" Type="CollectItem" ItemId="5169" CollectCount="10" />
+			<Objective QuestName="Timberling Seeds" QuestId="918" Type="CollectItem" ItemId="5168" CollectCount="6" />
+		
+		<PickUp QuestName="The Glowing Fruit" QuestId="930" GiverType="Object" GiverName="Strange Fruited Plant" GiverId="6751" X="9379.082" Y="848.8281" Z="1260.937" />
+		<TurnIn QuestName="Timberling Seeds" QuestId="918" TurnInName="Denalan" TurnInId="2080" />
+		<TurnIn QuestName="Timberling Sprouts" QuestId="919" TurnInName="Denalan" TurnInId="2080" />
+		<TurnIn QuestName="The Glowing Fruit" QuestId="930" TurnInName="Denalan" TurnInId="2080" />
+		<PickUp QuestName="Rellian Greenspyre" QuestId="922" GiverName="Denalan" GiverId="2080" />
+		<TurnIn QuestName="Rellian Greenspyre" QuestId="922" TurnInName="Rellian Greenspyre" TurnInId="3517" />
+
+		<CustomBehavior File="Message" Text="Compiling Quests: Wellspring Hovel" LogColor="Cyan" />
+
+		<PickUp QuestName="Mossy Tumors" QuestId="923" GiverName="Rellian Greenspyre" GiverId="3517" />
+			
+			<Objective QuestName="Mossy Tumors" QuestId="923" Type="CollectItem" ItemId="5170" CollectCount="5" />
+	
+		<TurnIn QuestName="Mossy Tumors" QuestId="923" TurnInName="Rellian Greenspyre" TurnInId="3517" />
+
+		<CustomBehavior File="Message" Text="Profile Complete: Loading Darkshore" LogColor="Cyan" />
+			<ClearMailbox />
+			<ClearVendor />
+		<CustomBehavior File="LoadProfile" ProfileName="..\Kalimdor\[A - Quest] Darkshore [Life]" />
 	</QuestOrder>
+
+	<Quest Id="2459" Name="Ferocitas the Dream Eater">
+		<Objective Type="KillMob" MobId="7235" KillCount="7">
+			<Hotspots>
+				<Hotspot X="10016.67" Y="287.5396" Z="1322.713" />
+				<Hotspot X="10042.81" Y="259.7218" Z="1326.096" />
+				<Hotspot X="10047.91" Y="323.9375" Z="1324.006" />
+				<Hotspot X="10057.9" Y="353.3754" Z="1320.412" />
+				<Hotspot X="10103.8" Y="402.1185" Z="1324.706" />
+			</Hotspots>
+		</Objective>
+		<Objective Type="CollectItem" ItemId="8050" CollectCount="1">
+			<Hotspots>
+				<Hotspot X="10016.67" Y="287.5396" Z="1322.713" />
+			</Hotspots>
+		</Objective>
+	</Quest>
+	<Quest Id="483" Name="The Relics of Wakening" >
+		<Objective Type="CollectItem" ItemId="3405" CollectCount="1" >
+			<CollectFrom>
+				<Mob Name="Chest of the Raven Claw" Id="2740" />
+			</CollectFrom>
+			<Hotspots>
+				<Hotspot X="9883.30" Y="1489.06" Z="1300.39" />
+			</Hotspots>
+		</Objective>
+		<Objective Type="CollectItem" ItemId="3406" CollectCount="1" >
+			<CollectFrom>
+				<Mob Name="Chest of the Black Feather" Id="2739" />
+			</CollectFrom>
+			<Hotspots>
+				<Hotspot X="9712.68" Y="1537.50" Z="1255.213" />
+			</Hotspots>
+		</Objective>
+		<Objective Type="CollectItem" ItemId="3407" CollectCount="1" >
+			<CollectFrom>
+				<Mob Name="Chest of the Sky" Id="2741" />
+			</CollectFrom>
+			<Hotspots>
+				<Hotspot X="9839.16" Y="1545.602" Z="1258.634" />
+			</Hotspots>
+		</Objective>
+		<Objective Type="CollectItem" ItemId="3408" CollectCount="1" >
+			<CollectFrom>
+				<Mob Name="Chest of Nesting" Id="2742" />
+			</CollectFrom>
+			<Hotspots>
+				<Hotspot X="9740.531" Y="1526.504" Z="1280.314" />
+			</Hotspots>
+		</Objective>
+	</Quest>
+
 </HBProfile>

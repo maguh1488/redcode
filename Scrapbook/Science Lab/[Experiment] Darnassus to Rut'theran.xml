@@ -1,0 +1,51 @@
+<HBProfile>
+	<Name>Darnassus to Rut'theran</Name>
+
+	<MinLevel>1</MinLevel>
+	<MaxLevel>91</MaxLevel>
+
+	<MinDurability>0.2</MinDurability>
+	<MinFreeBagSlots>2</MinFreeBagSlots>
+
+	<MailGrey>False</MailGrey>
+	<MailWhite>False</MailWhite>
+	<MailGreen>True</MailGreen>
+	<MailBlue>True</MailBlue>
+	<MailPurple>True</MailPurple>
+   
+	<SellGrey>True</SellGrey>
+	<SellWhite>True</SellWhite>
+	<SellGreen>True</SellGreen>
+	<SellBlue>False</SellBlue>
+	<SellPurple>False</SellPurple>
+
+	<Blackspots>
+		<!--Darnassus: Flamboyant Teleporting Tree of Evil Doom-->
+		<Blackspot X="9947.922" Y="2628.305" Z="1316.899" Radius="13.01805" />
+	</Blackspots>
+
+	<QuestOrder>		
+		<While Condition="Me.Level &gt;= 1">
+			<!--Continental Drift: Inner Teldrassil to Rut'theran Village-->
+			<If Condition="Me.ZoneId == 1657 || Me.ZoneId == 6450 || (Me.ZoneId == 141 &amp;&amp; Me.Z &gt; 1000)">
+				<CustomBehavior File="Message" Text="Transport: Using Darnassus Portal to Rut'theran" LogColor="Cyan" />
+				<RunTo DestName="Darnassus Portal" X="9946.25" Y="2612.97" Z="1316.245" />
+				<CustomBehavior File="MyCTM" X="9947.438" Y="2621.536" Z="1317.558" />
+				<CustomBehavior File="WaitTimer" WaitTime="5000" />
+			</If>
+
+			<RunTo DestName="Lor'danel Dock" X="7447.883" Y="-326.2494" Z="8.040883" />
+			<!--<PickUp QuestName="The Last Wave of Survivors" QuestId="13518" GiverName="Dentaria Silverglade" GiverId="32973" />-->
+			<RunTo DestName="Rut'Theran Portal" X="8380.56" Y="998.536" Z="29.1294" />
+
+			<!--Continental Drift: Rut'theran Village to Darnassus-->
+			<If Condition="Me.ZoneId == 141 &amp;&amp; Me.Z &lt; 100">
+				<CustomBehavior File="Message" Text="Transport: Using Rut'theran Portal to Darnassus" LogColor="Cyan" />
+				<RunTo DestName="Rut'Theran Portal" X="8380.56" Y="998.536" Z="29.1294" />
+				<CustomBehavior File="MyCTM" X="8386.888" Y="1000.105" Z="29.81664" />
+				<CustomBehavior File="WaitTimer" WaitTime="5000" />
+			</If>
+			<CustomBehavior File="Message" Text="Compiling Quests: Test Loop Completed" LogColor="Cyan" />
+		</While>
+	</QuestOrder>
+</HBProfile>
