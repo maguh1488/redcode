@@ -91,9 +91,9 @@
 		<PickUp QuestName="The Relics of Wakening" QuestId="483" GiverName="Athridas Bearmantle" GiverId="2078" />
 		<PickUp QuestName="Resident Danger" QuestId="13945" GiverName="Sintinel Kyra Starsong" GiverId="2081" />
 
-			<!--Cleaning-->
+			<!--Selling, Repairing, & Mailing-->
 			<If Condition="HasQuest(929) &amp;&amp; IsQuestCompleted(929)">
-				<CustomBehavior File="Message" Text="Selling, Repairing, &amp; Mailing. Please Wait!" LogColor="Cyan" />
+				<CustomBehavior File="Message" Text="Executing Cleaning Procedures. Please Wait!" LogColor="Cyan" />
 				<CustomBehavior File="ForceSetVendor" DoSell="True" DoRepair="True" DoMail="True" />
 			</If>
 
@@ -234,7 +234,7 @@
 	<Quest Id="483" Name="The Relics of Wakening" >
 		<Objective Type="CollectItem" ItemId="3405" CollectCount="1" >
 			<CollectFrom>
-				<Mob Name="Chest of the Raven Claw" Id="2740" />
+				<GameObject Name="Chest of the Raven Claw" Id="2740" />
 			</CollectFrom>
 			<Hotspots>
 				<Hotspot X="9883.30" Y="1489.06" Z="1300.39" />
@@ -242,7 +242,7 @@
 		</Objective>
 		<Objective Type="CollectItem" ItemId="3406" CollectCount="1" >
 			<CollectFrom>
-				<Mob Name="Chest of the Black Feather" Id="2739" />
+				<GameObject Name="Chest of the Black Feather" Id="2739" />
 			</CollectFrom>
 			<Hotspots>
 				<Hotspot X="9712.68" Y="1537.50" Z="1255.213" />
@@ -250,7 +250,7 @@
 		</Objective>
 		<Objective Type="CollectItem" ItemId="3407" CollectCount="1" >
 			<CollectFrom>
-				<Mob Name="Chest of the Sky" Id="2741" />
+				<GameObject Name="Chest of the Sky" Id="2741" />
 			</CollectFrom>
 			<Hotspots>
 				<Hotspot X="9839.16" Y="1545.602" Z="1258.634" />
@@ -258,7 +258,7 @@
 		</Objective>
 		<Objective Type="CollectItem" ItemId="3408" CollectCount="1" >
 			<CollectFrom>
-				<Mob Name="Chest of Nesting" Id="2742" />
+				<GameObject Name="Chest of Nesting" Id="2742" />
 			</CollectFrom>
 			<Hotspots>
 				<Hotspot X="9740.531" Y="1526.504" Z="1280.314" />

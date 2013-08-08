@@ -258,7 +258,7 @@
 
 		<PickUp QuestName="No One Here Gets Out Alive" QuestId="28192" GiverName="Warden Stillwater" GiverId="47781" />
 
-			<!--Wait Objective: No One Here Gets Out Alive-->
+			<!--Cinematic Objective: No One Here Gets Out Alive-->
 			<While Condition="HasQuest(28192) &amp;&amp; !IsQuestCompleted(28192)">
 				<CustomBehavior File="WaitTimer" QuestId="28192" WaitTime="65000" />
 			</While>
@@ -332,8 +332,8 @@
 			<Objective QuestName="Freedom for Lydon" QuestId="28209" Type="CollectItem" ItemId="63281" CollectCount="1" />
 		
 		<TurnIn QuestName="Freedom for Lydon" QuestId="28209" TurnInName="Master Apothecary Lydon" TurnInId="47900" />
-		<PickUp QuestName="Protocol" QuestId="28230" GiverName="Master Apothecary Lydon" GiverId="48020" />
-		<PickUp QuestName="Do it for Twinkles" QuestId="28231" GiverName="Johnny Awesome" GiverId="48021" />
+		<PickUp QuestName="Protocol" QuestId="28230" GiverName="Master Apothecary Lydon" GiverId="48020" X="-440.7524" Y="-106.8387" Z="54.5717" />
+		<PickUp QuestName="Do it for Twinkles" QuestId="28231" GiverName="Johnny Awesome" GiverId="48021" X="-440.7524" Y="-106.8387" Z="54.5717" />
 		
 			<Objective QuestName="Protocol" QuestId="28230" Type="KillMob" MobId="47793" KillCount="1" />
 			<Objective QuestName="Do it for Twinkles" QuestId="28231" Type="KillMob" MobId="47792" KillCount="1" />
@@ -362,8 +362,8 @@
 
 			<!--Objective: Burnside Must Fall-->
 			<While Condition="HasQuest(28235) &amp;&amp; !IsQuestCompleted(28235)">
-				<RunTo X="-400.21" Y="73.48" Z="61.69" />
-				<CustomBehavior File="WaitTimer" QuestId="28235" WaitTime="10000" GoalText="Trying to Pull Magistrate Burnside." />
+				<RunTo X="-401.0868" Y="72.71958" Z="54.79787" />
+				<CustomBehavior File="WaitTimer" WaitTime="10000" GoalText="Trying to Pull Magistrate Burnside." />
 				<RunTo X="-398.3904" Y="33.21212" Z="54.71946" />
 			</While>
 
@@ -466,7 +466,10 @@
 			<CustomBehavior File="CompleteLogQuest" QuestId="28329" />
 		</If>
 			
-			<Objective QuestName="Trail of Filth" QuestId="28330" Type="KillMob" MobId="48322" KillCount="1" />
+			<!--Bashful Override-->
+			<!--Objective QuestName="Trail of Filth" QuestId="28330" Type="KillMob" MobId="48322" KillCount="1" /-->
+			<!--Objective: Trail of Filth-->
+			<CustomBehavior File="CollectThings" QuestId="28330" MobId="48322" MobState="Alive" CollectUntil="QuestComplete" X="-860.17" Y="-477.10" Z="13.53" />
 
 		<TurnIn QuestName="Trail of Filth" QuestId="28330" TurnInName="Serge Hinott" TurnInId="2391" />
 		<TurnIn QuestName="Studies in Lethality" QuestId="28324" TurnInName="Serge Hinott" TurnInId="2391" />

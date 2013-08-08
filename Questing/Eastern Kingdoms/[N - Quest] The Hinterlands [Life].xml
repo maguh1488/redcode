@@ -103,15 +103,12 @@
 
 			<!--Setting Hearthstone & Cleaning-->
 			<If Condition="!HasQuest(26212) &amp;&amp; !IsQuestCompleted(26212) &amp;&amp; Me.Level &lt; 60">
-				<CustomBehavior File="Message" Text="Setting Hearthstone, Selling, Repairing, &amp; Mailing. Please Wait!" LogColor="Cyan" />
+				<CustomBehavior File="Message" Text="Executing Cleaning Procedures. Please Wait!" LogColor="Cyan" />
 				<CustomBehavior File="ForceSetVendor" DoSell="True" DoRepair="True" DoMail="True" />
 				<!--Revantusk Village(3317)-->
-				<CustomBehavior File="InteractWith" MobId="14731" InteractByGossipOptions="1" NonCompeteDistance="0" X="-622.0334" Y="-4583.398" Z="11.68747" />
-				<!--Big Boys Don't Need Hearthstones-->
-				<ElseIf Condition="Me.Level &gt;= 60">
-					<CustomBehavior File="Message" Text="Selling, Repairing, &amp; Mailing. Please Wait!" LogColor="Cyan" />
-					<CustomBehavior File="ForceSetVendor" DoSell="True" DoRepair="True" DoMail="True" />
-				</ElseIf>
+				<If Condition="Me.Level &lt; 60">
+					<CustomBehavior File="InteractWith" MobId="14731" InteractByGossipOptions="1" NonCompeteDistance="0" X="-622.0334" Y="-4583.398" Z="11.68747" />
+				</If>
 			</If>
 
 		<PickUp QuestName="Lard Lost His Lunch" QuestId="26212" GiverName="Lard" GiverId="14731" />

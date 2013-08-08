@@ -1,5 +1,5 @@
 <HBProfile>
-	<Name>[A - Quest] Teldrassil [Life] [$Rev: 71 $]</Name>
+	<Name>[A - Quest] Darkshore [Life] [$Rev: 71 $]</Name>
 
 	<MinLevel>5</MinLevel>
 	<MaxLevel>91</MaxLevel>
@@ -19,9 +19,19 @@
 	<SellBlue>False</SellBlue>
 	<SellPurple>False</SellPurple>
 
+	<AvoidMobs>
+		<Mob Name="Aetherion" Entry="33041" />
+		<Mob Name="Vile Terror" Entry="33864" />
+		<Mob Name="Faceless One" Entry="34413" />
+	</AvoidMobs>
+
 	<Blackspots>
 		<!--Darnassus: Flamboyant Teleporting Tree of Evil Doom-->
 		<Blackspot X="9947.922" Y="2628.305" Z="1316.899" Radius="13.01805" />
+		<!--Eastern Lor'danel Rapids-->
+		<Blackspot X="7382.524" Y="-357.9606" Z="1.416028" Radius="18.28272" />
+		<!--Cliffspring Hollow Cave Entrance Cage-->
+		<Blackspot X="6870.301" Y="-667.8636" Z="82.38214" Radius="2" />
 	</Blackspots>
 
 	<QuestOrder>
@@ -35,14 +45,18 @@
 			<!--Mailboxes-->
 			<SetMailbox>
 				<Mailboxes>
-
+					<!--Lor'danel Mailbox-->
+					<Mailbox X="7393.341" Y="-262.3467" Z="5.208001" />
 				</Mailboxes>
 			</SetMailbox>
 
 			<!--Vendors-->
 			<SetVendor>
 				<Vendors>
-
+					<!--Lor'danel Vendors-->
+					<Vendor Name="Ayriala" Entry="43424" Type="Food" X="7408.75" Y="-270.55" Z="7.64136" />
+					<Vendor Name="Harlon Thornguard" Entry="4187" Type="Repair" X="7394.35" Y="-264.641" Z="5.07913" />
+					<Vendor Name="Ceriale Duskwhisper" Entry="43436" Type="Repair" X="7327.2" Y="-251.819" Z="7.997469" />
 				</Vendors>
 			</SetVendor>			
 
@@ -53,17 +67,207 @@
 				<CustomBehavior File="MyCTM" X="9947.438" Y="2621.536" Z="1317.558" />
 				<CustomBehavior File="WaitTimer" WaitTime="5000" />
 			</If>
-			
-			<!--Continental Drift: Rut'theran Village to Lor'danel-->
-			<!--<If Condition="Me.ZoneId == 141 &amp;&amp; Me.Z &lt; 100">
-				<CustomBehavior File="Message" Text="Transport: Flying to Lor'danel" LogColor="Cyan" />
-				<CustomBehavior File="TaxiRide" MobId="3838" DestName="Lor'danel" />
-			</If>-->
 
-			<!--Add Stormwind to Rut'theran Transport-->
+			<!--Add Stormwind & Azuremyst Transport Eventually-->
 
 		<CustomBehavior File="Message" Text="Compiling Quests: Lor'danel" LogColor="Cyan" />
 
 			<PickUp QuestName="The Last Wave of Survivors" QuestId="13518" GiverName="Dentaria Silverglade" GiverId="32973" />
+
+				<!--Setting Hearthstone, Selling, Repairing, & Mailing-->
+				<If Condition="!HasQuest(13522) &amp;&amp; !IsQuestCompleted(13522)">
+					<CustomBehavior File="Message" Text="Executing Cleaning Procedures. Please Wait!" LogColor="Cyan" />
+					<If Condition="Me.Level &lt; 60">
+						<CustomBehavior File="SetHearthstone" MobId="43420" X="7420.852" Y="-278.1661" Z="7.666886" />
+					</If>
+					<CustomBehavior File="ForceSetVendor" DoSell="True" DoRepair="True" DoMail="True" />
+				</If>
+
+			<PickUp QuestName="Threat from the Water" QuestId="13522" GiverName="Ranger Glynda Nal'Shea" GiverId="32971" />
+			
+				<!--Objectives: The Last Wave of Survivors [Volcor, Gershala, Cerellean Whiteclaw, Shaldyn]-->
+				<CustomBehavior File="InteractWith" QuestId="13518" QuestObjectiveIndex="4" MobId="33094" NumOfTimes="50" NonCompeteDistance="0" X="7439.48" Y="106.23" Z="0.28" />
+				<CustomBehavior File="InteractWith" QuestId="13518" QuestObjectiveIndex="2" MobId="32911" NumOfTimes="50" NonCompeteDistance="0" X="7455.90" Y="164.99" Z="2.73" />
+				<CustomBehavior File="InteractWith" QuestId="13518" QuestObjectiveIndex="1" MobId="33093" NumOfTimes="50" NonCompeteDistance="0" X="7365.81" Y="134.71" Z="11.68" />
+				<CustomBehavior File="InteractWith" QuestId="13518" QuestObjectiveIndex="3" MobId="33095" NumOfTimes="50" NonCompeteDistance="0" X="7295.92" Y="242.54" Z="1.76" />
+			
+				<Objective QuestName="Threat from the Water" QuestId="13522" Type="KillMob" MobId="32928" KillCount="8" />
+			
+			<TurnIn QuestName="Threat from the Water" QuestId="13522" TurnInName="Ranger Glynda Nal'Shea" TurnInId="32971" />
+			<TurnIn QuestName="The Last Wave of Survivors" QuestId="13518" TurnInName="Dentaria Silverglade" TurnInId="32973" />
+			<PickUp QuestName="The Boon of the Seas" QuestId="13520" GiverName="Serendia Oakwhisper" GiverId="32972" />
+			<PickUp QuestName="Buzzbox 413" QuestId="13521" GiverName="Wizbang Cranktoggle" GiverId="32977" />
+
+				<Objective QuestName="The Boon of the Seas" QuestId="13520" Type="CollectItem" ItemId="44864" CollectCount="16" />
+
+			<TurnIn QuestName="The Boon of the Seas" QuestId="13520" TurnInName="Serendia Oakwhisper" TurnInId="32972" />
+
+				<Objective QuestName="Buzzbox 413" QuestId="13521" Type="CollectItem" ItemId="44863" CollectCount="4" />
+
+			<TurnIn QuestName="Buzzbox 413" QuestId="13521" TurnInType="Object" TurnInName="Buzzbox 413" TurnInId="194105" X="7376.274" Y="-426.3674" Z="2.183323" />
+			<PickUp QuestName="No Accounting for Taste" QuestId="13527" GiverType="Object" GiverName="Buzzbox 413" GiverId="194105" X="7376.274" Y="-426.3674" Z="2.183323" />
+
+				<!--Objective: No Accounting for Taste-->
+				<CustomBehavior File="InteractWith" QuestId="13527" MobId="32975" InteractByLooting="True" NonCompeteDistance="0" X="7317.864" Y="-545.0909" Z="3.025692" />
+	
+			<TurnIn QuestName="No Accounting for Taste" QuestId="13527" TurnInName="Wizbang Cranktoggle" TurnInId="32977" />
+			<PickUp QuestName="Buzzbox 723" QuestId="13528" GiverName="Wizbang Cranktoggle" GiverId="32977" />
+
+				<Objective QuestName="Buzzbox 723" QuestId="13528" Type="CollectItem" ItemId="44913" CollectCount="6" />
+			
+			<TurnIn QuestName="Buzzbox 723" QuestId="13528" TurnInType="Object" TurnInName="Buzzbox 723" TurnInId="194122" X="6962.548" Y="-485.2443" Z="24.64986" />
+
+		<CustomBehavior File="Message" Text="Compiling Quests: Cliffspring Falls" LogColor="Cyan" />
+
+			<PickUp QuestName="A Cure in the Dark" QuestId="13554" GiverType="Object" GiverName="Buzzbox 723" GiverId="194122" X="6962.548" Y="-485.2443" Z="24.64986" />
+			<PickUp QuestName="The Corruption's Source" QuestId="13529" GiverName="Tharnariun Treetender" GiverId="32978" />
+			<PickUp QuestName="A Troubling Prescription" QuestId="13831" GiverType="Object" GiverName="Disgusting Workbench" GiverId="194714" X="6768.186" Y="-695.801" Z="69.95356" />
+
+				<Objective QuestName="A Cure in the Dark" QuestId="13554" Type="CollectItem" ItemId="44966" CollectCount="6" />
+				<Objective QuestName="The Corruption's Source" QuestId="13529" Type="KillMob" MobId="33020" KillCount="1" />
+				<Objective QuestName="The Corruption's Source" QuestId="13529" Type="KillMob" MobId="33021" KillCount="8" />
+				
+				<!--Collect: Corruptor's Master Key-->
+				<If Condition="!HasQuest(13557) &amp;&amp; !IsQuestCompleted(13557)">
+					<SetGrindArea>
+						<GrindArea>
+							<Factions>1786 81</Factions>
+							<Hotspots>
+								<Hotspot X="6813.421" Y="-687.7483" Z="64.87903" />
+								<Hotspot X="6753.459" Y="-647.0766" Z="68.42133" />
+								<Hotspot X="6718.317" Y="-676.2232" Z="69.21262" />
+								<Hotspot X="6804.147" Y="-660.7658" Z="88.7299" />
+								<Hotspot X="6763.238" Y="-701.2733" Z="89.33583" />
+							</Hotspots>
+		 				</GrindArea>
+					</SetGrindArea>
+					<GrindTo Condition="HasItem(44927)" GoalText="Farming for Corruptor's Master Key" />
+
+					<PickUp QuestName="Bearer of Good Fortune" QuestId="13557" GiverType="Item" GiverName="Corruptor's Master Key" GiverId="44927" />
+				</If>
+
+				<!--Objective: Bearer of  Good Fortune-->
+				<CustomBehavior File="InteractWith" QuestId="13557" MobId="194124" MobId2="194133" NumOfTimes="500">
+					<HuntingGrounds>
+						<Hotspot X="6813.421" Y="-687.7483" Z="64.87903" />
+						<Hotspot X="6753.459" Y="-647.0766" Z="68.42133" />
+						<Hotspot X="6718.317" Y="-676.2232" Z="69.21262" />
+						<Hotspot X="6804.147" Y="-660.7658" Z="88.7299" />
+						<Hotspot X="6763.238" Y="-701.2733" Z="89.33583" />
+					</HuntingGrounds>
+				</CustomBehavior>
+
+			<TurnIn QuestName="A Cure in the Dark" QuestId="13554" TurnInName="Wizbang Cranktoggle" TurnInId="32977" />
+			<TurnIn QuestName="The Corruption's Source" QuestId="13529" TurnInName="Tharnariun Treetender" TurnInId="32978" />		
+			<TurnIn QuestName="A Troubling Prescription" QuestId="13831" TurnInName="Tharnariun Treetender" TurnInId="32978" />
+			<TurnIn QuestName="Bearer of Good Fortune" QuestId="13557" TurnInName="Tharnariun Treetender" TurnInId="32978" />
+
+		<CustomBehavior File="Message" Text="Compiling Quests: Bashal'Aran" LogColor="Cyan" />
+		
+			<PickUp QuestName="A Lost Companion" QuestId="13564" GiverName="Volcor" GiverId="32960" />
+			<PickUp QuestName="A Love Eternal" QuestId="13563" GiverName="Cerellean Whiteclaw" GiverId="32959" />
+			<PickUp QuestName="The Final Flame of Bashal'Aran" QuestId="13562" GiverName="Ranger Glynda Nal'Shea" GiverId="32971" />
+
+				<!--Transport: Lor'danel to Bashal'Aran-->
+				<If Condition="HasQuest(13562) &amp;&amp; !IsQuestCompleted(13562) &amp;&amp; Me.X &gt;= 7100">
+					<CustomBehavior File="InteractWith" MobId="33359" InteractByGossipOptions="1" TerminateWhen="Me.IsOnTransport" NonCompeteDistance="0" X="7242.584" Y="-282.217" Z="21.22521" />
+					<While Condition="Me.IsOnTransport">
+						<CustomBehavior File="WaitTimer" WaitTime="5000" GoalText="Waiting To Arrive At: Bashal'Aran" />
+					</While>
+				</If>
+
+			<PickUp QuestName="Solace for the Highborne" QuestId="13561" GiverName="Arya Autumnlight" GiverId="33177" />
+
+				<!--Objective: The Final Flame of Bashal'Aran-->
+				<CustomBehavior File="InteractWith" QuestId="13562" MobId="194179" NonCompeteDistance="0" NumOfTimes="50" X="6748.24" Y="48.5451" Z="48.6344" />
+	
+				<Objective QuestName="Solace for the Highborne" QuestId="13561" Type="KillMob" MobId="33179" KillCount="6" />
+				<Objective QuestName="Solace for the Highborne" QuestId="13561" Type="KillMob" MobId="33180" KillCount="6" />
+				<Objective QuestName="A Love Eternal" QuestId="13563" Type="CollectItem" ItemId="5382" CollectCount="1" />
+			
+			<TurnIn QuestName="Solace for the Highborne" QuestId="13561" TurnInName="Arya Autumnlight" TurnInId="33177" />
+
+				<!--"Discover" Objective: A Lost Companion-->
+				<RunTo DestName="The Withering Thicket" QuestId="13564" X="6544.803" Y="239.3596" Z="7.365758" />
+			
+			<TurnIn QuestName="A Lost Companion" QuestId="13564" TurnInName="Keeper Karithus" TurnInId="33048" />
+
+		<CustomBehavior File="Message" Text="Compiling Quests: The Withering Thicket" LogColor="Cyan" />
+		
+			<PickUp QuestName="Unsavory Remedies" QuestId="13598" GiverName="Keeper Karithus" GiverId="33048" />
+			<PickUp QuestName="Ritual Materials" QuestId="13566" GiverName="Keeper Karithus" GiverId="33048" />
+			<PickUp QuestName="Twice Removed" QuestId="13565" GiverName="Seraphine" GiverId="33126" />
+				
+				<Objective QuestName="Unsavory Remedies" QuestId="13598" Type="CollectItem" ItemId="44976" CollectCount="6" />
+
+				<!--Objective: Twice Removed [Withered Ents x6]-->
+				<CustomBehavior File="InteractWith" QuestId="13565" TerminateWhen="IsObjectiveComplete(2,13565)" MobId="33206" InteractByUsingItemId="45911" NumOfTimes="100" MobState="Dead" MovementBy="NavigatorPreferred">
+					<HuntingGrounds>
+						<Hotspot X="6476.728" Y="-31.02577" Z="1.465277" />
+						<Hotspot X="6517.903" Y="-30.50176" Z="-0.9591796" />
+						<Hotspot X="6552.894" Y="-88.27298" Z="6.985891" />
+						<Hotspot X="6548.138" Y="-139.5426" Z="6.681607" />
+						<Hotspot X="6570.101" Y="-166.4657" Z="5.251719" />
+						<Hotspot X="6504.05" Y="-151.0468" Z="1.336125" />
+					</HuntingGrounds>
+				</CustomBehavior>
+
+				<Objective QuestName="Twice Removed" QuestId="13565" Type="KillMob" MobId="33207" KillCount="1" />
+
 	</QuestOrder>
+
+	<Quest Id="13520" Name="The Boon of the Seas">
+		<Objective Type="CollectItem" ItemId="44864" CollectCount="16">
+			<CollectFrom>
+				<GameObject Name="Encrusted Clam" Id="194107" />
+			</CollectFrom>
+			<Hotspots>
+				<Hotspot X="7439.7" Y="-392.6354" Z="-18.3809" />
+				<Hotspot X="7503.24" Y="-389.5009" Z="-6.015625" />
+				<Hotspot X="7515.39" Y="-328.2781" Z="-8.904898" />
+				<Hotspot X="7522.62" Y="-238.932" Z="-8.087678" />
+				<Hotspot X="7524.053" Y="-195.2348" Z="-5.260856" />
+			</Hotspots>
+		</Objective>
+	</Quest>
+	<Quest Id="13521" Name="Buzzbox 413">
+		<Objective Type="CollectItem" ItemId="44863" CollectCount="4">
+			<CollectFrom>
+				<Mob Name="Corrupted Tide Crawler" Id="32935" />
+			</CollectFrom>
+			<Hotspots>
+				<Hotspot X="7337.539" Y="-422.1673" Z="2.480007" />
+				<Hotspot X="7360.366" Y="-451.2975" Z="0.4393007" />
+				<Hotspot X="7384.983" Y="-513.744" Z="2.519465" />
+				<Hotspot X="7437.355" Y="-509.7731" Z="1.666456" />
+				<Hotspot X="7509.069" Y="-551.2319" Z="1.169953" />
+			</Hotspots>
+		</Objective>
+	</Quest>
+	<Quest Name="A Love Eternal" Id="13563" >
+		<Objective Type="CollectItem" ItemId="5382" CollectCount="1">
+			<CollectFrom>
+				<Mob Name="Anaya Dawnrunner" Id="33181" />
+			</CollectFrom>
+			<Hotspots>
+				<Hotspot X="6633.344" Y="-119.0439" Z="34.97572" />
+			</Hotspots>
+		</Objective>
+	</Quest>	
+	<Quest Id="13598" Name="Unsavory Remedies">
+		<Objective Type="CollectItem" ItemId="44976" CollectCount="6">
+			<CollectFrom>
+				<GameObject Name="Fuming Toadstool" Id="194209" />
+			</CollectFrom>
+			<Hotspots>
+				<Hotspot X="6476.728" Y="-31.02577" Z="1.465277" />
+				<Hotspot X="6517.903" Y="-30.50176" Z="-0.9591796" />
+				<Hotspot X="6552.894" Y="-88.27298" Z="6.985891" />
+				<Hotspot X="6548.138" Y="-139.5426" Z="6.681607" />
+				<Hotspot X="6570.101" Y="-166.4657" Z="5.251719" />
+				<Hotspot X="6504.05" Y="-151.0468" Z="1.336125" />
+			</Hotspots>
+		</Objective>
+	</Quest>
+
 </HBProfile>

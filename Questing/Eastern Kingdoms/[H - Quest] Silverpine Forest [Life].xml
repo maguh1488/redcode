@@ -220,8 +220,8 @@
 		<PickUp QuestName="Lost in the Darkness" QuestId="27093" GiverName="Admiral Hatchet" GiverId="44916" />
 		<PickUp QuestName="Skitterweb Menace" QuestId="27095" GiverName="Warlord Torok" GiverId="44917" />
 			
-			<!--Why on Earth does this move so slowly?-->
-			<If Condition="HasQuest(27093) &amp;&amp; !IsQuestCompleted(27093)">
+			<!--Suddenly Stopped Working?-->
+			<!--<If Condition="HasQuest(27093) &amp;&amp; !IsQuestCompleted(27093)">
 				<SetGrindArea>
 					<GrindArea>
 						<Factions>7</Factions>
@@ -236,7 +236,19 @@
 					</GrindArea>
 				</SetGrindArea>
 				<GrindTo Condition="IsQuestCompleted(27093)" />
-			</If>
+			</If>-->
+
+			<!--<Objective QuestName="Lost in the Darkness" QuestId="27093" Type="KillMob" MobId="44942" KillCount="6" />-->
+
+			<!--Objective: Lost in the Darkness-->
+			<CustomBehavior File="CollectThings" QuestId="27093" MobId="44941" CollectUntil="QuestComplete" HuntingGroundRadius="200" >
+				<Hotspot X="1266.453" Y="1944.468" Z="14.59848" />
+				<Hotspot X="1324.002" Y="1965.077" Z="14.22161" />
+				<Hotspot X="1352.942" Y="1982.128" Z="15.05922" />
+				<Hotspot X="1385.043" Y="2001.859" Z="17.06521" />
+				<Hotspot X="1414.251" Y="2007.019" Z="13.21666" />
+				<Hotspot X="1446.694" Y="1989.99" Z="11.05505" />
+			</CustomBehavior>
 
 			<Objective QuestName="Skitterweb Menace" QuestId="27095" Type="KillMob" MobId="1781" KillCount="12" />
 
@@ -590,17 +602,16 @@
 		<PickUp QuestName="Relios the Relic Keeper" QuestId="27478" GiverName="Dalar Dawnweaver" GiverId="1938" />
 		<PickUp QuestName="Practical Vengeance" QuestId="27483" GiverName="Dalar Dawnweaver" GiverId="1938" />
 
-			<!--Transport: Dalaran Crater-->
+			<!--Transport: The Sepulcher to Dalaran Crater-->
 			<If Condition="(HasQuest(27478) &amp;&amp; !IsQuestCompleted(27478)) || (!IsQuestCompleted(27480)) || (HasQuest(27483) &amp;&amp; !IsQuestCompleted(27483))">
 				<If Condition="Me.ZoneId != 267">
-					<RunTo X="453.7728" Y="1467.669" Z="125.034" />
-					<CustomBehavior File="InteractWith" MobId="45731" WaitForNpcs="False" NonCompeteDistance="0" WaitTime="8000" CollectionDistance="1000" />
+					<CustomBehavior File="InteractWith" MobId="45731" NonCompeteDistance="0" TerminateWhen="Me.ZoneId == 267" WaitTime="5000" X="453.7728" Y="1467.669" Z="125.034" />
 				</If>
 			</If>
 
-		<!--PickUp: Ley Energies-->
+		<!--Collect: Arcane Remnant-->
 		<If Condition="!HasItem(61310) &amp;&amp; !IsQuestCompleted(27480)">
-			<CustomBehavior File="CollectThings" QuestId="27480" MobId="45728" MobState="Alive" CollectItemCount="1" CollectItemId="61310" CollectUntil="RequiredCountReached">
+			<CustomBehavior File="CollectThings" QuestId="27480" MobId="45728" MobState="Alive" CollectItemId="61310" CollectItemCount="1" CollectUntil="RequiredCountReached">
 				<Hotspot X="290.918" Y="376.7807" Z="-65.02187" />
 				<Hotspot X="338.4034" Y="358.639" Z="-63.60585" />
 				<Hotspot X="243.4399" Y="397.5527" Z="-56.97059" />
@@ -608,24 +619,20 @@
 		</If>
 
 		<If Condition="!HasQuest(27480) &amp;&amp; HasItem(61310)">
-			<PickUp QuestName="Ley Energies" QuestId="27480" GiverType="Item" GiverId="61310" />
+			<PickUp QuestName="Ley Energies" QuestId="27480" GiverType="Item" GiverName="Arcane Remnant" GiverId="61310" />
 		</If>
 
 			<Objective QuestName="Relios the Relic Keeper" QuestId="27478" Type="CollectItem" ItemId="61312" CollectCount="1" />
 			<Objective QuestName="Practical Vengeance" QuestId="27483" Type="KillMob" MobId="2358" KillCount="12" />
-
-		<If Condition="!HasQuest(27480) &amp;&amp; HasItem(61310)">
-			<PickUp QuestName="Ley Energies" QuestId="27480" GiverType="Item" GiverId="61310" />
-		</If>
-
 			<Objective QuestName="Ley Energies" QuestId="27480" Type="CollectItem" ItemId="61311" CollectCount="8" />
 			
+			<!--Transport: Dalaran Crater to The Sepulcher-->
 			<If Condition="HasQuest(27478) || HasQuest(27480) || HasQuest(27483)">
 				<CustomBehavior File="UserSettings" PullDistance="1" />
 				<If Condition="Me.ZoneId == 267">
-					<RunTo X="292.8386" Y="378.0807" Z="-64.81953" />
-					<CustomBehavior File="InteractWith" MobId="45732" WaitForNpcs="False" WaitTime="8000" NonCompeteDistance="0" NumOfTimes="1" CollectionDistance="1000" />
+					<CustomBehavior File="InteractWith" MobId="45732" NonCompeteDistance="0" TerminateWhen="Me.ZoneId != 267" WaitTime="5000" X="292.8386" Y="378.0807" Z="-64.81953" />
 				</If>
+				<CustomBehavior File="UserSettings" PullDistance="25" />
 			</If>
 
 		<TurnIn QuestName="Relios the Relic Keeper" QuestId="27478" TurnInName="Dalar Dawnweaver" TurnInId="1938" />
@@ -640,12 +647,6 @@
 		</If>
 
 		<PickUp QuestName="Only One May Enter" QuestId="27484" GiverName="Dalar Dawnweaver" GiverId="1938" />
-
-		<If Condition="HasQuest(27484) &amp;&amp; IsQuestCompleted(27484)">
-			<RunTo X="481.1471" Y="1540.625" Z="130.4169" />
-			<CustomBehavior File="TaxiRide" MobId="2226" DestName="The Forsaken Front"/>
-		</If>
-
 		<TurnIn QuestName="Only One May Enter" QuestId="27484" TurnInName="Lady Sylvanas Windrunner" TurnInId="45617" />
 		<PickUp QuestName="Transdimensional Warfare: Chapter I" QuestId="27512" GiverName="Lady Sylvanas Windrunner" GiverId="45617" />
 		<PickUp QuestName="A Wolf in Bear's Clothing" QuestId="27510" GiverName="High Warlord Cromush" GiverId="45631" />
@@ -655,10 +656,8 @@
 		<TurnIn QuestName="Transdimensional Warfare: Chapter I" QuestId="27512" TurnInName="Ambermill Dimensional Portal" TurnInId="45752" />
 		<PickUp QuestName="Transdimensional Warfare: Chapter II" QuestId="27513" GiverName="Ambermill Dimensional Portal" GiverId="45752" />
 
-		<If Condition="HasQuest(27513) &amp;&amp; !IsQuestCompleted(27513)">
-			<If Condition="!Me.HasAura(85361)">
-				<CustomBehavior File="InteractWith" QuestId="27513" InteractByGossipOptions="1" MobId="45752" NonCompeteDistance="0" X="-290.9761" Y="1014.151" Z="113.8954" />
-			</If>
+		<If Condition="HasQuest(27513) &amp;&amp; !IsQuestCompleted(27513) &amp;&amp; !Me.HasAura(85361)">
+			<CustomBehavior File="InteractWith" QuestId="27513" InteractByGossipOptions="1" MobId="45752" TerminateWhen="Me.HasAura(85361)" NonCompeteDistance="0" X="-290.9761" Y="1014.151" Z="113.8954" />
 		</If>
 
 			<Objective QuestName="Transdimensional Warfare: Chapter II" QuestId="27513" Type="KillMob" MobId="45756" KillCount="20" />
@@ -678,10 +677,8 @@
 			<PickUp QuestName="Transdimensional Warfare: Chapter III" QuestId="27518" GiverName="Lady Sylvanas Windrunner" GiverId="45617" />
 		</If>
 
-			<!--More Testing!-->
-			<While Condition="HasQuest(27518) &amp;&amp; !IsQuestCompleted(27518)">
-				<CustomBehavior File="InteractWith" QuestId="27518" NonCompeteDistance="0" MobId="2120" MobState="Alive" WaitTime="400000" X="-135.444" Y="1071.23" Z="66.07559" />
-			</While>
+			<!--Objective: Transdimensional Warfare: Chapter III-->
+			<CustomBehavior File="KillUntilComplete" QuestId="27518" MobId="45766" X="-135.2832" Y="1071.235" Z="66.07266" />
 
 		<TurnIn QuestName="A Wolf in Bear's Clothing" QuestId="27510" TurnInName="High Warlord Cromush" TurnInId="45631" />
 
@@ -854,6 +851,18 @@
 				<Hotspot X="-1482.303" Y="1621.546" Z="20.48545" />
 				<Hotspot X="-1491.021" Y="1680.75" Z="20.48575" />
 				<Hotspot X="-1555.027" Y="1684.538" Z="20.48504" />
+			</Hotspots>
+		</Objective>
+	</Quest>
+	<Quest Id="27093" Name="Lost in the Darkness">
+		<Objective Type="KillMob" MobId="44942" KillCount="6">
+			<Hotspots>
+				<Hotspot X="1266.453" Y="1944.468" Z="14.59848" />
+				<Hotspot X="1324.002" Y="1965.077" Z="14.22161" />
+				<Hotspot X="1352.942" Y="1982.128" Z="15.05922" />
+				<Hotspot X="1385.043" Y="2001.859" Z="17.06521" />
+				<Hotspot X="1414.251" Y="2007.019" Z="13.21666" />
+				<Hotspot X="1446.694" Y="1989.99" Z="11.05505" />
 			</Hotspots>
 		</Objective>
 	</Quest>
