@@ -1,6 +1,14 @@
 ==================================
  ==== Life Project Changelog ====
 ==================================
+_______________________________________
+Revision 75: Thursday, August 8th, 2013
+-- Darkshore Work Was Done
+-- Minor Hillsbrad Foothills Fixes
+-- Silverpine Forest Portal and Override Fixes
+-- Noticed Viability issue in Arathi Highlands
+-- Hinterlands Hearthstone CleanUp
+-- Teldrassil Checks are GameObjects for Reals
 ______________________________________
 Revision 74: Tuesday, August 6th, 2013
 -- The Hinterlands Is Now Deployed

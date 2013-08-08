@@ -122,9 +122,9 @@
 		<PickUp QuestName="Clearing the Highlands" QuestId="26053" GiverName="Deathstalker Maudria" GiverId="41966" />
 		<PickUp QuestName="To Steal From Thieves" QuestId="26428" GiverName="Genavie Callow" GiverId="4486" />
 		
-			<Objective QuestName="First Blood" QuestId="26022" Type="CollectItem" ItemId="4495" CollectCount="10" />
 			<Objective QuestName="Clearing the Highlands" QuestId="26053" Type="KillMob" MobId="2562" KillCount="8" />
 			<Objective QuestName="Clearing the Highlands" QuestId="26053" Type="KillMob" MobId="2564" KillCount="10" />
+			<Objective QuestName="First Blood" QuestId="26022" Type="CollectItem" ItemId="4495" CollectCount="10" />
 
 		<TurnIn QuestName="First Blood" QuestId="26022" TurnInName="Dark Ranger Alina" TurnInId="41949" />
 		<PickUp QuestName="The Forsaken Trollbane" QuestId="26023" GiverName="Dark Ranger Alina" GiverId="41949" />
