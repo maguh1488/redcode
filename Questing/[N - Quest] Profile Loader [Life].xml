@@ -1,5 +1,5 @@
 <HBProfile>
-	<Name>Life Project: Profile Loader [$Rev$]</Name>
+	<Name>Life Project: Profile Loader</Name>
 
 	<MinLevel>1</MinLevel>
 	<MaxLevel>91</MaxLevel>
@@ -13,8 +13,11 @@
 		</If>
 
 		<If Condition="Me.Class == WoWClass.DeathKnight">
-			<CustomBehavior File="Message" Text="Death Knight profile is undergoing maintenance. Shutting Down!" LogColor="Red" />
-			<CustomBehavior File="UserSettings" StopBot="True" />
+			<If Condition="!HasQuest(12593) &amp;&amp; !IsQuestCompleted(12593)">
+				<CustomBehavior File="UserDialog" AllowBotStop="True" SoundCue="Exclamation" SoundCueInterval="10" ExpiryTime="50"
+				Title="Welcome to Life Project" Text="Thank you for using my profiles Death Knight!\n\nThis profile loader is a convenience.\nYou're free to load any of the other appropriate zone profiles once severed from the Lich King's grasp!\n\nThis message will not display again." />
+			</If>
+			<CustomBehavior File="LoadProfile" ProfileName="Starter Zones\[N - Quest] Death Knight [Life]" />
 		</If>
 
 		<If Condition="Me.Race == WoWRace.Human">

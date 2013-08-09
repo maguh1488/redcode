@@ -1,6 +1,11 @@
 ==================================
  ==== Life Project Changelog ====
 ==================================
+Revision 76: Friday, August 9th, 2013
+-- Profile Loader Now Gives Death Knights a Special Welcome
+-- More Darkshore Work. Not a Promising Zone Sadly
+-- More Death Knight Profile Cleaning and Modification
+    ^ Should Also Function 100% Now
 _______________________________________
 Revision 75: Thursday, August 8th, 2013
 -- Darkshore Work Was Done
