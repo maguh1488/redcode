@@ -231,13 +231,13 @@
 			</Hotspots>
 		</Objective>
 	</Quest>
-	<Quest Id="483" Name="The Relics of Wakening" >
+	<Quest Id="483" Name="The Relics of Wakening">
 		<Objective Type="CollectItem" ItemId="3405" CollectCount="1" >
 			<CollectFrom>
 				<GameObject Name="Chest of the Raven Claw" Id="2740" />
 			</CollectFrom>
 			<Hotspots>
-				<Hotspot X="9883.30" Y="1489.06" Z="1300.39" />
+				<Hotspot X="9889.289" Y="1484.256" Z="1278.136" />
 			</Hotspots>
 		</Objective>
 		<Objective Type="CollectItem" ItemId="3406" CollectCount="1" >
