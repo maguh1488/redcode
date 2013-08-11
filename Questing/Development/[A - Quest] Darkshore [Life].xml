@@ -71,6 +71,13 @@
 				<CustomBehavior File="WaitTimer" WaitTime="5000" />
 			</If>
 
+			<!--Continental Drift: Rut'theran Village to Lor'danel-->
+			<If Condition="Me.ZoneId == 141 &amp;&amp; Me.Z &lt; 100">
+				<CustomBehavior File="Message" Text="Transport: Flying Lor'danel" LogColor="Cyan" />
+				<RunTo DestName="Vesprystus" X="8378.191" Y="980.754" Z="30.03759" />
+				<CustomBehavior File="TaxiRide" MobId="3838" DestName="Lor'danel" />
+			</If>
+
 			<!--Add Stormwind & Azuremyst Transport Eventually-->
 
 		<CustomBehavior File="Message" Text="Compiling Quests: Lor'danel" LogColor="Cyan" />
@@ -173,7 +180,12 @@
 
 				<!--Transport: Lor'danel to Bashal'Aran-->
 				<If Condition="HasQuest(13562) &amp;&amp; !IsQuestCompleted(13562) &amp;&amp; Me.X &gt;= 7100 &amp;&amp; Me.Level &lt; 60">
-					<CustomBehavior File="InteractWith" MobId="33359" InteractByGossipOptions="1" TerminateWhen="Me.IsOnTransport" NonCompeteDistance="0" X="7242.584" Y="-282.217" Z="21.22521" />
+					<RunTo DestName="Nightsaber Rider" X="7242.584" Y="-282.217" Z="21.22521" />
+					<CustomBehavior File="InteractWith" MobId="33359" InteractByGossipOptions="1" TerminateWhen="Me.IsOnTransport" NonCompeteDistance="0">
+						<HuntingGrounds>
+							<Hotspot X="7242.584" Y="-282.217" Z="21.22521" />
+						</HuntingGrounds>
+					</CustomBehavior>
 					<While Condition="Me.IsOnTransport">
 						<CustomBehavior File="WaitTimer" WaitTime="5000" GoalText="Waiting To Arrive At: Bashal'Aran" />
 					</While>
@@ -429,6 +441,7 @@
 
 			<PickUp QuestName="The Front Line" QuestId="13590" GiverName="Lt. Morra Starbreeze" GiverId="32963" />
 
+			<!--Transport: Ruins of Mathystra to Shatterspear Vale-->
 			<If Condition="(HasQuest(13590)) &amp;&amp; (Me.Y &gt; -980) &amp;&amp; (Me.Level &lt; 60)">
 				<RunTo DestName="Nightsaber Rider" X="7358.12" Y="-771.0242" Z="7.862035" />
 				<CustomBehavior File="InteractWith" MobId="33359" InteractByGossipOptions="2" TerminateWhen="Me.IsOnTransport" NonCompeteDistance="0" X="7360.91" Y="-769.6956" Z="7.896673" />

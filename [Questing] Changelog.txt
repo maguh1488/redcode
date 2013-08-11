@@ -1,6 +1,14 @@
 ==================================
  ==== Life Project Changelog ====
 ==================================
+_____________________________
+Revision 77: Saturday, August 10th, 2013
+-- Silly Night Elf Duplicate Quest Fix
+-- Death Knight Profile Repaired Mostly, Some Nav Issues
+-- Placeholder Outlands Profiles, Don't Expect Much Soon
+-- Adding Forced Darkshore RunTos for Transports
+-- Minor ScrapBook Cleaning
+___________________________
 Revision 76: Friday, August 9th, 2013
 -- Profile Loader Now Gives Death Knights a Special Welcome
 -- More Darkshore Work. Not a Promising Zone Sadly
